@@ -1,15 +1,25 @@
+/********************************************************************************
+				GENERAL PURPOSE SCRIPTS	- SETTING UP ENVIRONMENT
+*********************************************************************************/
+
 SET NOCOUNT ON;
 GO
 
 USE master;
 GO
 
-IF EXISTS (SELECT * FROM sysdatabases WHERE name = N'AESDatabase') DROP DATABASE AESDATABASE;
-IF NOT EXISTS (SELECT * FROM sysdatabases WHERE name = N'AESDatabase') CREATE DATABASE [AESDatabase];
+IF EXISTS (SELECT * FROM sysdatabases WHERE name = N'AESDatabase') 
+	DROP DATABASE AESDATABASE;
+IF NOT EXISTS (SELECT * FROM sysdatabases WHERE name = N'AESDatabase') 
+	CREATE DATABASE [AESDatabase];
 GO
 
 USE AESDatabase;
 GO
+
+/********************************************************************************
+								APPLICANT RELATIONS	
+*********************************************************************************/
 
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'IDX_Person')
 	DROP INDEX IDX_Person ON Applicant;
@@ -23,11 +33,8 @@ CREATE TABLE Applicant (
 	LastName		varchar(20) NOT NULL,
 	SSN				varchar(10) NOT NULL,
 	Gender			nvarchar(1),
-	CONSTRAINT	[PK_UID] PRIMARY KEY (Applicant_ID)
+	CONSTRAINT	[PK_UID] PRIMARY KEY (Applicant_ID ASC)
 );
-<<<<<<< Updated upstream
-CREATE UNIQUE INDEX IDX_Person ON Applicant (FirstName, LastName, SSN);
-=======
 CREATE UNIQUE INDEX IDX_Person ON Applicant (FirstName, LastName, SSN ASC);
 
 /* DATAS FOR APPLICANT RELATION*/ 
@@ -39,20 +46,29 @@ INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Smahane', 'Douy
 /********************************************************************************
 								SKILLS RELATION
 *********************************************************************************/
->>>>>>> Stashed changes
 
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'PKSkillID')
 	ALTER TABLE Skills DROP CONSTRAINT [PKSkillID];
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Skills')
 	DROP TABLE Skills;
 CREATE TABLE Skills (
-	Skill_ID	int,
-	SkillName	varchar(20)
-	CONSTRAINT [PKSkillID] PRIMARY KEY (Skill_ID)
+	Skill_ID	int IDENTITY(1,1) NOT NULL,
+	SkillName	varchar(20) NULL,
+	CONSTRAINT [PKSkillID] PRIMARY KEY (Skill_ID ASC)
 );
 
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'PKExpertiseUID')
-	ALTER TABLE [Expertise] DROP CONSTRAINT [PKExpertiseUID];
+/* DATA FOR SKILLS RELATION */
+INSERT INTO Skills (SkillName) VALUES ('Typing');
+INSERT INTO Skills (SkillName) VALUES ('Basic Math');
+INSERT INTO Skills (SkillName) VALUES ('Social');
+INSERT INTO Skills (SkillName) VALUES ('Computer');
+INSERT INTO Skills (SkillName) VALUES ('Speaking');
+INSERT INTO Skills (SkillName) VALUES ('Assembly');
+
+/********************************************************************************
+								EXPERTISE RELATION
+*********************************************************************************/
+
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKExpertiseApplicantID')
 	ALTER TABLE [Expertise] DROP CONSTRAINT [FKExpertiseApplicantID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKExpertiseSkillID')
@@ -60,14 +76,114 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKExpertiseSkill
 IF EXISTS (SELECT * FROM information_schema.tables WHERE table_name = N'Expertise') 
 	DROP TABLE Expertise;
 CREATE TABLE Expertise (
-	Applicant_ID	int,
-	Skill_ID		int,
-	CONSTRAINT [FKExpertiseApplicantID] FOREIGN KEY (Applicant_ID) REFERENCES Applicant(Applicant_ID) ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT [FKExpertiseSkillID] FOREIGN KEY (Skill_ID) REFERENCES Skills (Skill_ID) ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT [PKExpertiseUID] PRIMARY KEY (Applicant_ID)
+	Applicant_ID	int NOT NULL,
+	Skill_ID		int NOT NULL,
+	CONSTRAINT [FKExpertiseApplicantID] FOREIGN KEY (Applicant_ID) REFERENCES Applicant(Applicant_ID) 
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT [FKExpertiseSkillID] FOREIGN KEY (Skill_ID) REFERENCES Skills (Skill_ID) 
+		ON DELETE CASCADE ON UPDATE CASCADE
 );
-<<<<<<< Updated upstream
-=======
+
+/* DATA FOR EXPERTISE RELATION */
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (1, 2);
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (1, 4);
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (1, 6);
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (2, 5);
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (3, 1);
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (3, 2);
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (4, 1);
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (4, 2);
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (4, 4);
+INSERT INTO Expertise(Applicant_ID, Skill_ID) VALUES (4, 6);
+
+/********************************************************************************
+								APPLICATIONS RELATION	
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKApplicationID')
+	ALTER TABLE Applications DROP CONSTRAINT [PKApplicationID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Applications')
+	DROP TABLE Applications;
+CREATE TABLE Applications (
+	Application_ID		int IDENTITY(1,1) NOT NULL,
+	ApplicationStatus	varchar(10) NULL,
+	CONSTRAINT [PKApplicationID] PRIMARY KEY (Application_ID ASC)
+);
+
+/* DATA FOR APPLICATIONS RELATION */
+INSERT INTO Applications(ApplicationStatus) VALUES ('Submitted');
+INSERT INTO Applications(ApplicationStatus) VALUES ('Rejected');
+INSERT INTO Applications(ApplicationStatus) VALUES ('Reviewed');
+
+/********************************************************************************
+								JOBS RELATION
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKJobID')
+	ALTER TABLE Jobs DROP CONSTRAINT [PKJobID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Jobs')
+	DROP TABLE Jobs;
+CREATE TABLE Jobs (
+	Job_ID				int IDENTITY(1,1) NOT NULL,
+	Job_Title			varchar(20) NULL,
+	CONSTRAINT [PKJobID] PRIMARY KEY (Job_ID ASC)
+);
+
+/* DATA FOR JOBS RELATION */
+INSERT INTO Jobs(Job_Title) VALUES ('Factory Worker');
+INSERT INTO Jobs(Job_Title) VALUES ('Receptionist');
+
+/********************************************************************************
+							JOB_REQUIREMENTS RELATION
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobReqID')
+	ALTER TABLE Job_Requirements DROP CONSTRAINT [FKJobReqID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSkillReqID')
+	ALTER TABLE Job_Requirements DROP CONSTRAINT [FKSkillReqID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Job_Requirements')
+	DROP TABLE Job_Requirements;
+CREATE TABLE Job_Requirements (
+	Job_ID		int			NOT NULL,
+	Skill_ID	int			NOT NULL,
+	Notes		varchar(20) NULL,
+	CONSTRAINT [FKJobReqID] FOREIGN KEY (Job_ID) REFERENCES Jobs (Job_ID)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT [FKSkillReqID] FOREIGN KEY (Skill_ID) REFERENCES Skills (Skill_ID)
+		ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+/* DATA FOR JOB_REQUIREMENTS RELATION */
+INSERT INTO Job_Requirements(Job_ID, Skill_ID, Notes) VALUES (1, 2, '');
+INSERT INTO Job_Requirements(Job_ID, Skill_ID, Notes) VALUES (1, 3, '');
+INSERT INTO Job_Requirements(Job_ID, Skill_ID, Notes) VALUES (1, 5, 'Preferred');
+INSERT INTO Job_Requirements(Job_ID, Skill_ID, Notes) VALUES (2, 4, '');
+INSERT INTO Job_Requirements(Job_ID, Skill_ID, Notes) VALUES (2, 1, 'Not Required');
+
+/********************************************************************************
+								APPLIED RELATION	
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantID')
+	ALTER TABLE Applicant DROP CONSTRAINT [FKApplicantID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantionID')
+	ALTER TABLE Applicant DROP CONSTRAINT [FKApplicationID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobID')
+	ALTER TABLE Applicant DROP CONSTRAINT [FKJobID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Applied')
+	DROP TABLE Applied;
+CREATE TABLE Applied (
+	Applicant_ID	int	NOT NULL UNIQUE,
+	Application_ID	int NOT NULL UNIQUE,
+	Job_ID			int NOT NULL,
+	DateApplied		date NOT NULL,
+	CONSTRAINT [FKApplicantID] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT [FKApplicationID] FOREIGN KEY (Application_ID) REFERENCES Applications (Application_ID)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT [FKJobID] FOREIGN KEY (Job_ID) REFERENCES Jobs (Job_ID)
+		ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 /* DATA FOR APPLIED RELATION */
 INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (1, 1, 1, GETDATE());
@@ -162,4 +278,3 @@ CREATE TABLE Work (
 INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (1, 2);
 INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (2, 1);
 INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (3, 3);
->>>>>>> Stashed changes
