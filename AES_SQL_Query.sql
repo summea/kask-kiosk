@@ -280,4 +280,3 @@ CREATE TABLE Work (
 INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (1, 2);
 INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (2, 1);
 INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (3, 3);
-INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (3, 3);
