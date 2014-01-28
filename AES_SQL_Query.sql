@@ -35,7 +35,6 @@ CREATE TABLE Applicant (
 	Gender			nvarchar(1),
 	CONSTRAINT	[PK_UID] PRIMARY KEY (Applicant_ID ASC),
 	CONSTRAINT	[CHK_Person] CHECK (DATALENGTH(FirstName) > 0 AND DATALENGTH(LastName) > 0 AND DATALENGTH(SSN) > 0)
-	CONSTRAINT	[PK_UID] PRIMARY KEY (Applicant_ID ASC)
 );
 CREATE UNIQUE INDEX IDX_Person ON Applicant (FirstName, LastName, SSN ASC);
 
