@@ -33,14 +33,23 @@ CREATE TABLE Applicant (
 	LastName		varchar(20) NOT NULL,
 	SSN				varchar(10) NOT NULL,
 	Gender			nvarchar(1),
+<<<<<<< HEAD
+	CONSTRAINT	[PK_UID] PRIMARY KEY (Applicant_ID ASC),
+	CONSTRAINT	[CHK_Person] CHECK (DATALENGTH(FirstName) > 0 AND DATALENGTH(LastName) > 0 AND DATALENGTH(SSN) > 0)
+=======
 	CONSTRAINT	[PK_UID] PRIMARY KEY (Applicant_ID ASC)
+>>>>>>> dacf97ef38e6cf31f9ab8e022c5a4ce9d1171c30
 );
 CREATE UNIQUE INDEX IDX_Person ON Applicant (FirstName, LastName, SSN ASC);
 
 /* DATAS FOR APPLICANT RELATION*/ 
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Khanh', 'Nguyen', 1992, 'M');
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Khanh', 'Nguyen', 1986, 'M');
+<<<<<<< HEAD
+INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Andy', 'Summers', 1984, 'M');
+=======
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Andy', 'Summers', 1983, 'M');
+>>>>>>> dacf97ef38e6cf31f9ab8e022c5a4ce9d1171c30
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Smahane', 'Douyeb', 1986, 'F');
 
 /********************************************************************************
@@ -277,4 +286,8 @@ CREATE TABLE Work (
 /* DATA FOR WORK RELATION */
 INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (1, 2);
 INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (2, 1);
+<<<<<<< HEAD
 INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (3, 3);
+=======
+INSERT INTO Work(Applicant_ID, Employer_ID) VALUES (3, 3);
+>>>>>>> dacf97ef38e6cf31f9ab8e022c5a4ce9d1171c30
