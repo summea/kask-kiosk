@@ -41,7 +41,7 @@ CREATE UNIQUE INDEX IDX_Person ON Applicant (FirstName, LastName, SSN ASC);
 /* DATAS FOR APPLICANT RELATION*/ 
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Khanh', 'Nguyen', 1992, 'M');
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Khanh', 'Nguyen', 1986, 'M');
-INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Andy', 'Summers', 1984, 'M');
+INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Andy', 'Summers', 1985, 'M');
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Andy', 'Summers', 1983, 'M');
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Smahane', 'Douyeb', 1987, 'F');
 
