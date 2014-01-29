@@ -31,7 +31,7 @@ CREATE TABLE Applicant (
 	Applicant_ID	int IDENTITY(1,1),
 	FirstName		varchar(20) NOT NULL,
 	LastName		varchar(20) NOT NULL,
-	SSN				varchar(10) NOT NULL,
+	SSN				varchar(10) UNIQUE NOT NULL,
 	Gender			nvarchar(1),
 	CONSTRAINT	[PK_UID] PRIMARY KEY (Applicant_ID ASC),
 	CONSTRAINT	[CHK_Person] CHECK (DATALENGTH(FirstName) > 0 AND DATALENGTH(LastName) > 0 AND DATALENGTH(SSN) > 0)
@@ -43,7 +43,7 @@ INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Khanh', 'Nguyen
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Khanh', 'Nguyen', 1986, 'M');
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Andy', 'Summers', 1984, 'M');
 INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Andy', 'Summers', 1983, 'M');
-INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Smahane', 'Douyeb', 1986, 'F');
+INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Smahane', 'Douyeb', 1987, 'F');
 
 /********************************************************************************
 								SKILLS RELATION
@@ -54,8 +54,8 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'PKSkillID')
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Skills')
 	DROP TABLE Skills;
 CREATE TABLE Skills (
-	Skill_ID	int IDENTITY(1,1) NOT NULL,
-	SkillName	varchar(20) UNIQUE NULL,
+	Skill_ID	int IDENTITY(1,1)	NOT NULL,
+	SkillName	varchar(20) UNIQUE	NULL,
 	CONSTRAINT [PKSkillID] PRIMARY KEY (Skill_ID ASC)
 );
 
@@ -78,8 +78,8 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKExpertiseSkill
 IF EXISTS (SELECT * FROM information_schema.tables WHERE table_name = N'Expertise') 
 	DROP TABLE Expertise;
 CREATE TABLE Expertise (
-	Applicant_ID	int NOT NULL,
-	Skill_ID		int NOT NULL,
+	Applicant_ID	int	NOT NULL,
+	Skill_ID		int	NOT NULL,
 	CONSTRAINT [FKExpertiseApplicantID] FOREIGN KEY (Applicant_ID) REFERENCES Applicant(Applicant_ID) 
 		ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT [FKExpertiseSkillID] FOREIGN KEY (Skill_ID) REFERENCES Skills (Skill_ID) 
@@ -126,8 +126,8 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKJobID')
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Jobs')
 	DROP TABLE Jobs;
 CREATE TABLE Jobs (
-	Job_ID				int IDENTITY(1,1) NOT NULL,
-	Job_Title			varchar(20) UNIQUE NULL,
+	Job_ID				int IDENTITY(1,1)	NOT NULL,
+	Job_Title			varchar(20) UNIQUE	NULL,
 	CONSTRAINT [PKJobID] PRIMARY KEY (Job_ID ASC)
 );
 
@@ -147,7 +147,7 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Job_Requ
 	DROP TABLE Job_Requirements;
 CREATE TABLE Job_Requirements (
 	Job_ID		int			NOT NULL,
-	Skill_ID	int			NOT NULL,
+	Skill_ID	int			NOT NULL	UNIQUE,
 	Notes		varchar(20) NULL,
 	CONSTRAINT [FKJobReqID] FOREIGN KEY (Job_ID) REFERENCES Jobs (Job_ID)
 		ON DELETE CASCADE ON UPDATE CASCADE,
