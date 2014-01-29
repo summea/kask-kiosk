@@ -240,7 +240,7 @@ INSERT INTO Education(Applicant_ID, School_ID) VALUES (3, 4);
 INSERT INTO Education(Applicant_ID, School_ID) VALUES (4, 3);
 
 /********************************************************************************
-								Employer RELATION	
+								EMPLOYER RELATION	
 *********************************************************************************/
 
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKEmployerID')
