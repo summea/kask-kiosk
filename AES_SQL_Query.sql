@@ -225,7 +225,7 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSchoolID')
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Education')
 	DROP TABLE Education;
 CREATE TABLE Education (
-	Applicant_ID		int NOT NULL UNIQUE,
+	Applicant_ID		int NOT NULL,
 	School_ID			int NOT NULL,
 	CONSTRAINT [FKApplicantEducationID] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
 		ON DELETE CASCADE ON UPDATE CASCADE,
