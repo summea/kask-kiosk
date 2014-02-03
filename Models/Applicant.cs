@@ -7,9 +7,9 @@ namespace Empty.Models
 {
     public class Applicant
     {
-        public int Pk { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
+        public int Applicant_ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public int SSN { get; set; }
         public char gender { get; set; }
     }
