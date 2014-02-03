@@ -8,6 +8,6 @@ namespace Empty.Models
     public class Education
     {
         public int Application_ID { get; set; }
-        public int school_ID { get; set; }
+        public int School_ID { get; set; }
      }
 }
