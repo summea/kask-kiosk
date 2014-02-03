@@ -7,7 +7,7 @@ namespace Empty.Models
 {
     public class Work
     {
-        public int applicant_ID { get; set; }
-        public int employer_ID { get; set; }
+        public int Applicant_ID { get; set; }
+        public int Employer_ID { get; set; }
     }
 }
