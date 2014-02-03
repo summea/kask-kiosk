@@ -7,8 +7,8 @@ namespace Empty.Models
 {
     public class JobRequirements
     {
-        public int job_ID { get; set; }
-        public int skill_ID { get; set; }
-        public string notes { get; set; }
+        public int Job_ID { get; set; }
+        public int Skill_ID { get; set; }
+        public string Notes { get; set; }
     }
 }
