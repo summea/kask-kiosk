@@ -7,7 +7,7 @@ namespace Empty.Models
 {
     public class Applications
     {
-        public int PK { get; set; }
-        public char applicationStatus { get; set; }
+        public int Application_ID { get; set; }
+        public string ApplicationStatus { get; set; }
     }
 }
