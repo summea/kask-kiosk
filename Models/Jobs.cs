@@ -7,7 +7,7 @@ namespace Empty.Models
 {
     public class Jobs
     {
-        public int job_ID { get; set; }
-        public string job_Tile { get; set; }
+        public int Job_ID { get; set; }
+        public string Job_Tile { get; set; }
     }
 }
