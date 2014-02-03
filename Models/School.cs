@@ -7,7 +7,7 @@ namespace Empty.Models
 {
     public class School
     {
-        public int school_ID { get; set; }
-        public string school_Name { get; set; }
+        public int School_ID { get; set; }
+        public string School_Name { get; set; }
     }
 }
