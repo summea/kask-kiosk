@@ -7,7 +7,7 @@ namespace Empty.Models
 {
     public class Skills
     {
-        public int skill_ID { get; set; }
-        public string skillName { get; set; }
+        public int Skill_ID { get; set; }
+        public string Skill_Name { get; set; }
     }
 }
