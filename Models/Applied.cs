@@ -9,7 +9,7 @@ namespace Empty.Models
     {
         public int Applicant_ID { get; set; }
         public int Application_ID { get; set; }
-        public int JobID { get; set; }
-        public DateTime dateApplied { get; set; }
+        public int Job_ID { get; set; }
+        public DateTime DateApplied { get; set; }
     }
 }
