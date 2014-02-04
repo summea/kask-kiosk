@@ -6,7 +6,7 @@ namespace Kask.DAL.Models
     {
         public int Applicant_ID { get; set; }
         public int Application_ID { get; set; }
-        public int JobID { get; set; }
+        public int Job_ID { get; set; }
         public DateTime DateApplied { get; set; }
     }
 }
