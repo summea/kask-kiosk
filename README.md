@@ -10,7 +10,7 @@ Team junior project
 * Application-Service:    Application's Service (WCF)   (Service Layer to expose models from DAL layer)
 
 ## Project Breakdown:
-* DAL (Data Access Layer) - Simple POCO Classes, might have to use repositories for caching
-* Service Layer           - Exposes data for consuming for WEB API
-* ASP.NET WEB API         - API layer that consumes services
-* ASP.NET MVC (ASPX)      - Main Application that uses API to access Service that exposes the data.
+* **DAL (Data Access Layer)** - Simple POCO Classes, might have to use repositories for caching
+* **Service Layer**           - Exposes data for consuming for WEB API
+* **ASP.NET WEB API**         - API layer that consumes services
+* **ASP.NET MVC (ASPX)**      - Main Application that uses API to access Service that exposes the data.
