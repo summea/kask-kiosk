@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AESDatabase.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Applicant">
+    <Key>
+      <PropertyRef Name="Applicant_ID" />
+    </Key>
+    <Property Name="Applicant_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SSN" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Applications">
+    <Key>
+      <PropertyRef Name="Application_ID" />
+    </Key>
+    <Property Name="Application_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationStatus" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AESDatabase.dbo.Applied' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Applied">
+    <Key>
+      <PropertyRef Name="Applicant_ID" />
+      <PropertyRef Name="Application_ID" />
+      <PropertyRef Name="Job_ID" />
+      <PropertyRef Name="DateApplied" />
+    </Key>
+    <Property Name="Applicant_ID" Type="int" Nullable="false" />
+    <Property Name="Application_ID" Type="int" Nullable="false" />
+    <Property Name="Job_ID" Type="int" Nullable="false" />
+    <Property Name="DateApplied" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AESDatabase.dbo.Education' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Education">
+    <Key>
+      <PropertyRef Name="Applicant_ID" />
+      <PropertyRef Name="School_ID" />
+    </Key>
+    <Property Name="Applicant_ID" Type="int" Nullable="false" />
+    <Property Name="School_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employer">
+    <Key>
+      <PropertyRef Name="Employer_ID" />
+    </Key>
+    <Property Name="Employer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employer_Name" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AESDatabase.dbo.Expertise' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Expertise">
+    <Key>
+      <PropertyRef Name="Applicant_ID" />
+      <PropertyRef Name="Skill_ID" />
+    </Key>
+    <Property Name="Applicant_ID" Type="int" Nullable="false" />
+    <Property Name="Skill_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AESDatabase.dbo.Job_Requirements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Job_Requirements">
+    <Key>
+      <PropertyRef Name="Job_ID" />
+      <PropertyRef Name="Skill_ID" />
+    </Key>
+    <Property Name="Job_ID" Type="int" Nullable="false" />
+    <Property Name="Skill_ID" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Jobs">
+    <Key>
+      <PropertyRef Name="Job_ID" />
+    </Key>
+    <Property Name="Job_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Job_Title" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="School">
+    <Key>
+      <PropertyRef Name="School_ID" />
+    </Key>
+    <Property Name="School_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="School_Name" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Skills">
+    <Key>
+      <PropertyRef Name="Skill_ID" />
+    </Key>
+    <Property Name="Skill_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SkillName" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Work">
+    <Key>
+      <PropertyRef Name="Applicant_ID" />
+      <PropertyRef Name="Employer_ID" />
+    </Key>
+    <Property Name="Applicant_ID" Type="int" Nullable="false" />
+    <Property Name="Employer_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FKApplicantEducationID">
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Education" Type="Self.Education" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant">
+        <PropertyRef Name="Applicant_ID" />
+      </Principal>
+      <Dependent Role="Education">
+        <PropertyRef Name="Applicant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKApplicantID">
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Applied" Type="Self.Applied" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant">
+        <PropertyRef Name="Applicant_ID" />
+      </Principal>
+      <Dependent Role="Applied">
+        <PropertyRef Name="Applicant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKApplicantWorkID">
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Work" Type="Self.Work" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant">
+        <PropertyRef Name="Applicant_ID" />
+      </Principal>
+      <Dependent Role="Work">
+        <PropertyRef Name="Applicant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKApplicationID">
+    <End Role="Applications" Type="Self.Applications" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Applied" Type="Self.Applied" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applications">
+        <PropertyRef Name="Application_ID" />
+      </Principal>
+      <Dependent Role="Applied">
+        <PropertyRef Name="Application_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKEmployerID">
+    <End Role="Employer" Type="Self.Employer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Work" Type="Self.Work" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employer">
+        <PropertyRef Name="Employer_ID" />
+      </Principal>
+      <Dependent Role="Work">
+        <PropertyRef Name="Employer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKExpertiseApplicantID">
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Expertise" Type="Self.Expertise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant">
+        <PropertyRef Name="Applicant_ID" />
+      </Principal>
+      <Dependent Role="Expertise">
+        <PropertyRef Name="Applicant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKExpertiseSkillID">
+    <End Role="Skills" Type="Self.Skills" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Expertise" Type="Self.Expertise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skills">
+        <PropertyRef Name="Skill_ID" />
+      </Principal>
+      <Dependent Role="Expertise">
+        <PropertyRef Name="Skill_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKJobID">
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Applied" Type="Self.Applied" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jobs">
+        <PropertyRef Name="Job_ID" />
+      </Principal>
+      <Dependent Role="Applied">
+        <PropertyRef Name="Job_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKJobReqID">
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Job_Requirements" Type="Self.Job_Requirements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jobs">
+        <PropertyRef Name="Job_ID" />
+      </Principal>
+      <Dependent Role="Job_Requirements">
+        <PropertyRef Name="Job_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSchoolID">
+    <End Role="School" Type="Self.School" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Education" Type="Self.Education" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="School_ID" />
+      </Principal>
+      <Dependent Role="Education">
+        <PropertyRef Name="School_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSkillReqID">
+    <End Role="Skills" Type="Self.Skills" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Job_Requirements" Type="Self.Job_Requirements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skills">
+        <PropertyRef Name="Skill_ID" />
+      </Principal>
+      <Dependent Role="Job_Requirements">
+        <PropertyRef Name="Skill_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AESDatabaseModelStoreContainer">
+    <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Applied" EntityType="Self.Applied" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Applied].[Applicant_ID] AS [Applicant_ID], 
+    [Applied].[Application_ID] AS [Application_ID], 
+    [Applied].[Job_ID] AS [Job_ID], 
+    [Applied].[DateApplied] AS [DateApplied]
+    FROM [dbo].[Applied] AS [Applied]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Education" EntityType="Self.Education" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Education].[Applicant_ID] AS [Applicant_ID], 
+    [Education].[School_ID] AS [School_ID]
+    FROM [dbo].[Education] AS [Education]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Expertise" EntityType="Self.Expertise" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Expertise].[Applicant_ID] AS [Applicant_ID], 
+    [Expertise].[Skill_ID] AS [Skill_ID]
+    FROM [dbo].[Expertise] AS [Expertise]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Job_Requirements" EntityType="Self.Job_Requirements" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Job_Requirements].[Job_ID] AS [Job_ID], 
+    [Job_Requirements].[Skill_ID] AS [Skill_ID], 
+    [Job_Requirements].[Notes] AS [Notes]
+    FROM [dbo].[Job_Requirements] AS [Job_Requirements]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Work" EntityType="Self.Work" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Work].[Applicant_ID] AS [Applicant_ID], 
+    [Work].[Employer_ID] AS [Employer_ID]
+    FROM [dbo].[Work] AS [Work]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FKApplicantEducationID" Association="Self.FKApplicantEducationID">
+      <End Role="Applicant" EntitySet="Applicant" />
+      <End Role="Education" EntitySet="Education" />
+    </AssociationSet>
+    <AssociationSet Name="FKApplicantID" Association="Self.FKApplicantID">
+      <End Role="Applicant" EntitySet="Applicant" />
+      <End Role="Applied" EntitySet="Applied" />
+    </AssociationSet>
+    <AssociationSet Name="FKApplicantWorkID" Association="Self.FKApplicantWorkID">
+      <End Role="Applicant" EntitySet="Applicant" />
+      <End Role="Work" EntitySet="Work" />
+    </AssociationSet>
+    <AssociationSet Name="FKApplicationID" Association="Self.FKApplicationID">
+      <End Role="Applications" EntitySet="Applications" />
+      <End Role="Applied" EntitySet="Applied" />
+    </AssociationSet>
+    <AssociationSet Name="FKEmployerID" Association="Self.FKEmployerID">
+      <End Role="Employer" EntitySet="Employer" />
+      <End Role="Work" EntitySet="Work" />
+    </AssociationSet>
+    <AssociationSet Name="FKExpertiseApplicantID" Association="Self.FKExpertiseApplicantID">
+      <End Role="Applicant" EntitySet="Applicant" />
+      <End Role="Expertise" EntitySet="Expertise" />
+    </AssociationSet>
+    <AssociationSet Name="FKExpertiseSkillID" Association="Self.FKExpertiseSkillID">
+      <End Role="Skills" EntitySet="Skills" />
+      <End Role="Expertise" EntitySet="Expertise" />
+    </AssociationSet>
+    <AssociationSet Name="FKJobID" Association="Self.FKJobID">
+      <End Role="Jobs" EntitySet="Jobs" />
+      <End Role="Applied" EntitySet="Applied" />
+    </AssociationSet>
+    <AssociationSet Name="FKJobReqID" Association="Self.FKJobReqID">
+      <End Role="Jobs" EntitySet="Jobs" />
+      <End Role="Job_Requirements" EntitySet="Job_Requirements" />
+    </AssociationSet>
+    <AssociationSet Name="FKSchoolID" Association="Self.FKSchoolID">
+      <End Role="School" EntitySet="School" />
+      <End Role="Education" EntitySet="Education" />
+    </AssociationSet>
+    <AssociationSet Name="FKSkillReqID" Association="Self.FKSkillReqID">
+      <End Role="Skills" EntitySet="Skills" />
+      <End Role="Job_Requirements" EntitySet="Job_Requirements" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
