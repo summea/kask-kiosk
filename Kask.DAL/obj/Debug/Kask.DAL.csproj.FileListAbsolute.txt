@@ -1,5 +1,10 @@
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\Kask.DAL.dll.config
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\Kask.DAL.dll
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\Kask.DAL.pdb
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\obj\Debug\Kask.DAL.csprojResolveAssemblyReference.cache
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\obj\Debug\Kask.DAL.dll
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\obj\Debug\Kask.DAL.pdb
