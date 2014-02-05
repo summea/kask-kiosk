@@ -8,19 +8,25 @@ namespace Kask.ServiceLayer
     public class ApplicationService : IApplicationService
     {
         /* ================ HTTP GET /Application/id ================ */
-        public Applications GetApplication(int id)
+        public Application GetApplication(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        /* ================ HTTP GET /Application/Applicant/id ================ */
+        public Application GetApplicationByApplicantId(int applicantID)
         {
             throw new NotImplementedException();
         }
 
         /* ================ HTTP Get /Application/ ================ */
-        public Applications GetApplications()
+        public Application GetApplications()
         {
             throw new NotImplementedException();
         }
 
         /* ================ HTTP Post /Application/ ================ */
-        public Applications CreateApplication(Applications app)
+        public Application CreateApplication(Application app)
         {
             throw new NotImplementedException();
         }
@@ -33,6 +39,11 @@ namespace Kask.ServiceLayer
 
         /* ================ HTTP Delete /Application/id/ ================ */
         public bool DeleteApplication(int ID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Application GetApplicationById(int id)
         {
             throw new NotImplementedException();
         }

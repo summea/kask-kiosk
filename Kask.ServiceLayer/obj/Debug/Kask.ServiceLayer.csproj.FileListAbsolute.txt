@@ -2,7 +2,9 @@ C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\bin\Debug\Ka
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\bin\Debug\Kask.ServiceLayer.dll
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\bin\Debug\Kask.ServiceLayer.pdb
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\bin\Debug\Kask.DAL.dll
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\bin\Debug\EntityFramework.dll
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\bin\Debug\Kask.DAL.pdb
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\bin\Debug\EntityFramework.xml
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\obj\Debug\Kask.ServiceLayer.csprojResolveAssemblyReference.cache
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\obj\Debug\Kask.ServiceLayer.dll
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.ServiceLayer\obj\Debug\Kask.ServiceLayer.pdb

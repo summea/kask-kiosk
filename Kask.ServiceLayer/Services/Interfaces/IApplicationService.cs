@@ -18,21 +18,29 @@ namespace Kask.ServiceLayer.Services.Interfaces
         /// <param name="id">Application ID</param>
         /// <returns>An application by ID</returns>
         [OperationContract]
-        Applications GetApplication(int id);
+        Application GetApplicationById(int id);
+
+        /// <summary>
+        /// Get Application by Applicant's ID
+        /// </summary>
+        /// <param name="applicantID">Applicant's ID</param>
+        /// <returns>Returns an Application</returns>
+        [OperationContract]
+        Application GetApplicationByApplicantId(int applicantID);
 
         /// <summary>
         /// Gets all Applications
         /// </summary>
         /// <returns>All applications</returns>
         [OperationContract]
-        Applications GetApplications();
+        Application GetApplications();
 
         /// <summary>
         /// Create new Application
         /// </summary>
         /// <returns>A boolean whether a new application is created</returns>
         [OperationContract]
-        Applications CreateApplication(Applications app);
+        Application CreateApplication(Application app);
 
         /// <summary>
         /// Update an Application by ID
