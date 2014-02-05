@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="AESDatabaseModelStoreContainer" CdmEntityContainer="AESDatabaseEntities">
+  <EntityContainerMapping StorageEntityContainer="AESDatabaseModelsStoreContainer" CdmEntityContainer="AESDatabaseEntities">
     <EntitySetMapping Name="Applicants">
-      <EntityTypeMapping TypeName="AESDatabase.Model.Applicant">
+      <EntityTypeMapping TypeName="AESDatabase.Models.Applicant">
         <MappingFragment StoreEntitySet="Applicant">
           <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -13,7 +13,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Applications">
-      <EntityTypeMapping TypeName="AESDatabase.Model.Application">
+      <EntityTypeMapping TypeName="AESDatabase.Models.Application">
         <MappingFragment StoreEntitySet="Applications">
           <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
           <ScalarProperty Name="ApplicationStatus" ColumnName="ApplicationStatus" />
@@ -21,7 +21,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Employers">
-      <EntityTypeMapping TypeName="AESDatabase.Model.Employer">
+      <EntityTypeMapping TypeName="AESDatabase.Models.Employer">
         <MappingFragment StoreEntitySet="Employer">
           <ScalarProperty Name="Employer_ID" ColumnName="Employer_ID" />
           <ScalarProperty Name="Employer_Name" ColumnName="Employer_Name" />
@@ -29,7 +29,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Jobs">
-      <EntityTypeMapping TypeName="AESDatabase.Model.Job">
+      <EntityTypeMapping TypeName="AESDatabase.Models.Job">
         <MappingFragment StoreEntitySet="Jobs">
           <ScalarProperty Name="Job_ID" ColumnName="Job_ID" />
           <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
@@ -37,7 +37,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Schools">
-      <EntityTypeMapping TypeName="AESDatabase.Model.School">
+      <EntityTypeMapping TypeName="AESDatabase.Models.School">
         <MappingFragment StoreEntitySet="School">
           <ScalarProperty Name="School_ID" ColumnName="School_ID" />
           <ScalarProperty Name="School_Name" ColumnName="School_Name" />
@@ -45,26 +45,15 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Skills">
-      <EntityTypeMapping TypeName="AESDatabase.Model.Skill">
+      <EntityTypeMapping TypeName="AESDatabase.Models.Skill">
         <MappingFragment StoreEntitySet="Skills">
           <ScalarProperty Name="Skill_ID" ColumnName="Skill_ID" />
           <ScalarProperty Name="SkillName" ColumnName="SkillName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="AESDatabase.Model.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Applieds">
-      <EntityTypeMapping TypeName="AESDatabase.Model.Applied">
+      <EntityTypeMapping TypeName="AESDatabase.Models.Applied">
         <MappingFragment StoreEntitySet="Applied">
           <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
           <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
@@ -74,7 +63,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Job_Requirements">
-      <EntityTypeMapping TypeName="AESDatabase.Model.Job_Requirements">
+      <EntityTypeMapping TypeName="AESDatabase.Models.Job_Requirements">
         <MappingFragment StoreEntitySet="Job_Requirements">
           <ScalarProperty Name="Job_ID" ColumnName="Job_ID" />
           <ScalarProperty Name="Skill_ID" ColumnName="Skill_ID" />
@@ -82,7 +71,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="Education" TypeName="AESDatabase.Model.Education" StoreEntitySet="Education">
+    <AssociationSetMapping Name="Education" TypeName="AESDatabase.Models.Education" StoreEntitySet="Education">
       <EndProperty Name="Applicant">
         <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
       </EndProperty>
@@ -90,7 +79,7 @@
         <ScalarProperty Name="School_ID" ColumnName="School_ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Expertise" TypeName="AESDatabase.Model.Expertise" StoreEntitySet="Expertise">
+    <AssociationSetMapping Name="Expertise" TypeName="AESDatabase.Models.Expertise" StoreEntitySet="Expertise">
       <EndProperty Name="Applicant">
         <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
       </EndProperty>
@@ -98,7 +87,7 @@
         <ScalarProperty Name="Skill_ID" ColumnName="Skill_ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Work" TypeName="AESDatabase.Model.Work" StoreEntitySet="Work">
+    <AssociationSetMapping Name="Work" TypeName="AESDatabase.Models.Work" StoreEntitySet="Work">
       <EndProperty Name="Applicant">
         <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
       </EndProperty>

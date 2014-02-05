@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="AESDatabase.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="AESDatabase.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Applicant">
     <Key>
       <PropertyRef Name="Applicant_ID" />
@@ -27,7 +27,7 @@
       <PropertyRef Name="Employer_ID" />
     </Key>
     <Property Name="Employer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Employer_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Employer_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Applicants" Relationship="Self.Work" FromRole="Employer" ToRole="Applicant" />
   </EntityType>
   <EntityType Name="Job">
@@ -35,7 +35,7 @@
       <PropertyRef Name="Job_ID" />
     </Key>
     <Property Name="Job_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Job_Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Job_Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Applieds" Relationship="Self.FKJobID" FromRole="Jobs" ToRole="Applied" />
     <NavigationProperty Name="Job_Requirements" Relationship="Self.FKJobReqID" FromRole="Jobs" ToRole="Job_Requirements" />
   </EntityType>
@@ -44,7 +44,7 @@
       <PropertyRef Name="School_ID" />
     </Key>
     <Property Name="School_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="School_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="School_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Applicants" Relationship="Self.Education" FromRole="School" ToRole="Applicant" />
   </EntityType>
   <EntityType Name="Skill">
@@ -52,19 +52,9 @@
       <PropertyRef Name="Skill_ID" />
     </Key>
     <Property Name="Skill_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SkillName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SkillName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Job_Requirements" Relationship="Self.FKSkillReqID" FromRole="Skills" ToRole="Job_Requirements" />
     <NavigationProperty Name="Applicants" Relationship="Self.Expertise" FromRole="Skills" ToRole="Applicant" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Applied">
     <Key>
@@ -181,7 +171,6 @@
     <EntitySet Name="Jobs" EntityType="Self.Job" />
     <EntitySet Name="Schools" EntityType="Self.School" />
     <EntitySet Name="Skills" EntityType="Self.Skill" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Applieds" EntityType="Self.Applied" />
     <EntitySet Name="Job_Requirements" EntityType="Self.Job_Requirements" />
     <AssociationSet Name="FKApplicantID" Association="Self.FKApplicantID">

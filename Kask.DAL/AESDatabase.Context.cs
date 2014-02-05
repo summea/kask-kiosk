@@ -31,7 +31,6 @@ namespace Kask.DAL.Models
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<School> Schools { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Applied> Applieds { get; set; }
         public virtual DbSet<Job_Requirements> Job_Requirements { get; set; }
     }

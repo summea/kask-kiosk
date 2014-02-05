@@ -5,6 +5,5 @@ C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\EntityFrame
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\EntityFramework.xml
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\obj\Debug\Kask.DAL.csprojResolveAssemblyReference.cache
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\obj\Debug\Kask.DAL.dll
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\Kask.DAL\obj\Debug\Kask.DAL.pdb
