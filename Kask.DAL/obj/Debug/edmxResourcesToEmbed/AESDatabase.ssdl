@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="AESDatabase.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="AESDatabase.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Applicant">
     <Key>
       <PropertyRef Name="Applicant_ID" />
@@ -46,7 +46,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Education' does not have a primary
       <PropertyRef Name="Employer_ID" />
     </Key>
     <Property Name="Employer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Employer_Name" Type="varchar" MaxLength="20" />
+    <Property Name="Employer_Name" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'AESDatabase.dbo.Expertise' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -74,31 +74,21 @@ warning 6002: The table/view 'AESDatabase.dbo.Job_Requirements' does not have a 
       <PropertyRef Name="Job_ID" />
     </Key>
     <Property Name="Job_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Job_Title" Type="varchar" MaxLength="20" />
+    <Property Name="Job_Title" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="School">
     <Key>
       <PropertyRef Name="School_ID" />
     </Key>
     <Property Name="School_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="School_Name" Type="varchar" MaxLength="20" />
+    <Property Name="School_Name" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="Skills">
     <Key>
       <PropertyRef Name="Skill_ID" />
     </Key>
     <Property Name="Skill_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SkillName" Type="varchar" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
+    <Property Name="SkillName" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -264,14 +254,13 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="AESDatabaseModelStoreContainer">
+  <EntityContainer Name="AESDatabaseModelsStoreContainer">
     <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Applied" EntityType="Self.Applied" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Applied].[Applicant_ID] AS [Applicant_ID], 

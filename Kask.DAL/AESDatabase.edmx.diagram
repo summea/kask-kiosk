@@ -4,24 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="299ac10adb58441ead44a3f4783a032a" Name="Diagram1">
-        <EntityTypeShape EntityType="AESDatabase.Model.Applicant" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AESDatabase.Model.Application" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AESDatabase.Model.Employer" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AESDatabase.Model.Job" Width="1.5" PointX="3.75" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AESDatabase.Model.School" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AESDatabase.Model.Skill" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AESDatabase.Model.sysdiagram" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AESDatabase.Model.Applied" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AESDatabase.Model.Job_Requirements" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
-        <AssociationConnector Association="AESDatabase.Model.FKApplicantID" ManuallyRouted="false" />
-        <AssociationConnector Association="AESDatabase.Model.FKApplicationID" ManuallyRouted="false" />
-        <AssociationConnector Association="AESDatabase.Model.FKJobID" ManuallyRouted="false" />
-        <AssociationConnector Association="AESDatabase.Model.FKJobReqID" ManuallyRouted="false" />
-        <AssociationConnector Association="AESDatabase.Model.FKSkillReqID" ManuallyRouted="false" />
-        <AssociationConnector Association="AESDatabase.Model.Education" ManuallyRouted="false" />
-        <AssociationConnector Association="AESDatabase.Model.Expertise" ManuallyRouted="false" />
-        <AssociationConnector Association="AESDatabase.Model.Work" ManuallyRouted="false" />
+      <Diagram DiagramId="114a8aa69a8c46bc956bae9d13a9b6e5" Name="Diagram1">
+        <EntityTypeShape EntityType="AESDatabase.Models.Applicant" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabase.Models.Application" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabase.Models.Employer" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabase.Models.Job" Width="1.5" PointX="3.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabase.Models.School" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabase.Models.Skill" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabase.Models.Applied" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabase.Models.Job_Requirements" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="AESDatabase.Models.FKApplicantID" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabase.Models.FKApplicationID" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabase.Models.FKJobID" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabase.Models.FKJobReqID" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabase.Models.FKSkillReqID" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabase.Models.Education" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabase.Models.Expertise" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabase.Models.Work" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
