@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="AESDatabase.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="AESDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Applicant">
     <Key>
       <PropertyRef Name="Applicant_ID" />
@@ -254,7 +254,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="AESDatabaseModelsStoreContainer">
+  <EntityContainer Name="AESDatabaseModelStoreContainer">
     <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
