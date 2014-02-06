@@ -26,3 +26,7 @@ C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\KaskKiosk\bin\System.Web.WebPa
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\KaskKiosk\obj\Debug\KaskKiosk.csprojResolveAssemblyReference.cache
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\KaskKiosk\obj\Debug\KaskKiosk.dll
 C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\KaskKiosk\obj\Debug\KaskKiosk.pdb
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\KaskKiosk\bin\EntityFramework.dll
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\KaskKiosk\bin\EntityFramework.SqlServer.dll
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\KaskKiosk\bin\EntityFramework.xml
+C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\KaskKiosk\bin\EntityFramework.SqlServer.xml

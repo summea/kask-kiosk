@@ -12,14 +12,19 @@ namespace Kask.DAL.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
     public partial class AESDatabaseEntities : DbContext
     {
         public AESDatabaseEntities()
             : base("name=AESDatabaseEntities")
         {
         }
-    
+
+        static AESDatabaseEntities ()
+        {
+            var _ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
+            var __ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

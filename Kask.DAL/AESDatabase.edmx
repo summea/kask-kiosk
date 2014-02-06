@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AESDatabase.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AESDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Applicant">
           <Key>
             <PropertyRef Name="Applicant_ID" />
@@ -259,7 +259,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AESDatabaseModelsStoreContainer">
+        <EntityContainer Name="AESDatabaseModelStoreContainer">
           <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
@@ -348,7 +348,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AESDatabase.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AESDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Applicant">
           <Key>
             <PropertyRef Name="Applicant_ID" />
@@ -560,9 +560,9 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AESDatabaseModelsStoreContainer" CdmEntityContainer="AESDatabaseEntities">
+        <EntityContainerMapping StorageEntityContainer="AESDatabaseModelStoreContainer" CdmEntityContainer="AESDatabaseEntities">
           <EntitySetMapping Name="Applicants">
-            <EntityTypeMapping TypeName="AESDatabase.Models.Applicant">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Applicant">
               <MappingFragment StoreEntitySet="Applicant">
                 <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -573,7 +573,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Applications">
-            <EntityTypeMapping TypeName="AESDatabase.Models.Application">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Application">
               <MappingFragment StoreEntitySet="Applications">
                 <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
                 <ScalarProperty Name="ApplicationStatus" ColumnName="ApplicationStatus" />
@@ -581,7 +581,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employers">
-            <EntityTypeMapping TypeName="AESDatabase.Models.Employer">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Employer">
               <MappingFragment StoreEntitySet="Employer">
                 <ScalarProperty Name="Employer_ID" ColumnName="Employer_ID" />
                 <ScalarProperty Name="Employer_Name" ColumnName="Employer_Name" />
@@ -589,7 +589,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Jobs">
-            <EntityTypeMapping TypeName="AESDatabase.Models.Job">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Job">
               <MappingFragment StoreEntitySet="Jobs">
                 <ScalarProperty Name="Job_ID" ColumnName="Job_ID" />
                 <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
@@ -597,7 +597,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Schools">
-            <EntityTypeMapping TypeName="AESDatabase.Models.School">
+            <EntityTypeMapping TypeName="AESDatabaseModel.School">
               <MappingFragment StoreEntitySet="School">
                 <ScalarProperty Name="School_ID" ColumnName="School_ID" />
                 <ScalarProperty Name="School_Name" ColumnName="School_Name" />
@@ -605,7 +605,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Skills">
-            <EntityTypeMapping TypeName="AESDatabase.Models.Skill">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Skill">
               <MappingFragment StoreEntitySet="Skills">
                 <ScalarProperty Name="Skill_ID" ColumnName="Skill_ID" />
                 <ScalarProperty Name="SkillName" ColumnName="SkillName" />
@@ -613,7 +613,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Applieds">
-            <EntityTypeMapping TypeName="AESDatabase.Models.Applied">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Applied">
               <MappingFragment StoreEntitySet="Applied">
                 <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
                 <ScalarProperty Name="Application_ID" ColumnName="Application_ID" />
@@ -623,7 +623,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Job_Requirements">
-            <EntityTypeMapping TypeName="AESDatabase.Models.Job_Requirements">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Job_Requirements">
               <MappingFragment StoreEntitySet="Job_Requirements">
                 <ScalarProperty Name="Job_ID" ColumnName="Job_ID" />
                 <ScalarProperty Name="Skill_ID" ColumnName="Skill_ID" />
@@ -631,7 +631,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Education" TypeName="AESDatabase.Models.Education" StoreEntitySet="Education">
+          <AssociationSetMapping Name="Education" TypeName="AESDatabaseModel.Education" StoreEntitySet="Education">
             <EndProperty Name="Applicant">
               <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
             </EndProperty>
@@ -639,7 +639,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
               <ScalarProperty Name="School_ID" ColumnName="School_ID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="Expertise" TypeName="AESDatabase.Models.Expertise" StoreEntitySet="Expertise">
+          <AssociationSetMapping Name="Expertise" TypeName="AESDatabaseModel.Expertise" StoreEntitySet="Expertise">
             <EndProperty Name="Applicant">
               <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
             </EndProperty>
@@ -647,7 +647,7 @@ warning 6002: The table/view 'AESDatabase.dbo.Work' does not have a primary key 
               <ScalarProperty Name="Skill_ID" ColumnName="Skill_ID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="Work" TypeName="AESDatabase.Models.Work" StoreEntitySet="Work">
+          <AssociationSetMapping Name="Work" TypeName="AESDatabaseModel.Work" StoreEntitySet="Work">
             <EndProperty Name="Applicant">
               <ScalarProperty Name="Applicant_ID" ColumnName="Applicant_ID" />
             </EndProperty>
