@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kask.ServiceLayer", "Kask.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestService", "TestService\TestService.csproj", "{A8979438-1288-485F-8352-63664CD18253}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kask.DAL2", "Kask.DAL2\Kask.DAL2.csproj", "{B4E36210-2AD0-447A-9141-62F6518D875B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A8979438-1288-485F-8352-63664CD18253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8979438-1288-485F-8352-63664CD18253}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8979438-1288-485F-8352-63664CD18253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4E36210-2AD0-447A-9141-62F6518D875B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E36210-2AD0-447A-9141-62F6518D875B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E36210-2AD0-447A-9141-62F6518D875B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E36210-2AD0-447A-9141-62F6518D875B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

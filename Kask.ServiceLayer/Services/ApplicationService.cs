@@ -1,7 +1,6 @@
-﻿using Kask.DAL.Models;
+﻿using Kask.DAL2.Models;
 using Kask.ServiceLayer.Services.Interfaces;
 using System;
-using System.Data.Entity;
 using System.Linq;
 
 namespace Kask.ServiceLayer
@@ -9,15 +8,14 @@ namespace Kask.ServiceLayer
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class ApplicationService : IApplicationService
     {
-
         /* ================ HTTP GET /Application/id ================ */
         public Application GetApplicationById(int id)
         {
-            AESDatabaseEntities db = new AESDatabaseEntities();
-            Application application = (from a in db.Applications where a.Application_ID == id select a).FirstOrDefault();
+            AESDatabasev2DataContext db = new AESDatabasev2DataContext();
+            Application application = (from a in db.Applications where a.Application_ID == id select a).First();
             if (application != null)
             {
-                return new Application() { Application_ID = application.Application_ID, ApplicationStatus = application.ApplicationStatus };
+                return application;
             }
             else throw new Exception("Invalid Application ID");
         }
