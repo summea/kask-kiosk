@@ -17,7 +17,7 @@ namespace Kask.ServiceLayer
             Application application = (from a in db.Applications where a.Application_ID == id select a).FirstOrDefault();
             if (application != null)
             {
-                return application;
+                return new Application() { Application_ID = application.Application_ID, ApplicationStatus = application.ApplicationStatus };
             }
             else throw new Exception("Invalid Application ID");
         }

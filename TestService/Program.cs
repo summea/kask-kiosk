@@ -11,9 +11,8 @@ namespace TestService
     {
         static void Main(string[] args)
         {
-            ApplicationServiceRef.ApplicationServiceClient client = new ApplicationServiceRef.ApplicationServiceClient();
-            Application app = client.GetApplicationById(1);
-            Console.WriteLine("{0}: {1}", app.Application_ID, app.ApplicationStatus);
+            ApplicationServiceClient client = new ApplicationServiceRef.ApplicationServiceClient();
+            object app = client.GetApplicationById(1);
         }
     }
 }
