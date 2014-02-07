@@ -40,10 +40,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services\Interfaces\IApplicationService.cs" />
@@ -56,9 +56,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Kask.DAL\Kask.DAL.csproj">
-      <Project>{edcba9fa-fcb9-4c4f-a6cd-7562ea708d48}</Project>
-      <Name>Kask.DAL</Name>
+    <ProjectReference Include="..\Kask.DAL2\Kask.DAL2.csproj">
+      <Project>{b4e36210-2ad0-447a-9141-62f6518d875b}</Project>
+      <Name>Kask.DAL2</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

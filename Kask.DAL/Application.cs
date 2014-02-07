@@ -21,7 +21,6 @@ namespace Kask.DAL.Models
     
         public int Application_ID { get; set; }
         public string ApplicationStatus { get; set; }
-    
         public virtual ICollection<Applied> Applieds { get; set; }
     }
 }
