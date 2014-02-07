@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Kask.DAL.Models;
 using System.ServiceModel;
+using System.Runtime.Serialization;
 
 namespace Kask.ServiceLayer.Services.Interfaces
 {
