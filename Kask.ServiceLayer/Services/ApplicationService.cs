@@ -1,11 +1,11 @@
 ﻿using Kask.DAL2.Models;
 using Kask.ServiceLayer.Services.Interfaces;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Kask.ServiceLayer
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class ApplicationService : IApplicationService
     {
         /* ================ HTTP GET /Application/id ================ */
@@ -13,6 +13,7 @@ namespace Kask.ServiceLayer
         {
             AESDatabasev2DataContext db = new AESDatabasev2DataContext();
             Application application = (from a in db.Applications where a.Application_ID == id select a).First();
+
             if (application != null)
             {
                 return application;
@@ -21,21 +22,42 @@ namespace Kask.ServiceLayer
         }
 
         /* ================ HTTP GET /Application/Applicant/id ================ */
-        public Application GetApplicationByApplicantId(int applicantID)
+        public ObservableCollection<Application> GetApplicationsByApplicantId(int applicantID)
         {
-            throw new NotImplementedException();
+            AESDatabasev2DataContext db = new AESDatabasev2DataContext();
+            ObservableCollection<Application> result = new ObservableCollection<Application>();
+            var query = (from a in db.Applieds where a.Applicant_ID == applicantID select a).ToList();
+            
+            
+            throw new Exception("Invalid Applicant ID");
         }
 
         /* ================ HTTP Get /Application/ ================ */
-        public Application GetApplications()
+        public ObservableCollection<Application> GetApplications()
         {
-            throw new NotImplementedException();
+            AESDatabasev2DataContext db = new AESDatabasev2DataContext();
+            ObservableCollection<Application> results = new ObservableCollection<Application>();
+            var apps = db.Applications.ToList();
+
+            if (apps != null)
+            {
+                foreach (var item in apps)
+                {
+                    results.Add(item);
+                }
+
+                return results;
+            }
+
+            throw new Exception("No application found");
         }
 
         /* ================ HTTP Post /Application/ ================ */
-        public Application CreateApplication(Application app)
+        public bool CreateApplication(Application app)
         {
-            throw new NotImplementedException();
+
+
+            return true;
         }
 
         /* ================ HTTP Put /Application/id/ ================ */

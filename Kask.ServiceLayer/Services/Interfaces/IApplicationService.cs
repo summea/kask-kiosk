@@ -1,4 +1,5 @@
 ﻿using Kask.DAL2.Models;
+using System.Collections.ObjectModel;
 using System.ServiceModel;
 
 namespace Kask.ServiceLayer.Services.Interfaces
@@ -19,23 +20,23 @@ namespace Kask.ServiceLayer.Services.Interfaces
         /// Get Application by Applicant's ID
         /// </summary>
         /// <param name="applicantID">Applicant's ID</param>
-        /// <returns>Returns an Application</returns>
+        /// <returns>Returns Applications</returns>
         [OperationContract]
-        Application GetApplicationByApplicantId(int applicantID);
+        ObservableCollection<Application> GetApplicationsByApplicantId(int applicantID);
 
         /// <summary>
         /// Gets all Applications
         /// </summary>
         /// <returns>All applications</returns>
         [OperationContract]
-        Application GetApplications();
+        ObservableCollection<Application> GetApplications();
 
         /// <summary>
         /// Create new Application
         /// </summary>
         /// <returns>A boolean whether a new application is created</returns>
         [OperationContract]
-        Application CreateApplication(Application app);
+        bool CreateApplication(Application app);
 
         /// <summary>
         /// Update an Application by ID
