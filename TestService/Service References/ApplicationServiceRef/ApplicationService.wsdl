@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ApplicationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8080/Kask.Services/Application/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8080/Kask.Services/Application/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/Kask.Services/Application/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IApplicationService_GetApplicationById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationById" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplicationById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplicationsByApplicantId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsByApplicantId" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplicationsByApplicantId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsByApplicantIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplications_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplications" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_CreateApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateApplication" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_CreateApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_UpdateApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateApplication" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_UpdateApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_DeleteApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteApplication" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_DeleteApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteApplicationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IApplicationService">
+    <wsdl:operation name="GetApplicationById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationById" message="tns:IApplicationService_GetApplicationById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByIdResponse" message="tns:IApplicationService_GetApplicationById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationsByApplicantId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationsByApplicantId" message="tns:IApplicationService_GetApplicationsByApplicantId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationsByApplicantIdResponse" message="tns:IApplicationService_GetApplicationsByApplicantId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplications">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplications" message="tns:IApplicationService_GetApplications_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationsResponse" message="tns:IApplicationService_GetApplications_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/CreateApplication" message="tns:IApplicationService_CreateApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/CreateApplicationResponse" message="tns:IApplicationService_CreateApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/UpdateApplication" message="tns:IApplicationService_UpdateApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/UpdateApplicationResponse" message="tns:IApplicationService_UpdateApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/DeleteApplication" message="tns:IApplicationService_DeleteApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/DeleteApplicationResponse" message="tns:IApplicationService_DeleteApplication_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IApplicationService" type="tns:IApplicationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetApplicationById">
+      <soap:operation soapAction="http://tempuri.org/IApplicationService/GetApplicationById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationsByApplicantId">
+      <soap:operation soapAction="http://tempuri.org/IApplicationService/GetApplicationsByApplicantId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplications">
+      <soap:operation soapAction="http://tempuri.org/IApplicationService/GetApplications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateApplication">
+      <soap:operation soapAction="http://tempuri.org/IApplicationService/CreateApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplication">
+      <soap:operation soapAction="http://tempuri.org/IApplicationService/UpdateApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApplication">
+      <soap:operation soapAction="http://tempuri.org/IApplicationService/DeleteApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ApplicationService">
+    <wsdl:port name="BasicHttpBinding_IApplicationService" binding="tns:BasicHttpBinding_IApplicationService">
+      <soap:address location="http://localhost:8080/Kask.Services/Application/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

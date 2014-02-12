@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,8 @@ namespace TestService
         static void Main(string[] args)
         {
             ApplicationServiceClient client = new ApplicationServiceRef.ApplicationServiceClient();
-            object app = client.GetApplicationById(1);
+            ICollection<Application> apps = client.GetApplications();
+            Console.ReadLine();
         }
     }
 }
