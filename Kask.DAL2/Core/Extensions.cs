@@ -1,6 +1,6 @@
-﻿namespace Kask.DAL.Models
+﻿namespace Kask.DAL2.Models
 {
-    using Kask.DAL.Core;
+    using Kask.DAL2.Core;
 
     public partial class Application : IEntity { }
 
