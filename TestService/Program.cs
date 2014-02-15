@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestService.ApplicationServiceRef;
+using Kask.DAL2.Models;
 
 namespace TestService
 {

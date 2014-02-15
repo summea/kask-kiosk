@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -53,28 +54,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Properties\DataSources\Kask.DAL2.Models.Application.datasource" />
     <None Include="Service References\ApplicationServiceRef\ApplicationService.wsdl" />
-    <None Include="Service References\ApplicationServiceRef\item.xsd">
+    <None Include="Service References\ApplicationServiceRef\ApplicationService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ApplicationServiceRef\item1.xsd">
+    <None Include="Service References\ApplicationServiceRef\ApplicationService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ApplicationServiceRef\item2.xsd">
+    <None Include="Service References\ApplicationServiceRef\ApplicationService2.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ApplicationServiceRef\TestService.ApplicationServiceRef.Application.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kask.DAL2\Kask.DAL2.csproj">
+      <Project>{b4e36210-2ad0-447a-9141-62f6518d875b}</Project>
+      <Name>Kask.DAL2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Service References\ApplicationServiceRef\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ApplicationServiceRef\item.disco" />
+    <None Include="Service References\ApplicationServiceRef\ApplicationService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ApplicationServiceRef\configuration91.svcinfo" />

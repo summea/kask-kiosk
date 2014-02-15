@@ -75,8 +75,6 @@
     <Compile Include="Applied.cs">
       <DependentUpon>AESDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Core\BaseRepository.cs" />
-    <Compile Include="Core\Extensions.cs" />
     <Compile Include="Employer.cs">
       <DependentUpon>AESDatabase.tt</DependentUpon>
     </Compile>

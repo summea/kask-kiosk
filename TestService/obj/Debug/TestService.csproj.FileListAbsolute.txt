@@ -1,6 +1,0 @@
-C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\TestService\bin\Debug\TestService.exe.config
-C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\TestService\bin\Debug\TestService.exe
-C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\TestService\bin\Debug\TestService.pdb
-C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\TestService\obj\Debug\TestService.exe
-C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\TestService\obj\Debug\TestService.pdb
-C:\Users\Khanh Nguyen\Documents\GitHub\kask-kiosk\TestService\obj\Debug\TestService.csprojResolveAssemblyReference.cache
