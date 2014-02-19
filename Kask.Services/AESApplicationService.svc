@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Kask.Services.AESApplicantService" CodeBehind="AESApplicationService.svc.cs" %>

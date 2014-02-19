@@ -7,16 +7,18 @@ using System.ServiceModel;
 
 namespace Kask.Services
 {
-    public class ApplicantService : IApplicationService
+    public class AESApplicationService : IApplicationService, IApplicantService
     {
         public Application GetApplicationById(int id)
         {
-            AESDatabasev2DataContext db = new AESDatabasev2DataContext();
-            Application application = (from a in db.Applications where a.Application_ID == id select a).First();
+            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            {
+                Application application = (from a in db.Applications where a.Application_ID == id select a).First();
 
-            if (application != null)
-                return application;
-            else return null;
+                if (application != null)
+                    return application;
+                else return null;
+            }
         }
 
         public IList<Application> GetApplicationsByApplicantId(int applicantID)
@@ -30,13 +32,18 @@ namespace Kask.Services
 
         public IList<Application> GetApplications()
         {
-            AESDatabasev2DataContext db = new AESDatabasev2DataContext();
-            var apps = db.Applications.ToList();
-
-            if (apps != null)
-                return apps;
-
-            throw new FaultException("Unknown Error");
+            try
+            {
+                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                {
+                    var apps = db.Applications.ToList();
+                    return (apps != null ? apps : null);
+                }
+            }
+            catch
+            {
+                throw new FaultException("Unknown Error");
+            }
         }
 
         public bool CreateApplication(Application app)
@@ -61,6 +68,11 @@ namespace Kask.Services
         }
 
         public bool DeleteApplication(int ID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Applicant GetApplicantByID(int applicantID)
         {
             throw new NotImplementedException();
         }
