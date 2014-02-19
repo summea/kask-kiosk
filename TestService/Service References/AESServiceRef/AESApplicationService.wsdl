@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ApplicationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AESApplicationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:1760/ApplicationService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:1760/ApplicationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:1760/ApplicationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" />
+      <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IApplicationService_GetApplicationById_InputMessage">
@@ -43,6 +43,24 @@
   <wsdl:message name="IApplicationService_DeleteApplication_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteApplicationResponse" />
   </wsdl:message>
+  <wsdl:message name="IApplicantService_GetApplicantByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicantByID" />
+  </wsdl:message>
+  <wsdl:message name="IApplicantService_GetApplicantByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicantByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicantService_GetApplicantByAppliedID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicantByAppliedID" />
+  </wsdl:message>
+  <wsdl:message name="IApplicantService_GetApplicantByAppliedID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicantByAppliedIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicantService_GetApplicants_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicants" />
+  </wsdl:message>
+  <wsdl:message name="IApplicantService_GetApplicants_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicantsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IApplicationService">
     <wsdl:operation name="GetApplicationById">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationById" message="tns:IApplicationService_GetApplicationById_InputMessage" />
@@ -67,6 +85,20 @@
     <wsdl:operation name="DeleteApplication">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/DeleteApplication" message="tns:IApplicationService_DeleteApplication_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/DeleteApplicationResponse" message="tns:IApplicationService_DeleteApplication_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IApplicantService">
+    <wsdl:operation name="GetApplicantByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantByID" message="tns:IApplicantService_GetApplicantByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantByIDResponse" message="tns:IApplicantService_GetApplicantByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicantByAppliedID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantByAppliedID" message="tns:IApplicantService_GetApplicantByAppliedID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantByAppliedIDResponse" message="tns:IApplicantService_GetApplicantByAppliedID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicants">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicantService/GetApplicants" message="tns:IApplicantService_GetApplicants_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantsResponse" message="tns:IApplicantService_GetApplicants_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IApplicationService" type="tns:IApplicationService">
@@ -126,9 +158,42 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="ApplicationService">
+  <wsdl:binding name="BasicHttpBinding_IApplicantService" type="tns:IApplicantService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetApplicantByID">
+      <soap:operation soapAction="http://tempuri.org/IApplicantService/GetApplicantByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicantByAppliedID">
+      <soap:operation soapAction="http://tempuri.org/IApplicantService/GetApplicantByAppliedID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicants">
+      <soap:operation soapAction="http://tempuri.org/IApplicantService/GetApplicants" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AESApplicationService">
     <wsdl:port name="BasicHttpBinding_IApplicationService" binding="tns:BasicHttpBinding_IApplicationService">
-      <soap:address location="http://localhost:1760/ApplicationService.svc" />
+      <soap:address location="http://localhost:1760/AESApplicationService.svc/Application" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IApplicantService" binding="tns:BasicHttpBinding_IApplicantService">
+      <soap:address location="http://localhost:1760/AESApplicationService.svc/Applicant" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -14,6 +14,11 @@ namespace Kask.Services.Interfaces
         [OperationContract]
         Applicant GetApplicantByID(int id);
 
+        [OperationContract]
+        Applicant GetApplicantByAppliedID(int id);
+
+        [OperationContract]
+        Applicant GetApplicants();
 
     }
 }
