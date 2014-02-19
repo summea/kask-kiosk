@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\ApplicationServiceRef\Reference.cs">
+    <Compile Include="Service References\AESServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -54,15 +54,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Properties\DataSources\Kask.DAL2.Models.Applicant.datasource" />
     <None Include="Properties\DataSources\Kask.DAL2.Models.Application.datasource" />
-    <None Include="Service References\ApplicationServiceRef\ApplicationService.wsdl" />
-    <None Include="Service References\ApplicationServiceRef\ApplicationService.xsd">
+    <None Include="Service References\AESServiceRef\AESApplicationService.wsdl" />
+    <None Include="Service References\AESServiceRef\AESApplicationService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ApplicationServiceRef\ApplicationService1.xsd">
+    <None Include="Service References\AESServiceRef\AESApplicationService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ApplicationServiceRef\ApplicationService2.xsd">
+    <None Include="Service References\AESServiceRef\AESApplicationService2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -76,19 +77,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ApplicationServiceRef\" />
+    <WCFMetadataStorage Include="Service References\AESServiceRef\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ApplicationServiceRef\ApplicationService.disco" />
+    <None Include="Service References\AESServiceRef\AESApplicationService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ApplicationServiceRef\configuration91.svcinfo" />
+    <None Include="Service References\AESServiceRef\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ApplicationServiceRef\configuration.svcinfo" />
+    <None Include="Service References\AESServiceRef\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ApplicationServiceRef\Reference.svcmap">
+    <None Include="Service References\AESServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

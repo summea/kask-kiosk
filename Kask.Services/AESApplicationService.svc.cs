@@ -76,5 +76,15 @@ namespace Kask.Services
         {
             throw new NotImplementedException();
         }
+
+        public Applicant GetApplicantByAppliedID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Applicant GetApplicants()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TestService.ApplicationServiceRef;
+using TestService.AESServiceRef;
 using Kask.DAL2.Models;
 
 namespace TestService
@@ -13,8 +13,8 @@ namespace TestService
     {
         static void Main(string[] args)
         {
-            ApplicationServiceClient client = new ApplicationServiceRef.ApplicationServiceClient();
-            ICollection<Application> apps = client.GetApplications();
+            ApplicationServiceClient client = new ApplicationServiceClient();
+            IList<Application> apps = client.GetApplications();
             Console.ReadLine();
         }
     }

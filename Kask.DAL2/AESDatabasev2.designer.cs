@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kask.DAL2
+namespace Kask.DAL2.Models
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
