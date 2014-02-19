@@ -1,6 +1,7 @@
 ﻿using Kask.DAL2.Models;
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 
 namespace Kask.Services.Interfaces
 {
@@ -44,7 +45,7 @@ namespace Kask.Services.Interfaces
         /// <param name="ID">Application's ID</param>
         /// <returns>A boolean whether an application is updated</returns>
         [OperationContract]
-        bool UpdateApplication(int ID);
+        bool UpdateApplication(Application oldApp, Application newApp);
 
         /* ================ HTTP Delete /Application/id/ ================ */
         /// <summary>

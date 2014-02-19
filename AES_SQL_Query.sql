@@ -177,7 +177,7 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobID')
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Applied')
 	DROP TABLE Applied;
 CREATE TABLE Applied (
-	Applicant_ID	int	NOT NULL UNIQUE,
+	Applicant_ID	int	NOT NULL,
 	Application_ID	int NOT NULL UNIQUE,
 	Job_ID			int NOT NULL,
 	DateApplied		date NOT NULL,
