@@ -23,4 +23,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Applicant" nillable="true" type="tns:Applicant" />
+  <xs:complexType name="ArrayOfApplicant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Applicant" nillable="true" type="tns:Applicant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplicant" nillable="true" type="tns:ArrayOfApplicant" />
+  <xs:complexType name="Applied">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Applicant_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Application_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Job_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="DateApplied" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Applied" nillable="true" type="tns:Applied" />
+  <xs:complexType name="ArrayOfApplied">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Applied" nillable="true" type="tns:Applied" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplied" nillable="true" type="tns:ArrayOfApplied" />
 </xs:schema>

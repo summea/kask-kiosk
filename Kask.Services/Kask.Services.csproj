@@ -69,6 +69,7 @@
     <Compile Include="AESApplicationService.svc.cs">
       <DependentUpon>AESApplicationService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IAppliedService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
