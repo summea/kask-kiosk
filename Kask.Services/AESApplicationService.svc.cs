@@ -11,13 +11,17 @@ namespace Kask.Services
     {
         public Application GetApplicationById(int id)
         {
-            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            try
             {
-                Application application = (from a in db.Applications where a.Application_ID == id select a).First();
-
-                if (application != null)
-                    return application;
-                else return null;
+                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                {
+                    Application application = (from a in db.Applications where a.Application_ID == id select a).First();
+                    return (application != null ? application : null);
+                }
+            }
+            catch
+            {
+                throw new FaultException("Unhandled Exception");
             }
         }
 
@@ -25,9 +29,9 @@ namespace Kask.Services
         {
             AESDatabasev2DataContext db = new AESDatabasev2DataContext();
             IQueryable<Applied> query = (from a in db.Applieds where a.Applicant_ID == applicantID select a).AsQueryable();
-            
 
-            throw new FaultException ("Unknown Error");
+
+            throw new FaultException("Unhandled Exception");
         }
 
         public IList<Application> GetApplications()
