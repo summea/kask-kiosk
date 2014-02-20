@@ -18,17 +18,9 @@ namespace Kask.Services.Interfaces
         Application GetApplicationById(int id);
 
         /// <summary>
-        /// Get Application by Applicant's ID
+        /// Get all Applications
         /// </summary>
-        /// <param name="applicantID">Applicant's ID</param>
-        /// <returns>Returns Applications</returns>
-        [OperationContract]
-        IList<Application> GetApplicationsByApplicantId(int applicantID);
-
-        /// <summary>
-        /// Gets all Applications
-        /// </summary>
-        /// <returns>All applications</returns>
+        /// <returns>List of Applications</returns>
         [OperationContract]
         IList<Application> GetApplications();
 
@@ -40,14 +32,12 @@ namespace Kask.Services.Interfaces
         bool CreateApplication(Application app);
 
         /// <summary>
-        /// Update an Application by ID
+        /// Update an Application
         /// </summary>
-        /// <param name="ID">Application's ID</param>
         /// <returns>A boolean whether an application is updated</returns>
         [OperationContract]
-        bool UpdateApplication(Application oldApp, Application newApp);
+        bool UpdateApplication(Application newApp);
 
-        /* ================ HTTP Delete /Application/id/ ================ */
         /// <summary>
         /// Delete an application by Application's ID
         /// </summary>
