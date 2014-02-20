@@ -19,6 +19,5 @@ namespace Kask.Services.Interfaces
 
         [OperationContract]
         Applicant GetApplicants();
-
     }
 }
