@@ -1,7 +1,6 @@
 ﻿using Kask.DAL2.Models;
 using System.Collections.Generic;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 
 namespace Kask.Services.Interfaces
 {

@@ -1,13 +1,12 @@
 ﻿using Kask.DAL2.Models;
 using Kask.Services.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService
+    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService
     {
         public Application GetApplicationById(int id)
         {
@@ -193,6 +192,42 @@ namespace Kask.Services
             }
 
             return true;
+        }
+
+        public Applied GetAppliedByID(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IList<Applied> GetApplieds()
+        {
+            try
+            {
+                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                {
+                    var apps = db.Applieds.ToList();
+                    return (apps != null ? apps : null);
+                }
+            }
+            catch
+            {
+                throw new FaultException("Unhandled Exception");
+            }
+        }
+
+        public bool CreateApplied(Applied a)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool UpdateApplied(Applied a)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool DeleteApplied(int id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

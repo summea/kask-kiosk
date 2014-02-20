@@ -56,6 +56,7 @@
     <None Include="App.config" />
     <None Include="Properties\DataSources\Kask.DAL2.Models.Applicant.datasource" />
     <None Include="Properties\DataSources\Kask.DAL2.Models.Application.datasource" />
+    <None Include="Properties\DataSources\Kask.DAL2.Models.Applied.datasource" />
     <None Include="Service References\AESServiceRef\AESApplicationService.wsdl" />
     <None Include="Service References\AESServiceRef\AESApplicationService.xsd">
       <SubType>Designer</SubType>

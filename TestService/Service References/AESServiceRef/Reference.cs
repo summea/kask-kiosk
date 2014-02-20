@@ -21,12 +21,6 @@ namespace TestService.AESServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationById", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationByIdResponse")]
         System.Threading.Tasks.Task<Kask.DAL2.Models.Application> GetApplicationByIdAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationsByApplicantId", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsByApplicantIdResponse")]
-        Kask.DAL2.Models.Application[] GetApplicationsByApplicantId(int applicantID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationsByApplicantId", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsByApplicantIdResponse")]
-        System.Threading.Tasks.Task<Kask.DAL2.Models.Application[]> GetApplicationsByApplicantIdAsync(int applicantID);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplications", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsResponse")]
         Kask.DAL2.Models.Application[] GetApplications();
         
@@ -40,10 +34,10 @@ namespace TestService.AESServiceRef {
         System.Threading.Tasks.Task<bool> CreateApplicationAsync(Kask.DAL2.Models.Application app);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/UpdateApplication", ReplyAction="http://tempuri.org/IApplicationService/UpdateApplicationResponse")]
-        bool UpdateApplication(Kask.DAL2.Models.Application oldApp, Kask.DAL2.Models.Application newApp);
+        bool UpdateApplication(Kask.DAL2.Models.Application newApp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/UpdateApplication", ReplyAction="http://tempuri.org/IApplicationService/UpdateApplicationResponse")]
-        System.Threading.Tasks.Task<bool> UpdateApplicationAsync(Kask.DAL2.Models.Application oldApp, Kask.DAL2.Models.Application newApp);
+        System.Threading.Tasks.Task<bool> UpdateApplicationAsync(Kask.DAL2.Models.Application newApp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/DeleteApplication", ReplyAction="http://tempuri.org/IApplicationService/DeleteApplicationResponse")]
         bool DeleteApplication(int ID);
@@ -87,14 +81,6 @@ namespace TestService.AESServiceRef {
             return base.Channel.GetApplicationByIdAsync(id);
         }
         
-        public Kask.DAL2.Models.Application[] GetApplicationsByApplicantId(int applicantID) {
-            return base.Channel.GetApplicationsByApplicantId(applicantID);
-        }
-        
-        public System.Threading.Tasks.Task<Kask.DAL2.Models.Application[]> GetApplicationsByApplicantIdAsync(int applicantID) {
-            return base.Channel.GetApplicationsByApplicantIdAsync(applicantID);
-        }
-        
         public Kask.DAL2.Models.Application[] GetApplications() {
             return base.Channel.GetApplications();
         }
@@ -111,12 +97,12 @@ namespace TestService.AESServiceRef {
             return base.Channel.CreateApplicationAsync(app);
         }
         
-        public bool UpdateApplication(Kask.DAL2.Models.Application oldApp, Kask.DAL2.Models.Application newApp) {
-            return base.Channel.UpdateApplication(oldApp, newApp);
+        public bool UpdateApplication(Kask.DAL2.Models.Application newApp) {
+            return base.Channel.UpdateApplication(newApp);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateApplicationAsync(Kask.DAL2.Models.Application oldApp, Kask.DAL2.Models.Application newApp) {
-            return base.Channel.UpdateApplicationAsync(oldApp, newApp);
+        public System.Threading.Tasks.Task<bool> UpdateApplicationAsync(Kask.DAL2.Models.Application newApp) {
+            return base.Channel.UpdateApplicationAsync(newApp);
         }
         
         public bool DeleteApplication(int ID) {
@@ -138,17 +124,29 @@ namespace TestService.AESServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicantByID", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantByIDResponse")]
         System.Threading.Tasks.Task<Kask.DAL2.Models.Applicant> GetApplicantByIDAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicantByAppliedID", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantByAppliedIDResponse")]
-        Kask.DAL2.Models.Applicant GetApplicantByAppliedID(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicantByAppliedID", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantByAppliedIDResponse")]
-        System.Threading.Tasks.Task<Kask.DAL2.Models.Applicant> GetApplicantByAppliedIDAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicants", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantsResponse")]
+        Kask.DAL2.Models.Applicant[] GetApplicants();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicants", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantsResponse")]
-        Kask.DAL2.Models.Applicant GetApplicants();
+        System.Threading.Tasks.Task<Kask.DAL2.Models.Applicant[]> GetApplicantsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicants", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantsResponse")]
-        System.Threading.Tasks.Task<Kask.DAL2.Models.Applicant> GetApplicantsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/CreateApplicant", ReplyAction="http://tempuri.org/IApplicantService/CreateApplicantResponse")]
+        bool CreateApplicant(Kask.DAL2.Models.Applicant a);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/CreateApplicant", ReplyAction="http://tempuri.org/IApplicantService/CreateApplicantResponse")]
+        System.Threading.Tasks.Task<bool> CreateApplicantAsync(Kask.DAL2.Models.Applicant a);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/UpdateApplicant", ReplyAction="http://tempuri.org/IApplicantService/UpdateApplicantResponse")]
+        bool UpdateApplicant(Kask.DAL2.Models.Applicant newApp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/UpdateApplicant", ReplyAction="http://tempuri.org/IApplicantService/UpdateApplicantResponse")]
+        System.Threading.Tasks.Task<bool> UpdateApplicantAsync(Kask.DAL2.Models.Applicant newApp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/DeleteApplicant", ReplyAction="http://tempuri.org/IApplicantService/DeleteApplicantResponse")]
+        bool DeleteApplicant(int ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/DeleteApplicant", ReplyAction="http://tempuri.org/IApplicantService/DeleteApplicantResponse")]
+        System.Threading.Tasks.Task<bool> DeleteApplicantAsync(int ID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -186,20 +184,139 @@ namespace TestService.AESServiceRef {
             return base.Channel.GetApplicantByIDAsync(id);
         }
         
-        public Kask.DAL2.Models.Applicant GetApplicantByAppliedID(int id) {
-            return base.Channel.GetApplicantByAppliedID(id);
-        }
-        
-        public System.Threading.Tasks.Task<Kask.DAL2.Models.Applicant> GetApplicantByAppliedIDAsync(int id) {
-            return base.Channel.GetApplicantByAppliedIDAsync(id);
-        }
-        
-        public Kask.DAL2.Models.Applicant GetApplicants() {
+        public Kask.DAL2.Models.Applicant[] GetApplicants() {
             return base.Channel.GetApplicants();
         }
         
-        public System.Threading.Tasks.Task<Kask.DAL2.Models.Applicant> GetApplicantsAsync() {
+        public System.Threading.Tasks.Task<Kask.DAL2.Models.Applicant[]> GetApplicantsAsync() {
             return base.Channel.GetApplicantsAsync();
+        }
+        
+        public bool CreateApplicant(Kask.DAL2.Models.Applicant a) {
+            return base.Channel.CreateApplicant(a);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateApplicantAsync(Kask.DAL2.Models.Applicant a) {
+            return base.Channel.CreateApplicantAsync(a);
+        }
+        
+        public bool UpdateApplicant(Kask.DAL2.Models.Applicant newApp) {
+            return base.Channel.UpdateApplicant(newApp);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateApplicantAsync(Kask.DAL2.Models.Applicant newApp) {
+            return base.Channel.UpdateApplicantAsync(newApp);
+        }
+        
+        public bool DeleteApplicant(int ID) {
+            return base.Channel.DeleteApplicant(ID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteApplicantAsync(int ID) {
+            return base.Channel.DeleteApplicantAsync(ID);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESServiceRef.IAppliedService")]
+    public interface IAppliedService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetAppliedByID", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedByIDResponse")]
+        Kask.DAL2.Models.Applied GetAppliedByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetAppliedByID", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedByIDResponse")]
+        System.Threading.Tasks.Task<Kask.DAL2.Models.Applied> GetAppliedByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetApplieds", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedsResponse")]
+        Kask.DAL2.Models.Applied[] GetApplieds();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetApplieds", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedsResponse")]
+        System.Threading.Tasks.Task<Kask.DAL2.Models.Applied[]> GetAppliedsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/CreateApplied", ReplyAction="http://tempuri.org/IAppliedService/CreateAppliedResponse")]
+        bool CreateApplied(Kask.DAL2.Models.Applied a);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/CreateApplied", ReplyAction="http://tempuri.org/IAppliedService/CreateAppliedResponse")]
+        System.Threading.Tasks.Task<bool> CreateAppliedAsync(Kask.DAL2.Models.Applied a);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/UpdateApplied", ReplyAction="http://tempuri.org/IAppliedService/UpdateAppliedResponse")]
+        bool UpdateApplied(Kask.DAL2.Models.Applied a);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/UpdateApplied", ReplyAction="http://tempuri.org/IAppliedService/UpdateAppliedResponse")]
+        System.Threading.Tasks.Task<bool> UpdateAppliedAsync(Kask.DAL2.Models.Applied a);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/DeleteApplied", ReplyAction="http://tempuri.org/IAppliedService/DeleteAppliedResponse")]
+        bool DeleteApplied(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/DeleteApplied", ReplyAction="http://tempuri.org/IAppliedService/DeleteAppliedResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAppliedAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IAppliedServiceChannel : TestService.AESServiceRef.IAppliedService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AppliedServiceClient : System.ServiceModel.ClientBase<TestService.AESServiceRef.IAppliedService>, TestService.AESServiceRef.IAppliedService {
+        
+        public AppliedServiceClient() {
+        }
+        
+        public AppliedServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public AppliedServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AppliedServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AppliedServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Kask.DAL2.Models.Applied GetAppliedByID(int id) {
+            return base.Channel.GetAppliedByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<Kask.DAL2.Models.Applied> GetAppliedByIDAsync(int id) {
+            return base.Channel.GetAppliedByIDAsync(id);
+        }
+        
+        public Kask.DAL2.Models.Applied[] GetApplieds() {
+            return base.Channel.GetApplieds();
+        }
+        
+        public System.Threading.Tasks.Task<Kask.DAL2.Models.Applied[]> GetAppliedsAsync() {
+            return base.Channel.GetAppliedsAsync();
+        }
+        
+        public bool CreateApplied(Kask.DAL2.Models.Applied a) {
+            return base.Channel.CreateApplied(a);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateAppliedAsync(Kask.DAL2.Models.Applied a) {
+            return base.Channel.CreateAppliedAsync(a);
+        }
+        
+        public bool UpdateApplied(Kask.DAL2.Models.Applied a) {
+            return base.Channel.UpdateApplied(a);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateAppliedAsync(Kask.DAL2.Models.Applied a) {
+            return base.Channel.UpdateAppliedAsync(a);
+        }
+        
+        public bool DeleteApplied(int id) {
+            return base.Channel.DeleteApplied(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAppliedAsync(int id) {
+            return base.Channel.DeleteAppliedAsync(id);
         }
     }
 }
