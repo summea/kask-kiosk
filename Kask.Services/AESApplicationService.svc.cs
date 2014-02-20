@@ -25,15 +25,6 @@ namespace Kask.Services
             }
         }
 
-        public IList<Application> GetApplicationsByApplicantId(int applicantID)
-        {
-            AESDatabasev2DataContext db = new AESDatabasev2DataContext();
-            IQueryable<Applied> query = (from a in db.Applieds where a.Applicant_ID == applicantID select a).AsQueryable();
-
-
-            throw new FaultException("Unhandled Exception");
-        }
-
         public IList<Application> GetApplications()
         {
             try
@@ -46,49 +37,162 @@ namespace Kask.Services
             }
             catch
             {
-                throw new FaultException("Unknown Error");
+                throw new FaultException("Unhandled Exception");
             }
         }
 
         public bool CreateApplication(Application app)
         {
-            AESDatabasev2DataContext db = new AESDatabasev2DataContext();
-            db.Applications.InsertOnSubmit(app);
-            try
+            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
             {
-                db.SubmitChanges();
-            }
-            catch (FaultException e)
-            {
-                throw e;
+                db.Applications.InsertOnSubmit(app);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (FaultException e)
+                {
+                    throw e;
+                }
             }
 
             return true;
         }
 
-        public bool UpdateApplication(Application oldApp, Application newApp)
+        public bool UpdateApplication(Application newApp)
         {
-            throw new NotImplementedException();
+            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            {
+                Application a = db.Applications.Single(app => app.Application_ID == newApp.Application_ID);
+                a.ApplicationStatus = newApp.ApplicationStatus;
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (FaultException e)
+                {
+                    
+                    throw e;
+                }
+            }
+
+            return true;
         }
 
         public bool DeleteApplication(int ID)
         {
-            throw new NotImplementedException();
+            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            {
+                Application a = db.Applications.Single(app => app.Application_ID == ID);
+                db.Applications.DeleteOnSubmit(a);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (FaultException e)
+                {
+                    
+                    throw e;
+                }
+            }
+
+            return true;
         }
 
-        public Applicant GetApplicantByID(int applicantID)
+        public Applicant GetApplicantByID(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                {
+                    Applicant applicant = (from a in db.Applicants where a.Applicant_ID == id select a).First();
+                    return (applicant != null ? applicant : null);
+                }
+            }
+            catch
+            {
+                throw new FaultException("Unhandled Exception");
+            }
         }
 
-        public Applicant GetApplicantByAppliedID(int id)
+        public IList<Applicant> GetApplicants()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                {
+                    var apps = db.Applicants.ToList();
+                    return (apps != null ? apps : null);
+                }
+            }
+            catch
+            {
+                throw new FaultException("Unhandled Exception");
+            }
         }
 
-        public Applicant GetApplicants()
+        public bool CreateApplicant(Applicant a)
         {
-            throw new NotImplementedException();
+            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            {
+                db.Applicants.InsertOnSubmit(a);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (FaultException e)
+                {
+                    throw e;
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateApplicant(Applicant newApp)
+        {
+            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            {
+                Applicant a = db.Applicants.Single(app => app.Applicant_ID == newApp.Applicant_ID);
+                a.FirstName = newApp.FirstName;
+                a.LastName = newApp.LastName;
+                a.Gender = newApp.Gender;
+                a.SSN = newApp.SSN;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (FaultException e)
+                {
+
+                    throw e;
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteApplicant(int ID)
+        {
+            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            {
+                Applicant a = db.Applicants.Single(app => app.Applicant_ID == ID);
+                db.Applicants.DeleteOnSubmit(a);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (FaultException e)
+                {
+
+                    throw e;
+                }
+            }
+
+            return true;
         }
     }
 }
