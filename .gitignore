@@ -2,3 +2,4 @@
 Thumbs.db
 Kask.ServiceLayer/obj/Debug/WcfConfigValidationData.tmp
 *.cache
+Kask.DAL2/app.config
