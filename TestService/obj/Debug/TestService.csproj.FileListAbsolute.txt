@@ -5,3 +5,4 @@ C:\Users\andy\Documents\GitHub\kask-kiosk\TestService\bin\Debug\Kask.DAL2.dll
 C:\Users\andy\Documents\GitHub\kask-kiosk\TestService\bin\Debug\Kask.DAL2.pdb
 C:\Users\andy\Documents\GitHub\kask-kiosk\TestService\obj\Debug\TestService.exe
 C:\Users\andy\Documents\GitHub\kask-kiosk\TestService\obj\Debug\TestService.pdb
+C:\Users\andy\Documents\GitHub\kask-kiosk\TestService\obj\Debug\TestService.csprojResolveAssemblyReference.cache

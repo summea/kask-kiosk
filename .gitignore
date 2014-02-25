@@ -7,6 +7,8 @@ Kask.DAL2/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 KaskKiosk/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 
 Kask.DAL2/obj/Debug/*
+*.dll
+*.pdb
 
 /build/
 *.suo
@@ -236,3 +238,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+*.dll
+*.pdb
+Kask.DAL2/bin/Debug/Kask.DAL2.dll
