@@ -5,6 +5,9 @@ Kask.ServiceLayer/obj/Debug/WcfConfigValidationData.tmp
 Kask.DAL2/app.config
 Kask.DAL2/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 KaskKiosk/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+
+Kask.DAL2/obj/Debug/*
+
 /build/
 *.suo
 *.user
