@@ -3,6 +3,8 @@ Thumbs.db
 Kask.ServiceLayer/obj/Debug/WcfConfigValidationData.tmp
 *.cache
 Kask.DAL2/app.config
+Kask.DAL2/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+KaskKiosk/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /build/
 *.suo
 *.user
