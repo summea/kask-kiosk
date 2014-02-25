@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Empty.Models
+﻿
+namespace Kask.DAL.Models
 {
     public class Applicant
     {
