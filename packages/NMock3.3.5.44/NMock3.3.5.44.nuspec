@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>NMock3</id>
+    <version>3.5.44</version>
+    <title>NMock3</title>
+    <authors>Philip Wolfe</authors>
+    <owners>Philip Wolfe</owners>
+    <licenseUrl>http://nmock3.codeplex.com/license</licenseUrl>
+    <projectUrl>http://nmock3.codeplex.com/</projectUrl>
+    <iconUrl>http://download-codeplex.sec.s-msft.com/Download?ProjectName=nmock3&amp;DownloadId=433929</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NMock3 is a Mocking framework that uses lambda syntax to setup expectations and test interactions between classes and interfaces.</description>
+    <releaseNotes />
+    <copyright />
+    <language>en-US</language>
+    <tags>Mock Mocking TDD AAA Stub Framework MVP</tags>
+  </metadata>
+</package>
