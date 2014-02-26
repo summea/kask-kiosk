@@ -1,5 +1,0 @@
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.DAL2\bin\Debug\Kask.DAL2.dll.config
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.DAL2\bin\Debug\Kask.DAL2.dll
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.DAL2\bin\Debug\Kask.DAL2.pdb
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.DAL2\obj\Debug\Kask.DAL2.dll
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.DAL2\obj\Debug\Kask.DAL2.pdb
