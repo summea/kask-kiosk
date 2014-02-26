@@ -30,13 +30,6 @@ namespace Kask.Services.Interfaces
         bool CreateApplied(Applied a);
 
         /// <summary>
-        /// Update an applied
-        /// </summary>
-        /// <returns>A boolean whether an applied is updated</returns>
-        [OperationContract]
-        bool UpdateApplied(Applied a);
-
-        /// <summary>
         /// Delete an applied
         /// </summary>
         /// <returns>A boolean whether an applied is deleted</returns>

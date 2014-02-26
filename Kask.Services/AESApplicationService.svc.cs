@@ -217,17 +217,41 @@ namespace Kask.Services
 
         public bool CreateApplied(Applied a)
         {
-            throw new System.NotImplementedException();
-        }
+            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            {
+                db.Applieds.InsertOnSubmit(a);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (FaultException e)
+                {
+                    throw e;
+                }
+            }
 
-        public bool UpdateApplied(Applied a)
-        {
-            throw new System.NotImplementedException();
+            return true;
         }
 
         public bool DeleteApplied(int id)
         {
-            throw new System.NotImplementedException();
+            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            {
+                Applied a = db.Applieds.Single(app => app.Applicant_ID == id);
+                db.Applieds.DeleteOnSubmit(a);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (FaultException e)
+                {
+
+                    throw e;
+                }
+            }
+
+            return true;
         }
     }
 }
