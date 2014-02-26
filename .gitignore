@@ -154,3 +154,6 @@ Kask.DAL2/bin/Debug/*
 Kask.Services/bin/*.dll
 Kask.Services/bin/*.pdb
 Kask.Services/obj/Debug/*
+KaskKiosk/bin/*.dll
+KaskKiosk/bin/*.pdb
+KaskKiosk/obj/Debug/*
