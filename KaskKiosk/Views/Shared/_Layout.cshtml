@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kask Kiosk</title>
+    <link type="text/css" rel="stylesheet" href="/Content/bootstrap/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="/Content/bootstrap/css/bootstrap-theme.min.css" />
+    <link type="text/css" rel="stylesheet" href="/Content/Styles.css" />
+    <script type="text/javascript" src="/Content/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+        <h3 class="text-muted">Project name</h3>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+            @RenderBody()
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>&copy; Kask Kiosk 2014</p>
+      </div>
+
+    </div> <!-- /container -->
+</body>
+</html>

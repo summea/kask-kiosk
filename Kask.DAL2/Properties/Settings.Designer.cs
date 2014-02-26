@@ -26,8 +26,7 @@ namespace Kask.DAL2.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=M14X-WIN8;Initial Catalog=AESDatabase;Persist Security Info=True;User" +
-            " ID=khanhDev;Password=2451992abc")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=AESDatabase;Integrated Security=True")]
         public string AESDatabaseConnectionString {
             get {
                 return ((string)(this["AESDatabaseConnectionString"]));
