@@ -1,4 +1,5 @@
 ﻿using Kask.DAL2.Models;
+using Kask.Services.Exceptions;
 using Kask.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,9 @@ namespace Kask.Services
                     return (application != null ? application : null);
                 }
             }
-            catch
+            catch(FaultException<KaskServiceExceptions> se)
             {
-                throw new FaultException("Unhandled Exception");
+                throw se;
             }
         }
 
@@ -165,7 +166,6 @@ namespace Kask.Services
                 }
                 catch (FaultException e)
                 {
-
                     throw e;
                 }
             }
