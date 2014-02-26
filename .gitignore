@@ -157,3 +157,6 @@ Kask.Services/obj/Debug/*
 KaskKiosk/bin/*.dll
 KaskKiosk/bin/*.pdb
 KaskKiosk/obj/Debug/*
+*.dll
+*.pdb
+*.cache
