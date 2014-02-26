@@ -151,6 +151,7 @@ $RECYCLE.BIN/
 
 # KASK
 Kask.DAL2/bin/Debug/*
+Kask.DAL2/connectionStrings.config
 Kask.Services/bin/*.dll
 Kask.Services/bin/*.pdb
 Kask.Services/obj/Debug/*
