@@ -233,3 +233,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+Kask.DAL2/Properties/AssemblyInfo.cs
+Kask.DAL2/Properties/Settings.Designer.cs
+Kask.DAL2/Properties/Settings.settings
