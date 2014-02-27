@@ -196,7 +196,18 @@ namespace Kask.Services
 
         public Applied GetAppliedByID(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                {
+                    Applied applied = (from a in db.Applieds where a.Application_ID == id select a).First();
+                    return (applied != null ? applied : null);
+                }
+            }
+            catch
+            {
+                throw new FaultException("Unhandled Exception");
+            }
         }
 
         public IList<Applied> GetApplieds()
