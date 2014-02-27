@@ -1,5 +1,6 @@
 ﻿using Kask.DAL2.Models;
 using Kask.Services.Interfaces;
+using Kask.Services.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
