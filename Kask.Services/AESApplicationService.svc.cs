@@ -19,7 +19,7 @@ namespace Kask.Services
                     return (application != null ? application : null);
                 }
             }
-            catch(FaultException<KaskServiceExceptions> se)
+            catch(FaultException<KaskServiceException> se)
             {
                 throw se;
             }
