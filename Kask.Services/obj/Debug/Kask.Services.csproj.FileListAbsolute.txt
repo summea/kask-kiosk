@@ -1,7 +1,0 @@
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.Services\bin\Kask.Services.dll
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.Services\bin\Kask.Services.pdb
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.Services\bin\Kask.DAL2.dll
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.Services\bin\Kask.DAL2.pdb
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.Services\obj\Debug\Kask.Services.csprojResolveAssemblyReference.cache
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.Services\obj\Debug\Kask.Services.dll
-C:\Users\andy\Documents\GitHub\kask-kiosk\Kask.Services\obj\Debug\Kask.Services.pdb
