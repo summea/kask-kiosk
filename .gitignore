@@ -233,6 +233,9 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+<<<<<<< HEAD
 Kask.DAL2/Properties/AssemblyInfo.cs
 Kask.DAL2/Properties/Settings.Designer.cs
 Kask.DAL2/Properties/Settings.settings
+=======
+>>>>>>> parent of db4c19b... Updated ignore file
