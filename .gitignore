@@ -150,19 +150,16 @@ $RECYCLE.BIN/
 .DS_Store
 
 # KASK
-Kask.DAL2/bin/Debug/*
 Kask.DAL2/connectionStrings.config
-Kask.Services/bin/*.dll
-Kask.Services/bin/*.pdb
-Kask.Services/obj/Debug/*
-KaskKiosk/bin/*.dll
-KaskKiosk/bin/*.pdb
-KaskKiosk/obj/Debug/*
-*.dll
-*.pdb
+#Kask.Services/bin/*.dll
+#Kask.Services/bin/*.pdb
+#Kask.Services/obj/Debug/*
+#KaskKiosk/bin/*.dll
+#KaskKiosk/bin/*.pdb
+#KaskKiosk/obj/Debug/*
 *.cache
-Kask.DAL2/Properties/AssemblyInfo.cs
-Kask.DAL2/Properties/AssemblyInfo.cs
-Kask.DAL2/Properties/AssemblyInfo.cs
-Kask.DAL2/Properties/Settings.Designer.cs
-Kask.DAL2/Properties/Settings.settings
+#Kask.DAL2/Properties/AssemblyInfo.cs
+#Kask.DAL2/Properties/AssemblyInfo.cs
+#Kask.DAL2/Properties/AssemblyInfo.cs
+#Kask.DAL2/Properties/Settings.Designer.cs
+#Kask.DAL2/Properties/Settings.settings
