@@ -14,7 +14,7 @@ namespace Kask.Services.Interfaces
         /// <param name="id">Applicant ID</param>
         /// <returns>Applicant</returns>
         [OperationContract]
-        [FaultContract(typeof(KaskServiceExceptions))]
+        [FaultContract(typeof(KaskServiceException))]
         Applicant GetApplicantByID(int id);
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Kask.Services.Interfaces
         /// </summary>
         /// <returns>List of Applicants</returns>
         [OperationContract]
-        [FaultContract(typeof(KaskServiceExceptions))]
+        [FaultContract(typeof(KaskServiceException))]
         IList<Applicant> GetApplicants();
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Kask.Services.Interfaces
         /// </summary>
         /// <returns>A boolean whether the new applicant is created</returns>
         [OperationContract]
-        [FaultContract(typeof(KaskServiceExceptions))]
+        [FaultContract(typeof(KaskServiceException))]
         bool CreateApplicant(Applicant a);
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Kask.Services.Interfaces
         /// </summary>
         /// <returns>A boolean whether the applicant is updated</returns>
         [OperationContract]
-        [FaultContract(typeof(KaskServiceExceptions))]
+        [FaultContract(typeof(KaskServiceException))]
         bool UpdateApplicant(Applicant newApp);
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Kask.Services.Interfaces
         /// <param name="ID">Applicant ID</param>
         /// <returns>A boolean whether an applicant is deleted</returns>
         [OperationContract]
-        [FaultContract(typeof(KaskServiceExceptions))]
+        [FaultContract(typeof(KaskServiceException))]
         bool DeleteApplicant(int ID);
     }
 }
