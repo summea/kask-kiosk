@@ -17,32 +17,6 @@ GO
 USE AESDatabase;
 GO
 
-/* drop old tables -- tables renamed from original ideas */
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'PKSkillID')
-  ALTER TABLE Skills DROP CONSTRAINT [PKSkillID];
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Skills')
-  DROP TABLE Skills;
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKApplicationID')
-  ALTER TABLE Applications DROP CONSTRAINT [PKApplicationID];
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Applications')
-  DROP TABLE Applications;
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKJobID')
-  ALTER TABLE Jobs DROP CONSTRAINT [PKJobID];
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Jobs')
-  DROP TABLE Jobs;
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobReqID')
-  ALTER TABLE JobRequirements DROP CONSTRAINT [FKJobReqID];
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSkillReqID')
-  ALTER TABLE JobRequirements DROP CONSTRAINT [FKSkillReqID];
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'JobRequirements')
-  DROP TABLE JobRequirements;
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantWorkID')
-  ALTER TABLE Work DROP CONSTRAINT [FKApplicantWorkID];
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKEmployerID')
-  ALTER TABLE Work DROP CONSTRAINT [FKEmployerID];
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Work')
-  DROP TABLE Work;
-
 /********************************************************************************
                 APPLICANT RELATIONS 
 *********************************************************************************/
@@ -305,7 +279,7 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Employer
 CREATE TABLE Employer (
   Employer_ID   int IDENTITY(1,1) NOT NULL,
   Name        varchar(20) UNIQUE  NOT NULL,
-  Address     varchar(255) NULL,
+  EmployerAddress     varchar(255) NULL,
   PhoneNumber varchar(50) NULL,
   CONSTRAINT [PKEmployerID] PRIMARY KEY (Employer_ID ASC),
   CONSTRAINT [CHK_EMPEMPLOYERNAME] CHECK (DATALENGTH(Name) > 0 AND ISNUMERIC(Name) = 0)
@@ -348,37 +322,49 @@ CREATE TABLE Employment (
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-/* DATA FOR WORK RELATION */
+/* DATA FOR EMPLOYMENT RELATION */
 INSERT INTO Employment(Applicant_ID, Employer_ID) VALUES (1, 2);
 INSERT INTO Employment(Applicant_ID, Employer_ID) VALUES (2, 1);
 INSERT INTO Employment(Applicant_ID, Employer_ID) VALUES (3, 3);
 
-
 /********************************************************************************
-                EMPLOYMENT_REFERENCE RELATION 
+                REFERENCE RELATION 
 *********************************************************************************/
 
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKEmploymentReferenceID')
-  ALTER TABLE EmploymentReference DROP CONSTRAINT [PKEmploymentReferenceID];
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantIDForEmploymentReference')
-  ALTER TABLE EmploymentReference DROP CONSTRAINT [FKApplicantIDForEmploymentReference];
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKEmployerIDForEmploymentReference')
-  ALTER TABLE EmploymentReference DROP CONSTRAINT [FKEmployerIDForEmploymentReference];
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'EmploymentReference')
-  DROP TABLE EmploymentReference;
-CREATE TABLE EmploymentReference (
-  EmploymentReference_ID    int IDENTITY(1,1) NOT NULL,
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKReferenceID')
+  ALTER TABLE Reference DROP CONSTRAINT [PKReferenceID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Reference')
+  DROP TABLE Reference;
+CREATE TABLE Reference (
+  Reference_ID    int IDENTITY(1,1) NOT NULL,
+  YearsKnown	  int NULL,
+  CONSTRAINT [PKReferenceID] PRIMARY KEY (Reference_ID ASC)
+)
+
+/* DATA FOR EMPLOYMENT_REFERENCE RELATION */
+INSERT INTO Reference(YearsKnown) VALUES (10);
+
+/********************************************************************************
+                ASSOCIATE RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantIDForAssociate')
+  ALTER TABLE Associate DROP CONSTRAINT [FKApplicantIDForAssociate];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKReferenceIDForAssociate')
+  ALTER TABLE Reference DROP CONSTRAINT [FKAssociateIDForReference];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Associate')
+  DROP TABLE Associate;
+CREATE TABLE Associate (
   Applicant_ID    int NOT NULL,
-  Employer_ID     int NOT NULL,
+  Reference_ID	  int NOT NULL,
   Name            varchar(255) NULL,
   Phone           varchar(50) NULL,
   Title           varchar(50) NULL,
-  CONSTRAINT [PKEmploymentReferenceID] PRIMARY KEY (EmploymentReference_ID ASC),
-  CONSTRAINT [FKApplicantIDForEmploymentReference] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
+  CONSTRAINT [FKApplicantIDForAssociate] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT [FKEmployerIDForEmploymentReference] FOREIGN KEY (Employer_ID) REFERENCES Employer (Employer_ID)
-    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKReferenceIDForAssociate] FOREIGN KEY (Reference_ID) REFERENCES Reference (Reference_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /* DATA FOR EMPLOYMENT_REFERENCE RELATION */
-INSERT INTO EmploymentReference(Applicant_ID, Employer_ID) VALUES (1,1);
+INSERT INTO Associate(Applicant_ID, Reference_ID, Name, Phone, Title) VALUES (1,1, 'Bill Gates', '911', 'CEO');
