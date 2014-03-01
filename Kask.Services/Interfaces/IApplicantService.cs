@@ -15,10 +15,14 @@ namespace Kask.Services.Interfaces
         /// <returns>Applicant</returns>
         [OperationContract]
 <<<<<<< HEAD
+<<<<<<< HEAD
         [FaultContract(typeof(KaskServiceExceptions))]
 =======
         [FaultContract(typeof(KaskServiceException))]
 >>>>>>> origin/views
+=======
+        [FaultContract(typeof(KaskServiceException))]
+>>>>>>> 8570f2ae69cfe040570c17ccf514b7259181a9f1
         Applicant GetApplicantByID(int id);
 
         /// <summary>
@@ -27,10 +31,14 @@ namespace Kask.Services.Interfaces
         /// <returns>List of Applicants</returns>
         [OperationContract]
 <<<<<<< HEAD
+<<<<<<< HEAD
         [FaultContract(typeof(KaskServiceExceptions))]
 =======
         [FaultContract(typeof(KaskServiceException))]
 >>>>>>> origin/views
+=======
+        [FaultContract(typeof(KaskServiceException))]
+>>>>>>> 8570f2ae69cfe040570c17ccf514b7259181a9f1
         IList<Applicant> GetApplicants();
 
         /// <summary>
@@ -39,10 +47,14 @@ namespace Kask.Services.Interfaces
         /// <returns>A boolean whether the new applicant is created</returns>
         [OperationContract]
 <<<<<<< HEAD
+<<<<<<< HEAD
         [FaultContract(typeof(KaskServiceExceptions))]
 =======
         [FaultContract(typeof(KaskServiceException))]
 >>>>>>> origin/views
+=======
+        [FaultContract(typeof(KaskServiceException))]
+>>>>>>> 8570f2ae69cfe040570c17ccf514b7259181a9f1
         bool CreateApplicant(Applicant a);
 
         /// <summary>
@@ -51,10 +63,14 @@ namespace Kask.Services.Interfaces
         /// <returns>A boolean whether the applicant is updated</returns>
         [OperationContract]
 <<<<<<< HEAD
+<<<<<<< HEAD
         [FaultContract(typeof(KaskServiceExceptions))]
 =======
         [FaultContract(typeof(KaskServiceException))]
 >>>>>>> origin/views
+=======
+        [FaultContract(typeof(KaskServiceException))]
+>>>>>>> 8570f2ae69cfe040570c17ccf514b7259181a9f1
         bool UpdateApplicant(Applicant newApp);
 
         /// <summary>
@@ -64,10 +80,14 @@ namespace Kask.Services.Interfaces
         /// <returns>A boolean whether an applicant is deleted</returns>
         [OperationContract]
 <<<<<<< HEAD
+<<<<<<< HEAD
         [FaultContract(typeof(KaskServiceExceptions))]
 =======
         [FaultContract(typeof(KaskServiceException))]
 >>>>>>> origin/views
+=======
+        [FaultContract(typeof(KaskServiceException))]
+>>>>>>> 8570f2ae69cfe040570c17ccf514b7259181a9f1
         bool DeleteApplicant(int ID);
     }
 }
