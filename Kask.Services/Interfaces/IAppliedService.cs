@@ -22,10 +22,6 @@ namespace Kask.Services.Interfaces
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool UpdateApplied(Applied a);
-
-        [OperationContract]
-        [FaultContract(typeof(KaskServiceException))]
         bool DeleteApplied(int id);
     }
 }
