@@ -1,9 +1,10 @@
 ﻿using Kask.DAL2.Models;
-using Kask.Services.Exceptions;
 using Kask.Services.Interfaces;
+using Kask.Services.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using System;
 
 namespace Kask.Services
 {
@@ -13,15 +14,31 @@ namespace Kask.Services
         {
             try
             {
-                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
                     Application application = (from a in db.Applications where a.Application_ID == id select a).First();
                     return (application != null ? application : null);
                 }
             }
-            catch(FaultException<KaskServiceException> se)
+            catch(Exception e)
             {
-                throw se;
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+            }
+        }
+
+        public Application GetApplicationByName (string first, string last, string ssn)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Applicant applicant = (from a in db.Applicants where a.FirstName == first && a.LastName == last && a.SSN == ssn select a).First();
+                    return GetApplicationById(applicant.Applicant_ID);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
@@ -29,30 +46,30 @@ namespace Kask.Services
         {
             try
             {
-                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
                     var apps = db.Applications.ToList();
                     return (apps != null ? apps : null);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
         public bool CreateApplication(Application app)
         {
-            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 db.Applications.InsertOnSubmit(app);
                 try
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -61,18 +78,19 @@ namespace Kask.Services
 
         public bool UpdateApplication(Application newApp)
         {
-            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 Application a = db.Applications.Single(app => app.Application_ID == newApp.Application_ID);
                 a.ApplicationStatus = newApp.ApplicationStatus;
+                // TODO: Update relation Application's Properties
+
                 try
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -81,7 +99,7 @@ namespace Kask.Services
 
         public bool DeleteApplication(int ID)
         {
-            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 Application a = db.Applications.Single(app => app.Application_ID == ID);
                 db.Applications.DeleteOnSubmit(a);
@@ -90,10 +108,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -104,15 +121,15 @@ namespace Kask.Services
         {
             try
             {
-                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
                     Applicant applicant = (from a in db.Applicants where a.Applicant_ID == id select a).First();
                     return (applicant != null ? applicant : null);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
@@ -120,30 +137,30 @@ namespace Kask.Services
         {
             try
             {
-                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
                     var apps = db.Applicants.ToList();
                     return (apps != null ? apps : null);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
         public bool CreateApplicant(Applicant a)
         {
-            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 db.Applicants.InsertOnSubmit(a);
                 try
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -152,21 +169,22 @@ namespace Kask.Services
 
         public bool UpdateApplicant(Applicant newApp)
         {
-            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 Applicant a = db.Applicants.Single(app => app.Applicant_ID == newApp.Applicant_ID);
                 a.FirstName = newApp.FirstName;
                 a.LastName = newApp.LastName;
                 a.Gender = newApp.Gender;
                 a.SSN = newApp.SSN;
+                // TODO: Update Relation Applicant's Properties
 
                 try
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -175,7 +193,7 @@ namespace Kask.Services
 
         public bool DeleteApplicant(int ID)
         {
-            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 Applicant a = db.Applicants.Single(app => app.Applicant_ID == ID);
                 db.Applicants.DeleteOnSubmit(a);
@@ -184,10 +202,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -198,15 +215,15 @@ namespace Kask.Services
         {
             try
             {
-                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    Applied applied = (from a in db.Applieds where a.Application_ID == id select a).First();
+                    var applied = db.Applieds.Single(a => a.Applicant_ID == id);
                     return (applied != null ? applied : null);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
@@ -214,21 +231,21 @@ namespace Kask.Services
         {
             try
             {
-                using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
                     var apps = db.Applieds.ToList();
                     return (apps != null ? apps : null);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
         public bool CreateApplied(Applied a)
         {
-            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 db.Applieds.InsertOnSubmit(a);
                 try
@@ -246,7 +263,7 @@ namespace Kask.Services
 
         public bool DeleteApplied(int id)
         {
-            using (AESDatabasev2DataContext db = new AESDatabasev2DataContext())
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 Applied a = db.Applieds.Single(app => app.Applicant_ID == id);
                 db.Applieds.DeleteOnSubmit(a);
