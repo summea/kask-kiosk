@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AESDatabasev2.designer.cs">
+    <Compile Include="AESDatabase.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AESDatabasev2.dbml</DependentUpon>
+      <DependentUpon>AESDatabase.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -54,9 +54,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AESDatabasev2.dbml">
+    <None Include="AESDatabase.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>AESDatabasev2.designer.cs</LastGenOutput>
+      <LastGenOutput>AESDatabase.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="app.config" />
@@ -72,8 +72,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AESDatabasev2.dbml.layout">
-      <DependentUpon>AESDatabasev2.dbml</DependentUpon>
+    <None Include="AESDatabase.dbml.layout">
+      <DependentUpon>AESDatabase.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
