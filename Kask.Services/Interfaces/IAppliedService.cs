@@ -1,4 +1,5 @@
 ﻿using Kask.DAL2.Models;
+using Kask.Services.Exceptions;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -7,33 +8,20 @@ namespace Kask.Services.Interfaces
     [ServiceContract]
     public interface IAppliedService
     {
-        /// <summary>
-        /// Get Applied by ID
-        /// </summary>
-        /// <param name="id">Applied ID</param>
-        /// <returns>An Applied by ID</returns>
         [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         Applied GetAppliedByID(int id);
 
-        /// <summary>
-        /// Get all applieds
-        /// </summary>
-        /// <returns>A list of all applieds</returns>
         [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         IList<Applied> GetApplieds();
 
-        /// <summary>
-        /// Create new applied
-        /// </summary>
-        /// <returns>A boolean whether a new applied is created</returns>
         [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         bool CreateApplied(Applied a);
 
-        /// <summary>
-        /// Delete an applied
-        /// </summary>
-        /// <returns>A boolean whether an applied is deleted</returns>
         [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         bool DeleteApplied(int id);
     }
 }
