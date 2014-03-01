@@ -39,6 +39,9 @@
       <HintPath>..\packages\NMock3.3.5.44\lib\net40\NMock3.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -53,13 +56,64 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="NMock3\NMockTest.cs" />
+    <Compile Include="Service References\Services\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NMock3\NMock3 Cheat Sheet.pdf" />
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Kask.DAL2.Models.Applicant.datasource" />
+    <None Include="Properties\DataSources\Kask.DAL2.Models.Application.datasource" />
+    <None Include="Properties\DataSources\Kask.DAL2.Models.Applied.datasource" />
+    <None Include="Service References\Services\AESApplicationService.wsdl" />
+    <None Include="Service References\Services\AESApplicationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Services\AESApplicationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Services\AESApplicationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Services\AESApplicationService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kask.DAL2\Kask.DAL2.csproj">
+      <Project>{b4e36210-2ad0-447a-9141-62f6518d875b}</Project>
+      <Name>Kask.DAL2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kask.Services\Kask.Services.csproj">
+      <Project>{684b5016-6ab5-4cc8-8333-1f7a54314296}</Project>
+      <Name>Kask.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Services\AESApplicationService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Services\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Services\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Services\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
