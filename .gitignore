@@ -149,7 +149,6 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
-<<<<<<< HEAD
 # KASK
 Kask.DAL2/connectionStrings.config
 #Kask.Services/bin/*.dll
@@ -196,10 +195,3 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-<<<<<<< HEAD
-Kask.DAL2/Properties/AssemblyInfo.cs
-Kask.DAL2/Properties/Settings.Designer.cs
-Kask.DAL2/Properties/Settings.settings
-=======
->>>>>>> parent of db4c19b... Updated ignore file
->>>>>>> 8570f2ae69cfe040570c17ccf514b7259181a9f1
