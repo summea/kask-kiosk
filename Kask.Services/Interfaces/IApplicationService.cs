@@ -1,4 +1,5 @@
 ﻿using Kask.DAL2.Models;
+using Kask.Services.Exceptions;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -8,41 +9,28 @@ namespace Kask.Services.Interfaces
     [ServiceContract]
     public interface IApplicationService
     {
-        /// <summary>
-        /// Get Application by ID
-        /// </summary>
-        /// <param name="id">Application ID</param>
-        /// <returns>An application by ID</returns>
         [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         Application GetApplicationById(int id);
 
-        /// <summary>
-        /// Get all Applications
-        /// </summary>
-        /// <returns>List of Applications</returns>
         [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
+        Application GetApplicationByName(string first, string last, string ssn);
+
+        [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         IList<Application> GetApplications();
 
-        /// <summary>
-        /// Create new Application
-        /// </summary>
-        /// <returns>A boolean whether a new application is created</returns>
         [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         bool CreateApplication(Application app);
 
-        /// <summary>
-        /// Update an Application
-        /// </summary>
-        /// <returns>A boolean whether an application is updated</returns>
         [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         bool UpdateApplication(Application newApp);
 
-        /// <summary>
-        /// Delete an application by Application's ID
-        /// </summary>
-        /// <param name="ID">Application's ID</param>
-        /// <returns>A boolean whether an application is deleted or not</returns>
         [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         bool DeleteApplication(int ID);
     }
 }

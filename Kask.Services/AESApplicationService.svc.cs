@@ -4,6 +4,7 @@ using Kask.Services.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using System;
 
 namespace Kask.Services
 {
@@ -19,9 +20,25 @@ namespace Kask.Services
                     return (application != null ? application : null);
                 }
             }
-            catch
+            catch(Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+            }
+        }
+
+        public Application GetApplicationByName (string first, string last, string ssn)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Applicant applicant = (from a in db.Applicants where a.FirstName == first && a.LastName == last && a.SSN == ssn select a).First();
+                    return GetApplicationById(applicant.Applicant_ID);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
@@ -35,9 +52,9 @@ namespace Kask.Services
                     return (apps != null ? apps : null);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
@@ -50,9 +67,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -71,10 +88,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -92,10 +108,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -112,9 +127,9 @@ namespace Kask.Services
                     return (applicant != null ? applicant : null);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
@@ -128,9 +143,9 @@ namespace Kask.Services
                     return (apps != null ? apps : null);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
@@ -143,9 +158,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -167,10 +182,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -188,10 +202,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
                 }
             }
 
@@ -200,7 +213,18 @@ namespace Kask.Services
 
         public Applied GetAppliedByID(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    var applied = db.Applieds.Single(a => a.Applicant_ID == id);
+                    return (applied != null ? applied : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+            }
         }
 
         public IList<Applied> GetApplieds()
@@ -213,9 +237,9 @@ namespace Kask.Services
                     return (apps != null ? apps : null);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new FaultException("Unhandled Exception");
+                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
             }
         }
 
