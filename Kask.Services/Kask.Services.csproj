@@ -64,7 +64,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\KaskService.Exceptions.cs" />
     <Compile Include="Exceptions\KaskService.Exception.cs" />
     <Compile Include="Interfaces\IApplicantService.cs" />
     <Compile Include="Interfaces\IApplicationService.cs" />
