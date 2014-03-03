@@ -116,6 +116,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\API\ApplicationController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -126,6 +127,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ServiceInvoker\ServiceInvoker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -140,9 +142,9 @@
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\Styles.css" />
     <Content Include="Global.asax" />
-    <Content Include="Service References\AESApplicationServiceRef\AESApplicationService.disco" />
-    <Content Include="Service References\AESApplicationServiceRef\configuration91.svcinfo" />
-    <Content Include="Service References\AESApplicationServiceRef\configuration.svcinfo" />
+    <None Include="Service References\AESApplicationServiceRef\AESApplicationService.disco" />
+    <None Include="Service References\AESApplicationServiceRef\configuration91.svcinfo" />
+    <None Include="Service References\AESApplicationServiceRef\configuration.svcinfo" />
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.Applicant.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -152,10 +154,10 @@
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.Applied.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\AESApplicationServiceRef\Reference.svcmap">
+    <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -173,6 +175,9 @@
     <Content Include="Views\Application\Index.cshtml" />
     <Content Include="Views\Application\Create.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Service References\AESApplicationServiceRef\AESApplicationService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -188,7 +193,7 @@
     <WCFMetadataStorage Include="Service References\AESApplicationServiceRef\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service References\AESApplicationServiceRef\AESApplicationService.wsdl" />
+    <None Include="Service References\AESApplicationServiceRef\AESApplicationService.wsdl" />
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService.xsd">
       <SubType>Designer</SubType>
     </None>

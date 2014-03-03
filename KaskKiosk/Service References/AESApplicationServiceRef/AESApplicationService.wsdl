@@ -3,6 +3,7 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" />
       <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" />
     </xsd:schema>
@@ -13,11 +14,26 @@
   <wsdl:message name="IApplicationService_GetApplicationById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetApplicationByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplicationById_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q1:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplicationByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationByName" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplicationByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplicationByName_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q2:KaskServiceException" />
+  </wsdl:message>
   <wsdl:message name="IApplicationService_GetApplications_InputMessage">
     <wsdl:part name="parameters" element="tns:GetApplications" />
   </wsdl:message>
   <wsdl:message name="IApplicationService_GetApplications_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_GetApplications_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q3:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IApplicationService_CreateApplication_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateApplication" />
@@ -25,11 +41,17 @@
   <wsdl:message name="IApplicationService_CreateApplication_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateApplicationResponse" />
   </wsdl:message>
+  <wsdl:message name="IApplicationService_CreateApplication_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q4:KaskServiceException" />
+  </wsdl:message>
   <wsdl:message name="IApplicationService_UpdateApplication_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateApplication" />
   </wsdl:message>
   <wsdl:message name="IApplicationService_UpdateApplication_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicationService_UpdateApplication_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q5:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IApplicationService_DeleteApplication_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteApplication" />
@@ -37,11 +59,17 @@
   <wsdl:message name="IApplicationService_DeleteApplication_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteApplicationResponse" />
   </wsdl:message>
+  <wsdl:message name="IApplicationService_DeleteApplication_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q6:KaskServiceException" />
+  </wsdl:message>
   <wsdl:message name="IApplicantService_GetApplicantByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetApplicantByID" />
   </wsdl:message>
   <wsdl:message name="IApplicantService_GetApplicantByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetApplicantByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicantService_GetApplicantByID_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q7:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IApplicantService_GetApplicants_InputMessage">
     <wsdl:part name="parameters" element="tns:GetApplicants" />
@@ -49,11 +77,17 @@
   <wsdl:message name="IApplicantService_GetApplicants_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetApplicantsResponse" />
   </wsdl:message>
+  <wsdl:message name="IApplicantService_GetApplicants_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q8:KaskServiceException" />
+  </wsdl:message>
   <wsdl:message name="IApplicantService_CreateApplicant_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateApplicant" />
   </wsdl:message>
   <wsdl:message name="IApplicantService_CreateApplicant_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateApplicantResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicantService_CreateApplicant_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q9:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IApplicantService_UpdateApplicant_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateApplicant" />
@@ -61,11 +95,17 @@
   <wsdl:message name="IApplicantService_UpdateApplicant_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateApplicantResponse" />
   </wsdl:message>
+  <wsdl:message name="IApplicantService_UpdateApplicant_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q10:KaskServiceException" />
+  </wsdl:message>
   <wsdl:message name="IApplicantService_DeleteApplicant_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteApplicant" />
   </wsdl:message>
   <wsdl:message name="IApplicantService_DeleteApplicant_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteApplicantResponse" />
+  </wsdl:message>
+  <wsdl:message name="IApplicantService_DeleteApplicant_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q11:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IAppliedService_GetAppliedByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAppliedByID" />
@@ -73,11 +113,17 @@
   <wsdl:message name="IAppliedService_GetAppliedByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAppliedByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IAppliedService_GetAppliedByID_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q12:KaskServiceException" />
+  </wsdl:message>
   <wsdl:message name="IAppliedService_GetApplieds_InputMessage">
     <wsdl:part name="parameters" element="tns:GetApplieds" />
   </wsdl:message>
   <wsdl:message name="IAppliedService_GetApplieds_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAppliedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppliedService_GetApplieds_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q13:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IAppliedService_CreateApplied_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateApplied" />
@@ -85,11 +131,8 @@
   <wsdl:message name="IAppliedService_CreateApplied_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateAppliedResponse" />
   </wsdl:message>
-  <wsdl:message name="IAppliedService_UpdateApplied_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateApplied" />
-  </wsdl:message>
-  <wsdl:message name="IAppliedService_UpdateApplied_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateAppliedResponse" />
+  <wsdl:message name="IAppliedService_CreateApplied_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q14:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IAppliedService_DeleteApplied_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteApplied" />
@@ -97,70 +140,88 @@
   <wsdl:message name="IAppliedService_DeleteApplied_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAppliedResponse" />
   </wsdl:message>
+  <wsdl:message name="IAppliedService_DeleteApplied_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q15:KaskServiceException" />
+  </wsdl:message>
   <wsdl:portType name="IApplicationService">
     <wsdl:operation name="GetApplicationById">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationById" message="tns:IApplicationService_GetApplicationById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByIdResponse" message="tns:IApplicationService_GetApplicationById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByIdKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_GetApplicationById_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByName" message="tns:IApplicationService_GetApplicationByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByNameResponse" message="tns:IApplicationService_GetApplicationByName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByNameKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_GetApplicationByName_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetApplications">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplications" message="tns:IApplicationService_GetApplications_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationsResponse" message="tns:IApplicationService_GetApplications_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationsKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_GetApplications_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateApplication">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/CreateApplication" message="tns:IApplicationService_CreateApplication_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/CreateApplicationResponse" message="tns:IApplicationService_CreateApplication_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/CreateApplicationKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_CreateApplication_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateApplication">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/UpdateApplication" message="tns:IApplicationService_UpdateApplication_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/UpdateApplicationResponse" message="tns:IApplicationService_UpdateApplication_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/UpdateApplicationKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_UpdateApplication_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteApplication">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/DeleteApplication" message="tns:IApplicationService_DeleteApplication_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/DeleteApplicationResponse" message="tns:IApplicationService_DeleteApplication_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/DeleteApplicationKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_DeleteApplication_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IApplicantService">
     <wsdl:operation name="GetApplicantByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantByID" message="tns:IApplicantService_GetApplicantByID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantByIDResponse" message="tns:IApplicantService_GetApplicantByID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantByIDKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicantService_GetApplicantByID_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetApplicants">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicantService/GetApplicants" message="tns:IApplicantService_GetApplicants_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantsResponse" message="tns:IApplicantService_GetApplicants_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicantService/GetApplicantsKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicantService_GetApplicants_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateApplicant">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicantService/CreateApplicant" message="tns:IApplicantService_CreateApplicant_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicantService/CreateApplicantResponse" message="tns:IApplicantService_CreateApplicant_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicantService/CreateApplicantKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicantService_CreateApplicant_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateApplicant">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicantService/UpdateApplicant" message="tns:IApplicantService_UpdateApplicant_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicantService/UpdateApplicantResponse" message="tns:IApplicantService_UpdateApplicant_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicantService/UpdateApplicantKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicantService_UpdateApplicant_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteApplicant">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicantService/DeleteApplicant" message="tns:IApplicantService_DeleteApplicant_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IApplicantService/DeleteApplicantResponse" message="tns:IApplicantService_DeleteApplicant_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicantService/DeleteApplicantKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicantService_DeleteApplicant_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IAppliedService">
     <wsdl:operation name="GetAppliedByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedByID" message="tns:IAppliedService_GetAppliedByID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedByIDResponse" message="tns:IAppliedService_GetAppliedByID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedByIDKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IAppliedService_GetAppliedByID_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetApplieds">
       <wsdl:input wsaw:Action="http://tempuri.org/IAppliedService/GetApplieds" message="tns:IAppliedService_GetApplieds_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedsResponse" message="tns:IAppliedService_GetApplieds_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedsKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IAppliedService_GetApplieds_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateApplied">
       <wsdl:input wsaw:Action="http://tempuri.org/IAppliedService/CreateApplied" message="tns:IAppliedService_CreateApplied_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAppliedService/CreateAppliedResponse" message="tns:IAppliedService_CreateApplied_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateApplied">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAppliedService/UpdateApplied" message="tns:IAppliedService_UpdateApplied_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAppliedService/UpdateAppliedResponse" message="tns:IAppliedService_UpdateApplied_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAppliedService/CreateAppliedKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IAppliedService_CreateApplied_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteApplied">
       <wsdl:input wsaw:Action="http://tempuri.org/IAppliedService/DeleteApplied" message="tns:IAppliedService_DeleteApplied_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAppliedService/DeleteAppliedResponse" message="tns:IAppliedService_DeleteApplied_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAppliedService/DeleteAppliedKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IAppliedService_DeleteApplied_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IApplicationService" type="tns:IApplicationService">
@@ -173,6 +234,21 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationByName">
+      <soap:operation soapAction="http://tempuri.org/IApplicationService/GetApplicationByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetApplications">
       <soap:operation soapAction="http://tempuri.org/IApplicationService/GetApplications" style="document" />
@@ -182,6 +258,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CreateApplication">
       <soap:operation soapAction="http://tempuri.org/IApplicationService/CreateApplication" style="document" />
@@ -191,6 +270,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateApplication">
       <soap:operation soapAction="http://tempuri.org/IApplicationService/UpdateApplication" style="document" />
@@ -200,6 +282,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteApplication">
       <soap:operation soapAction="http://tempuri.org/IApplicationService/DeleteApplication" style="document" />
@@ -209,6 +294,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IApplicantService" type="tns:IApplicantService">
@@ -221,6 +309,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetApplicants">
       <soap:operation soapAction="http://tempuri.org/IApplicantService/GetApplicants" style="document" />
@@ -230,6 +321,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CreateApplicant">
       <soap:operation soapAction="http://tempuri.org/IApplicantService/CreateApplicant" style="document" />
@@ -239,6 +333,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateApplicant">
       <soap:operation soapAction="http://tempuri.org/IApplicantService/UpdateApplicant" style="document" />
@@ -248,6 +345,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteApplicant">
       <soap:operation soapAction="http://tempuri.org/IApplicantService/DeleteApplicant" style="document" />
@@ -257,6 +357,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IAppliedService" type="tns:IAppliedService">
@@ -269,6 +372,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetApplieds">
       <soap:operation soapAction="http://tempuri.org/IAppliedService/GetApplieds" style="document" />
@@ -278,6 +384,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CreateApplied">
       <soap:operation soapAction="http://tempuri.org/IAppliedService/CreateApplied" style="document" />
@@ -287,15 +396,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateApplied">
-      <soap:operation soapAction="http://tempuri.org/IAppliedService/UpdateApplied" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteApplied">
       <soap:operation soapAction="http://tempuri.org/IAppliedService/DeleteApplied" style="document" />
@@ -305,6 +408,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="AESApplicationService">
