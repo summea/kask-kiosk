@@ -15,6 +15,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetApplicationByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="first" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="last" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ssn" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetApplicationByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicationByNameResult" nillable="true" type="q2:Application" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetApplications">
     <xs:complexType>
       <xs:sequence />
@@ -23,14 +39,14 @@
   <xs:element name="GetApplicationsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicationsResult" nillable="true" type="q2:ArrayOfApplication" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicationsResult" nillable="true" type="q3:ArrayOfApplication" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateApplication">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="app" nillable="true" type="q3:Application" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="app" nillable="true" type="q4:Application" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -44,7 +60,7 @@
   <xs:element name="UpdateApplication">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="newApp" nillable="true" type="q4:Application" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="newApp" nillable="true" type="q5:Application" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -79,7 +95,7 @@
   <xs:element name="GetApplicantByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicantByIDResult" nillable="true" type="q5:Applicant" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicantByIDResult" nillable="true" type="q6:Applicant" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -91,14 +107,14 @@
   <xs:element name="GetApplicantsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicantsResult" nillable="true" type="q6:ArrayOfApplicant" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicantsResult" nillable="true" type="q7:ArrayOfApplicant" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateApplicant">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="a" nillable="true" type="q7:Applicant" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="a" nillable="true" type="q8:Applicant" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -112,7 +128,7 @@
   <xs:element name="UpdateApplicant">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="newApp" nillable="true" type="q8:Applicant" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="newApp" nillable="true" type="q9:Applicant" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -147,7 +163,7 @@
   <xs:element name="GetAppliedByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetAppliedByIDResult" nillable="true" type="q9:Applied" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetAppliedByIDResult" nillable="true" type="q10:Applied" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -159,14 +175,14 @@
   <xs:element name="GetAppliedsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetAppliedsResult" nillable="true" type="q10:ArrayOfApplied" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetAppliedsResult" nillable="true" type="q11:ArrayOfApplied" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateApplied">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="a" nillable="true" type="q11:Applied" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="a" nillable="true" type="q12:Applied" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -174,20 +190,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="CreateAppliedResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateApplied">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="a" nillable="true" type="q12:Applied" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateAppliedResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateAppliedResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
