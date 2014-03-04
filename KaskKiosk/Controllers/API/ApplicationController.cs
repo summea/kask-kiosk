@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.ServiceModel;
 using System.Web;
 using System.Web.Http;
+using KaskKiosk.Invoker;
 
 namespace KaskKiosk.Controllers.API
 {

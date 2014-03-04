@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Web;
+using System.ServiceModel.Channels;
 
 namespace KaskKiosk.Invoker
 {
@@ -14,13 +13,7 @@ namespace KaskKiosk.Invoker
         UNKNOWN = 0xff
     };
 
-    public static class ServiceInvoker
+    public static class ServiceInvoker<T>
     {
-        private static readonly Dictionary<Type, ClientBase<Type>> m_Services = new Dictionary<Type, ClientBase<Type>>();
-
-        public static T Resolve<T>()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
