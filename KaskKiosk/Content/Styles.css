@@ -1,2 +1,9 @@
-﻿.spacing {
+﻿.default-layout .container {
+  width:830px;
+}
+
+.default-layout .cover {
+  text-align:center;
+  padding-top:80px;
+  padding-bottom:50px;
 }
