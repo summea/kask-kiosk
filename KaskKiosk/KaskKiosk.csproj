@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="Controllers\API\ApplicationController.cs" />
     <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DEPRECATED\ApplicationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -189,6 +190,7 @@
     </None>
     <Content Include="Views\App\Index.cshtml" />
     <Content Include="Views\App\Create.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

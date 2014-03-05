@@ -5,10 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<h2>All Applications</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Application Status</th>
+    </tr>
 @foreach (var item in ViewBag.applications)
 {
-    @item.Application_ID<br />
-    @item.ApplicationStatus<br />
+    <tr>
+        <td>@item.Application_ID</td>
+        <td>@item.ApplicationStatus</td>
+    </tr>
 }
+</table>
