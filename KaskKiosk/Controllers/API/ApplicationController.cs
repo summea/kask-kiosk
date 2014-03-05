@@ -7,13 +7,13 @@ using System.Net.Http;
 using System.ServiceModel;
 using System.Web;
 using System.Web.Http;
-using KaskKiosk.Invoker;
 
 namespace KaskKiosk.Controllers.API
 {
     public class ApplicationController : ApiController
     {
         // GET: /Application/
+        [HttpGet]
         public IEnumerable<Application> GetApplications()
         {
             ApplicationServiceClient client = new ApplicationServiceClient();
@@ -30,6 +30,7 @@ namespace KaskKiosk.Controllers.API
         }
 
         // GET: /Application/id
+        [HttpGet]
         public Application GetApplication (int id)
         {
             ApplicationServiceClient client = new ApplicationServiceClient();

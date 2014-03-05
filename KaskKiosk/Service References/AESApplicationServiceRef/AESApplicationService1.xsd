@@ -1,210 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" />
-  <xs:element name="GetApplicationById">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicationByIdResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicationByIdResult" nillable="true" type="q1:Application" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicationByName">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="first" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="last" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="ssn" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicationByNameResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicationByNameResult" nillable="true" type="q2:Application" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplications">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicationsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicationsResult" nillable="true" type="q3:ArrayOfApplication" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CreateApplication">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="app" nillable="true" type="q4:Application" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CreateApplicationResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CreateApplicationResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateApplication">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="newApp" nillable="true" type="q5:Application" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateApplicationResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateApplicationResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteApplication">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ID" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteApplicationResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="DeleteApplicationResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicantByID">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicantByIDResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicantByIDResult" nillable="true" type="q6:Applicant" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicants">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplicantsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetApplicantsResult" nillable="true" type="q7:ArrayOfApplicant" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CreateApplicant">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="a" nillable="true" type="q8:Applicant" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CreateApplicantResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CreateApplicantResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateApplicant">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="newApp" nillable="true" type="q9:Applicant" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateApplicantResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateApplicantResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteApplicant">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ID" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteApplicantResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="DeleteApplicantResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAppliedByID">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAppliedByIDResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetAppliedByIDResult" nillable="true" type="q10:Applied" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetApplieds">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAppliedsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="GetAppliedsResult" nillable="true" type="q11:ArrayOfApplied" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CreateApplied">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" minOccurs="0" name="a" nillable="true" type="q12:Applied" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CreateAppliedResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CreateAppliedResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteApplied">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteAppliedResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="DeleteAppliedResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Application">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Application_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="AvailableForDays" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="AvailableForEvenings" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="AvailableForWeekends" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="FridayFrom" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="FridayTo" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="FullTime" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="MondayFrom" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="MondayTo" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="SalaryExpectation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SaturdayFrom" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="SaturdayTo" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="SundayFrom" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="SundayTo" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="ThursdayFrom" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="ThursdayTo" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="TuesdayFrom" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="TuesdayTo" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="WednesdayFrom" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="WednesdayTo" nillable="true" type="ser:duration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Application" nillable="true" type="tns:Application" />
+  <xs:complexType name="ArrayOfApplication">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Application" nillable="true" type="tns:Application" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplication" nillable="true" type="tns:ArrayOfApplication" />
+  <xs:complexType name="Applicant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicantAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Applicant_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameAlias" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSN" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Applicant" nillable="true" type="tns:Applicant" />
+  <xs:complexType name="ArrayOfApplicant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Applicant" nillable="true" type="tns:Applicant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplicant" nillable="true" type="tns:ArrayOfApplicant" />
+  <xs:complexType name="Applied">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Applicant_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Application_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="DateApplied" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Job_ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Applied" nillable="true" type="tns:Applied" />
+  <xs:complexType name="ArrayOfApplied">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Applied" nillable="true" type="tns:Applied" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplied" nillable="true" type="tns:ArrayOfApplied" />
 </xs:schema>
