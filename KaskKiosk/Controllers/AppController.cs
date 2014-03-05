@@ -34,6 +34,21 @@ namespace KaskKiosk.Controllers
             return View();
         }
 
+        public async Task<ActionResult> Create()
+        {
+            var app = await GetApplicationsAsync();
+            List<String> timePickerList = new List<String>();
+
+            // create time picker range (in hours)
+            for (int i = 0; i < 24; i++)
+            {
+                timePickerList.Add(i.ToString() + ":00");
+            }
+
+            ViewBag.timePickerList = timePickerList;
+            return View();
+        }
+
         //
         // POST: /App/Create
 
@@ -43,6 +58,13 @@ namespace KaskKiosk.Controllers
             try
             {
                 // TODO: Add insert logic here
+
+                Applicant applicant = new Applicant();
+                applicant.FirstName = Request.Form["FirstName"];
+                applicant.LastName = Request.Form["LastName"];
+                applicant.SSN = Request.Form["SSN"];
+
+                // TODO: need to send this kind of post data back to service...
 
                 return RedirectToAction("Index");
             }
