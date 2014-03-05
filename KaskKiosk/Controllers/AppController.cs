@@ -34,9 +34,8 @@ namespace KaskKiosk.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
-            var app = await GetApplicationsAsync();
             List<String> timePickerList = new List<String>();
 
             // create time picker range (in hours)
