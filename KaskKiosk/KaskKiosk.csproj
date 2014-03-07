@@ -116,7 +116,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\API\ApplicationController.cs" />
+    <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\ApplicantController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DEPRECATED\ApplicationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,6 +130,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ServiceInvoker\ServiceInvoker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -167,12 +172,26 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="DEPRECATED\Application\Index.cshtml">
+      <BrowseToURL>~/App/Index</BrowseToURL>
+    </Content>
+    <Content Include="DEPRECATED\Application\Create.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\App\Index.cshtml" />
+    <None Include="Service References\AESApplicationServiceRef\AESApplicationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AESApplicationServiceRef\AESApplicationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Application\Index.cshtml" />
-    <Content Include="Views\Application\Create.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Service References\AESApplicationServiceRef\AESApplicationService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\App\Create.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -189,12 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service References\AESApplicationServiceRef\AESApplicationService.wsdl" />
-    <None Include="Service References\AESApplicationServiceRef\AESApplicationService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AESApplicationServiceRef\AESApplicationService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
