@@ -22,7 +22,7 @@ namespace Kask.Services
             }
             catch(Exception e)
             {
-                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
             }
         }
 
@@ -38,7 +38,7 @@ namespace Kask.Services
             }
             catch (Exception e)
             {
-                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
             }
         }
 
@@ -54,7 +54,7 @@ namespace Kask.Services
             }
             catch (Exception e)
             {
-                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
             }
         }
 
@@ -69,7 +69,7 @@ namespace Kask.Services
                 }
                 catch (Exception e)
                 {
-                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
 
@@ -90,7 +90,7 @@ namespace Kask.Services
                 }
                 catch (Exception e)
                 {
-                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
 
@@ -110,7 +110,7 @@ namespace Kask.Services
                 }
                 catch (Exception e)
                 {
-                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
 
@@ -129,7 +129,7 @@ namespace Kask.Services
             }
             catch (Exception e)
             {
-                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
             }
         }
 
@@ -145,7 +145,7 @@ namespace Kask.Services
             }
             catch (Exception e)
             {
-                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
             }
         }
 
@@ -160,7 +160,7 @@ namespace Kask.Services
                 }
                 catch (Exception e)
                 {
-                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
 
@@ -184,7 +184,7 @@ namespace Kask.Services
                 }
                 catch (Exception e)
                 {
-                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
 
@@ -204,7 +204,7 @@ namespace Kask.Services
                 }
                 catch (Exception e)
                 {
-                    throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
 
@@ -223,7 +223,7 @@ namespace Kask.Services
             }
             catch (Exception e)
             {
-                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
             }
         }
 
@@ -239,7 +239,7 @@ namespace Kask.Services
             }
             catch (Exception e)
             {
-                throw new FaultException<KaskServiceException>(new KaskServiceException(e.Message));
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
             }
         }
 
@@ -252,9 +252,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
 
@@ -272,10 +272,9 @@ namespace Kask.Services
                 {
                     db.SubmitChanges();
                 }
-                catch (FaultException e)
+                catch (Exception e)
                 {
-
-                    throw e;
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
 

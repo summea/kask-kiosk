@@ -28,15 +28,15 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PK_UID')
 IF EXISTS (SELECT * FROM information_schema.tables WHERE table_name = N'Applicant') 
   DROP TABLE Applicant;
 CREATE TABLE Applicant (
-  Applicant_ID  int IDENTITY(1,1),
-  FirstName     varchar(50) NOT NULL,
-  MiddleName    varchar(50) NULL,
-  LastName      varchar(50) NOT NULL,
-  SSN           varchar(10) UNIQUE NOT NULL,
-  Gender        varchar(1),
-  Address       varchar(255) NULL,
-  Phone         varchar(50) NULL,
-  NameAlias     varchar(255) NULL,
+  Applicant_ID      int IDENTITY(1,1),
+  FirstName         varchar(50) NOT NULL,
+  MiddleName        varchar(50) NULL,
+  LastName          varchar(50) NOT NULL,
+  SSN               varchar(10) UNIQUE NOT NULL,
+  Gender            varchar(1),
+  ApplicantAddress  varchar(255) NULL,
+  Phone             varchar(50) NULL,
+  NameAlias         varchar(255) NULL,
   CONSTRAINT [PK_UID] PRIMARY KEY (Applicant_ID ASC),
   CONSTRAINT [CHK_Person] CHECK (DATALENGTH(FirstName) > 0 AND DATALENGTH(LastName) > 0 AND DATALENGTH(SSN) > 0)
 );
@@ -294,8 +294,6 @@ INSERT INTO Employer(Name) VALUES ('Microsoft');
                 EMPLOYMENT RELATION 
 *********************************************************************************/
 
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKEmploymentID')
-  ALTER TABLE Employment DROP CONSTRAINT [PKEmploymentID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantWorkID')
   ALTER TABLE Employment DROP CONSTRAINT [FKApplicantWorkID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKEmployerID')
@@ -303,7 +301,6 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKEmployerID')
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Employment')
   DROP TABLE Employment;
 CREATE TABLE Employment (
-  Employment_ID               int IDENTITY(1,1) NOT NULL,
   Applicant_ID                int NOT NULL UNIQUE,
   Employer_ID                 int NOT NULL,
   MayWeContactCurrentEmployer tinyint NULL,
@@ -315,7 +312,6 @@ CREATE TABLE Employment (
   EndingSalary                varchar(255) NULL,
   ReasonForLeaving            text NULL,
   Responsibilities            text NULL,
-  CONSTRAINT [PKEmploymentID] PRIMARY KEY (Employment_ID ASC),
   CONSTRAINT [FKApplicantWorkID] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT [FKEmployerID] FOREIGN KEY (Employer_ID) REFERENCES Employer (Employer_ID)

@@ -9,12 +9,6 @@ namespace Kask.Services.Exceptions
     [DataContract]
     public class KaskServiceException
     {
-        public KaskServiceException(string m)
-        {
-            ExceptionMessage = m;
-        }
-
-        [DataMember]
-        public string ExceptionMessage { get; set; }
+        public KaskServiceException() { }
     }
 }
