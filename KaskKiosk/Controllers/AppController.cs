@@ -16,6 +16,7 @@ namespace KaskKiosk.Controllers
         /// TODO: MAKE THIS INTO A WRAPPER
         /// THIS WILL ALLOW MULTI THREADING AS WELL
         readonly string uri = "http://localhost:51309/api/Application";
+        readonly string uriApplicant = "http://localhost:51309/api/Applicant";
 
         private async Task<List<Application>> GetApplicationsAsync()
         {
@@ -63,7 +64,28 @@ namespace KaskKiosk.Controllers
                 applicant.LastName = Request.Form["LastName"];
                 applicant.SSN = Request.Form["SSN"];
 
-                // TODO: need to send this kind of post data back to service...
+                Application application = new Application();
+                application.ApplicationStatus = "Submitted";
+
+                // save data back to service
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    httpClient.BaseAddress = new Uri("http://localhost:51309");
+                    httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage result = new HttpResponseMessage();
+                    string resultContent = "";
+
+                    // post (save) applicant data
+                    result = httpClient.PostAsJsonAsync(uriApplicant, applicant).Result;
+                    resultContent = result.Content.ReadAsStringAsync().Result;
+
+                    // post (save) application data
+                    //result = httpClient.PostAsJsonAsync(uri, application).Result;
+                    //resultContent = result.Content.ReadAsStringAsync().Result;
+                }
+
+
+                // TODO: need to send all application/applicant related data back to service...
 
                 return RedirectToAction("Index");
             }
