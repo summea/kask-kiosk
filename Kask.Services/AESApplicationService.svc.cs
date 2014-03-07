@@ -8,9 +8,9 @@ using System;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService
+    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEmployerService
     {
-        public Application GetApplicationById(int id)
+        public Application GetApplicationByID(int id)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace Kask.Services
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
                     Applicant applicant = (from a in db.Applicants where a.FirstName == first && a.LastName == last && a.SSN == ssn select a).First();
-                    return GetApplicationById(applicant.Applicant_ID);
+                    return GetApplicationByID(applicant.Applicant_ID);
                 }
             }
             catch (Exception e)
@@ -279,6 +279,31 @@ namespace Kask.Services
             }
 
             return true;
+        }
+
+        public Employer GetEmployerByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Employer> GetEmployers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CreateEmployer(Employer e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateEmployer(Employer newEmp)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteEmployer(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
