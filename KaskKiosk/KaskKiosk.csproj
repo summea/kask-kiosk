@@ -116,9 +116,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\API\ApplicantController.cs" />
     <Compile Include="Controllers\API\ApplicationController.cs" />
+    <Compile Include="Controllers\API\AppliedController.cs" />
     <Compile Include="Controllers\AppController.cs" />
-    <Compile Include="Controllers\ApplicantController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DEPRECATED\ApplicationController.cs" />
     <Compile Include="Global.asax.cs">

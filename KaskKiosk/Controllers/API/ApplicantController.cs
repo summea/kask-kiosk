@@ -10,17 +10,17 @@ using System.Web.Http;
 
 namespace KaskKiosk.Controllers.API
 {
-    public class ApplicationController : ApiController
+    public class ApplicantController : ApiController
     {
-        // GET: /Application/
+        // GET: /Applicant/
         [HttpGet]
-        public IEnumerable<Application> GetApplications()
+        public IEnumerable<Applicant> GetApplicants()
         {
-            ApplicationServiceClient client = new ApplicationServiceClient();
+            ApplicantServiceClient client = new ApplicantServiceClient();
 
             try
             {
-                IEnumerable<Application> result = client.GetApplications();
+                IEnumerable<Applicant> result = client.GetApplicants();
                 return result;
             }
             catch (FaultException<KaskServiceException> e)
@@ -29,15 +29,15 @@ namespace KaskKiosk.Controllers.API
             }
         }
 
-        // GET: /Application/id
+        // GET: /Applicant/id
         [HttpGet]
-        public Application GetApplication(int id)
+        public Applicant GetApplicant(int id)
         {
-            ApplicationServiceClient client = new ApplicationServiceClient();
+            ApplicantServiceClient client = new ApplicantServiceClient();
 
             try
             {
-                Application result = client.GetApplicationById(id);
+                Applicant result = client.GetApplicantByID(id);
                 return result;
             }
             catch (FaultException<KaskServiceException> e)
@@ -47,13 +47,13 @@ namespace KaskKiosk.Controllers.API
         }
 
         [HttpPost]
-        public bool PostApplication(Application app)
+        public bool PostApplicant(Applicant app)
         {
-            ApplicationServiceClient client = new ApplicationServiceClient();
+            ApplicantServiceClient client = new ApplicantServiceClient();
 
             try
             {
-                bool result = client.CreateApplication(app);
+                bool result = client.CreateApplicant(app);
                 return result;
             }
             catch (FaultException<KaskServiceException> e)
