@@ -26,14 +26,21 @@ namespace Kask.Services
             }
         }
 
-        public Application GetApplicationByName (string first, string last, string ssn)
+        public IList<Application> GetApplicationsByName (string first, string last, string ssn)
         {
             try
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    Applicant applicant = (from a in db.Applicants where a.FirstName == first && a.LastName == last && a.SSN == ssn select a).First();
-                    return GetApplicationByID(applicant.Applicant_ID);
+                    IList<Applicant> applicants = (from a in db.Applicants where a.FirstName == first && a.LastName == last && a.SSN == ssn select a).ToList();
+                    IList<Application> result = null;
+
+                    foreach (Applicant a in applicants)
+                    {
+                        result.Add(GetApplicationByID(a.Applicant_ID));
+                    }
+
+                    return result;
                 }
             }
             catch (Exception e)
@@ -82,7 +89,25 @@ namespace Kask.Services
             {
                 Application a = db.Applications.Single(app => app.Application_ID == newApp.Application_ID);
                 a.ApplicationStatus = newApp.ApplicationStatus;
-                // TODO: Update relation Application's Properties
+                a.AvailableForDays = newApp.AvailableForDays;
+                a.AvailableForEvenings = newApp.AvailableForEvenings;
+                a.AvailableForWeekends = newApp.AvailableForWeekends;
+                a.FridayFrom = newApp.FridayFrom;
+                a.FridayTo = newApp.FridayTo;
+                a.FullTime = newApp.FullTime;
+                a.MondayFrom = newApp.MondayFrom;
+                a.MondayTo = newApp.MondayTo;
+                a.SalaryExpectation = newApp.SalaryExpectation;
+                a.SaturdayFrom = newApp.SaturdayFrom;
+                a.SaturdayTo = newApp.SaturdayTo;
+                a.SundayFrom = newApp.SundayFrom;
+                a.SundayTo = newApp.SundayTo;
+                a.ThursdayFrom = newApp.ThursdayFrom;
+                a.ThursdayTo = newApp.ThursdayTo;
+                a.TuesdayFrom = newApp.TuesdayFrom;
+                a.TuesdayTo = newApp.TuesdayTo;
+                a.WednesdayFrom = newApp.WednesdayFrom;
+                a.WednesdayTo = newApp.WednesdayTo;
 
                 try
                 {
@@ -173,10 +198,13 @@ namespace Kask.Services
             {
                 Applicant a = db.Applicants.Single(app => app.Applicant_ID == newApp.Applicant_ID);
                 a.FirstName = newApp.FirstName;
+                a.MiddleName = newApp.MiddleName;
                 a.LastName = newApp.LastName;
+                a.NameAlias = newApp.NameAlias;
                 a.Gender = newApp.Gender;
                 a.SSN = newApp.SSN;
-                // TODO: Update Relation Applicant's Properties
+                a.ApplicantAddress = newApp.ApplicantAddress;
+                a.Phone = newApp.Phone;
 
                 try
                 {
@@ -283,27 +311,95 @@ namespace Kask.Services
 
         public Employer GetEmployerByID(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    var emps = db.Employers.Single(a => a.Employer_ID == id);
+                    return (emps != null ? emps : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
         }
 
         public IList<Employer> GetEmployers()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    var emps = db.Employers.ToList();
+                    return (emps != null ? emps : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
         }
 
-        public bool CreateEmployer(Employer e)
+        public bool CreateEmployer(Employer emp)
         {
-            throw new NotImplementedException();
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Employers.InsertOnSubmit(emp);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
         }
 
         public bool UpdateEmployer(Employer newEmp)
         {
-            throw new NotImplementedException();
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Employer emp = db.Employers.Single(e => e.Employer_ID == newEmp.Employer_ID);
+                emp.EmployerAddress = newEmp.EmployerAddress;
+                emp.Name = newEmp.Name;
+                emp.PhoneNumber = newEmp.PhoneNumber;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+
         }
 
         public bool DeleteEmployer(int id)
         {
-            throw new NotImplementedException();
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Employer emp = db.Employers.Single(e => e.Employer_ID == id);
+                db.Employers.DeleteOnSubmit(emp);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
         }
     }
 }
