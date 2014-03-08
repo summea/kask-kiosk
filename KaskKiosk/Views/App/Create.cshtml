@@ -28,11 +28,11 @@
     </div>
     <div class="form-group spacing" style="width:400px;float:left;clear:both;">
         @Html.Label("Address:")
-        <input type="text" class="form-control" name="Address" id="Address" placeholder="Street, City, State, Zip" />
+        <input type="text" class="form-control" name="ApplicantAddress" id="ApplicantAddress" placeholder="Street, City, State, Zip" />
     </div>
     <div class="form-group spacing" style="width:200px;float:left;">
         @Html.Label("Phone:")
-        <input type="text" class="form-control" name="Phone" id="Phone" placeholder="Enter Phone Number" />
+        <input type="text" class="form-control" name="ApplicantPhone" id="ApplicantPhone" placeholder="Enter Phone Number" />
     </div>
     <div class="form-group spacing" style="width:200px;float:left;">
         @Html.Label("Name Alias:")
@@ -43,7 +43,10 @@
     <h3>Position</h3>
     <div class="form-group spacing" style="width:400px;float:left;">
         @Html.Label("Position Applying For:")
-        <select class="form-control"></select>
+        <select class="form-control" name="JobID" id="JobID">
+            <option value="1">Job One</option>
+            <option value="2">Job Two</option>
+        </select>
     </div>
     <div class="form-group spacing" style="width:200px;float:left;">
         @Html.Label("Salary Expectation:")
@@ -51,157 +54,157 @@
     </div>
     <div class="form-group spacing" style="width:200px;float:left;">
         @Html.Label("Full Time:")
-        <select class="form-control">
-            <option>Yes</option>
-            <option>No</option>
+        <select class="form-control" name="FullTime" id="FullTime">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
     </div>
     <div class="form-group spacing" style="width:200px;float:left;clear:both;">
         @Html.Label("Days?")
-        <select class="form-control">
-            <option>Yes</option>
-            <option>No</option>
+        <select class="form-control" name="AvailableForDays" id="AvailableForDays">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
     </div>
     <div class="form-group spacing" style="width:200px;float:left;">
         @Html.Label("Evenings?")
-        <select class="form-control">
-            <option>Yes</option>
-            <option>No</option>
+        <select class="form-control" name="AvailableForEvenings" id="AvailableForEvenings">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
     </div>
     <div class="form-group spacing" style="width:200px;float:left;">
         @Html.Label("Weekends?")
-        <select class="form-control">
-            <option>Yes</option>
-            <option>No</option>
+        <select class="form-control" name="AvailableForWeekends" id="AvailableForWeekends">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
     </div>
     <div class="form-group spacing" style="float:left;clear:both;">
         @Html.Label("Days / Hours Available?")<br />
         <div style="width:80px;float:left;">
             @Html.Label("Monday From:")
-            <select class="form-control">
+            <select class="form-control" name="MondayFrom" id="MondayFrom">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("Tuesday From:")
-            <select class="form-control">
+            <select class="form-control" name="TuesdayFrom" id="TuesdayFrom">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("Wednesday From:")
-            <select class="form-control">
+            <select class="form-control" name="WednesdayFrom" id="WednesdayFrom">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("Thursday From:")
-            <select class="form-control">
+            <select class="form-control" name="ThursdayFrom" id="ThursdayFrom">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("Friday From:")
-            <select class="form-control">
+            <select class="form-control" name="FridayFrom" id="FridayFrom">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("Saturday From:")
-            <select class="form-control">
+            <select class="form-control" name="SaturdayFrom" id="SaturdayFrom">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("Sunday From:")
-            <select class="form-control">
+            <select class="form-control" name="SundayFrom" id="SundayFrom">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div><br />
         <div style="width:80px;float:left;">
             @Html.Label("To:")
-            <select class="form-control">
+            <select class="form-control" name="MondayTo" id="MondayTo">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("To:")
-            <select class="form-control">
+            <select class="form-control" name="TuesdayTo" id="TuesdayTo">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("To:")
-            <select class="form-control">
+            <select class="form-control" name="WednesdayTo" id="WednesdayTo">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("To:")
-            <select class="form-control">
+            <select class="form-control" name="ThursdayTo" id="ThursdayTo">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("To:")
-            <select class="form-control">
+            <select class="form-control" name="FridayTo" id="FridayTo">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("To:")
-            <select class="form-control">
+            <select class="form-control" name="SaturdayTo" id="SaturdayTo">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
         <div style="width:80px;float:left;">
             @Html.Label("To:")
-            <select class="form-control">
+            <select class="form-control" name="SundayTo" id="SundayTo">
                 @foreach (var item in ViewBag.timePickerList)
                 {
-                    <option>@item</option>
+                    <option value="@item">@item:00</option>
                 }
             </select>
         </div>
@@ -212,8 +215,8 @@
     <div class="form-group spacing" style="width:800px;float:left;">
         @Html.Label("May we contact your current employer?")
         <select class="form-control">
-            <option>Yes</option>
-            <option>No</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
     </div>
     <div class="form-group spacing" style="width:400px;float:left;">
@@ -366,8 +369,8 @@
     <div class="form-group spacing" style="width:133px;float:left;">
         @Html.Label("Graduated:")
         <select class="form-control">
-            <option>Yes</option>
-            <option>No</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
     </div>
     <div class="form-group spacing" style="width:134px;float:left;">
@@ -387,8 +390,8 @@
     <div class="form-group spacing" style="width:133px;float:left;">
         @Html.Label("Graduated:")
         <select class="form-control">
-            <option>Yes</option>
-            <option>No</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
     </div>
     <div class="form-group spacing" style="width:134px;float:left;">
@@ -408,8 +411,8 @@
     <div class="form-group spacing" style="width:133px;float:left;">
         @Html.Label("Graduated:")
         <select class="form-control">
-            <option>Yes</option>
-            <option>No</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
     </div>
     <div class="form-group spacing" style="width:134px;float:left;">

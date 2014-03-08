@@ -10,17 +10,17 @@ using System.Web.Http;
 
 namespace KaskKiosk.Controllers.API
 {
-    public class ApplicantController : ApiController
+    public class AppliedController : ApiController
     {
-        // GET: /Applicant/
+        // GET: /Applied/
         [HttpGet]
-        public IEnumerable<Applicant> GetApplicants()
+        public IEnumerable<Applied> GetApplieds()
         {
-            ApplicantServiceClient client = new ApplicantServiceClient();
+            AppliedServiceClient client = new AppliedServiceClient();
 
             try
             {
-                IEnumerable<Applicant> result = client.GetApplicants();
+                IEnumerable<Applied> result = client.GetApplieds();
                 return result;
             }
             catch (FaultException<KaskServiceException> e)
@@ -29,15 +29,15 @@ namespace KaskKiosk.Controllers.API
             }
         }
 
-        // GET: /Applicant/id
+        // GET: /Applied/id
         [HttpGet]
-        public Applicant GetApplicant(int id)
+        public Applied GetApplied(int id)
         {
-            ApplicantServiceClient client = new ApplicantServiceClient();
+            AppliedServiceClient client = new AppliedServiceClient();
 
             try
             {
-                Applicant result = client.GetApplicantByID(id);
+                Applied result = client.GetAppliedByID(id);
                 return result;
             }
             catch (FaultException<KaskServiceException> e)
@@ -47,13 +47,13 @@ namespace KaskKiosk.Controllers.API
         }
 
         [HttpPost]
-        public bool PostApplicant(Applicant app)
+        public bool PostApplied(Applied app)
         {
-            ApplicantServiceClient client = new ApplicantServiceClient();
+            AppliedServiceClient client = new AppliedServiceClient();
 
             try
             {
-                bool result = client.CreateApplicant(app);
+                bool result = client.CreateApplied(app);
                 return result;
             }
             catch (FaultException<KaskServiceException> e)
