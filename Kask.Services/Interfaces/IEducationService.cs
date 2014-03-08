@@ -1,35 +1,36 @@
 ﻿using Kask.DAL2.Models;
 using Kask.Services.Exceptions;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Kask.Services.Interfaces
 {
     [ServiceContract]
-    public interface IApplicationService
+    public interface IEducationService
     {
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        Application GetApplicationByID(int id);
+        Education GetEducationtByID(int id);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        IList<Application> GetApplicationsByName(string first, string last, string ssn);
+        IList<Education> GetEducationsByName(string first, string last, string SSN);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        IList<Application> GetApplications();
+        bool CreateApplicant(Applicant a);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool CreateApplication(Application app);
+        bool UpdateApplicant(Applicant newApp);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool UpdateApplication(Application newApp);
+        bool DeleteApplicant(int ID);
 
-        [OperationContract]
-        [FaultContract(typeof(KaskServiceException))]
-        bool DeleteApplication(int ID);
     }
 }
