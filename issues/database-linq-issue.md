@@ -4,6 +4,8 @@ Database and LINQ Issue
 ## Problem:
 In order to save data to the overall "Applied" database table, we need to (in some way) manually save Applicant, Application, and Job (number) information to the Applied database table. LINQ requires (see _LINQ Error Message_ section below) that there be a Primary Key in the Applied database table. At this time, unfortunately, we do not have a Primary Key in the Applied table.
 
+## LINQ Error Message
+
     Exception details: System.InvalidOperationException: Can't perform Create, Update, or Delete operations on 'Table(Applied)' because it has no primary key.
        at System.Data.Linq.Table`1.CheckReadOnly()
        at System.Data.Linq.Table`1.InsertOnSubmit(TEntity entity)
