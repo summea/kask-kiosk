@@ -5,7 +5,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using Kask.DAL2.Models;
+using Kask.DAL.Models;
 
 namespace Kask.Services.Interfaces
 {

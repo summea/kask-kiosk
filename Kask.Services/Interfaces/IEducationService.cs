@@ -1,4 +1,4 @@
-﻿using Kask.DAL2.Models;
+﻿using Kask.DAL.Models;
 using Kask.Services.Exceptions;
 using System;
 using System.Collections.Generic;
