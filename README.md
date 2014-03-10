@@ -1,5 +1,5 @@
 # kask-kiosk
-==========
+----------------
 Team junior project
 
 #### Branches Breakdown:
