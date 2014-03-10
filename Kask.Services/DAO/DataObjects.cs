@@ -190,13 +190,13 @@ namespace Kask.Services.DAO
         public int SchoolID { get; set; }
 
         [DataMember]
-        public DateTime YearsAttendedFrom { get; set; }
+        public DateTime? YearsAttendedFrom { get; set; }
 
         [DataMember]
-        public DateTime YearsAttendedTo { get; set; }
+        public DateTime? YearsAttendedTo { get; set; }
 
         [DataMember]
-        public byte Graduated { get; set; }
+        public byte? Graduated { get; set; }
 
         [DataMember]
         public string DegreeAndMajor { get; set; }
@@ -234,13 +234,13 @@ namespace Kask.Services.DAO
         public int EmployerID { get; set; }
 
         [DataMember]
-        public byte MayWeContactCurrentEmployer { get; set; }
+        public byte? MayWeContactCurrentEmployer { get; set; }
 
         [DataMember]
-        public DateTime EmployedFrom { get; set; }
+        public DateTime? EmployedFrom { get; set; }
 
         [DataMember]
-        public DateTime EmployedTo { get; set; }
+        public DateTime? EmployedTo { get; set; }
 
         [DataMember]
         public string Supervisor { get; set; }
@@ -313,7 +313,7 @@ namespace Kask.Services.DAO
         public int ReferenceID { get; set; }
 
         [DataMember]
-        public int YearsKnown { get; set; }
+        public int? YearsKnown { get; set; }
     }
 
     [DataContract]
