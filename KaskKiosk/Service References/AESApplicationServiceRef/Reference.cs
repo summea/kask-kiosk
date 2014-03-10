@@ -15,21 +15,18 @@ namespace KaskKiosk.AESApplicationServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Application", Namespace="http://schemas.datacontract.org/2004/07/Kask.DAL.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ApplicationDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
     [System.SerializableAttribute()]
-    public partial class Application : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ApplicationDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ApplicationIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ApplicationStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Application_IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private KaskKiosk.AESApplicationServiceRef.Applied[] AppliedsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<byte> AvailableForDaysField;
@@ -48,6 +45,9 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<byte> FullTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.TimeSpan> MondayFromField;
@@ -99,6 +99,19 @@ namespace KaskKiosk.AESApplicationServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ApplicationID {
+            get {
+                return this.ApplicationIDField;
+            }
+            set {
+                if ((this.ApplicationIDField.Equals(value) != true)) {
+                    this.ApplicationIDField = value;
+                    this.RaisePropertyChanged("ApplicationID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ApplicationStatus {
             get {
                 return this.ApplicationStatusField;
@@ -107,32 +120,6 @@ namespace KaskKiosk.AESApplicationServiceRef {
                 if ((object.ReferenceEquals(this.ApplicationStatusField, value) != true)) {
                     this.ApplicationStatusField = value;
                     this.RaisePropertyChanged("ApplicationStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Application_ID {
-            get {
-                return this.Application_IDField;
-            }
-            set {
-                if ((this.Application_IDField.Equals(value) != true)) {
-                    this.Application_IDField = value;
-                    this.RaisePropertyChanged("Application_ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public KaskKiosk.AESApplicationServiceRef.Applied[] Applieds {
-            get {
-                return this.AppliedsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AppliedsField, value) != true)) {
-                    this.AppliedsField = value;
-                    this.RaisePropertyChanged("Applieds");
                 }
             }
         }
@@ -211,6 +198,19 @@ namespace KaskKiosk.AESApplicationServiceRef {
                 if ((this.FullTimeField.Equals(value) != true)) {
                     this.FullTimeField = value;
                     this.RaisePropertyChanged("FullTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
                 }
             }
         }
@@ -396,429 +396,6 @@ namespace KaskKiosk.AESApplicationServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Applied", Namespace="http://schemas.datacontract.org/2004/07/Kask.DAL.Models")]
-    [System.SerializableAttribute()]
-    public partial class Applied : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private KaskKiosk.AESApplicationServiceRef.Applicant ApplicantField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Applicant_IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private KaskKiosk.AESApplicationServiceRef.Application ApplicationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Application_IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Applied_IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateAppliedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private KaskKiosk.AESApplicationServiceRef.Job JobField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Job_IDField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public KaskKiosk.AESApplicationServiceRef.Applicant Applicant {
-            get {
-                return this.ApplicantField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ApplicantField, value) != true)) {
-                    this.ApplicantField = value;
-                    this.RaisePropertyChanged("Applicant");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Applicant_ID {
-            get {
-                return this.Applicant_IDField;
-            }
-            set {
-                if ((this.Applicant_IDField.Equals(value) != true)) {
-                    this.Applicant_IDField = value;
-                    this.RaisePropertyChanged("Applicant_ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public KaskKiosk.AESApplicationServiceRef.Application Application {
-            get {
-                return this.ApplicationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ApplicationField, value) != true)) {
-                    this.ApplicationField = value;
-                    this.RaisePropertyChanged("Application");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Application_ID {
-            get {
-                return this.Application_IDField;
-            }
-            set {
-                if ((this.Application_IDField.Equals(value) != true)) {
-                    this.Application_IDField = value;
-                    this.RaisePropertyChanged("Application_ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Applied_ID {
-            get {
-                return this.Applied_IDField;
-            }
-            set {
-                if ((this.Applied_IDField.Equals(value) != true)) {
-                    this.Applied_IDField = value;
-                    this.RaisePropertyChanged("Applied_ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateApplied {
-            get {
-                return this.DateAppliedField;
-            }
-            set {
-                if ((this.DateAppliedField.Equals(value) != true)) {
-                    this.DateAppliedField = value;
-                    this.RaisePropertyChanged("DateApplied");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public KaskKiosk.AESApplicationServiceRef.Job Job {
-            get {
-                return this.JobField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.JobField, value) != true)) {
-                    this.JobField = value;
-                    this.RaisePropertyChanged("Job");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Job_ID {
-            get {
-                return this.Job_IDField;
-            }
-            set {
-                if ((this.Job_IDField.Equals(value) != true)) {
-                    this.Job_IDField = value;
-                    this.RaisePropertyChanged("Job_ID");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Applicant", Namespace="http://schemas.datacontract.org/2004/07/Kask.DAL.Models")]
-    [System.SerializableAttribute()]
-    public partial class Applicant : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ApplicantAddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Applicant_IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private KaskKiosk.AESApplicationServiceRef.Applied[] AppliedsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GenderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MiddleNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameAliasField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PhoneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SSNField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ApplicantAddress {
-            get {
-                return this.ApplicantAddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ApplicantAddressField, value) != true)) {
-                    this.ApplicantAddressField = value;
-                    this.RaisePropertyChanged("ApplicantAddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Applicant_ID {
-            get {
-                return this.Applicant_IDField;
-            }
-            set {
-                if ((this.Applicant_IDField.Equals(value) != true)) {
-                    this.Applicant_IDField = value;
-                    this.RaisePropertyChanged("Applicant_ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public KaskKiosk.AESApplicationServiceRef.Applied[] Applieds {
-            get {
-                return this.AppliedsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AppliedsField, value) != true)) {
-                    this.AppliedsField = value;
-                    this.RaisePropertyChanged("Applieds");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Gender {
-            get {
-                return this.GenderField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GenderField, value) != true)) {
-                    this.GenderField = value;
-                    this.RaisePropertyChanged("Gender");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MiddleName {
-            get {
-                return this.MiddleNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MiddleNameField, value) != true)) {
-                    this.MiddleNameField = value;
-                    this.RaisePropertyChanged("MiddleName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string NameAlias {
-            get {
-                return this.NameAliasField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameAliasField, value) != true)) {
-                    this.NameAliasField = value;
-                    this.RaisePropertyChanged("NameAlias");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Phone {
-            get {
-                return this.PhoneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PhoneField, value) != true)) {
-                    this.PhoneField = value;
-                    this.RaisePropertyChanged("Phone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SSN {
-            get {
-                return this.SSNField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SSNField, value) != true)) {
-                    this.SSNField = value;
-                    this.RaisePropertyChanged("SSN");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Job", Namespace="http://schemas.datacontract.org/2004/07/Kask.DAL.Models")]
-    [System.SerializableAttribute()]
-    public partial class Job : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private KaskKiosk.AESApplicationServiceRef.Applied[] AppliedsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Job_IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TitleField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public KaskKiosk.AESApplicationServiceRef.Applied[] Applieds {
-            get {
-                return this.AppliedsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AppliedsField, value) != true)) {
-                    this.AppliedsField = value;
-                    this.RaisePropertyChanged("Applieds");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Job_ID {
-            get {
-                return this.Job_IDField;
-            }
-            set {
-                if ((this.Job_IDField.Equals(value) != true)) {
-                    this.Job_IDField = value;
-                    this.RaisePropertyChanged("Job_ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Title {
-            get {
-                return this.TitleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
-                    this.TitleField = value;
-                    this.RaisePropertyChanged("Title");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
     [System.SerializableAttribute()]
     public partial class KaskServiceException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -853,41 +430,41 @@ namespace KaskKiosk.AESApplicationServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationByID", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationByIDResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicationService/GetApplicationByIDKaskServiceExceptionFaul" +
             "t", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        KaskKiosk.AESApplicationServiceRef.Application GetApplicationByID(int id);
+        KaskKiosk.AESApplicationServiceRef.ApplicationDAO GetApplicationByID(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationByID", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationByIDResponse")]
-        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Application> GetApplicationByIDAsync(int id);
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO> GetApplicationByIDAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationsByName", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsByNameResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicationService/GetApplicationsByNameKaskServiceExceptionF" +
             "ault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        KaskKiosk.AESApplicationServiceRef.Application[] GetApplicationsByName(string first, string last, string ssn);
+        KaskKiosk.AESApplicationServiceRef.ApplicationDAO[] GetApplicationsByName(string first, string last, string ssn);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationsByName", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsByNameResponse")]
-        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Application[]> GetApplicationsByNameAsync(string first, string last, string ssn);
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO[]> GetApplicationsByNameAsync(string first, string last, string ssn);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplications", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicationService/GetApplicationsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        KaskKiosk.AESApplicationServiceRef.Application[] GetApplications();
+        KaskKiosk.AESApplicationServiceRef.ApplicationDAO[] GetApplications();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplications", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsResponse")]
-        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Application[]> GetApplicationsAsync();
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO[]> GetApplicationsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/CreateApplication", ReplyAction="http://tempuri.org/IApplicationService/CreateApplicationResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicationService/CreateApplicationKaskServiceExceptionFault" +
             "", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        bool CreateApplication(KaskKiosk.AESApplicationServiceRef.Application app);
+        bool CreateApplication(KaskKiosk.AESApplicationServiceRef.ApplicationDAO app);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/CreateApplication", ReplyAction="http://tempuri.org/IApplicationService/CreateApplicationResponse")]
-        System.Threading.Tasks.Task<bool> CreateApplicationAsync(KaskKiosk.AESApplicationServiceRef.Application app);
+        System.Threading.Tasks.Task<bool> CreateApplicationAsync(KaskKiosk.AESApplicationServiceRef.ApplicationDAO app);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/UpdateApplication", ReplyAction="http://tempuri.org/IApplicationService/UpdateApplicationResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicationService/UpdateApplicationKaskServiceExceptionFault" +
             "", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        bool UpdateApplication(KaskKiosk.AESApplicationServiceRef.Application newApp);
+        bool UpdateApplication(KaskKiosk.AESApplicationServiceRef.ApplicationDAO newApp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/UpdateApplication", ReplyAction="http://tempuri.org/IApplicationService/UpdateApplicationResponse")]
-        System.Threading.Tasks.Task<bool> UpdateApplicationAsync(KaskKiosk.AESApplicationServiceRef.Application newApp);
+        System.Threading.Tasks.Task<bool> UpdateApplicationAsync(KaskKiosk.AESApplicationServiceRef.ApplicationDAO newApp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/DeleteApplication", ReplyAction="http://tempuri.org/IApplicationService/DeleteApplicationResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicationService/DeleteApplicationKaskServiceExceptionFault" +
@@ -925,43 +502,43 @@ namespace KaskKiosk.AESApplicationServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public KaskKiosk.AESApplicationServiceRef.Application GetApplicationByID(int id) {
+        public KaskKiosk.AESApplicationServiceRef.ApplicationDAO GetApplicationByID(int id) {
             return base.Channel.GetApplicationByID(id);
         }
         
-        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Application> GetApplicationByIDAsync(int id) {
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO> GetApplicationByIDAsync(int id) {
             return base.Channel.GetApplicationByIDAsync(id);
         }
         
-        public KaskKiosk.AESApplicationServiceRef.Application[] GetApplicationsByName(string first, string last, string ssn) {
+        public KaskKiosk.AESApplicationServiceRef.ApplicationDAO[] GetApplicationsByName(string first, string last, string ssn) {
             return base.Channel.GetApplicationsByName(first, last, ssn);
         }
         
-        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Application[]> GetApplicationsByNameAsync(string first, string last, string ssn) {
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO[]> GetApplicationsByNameAsync(string first, string last, string ssn) {
             return base.Channel.GetApplicationsByNameAsync(first, last, ssn);
         }
         
-        public KaskKiosk.AESApplicationServiceRef.Application[] GetApplications() {
+        public KaskKiosk.AESApplicationServiceRef.ApplicationDAO[] GetApplications() {
             return base.Channel.GetApplications();
         }
         
-        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Application[]> GetApplicationsAsync() {
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO[]> GetApplicationsAsync() {
             return base.Channel.GetApplicationsAsync();
         }
         
-        public bool CreateApplication(KaskKiosk.AESApplicationServiceRef.Application app) {
+        public bool CreateApplication(KaskKiosk.AESApplicationServiceRef.ApplicationDAO app) {
             return base.Channel.CreateApplication(app);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateApplicationAsync(KaskKiosk.AESApplicationServiceRef.Application app) {
+        public System.Threading.Tasks.Task<bool> CreateApplicationAsync(KaskKiosk.AESApplicationServiceRef.ApplicationDAO app) {
             return base.Channel.CreateApplicationAsync(app);
         }
         
-        public bool UpdateApplication(KaskKiosk.AESApplicationServiceRef.Application newApp) {
+        public bool UpdateApplication(KaskKiosk.AESApplicationServiceRef.ApplicationDAO newApp) {
             return base.Channel.UpdateApplication(newApp);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateApplicationAsync(KaskKiosk.AESApplicationServiceRef.Application newApp) {
+        public System.Threading.Tasks.Task<bool> UpdateApplicationAsync(KaskKiosk.AESApplicationServiceRef.ApplicationDAO newApp) {
             return base.Channel.UpdateApplicationAsync(newApp);
         }
         
@@ -971,207 +548,6 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<bool> DeleteApplicationAsync(int ID) {
             return base.Channel.DeleteApplicationAsync(ID);
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IApplicantService")]
-    public interface IApplicantService {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicantByID", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantByIDResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicantService/GetApplicantByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        KaskKiosk.AESApplicationServiceRef.Applicant GetApplicantByID(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicantByID", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantByIDResponse")]
-        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Applicant> GetApplicantByIDAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicants", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicantService/GetApplicantsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        KaskKiosk.AESApplicationServiceRef.Applicant[] GetApplicants();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/GetApplicants", ReplyAction="http://tempuri.org/IApplicantService/GetApplicantsResponse")]
-        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Applicant[]> GetApplicantsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/CreateApplicant", ReplyAction="http://tempuri.org/IApplicantService/CreateApplicantResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicantService/CreateApplicantKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        bool CreateApplicant(KaskKiosk.AESApplicationServiceRef.Applicant a);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/CreateApplicant", ReplyAction="http://tempuri.org/IApplicantService/CreateApplicantResponse")]
-        System.Threading.Tasks.Task<bool> CreateApplicantAsync(KaskKiosk.AESApplicationServiceRef.Applicant a);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/UpdateApplicant", ReplyAction="http://tempuri.org/IApplicantService/UpdateApplicantResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicantService/UpdateApplicantKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        bool UpdateApplicant(KaskKiosk.AESApplicationServiceRef.Applicant newApp);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/UpdateApplicant", ReplyAction="http://tempuri.org/IApplicantService/UpdateApplicantResponse")]
-        System.Threading.Tasks.Task<bool> UpdateApplicantAsync(KaskKiosk.AESApplicationServiceRef.Applicant newApp);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/DeleteApplicant", ReplyAction="http://tempuri.org/IApplicantService/DeleteApplicantResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicantService/DeleteApplicantKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        bool DeleteApplicant(int ID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicantService/DeleteApplicant", ReplyAction="http://tempuri.org/IApplicantService/DeleteApplicantResponse")]
-        System.Threading.Tasks.Task<bool> DeleteApplicantAsync(int ID);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IApplicantServiceChannel : KaskKiosk.AESApplicationServiceRef.IApplicantService, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ApplicantServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IApplicantService>, KaskKiosk.AESApplicationServiceRef.IApplicantService {
-        
-        public ApplicantServiceClient() {
-        }
-        
-        public ApplicantServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
-        }
-        
-        public ApplicantServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ApplicantServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ApplicantServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
-        }
-        
-        public KaskKiosk.AESApplicationServiceRef.Applicant GetApplicantByID(int id) {
-            return base.Channel.GetApplicantByID(id);
-        }
-        
-        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Applicant> GetApplicantByIDAsync(int id) {
-            return base.Channel.GetApplicantByIDAsync(id);
-        }
-        
-        public KaskKiosk.AESApplicationServiceRef.Applicant[] GetApplicants() {
-            return base.Channel.GetApplicants();
-        }
-        
-        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Applicant[]> GetApplicantsAsync() {
-            return base.Channel.GetApplicantsAsync();
-        }
-        
-        public bool CreateApplicant(KaskKiosk.AESApplicationServiceRef.Applicant a) {
-            return base.Channel.CreateApplicant(a);
-        }
-        
-        public System.Threading.Tasks.Task<bool> CreateApplicantAsync(KaskKiosk.AESApplicationServiceRef.Applicant a) {
-            return base.Channel.CreateApplicantAsync(a);
-        }
-        
-        public bool UpdateApplicant(KaskKiosk.AESApplicationServiceRef.Applicant newApp) {
-            return base.Channel.UpdateApplicant(newApp);
-        }
-        
-        public System.Threading.Tasks.Task<bool> UpdateApplicantAsync(KaskKiosk.AESApplicationServiceRef.Applicant newApp) {
-            return base.Channel.UpdateApplicantAsync(newApp);
-        }
-        
-        public bool DeleteApplicant(int ID) {
-            return base.Channel.DeleteApplicant(ID);
-        }
-        
-        public System.Threading.Tasks.Task<bool> DeleteApplicantAsync(int ID) {
-            return base.Channel.DeleteApplicantAsync(ID);
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IAppliedService")]
-    public interface IAppliedService {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetAppliedByID", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedByIDResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAppliedService/GetAppliedByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        KaskKiosk.AESApplicationServiceRef.Applied GetAppliedByID(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetAppliedByID", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedByIDResponse")]
-        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Applied> GetAppliedByIDAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetApplieds", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAppliedService/GetAppliedsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        KaskKiosk.AESApplicationServiceRef.Applied[] GetApplieds();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetApplieds", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedsResponse")]
-        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Applied[]> GetAppliedsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/CreateApplied", ReplyAction="http://tempuri.org/IAppliedService/CreateAppliedResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAppliedService/CreateAppliedKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        bool CreateApplied(KaskKiosk.AESApplicationServiceRef.Applied a);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/CreateApplied", ReplyAction="http://tempuri.org/IAppliedService/CreateAppliedResponse")]
-        System.Threading.Tasks.Task<bool> CreateAppliedAsync(KaskKiosk.AESApplicationServiceRef.Applied a);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/DeleteApplied", ReplyAction="http://tempuri.org/IAppliedService/DeleteAppliedResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAppliedService/DeleteAppliedKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
-        bool DeleteApplied(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/DeleteApplied", ReplyAction="http://tempuri.org/IAppliedService/DeleteAppliedResponse")]
-        System.Threading.Tasks.Task<bool> DeleteAppliedAsync(int id);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAppliedServiceChannel : KaskKiosk.AESApplicationServiceRef.IAppliedService, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AppliedServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IAppliedService>, KaskKiosk.AESApplicationServiceRef.IAppliedService {
-        
-        public AppliedServiceClient() {
-        }
-        
-        public AppliedServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
-        }
-        
-        public AppliedServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public AppliedServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public AppliedServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
-        }
-        
-        public KaskKiosk.AESApplicationServiceRef.Applied GetAppliedByID(int id) {
-            return base.Channel.GetAppliedByID(id);
-        }
-        
-        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Applied> GetAppliedByIDAsync(int id) {
-            return base.Channel.GetAppliedByIDAsync(id);
-        }
-        
-        public KaskKiosk.AESApplicationServiceRef.Applied[] GetApplieds() {
-            return base.Channel.GetApplieds();
-        }
-        
-        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.Applied[]> GetAppliedsAsync() {
-            return base.Channel.GetAppliedsAsync();
-        }
-        
-        public bool CreateApplied(KaskKiosk.AESApplicationServiceRef.Applied a) {
-            return base.Channel.CreateApplied(a);
-        }
-        
-        public System.Threading.Tasks.Task<bool> CreateAppliedAsync(KaskKiosk.AESApplicationServiceRef.Applied a) {
-            return base.Channel.CreateAppliedAsync(a);
-        }
-        
-        public bool DeleteApplied(int id) {
-            return base.Channel.DeleteApplied(id);
-        }
-        
-        public System.Threading.Tasks.Task<bool> DeleteAppliedAsync(int id) {
-            return base.Channel.DeleteAppliedAsync(id);
         }
     }
 }

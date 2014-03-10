@@ -1,4 +1,5 @@
 ﻿using KaskKiosk.AESApplicationServiceRef;
+
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,12 +19,12 @@ namespace KaskKiosk.Controllers
         readonly string uri = "http://localhost:51309/api/Application";
         readonly string uriApplicant = "http://localhost:51309/api/Applicant";
 
-        private async Task<List<Application>> GetApplicationsAsync()
+        private async Task<List<ApplicationDAO>> GetApplicationsAsync()
         {
             using (HttpClient httpClient = new HttpClient())
             {
                 Task<string> response = httpClient.GetStringAsync(uri);
-                return JsonConvert.DeserializeObjectAsync<List<Application>>(response.Result).Result;
+                return JsonConvert.DeserializeObjectAsync<List<ApplicationDAO>>(response.Result).Result;
             }
         }
         // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -58,13 +59,15 @@ namespace KaskKiosk.Controllers
             try
             {
                 // TODO: Add insert logic here
-
-                Applicant applicant = new Applicant();
+                // UNCOMMENT ME
+                /* =================================================
+                ApplicantDAO applicant = new ApplicantDAO();
                 applicant.FirstName = Request.Form["FirstName"];
                 applicant.LastName = Request.Form["LastName"];
-                applicant.SSN = Request.Form["SSN"];
+                applicant.SSN = Request.Form["SSN"];*/
+                // ==================================================
 
-                Application application = new Application();
+                ApplicationDAO application = new ApplicationDAO();
                 application.ApplicationStatus = "Submitted";
 
                 // save data back to service
@@ -75,13 +78,16 @@ namespace KaskKiosk.Controllers
                     HttpResponseMessage result = new HttpResponseMessage();
                     string resultContent = "";
 
+                    /* UNCOMMENT ME
+                     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                     // post (save) applicant data
                     result = httpClient.PostAsJsonAsync(uriApplicant, applicant).Result;
                     resultContent = result.Content.ReadAsStringAsync().Result;
+                    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
                     // post (save) application data
-                    //result = httpClient.PostAsJsonAsync(uri, application).Result;
-                    //resultContent = result.Content.ReadAsStringAsync().Result;
+                    result = httpClient.PostAsJsonAsync(uri, application).Result;
+                    resultContent = result.Content.ReadAsStringAsync().Result;
                 }
 
 

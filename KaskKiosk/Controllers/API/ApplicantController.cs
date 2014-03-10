@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.ServiceModel;
 using System.Web;
 using System.Web.Http;
-
+/*
 namespace KaskKiosk.Controllers.API
 {
     public class ApplicantController : ApiController
@@ -63,3 +63,4 @@ namespace KaskKiosk.Controllers.API
         }
     }
 }
+*/
