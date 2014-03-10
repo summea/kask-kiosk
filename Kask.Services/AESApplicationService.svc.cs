@@ -1,6 +1,7 @@
-﻿using Kask.DAL2.Models;
-using Kask.Services.Interfaces;
+﻿using Kask.Services.Interfaces;
 using Kask.Services.Exceptions;
+using Kask.Services.DAO;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -10,13 +11,13 @@ namespace Kask.Services
 {
     public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEmployerService
     {
-        public Application GetApplicationByID(int id)
+        public ApplicationDAO GetApplicationByID(int id)
         {
             try
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    Application application = (from a in db.Applications where a.Application_ID == id select a).First();
+                    ApplicationDAO application = (from a in db.Applications where a.Application_ID == id select a).First();
                     return (application != null ? application : null);
                 }
             }

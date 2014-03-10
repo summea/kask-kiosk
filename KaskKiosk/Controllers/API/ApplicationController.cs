@@ -37,7 +37,7 @@ namespace KaskKiosk.Controllers.API
 
             try
             {
-                Application result = client.GetApplicationById(id);
+                Application result = client.GetApplicationByID(id);
                 return result;
             }
             catch (FaultException<KaskServiceException> e)

@@ -177,6 +177,9 @@
     </Content>
     <Content Include="DEPRECATED\Application\Create.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\App\Index.cshtml" />
+    <Content Include="Views\App\Create.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -189,9 +192,6 @@
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\App\Index.cshtml" />
-    <Content Include="Views\App\Create.cshtml" />
-    <Content Include="Views\Home\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Kask.DAL.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Kask.DAL.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Application">
     <xs:sequence>
       <xs:element minOccurs="0" name="ApplicationStatus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Application_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Applieds" nillable="true" type="tns:ArrayOfApplied" />
       <xs:element minOccurs="0" name="AvailableForDays" nillable="true" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="AvailableForEvenings" nillable="true" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="AvailableForWeekends" nillable="true" type="xs:unsignedByte" />
@@ -27,16 +28,30 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Application" nillable="true" type="tns:Application" />
-  <xs:complexType name="ArrayOfApplication">
+  <xs:complexType name="ArrayOfApplied">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Application" nillable="true" type="tns:Application" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Applied" nillable="true" type="tns:Applied" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfApplication" nillable="true" type="tns:ArrayOfApplication" />
+  <xs:element name="ArrayOfApplied" nillable="true" type="tns:ArrayOfApplied" />
+  <xs:complexType name="Applied">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Applicant" nillable="true" type="tns:Applicant" />
+      <xs:element minOccurs="0" name="Applicant_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Application" nillable="true" type="tns:Application" />
+      <xs:element minOccurs="0" name="Application_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Applied_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="DateApplied" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Job" nillable="true" type="tns:Job" />
+      <xs:element minOccurs="0" name="Job_ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Applied" nillable="true" type="tns:Applied" />
   <xs:complexType name="Applicant">
     <xs:sequence>
       <xs:element minOccurs="0" name="ApplicantAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Applicant_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Applieds" nillable="true" type="tns:ArrayOfApplied" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
@@ -47,25 +62,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Applicant" nillable="true" type="tns:Applicant" />
+  <xs:complexType name="Job">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Applieds" nillable="true" type="tns:ArrayOfApplied" />
+      <xs:element minOccurs="0" name="Job_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Job" nillable="true" type="tns:Job" />
+  <xs:complexType name="ArrayOfApplication">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Application" nillable="true" type="tns:Application" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplication" nillable="true" type="tns:ArrayOfApplication" />
   <xs:complexType name="ArrayOfApplicant">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Applicant" nillable="true" type="tns:Applicant" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfApplicant" nillable="true" type="tns:ArrayOfApplicant" />
-  <xs:complexType name="Applied">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Applicant_ID" type="xs:int" />
-      <xs:element minOccurs="0" name="Application_ID" type="xs:int" />
-      <xs:element minOccurs="0" name="DateApplied" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Job_ID" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Applied" nillable="true" type="tns:Applied" />
-  <xs:complexType name="ArrayOfApplied">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Applied" nillable="true" type="tns:Applied" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfApplied" nillable="true" type="tns:ArrayOfApplied" />
 </xs:schema>

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Kask.DAL2")]
+[assembly: AssemblyTitle("Kask.DAL")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Kask.DAL2")]
+[assembly: AssemblyProduct("Kask.DAL")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("271888ac-8453-413f-84b8-0558e1f027c4")]
+[assembly: Guid("8e939bf9-9d92-49df-9f0b-5a5b58e770c2")]
 
 // Version information for an assembly consists of the following four values:
 //

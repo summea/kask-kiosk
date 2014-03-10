@@ -5,25 +5,25 @@
       <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" />
       <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Kask.DAL2.Models" />
+      <xsd:import schemaLocation="http://localhost:1760/AESApplicationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Kask.DAL.Models" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IApplicationService_GetApplicationById_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetApplicationById" />
+  <wsdl:message name="IApplicationService_GetApplicationByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationByID" />
   </wsdl:message>
-  <wsdl:message name="IApplicationService_GetApplicationById_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetApplicationByIdResponse" />
+  <wsdl:message name="IApplicationService_GetApplicationByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationByIDResponse" />
   </wsdl:message>
-  <wsdl:message name="IApplicationService_GetApplicationById_KaskServiceExceptionFault_FaultMessage">
+  <wsdl:message name="IApplicationService_GetApplicationByID_KaskServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q1:KaskServiceException" />
   </wsdl:message>
-  <wsdl:message name="IApplicationService_GetApplicationByName_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetApplicationByName" />
+  <wsdl:message name="IApplicationService_GetApplicationsByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsByName" />
   </wsdl:message>
-  <wsdl:message name="IApplicationService_GetApplicationByName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetApplicationByNameResponse" />
+  <wsdl:message name="IApplicationService_GetApplicationsByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsByNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IApplicationService_GetApplicationByName_KaskServiceExceptionFault_FaultMessage">
+  <wsdl:message name="IApplicationService_GetApplicationsByName_KaskServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q2:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IApplicationService_GetApplications_InputMessage">
@@ -144,15 +144,15 @@
     <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q15:KaskServiceException" />
   </wsdl:message>
   <wsdl:portType name="IApplicationService">
-    <wsdl:operation name="GetApplicationById">
-      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationById" message="tns:IApplicationService_GetApplicationById_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByIdResponse" message="tns:IApplicationService_GetApplicationById_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByIdKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_GetApplicationById_KaskServiceExceptionFault_FaultMessage" />
+    <wsdl:operation name="GetApplicationByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByID" message="tns:IApplicationService_GetApplicationByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByIDResponse" message="tns:IApplicationService_GetApplicationByID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByIDKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_GetApplicationByID_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetApplicationByName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByName" message="tns:IApplicationService_GetApplicationByName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByNameResponse" message="tns:IApplicationService_GetApplicationByName_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByNameKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_GetApplicationByName_KaskServiceExceptionFault_FaultMessage" />
+    <wsdl:operation name="GetApplicationsByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationsByName" message="tns:IApplicationService_GetApplicationsByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationsByNameResponse" message="tns:IApplicationService_GetApplicationsByName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationsByNameKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IApplicationService_GetApplicationsByName_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetApplications">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplications" message="tns:IApplicationService_GetApplications_InputMessage" />
@@ -226,8 +226,8 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IApplicationService" type="tns:IApplicationService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetApplicationById">
-      <soap:operation soapAction="http://tempuri.org/IApplicationService/GetApplicationById" style="document" />
+    <wsdl:operation name="GetApplicationByID">
+      <soap:operation soapAction="http://tempuri.org/IApplicationService/GetApplicationByID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -238,8 +238,8 @@
         <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
-    <wsdl:operation name="GetApplicationByName">
-      <soap:operation soapAction="http://tempuri.org/IApplicationService/GetApplicationByName" style="document" />
+    <wsdl:operation name="GetApplicationsByName">
+      <soap:operation soapAction="http://tempuri.org/IApplicationService/GetApplicationsByName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

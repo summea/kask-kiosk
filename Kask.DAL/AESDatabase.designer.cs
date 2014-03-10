@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kask.DAL2.Models
+namespace Kask.DAL.Models
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -33,9 +33,15 @@ namespace Kask.DAL2.Models
     partial void InsertApplicant(Applicant instance);
     partial void UpdateApplicant(Applicant instance);
     partial void DeleteApplicant(Applicant instance);
+    partial void InsertSkill(Skill instance);
+    partial void UpdateSkill(Skill instance);
+    partial void DeleteSkill(Skill instance);
     partial void InsertApplication(Application instance);
     partial void UpdateApplication(Application instance);
     partial void DeleteApplication(Application instance);
+    partial void InsertApplied(Applied instance);
+    partial void UpdateApplied(Applied instance);
+    partial void DeleteApplied(Applied instance);
     partial void InsertEmployer(Employer instance);
     partial void UpdateEmployer(Employer instance);
     partial void DeleteEmployer(Employer instance);
@@ -48,13 +54,10 @@ namespace Kask.DAL2.Models
     partial void InsertSchool(School instance);
     partial void UpdateSchool(School instance);
     partial void DeleteSchool(School instance);
-    partial void InsertSkill(Skill instance);
-    partial void UpdateSkill(Skill instance);
-    partial void DeleteSkill(Skill instance);
     #endregion
 		
 		public AESDatabaseDataContext() : 
-				base(global::Kask.DAL2.Properties.Settings.Default.AESDatabaseConnectionString, mappingSource)
+				base(global::Kask.DAL.Properties.Settings.Default.AESDatabaseConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -88,6 +91,14 @@ namespace Kask.DAL2.Models
 			get
 			{
 				return this.GetTable<Applicant>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Skill> Skills
+		{
+			get
+			{
+				return this.GetTable<Skill>();
 			}
 		}
 		
@@ -178,14 +189,6 @@ namespace Kask.DAL2.Models
 				return this.GetTable<School>();
 			}
 		}
-		
-		public System.Data.Linq.Table<Skill> Skills
-		{
-			get
-			{
-				return this.GetTable<Skill>();
-			}
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Applicant")]
@@ -211,6 +214,8 @@ namespace Kask.DAL2.Models
 		private string _Phone;
 		
 		private string _NameAlias;
+		
+		private EntitySet<Applied> _Applieds;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -238,6 +243,7 @@ namespace Kask.DAL2.Models
 		
 		public Applicant()
 		{
+			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
 			OnCreated();
 		}
 		
@@ -421,6 +427,117 @@ namespace Kask.DAL2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Applied", Storage="_Applieds", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
+		public EntitySet<Applied> Applieds
+		{
+			get
+			{
+				return this._Applieds;
+			}
+			set
+			{
+				this._Applieds.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Applieds(Applied entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = this;
+		}
+		
+		private void detach_Applieds(Applied entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Skill")]
+	public partial class Skill : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Skill_ID;
+		
+		private string _SkillName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSkill_IDChanging(int value);
+    partial void OnSkill_IDChanged();
+    partial void OnSkillNameChanging(string value);
+    partial void OnSkillNameChanged();
+    #endregion
+		
+		public Skill()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skill_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Skill_ID
+		{
+			get
+			{
+				return this._Skill_ID;
+			}
+			set
+			{
+				if ((this._Skill_ID != value))
+				{
+					this.OnSkill_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Skill_ID = value;
+					this.SendPropertyChanged("Skill_ID");
+					this.OnSkill_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SkillName", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string SkillName
+		{
+			get
+			{
+				return this._SkillName;
+			}
+			set
+			{
+				if ((this._SkillName != value))
+				{
+					this.OnSkillNameChanging(value);
+					this.SendPropertyChanging();
+					this._SkillName = value;
+					this.SendPropertyChanged("SkillName");
+					this.OnSkillNameChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -490,6 +607,8 @@ namespace Kask.DAL2.Models
 		
 		private System.Nullable<System.TimeSpan> _SundayTo;
 		
+		private EntitySet<Applied> _Applieds;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -540,6 +659,7 @@ namespace Kask.DAL2.Models
 		
 		public Application()
 		{
+			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
 			OnCreated();
 		}
 		
@@ -963,6 +1083,19 @@ namespace Kask.DAL2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Application_Applied", Storage="_Applieds", ThisKey="Application_ID", OtherKey="Application_ID")]
+		public EntitySet<Applied> Applieds
+		{
+			get
+			{
+				return this._Applieds;
+			}
+			set
+			{
+				this._Applieds.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -982,11 +1115,27 @@ namespace Kask.DAL2.Models
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_Applieds(Applied entity)
+		{
+			this.SendPropertyChanging();
+			entity.Application = this;
+		}
+		
+		private void detach_Applieds(Applied entity)
+		{
+			this.SendPropertyChanging();
+			entity.Application = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Applied")]
-	public partial class Applied
+	public partial class Applied : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Applied_ID;
 		
 		private int _Applicant_ID;
 		
@@ -996,8 +1145,54 @@ namespace Kask.DAL2.Models
 		
 		private System.DateTime _DateApplied;
 		
+		private EntityRef<Applicant> _Applicant;
+		
+		private EntityRef<Application> _Application;
+		
+		private EntityRef<Job> _Job;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnApplied_IDChanging(int value);
+    partial void OnApplied_IDChanged();
+    partial void OnApplicant_IDChanging(int value);
+    partial void OnApplicant_IDChanged();
+    partial void OnApplication_IDChanging(int value);
+    partial void OnApplication_IDChanged();
+    partial void OnJob_IDChanging(int value);
+    partial void OnJob_IDChanged();
+    partial void OnDateAppliedChanging(System.DateTime value);
+    partial void OnDateAppliedChanged();
+    #endregion
+		
 		public Applied()
 		{
+			this._Applicant = default(EntityRef<Applicant>);
+			this._Application = default(EntityRef<Application>);
+			this._Job = default(EntityRef<Job>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applied_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Applied_ID
+		{
+			get
+			{
+				return this._Applied_ID;
+			}
+			set
+			{
+				if ((this._Applied_ID != value))
+				{
+					this.OnApplied_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Applied_ID = value;
+					this.SendPropertyChanged("Applied_ID");
+					this.OnApplied_IDChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
@@ -1011,7 +1206,15 @@ namespace Kask.DAL2.Models
 			{
 				if ((this._Applicant_ID != value))
 				{
+					if (this._Applicant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnApplicant_IDChanging(value);
+					this.SendPropertyChanging();
 					this._Applicant_ID = value;
+					this.SendPropertyChanged("Applicant_ID");
+					this.OnApplicant_IDChanged();
 				}
 			}
 		}
@@ -1027,7 +1230,15 @@ namespace Kask.DAL2.Models
 			{
 				if ((this._Application_ID != value))
 				{
+					if (this._Application.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnApplication_IDChanging(value);
+					this.SendPropertyChanging();
 					this._Application_ID = value;
+					this.SendPropertyChanged("Application_ID");
+					this.OnApplication_IDChanged();
 				}
 			}
 		}
@@ -1043,7 +1254,15 @@ namespace Kask.DAL2.Models
 			{
 				if ((this._Job_ID != value))
 				{
+					if (this._Job.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnJob_IDChanging(value);
+					this.SendPropertyChanging();
 					this._Job_ID = value;
+					this.SendPropertyChanged("Job_ID");
+					this.OnJob_IDChanged();
 				}
 			}
 		}
@@ -1059,8 +1278,134 @@ namespace Kask.DAL2.Models
 			{
 				if ((this._DateApplied != value))
 				{
+					this.OnDateAppliedChanging(value);
+					this.SendPropertyChanging();
 					this._DateApplied = value;
+					this.SendPropertyChanged("DateApplied");
+					this.OnDateAppliedChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Applied", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Applicant Applicant
+		{
+			get
+			{
+				return this._Applicant.Entity;
+			}
+			set
+			{
+				Applicant previousValue = this._Applicant.Entity;
+				if (((previousValue != value) 
+							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Applicant.Entity = null;
+						previousValue.Applieds.Remove(this);
+					}
+					this._Applicant.Entity = value;
+					if ((value != null))
+					{
+						value.Applieds.Add(this);
+						this._Applicant_ID = value.Applicant_ID;
+					}
+					else
+					{
+						this._Applicant_ID = default(int);
+					}
+					this.SendPropertyChanged("Applicant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Application_Applied", Storage="_Application", ThisKey="Application_ID", OtherKey="Application_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Application Application
+		{
+			get
+			{
+				return this._Application.Entity;
+			}
+			set
+			{
+				Application previousValue = this._Application.Entity;
+				if (((previousValue != value) 
+							|| (this._Application.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Application.Entity = null;
+						previousValue.Applieds.Remove(this);
+					}
+					this._Application.Entity = value;
+					if ((value != null))
+					{
+						value.Applieds.Add(this);
+						this._Application_ID = value.Application_ID;
+					}
+					else
+					{
+						this._Application_ID = default(int);
+					}
+					this.SendPropertyChanged("Application");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_Applied", Storage="_Job", ThisKey="Job_ID", OtherKey="Job_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Job Job
+		{
+			get
+			{
+				return this._Job.Entity;
+			}
+			set
+			{
+				Job previousValue = this._Job.Entity;
+				if (((previousValue != value) 
+							|| (this._Job.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Job.Entity = null;
+						previousValue.Applieds.Remove(this);
+					}
+					this._Job.Entity = value;
+					if ((value != null))
+					{
+						value.Applieds.Add(this);
+						this._Job_ID = value.Job_ID;
+					}
+					else
+					{
+						this._Job_ID = default(int);
+					}
+					this.SendPropertyChanged("Job");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1677,6 +2022,8 @@ namespace Kask.DAL2.Models
 		
 		private string _Title;
 		
+		private EntitySet<Applied> _Applieds;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1689,6 +2036,7 @@ namespace Kask.DAL2.Models
 		
 		public Job()
 		{
+			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
 			OnCreated();
 		}
 		
@@ -1732,6 +2080,19 @@ namespace Kask.DAL2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_Applied", Storage="_Applieds", ThisKey="Job_ID", OtherKey="Job_ID")]
+		public EntitySet<Applied> Applieds
+		{
+			get
+			{
+				return this._Applieds;
+			}
+			set
+			{
+				this._Applieds.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1750,6 +2111,18 @@ namespace Kask.DAL2.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Applieds(Applied entity)
+		{
+			this.SendPropertyChanging();
+			entity.Job = this;
+		}
+		
+		private void detach_Applieds(Applied entity)
+		{
+			this.SendPropertyChanging();
+			entity.Job = null;
 		}
 	}
 	
@@ -1963,92 +2336,6 @@ namespace Kask.DAL2.Models
 					this._School_Name = value;
 					this.SendPropertyChanged("School_Name");
 					this.OnSchool_NameChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Skill")]
-	public partial class Skill : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Skill_ID;
-		
-		private string _SkillName;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSkill_IDChanging(int value);
-    partial void OnSkill_IDChanged();
-    partial void OnSkillNameChanging(string value);
-    partial void OnSkillNameChanged();
-    #endregion
-		
-		public Skill()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skill_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Skill_ID
-		{
-			get
-			{
-				return this._Skill_ID;
-			}
-			set
-			{
-				if ((this._Skill_ID != value))
-				{
-					this.OnSkill_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Skill_ID = value;
-					this.SendPropertyChanged("Skill_ID");
-					this.OnSkill_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SkillName", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string SkillName
-		{
-			get
-			{
-				return this._SkillName;
-			}
-			set
-			{
-				if ((this._SkillName != value))
-				{
-					this.OnSkillNameChanging(value);
-					this.SendPropertyChanging();
-					this._SkillName = value;
-					this.SendPropertyChanged("SkillName");
-					this.OnSkillNameChanged();
 				}
 			}
 		}

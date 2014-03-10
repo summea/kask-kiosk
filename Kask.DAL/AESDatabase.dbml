@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AESDatabase" Class="AESDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=M14X-WIN8;Initial Catalog=AESDatabase;Integrated Security=True" SettingsObjectName="Kask.DAL2.Properties.Settings" SettingsPropertyName="AESDatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=M14X-WIN8;Initial Catalog=AESDatabase;Integrated Security=True" SettingsObjectName="Kask.DAL.Properties.Settings" SettingsPropertyName="AESDatabaseConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Applicant" Member="Applicants">
     <Type Name="Applicant">
       <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -16,6 +16,14 @@
       <Association Name="Applicant_Education" Member="Educations" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Education" />
       <Association Name="Applicant_Employment" Member="Employments" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Employment" />
       <Association Name="Applicant_Expertise" Member="Expertises" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Expertise" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Skill" Member="Skills">
+    <Type Name="Skill">
+      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SkillName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Skill_Expertise" Member="Expertises" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Expertise" />
+      <Association Name="Skill_JobRequirement" Member="JobRequirements" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="JobRequirement" />
     </Type>
   </Table>
   <Table Name="dbo.Application" Member="Applications">
@@ -46,6 +54,7 @@
   </Table>
   <Table Name="dbo.Applied" Member="Applieds">
     <Type Name="Applied">
+      <Column Name="Applied_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Application_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -141,14 +150,6 @@
       <Column Name="School_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="School_Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Association Name="School_Education" Member="Educations" ThisKey="School_ID" OtherKey="School_ID" Type="Education" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Skill" Member="Skills">
-    <Type Name="Skill">
-      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SkillName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Skill_Expertise" Member="Expertises" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Expertise" />
-      <Association Name="Skill_JobRequirement" Member="JobRequirements" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="JobRequirement" />
     </Type>
   </Table>
 </Database>
