@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System;
+using Kask.DAL.Models;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEmployerService
+    public class AESApplicationService : IApplicationService //, IApplicantService, IAppliedService, IEmployerService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -17,24 +18,49 @@ namespace Kask.Services
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    ApplicationDAO application = (from a in db.Applications where a.Application_ID == id select a).First();
-                    return (application != null ? application : null);
+                    Application application = (from a in db.Applications where a.Application_ID == id select a).First();
+                    ApplicationDAO result = new ApplicationDAO
+                    {
+                        ApplicationID = application.Application_ID,
+                        ID = application.Application_ID,
+                        ApplicationStatus = application.ApplicationStatus,
+                        SalaryExpectation = application.SalaryExpectation,
+                        FullTime = application.FullTime,
+                        AvailableForDays = application.AvailableForDays,
+                        AvailableForEvenings = application.AvailableForEvenings,
+                        AvailableForWeekends = application.AvailableForWeekends,
+                        MondayFrom = application.MondayFrom,
+                        TuesdayFrom = application.TuesdayFrom,
+                        WednesdayFrom = application.WednesdayFrom,
+                        ThursdayFrom = application.ThursdayFrom,
+                        FridayFrom = application.FridayFrom,
+                        SaturdayFrom = application.SaturdayFrom,
+                        SundayFrom = application.SundayFrom,
+                        MondayTo = application.MondayTo,
+                        TuesdayTo = application.TuesdayTo,
+                        WednesdayTo = application.WednesdayTo,
+                        ThursdayTo = application.ThursdayTo,
+                        FridayTo = application.FridayTo,
+                        SaturdayTo = application.SaturdayTo,
+                        SundayTo = application.SundayTo
+                    };
+                    return (result != null ? result : null);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
             }
         }
 
-        public IList<Application> GetApplicationsByName (string first, string last, string ssn)
+        public IList<ApplicationDAO> GetApplicationsByName(string first, string last, string ssn)
         {
             try
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
                     IList<Applicant> applicants = (from a in db.Applicants where a.FirstName == first && a.LastName == last && a.SSN == ssn select a).ToList();
-                    IList<Application> result = null;
+                    IList<ApplicationDAO> result = null;
 
                     foreach (Applicant a in applicants)
                     {
@@ -50,14 +76,46 @@ namespace Kask.Services
             }
         }
 
-        public IList<Application> GetApplications()
+        public IList<ApplicationDAO> GetApplications()
         {
             try
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    var apps = db.Applications.ToList();
-                    return (apps != null ? apps : null);
+                    IList<Application> apps = db.Applications.ToList();
+                    List<ApplicationDAO> result = new List<ApplicationDAO> ();
+
+                    foreach (var application in apps)
+                    {
+                        ApplicationDAO temp = new ApplicationDAO
+                        {
+                            ApplicationID = application.Application_ID,
+                            ID = application.Application_ID,
+                            ApplicationStatus = application.ApplicationStatus,
+                            SalaryExpectation = application.SalaryExpectation,
+                            FullTime = application.FullTime,
+                            AvailableForDays = application.AvailableForDays,
+                            AvailableForEvenings = application.AvailableForEvenings,
+                            AvailableForWeekends = application.AvailableForWeekends,
+                            MondayFrom = application.MondayFrom,
+                            TuesdayFrom = application.TuesdayFrom,
+                            WednesdayFrom = application.WednesdayFrom,
+                            ThursdayFrom = application.ThursdayFrom,
+                            FridayFrom = application.FridayFrom,
+                            SaturdayFrom = application.SaturdayFrom,
+                            SundayFrom = application.SundayFrom,
+                            MondayTo = application.MondayTo,
+                            TuesdayTo = application.TuesdayTo,
+                            WednesdayTo = application.WednesdayTo,
+                            ThursdayTo = application.ThursdayTo,
+                            FridayTo = application.FridayTo,
+                            SaturdayTo = application.SaturdayTo,
+                            SundayTo = application.SundayTo                            
+                        };
+
+                        result.Add(temp);
+                    }
+                    return (result != null ? result : null);
                 }
             }
             catch (Exception e)
@@ -66,11 +124,36 @@ namespace Kask.Services
             }
         }
 
-        public bool CreateApplication(Application app)
+        public bool CreateApplication(ApplicationDAO app)
         {
+            Application a = new Application
+            {
+                Application_ID = app.ApplicationID,
+                ApplicationStatus = app.ApplicationStatus,
+                SalaryExpectation = app.SalaryExpectation,
+                FullTime = app.FullTime,
+                AvailableForDays = app.AvailableForDays,
+                AvailableForEvenings = app.AvailableForEvenings,
+                AvailableForWeekends = app.AvailableForWeekends,
+                MondayFrom = app.MondayFrom,
+                TuesdayFrom = app.TuesdayFrom,
+                WednesdayFrom = app.WednesdayFrom,
+                ThursdayFrom = app.ThursdayFrom,
+                FridayFrom = app.FridayFrom,
+                SaturdayFrom = app.SaturdayFrom,
+                SundayFrom = app.SundayFrom,
+                MondayTo = app.MondayTo,
+                TuesdayTo = app.TuesdayTo,
+                WednesdayTo = app.WednesdayTo,
+                ThursdayTo = app.ThursdayTo,
+                FridayTo = app.FridayTo,
+                SaturdayTo = app.SaturdayTo,
+                SundayTo = app.SundayTo
+            };
+
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
-                db.Applications.InsertOnSubmit(app);
+                db.Applications.InsertOnSubmit(a);
                 try
                 {
                     db.SubmitChanges();
@@ -84,11 +167,11 @@ namespace Kask.Services
             return true;
         }
 
-        public bool UpdateApplication(Application newApp)
+        public bool UpdateApplication(ApplicationDAO newApp)
         {
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
-                Application a = db.Applications.Single(app => app.Application_ID == newApp.Application_ID);
+                Application a = db.Applications.Single(app => app.Application_ID == newApp.ApplicationID);
                 a.ApplicationStatus = newApp.ApplicationStatus;
                 a.AvailableForDays = newApp.AvailableForDays;
                 a.AvailableForEvenings = newApp.AvailableForEvenings;
@@ -143,6 +226,8 @@ namespace Kask.Services
             return true;
         }
 
+        /// TODO: UNCOMMENT ME
+        /*
         public Applicant GetApplicantByID(int id)
         {
             try
@@ -402,5 +487,7 @@ namespace Kask.Services
 
             return true;
         }
+    */
+        /// TODO: UNCOMMENT THIS BLOCK
     }
 }

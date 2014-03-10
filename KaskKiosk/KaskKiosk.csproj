@@ -148,13 +148,7 @@
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService.disco" />
     <None Include="Service References\AESApplicationServiceRef\configuration91.svcinfo" />
     <None Include="Service References\AESApplicationServiceRef\configuration.svcinfo" />
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.Applicant.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.Application.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.Applied.datasource">
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.ApplicationDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">

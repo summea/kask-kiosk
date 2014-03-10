@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.Application>
+﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.ApplicationDAO>
 
 @{
     ViewBag.Title = "Index";
@@ -14,7 +14,7 @@
 @foreach (var item in ViewBag.applications)
 {
     <tr>
-        <td>@item.Application_ID</td>
+        <td>@item.ApplicationID</td>
         <td>@item.ApplicationStatus</td>
     </tr>
 }

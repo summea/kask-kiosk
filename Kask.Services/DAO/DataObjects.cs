@@ -28,61 +28,61 @@ namespace Kask.Services.DAO
         public string SalaryExpectation { get; set; }
 
         [DataMember]
-        public byte FullTime { get; set; }
+        public byte? FullTime { get; set; }
 
         #region Available shifts
         [DataMember]
-        public byte AvailableForDays { get; set; }
+        public byte? AvailableForDays { get; set; }
 
         [DataMember]
-        public byte AvailableForEvenings { get; set; }
+        public byte? AvailableForEvenings { get; set; }
 
         [DataMember]
-        public byte AvailableForWeekends { get; set; }
+        public byte? AvailableForWeekends { get; set; }
         #endregion
 
         #region Available Hours
         [DataMember]
-        public TimeSpan MondayFrom { get; set; }
+        public TimeSpan? MondayFrom { get; set; }
 
         [DataMember]
-        public TimeSpan TuesdayFrom { get; set; }
+        public TimeSpan? TuesdayFrom { get; set; }
 
         [DataMember]
-        public TimeSpan WednesdayFrom { get; set; }
+        public TimeSpan? WednesdayFrom { get; set; }
 
         [DataMember]
-        public TimeSpan ThursdayFrom { get; set; }
+        public TimeSpan? ThursdayFrom { get; set; }
 
         [DataMember]
-        public TimeSpan FridayFrom { get; set; }
+        public TimeSpan? FridayFrom { get; set; }
 
         [DataMember]
-        public TimeSpan SaturdayFrom { get; set; }
+        public TimeSpan? SaturdayFrom { get; set; }
 
         [DataMember]
-        public TimeSpan SundayFrom { get; set; }
+        public TimeSpan? SundayFrom { get; set; }
 
         [DataMember]
-        public TimeSpan MondayTo { get; set; }
+        public TimeSpan? MondayTo { get; set; }
 
         [DataMember]
-        public TimeSpan TuesdayTo { get; set; }
+        public TimeSpan? TuesdayTo { get; set; }
 
         [DataMember]
-        public TimeSpan WednesdayTo { get; set; }
+        public TimeSpan? WednesdayTo { get; set; }
 
         [DataMember]
-        public TimeSpan ThursdayTo { get; set; }
+        public TimeSpan? ThursdayTo { get; set; }
 
         [DataMember]
-        public TimeSpan FridayTo { get; set; }
+        public TimeSpan? FridayTo { get; set; }
 
         [DataMember]
-        public TimeSpan SaturdayTo { get; set; }
+        public TimeSpan? SaturdayTo { get; set; }
 
         [DataMember]
-        public TimeSpan SundayTo { get; set; }
+        public TimeSpan? SundayTo { get; set; }
         #endregion
     }
 
