@@ -19,6 +19,10 @@ namespace KaskKiosk.Controllers
         readonly string uriApplication = "http://localhost:51309/api/Application";
         readonly string uriApplicant = "http://localhost:51309/api/Applicant";
         readonly string uriApplied = "http://localhost:51309/api/Applied";
+        readonly string uriEducation = "http://localhost:51309/api/Education";
+        readonly string uriEmployer = "http://localhost:51309/api/Employer";
+        readonly string uriEmployment = "http://localhost:51309/api/Employment";
+        readonly string uriSchool = "http://localhost:51309/api/School";
 
         private async Task<List<ApplicationDAO>> GetApplicationsAsync()
         {
@@ -38,6 +42,24 @@ namespace KaskKiosk.Controllers
             }
         }
 
+        private async Task<List<EmployerDAO>> GetEmployersAsync()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var response = await httpClient.GetStringAsync(uriEmployer);
+                return JsonConvert.DeserializeObjectAsync<List<EmployerDAO>>(response).Result;
+            }
+        }
+
+        private async Task<List<SchoolDAO>> GetSchoolsAsync()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var response = await httpClient.GetStringAsync(uriEmployer);
+                return JsonConvert.DeserializeObjectAsync<List<SchoolDAO>>(response).Result;
+            }
+        }
+
         public async Task<ActionResult> Index()
         {
             var apps = await GetApplicationsAsync();
@@ -52,7 +74,7 @@ namespace KaskKiosk.Controllers
             // create time picker range (in hours)
             for (int i = 0; i < 24; i++)
             {
-                timePickerList.Add(i.ToString() + ":00");
+                timePickerList.Add(i.ToString());
             }
 
             ViewBag.timePickerList = timePickerList;
@@ -114,10 +136,12 @@ namespace KaskKiosk.Controllers
                     resultContent = result.Content.ReadAsStringAsync().Result;
 
                     // get correct applicant id
+                    // TODO: there is still something we might need to change about this... :)
                     var applicants = await GetApplicantsAsync();
                     applicant.ApplicantID = applicants.Last().ApplicantID;
 
                     // get correct application id
+                    // TODO: there is still something we might need to change about this... :)
                     var applications = await GetApplicationsAsync();
                     application.ApplicationID = applications.Last().ApplicationID;
 
@@ -130,6 +154,250 @@ namespace KaskKiosk.Controllers
 
                     // post (save) applied data
                     result = httpClient.PostAsJsonAsync(uriApplied, applied).Result;
+                    resultContent = result.Content.ReadAsStringAsync().Result;
+
+
+                    // TODO: this can still be cleaned up (loop through 1..3)
+
+                    // gather Employer data
+                    // employer and employment 1
+                    EmployerDAO employer = new EmployerDAO();
+                    employer.Name = Request.Form["EmployerName_1"];
+                    employer.EmployerAddress = Request.Form["EmployerAddress_1"];
+                    employer.PhoneNumber = Request.Form["EmployerPhone_1"];
+
+                    if (!string.IsNullOrWhiteSpace(employer.Name))
+                    {
+                        // TODO: check if employer already exists in database
+                        // TODO: if employer exists in database: don't insert data
+                        // if employer !exists in database: insert data
+
+                        // post (save) employer data
+                        result = httpClient.PostAsJsonAsync(uriEmployer, employer).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+                    }
+                    
+                    // get correct employer id
+                    // TODO: there is still something we might need to change about this... :)
+                    var employers = await GetEmployersAsync();
+                    employer.EmployerID = employers.Last().EmployerID;
+
+
+                    // gather Employment data
+                    EmploymentDAO employment = new EmploymentDAO();
+                    employment.ApplicantID = applicant.ApplicantID;
+                    employment.EmployerID = employer.EmployerID;
+                    employment.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_1"]);
+                    employment.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_1"]);
+                    employment.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_1"]);
+                    employment.Supervisor = Request.Form["EmployerSupervisor_1"];
+                    employment.Position = Request.Form["EmployedPosition_1"];
+                    employment.StartingSalary = Request.Form["EmployedStartingSalary_1"];
+                    employment.EndingSalary = Request.Form["EmployedEndingSalary_1"];
+                    employment.ReasonForLeaving = Request.Form["EmployedReasonForLeaving_1"];
+                    employment.Responsibilities = Request.Form["EmployedResponsibilities_1"];
+
+                    // post (save) employment data
+                    result = httpClient.PostAsJsonAsync(uriEmployment, employment).Result;
+                    resultContent = result.Content.ReadAsStringAsync().Result;
+
+
+                    // employer and employment 2
+                    employer.Name = Request.Form["EmployerName_2"];
+                    employer.EmployerAddress = Request.Form["EmployerAddress_2"];
+                    employer.PhoneNumber = Request.Form["EmployerPhone_2"];
+
+                    if (!string.IsNullOrWhiteSpace(employer.Name))
+                    {
+                        // TODO: check if employer already exists in database
+                        // TODO: if employer exists in database: don't insert data
+                        // if employer !exists in database: insert data
+
+                        // post (save) employer data
+                        result = httpClient.PostAsJsonAsync(uriEmployer, employer).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+                    }
+
+                    // get correct employer id
+                    // TODO: there is still something we might need to change about this... :)
+                    employers = await GetEmployersAsync();
+                    employer.EmployerID = employers.Last().EmployerID;
+
+
+                    // gather Employment data
+                    employment = new EmploymentDAO();
+                    employment.ApplicantID = applicant.ApplicantID;
+                    employment.EmployerID = employer.EmployerID;
+                    employment.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_1"]);
+                    employment.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_1"]);
+                    employment.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_1"]);
+                    employment.Supervisor = Request.Form["EmployerSupervisor_1"];
+                    employment.Position = Request.Form["EmployedPosition_1"];
+                    employment.StartingSalary = Request.Form["EmployedStartingSalary_1"];
+                    employment.EndingSalary = Request.Form["EmployedEndingSalary_1"];
+                    employment.ReasonForLeaving = Request.Form["EmployedReasonForLeaving_1"];
+                    employment.Responsibilities = Request.Form["EmployedResponsibilities_1"];
+
+                    // post (save) employment data
+                    result = httpClient.PostAsJsonAsync(uriEmployment, employment).Result;
+                    resultContent = result.Content.ReadAsStringAsync().Result;
+
+
+                    // employer and employment 3
+                    employer.Name = Request.Form["EmployerName_3"];
+                    employer.EmployerAddress = Request.Form["EmployerAddress_3"];
+                    employer.PhoneNumber = Request.Form["EmployerPhone_3"];
+
+                    if (!string.IsNullOrWhiteSpace(employer.Name))
+                    {
+                        // TODO: check if employer already exists in database
+                        // TODO: if employer exists in database: don't insert data
+                        // if employer !exists in database: insert data
+
+                        // post (save) employer data
+                        result = httpClient.PostAsJsonAsync(uriEmployer, employer).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+                    }
+
+                    // get correct employer id
+                    // TODO: there is still something we might need to change about this... :)
+                    employers = await GetEmployersAsync();
+                    employer.EmployerID = employers.Last().EmployerID;
+
+
+                    // gather Employment data
+                    employment = new EmploymentDAO();
+                    employment.ApplicantID = applicant.ApplicantID;
+                    employment.EmployerID = employer.EmployerID;
+                    employment.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_1"]);
+                    employment.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_1"]);
+                    employment.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_1"]);
+                    employment.Supervisor = Request.Form["EmployerSupervisor_1"];
+                    employment.Position = Request.Form["EmployedPosition_1"];
+                    employment.StartingSalary = Request.Form["EmployedStartingSalary_1"];
+                    employment.EndingSalary = Request.Form["EmployedEndingSalary_1"];
+                    employment.ReasonForLeaving = Request.Form["EmployedReasonForLeaving_1"];
+                    employment.Responsibilities = Request.Form["EmployedResponsibilities_1"];
+
+                    // post (save) employment data
+                    result = httpClient.PostAsJsonAsync(uriEmployment, employment).Result;
+                    resultContent = result.Content.ReadAsStringAsync().Result;
+
+
+                    // gather School data
+
+
+                    // gather Education data
+
+
+                    // TODO: this can still be cleaned up (loop through 1..3)
+
+                    // gather School data
+                    // school and education 1
+                    SchoolDAO school = new SchoolDAO();
+                    school.SchoolName = Request.Form["SchoolName_1"];
+                    school.SchoolAddress = Request.Form["SchoolAddress_1"];
+
+                    if (!string.IsNullOrWhiteSpace(school.SchoolName))
+                    {
+                        // TODO: check if school already exists in database
+                        // TODO: if school exists in database: don't insert data
+                        // if school !exists in database: insert data
+
+                        // post (save) school data
+                        result = httpClient.PostAsJsonAsync(uriSchool, school).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+                    }
+
+                    // get correct school id
+                    // TODO: there is still something we might need to change about this... :)
+                    var schools = await GetSchoolsAsync();
+                    school.SchoolID = schools.Last().SchoolID;
+
+
+                    // gather Education data
+                    EducationDAO education = new EducationDAO();
+                    education.ApplicantID = applicant.ApplicantID;
+                    education.SchoolID = school.SchoolID;
+                    education.YearsAttendedFrom = Convert.ToDateTime(Request.Form["YearsAttendedFrom_1"]);
+                    education.YearsAttendedTo = Convert.ToDateTime(Request.Form["YearsAttendedTo_1"]);
+                    education.Graduated = Convert.ToByte(Request.Form["Graduated_1"]);
+                    education.DegreeAndMajor = Request.Form["DegreeAndMajor_1"];
+
+                    // post (save) education data
+                    result = httpClient.PostAsJsonAsync(uriEducation, education).Result;
+                    resultContent = result.Content.ReadAsStringAsync().Result;
+
+
+                    // school and education 2
+                    school = new SchoolDAO();
+                    school.SchoolName = Request.Form["SchoolName_2"];
+                    school.SchoolAddress = Request.Form["SchoolAddress_2"];
+
+                    if (!string.IsNullOrWhiteSpace(school.SchoolName))
+                    {
+                        // TODO: check if school already exists in database
+                        // TODO: if school exists in database: don't insert data
+                        // if school !exists in database: insert data
+
+                        // post (save) school data
+                        result = httpClient.PostAsJsonAsync(uriSchool, school).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+                    }
+
+                    // get correct school id
+                    // TODO: there is still something we might need to change about this... :)
+                    schools = await GetSchoolsAsync();
+                    school.SchoolID = schools.Last().SchoolID;
+
+
+                    // gather Education data
+                    education = new EducationDAO();
+                    education.ApplicantID = applicant.ApplicantID;
+                    education.SchoolID = school.SchoolID;
+                    education.YearsAttendedFrom = Convert.ToDateTime(Request.Form["YearsAttendedFrom_2"]);
+                    education.YearsAttendedTo = Convert.ToDateTime(Request.Form["YearsAttendedTo_2"]);
+                    education.Graduated = Convert.ToByte(Request.Form["Graduated_2"]);
+                    education.DegreeAndMajor = Request.Form["DegreeAndMajor_2"];
+
+                    // post (save) education data
+                    result = httpClient.PostAsJsonAsync(uriEducation, education).Result;
+                    resultContent = result.Content.ReadAsStringAsync().Result;
+
+
+                    // school and education 3
+                    school = new SchoolDAO();
+                    school.SchoolName = Request.Form["SchoolName_3"];
+                    school.SchoolAddress = Request.Form["SchoolAddress_3"];
+
+                    if (!string.IsNullOrWhiteSpace(school.SchoolName))
+                    {
+                        // TODO: check if school already exists in database
+                        // TODO: if school exists in database: don't insert data
+                        // if school !exists in database: insert data
+
+                        // post (save) school data
+                        result = httpClient.PostAsJsonAsync(uriSchool, school).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+                    }
+
+                    // get correct school id
+                    // TODO: there is still something we might need to change about this... :)
+                    schools = await GetSchoolsAsync();
+                    school.SchoolID = schools.Last().SchoolID;
+
+
+                    // gather Education data
+                    education = new EducationDAO();
+                    education.ApplicantID = applicant.ApplicantID;
+                    education.SchoolID = school.SchoolID;
+                    education.YearsAttendedFrom = Convert.ToDateTime(Request.Form["YearsAttendedFrom_3"]);
+                    education.YearsAttendedTo = Convert.ToDateTime(Request.Form["YearsAttendedTo_3"]);
+                    education.Graduated = Convert.ToByte(Request.Form["Graduated_3"]);
+                    education.DegreeAndMajor = Request.Form["DegreeAndMajor_3"];
+
+                    // post (save) education data
+                    result = httpClient.PostAsJsonAsync(uriEducation, education).Result;
                     resultContent = result.Content.ReadAsStringAsync().Result;
                 }
 

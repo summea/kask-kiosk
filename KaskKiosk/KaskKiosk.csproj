@@ -119,6 +119,10 @@
     <Compile Include="Controllers\API\ApplicantController.cs" />
     <Compile Include="Controllers\API\ApplicationController.cs" />
     <Compile Include="Controllers\API\AppliedController.cs" />
+    <Compile Include="Controllers\API\EducationController.cs" />
+    <Compile Include="Controllers\API\EmployerController.cs" />
+    <Compile Include="Controllers\API\EmploymentController.cs" />
+    <Compile Include="Controllers\API\SchoolController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DEPRECATED\ApplicationController.cs" />
