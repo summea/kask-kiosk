@@ -10,7 +10,7 @@ using Kask.DAL.Models;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService //, IEmployerService
+    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEmployerService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -83,7 +83,7 @@ namespace Kask.Services
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
                     IList<Application> apps = db.Applications.ToList();
-                    List<ApplicationDAO> result = new List<ApplicationDAO> ();
+                    List<ApplicationDAO> result = new List<ApplicationDAO>();
 
                     foreach (var application in apps)
                     {
@@ -110,7 +110,7 @@ namespace Kask.Services
                             ThursdayTo = application.ThursdayTo,
                             FridayTo = application.FridayTo,
                             SaturdayTo = application.SaturdayTo,
-                            SundayTo = application.SundayTo                            
+                            SundayTo = application.SundayTo
                         };
 
                         result.Add(temp);
@@ -480,7 +480,130 @@ namespace Kask.Services
             return true;
         }
 
-        /// UNCOMMENT ME
+        public EmployerDAO GetEmployerByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Employer employer = (from em in db.Employers where em.Employer_ID == id select em).FirstOrDefault();
+                    EmployerDAO result = new EmployerDAO
+                    {
+                        EmployerID = employer.Employer_ID,
+                        Name = employer.Name,
+                        EmployerAddress = employer.EmployerAddress,
+                        PhoneNumber = employer.PhoneNumber
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<EmployerDAO> GetEmployers()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Employer> emps = db.Employers.ToList();
+                    List<EmployerDAO> result = new List<EmployerDAO>();
+                    foreach (var employer in emps)
+                    {
+                        EmployerDAO temp = new EmployerDAO
+                        {
+                            EmployerID = employer.Employer_ID,
+                            Name = employer.Name,
+                            EmployerAddress = employer.EmployerAddress,
+                            PhoneNumber = employer.PhoneNumber
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateEmployer(EmployerDAO emp)
+        {
+            Employer employer = new Employer
+            {
+                Name = emp.Name,
+                EmployerAddress = emp.EmployerAddress,
+                PhoneNumber = emp.PhoneNumber
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Employers.InsertOnSubmit(employer);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateEmployer(EmployerDAO newEmp)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Employer em = db.Employers.Single(emp => emp.Employer_ID == newEmp.EmployerID);
+
+                em.Name = newEmp.Name;
+                em.EmployerAddress = newEmp.EmployerAddress;
+                em.PhoneNumber = newEmp.PhoneNumber;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteEmployer(int ID)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Employer em = db.Employers.Single(emp => emp.Employer_ID == ID);
+                db.Employers.DeleteOnSubmit(em);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+
+        /*
+        /// UNCOMMENT ME (or... maybe this can be deleted now...?)
         /*
         public Employer GetEmployerByID(int id)
         {
