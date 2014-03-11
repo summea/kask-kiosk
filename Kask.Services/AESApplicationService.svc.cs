@@ -10,7 +10,7 @@ using Kask.DAL.Models;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEmployerService
+    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, ISchoolService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -587,6 +587,417 @@ namespace Kask.Services
             {
                 Employer em = db.Employers.Single(emp => emp.Employer_ID == ID);
                 db.Employers.DeleteOnSubmit(em);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            /*
+            // temp
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Employment employment = (from em in db.Employments where em. == id select em).FirstOrDefault();
+            }
+            */
+
+            return true;
+        }
+
+        public EmploymentDAO GetEmploymentByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Employment employment = (from em in db.Employments where em.Employment_ID == id select em).FirstOrDefault();
+                    EmploymentDAO result = new EmploymentDAO
+                    {
+                        EmploymentID = employment.Employment_ID,
+                        ApplicantID = employment.Applicant_ID,
+                        EmployerID = employment.Employer_ID,
+                        MayWeContactCurrentEmployer = employment.MayWeContactCurrentEmployer,
+                        EmployedFrom = employment.EmployedFrom,
+                        EmployedTo = employment.EmployedTo,
+                        Supervisor = employment.Supervisor,
+                        Position = employment.Position,
+                        StartingSalary = employment.StartingSalary,
+                        EndingSalary = employment.EndingSalary,
+                        ReasonForLeaving = employment.ReasonForLeaving,
+                        Responsibilities = employment.Responsibilities
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<EmploymentDAO> GetEmployments()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Employment> emps = db.Employments.ToList();
+                    List<EmploymentDAO> result = new List<EmploymentDAO>();
+                    foreach (var employment in emps)
+                    {
+                        EmploymentDAO temp = new EmploymentDAO
+                        {
+                            EmploymentID = employment.Employment_ID,
+                            ApplicantID = employment.Applicant_ID,
+                            EmployerID = employment.Employer_ID,
+                            MayWeContactCurrentEmployer = employment.MayWeContactCurrentEmployer,
+                            EmployedFrom = employment.EmployedFrom,
+                            EmployedTo = employment.EmployedTo,
+                            Supervisor = employment.Supervisor,
+                            Position = employment.Position,
+                            StartingSalary = employment.StartingSalary,
+                            EndingSalary = employment.EndingSalary,
+                            ReasonForLeaving = employment.ReasonForLeaving,
+                            Responsibilities = employment.Responsibilities
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateEmployment(EmploymentDAO emp)
+        {
+            Employment employment = new Employment
+            {
+                Applicant_ID = emp.ApplicantID,
+                Employer_ID = emp.EmployerID,
+                MayWeContactCurrentEmployer = emp.MayWeContactCurrentEmployer,
+                EmployedFrom = emp.EmployedFrom,
+                EmployedTo = emp.EmployedTo,
+                Supervisor = emp.Supervisor,
+                Position = emp.Position,
+                StartingSalary = emp.StartingSalary,
+                EndingSalary = emp.EndingSalary,
+                ReasonForLeaving = emp.ReasonForLeaving,
+                Responsibilities = emp.Responsibilities
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Employments.InsertOnSubmit(employment);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateEmployment(EmploymentDAO newEmp)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Employment em = db.Employments.Single(emp => emp.Employment_ID == newEmp.EmploymentID);
+
+                em.Applicant_ID = newEmp.ApplicantID;
+                em.Employer_ID = newEmp.EmployerID;
+                em.MayWeContactCurrentEmployer = newEmp.MayWeContactCurrentEmployer;
+                em.EmployedFrom = newEmp.EmployedFrom;
+                em.EmployedTo = newEmp.EmployedTo;
+                em.Supervisor = newEmp.Supervisor;
+                em.Position = newEmp.Position;
+                em.StartingSalary = newEmp.StartingSalary;
+                em.EndingSalary = newEmp.EndingSalary;
+                em.ReasonForLeaving = newEmp.ReasonForLeaving;
+                em.Responsibilities = newEmp.Responsibilities;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteEmployment(int ID)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Employment em = db.Employments.Single(emp => emp.Employment_ID == ID);
+                db.Employments.DeleteOnSubmit(em);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public SchoolDAO GetSchoolByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    School school = (from sch in db.Schools where sch.School_ID == id select sch).FirstOrDefault();
+                    SchoolDAO result = new SchoolDAO
+                    {
+                        SchoolID = school.School_ID,
+                        SchoolName = school.School_Name,
+                        SchoolAddress = school.School_Address
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<SchoolDAO> GetSchools()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<School> schools = db.Schools.ToList();
+                    List<SchoolDAO> result = new List<SchoolDAO>();
+                    foreach (var school in schools)
+                    {
+                        SchoolDAO temp = new SchoolDAO
+                        {
+                            SchoolID = school.School_ID,
+                            SchoolName = school.School_Name,
+                            SchoolAddress = school.School_Address
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateSchool(SchoolDAO sch)
+        {
+            School school = new School
+            {
+                School_Name = sch.SchoolName,
+                School_Address = sch.SchoolAddress
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Schools.InsertOnSubmit(school);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateSchool(SchoolDAO newSch)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                School school = db.Schools.Single(sch => sch.School_ID == newSch.SchoolID);
+
+                school.School_Name = newSch.SchoolName;
+                school.School_Address = newSch.SchoolAddress;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteSchool(int ID)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                School school = db.Schools.Single(sch => sch.School_ID == ID);
+                db.Schools.DeleteOnSubmit(school);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public EducationDAO GetEducationByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Education education = (from edu in db.Educations where edu.Education_ID == id select edu).FirstOrDefault();
+                    EducationDAO result = new EducationDAO
+                    {
+                        EducationID = education.Education_ID,
+                        ApplicantID = education.Applicant_ID,
+                        SchoolID = education.School_ID,
+                        YearsAttendedFrom = education.YearsAttendedFrom,
+                        YearsAttendedTo = education.YearsAttendedTo,
+                        Graduated = education.Graduated,
+                        DegreeAndMajor = education.DegreeAndMajor
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<EducationDAO> GetEducations()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Education> educations = db.Educations.ToList();
+                    List<EducationDAO> result = new List<EducationDAO>();
+                    foreach (var education in educations)
+                    {
+                        EducationDAO temp = new EducationDAO
+                        {
+                            EducationID = education.Education_ID,
+                            ApplicantID = education.Applicant_ID,
+                            SchoolID = education.School_ID,
+                            YearsAttendedFrom = education.YearsAttendedFrom,
+                            YearsAttendedTo = education.YearsAttendedTo,
+                            Graduated = education.Graduated,
+                            DegreeAndMajor = education.DegreeAndMajor
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateEducation(EducationDAO edu)
+        {
+            Education education = new Education
+            {
+                Applicant_ID = edu.ApplicantID,
+                School_ID = edu.SchoolID,
+                YearsAttendedFrom = edu.YearsAttendedFrom,
+                YearsAttendedTo = edu.YearsAttendedTo,
+                Graduated = edu.Graduated,
+                DegreeAndMajor = edu.DegreeAndMajor
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Educations.InsertOnSubmit(education);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateEducation(EducationDAO newEdu)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Education education = db.Educations.Single(edu => edu.Education_ID == newEdu.EducationID);
+
+                education.Applicant_ID = newEdu.ApplicantID;
+                education.School_ID = newEdu.SchoolID;
+                education.YearsAttendedFrom = newEdu.YearsAttendedFrom;
+                education.YearsAttendedTo = newEdu.YearsAttendedTo;
+                education.Graduated = newEdu.Graduated;
+                education.DegreeAndMajor = newEdu.DegreeAndMajor;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteEducation(int ID)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Education education = db.Educations.Single(edu => edu.Education_ID == ID);
+                db.Educations.DeleteOnSubmit(education);
 
                 try
                 {
