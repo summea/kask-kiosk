@@ -55,4 +55,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfApplicantDAO" nillable="true" type="tns:ArrayOfApplicantDAO" />
+  <xs:complexType name="AppliedDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicantID" type="xs:int" />
+      <xs:element minOccurs="0" name="ApplicationID" type="xs:int" />
+      <xs:element minOccurs="0" name="AppliedID" type="xs:int" />
+      <xs:element minOccurs="0" name="DateApplied" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppliedDAO" nillable="true" type="tns:AppliedDAO" />
+  <xs:complexType name="ArrayOfAppliedDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AppliedDAO" nillable="true" type="tns:AppliedDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppliedDAO" nillable="true" type="tns:ArrayOfAppliedDAO" />
 </xs:schema>
