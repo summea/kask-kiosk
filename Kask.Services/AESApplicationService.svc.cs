@@ -10,7 +10,7 @@ using Kask.DAL.Models;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, ISchoolService
+    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, ISchoolService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {

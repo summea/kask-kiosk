@@ -146,22 +146,34 @@
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\Styles.css" />
     <Content Include="Global.asax" />
-    <None Include="Service References\AESApplicationServiceRef\AESApplicationService.disco" />
-    <None Include="Service References\AESApplicationServiceRef\configuration91.svcinfo" />
-    <None Include="Service References\AESApplicationServiceRef\configuration.svcinfo" />
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.ApplicationDAO.datasource">
+    <Content Include="Service References\AESApplicationServiceRef\AESApplicationService.disco" />
+    <Content Include="Service References\AESApplicationServiceRef\configuration91.svcinfo" />
+    <Content Include="Service References\AESApplicationServiceRef\configuration.svcinfo" />
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.ApplicantDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.ApplicantDAO.datasource">
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.ApplicationDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.AppliedDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.EducationDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.EmployerDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.EmploymentDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SchoolDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -208,7 +220,7 @@
     <WCFMetadataStorage Include="Service References\AESApplicationServiceRef\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\AESApplicationServiceRef\AESApplicationService.wsdl" />
+    <Content Include="Service References\AESApplicationServiceRef\AESApplicationService.wsdl" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
