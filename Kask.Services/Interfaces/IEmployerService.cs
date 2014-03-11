@@ -1,11 +1,9 @@
 ﻿using Kask.Services.Exceptions;
-using System;
+using Kask.Services.DAO;
+
+using Kask.Services.Exceptions;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-using Kask.DAL.Models;
 
 namespace Kask.Services.Interfaces
 {
@@ -14,19 +12,19 @@ namespace Kask.Services.Interfaces
     {
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        Employer GetEmployerByID(int id);
+        EmployerDAO GetEmployerByID(int id);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        IList<Employer> GetEmployers();
+        IList<EmployerDAO> GetEmployers();
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool CreateEmployer(Employer e);
+        bool CreateEmployer(EmployerDAO e);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool UpdateEmployer(Employer newEmp);
+        bool UpdateEmployer(EmployerDAO newEmp);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
