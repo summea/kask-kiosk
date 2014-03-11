@@ -34,4 +34,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfApplicationDAO" nillable="true" type="tns:ArrayOfApplicationDAO" />
+  <xs:complexType name="ApplicantDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicantAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplicantID" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameAlias" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSN" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApplicantDAO" nillable="true" type="tns:ApplicantDAO" />
+  <xs:complexType name="ArrayOfApplicantDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ApplicantDAO" nillable="true" type="tns:ApplicantDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplicantDAO" nillable="true" type="tns:ArrayOfApplicantDAO" />
 </xs:schema>

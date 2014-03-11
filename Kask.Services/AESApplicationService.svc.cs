@@ -10,7 +10,7 @@ using Kask.DAL.Models;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService //, IApplicantService, IAppliedService, IEmployerService
+    public class AESApplicationService : IApplicationService, IApplicantService //, IAppliedService, IEmployerService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -18,7 +18,7 @@ namespace Kask.Services
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    Application application = (from a in db.Applications where a.Application_ID == id select a).First();
+                    Application application = (from a in db.Applications where a.Application_ID == id select a).FirstOrDefault();
                     ApplicationDAO result = new ApplicationDAO
                     {
                         ApplicationID = application.Application_ID,
@@ -226,16 +226,28 @@ namespace Kask.Services
             return true;
         }
 
-        /// TODO: UNCOMMENT ME
-        /*
-        public Applicant GetApplicantByID(int id)
+        public ApplicantDAO GetApplicantByID(int id)
         {
             try
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    Applicant applicant = (from a in db.Applicants where a.Applicant_ID == id select a).First();
-                    return (applicant != null ? applicant : null);
+                    Applicant applicant = (from a in db.Applicants where a.Applicant_ID == id select a).FirstOrDefault();
+                    ApplicantDAO result = new ApplicantDAO
+                    {
+                        ApplicantID = applicant.Applicant_ID,
+                        ID = applicant.Applicant_ID,
+                        FirstName = applicant.FirstName,
+                        MiddleName = applicant.MiddleName,
+                        LastName = applicant.LastName,
+                        SSN = applicant.SSN,
+                        Gender = applicant.Gender,
+                        ApplicantAddress = applicant.ApplicantAddress,
+                        Phone = applicant.Phone,
+                        NameAlias = applicant.NameAlias
+                    };
+
+                    return (result != null ? result : null);
                 }
             }
             catch (Exception e)
@@ -244,14 +256,34 @@ namespace Kask.Services
             }
         }
 
-        public IList<Applicant> GetApplicants()
+        public IList<ApplicantDAO> GetApplicants()
         {
             try
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    var apps = db.Applicants.ToList();
-                    return (apps != null ? apps : null);
+                    IList<Applicant> apps = db.Applicants.ToList();
+                    List<ApplicantDAO> result = new List<ApplicantDAO>();
+                    foreach (var applicant in result)
+                    {
+                        ApplicantDAO temp = new ApplicantDAO
+                        {
+                            ApplicantID = applicant.ApplicantID,
+                            ID = applicant.ApplicantID,
+                            FirstName = applicant.FirstName,
+                            MiddleName = applicant.MiddleName,
+                            LastName = applicant.LastName,
+                            SSN = applicant.SSN,
+                            Gender = applicant.Gender,
+                            ApplicantAddress = applicant.ApplicantAddress,
+                            Phone = applicant.Phone,
+                            NameAlias = applicant.NameAlias
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
                 }
             }
             catch (Exception e)
@@ -260,8 +292,21 @@ namespace Kask.Services
             }
         }
 
-        public bool CreateApplicant(Applicant a)
+        public bool CreateApplicant(ApplicantDAO app)
         {
+            Applicant a = new Applicant
+            {
+                Applicant_ID = app.ApplicantID,
+                FirstName = app.FirstName,
+                MiddleName = app.MiddleName,
+                LastName = app.LastName,
+                SSN = app.SSN,
+                Gender = app.Gender,
+                ApplicantAddress = app.ApplicantAddress,
+                Phone = app.Phone,
+                NameAlias = app.NameAlias
+            };
+
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 db.Applicants.InsertOnSubmit(a);
@@ -278,11 +323,11 @@ namespace Kask.Services
             return true;
         }
 
-        public bool UpdateApplicant(Applicant newApp)
+        public bool UpdateApplicant(ApplicantDAO newApp)
         {
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
-                Applicant a = db.Applicants.Single(app => app.Applicant_ID == newApp.Applicant_ID);
+                Applicant a = db.Applicants.Single(app => app.Applicant_ID == newApp.ApplicantID);
                 a.FirstName = newApp.FirstName;
                 a.MiddleName = newApp.MiddleName;
                 a.LastName = newApp.LastName;
@@ -325,6 +370,8 @@ namespace Kask.Services
             return true;
         }
 
+        /// UNCOMMENT ME
+        /*
         public Applied GetAppliedByID(int id)
         {
             try
