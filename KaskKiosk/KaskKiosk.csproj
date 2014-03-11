@@ -151,6 +151,9 @@
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.ApplicationDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.ApplicantDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

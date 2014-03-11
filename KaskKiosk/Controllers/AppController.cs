@@ -58,14 +58,10 @@ namespace KaskKiosk.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                // UNCOMMENT ME
-                /* =================================================
                 ApplicantDAO applicant = new ApplicantDAO();
                 applicant.FirstName = Request.Form["FirstName"];
                 applicant.LastName = Request.Form["LastName"];
-                applicant.SSN = Request.Form["SSN"];*/
-                // ==================================================
+                applicant.SSN = Request.Form["SSN"];
 
                 ApplicationDAO application = new ApplicationDAO();
                 application.ApplicationStatus = "Submitted";
@@ -78,12 +74,9 @@ namespace KaskKiosk.Controllers
                     HttpResponseMessage result = new HttpResponseMessage();
                     string resultContent = "";
 
-                    /* UNCOMMENT ME
-                     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                     // post (save) applicant data
                     result = httpClient.PostAsJsonAsync(uriApplicant, applicant).Result;
                     resultContent = result.Content.ReadAsStringAsync().Result;
-                    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
                     // post (save) application data
                     result = httpClient.PostAsJsonAsync(uri, application).Result;
