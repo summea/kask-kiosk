@@ -24,8 +24,8 @@ namespace KaskKiosk.Controllers
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                Task<string> response = httpClient.GetStringAsync(uriApplication);
-                return JsonConvert.DeserializeObjectAsync<List<ApplicationDAO>>(response.Result).Result;
+                var response = await httpClient.GetStringAsync(uriApplication);
+                return JsonConvert.DeserializeObjectAsync<List<ApplicationDAO>>(response).Result;
             }
         }
         
@@ -33,11 +33,10 @@ namespace KaskKiosk.Controllers
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                Task<string> response = httpClient.GetStringAsync(uriApplicant);
-                return JsonConvert.DeserializeObjectAsync<List<ApplicantDAO>>(response.Result).Result;
+                var response = await httpClient.GetStringAsync(uriApplicant);
+                return JsonConvert.DeserializeObjectAsync<List<ApplicantDAO>>(response).Result;
             }
         }
-        
 
         public async Task<ActionResult> Index()
         {
@@ -60,16 +59,11 @@ namespace KaskKiosk.Controllers
             return View();
         }
 
-        //
-        // POST: /App/Create
-
         [HttpPost]
         public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
-
                 // save application form data back to database through service
                 using (HttpClient httpClient = new HttpClient())
                 {
@@ -77,7 +71,6 @@ namespace KaskKiosk.Controllers
                     httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                     HttpResponseMessage result = new HttpResponseMessage();
                     string resultContent = "";
-
 
                     // gather Applicant form data
                     ApplicantDAO applicant = new ApplicantDAO();
@@ -120,30 +113,15 @@ namespace KaskKiosk.Controllers
                     result = httpClient.PostAsJsonAsync(uriApplication, application).Result;
                     resultContent = result.Content.ReadAsStringAsync().Result;
 
+                    // get correct applicant id
+                    var applicants = await GetApplicantsAsync();
+                    applicant.ApplicantID = applicants.Last().ApplicantID;
 
-                    // get correct applicant id (have to wait until applicant is created in database)
-                    var response = await httpClient.GetAsync(uriApplicant);
-                    if(response.IsSuccessStatusCode)
-                    {
-                        IEnumerable<ApplicantDAO> foundApplicants = response.Content.ReadAsAsync<IEnumerable<ApplicantDAO>>().Result;
-                        applicant.ApplicantID = foundApplicants.Last().ApplicantID;
-                    }
-                    else
-                    {
-                        throw new HttpException();
-                    }
+                    // get correct application id
+                    var applications = await GetApplicationsAsync();
+                    application.ApplicationID = applications.Last().ApplicationID;
 
-                    var resp = await httpClient.GetAsync(uriApplication);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        IEnumerable<ApplicationDAO> foundApplications = resp.Content.ReadAsAsync<IEnumerable<ApplicationDAO>>().Result;
-                        application.ApplicationID = foundApplications.Last().ApplicationID;
-                    }
-                    else
-                    {
-                        throw new HttpException();
-                    }
-
+                    // Create Applied DAO;
                     AppliedDAO applied = new AppliedDAO();
                     applied.ApplicantID = applicant.ApplicantID;
                     applied.ApplicationID = application.ApplicationID;
@@ -163,24 +141,16 @@ namespace KaskKiosk.Controllers
             }
         }
 
-        //
-        // GET: /App/Edit/5
-
         public ActionResult Edit(int id)
         {
             return View();
         }
-
-        //
-        // POST: /App/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -189,24 +159,16 @@ namespace KaskKiosk.Controllers
             }
         }
 
-        //
-        // GET: /App/Delete/5
-
         public ActionResult Delete(int id)
         {
             return View();
         }
-
-        //
-        // POST: /App/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
             catch
