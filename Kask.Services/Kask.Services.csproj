@@ -74,6 +74,8 @@
     <Compile Include="Interfaces\IAppliedService.cs" />
     <Compile Include="Interfaces\IEducationService.cs" />
     <Compile Include="Interfaces\IEmployerService.cs" />
+    <Compile Include="Interfaces\IEmploymentService.cs" />
+    <Compile Include="Interfaces\ISchoolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

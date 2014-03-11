@@ -9,7 +9,7 @@ namespace Kask.Services.DAO
     }
 
     [DataContract]
-    public class ApplicationDAO    :   IDataObject
+    public class ApplicationDAO : IDataObject
     {
         [DataMember]
         public int ID { get; set; }
@@ -83,7 +83,7 @@ namespace Kask.Services.DAO
     }
 
     [DataContract]
-    public class ApplicantDAO   :   IDataObject
+    public class ApplicantDAO : IDataObject
     {
         [DataMember]
         public int ID { get; set; }
@@ -117,7 +117,7 @@ namespace Kask.Services.DAO
     }
 
     [DataContract]
-    public class AppliedDAO :   IDataObject
+    public class AppliedDAO : IDataObject
     {
         [DataMember]
         public int ID { get; set; }
@@ -139,7 +139,7 @@ namespace Kask.Services.DAO
     }
 
     [DataContract]
-    public class SkillDAO  :   IDataObject
+    public class SkillDAO : IDataObject
     {
         [DataMember]
         public int ID { get; set; }
@@ -148,11 +148,11 @@ namespace Kask.Services.DAO
         public int SkillID { get; set; }
 
         [DataMember]
-        public string SkillName {get; set;}
+        public string SkillName { get; set; }
     }
 
     [DataContract]
-    public class AssociateDAO   :   IDataObject
+    public class AssociateDAO : IDataObject
     {
         [DataMember]
         public int ID { get; set; }
@@ -174,10 +174,13 @@ namespace Kask.Services.DAO
     }
 
     [DataContract]
-    public class EducationDAO   :   IDataObject
+    public class EducationDAO : IDataObject
     {
         [DataMember]
         public int ID { get; set; }
+
+        [DataMember]
+        public int EducationID { get; set; }
 
         [DataMember]
         public int ApplicantID { get; set; }
@@ -222,6 +225,9 @@ namespace Kask.Services.DAO
     {
         [DataMember]
         public int ID { get; set; }
+
+        [DataMember]
+        public int EmploymentID { get; set; }
 
         [DataMember]
         public int ApplicantID { get; set; }
@@ -323,5 +329,8 @@ namespace Kask.Services.DAO
 
         [DataMember]
         public string SchoolName { get; set; }
+
+        [DataMember]
+        public string SchoolAddress { get; set; }
     }
 }

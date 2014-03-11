@@ -8,26 +8,26 @@ using System.ServiceModel;
 namespace Kask.Services.Interfaces
 {
     [ServiceContract]
-    public interface IEducationService
+    public interface IEmploymentService
     {
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        EducationDAO GetEducationByID(int id);
+        EmploymentDAO GetEmploymentByID(int id);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        IList<EducationDAO> GetEducations();
+        IList<EmploymentDAO> GetEmployments();
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool CreateEducation(EducationDAO e);
+        bool CreateEmployment(EmploymentDAO e);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool UpdateEducation(EducationDAO newEmp);
+        bool UpdateEmployment(EmploymentDAO newEmp);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool DeleteEducation(int id);
+        bool DeleteEmployment(int id);
     }
 }
