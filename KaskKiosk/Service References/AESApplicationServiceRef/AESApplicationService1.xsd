@@ -72,4 +72,78 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAppliedDAO" nillable="true" type="tns:ArrayOfAppliedDAO" />
+  <xs:complexType name="EducationDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicantID" type="xs:int" />
+      <xs:element minOccurs="0" name="DegreeAndMajor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EducationID" type="xs:int" />
+      <xs:element minOccurs="0" name="Graduated" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SchoolID" type="xs:int" />
+      <xs:element minOccurs="0" name="YearsAttendedFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="YearsAttendedTo" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EducationDAO" nillable="true" type="tns:EducationDAO" />
+  <xs:complexType name="ArrayOfEducationDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EducationDAO" nillable="true" type="tns:EducationDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEducationDAO" nillable="true" type="tns:ArrayOfEducationDAO" />
+  <xs:complexType name="EmployerDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmployerAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployerDAO" nillable="true" type="tns:EmployerDAO" />
+  <xs:complexType name="ArrayOfEmployerDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployerDAO" nillable="true" type="tns:EmployerDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployerDAO" nillable="true" type="tns:ArrayOfEmployerDAO" />
+  <xs:complexType name="EmploymentDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicantID" type="xs:int" />
+      <xs:element minOccurs="0" name="EmployedFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmployedTo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
+      <xs:element minOccurs="0" name="EmploymentID" type="xs:int" />
+      <xs:element minOccurs="0" name="EndingSalary" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="MayWeContactCurrentEmployer" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReasonForLeaving" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Responsibilities" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartingSalary" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supervisor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmploymentDAO" nillable="true" type="tns:EmploymentDAO" />
+  <xs:complexType name="ArrayOfEmploymentDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmploymentDAO" nillable="true" type="tns:EmploymentDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmploymentDAO" nillable="true" type="tns:ArrayOfEmploymentDAO" />
+  <xs:complexType name="SchoolDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SchoolAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SchoolID" type="xs:int" />
+      <xs:element minOccurs="0" name="SchoolName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SchoolDAO" nillable="true" type="tns:SchoolDAO" />
+  <xs:complexType name="ArrayOfSchoolDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SchoolDAO" nillable="true" type="tns:SchoolDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSchoolDAO" nillable="true" type="tns:ArrayOfSchoolDAO" />
 </xs:schema>
