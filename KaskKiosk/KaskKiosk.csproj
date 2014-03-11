@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="Controllers\API\ApplicantController.cs" />
     <Compile Include="Controllers\API\ApplicationController.cs" />
+    <Compile Include="Controllers\API\AppliedController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DEPRECATED\ApplicationController.cs" />
@@ -152,6 +153,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.ApplicantDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.AppliedDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">

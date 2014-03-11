@@ -126,10 +126,10 @@ namespace Kask.Services.DAO
         public int AppliedID { get; set; }
 
         [DataMember]
-        public int ApllicantID { get; set; }
+        public int ApplicantID { get; set; }
 
         [DataMember]
-        public int ApllicationID { get; set; }
+        public int ApplicationID { get; set; }
 
         [DataMember]
         public int JobID { get; set; }

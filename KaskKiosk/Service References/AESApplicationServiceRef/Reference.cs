@@ -612,6 +612,131 @@ namespace KaskKiosk.AESApplicationServiceRef {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AppliedDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class AppliedDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ApplicantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ApplicationIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AppliedIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateAppliedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int JobIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ApplicantID {
+            get {
+                return this.ApplicantIDField;
+            }
+            set {
+                if ((this.ApplicantIDField.Equals(value) != true)) {
+                    this.ApplicantIDField = value;
+                    this.RaisePropertyChanged("ApplicantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ApplicationID {
+            get {
+                return this.ApplicationIDField;
+            }
+            set {
+                if ((this.ApplicationIDField.Equals(value) != true)) {
+                    this.ApplicationIDField = value;
+                    this.RaisePropertyChanged("ApplicationID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AppliedID {
+            get {
+                return this.AppliedIDField;
+            }
+            set {
+                if ((this.AppliedIDField.Equals(value) != true)) {
+                    this.AppliedIDField = value;
+                    this.RaisePropertyChanged("AppliedID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateApplied {
+            get {
+                return this.DateAppliedField;
+            }
+            set {
+                if ((this.DateAppliedField.Equals(value) != true)) {
+                    this.DateAppliedField = value;
+                    this.RaisePropertyChanged("DateApplied");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int JobID {
+            get {
+                return this.JobIDField;
+            }
+            set {
+                if ((this.JobIDField.Equals(value) != true)) {
+                    this.JobIDField = value;
+                    this.RaisePropertyChanged("JobID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IApplicationService")]
     public interface IApplicationService {
@@ -845,6 +970,114 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<bool> DeleteApplicantAsync(int ID) {
             return base.Channel.DeleteApplicantAsync(ID);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IAppliedService")]
+    public interface IAppliedService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetAppliedByID", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAppliedService/GetAppliedByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.AppliedDAO GetAppliedByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetAppliedByID", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.AppliedDAO> GetAppliedByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetApplieds", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAppliedService/GetAppliedsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.AppliedDAO[] GetApplieds();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/GetApplieds", ReplyAction="http://tempuri.org/IAppliedService/GetAppliedsResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.AppliedDAO[]> GetAppliedsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/CreateApplied", ReplyAction="http://tempuri.org/IAppliedService/CreateAppliedResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAppliedService/CreateAppliedKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateApplied(KaskKiosk.AESApplicationServiceRef.AppliedDAO a);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/CreateApplied", ReplyAction="http://tempuri.org/IAppliedService/CreateAppliedResponse")]
+        System.Threading.Tasks.Task<bool> CreateAppliedAsync(KaskKiosk.AESApplicationServiceRef.AppliedDAO a);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/UpdateApplied", ReplyAction="http://tempuri.org/IAppliedService/UpdateAppliedResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAppliedService/UpdateAppliedKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateApplied(KaskKiosk.AESApplicationServiceRef.AppliedDAO newApp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/UpdateApplied", ReplyAction="http://tempuri.org/IAppliedService/UpdateAppliedResponse")]
+        System.Threading.Tasks.Task<bool> UpdateAppliedAsync(KaskKiosk.AESApplicationServiceRef.AppliedDAO newApp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/DeleteApplied", ReplyAction="http://tempuri.org/IAppliedService/DeleteAppliedResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAppliedService/DeleteAppliedKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteApplied(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAppliedService/DeleteApplied", ReplyAction="http://tempuri.org/IAppliedService/DeleteAppliedResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAppliedAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IAppliedServiceChannel : KaskKiosk.AESApplicationServiceRef.IAppliedService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AppliedServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IAppliedService>, KaskKiosk.AESApplicationServiceRef.IAppliedService {
+        
+        public AppliedServiceClient() {
+        }
+        
+        public AppliedServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public AppliedServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AppliedServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AppliedServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.AppliedDAO GetAppliedByID(int id) {
+            return base.Channel.GetAppliedByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.AppliedDAO> GetAppliedByIDAsync(int id) {
+            return base.Channel.GetAppliedByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.AppliedDAO[] GetApplieds() {
+            return base.Channel.GetApplieds();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.AppliedDAO[]> GetAppliedsAsync() {
+            return base.Channel.GetAppliedsAsync();
+        }
+        
+        public bool CreateApplied(KaskKiosk.AESApplicationServiceRef.AppliedDAO a) {
+            return base.Channel.CreateApplied(a);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateAppliedAsync(KaskKiosk.AESApplicationServiceRef.AppliedDAO a) {
+            return base.Channel.CreateAppliedAsync(a);
+        }
+        
+        public bool UpdateApplied(KaskKiosk.AESApplicationServiceRef.AppliedDAO newApp) {
+            return base.Channel.UpdateApplied(newApp);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateAppliedAsync(KaskKiosk.AESApplicationServiceRef.AppliedDAO newApp) {
+            return base.Channel.UpdateAppliedAsync(newApp);
+        }
+        
+        public bool DeleteApplied(int id) {
+            return base.Channel.DeleteApplied(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAppliedAsync(int id) {
+            return base.Channel.DeleteAppliedAsync(id);
         }
     }
 }

@@ -16,18 +16,28 @@ namespace KaskKiosk.Controllers
         /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         /// TODO: MAKE THIS INTO A WRAPPER
         /// THIS WILL ALLOW MULTI THREADING AS WELL
-        readonly string uri = "http://localhost:51309/api/Application";
+        readonly string uriApplication = "http://localhost:51309/api/Application";
         readonly string uriApplicant = "http://localhost:51309/api/Applicant";
+        readonly string uriApplied = "http://localhost:51309/api/Applied";
 
         private async Task<List<ApplicationDAO>> GetApplicationsAsync()
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                Task<string> response = httpClient.GetStringAsync(uri);
+                Task<string> response = httpClient.GetStringAsync(uriApplication);
                 return JsonConvert.DeserializeObjectAsync<List<ApplicationDAO>>(response.Result).Result;
             }
         }
-        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        
+        private async Task<List<ApplicantDAO>> GetApplicantsAsync()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                Task<string> response = httpClient.GetStringAsync(uriApplicant);
+                return JsonConvert.DeserializeObjectAsync<List<ApplicantDAO>>(response.Result).Result;
+            }
+        }
+        
 
         public async Task<ActionResult> Index()
         {
@@ -54,19 +64,13 @@ namespace KaskKiosk.Controllers
         // POST: /App/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
-                ApplicantDAO applicant = new ApplicantDAO();
-                applicant.FirstName = Request.Form["FirstName"];
-                applicant.LastName = Request.Form["LastName"];
-                applicant.SSN = Request.Form["SSN"];
+                // TODO: Add insert logic here
 
-                ApplicationDAO application = new ApplicationDAO();
-                application.ApplicationStatus = "Submitted";
-
-                // save data back to service
+                // save application form data back to database through service
                 using (HttpClient httpClient = new HttpClient())
                 {
                     httpClient.BaseAddress = new Uri("http://localhost:51309");
@@ -74,17 +78,82 @@ namespace KaskKiosk.Controllers
                     HttpResponseMessage result = new HttpResponseMessage();
                     string resultContent = "";
 
+
+                    // gather Applicant form data
+                    ApplicantDAO applicant = new ApplicantDAO();
+                    applicant.FirstName = Request.Form["FirstName"];
+                    applicant.MiddleName = Request.Form["MiddleName"];
+                    applicant.LastName = Request.Form["LastName"];
+                    applicant.SSN = Request.Form["SSN"];
+                    applicant.ApplicantAddress = Request.Form["ApplicantAddress"];
+                    applicant.Phone = Request.Form["ApplicantPhone"];
+                    applicant.NameAlias = Request.Form["NameAlias"];
+
                     // post (save) applicant data
                     result = httpClient.PostAsJsonAsync(uriApplicant, applicant).Result;
                     resultContent = result.Content.ReadAsStringAsync().Result;
 
+                    // gather Application form data
+                    ApplicationDAO application = new ApplicationDAO();
+                    application.ApplicationStatus = "Submitted";
+                    application.SalaryExpectation = Request.Form["SalaryExpectation"];
+                    application.FullTime = Convert.ToByte(Request.Form["FullTime"]);
+                    application.AvailableForDays = Convert.ToByte(Request.Form["AvailableForDays"]);
+                    application.AvailableForEvenings = Convert.ToByte(Request.Form["AvailableForEvenings"]);
+                    application.AvailableForWeekends = Convert.ToByte(Request.Form["AvailableForWeekends"]);
+                    application.MondayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["MondayFrom"]));
+                    application.TuesdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["TuesdayFrom"]));
+                    application.WednesdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["WednesdayFrom"]));
+                    application.ThursdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["ThursdayFrom"]));
+                    application.FridayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["FridayFrom"]));
+                    application.SaturdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SaturdayFrom"]));
+                    application.SundayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SundayFrom"]));
+                    application.MondayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["MondayTo"]));
+                    application.TuesdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["TuesdayTo"]));
+                    application.WednesdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["WednesdayTo"]));
+                    application.ThursdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["ThursdayTo"]));
+                    application.FridayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["FridayTo"]));
+                    application.SaturdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SaturdayTo"]));
+                    application.SundayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SundayTo"]));
+
                     // post (save) application data
-                    result = httpClient.PostAsJsonAsync(uri, application).Result;
+                    result = httpClient.PostAsJsonAsync(uriApplication, application).Result;
+                    resultContent = result.Content.ReadAsStringAsync().Result;
+
+
+                    // get correct applicant id (have to wait until applicant is created in database)
+                    var response = await httpClient.GetAsync(uriApplicant);
+                    if(response.IsSuccessStatusCode)
+                    {
+                        IEnumerable<ApplicantDAO> foundApplicants = response.Content.ReadAsAsync<IEnumerable<ApplicantDAO>>().Result;
+                        applicant.ApplicantID = foundApplicants.Last().ApplicantID;
+                    }
+                    else
+                    {
+                        throw new HttpException();
+                    }
+
+                    var resp = await httpClient.GetAsync(uriApplication);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        IEnumerable<ApplicationDAO> foundApplications = resp.Content.ReadAsAsync<IEnumerable<ApplicationDAO>>().Result;
+                        application.ApplicationID = foundApplications.Last().ApplicationID;
+                    }
+                    else
+                    {
+                        throw new HttpException();
+                    }
+
+                    AppliedDAO applied = new AppliedDAO();
+                    applied.ApplicantID = applicant.ApplicantID;
+                    applied.ApplicationID = application.ApplicationID;
+                    applied.JobID = 1;
+                    applied.DateApplied = DateTime.Now;
+
+                    // post (save) applied data
+                    result = httpClient.PostAsJsonAsync(uriApplied, applied).Result;
                     resultContent = result.Content.ReadAsStringAsync().Result;
                 }
-
-
-                // TODO: need to send all application/applicant related data back to service...
 
                 return RedirectToAction("Index");
             }
