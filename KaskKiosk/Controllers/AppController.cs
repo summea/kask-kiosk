@@ -22,6 +22,7 @@ namespace KaskKiosk.Controllers
         readonly string uriEducation = "http://localhost:51309/api/Education";
         readonly string uriEmployer = "http://localhost:51309/api/Employer";
         readonly string uriEmployment = "http://localhost:51309/api/Employment";
+        readonly string uriJob = "http://localhost:51309/api/Job";
         readonly string uriSchool = "http://localhost:51309/api/School";
 
         readonly string generalDateFormat = "M/yyyy";
@@ -51,6 +52,15 @@ namespace KaskKiosk.Controllers
             {
                 var response = await httpClient.GetStringAsync(uriEmployer);
                 return JsonConvert.DeserializeObjectAsync<List<EmployerDAO>>(response).Result;
+            }
+        }
+
+        private async Task<List<JobDAO>> GetJobsAsync()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var response = await httpClient.GetStringAsync(uriJob);
+                return JsonConvert.DeserializeObjectAsync<List<JobDAO>>(response).Result;
             }
         }
 
@@ -94,7 +104,8 @@ namespace KaskKiosk.Controllers
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                var response = await httpClient.GetStringAsync(uriEmployment + "?first=" + first + "&last=" + last + "&ssn=" + ssn);
+                //var response = await httpClient.GetStringAsync(uriEmployment + "?first=" + first + "&last=" + last + "&ssn=" + ssn);
+                var response = await httpClient.GetStringAsync(uriEmployment + "/" + first + "/" + last + "/" + ssn);
                 return JsonConvert.DeserializeObjectAsync<List<EmploymentDAO>>(response).Result;
             }
         }
@@ -103,7 +114,8 @@ namespace KaskKiosk.Controllers
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                var response = await httpClient.GetStringAsync(uriEducation + "?first=" + first + "&last=" + last + "&ssn=" + ssn);
+                //var response = await httpClient.GetStringAsync(uriEducation + "?first=" + first + "&last=" + last + "&ssn=" + ssn);
+                var response = await httpClient.GetStringAsync(uriEducation + "/" + first + "/" + last + "/" + ssn);
                 return JsonConvert.DeserializeObjectAsync<List<EducationDAO>>(response).Result;
             }
         }
@@ -115,8 +127,9 @@ namespace KaskKiosk.Controllers
             return View();
         }
 
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            List<JobDAO> jobs = await GetJobsAsync();
             List<String> timePickerList = new List<String>();
 
             // create time picker range (in hours)
@@ -125,6 +138,7 @@ namespace KaskKiosk.Controllers
                 timePickerList.Add(i.ToString());
             }
 
+            ViewBag.jobs = jobs;
             ViewBag.timePickerList = timePickerList;
             return View();
         }
@@ -188,22 +202,26 @@ namespace KaskKiosk.Controllers
                     resultContent = result.Content.ReadAsStringAsync().Result;
 
                     // get correct applicant id
-                    // TODO: there is still something we might need to change about this... :)
+                    // TODO: there is still something we might need to change about this...
                     // ***** We don't, it's safe to assume that id would be the last item on the list
                     // since we're using auto incremented id. *****
                     var applicants = await GetApplicantsAsync();
                     applicant.ApplicantID = applicants.Last().ApplicantID;
 
                     // get correct application id
-                    // TODO: there is still something we might need to change about this... :)
+                    // TODO: there is still something we might need to change about this...
                     var applications = await GetApplicationsAsync();
                     application.ApplicationID = applications.Last().ApplicationID;
+
+                    int jobId = 1;
+                    if (Request.Form["JobID"] != null)
+                        jobId = Convert.ToInt32(Request.Form["JobID"]);
 
                     // Create Applied DAO;
                     AppliedDAO applied = new AppliedDAO();
                     applied.ApplicantID = applicant.ApplicantID;
                     applied.ApplicationID = application.ApplicationID;
-                    applied.JobID = 1;
+                    applied.JobID = jobId;
                     applied.DateApplied = DateTime.Now;
 
                     // post (save) applied data
@@ -499,10 +517,11 @@ namespace KaskKiosk.Controllers
         {
             AppliedDAO applied = await GetAppliedIdAsync(id);
             ApplicantDAO applicant = await GetApplicantIdAsync(applied.ApplicantID);
-            ApplicationDAO application = await GetApplicationIdAsync(applied.ApplicationID);            
+            ApplicationDAO application = await GetApplicationIdAsync(applied.ApplicationID);
             List<EmploymentDAO> applicantEmployments = await GetEmploymentsForApplicantAsync(applicant.FirstName, applicant.LastName, applicant.SSN);
             List<EducationDAO> applicantEducations = await GetEducationsForApplicantAsync(applicant.FirstName, applicant.LastName, applicant.SSN);
             List<EmployerDAO> employers = await GetEmployersAsync();
+            List<JobDAO> jobs = await GetJobsAsync();
             List<SchoolDAO> schools = await GetSchoolsAsync();
             List<String> timePickerList = new List<String>();
 
@@ -510,6 +529,12 @@ namespace KaskKiosk.Controllers
             foreach (var employer in employers)
             {
                 employersByEmployerId[employer.EmployerID] = employer;
+            }
+
+            Dictionary<int, JobDAO> jobsByJobId = new Dictionary<int, JobDAO>();
+            foreach (var job in jobs)
+            {
+                jobsByJobId[job.JobID] = job;
             }
 
             Dictionary<int, SchoolDAO> schoolsBySchoolId = new Dictionary<int, SchoolDAO>();
@@ -534,13 +559,13 @@ namespace KaskKiosk.Controllers
             ViewBag.applied = applied;
             ViewBag.applicant = applicant;
             ViewBag.application = application;
-            //ViewBag.appliedForJob = appliedForJob.title;
-            ViewBag.appliedForJob = 1;
             ViewBag.educations = applicantEducations;
             ViewBag.employments = applicantEmployments;
             ViewBag.employers = employers;
+            ViewBag.jobs = jobs;
             ViewBag.schools = schools;
             ViewBag.employersByEmployerId = employersByEmployerId;
+            ViewBag.jobsByJobId = jobsByJobId;
             ViewBag.schoolsBySchoolId = schoolsBySchoolId;
             ViewBag.generalDateFormat = generalDateFormat;
             ViewBag.generalTimeFormat = generalTimeFormat;

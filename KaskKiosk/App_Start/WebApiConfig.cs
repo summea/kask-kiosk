@@ -10,6 +10,11 @@ namespace KaskKiosk
         public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
+                name: "GetItemsForApplicant",
+                routeTemplate: "api/{controller}/{first}/{last}/{ssn}",
+                defaults: new { action = "GetItemsForApplicant" }
+            );
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

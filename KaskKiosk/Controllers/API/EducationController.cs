@@ -44,7 +44,7 @@ namespace KaskKiosk.Controllers.API
 
         // GET: /Education/first/last/ssn
         [HttpGet]
-        public IEnumerable<EducationDAO> GetEducationsForApplicant(string first, string last, string ssn)
+        public IEnumerable<EducationDAO> GetItemsForApplicant(string first, string last, string ssn)
         {
             EducationServiceClient client = new EducationServiceClient();
 

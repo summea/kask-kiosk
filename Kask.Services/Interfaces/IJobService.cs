@@ -3,36 +3,30 @@ using Kask.Services.DAO;
 
 using System.Collections.Generic;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 
 namespace Kask.Services.Interfaces
 {
     [ServiceContract]
-    public interface IEducationService
+    public interface IJobService
     {
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        EducationDAO GetEducationByID(int id);
+        JobDAO GetJobByID(int id);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        IList<EducationDAO> GetEducations();
+        IList<JobDAO> GetJobs();
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        [WebGet(UriTemplate = "Education?first={first}&last={last}&ssn={ssn}")]
-        IList<EducationDAO> GetEducationsByName(string first, string last, string ssn);
+        bool CreateJob(JobDAO e);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool CreateEducation(EducationDAO e);
+        bool UpdateJob(JobDAO newEmp);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool UpdateEducation(EducationDAO newEmp);
-
-        [OperationContract]
-        [FaultContract(typeof(KaskServiceException))]
-        bool DeleteEducation(int id);
+        bool DeleteJob(int id);
     }
 }

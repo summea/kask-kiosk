@@ -20,7 +20,7 @@ namespace Kask.Services.Interfaces
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        [WebGet(UriTemplate = "?first={first}&last={last}&ssn={ssn}")]
+        [WebGet(UriTemplate = "Employment?first={first}&last={last}&ssn={ssn}")]
         IList<EmploymentDAO> GetEmploymentsByName(string first, string last, string ssn);
 
         [OperationContract]
