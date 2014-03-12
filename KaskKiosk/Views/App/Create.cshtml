@@ -43,10 +43,15 @@
     <h3>Position</h3>
     <div class="form-group spacing" style="width:400px;float:left;">
         @Html.Label("Position Applying For:")
-        <select class="form-control" name="JobID" id="JobID">
-            <option value="1">Job One</option>
-            <option value="2">Job Two</option>
-        </select>
+        @if (ViewBag.jobs != null)
+        {
+            <select class="form-control" name="JobID" id="JobID">
+            @foreach (var job in @ViewBag.jobs)
+            {
+                <option value="@job.JobID">@job.Title</option>
+            }
+            </select>
+        }
     </div>
     <div class="form-group spacing" style="width:200px;float:left;">
         @Html.Label("Salary Expectation:")

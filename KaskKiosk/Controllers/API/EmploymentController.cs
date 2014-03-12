@@ -44,7 +44,7 @@ namespace KaskKiosk.Controllers.API
 
         // GET: /Employment/first/last/ssn
         [HttpGet]
-        public IEnumerable<EmploymentDAO> GetEmploymentsForApplicant(string first, string last, string ssn)
+        public IEnumerable<EmploymentDAO> GetItemsForApplicant(string first, string last, string ssn)
         {
             EmploymentServiceClient client = new EmploymentServiceClient();
 

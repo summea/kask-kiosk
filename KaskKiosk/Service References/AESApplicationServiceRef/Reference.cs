@@ -1242,6 +1242,83 @@ namespace KaskKiosk.AESApplicationServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="JobDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class JobDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int JobIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int JobID {
+            get {
+                return this.JobIDField;
+            }
+            set {
+                if ((this.JobIDField.Equals(value) != true)) {
+                    this.JobIDField = value;
+                    this.RaisePropertyChanged("JobID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="SchoolDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
     [System.SerializableAttribute()]
     public partial class SchoolDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -2030,6 +2107,114 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<bool> DeleteEmploymentAsync(int id) {
             return base.Channel.DeleteEmploymentAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IJobService")]
+    public interface IJobService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/GetJobByID", ReplyAction="http://tempuri.org/IJobService/GetJobByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IJobService/GetJobByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.JobDAO GetJobByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/GetJobByID", ReplyAction="http://tempuri.org/IJobService/GetJobByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.JobDAO> GetJobByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/GetJobs", ReplyAction="http://tempuri.org/IJobService/GetJobsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IJobService/GetJobsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.JobDAO[] GetJobs();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/GetJobs", ReplyAction="http://tempuri.org/IJobService/GetJobsResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.JobDAO[]> GetJobsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/CreateJob", ReplyAction="http://tempuri.org/IJobService/CreateJobResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IJobService/CreateJobKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateJob(KaskKiosk.AESApplicationServiceRef.JobDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/CreateJob", ReplyAction="http://tempuri.org/IJobService/CreateJobResponse")]
+        System.Threading.Tasks.Task<bool> CreateJobAsync(KaskKiosk.AESApplicationServiceRef.JobDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/UpdateJob", ReplyAction="http://tempuri.org/IJobService/UpdateJobResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IJobService/UpdateJobKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateJob(KaskKiosk.AESApplicationServiceRef.JobDAO newEmp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/UpdateJob", ReplyAction="http://tempuri.org/IJobService/UpdateJobResponse")]
+        System.Threading.Tasks.Task<bool> UpdateJobAsync(KaskKiosk.AESApplicationServiceRef.JobDAO newEmp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/DeleteJob", ReplyAction="http://tempuri.org/IJobService/DeleteJobResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IJobService/DeleteJobKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteJob(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJobService/DeleteJob", ReplyAction="http://tempuri.org/IJobService/DeleteJobResponse")]
+        System.Threading.Tasks.Task<bool> DeleteJobAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IJobServiceChannel : KaskKiosk.AESApplicationServiceRef.IJobService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class JobServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IJobService>, KaskKiosk.AESApplicationServiceRef.IJobService {
+        
+        public JobServiceClient() {
+        }
+        
+        public JobServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public JobServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public JobServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public JobServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.JobDAO GetJobByID(int id) {
+            return base.Channel.GetJobByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.JobDAO> GetJobByIDAsync(int id) {
+            return base.Channel.GetJobByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.JobDAO[] GetJobs() {
+            return base.Channel.GetJobs();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.JobDAO[]> GetJobsAsync() {
+            return base.Channel.GetJobsAsync();
+        }
+        
+        public bool CreateJob(KaskKiosk.AESApplicationServiceRef.JobDAO e) {
+            return base.Channel.CreateJob(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateJobAsync(KaskKiosk.AESApplicationServiceRef.JobDAO e) {
+            return base.Channel.CreateJobAsync(e);
+        }
+        
+        public bool UpdateJob(KaskKiosk.AESApplicationServiceRef.JobDAO newEmp) {
+            return base.Channel.UpdateJob(newEmp);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateJobAsync(KaskKiosk.AESApplicationServiceRef.JobDAO newEmp) {
+            return base.Channel.UpdateJobAsync(newEmp);
+        }
+        
+        public bool DeleteJob(int id) {
+            return base.Channel.DeleteJob(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteJobAsync(int id) {
+            return base.Channel.DeleteJobAsync(id);
         }
     }
     

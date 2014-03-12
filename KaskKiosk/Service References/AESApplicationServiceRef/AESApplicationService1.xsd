@@ -131,6 +131,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfEmploymentDAO" nillable="true" type="tns:ArrayOfEmploymentDAO" />
+  <xs:complexType name="JobDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobID" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobDAO" nillable="true" type="tns:JobDAO" />
+  <xs:complexType name="ArrayOfJobDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JobDAO" nillable="true" type="tns:JobDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJobDAO" nillable="true" type="tns:ArrayOfJobDAO" />
   <xs:complexType name="SchoolDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:int" />

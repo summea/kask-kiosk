@@ -122,6 +122,7 @@
     <Compile Include="Controllers\API\EducationController.cs" />
     <Compile Include="Controllers\API\EmployerController.cs" />
     <Compile Include="Controllers\API\EmploymentController.cs" />
+    <Compile Include="Controllers\API\JobController.cs" />
     <Compile Include="Controllers\API\SchoolController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -169,6 +170,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.EmploymentDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.JobDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SchoolDAO.datasource">
