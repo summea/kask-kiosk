@@ -1,19 +1,16 @@
-﻿using System;
+﻿using Kask.Services.DAO;
+using Kask.Services.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-using Kask.DAL.Models;
-using Kask.Services.Interfaces;
-using KaskUnitTests;
-using Kask.Services.DAO;
-
-namespace KaskUnitTests
+namespace Kask.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class ApplicantServiceUnitTest
     {
         public IApplicantService applicantService;
-       // private ApplicantDAO applicant;
+       
+        // private ApplicantDAO applicant;
         public IList<Kask.Services.DAO.ApplicantDAO> listOfApplicants;
         ApplicantDAO applicant1 = new ApplicantDAO() { ApplicantID = 1, FirstName = "Sam1", LastName = "Edy1", Phone = "000 000 0000", SSN = "1111" };
         ApplicantDAO applicant2 = new ApplicantDAO() { ApplicantID = 2, FirstName = "Sam2", LastName = "Edy2", Phone = "222 222 2222", SSN = "2222" };
