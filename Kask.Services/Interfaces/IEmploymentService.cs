@@ -3,6 +3,7 @@ using Kask.Services.DAO;
 
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 
 namespace Kask.Services.Interfaces
 {
@@ -19,6 +20,7 @@ namespace Kask.Services.Interfaces
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
+        [WebGet(UriTemplate = "?first={first}&last={last}&ssn={ssn}")]
         IList<EmploymentDAO> GetEmploymentsByName(string first, string last, string ssn);
 
         [OperationContract]

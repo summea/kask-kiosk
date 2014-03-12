@@ -42,6 +42,23 @@ namespace KaskKiosk.Controllers.API
             }
         }
 
+        // GET: /Employment/first/last/ssn
+        [HttpGet]
+        public IEnumerable<EmploymentDAO> GetEmploymentsForApplicant(string first, string last, string ssn)
+        {
+            EmploymentServiceClient client = new EmploymentServiceClient();
+
+            try
+            {
+                IEnumerable<EmploymentDAO> result = client.GetEmploymentsByName(first, last, ssn);
+                return result;
+            }
+            catch (FaultException<KaskServiceException> e)
+            {
+                throw new HttpException(e.Message);
+            }
+        }
+
         [HttpPost]
         public bool PostEmployment(EmploymentDAO emp)
         {

@@ -1695,6 +1695,14 @@ namespace KaskKiosk.AESApplicationServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEducationService/GetEducations", ReplyAction="http://tempuri.org/IEducationService/GetEducationsResponse")]
         System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.EducationDAO[]> GetEducationsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEducationService/GetEducationsByName", ReplyAction="http://tempuri.org/IEducationService/GetEducationsByNameResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IEducationService/GetEducationsByNameKaskServiceExceptionFault" +
+            "", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.EducationDAO[] GetEducationsByName(string first, string last, string ssn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEducationService/GetEducationsByName", ReplyAction="http://tempuri.org/IEducationService/GetEducationsByNameResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.EducationDAO[]> GetEducationsByNameAsync(string first, string last, string ssn);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEducationService/CreateEducation", ReplyAction="http://tempuri.org/IEducationService/CreateEducationResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IEducationService/CreateEducationKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
         bool CreateEducation(KaskKiosk.AESApplicationServiceRef.EducationDAO e);
@@ -1758,6 +1766,14 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.EducationDAO[]> GetEducationsAsync() {
             return base.Channel.GetEducationsAsync();
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.EducationDAO[] GetEducationsByName(string first, string last, string ssn) {
+            return base.Channel.GetEducationsByName(first, last, ssn);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.EducationDAO[]> GetEducationsByNameAsync(string first, string last, string ssn) {
+            return base.Channel.GetEducationsByNameAsync(first, last, ssn);
         }
         
         public bool CreateEducation(KaskKiosk.AESApplicationServiceRef.EducationDAO e) {
@@ -1911,6 +1927,14 @@ namespace KaskKiosk.AESApplicationServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmploymentService/GetEmployments", ReplyAction="http://tempuri.org/IEmploymentService/GetEmploymentsResponse")]
         System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.EmploymentDAO[]> GetEmploymentsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmploymentService/GetEmploymentsByName", ReplyAction="http://tempuri.org/IEmploymentService/GetEmploymentsByNameResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IEmploymentService/GetEmploymentsByNameKaskServiceExceptionFau" +
+            "lt", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.EmploymentDAO[] GetEmploymentsByName(string first, string last, string ssn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmploymentService/GetEmploymentsByName", ReplyAction="http://tempuri.org/IEmploymentService/GetEmploymentsByNameResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.EmploymentDAO[]> GetEmploymentsByNameAsync(string first, string last, string ssn);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmploymentService/CreateEmployment", ReplyAction="http://tempuri.org/IEmploymentService/CreateEmploymentResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IEmploymentService/CreateEmploymentKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
         bool CreateEmployment(KaskKiosk.AESApplicationServiceRef.EmploymentDAO e);
@@ -1974,6 +1998,14 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.EmploymentDAO[]> GetEmploymentsAsync() {
             return base.Channel.GetEmploymentsAsync();
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.EmploymentDAO[] GetEmploymentsByName(string first, string last, string ssn) {
+            return base.Channel.GetEmploymentsByName(first, last, ssn);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.EmploymentDAO[]> GetEmploymentsByNameAsync(string first, string last, string ssn) {
+            return base.Channel.GetEmploymentsByNameAsync(first, last, ssn);
         }
         
         public bool CreateEmployment(KaskKiosk.AESApplicationServiceRef.EmploymentDAO e) {

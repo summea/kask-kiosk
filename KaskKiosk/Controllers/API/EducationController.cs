@@ -42,6 +42,23 @@ namespace KaskKiosk.Controllers.API
             }
         }
 
+        // GET: /Education/first/last/ssn
+        [HttpGet]
+        public IEnumerable<EducationDAO> GetEducationsForApplicant(string first, string last, string ssn)
+        {
+            EducationServiceClient client = new EducationServiceClient();
+
+            try
+            {
+                IEnumerable<EducationDAO> result = client.GetEducationsByName(first, last, ssn);
+                return result;
+            }
+            catch (FaultException<KaskServiceException> e)
+            {
+                throw new HttpException(e.Message);
+            }
+        }
+
         [HttpPost]
         public bool PostEducation(EducationDAO edu)
         {

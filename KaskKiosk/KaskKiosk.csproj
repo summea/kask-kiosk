@@ -197,6 +197,7 @@
     <Content Include="Views\App\Index.cshtml" />
     <Content Include="Views\App\Create.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\App\Details.cshtml" />
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService.xsd">
       <SubType>Designer</SubType>
     </None>
