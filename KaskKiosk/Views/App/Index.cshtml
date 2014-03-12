@@ -10,12 +10,14 @@
     <tr>
         <th>id</th>
         <th>Application Status</th>
+        <th>Actions</th>
     </tr>
 @foreach (var item in ViewBag.applications)
 {
     <tr>
         <td>@item.ApplicationID</td>
         <td>@item.ApplicationStatus</td>
+        <td>@Html.ActionLink("View Details", "Details", new { id=item.ApplicationID })</td>
     </tr>
 }
 </table>

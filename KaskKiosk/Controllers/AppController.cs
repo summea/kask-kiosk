@@ -24,6 +24,9 @@ namespace KaskKiosk.Controllers
         readonly string uriEmployment = "http://localhost:51309/api/Employment";
         readonly string uriSchool = "http://localhost:51309/api/School";
 
+        readonly string generalDateFormat = "M/yyyy";
+        readonly string generalTimeFormat = "{0:hh\\:mm}";
+
         private async Task<List<ApplicationDAO>> GetApplicationsAsync()
         {
             using (HttpClient httpClient = new HttpClient())
@@ -278,7 +281,7 @@ namespace KaskKiosk.Controllers
                     // gather Employment data
                     EmploymentDAO employment2 = new EmploymentDAO();
                     employment2.ApplicantID = applicant.ApplicantID;
-                    employment2.EmployerID = employer.EmployerID;
+                    employment2.EmployerID = employer2.EmployerID;
                     employment2.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_2"]);
                     employment2.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_2"]);
                     employment2.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_2"]);
@@ -320,7 +323,7 @@ namespace KaskKiosk.Controllers
                     // gather Employment data
                     EmploymentDAO employment3 = new EmploymentDAO();
                     employment3.ApplicantID = applicant.ApplicantID;
-                    employment3.EmployerID = employer.EmployerID;
+                    employment3.EmployerID = employer3.EmployerID;
                     employment3.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_3"]);
                     employment3.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_3"]);
                     employment3.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_3"]);
@@ -451,7 +454,8 @@ namespace KaskKiosk.Controllers
             }
             catch
             {
-                return View();
+                // TODO: validation later on...
+                return RedirectToAction("Create");
             }
         }
 
@@ -495,10 +499,24 @@ namespace KaskKiosk.Controllers
         {
             AppliedDAO applied = await GetAppliedIdAsync(id);
             ApplicantDAO applicant = await GetApplicantIdAsync(applied.ApplicantID);
-            ApplicationDAO application = await GetApplicationIdAsync(applied.ApplicationID);
+            ApplicationDAO application = await GetApplicationIdAsync(applied.ApplicationID);            
             List<EmploymentDAO> applicantEmployments = await GetEmploymentsForApplicantAsync(applicant.FirstName, applicant.LastName, applicant.SSN);
             List<EducationDAO> applicantEducations = await GetEducationsForApplicantAsync(applicant.FirstName, applicant.LastName, applicant.SSN);
+            List<EmployerDAO> employers = await GetEmployersAsync();
+            List<SchoolDAO> schools = await GetSchoolsAsync();
             List<String> timePickerList = new List<String>();
+
+            Dictionary<int, EmployerDAO> employersByEmployerId = new Dictionary<int, EmployerDAO>();
+            foreach (var employer in employers)
+            {
+                employersByEmployerId[employer.EmployerID] = employer;
+            }
+
+            Dictionary<int, SchoolDAO> schoolsBySchoolId = new Dictionary<int, SchoolDAO>();
+            foreach (var school in schools)
+            {
+                schoolsBySchoolId[school.SchoolID] = school;
+            }
 
             if (applied == null)
             {
@@ -518,9 +536,14 @@ namespace KaskKiosk.Controllers
             ViewBag.application = application;
             //ViewBag.appliedForJob = appliedForJob.title;
             ViewBag.appliedForJob = 1;
-            ViewBag.educations = applicantEmployments;
+            ViewBag.educations = applicantEducations;
             ViewBag.employments = applicantEmployments;
-
+            ViewBag.employers = employers;
+            ViewBag.schools = schools;
+            ViewBag.employersByEmployerId = employersByEmployerId;
+            ViewBag.schoolsBySchoolId = schoolsBySchoolId;
+            ViewBag.generalDateFormat = generalDateFormat;
+            ViewBag.generalTimeFormat = generalTimeFormat;
 
             return View(applied);
         }
