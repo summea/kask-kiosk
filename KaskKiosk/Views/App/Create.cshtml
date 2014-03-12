@@ -212,252 +212,94 @@
     <br style="clear:both;"/>
     
     <h3>Job History</h3>
-    <div class="form-group spacing" style="width:800px;float:left;">
+    for (var i = 1; i < 4; i++)
+    {
+        <div class="form-group spacing" style="width:800px;float:left;">
         @Html.Label("May we contact this employer?")
-        <select class="form-control" name="MayWeContactCurrentEmployer_1" id="MayWeContactCurrentEmployer_1">
+        <select class="form-control" name="MayWeContactCurrentEmployer_@i" id="MayWeContactCurrentEmployer_@i">
             <option value="1">Yes</option>
             <option value="0">No</option>
         </select>
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("Employer:")
-        <input type="text" class="form-control" name="EmployerName_1" id="EmployerName_1" placeholder="Enter Employer" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("From:")
-        <input type="text" class="form-control" name="EmployedFrom_1" id="EmployedFrom_1" placeholder="month/year" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("To:")
-        <input type="text" class="form-control" name="EmployedTo_1" id="EmployedTo_1" placeholder="month/year" />
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;clear:both;">
-        @Html.Label("Address:")
-        <input type="text" class="form-control" name="EmployerAddress_1" id="EmployerAddress_1" placeholder="Street, City, State, Zip" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Phone:")
-        <input type="text" class="form-control" name="EmployerPhone_1" id="EmployerPhone_1" placeholder="Enter Phone Number" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Supervisor:")
-        <input type="text" class="form-control" name="EmployerSupervisor_1" id="EmployerSupervisor_1" placeholder="Enter Supervisor name" />
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;clear:both;">
-        @Html.Label("Position:")
-        <input type="text" class="form-control" name="EmployedPosition_1" id="EmployedPosition_1" placeholder="Enter position" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Starting Salary:")
-        <input type="text" class="form-control" name="EmployedStartingSalary_1" id="EmployedStartingSalary_1" placeholder="$" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Ending Salary:")
-        <input type="text" class="form-control" name="EmployedEndingSalary_1" id="EmployedEndingSalary_1" placeholder="$" />
-    </div>
-    <div class="form-group spacing" style="width:800px;float:left;clear:both;">
-        @Html.Label("Reason for leaving:")
-        <input type="text" class="form-control" name="EmployedReasonForLeaving_1" id="EmployedReasonForLeaving_1" placeholder="Enter reason for leaving" />
-    </div>
-    <div class="form-group spacing" style="width:800px;float:left;clear:both;">
-        @Html.Label("Describe your Responsibilities:")
-        <textarea class="form-control" name="EmployedResponsibilities_1" id="EmployedResponsibilities_1" placeholder="Enter job responsibilities"></textarea>
-    </div>
-    <br style="clear:both;"/>
-    
-    <div class="form-group spacing" style="width:800px;float:left;">
-        @Html.Label("May we contact this employer?")
-        <select class="form-control" name="MayWeContactCurrentEmployer_2" id="MayWeContactCurrentEmployer_2">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("Employer:")
-        <input type="text" class="form-control" name="EmployerName_2" id="EmployerName_2" placeholder="Enter Employer" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("From:")
-        <input type="text" class="form-control" name="EmployedFrom_2" id="EmployedFrom_2" placeholder="month/year" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("To:")
-        <input type="text" class="form-control" name="EmployedTo_2" id="EmployedTo_2" placeholder="month/year" />
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;clear:both;">
-        @Html.Label("Address:")
-        <input type="text" class="form-control" name="EmployerAddress_2" id="EmployerAddress_2" placeholder="Street, City, State, Zip" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Phone:")
-        <input type="text" class="form-control" name="EmployerPhone_2" id="EmployerPhone_2" placeholder="Enter Phone Number" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Supervisor:")
-        <input type="text" class="form-control" name="EmployerSupervisor_2" id="EmployerSupervisor_2" placeholder="Enter Supervisor name" />
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;clear:both;">
-        @Html.Label("Position:")
-        <input type="text" class="form-control" name="EmployedPosition_2" id="EmployedPosition_2" placeholder="Enter position" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Starting Salary:")
-        <input type="text" class="form-control" name="EmployedStartingSalary_2" id="EmployedStartingSalary_2" placeholder="$" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Ending Salary:")
-        <input type="text" class="form-control" name="EmployedEndingSalary_2" id="EmployedEndingSalary_2" placeholder="$" />
-    </div>
-    <div class="form-group spacing" style="width:800px;float:left;clear:both;">
-        @Html.Label("Reason for leaving:")
-        <input type="text" class="form-control" name="EmployedReasonForLeaving_2" id="EmployedReasonForLeaving_2" placeholder="Enter reason for leaving" />
-    </div>
-    <div class="form-group spacing" style="width:800px;float:left;clear:both;">
-        @Html.Label("Describe your Responsibilities:")
-        <textarea class="form-control" name="EmployedResponsibilities_2" id="EmployedResponsibilities_2" placeholder="Enter job responsibilities"></textarea>
-    </div>
-    <br style="clear:both;"/>
-    
-    <div class="form-group spacing" style="width:800px;float:left;">
-        @Html.Label("May we contact this employer?")
-        <select class="form-control" name="MayWeContactCurrentEmployer_3" id="MayWeContactCurrentEmployer_3">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("Employer:")
-        <input type="text" class="form-control" name="EmployerName_3" id="EmployerName_3" placeholder="Enter Employer" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("From:")
-        <input type="text" class="form-control" name="EmployedFrom_3" id="EmployedFrom_3" placeholder="month/year" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("To:")
-        <input type="text" class="form-control" name="EmployedTo_3" id="EmployedTo_3" placeholder="month/year" />
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;clear:both;">
-        @Html.Label("Address:")
-        <input type="text" class="form-control" name="EmployerAddress_3" id="EmployerAddress_3" placeholder="Street, City, State, Zip" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Phone:")
-        <input type="text" class="form-control" name="EmployerPhone_3" id="EmployerPhone_3" placeholder="Enter Phone Number" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Supervisor:")
-        <input type="text" class="form-control" name="EmployerSupervisor_3" id="EmployerSupervisor_3 placeholder="Enter Supervisor name" />
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;clear:both;">
-        @Html.Label("Position:")
-        <input type="text" class="form-control" name="EmployedPosition_3" id="EmployedPosition_3" placeholder="Enter position" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Starting Salary:")
-        <input type="text" class="form-control" name="EmployedStartingSalary_3" id="EmployedStartingSalary_3" placeholder="$" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Ending Salary:")
-        <input type="text" class="form-control" name="EmployedEndingSalary_3" id="EmployedEndingSalary_3" placeholder="$" />
-    </div>
-    <div class="form-group spacing" style="width:800px;float:left;clear:both;">
-        @Html.Label("Reason for leaving:")
-        <input type="text" class="form-control" name="EmployedReasonForLeaving_3" id="EmployedReasonForLeaving_3" placeholder="Enter reason for leaving" />
-    </div>
-    <div class="form-group spacing" style="width:800px;float:left;clear:both;">
-        @Html.Label("Describe your Responsibilities:")
-        <textarea class="form-control" name="EmployedResponsibilities_3" id="EmployedResponsibilities_3" placeholder="Enter job responsibilities"></textarea>
-    </div>
-    <br style="clear:both;"/>
-    
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Employer:")
+            <input type="text" class="form-control" name="EmployerName_@i" id="EmployerName_@i" placeholder="Enter Employer" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("From:")
+            <input type="text" class="form-control" name="EmployedFrom_@i" id="EmployedFrom_@i" placeholder="month/year" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("To:")
+            <input type="text" class="form-control" name="EmployedTo_@i" id="EmployedTo_@i" placeholder="month/year" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;clear:both;">
+            @Html.Label("Address:")
+            <input type="text" class="form-control" name="EmployerAddress_@i" id="EmployerAddress_@i" placeholder="Street, City, State, Zip" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Phone:")
+            <input type="text" class="form-control" name="EmployerPhone_@i" id="EmployerPhone_@i" placeholder="Enter Phone Number" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Supervisor:")
+            <input type="text" class="form-control" name="EmployerSupervisor_@i" id="EmployerSupervisor_@i" placeholder="Enter Supervisor name" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;clear:both;">
+            @Html.Label("Position:")
+            <input type="text" class="form-control" name="EmployedPosition_@i" id="EmployedPosition_@i" placeholder="Enter position" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Starting Salary:")
+            <input type="text" class="form-control" name="EmployedStartingSalary_@i" id="EmployedStartingSalary_@i" placeholder="$" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Ending Salary:")
+            <input type="text" class="form-control" name="EmployedEndingSalary_@i" id="EmployedEndingSalary_@i" placeholder="$" />
+        </div>
+        <div class="form-group spacing" style="width:800px;float:left;clear:both;">
+            @Html.Label("Reason for leaving:")
+            <input type="text" class="form-control" name="EmployedReasonForLeaving_@i" id="EmployedReasonForLeaving_@i" placeholder="Enter reason for leaving" />
+        </div>
+        <div class="form-group spacing" style="width:800px;float:left;clear:both;">
+            @Html.Label("Describe your Responsibilities:")
+            <textarea class="form-control" name="EmployedResponsibilities_@i" id="EmployedResponsibilities_@i" placeholder="Enter job responsibilities"></textarea>
+        </div>
+        <br style="clear:both;"/>
+    }
+
     <h3>Education</h3>
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("School Name:")
-        <input type="text" class="form-control" name="SchoolName_1" id="SchoolName_1" placeholder="Enter School Name" />
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("School Address:")
-        <input type="text" class="form-control" name="SchoolAddress_1" id="SchoolAddress_1" placeholder="Enter School Address" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;clear:both;">
-        @Html.Label("Years Attended From:")
-        <input type="text" class="form-control" name="YearsAttendedFrom_1" id="YearsAttendedFrom_1" placeholder="9/2000" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Years Attended To:")
-        <input type="text" class="form-control" name="YearsAttendedTo_1" id="YearsAttendedTo_1" placeholder="9/2000" />
-    </div>
-    <div class="form-group spacing" style="width:100px;float:left;">
-        @Html.Label("Graduated:")
-        <select class="form-control" name="Graduated_1" id="Graduated_1">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-    </div>
-    <div class="form-group spacing" style="width:300px;float:left;">
-        @Html.Label("Degree/Major:")
-        <input type="text" class="form-control" name="DegreeAndMajor_1" id="DegreeAndMajor_1" placeholder="Enter Degree and Major" />
-    </div>
-    <br style="clear:both;"/>
-    
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("School Name:")
-        <input type="text" class="form-control" name="SchoolName_2" id="SchoolName_2" placeholder="Enter School Name" />
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("School Address:")
-        <input type="text" class="form-control" name="SchoolAddress_2" id="SchoolAddress_2" placeholder="Enter School Address" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;clear:both;">
-        @Html.Label("Years Attended From:")
-        <input type="text" class="form-control" name="YearsAttendedFrom_2" id="YearsAttendedFrom_2" placeholder="9/2000" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Years Attended To:")
-        <input type="text" class="form-control" name="YearsAttendedTo_2" id="YearsAttendedTo_2" placeholder="9/2000" />
-    </div>
-    <div class="form-group spacing" style="width:100px;float:left;">
-        @Html.Label("Graduated:")
-        <select class="form-control" name="Graduated_2" id="Graduated_2">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-    </div>
-    <div class="form-group spacing" style="width:300px;float:left;">
-        @Html.Label("Degree/Major:")
-        <input type="text" class="form-control" name="DegreeAndMajor_2" id="DegreeAndMajor_2" placeholder="Enter Degree and Major" />
-    </div>
-    <br style="clear:both;"/>
-    
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("School Name:")
-        <input type="text" class="form-control" name="SchoolName_3" id="SchoolName_3" placeholder="Enter School Name" />
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("School Address:")
-        <input type="text" class="form-control" name="SchoolAddress_3" id="SchoolAddress_3" placeholder="Enter School Address" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;clear:both;">
-        @Html.Label("Years Attended From:")
-        <input type="text" class="form-control" name="YearsAttendedFrom_3" id="YearsAttendedFrom_3" placeholder="9/2000" />
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Years Attended To:")
-        <input type="text" class="form-control" name="YearsAttendedTo_3" id="YearsAttendedTo_3" placeholder="9/2000" />
-    </div>
-    <div class="form-group spacing" style="width:100px;float:left;">
-        @Html.Label("Graduated:")
-        <select class="form-control" name="Graduated_3" id="Graduated_3">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-    </div>
-    <div class="form-group spacing" style="width:300px;float:left;">
-        @Html.Label("Degree/Major:")
-        <input type="text" class="form-control" name="DegreeAndMajor_3" id="DegreeAndMajor_3" placeholder="Enter Degree and Major" />
-    </div>
-    <br style="clear:both;"/>
+    for (var i = 1; i < 4; i++)
+    {
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("School Name:")
+            <input type="text" class="form-control" name="SchoolName_@i" id="SchoolName_@i" placeholder="Enter Name and Address of School" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("School Address:")
+            <input type="text" class="form-control" name="SchoolAddress_@i" id="SchoolAddress_@i" placeholder="Enter Name and Address of School" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;clear:both;">
+            @Html.Label("Years Attended From:")
+            <input type="text" class="form-control" name="YearsAttendedFrom_@i" id="YearsAttendedFrom_@i" placeholder="9/2000" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Years Attended To:")
+            <input type="text" class="form-control" name="YearsAttendedTo_@i" id="YearsAttendedTo_@i" placeholder="9/2000" />
+        </div>
+        <div class="form-group spacing" style="width:100px;float:left;">
+            @Html.Label("Graduated:")
+            <select class="form-control" name="Graduated_@i" id="Graduated_@i">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group spacing" style="width:300px;float:left;">
+            @Html.Label("Degree/Major:")
+            <input type="text" class="form-control" name="DegreeAndMajor_@i" id="DegreeAndMajor_@i" placeholder="Enter Degree and Major" />
+        </div>
+        <br style="clear:both;"/>
+    }
     
     <input type="submit" />
 }

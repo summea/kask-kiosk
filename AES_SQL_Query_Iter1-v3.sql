@@ -313,7 +313,7 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Employme
   DROP TABLE Employment;
 CREATE TABLE Employment (
   Employment_ID               int IDENTITY(1,1),
-  Applicant_ID                int NOT NULL UNIQUE,
+  Applicant_ID                int NOT NULL,
   Employer_ID                 int NOT NULL,
   MayWeContactCurrentEmployer tinyint NULL,
   EmployedFrom                date NULL,

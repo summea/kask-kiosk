@@ -1,0 +1,243 @@
+﻿@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Application Details</h2>
+
+    <h3>Personal</h3>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("First Name:")<br />
+        @ViewBag.applicant.FirstName
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("Middle Name:")<br />
+        @ViewBag.applicant.MiddleName
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("Last Name:")<br />
+        @ViewBag.applicant.LastName
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("Social Security Number:")<br />
+        @ViewBag.applicant.SSN
+    </div>
+    <div class="form-group spacing" style="width:400px;float:left;clear:both;">
+        @Html.Label("Address:")<br />
+        @ViewBag.applicant.ApplicantAddress
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("Phone:")<br />
+        @ViewBag.applicant.Phone
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("Name Alias:")<br />
+        @ViewBag.applicant.NameAlias
+    </div>
+    <br style="clear:both;"/>
+    
+    <h3>Position</h3>
+    <div class="form-group spacing" style="width:400px;float:left;">
+        @Html.Label("Position Applying For:")<br />
+        @ViewBag.appliedForJob
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("Salary Expectation:")<br />
+        @ViewBag.application.SalaryExpectation
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("Full Time:")
+        @if (ViewBag.application.FullTime.Equals(1)) {
+            @: Yes
+        } else {
+            @: No
+        }
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;clear:both;">
+        @Html.Label("Days?")<br />
+        @if (ViewBag.application.AvailableForDays.Equals(1))
+        {
+            @: Yes
+        } else {
+            @: No
+        }
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("Evenings?")<br />
+        @if (ViewBag.application.AvailableForEvenings.Equals(1))
+        {
+            @: Yes
+        } else {
+            @: No
+        }
+    </div>
+    <div class="form-group spacing" style="width:200px;float:left;">
+        @Html.Label("Weekends?")<br />
+        @if (ViewBag.application.AvailableForWeekends.Equals(1))
+        {
+            @: Yes
+        } else {
+            @: No
+        }
+    </div>
+    <div class="form-group spacing" style="float:left;clear:both;">
+        @Html.Label("Days / Hours Available?")<br />
+        <div style="width:80px;float:left;">
+            @Html.Label("Monday From:")<br />
+            @ViewBag.application.MondayFrom
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("Tuesday From:")<br />
+            @ViewBag.application.TuesdayFrom
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("Wednesday From:")<br />
+            @ViewBag.application.WednesdayFrom
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("Thursday From:")<br />
+            @ViewBag.application.ThursdayFrom
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("Friday From:")<br />
+            @ViewBag.application.FridayFrom
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("Saturday From:")<br />
+            @ViewBag.application.SaturdayFrom
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("Sunday From:")<br />
+            @ViewBag.application.SundayFrom
+        </div><br />
+        <div style="width:80px;float:left;">
+            @Html.Label("To:")<br />
+            @ViewBag.application.MondayTo
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("To:")<br />
+            @ViewBag.application.TuesdayTo
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("To:")<br />
+            @ViewBag.application.WednesdayTo
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("To:")<br />
+            @ViewBag.application.ThursdayTo
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("To:")<br />
+            @ViewBag.application.FridayTo
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("To:")<br />
+            @ViewBag.application.SaturdayTo
+        </div>
+        <div style="width:80px;float:left;">
+            @Html.Label("To:")<br />
+            @ViewBag.application.SundayTo
+        </div>
+    </div>
+    <br style="clear:both;"/>
+    
+    <h3>Job History</h3>
+    @foreach (var item in ViewBag.employments)
+    {
+        @item.EmployedFrom
+    }
+
+    @for (var i = 0; i < ViewBag.employments.Count; i++)
+    {
+        <div class="form-group spacing" style="width:800px;float:left;">
+        @Html.Label("May we contact this employer?")
+        @ViewBag.employments[i].MayWeContactCurrentEmployer
+            @ViewBag.employments[1].ReasonForLeaving
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Employer:")
+            <input type="text" class="form-control" name="EmployerName_@i" id="EmployerName_@i" placeholder="Enter Employer" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("From:")
+            <input type="text" class="form-control" name="EmployedFrom_@i" id="EmployedFrom_@i" placeholder="month/year" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("To:")
+            <input type="text" class="form-control" name="EmployedTo_@i" id="EmployedTo_@i" placeholder="month/year" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;clear:both;">
+            @Html.Label("Address:")
+            <input type="text" class="form-control" name="EmployerAddress_@i" id="EmployerAddress_@i" placeholder="Street, City, State, Zip" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Phone:")
+            <input type="text" class="form-control" name="EmployerPhone_@i" id="EmployerPhone_@i" placeholder="Enter Phone Number" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Supervisor:")
+            <input type="text" class="form-control" name="EmployerSupervisor_@i" id="EmployerSupervisor_@i" placeholder="Enter Supervisor name" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;clear:both;">
+            @Html.Label("Position:")
+            <input type="text" class="form-control" name="EmployedPosition_@i" id="EmployedPosition_@i" placeholder="Enter position" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Starting Salary:")
+            <input type="text" class="form-control" name="EmployedStartingSalary_@i" id="EmployedStartingSalary_@i" placeholder="$" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Ending Salary:")
+            <input type="text" class="form-control" name="EmployedEndingSalary_@i" id="EmployedEndingSalary_@i" placeholder="$" />
+        </div>
+        <div class="form-group spacing" style="width:800px;float:left;clear:both;">
+            @Html.Label("Reason for leaving:")
+            <input type="text" class="form-control" name="EmployedReasonForLeaving_@i" id="EmployedReasonForLeaving_@i" placeholder="Enter reason for leaving" />
+        </div>
+        <div class="form-group spacing" style="width:800px;float:left;clear:both;">
+            @Html.Label("Describe your Responsibilities:")
+            <textarea class="form-control" name="EmployedResponsibilities_@i" id="EmployedResponsibilities_@i" placeholder="Enter job responsibilities"></textarea>
+        </div>
+        <br style="clear:both;"/>
+    }
+
+    <h3>Education</h3>
+    @for (var i = 0; i < 3; i++)
+    {
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("School Name:")
+            <input type="text" class="form-control" name="SchoolName_@i" id="SchoolName_@i" placeholder="Enter Name and Address of School" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("School Address:")
+            <input type="text" class="form-control" name="SchoolAddress_@i" id="SchoolAddress_@i" placeholder="Enter Name and Address of School" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;clear:both;">
+            @Html.Label("Years Attended From:")
+            <input type="text" class="form-control" name="YearsAttendedFrom_@i" id="YearsAttendedFrom_@i" placeholder="2000" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Years Attended To:")
+            <input type="text" class="form-control" name="YearsAttendedTo_@i" id="YearsAttendedTo_@i" placeholder="2000" />
+        </div>
+        <div class="form-group spacing" style="width:100px;float:left;">
+            @Html.Label("Graduated:")
+            <select class="form-control" name="Graduated_@i" id="Graduated_@i">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group spacing" style="width:300px;float:left;">
+            @Html.Label("Degree/Major:")
+            <input type="text" class="form-control" name="DegreeAndMajor_@i" id="DegreeAndMajor_@i" placeholder="Enter Degree and Major" />
+        </div>
+        <br style="clear:both;"/>
+    }
+    
+<!-- create more space at bottom of view page for now... -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

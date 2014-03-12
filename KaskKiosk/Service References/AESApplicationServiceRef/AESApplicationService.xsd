@@ -247,10 +247,26 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetEducationsByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="first" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="last" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ssn" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEducationsByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEducationsByNameResult" nillable="true" type="q16:ArrayOfEducationDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateEducation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="e" nillable="true" type="q16:EducationDAO" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="e" nillable="true" type="q17:EducationDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -264,7 +280,7 @@
   <xs:element name="UpdateEducation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="newEmp" nillable="true" type="q17:EducationDAO" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="newEmp" nillable="true" type="q18:EducationDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -299,7 +315,7 @@
   <xs:element name="GetEmployerByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEmployerByIDResult" nillable="true" type="q18:EmployerDAO" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEmployerByIDResult" nillable="true" type="q19:EmployerDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -311,14 +327,14 @@
   <xs:element name="GetEmployersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEmployersResult" nillable="true" type="q19:ArrayOfEmployerDAO" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEmployersResult" nillable="true" type="q20:ArrayOfEmployerDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateEmployer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="e" nillable="true" type="q20:EmployerDAO" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="e" nillable="true" type="q21:EmployerDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -332,7 +348,7 @@
   <xs:element name="UpdateEmployer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="newEmp" nillable="true" type="q21:EmployerDAO" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="newEmp" nillable="true" type="q22:EmployerDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -367,7 +383,7 @@
   <xs:element name="GetEmploymentByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEmploymentByIDResult" nillable="true" type="q22:EmploymentDAO" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEmploymentByIDResult" nillable="true" type="q23:EmploymentDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -379,14 +395,30 @@
   <xs:element name="GetEmploymentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEmploymentsResult" nillable="true" type="q23:ArrayOfEmploymentDAO" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEmploymentsResult" nillable="true" type="q24:ArrayOfEmploymentDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmploymentsByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="first" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="last" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ssn" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmploymentsByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetEmploymentsByNameResult" nillable="true" type="q25:ArrayOfEmploymentDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateEmployment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="e" nillable="true" type="q24:EmploymentDAO" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="e" nillable="true" type="q26:EmploymentDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -400,7 +432,7 @@
   <xs:element name="UpdateEmployment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="newEmp" nillable="true" type="q25:EmploymentDAO" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="newEmp" nillable="true" type="q27:EmploymentDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -435,7 +467,7 @@
   <xs:element name="GetSchoolByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetSchoolByIDResult" nillable="true" type="q26:SchoolDAO" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetSchoolByIDResult" nillable="true" type="q28:SchoolDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -447,14 +479,14 @@
   <xs:element name="GetSchoolsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetSchoolsResult" nillable="true" type="q27:ArrayOfSchoolDAO" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="GetSchoolsResult" nillable="true" type="q29:ArrayOfSchoolDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateSchool">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="e" nillable="true" type="q28:SchoolDAO" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="e" nillable="true" type="q30:SchoolDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -468,7 +500,7 @@
   <xs:element name="UpdateSchool">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="newEmp" nillable="true" type="q29:SchoolDAO" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Kask.Services.DAO" minOccurs="0" name="newEmp" nillable="true" type="q31:SchoolDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

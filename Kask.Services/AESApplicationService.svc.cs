@@ -601,14 +601,6 @@ namespace Kask.Services
                 }
             }
 
-            /*
-            // temp
-            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
-            {
-                Employment employment = (from em in db.Employments where em. == id select em).FirstOrDefault();
-            }
-            */
-
             return true;
         }
 
