@@ -81,6 +81,10 @@ namespace KaskKiosk.Controllers
             return View();
         }
 
+        /// ********************************************************************** ///
+        ///     In fact, we can make a viewmodel and populate our data with it.    ///
+        /// ********************************************************************** ///
+
         [HttpPost]
         public async Task<ActionResult> Create(FormCollection collection)
         {
@@ -137,6 +141,8 @@ namespace KaskKiosk.Controllers
 
                     // get correct applicant id
                     // TODO: there is still something we might need to change about this... :)
+                    // ***** We don't, it's safe to assume that id would be the last item on the list
+                    // since we're using auto incremented id. *****
                     var applicants = await GetApplicantsAsync();
                     applicant.ApplicantID = applicants.Last().ApplicantID;
 
