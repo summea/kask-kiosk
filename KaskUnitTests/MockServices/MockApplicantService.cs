@@ -4,43 +4,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kask.DAL.Models;
+using Kask.DAL.Properties;
 using Kask.Services.Interfaces;
+using Kask.Services.DAO;
 
 
 namespace KaskUnitTests
 {
-    internal sealed class MockApplicantService : IApplicantService
+    public class MockApplicantService : IApplicantService
     {
-        List<Applicant> Applications = new List<Applicant>();
+        List<ApplicantDAO> Applicants = new List<ApplicantDAO>();
 
-        public Applicant GetApplicantByID(int id)
+        public Kask.Services.DAO.ApplicantDAO GetApplicantByID(int id)
         {
-            foreach (var applicant in Applications)
-                if (applicant.Applicant_ID == id)
-                    return applicant;
-
-            throw new Exception("Application not found");
+            foreach (var applicant in Applicants)
+                if (applicant.ApplicantID == id)
+                    return applicant ;
+            throw new Exception("Applicant not found");
         }
 
-
-        public IList<Applicant> GetApplicants()
+        public IList<Kask.Services.DAO.ApplicantDAO> GetApplicants()
         {
-            throw new NotImplementedException();
+            return Applicants;
         }
 
-        public bool CreateApplicant(Applicant a)
+        public bool CreateApplicant(Kask.Services.DAO.ApplicantDAO a)
         {
-            throw new NotImplementedException();
+            Applicants.Add(a);
+            return true;
         }
 
-        public bool UpdateApplicant(Applicant newApp)
+        public bool UpdateApplicant(Kask.Services.DAO.ApplicantDAO newApp)
         {
-            throw new NotImplementedException();
+            foreach(var applicant in Applicants)
+                if (applicant.ApplicantID == newApp.ApplicantID)
+                {
+                    Applicants.Remove(applicant);
+                    Applicants.Add(newApp);
+                    return true;
+                }
+            return false;
         }
 
         public bool DeleteApplicant(int ID)
         {
-            throw new NotImplementedException();
+            foreach(var applicant in Applicants)
+                if (applicant.ApplicantID == ID)
+                {
+                    Applicants.Remove(applicant);
+                    return true;
+                }
+            return false;
         }
     }
 }
