@@ -60,7 +60,7 @@ namespace Kask.Services
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
                     IList<Applicant> applicants = (from a in db.Applicants where a.FirstName == first && a.LastName == last && a.SSN == ssn select a).ToList();
-                    IList<ApplicationDAO> result = null;
+                    List<ApplicationDAO> result = new List<ApplicationDAO>();
 
                     foreach (Applicant a in applicants)
                     {
@@ -154,6 +154,7 @@ namespace Kask.Services
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 db.Applications.InsertOnSubmit(a);
+
                 try
                 {
                     db.SubmitChanges();
@@ -310,6 +311,7 @@ namespace Kask.Services
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 db.Applicants.InsertOnSubmit(a);
+
                 try
                 {
                     db.SubmitChanges();
@@ -442,6 +444,7 @@ namespace Kask.Services
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 db.Applieds.InsertOnSubmit(a);
+
                 try
                 {
                     db.SubmitChanges();
@@ -670,6 +673,47 @@ namespace Kask.Services
                     }
 
                     return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<EmploymentDAO> GetEmploymentsByName (string first, string last, string ssn)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Applicant applicant = (from a in db.Applicants where a.SSN == ssn && a.FirstName == first && a.LastName == last select a).FirstOrDefault();
+                    IList<Employment> employments = (from e in db.Employments where e.Applicant_ID == applicant.Applicant_ID select e).ToList();
+                    List<EmploymentDAO> result = new List<EmploymentDAO>();
+
+                    foreach (var e in employments)
+                    {
+                        EmploymentDAO emp = new EmploymentDAO
+                        {
+                            ID = e.Employment_ID,
+                            EmploymentID = e.Employment_ID,
+                            ApplicantID = e.Applicant_ID,
+                            EmployerID = e.Employer_ID,
+                            MayWeContactCurrentEmployer = e.MayWeContactCurrentEmployer,
+                            EmployedFrom = e.EmployedFrom,
+                            EmployedTo = e.EmployedTo,
+                            Supervisor = e.Supervisor,
+                            Position = e.Position,
+                            StartingSalary = e.StartingSalary,
+                            EndingSalary = e.EndingSalary,
+                            ReasonForLeaving = e.ReasonForLeaving,
+                            Responsibilities = e.Responsibilities
+                        };
+
+                        result.Add(emp);
+                    }
+
+                    return result;
                 }
             }
             catch (Exception e)
@@ -938,6 +982,42 @@ namespace Kask.Services
             }
         }
 
+        public IList<EducationDAO> GetEducationsByName (string first, string last, string ssn)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Applicant applicant = (from a in db.Applicants where a.SSN == ssn && a.FirstName == first && a.LastName == last select a).FirstOrDefault();
+                    IList<Education> educations = (from e in db.Educations where e.Applicant_ID == applicant.Applicant_ID select e).ToList();
+                    List<EducationDAO> result = new List<EducationDAO>();
+
+                    foreach (var e in educations)
+                    {
+                        EducationDAO edu = new EducationDAO
+                        {
+                            ID = e.Education_ID,
+                            EducationID = e.Education_ID,
+                            ApplicantID = e.Applicant_ID,
+                            SchoolID = e.School_ID,
+                            YearsAttendedFrom = e.YearsAttendedFrom,
+                            YearsAttendedTo = e.YearsAttendedTo,
+                            Graduated = e.Graduated,
+                            DegreeAndMajor = e.DegreeAndMajor
+                        };
+
+                        result.Add(edu);
+                    }
+
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
         public bool CreateEducation(EducationDAO edu)
         {
             Education education = new Education
@@ -1011,104 +1091,5 @@ namespace Kask.Services
 
             return true;
         }
-
-
-        /*
-        /// UNCOMMENT ME (or... maybe this can be deleted now...?)
-        /*
-        public Employer GetEmployerByID(int id)
-        {
-            try
-            {
-                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
-                {
-                    var emps = db.Employers.Single(a => a.Employer_ID == id);
-                    return (emps != null ? emps : null);
-                }
-            }
-            catch (Exception e)
-            {
-                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
-            }
-        }
-
-        public IList<Employer> GetEmployers()
-        {
-            try
-            {
-                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
-                {
-                    var emps = db.Employers.ToList();
-                    return (emps != null ? emps : null);
-                }
-            }
-            catch (Exception e)
-            {
-                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
-            }
-        }
-
-        public bool CreateEmployer(Employer emp)
-        {
-            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
-            {
-                db.Employers.InsertOnSubmit(emp);
-                try
-                {
-                    db.SubmitChanges();
-                }
-                catch (Exception e)
-                {
-                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
-                }
-            }
-
-            return true;
-        }
-
-        public bool UpdateEmployer(Employer newEmp)
-        {
-            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
-            {
-                Employer emp = db.Employers.Single(e => e.Employer_ID == newEmp.Employer_ID);
-                emp.EmployerAddress = newEmp.EmployerAddress;
-                emp.Name = newEmp.Name;
-                emp.PhoneNumber = newEmp.PhoneNumber;
-
-                try
-                {
-                    db.SubmitChanges();
-                }
-                catch (Exception e)
-                {
-                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
-                }
-            }
-
-            return true;
-
-        }
-
-        public bool DeleteEmployer(int id)
-        {
-            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
-            {
-                Employer emp = db.Employers.Single(e => e.Employer_ID == id);
-                db.Employers.DeleteOnSubmit(emp);
-
-                try
-                {
-                    db.SubmitChanges();
-                }
-                catch (Exception e)
-                {
-                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
-                }
-            }
-
-            return true;
-        }
-    */
-        /// TODO: UNCOMMENT THIS BLOCK
     }
 }

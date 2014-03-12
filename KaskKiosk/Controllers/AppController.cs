@@ -207,7 +207,6 @@ namespace KaskKiosk.Controllers
                     result = httpClient.PostAsJsonAsync(uriEmployment, employment).Result;
                     resultContent = result.Content.ReadAsStringAsync().Result;
 
-
                     // employer and employment 2
                     employer.Name = Request.Form["EmployerName_2"];
                     employer.EmployerAddress = Request.Form["EmployerAddress_2"];

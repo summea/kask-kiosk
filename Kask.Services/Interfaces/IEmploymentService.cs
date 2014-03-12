@@ -19,6 +19,10 @@ namespace Kask.Services.Interfaces
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
+        IList<EmploymentDAO> GetEmploymentsByName(string first, string last, string ssn);
+
+        [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         bool CreateEmployment(EmploymentDAO e);
 
         [OperationContract]
