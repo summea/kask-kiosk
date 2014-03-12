@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kask.Services", "Kask.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kask.DAL", "Kask.DAL\Kask.DAL.csproj", "{55538119-4E6D-4FBD-8DC4-6B194F7D5F67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kask.UnitTests", "KaskUnitTests\Kask.UnitTests.csproj", "{AA8CF147-F9DA-4E70-99B0-02B7109D8D81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{55538119-4E6D-4FBD-8DC4-6B194F7D5F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55538119-4E6D-4FBD-8DC4-6B194F7D5F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55538119-4E6D-4FBD-8DC4-6B194F7D5F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA8CF147-F9DA-4E70-99B0-02B7109D8D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA8CF147-F9DA-4E70-99B0-02B7109D8D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA8CF147-F9DA-4E70-99B0-02B7109D8D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA8CF147-F9DA-4E70-99B0-02B7109D8D81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

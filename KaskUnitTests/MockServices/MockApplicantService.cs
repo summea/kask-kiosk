@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Kask.DAL.Models;
-using Kask.DAL.Properties;
+﻿using Kask.Services.DAO;
 using Kask.Services.Interfaces;
-using Kask.Services.DAO;
+using System;
+using System.Collections.Generic;
 
 
-namespace KaskUnitTests
+namespace Kask.UnitTests
 {
     public class MockApplicantService : IApplicantService
     {
