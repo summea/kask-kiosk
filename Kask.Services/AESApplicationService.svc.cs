@@ -376,7 +376,7 @@ namespace Kask.Services
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    Applied applied = db.Applieds.Single(a => a.Applicant_ID == id);
+                    Applied applied = db.Applieds.Single(a => a.Applied_ID == id);
                     AppliedDAO result = new AppliedDAO
                     {
                         ID = applied.Applied_ID,
