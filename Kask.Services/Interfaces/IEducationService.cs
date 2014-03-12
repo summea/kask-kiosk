@@ -19,6 +19,10 @@ namespace Kask.Services.Interfaces
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
+        IList<EducationDAO> GetEducationsByName(string first, string last, string ssn);
+
+        [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         bool CreateEducation(EducationDAO e);
 
         [OperationContract]
