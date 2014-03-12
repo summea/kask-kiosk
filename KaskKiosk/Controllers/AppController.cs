@@ -32,7 +32,7 @@ namespace KaskKiosk.Controllers
                 return JsonConvert.DeserializeObjectAsync<List<ApplicationDAO>>(response).Result;
             }
         }
-        
+
         private async Task<List<ApplicantDAO>> GetApplicantsAsync()
         {
             using (HttpClient httpClient = new HttpClient())
@@ -176,7 +176,7 @@ namespace KaskKiosk.Controllers
                         result = httpClient.PostAsJsonAsync(uriEmployer, employer).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
                     }
-                    
+
                     // get correct employer id
                     // TODO: there is still something we might need to change about this... :)
                     var employers = await GetEmployersAsync();
@@ -228,15 +228,15 @@ namespace KaskKiosk.Controllers
                     employment = new EmploymentDAO();
                     employment.ApplicantID = applicant.ApplicantID;
                     employment.EmployerID = employer.EmployerID;
-                    employment.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_1"]);
-                    employment.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_1"]);
-                    employment.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_1"]);
-                    employment.Supervisor = Request.Form["EmployerSupervisor_1"];
-                    employment.Position = Request.Form["EmployedPosition_1"];
-                    employment.StartingSalary = Request.Form["EmployedStartingSalary_1"];
-                    employment.EndingSalary = Request.Form["EmployedEndingSalary_1"];
-                    employment.ReasonForLeaving = Request.Form["EmployedReasonForLeaving_1"];
-                    employment.Responsibilities = Request.Form["EmployedResponsibilities_1"];
+                    employment.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_2"]);
+                    employment.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_2"]);
+                    employment.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_2"]);
+                    employment.Supervisor = Request.Form["EmployerSupervisor_2"];
+                    employment.Position = Request.Form["EmployedPosition_2"];
+                    employment.StartingSalary = Request.Form["EmployedStartingSalary_2"];
+                    employment.EndingSalary = Request.Form["EmployedEndingSalary_2"];
+                    employment.ReasonForLeaving = Request.Form["EmployedReasonForLeaving_2"];
+                    employment.Responsibilities = Request.Form["EmployedResponsibilities_2"];
 
                     // post (save) employment data
                     result = httpClient.PostAsJsonAsync(uriEmployment, employment).Result;
@@ -269,15 +269,15 @@ namespace KaskKiosk.Controllers
                     employment = new EmploymentDAO();
                     employment.ApplicantID = applicant.ApplicantID;
                     employment.EmployerID = employer.EmployerID;
-                    employment.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_1"]);
-                    employment.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_1"]);
-                    employment.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_1"]);
-                    employment.Supervisor = Request.Form["EmployerSupervisor_1"];
-                    employment.Position = Request.Form["EmployedPosition_1"];
-                    employment.StartingSalary = Request.Form["EmployedStartingSalary_1"];
-                    employment.EndingSalary = Request.Form["EmployedEndingSalary_1"];
-                    employment.ReasonForLeaving = Request.Form["EmployedReasonForLeaving_1"];
-                    employment.Responsibilities = Request.Form["EmployedResponsibilities_1"];
+                    employment.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_3"]);
+                    employment.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_3"]);
+                    employment.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_3"]);
+                    employment.Supervisor = Request.Form["EmployerSupervisor_3"];
+                    employment.Position = Request.Form["EmployedPosition_3"];
+                    employment.StartingSalary = Request.Form["EmployedStartingSalary_3"];
+                    employment.EndingSalary = Request.Form["EmployedEndingSalary_3"];
+                    employment.ReasonForLeaving = Request.Form["EmployedReasonForLeaving_3"];
+                    employment.Responsibilities = Request.Form["EmployedResponsibilities_3"];
 
                     // post (save) employment data
                     result = httpClient.PostAsJsonAsync(uriEmployment, employment).Result;
