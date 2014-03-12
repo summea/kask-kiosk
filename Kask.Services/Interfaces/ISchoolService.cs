@@ -1,7 +1,6 @@
 ﻿using Kask.Services.Exceptions;
 using Kask.Services.DAO;
 
-using Kask.Services.Exceptions;
 using System.Collections.Generic;
 using System.ServiceModel;
 
