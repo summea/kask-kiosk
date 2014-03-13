@@ -218,14 +218,7 @@
     
     <h3>Job History</h3>
     for (var i = 1; i < 4; i++)
-    {
-        <div class="form-group spacing" style="width:800px;float:left;">
-        @Html.Label("May we contact this employer?")
-        <select class="form-control" name="MayWeContactCurrentEmployer_@i" id="MayWeContactCurrentEmployer_@i">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-        </div>
+    {        
         <div class="form-group spacing" style="width:400px;float:left;">
             @Html.Label("Employer:")
             <input type="text" class="form-control" name="EmployerName_@i" id="EmployerName_@i" placeholder="Enter Employer" />
@@ -269,6 +262,13 @@
         <div class="form-group spacing" style="width:800px;float:left;clear:both;">
             @Html.Label("Describe your Responsibilities:")
             <textarea class="form-control" name="EmployedResponsibilities_@i" id="EmployedResponsibilities_@i" placeholder="Enter job responsibilities"></textarea>
+        </div>
+        <div class="form-group spacing" style="width:800px;float:left;">
+            @Html.Label("May we contact this employer?")
+            <select class="form-control" name="MayWeContactCurrentEmployer_@i" id="MayWeContactCurrentEmployer_@i">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
         </div>
         <br style="clear:both;"/>
     }

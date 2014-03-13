@@ -5,340 +5,384 @@
 
 <h2>Application Details</h2>
 
-    <h3>Personal</h3>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("First Name:")<br />
-        @if (!string.IsNullOrEmpty(ViewBag.applicant.FirstName))
-        {
-            @ViewBag.applicant.FirstName
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Middle Name:")<br />
-        @if (!string.IsNullOrEmpty(ViewBag.applicant.MiddleName))
-        {
-            @ViewBag.applicant.MiddleName
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Last Name:")<br />
-        @if (!string.IsNullOrEmpty(ViewBag.applicant.LastName))
-        {
-            @ViewBag.applicant.LastName
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Social Security Number:")<br />
-        @if (!string.IsNullOrEmpty(ViewBag.applicant.SSN))
-        {
-            @ViewBag.applicant.SSN
-        }
-    </div>
-    <div class="form-group spacing" style="width:400px;float:left;clear:both;">
-        @Html.Label("Address:")<br />
-        @if (!string.IsNullOrEmpty(ViewBag.applicant.ApplicantAddress))
-        {
-            @ViewBag.applicant.ApplicantAddress
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Phone:")<br />
-        @if (!string.IsNullOrEmpty(ViewBag.applicant.Phone))
-        {
-            @ViewBag.applicant.Phone
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Name Alias:")<br />
-        @if (!string.IsNullOrEmpty(ViewBag.applicant.NameAlias))
-        {
-            @ViewBag.applicant.NameAlias
-        }
-    </div>
-    <br style="clear:both;"/>
+<h3>Personal</h3>
+<table class="table table-striped table-bordered">
+    <tr>
+        <td>
+            @Html.Label("First Name:")<br />
+            @if (!string.IsNullOrEmpty(ViewBag.applicant.FirstName))
+            {
+                @ViewBag.applicant.FirstName
+            }
+        </td>
+        <td>
+            @Html.Label("Middle Name:")<br />
+            @if (!string.IsNullOrEmpty(ViewBag.applicant.MiddleName))
+            {
+                @ViewBag.applicant.MiddleName
+            }
+        </td>
+        <td>
+            @Html.Label("Last Name:")<br />
+            @if (!string.IsNullOrEmpty(ViewBag.applicant.LastName))
+            {
+                @ViewBag.applicant.LastName
+            }
+        </td>
+        <td>
+            @Html.Label("Social Security Number:")<br />
+            @if (!string.IsNullOrEmpty(ViewBag.applicant.SSN))
+            {
+                @ViewBag.applicant.SSN
+            }
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            @Html.Label("Address:")<br />
+            @if (!string.IsNullOrEmpty(ViewBag.applicant.ApplicantAddress))
+            {
+                @ViewBag.applicant.ApplicantAddress
+            }
+        </td>
+        <td>
+            @Html.Label("Phone:")<br />
+            @if (!string.IsNullOrEmpty(ViewBag.applicant.Phone))
+            {
+                @ViewBag.applicant.Phone
+            }
+        </td>
+        <td>
+            @Html.Label("Name Alias:")<br />
+            @if (!string.IsNullOrEmpty(ViewBag.applicant.NameAlias))
+            {
+                @ViewBag.applicant.NameAlias
+            }
+        </td>
+    </tr>
+</table>
     
-    <h3>Position</h3>
-    <div class="form-group spacing" style="width:400px;float:left;">
-        @Html.Label("Position Applying For:")<br />
-        @if (ViewBag.jobsByJobId.ContainsKey(@ViewBag.applied.JobID))
-        {
-            @ViewBag.jobsByJobId[@ViewBag.applied.JobID].Title
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Salary Expectation:")<br />
-        @if (!string.IsNullOrEmpty(ViewBag.application.SalaryExpectation))
-        {
-            @ViewBag.application.SalaryExpectation
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Full Time:")
-        @if ((ViewBag.application.FullTime != null) && ViewBag.application.FullTime.Equals(1)) {
-            @: Yes
-        } else {
-            @: No
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;clear:both;">
-        @Html.Label("Days?")<br />
-        @if ((ViewBag.application.AvailableForDays != null) && ViewBag.application.AvailableForDays.Equals(1))
-        {
-            @: Yes
-        } else {
-            @: No
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Evenings?")<br />
-        @if ((ViewBag.application.AvailableForEvenings != null) && ViewBag.application.AvailableForEvenings.Equals(1))
-        {
-            @: Yes
-        } else {
-            @: No
-        }
-    </div>
-    <div class="form-group spacing" style="width:200px;float:left;">
-        @Html.Label("Weekends?")<br />
-        @if ((ViewBag.application.AvailableForWeekends != null) && ViewBag.application.AvailableForWeekends.Equals(1))
-        {
-            @: Yes
-        } else {
-            @: No
-        }
-    </div>
-    <div class="form-group spacing" style="float:left;clear:both;">
-        @Html.Label("Days / Hours Available?")<br />
-        <div style="width:80px;float:left;">
-            @Html.Label("Monday From:")<br />
+<h3>Position</h3>
+<table class="table table-striped table-bordered">
+    <tr>
+        <td colspan="4">
+            @Html.Label("Position Applying For:")<br />
+            @if (ViewBag.jobsByJobId.ContainsKey(@ViewBag.applied.JobID))
+            {
+                @ViewBag.jobsByJobId[@ViewBag.applied.JobID].Title
+            }
+        </td>
+        <td colspan="2">
+            @Html.Label("Salary Expectation:")<br />
+            @if (!string.IsNullOrEmpty(ViewBag.application.SalaryExpectation))
+            {
+                @ViewBag.application.SalaryExpectation
+            }
+        </td>
+        <td colspan="2">
+            @Html.Label("Full Time:")<br />
+            @if ((ViewBag.application.FullTime != null) && ViewBag.application.FullTime.Equals(1)) {
+                @: Yes
+            } else {
+                @: No
+            }
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            @Html.Label("Available For:")
+        </td>
+        <td colspan="2">
+            @Html.Label("Days")<br />
+            @if ((ViewBag.application.AvailableForDays != null) && ViewBag.application.AvailableForDays.Equals(1))
+            {
+                @: Yes
+            } else {
+                @: No
+            }
+        </td>
+        <td colspan="2">
+            @Html.Label("Evenings")<br />
+            @if ((ViewBag.application.AvailableForEvenings != null) && ViewBag.application.AvailableForEvenings.Equals(1))
+            {
+                @: Yes
+            } else {
+                @: No
+            }
+        </td>
+        <td colspan="2">
+            @Html.Label("Weekends")<br />
+            @if ((ViewBag.application.AvailableForWeekends != null) && ViewBag.application.AvailableForWeekends.Equals(1))
+            {
+                @: Yes
+            } else {
+                @: No
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Days / Hours Available:")</td>
+        <td>
+            @Html.Label("Monday")<br />
+        </td>
+        <td>
+            @Html.Label("Tuesday")<br />
+        </td>
+        <td>
+            @Html.Label("Wednesday")<br />
+        </td>
+        <td>
+            @Html.Label("Thursday")<br />
+        </td>
+        <td>
+            @Html.Label("Friday")<br />
+        </td>
+        <td>
+            @Html.Label("Saturday")<br />
+        </td>
+        <td>
+            @Html.Label("Sunday")<br />
+        </td>
+    </tr>
+    <tr>
+        <td>From</td>
+        <td>
             @if (ViewBag.application.MondayFrom != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.MondayFrom)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("Tuesday From:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.TuesdayFrom != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.TuesdayFrom)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("Wednesday From:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.WednesdayFrom != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.WednesdayFrom)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("Thursday From:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.ThursdayFrom != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.ThursdayFrom)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("Friday From:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.FridayFrom != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.FridayFrom)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("Saturday From:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.SaturdayFrom != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.SaturdayFrom)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("Sunday From:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.SundayFrom != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.SundayFrom)
             }
-        </div><br />
-        <div style="width:80px;float:left;">
-            @Html.Label("To:")<br />
+        </td>
+    </tr>
+    <tr>
+        <td>To</td>
+        <td>
             @if (ViewBag.application.MondayTo != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.MondayTo)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("To:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.TuesdayTo != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.TuesdayTo)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("To:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.WednesdayTo != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.WednesdayTo)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("To:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.ThursdayTo != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.ThursdayTo)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("To:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.FridayTo != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.FridayTo)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("To:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.SaturdayTo != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.SaturdayTo)
             }
-        </div>
-        <div style="width:80px;float:left;">
-            @Html.Label("To:")<br />
+        </td>
+        <td>
             @if (ViewBag.application.SundayTo != null)
             {
                 @String.Format(@ViewBag.generalTimeFormat, @ViewBag.application.SundayTo)
             }
-        </div>
-    </div>
-    <br style="clear:both;"/>
-    
-    <h3>Job History</h3>
-    @for (var i = 0; i < ViewBag.employments.Count; i++)
-    {
-        <div class="form-group spacing" style="width:800px;float:left;">
-        @Html.Label("May we contact this employer?")
-        @if ((ViewBag.employments[i].MayWeContactCurrentEmployer != null) && ViewBag.employments[i].MayWeContactCurrentEmployer.Equals(1))
-        {
-            @: Yes
-        } else {
-            @: No
-        }
-        </div>
-        <div class="form-group spacing" style="width:400px;float:left;">
-            @Html.Label("Employer:")
-            @ViewBag.employersByEmployerId[@ViewBag.employments[i].EmployerID].Name
-        </div>
-        <div class="form-group spacing" style="width:200px;float:left;">
-            @Html.Label("From:")
-            @if (@ViewBag.employments[i].EmployedFrom != null)
-            {
-                @ViewBag.employments[i].EmployedFrom.ToString(@ViewBag.generalDateFormat)
-            }
-        </div>
-        <div class="form-group spacing" style="width:200px;float:left;">
-            @Html.Label("To:")
-            @if (@ViewBag.employments[i].EmployedTo != null)
-            {
-                @ViewBag.employments[i].EmployedTo.ToString(@ViewBag.generalDateFormat)
-            }
-        </div>
-        <div class="form-group spacing" style="width:400px;float:left;clear:both;">
-            @Html.Label("Address:")
-            @ViewBag.employersByEmployerId[@ViewBag.employments[i].EmployerID].EmployerAddress
-        </div>
-        <div class="form-group spacing" style="width:200px;float:left;">
-            @Html.Label("Phone:")
-            @ViewBag.employersByEmployerId[@ViewBag.employments[i].EmployerID].PhoneNumber
-        </div>
-        <div class="form-group spacing" style="width:200px;float:left;">
-            @Html.Label("Supervisor:")
-            @ViewBag.employments[i].Supervisor
-        </div>
-        <div class="form-group spacing" style="width:400px;float:left;clear:both;">
-            @Html.Label("Position:")
-            @ViewBag.employments[i].Position
-        </div>
-        <div class="form-group spacing" style="width:200px;float:left;">
-            @Html.Label("Starting Salary:")
-            @ViewBag.employments[i].StartingSalary
-        </div>
-        <div class="form-group spacing" style="width:200px;float:left;">
-            @Html.Label("Ending Salary:")
-            @ViewBag.employments[i].EndingSalary
-        </div>
-        <div class="form-group spacing" style="width:800px;float:left;clear:both;">
-            @Html.Label("Reason for leaving:")
-            @ViewBag.employments[i].ReasonForLeaving
-        </div>
-        <div class="form-group spacing" style="width:800px;float:left;clear:both;">
-            @Html.Label("Describe your Responsibilities:")
-            @ViewBag.employments[i].Responsibilities
-        </div>
-        <br style="clear:both;"/>
-    }
-
-    <h3>Education</h3>
-    @for (var i = 0; i < 3; i++)
-    {
-        <div class="form-group spacing" style="width:400px;float:left;">
-            @Html.Label("School Name:")
-            @if (i < ViewBag.educations.Count)
-            {
-                if (ViewBag.schoolsBySchoolId.ContainsKey(@ViewBag.educations[i].SchoolID))
+        </td>
+    </tr>
+</table>
+  
+<h3>Job History</h3>
+@for (var i = 0; i < ViewBag.employments.Count; i++)
+{
+    <table class="table table-striped table-bordered">            
+        <tr>
+            <td colspan="4">
+                @Html.Label("Employer:")<br />
+                @ViewBag.employersByEmployerId[@ViewBag.employments[i].EmployerID].Name
+            </td>
+            <td colspan="2">
+                @Html.Label("From:")<br />
+                @if (@ViewBag.employments[i].EmployedFrom != null)
                 {
-                    @ViewBag.schoolsBySchoolId[@ViewBag.educations[i].SchoolID].SchoolName
+                    @ViewBag.employments[i].EmployedFrom.ToString(@ViewBag.generalDateFormat)
                 }
-            }
-        </div>
-        <div class="form-group spacing" style="width:400px;float:left;">
-            @Html.Label("School Address:")
-            @if (i < ViewBag.educations.Count)
-            {
-                if (ViewBag.schoolsBySchoolId.ContainsKey(@ViewBag.educations[i].SchoolID))
+            </td>
+            <td colspan="2">
+                @Html.Label("To:")<br />
+                @if (@ViewBag.employments[i].EmployedTo != null)
                 {
-                    @ViewBag.schoolsBySchoolId[@ViewBag.educations[i].SchoolID].SchoolAddress
+                    @ViewBag.employments[i].EmployedTo.ToString(@ViewBag.generalDateFormat)
                 }
-            }
-        </div>
-        <div class="form-group spacing" style="width:200px;float:left;clear:both;">
-            @Html.Label("Years Attended From:")
-            @if (i < ViewBag.educations.Count)
-            {
-                if (ViewBag.educations[i].YearsAttendedFrom != null)
-                {
-                    @ViewBag.educations[i].YearsAttendedFrom.ToString(@ViewBag.generalDateFormat)
-                }
-            }
-        </div>
-        <div class="form-group spacing" style="width:200px;float:left;">
-            @Html.Label("Years Attended To:")
-            @if (i < ViewBag.educations.Count)
-            {
-                if (ViewBag.educations[i].YearsAttendedTo != null)
-                {
-                    @ViewBag.educations[i].YearsAttendedTo.ToString(@ViewBag.generalDateFormat)
-                }
-            }
-        </div>
-        <div class="form-group spacing" style="width:100px;float:left;">
-            @Html.Label("Graduated:")
-            @if (i < ViewBag.educations.Count)
-            {
-                if ((ViewBag.educations[i].Graduated != null) && ViewBag.educations[i].Graduated.Equals(1))
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                @Html.Label("Employer Address:")<br />
+                @ViewBag.employersByEmployerId[@ViewBag.employments[i].EmployerID].EmployerAddress
+            </td>
+            <td colspan="2">
+                @Html.Label("Employer Phone:")<br />
+                @ViewBag.employersByEmployerId[@ViewBag.employments[i].EmployerID].PhoneNumber
+            </td>
+            <td colspan="2">
+                @Html.Label("Supervisor:")<br />
+                @ViewBag.employments[i].Supervisor
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                @Html.Label("Position:")<br />
+                @ViewBag.employments[i].Position
+            </td>
+            <td colspan="2">
+                @Html.Label("Starting Salary:")<br />
+                @ViewBag.employments[i].StartingSalary
+            </td>
+            <td colspan="2">
+                @Html.Label("Ending Salary:")<br />
+                @ViewBag.employments[i].EndingSalary
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8">
+                @Html.Label("Reason for leaving:")<br />
+                @ViewBag.employments[i].ReasonForLeaving
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8">
+                @Html.Label("Describe your Responsibilities:")<br />
+                @ViewBag.employments[i].Responsibilities
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8">
+                @Html.Label("May we contact this employer?")<br />
+                @if ((ViewBag.employments[i].MayWeContactCurrentEmployer != null) && ViewBag.employments[i].MayWeContactCurrentEmployer.Equals(1))
                 {
                     @: Yes
                 } else {
                     @: No
                 }
-            }
-        </div>
-        <div class="form-group spacing" style="width:300px;float:left;">
-            @Html.Label("Degree/Major:")
-            @if (i < ViewBag.educations.Count)
-            {
-                @ViewBag.educations[i].DegreeAndMajor
-            }
-        </div>
-        <br style="clear:both;"/>
-    }
+            </td>
+        </tr>
+    </table>
+}
+    
+<h3>Education</h3>
+@for (var i = 0; i < ViewBag.educations.Count; i++)
+{
+    <table class="table table-striped table-bordered">            
+        <tr>
+            <td colspan="4">
+                @Html.Label("School Name:")<br />
+                @if (i < ViewBag.educations.Count)
+                {
+                    if (ViewBag.schoolsBySchoolId.ContainsKey(@ViewBag.educations[i].SchoolID))
+                    {
+                        @ViewBag.schoolsBySchoolId[@ViewBag.educations[i].SchoolID].SchoolName
+                    }
+                }
+            </td>
+            <td colspan="4">
+                @Html.Label("School Address:")<br />
+                @if (i < ViewBag.educations.Count)
+                {
+                    if (ViewBag.schoolsBySchoolId.ContainsKey(@ViewBag.educations[i].SchoolID))
+                    {
+                        @ViewBag.schoolsBySchoolId[@ViewBag.educations[i].SchoolID].SchoolAddress
+                    }
+                }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @Html.Label("Years Attended From:")<br />
+                @if (i < ViewBag.educations.Count)
+                {
+                    if (ViewBag.educations[i].YearsAttendedFrom != null)
+                    {
+                        @ViewBag.educations[i].YearsAttendedFrom.ToString(@ViewBag.generalDateFormat)
+                    }
+                }
+            </td>
+            <td colspan="2">
+                @Html.Label("Years Attended To:")<br />
+                @if (i < ViewBag.educations.Count)
+                {
+                    if (ViewBag.educations[i].YearsAttendedTo != null)
+                    {
+                        @ViewBag.educations[i].YearsAttendedTo.ToString(@ViewBag.generalDateFormat)
+                    }
+                }
+            </td>
+            <td colspan="1">
+                @Html.Label("Graduated:")<br />
+                @if (i < ViewBag.educations.Count)
+                {
+                    if ((ViewBag.educations[i].Graduated != null) && ViewBag.educations[i].Graduated.Equals(1))
+                    {
+                        @: Yes
+                    } else {
+                        @: No
+                    }
+                }
+            </td>
+            <td colspan="3">
+                @Html.Label("Degree/Major:")<br />
+                @if (i < ViewBag.educations.Count)
+                {
+                    @ViewBag.educations[i].DegreeAndMajor
+                }
+            </td>
+        </tr>
+    </table>
+}
     
 <!-- create more space at bottom of view page for now... -->
 <br />
