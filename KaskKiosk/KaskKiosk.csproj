@@ -149,7 +149,28 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\bootstrap\js\bootstrap.js" />
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Content\Styles.css" />
+    <Content Include="Content\css\jquery.fullPage.css" />
+    <Content Include="Content\js\fullPage-js\example.css" />
+    <Content Include="Content\js\fullPage-js\example.html" />
+    <Content Include="Content\js\fullPage-js\example2.css" />
+    <Content Include="Content\js\fullPage-js\example2.html" />
+    <Content Include="Content\js\fullPage-js\imgs\1.png" />
+    <Content Include="Content\js\fullPage-js\imgs\2.png" />
+    <Content Include="Content\js\fullPage-js\imgs\3.png" />
+    <Content Include="Content\js\fullPage-js\imgs\example.png" />
+    <Content Include="Content\js\fullPage-js\imgs\example2.png" />
+    <Content Include="Content\js\fullPage-js\imgs\fullPage.png" />
+    <Content Include="Content\js\fullPage-js\imgs\intro.png" />
+    <Content Include="Content\js\fullPage-js\imgs\slider.png" />
+    <Content Include="Content\js\fullPage-js\imgs\tablets.png" />
+    <Content Include="Content\js\fullPage-js\jquery.fullPage.css" />
+    <Content Include="Content\js\fullPage-js\jquery.fullPage.js" />
+    <Content Include="Content\js\fullPage-js\jquery.fullPage.min.js" />
+    <Content Include="Content\js\fullPage-js\vendors\jquery.slimscroll.min.js" />
+    <Content Include="Content\js\jquery-ui.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\css\Styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Service References\AESApplicationServiceRef\AESApplicationService.disco" />
     <Content Include="Service References\AESApplicationServiceRef\configuration91.svcinfo" />
@@ -202,6 +223,9 @@
     <Content Include="Views\App\Create.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\App\Details.cshtml" />
+    <Content Include="Content\js\fullPage-js\.gitignore" />
+    <Content Include="Content\js\fullPage-js\bower.json" />
+    <Content Include="Content\js\fullPage-js\README.md" />
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -214,6 +238,7 @@
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Shared\_PublicLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

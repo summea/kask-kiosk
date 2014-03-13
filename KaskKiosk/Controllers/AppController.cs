@@ -138,6 +138,7 @@ namespace KaskKiosk.Controllers
                 timePickerList.Add(i.ToString());
             }
 
+            ViewBag.baseURL = Url.Content("~/");
             ViewBag.jobs = jobs;
             ViewBag.timePickerList = timePickerList;
             return View();
