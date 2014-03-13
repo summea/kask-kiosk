@@ -1,6 +1,6 @@
 ﻿$(document).ready(function() {
     $.fn.fullpage({
-        anchors: ['welcome', 'personal', 'position', 'jobHistory1', 'jobHistory2', 'jobHistory3', 'education1', 'education2', 'education3', 'submitApplication'],
+        anchors: ['welcome', 'personal', 'position', 'employmentHistory1', 'employmentHistory2', 'employmentHistory3', 'education1', 'education2', 'education3', 'submitApplication'],
         fixedElements: '#moveDown, #moveUp',
         keyboardScrolling: false,
         menu: '#menu',
