@@ -235,7 +235,7 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'School')
   DROP TABLE School;
 CREATE TABLE School (
   School_ID     int IDENTITY(1,1) NOT NULL,
-  School_Name   varchar(255) UNIQUE NOT NULL,
+  School_Name   varchar(255) NOT NULL,
   School_Address  varchar(255) NULL,
   CONSTRAINT [PKSchoolID] PRIMARY KEY (School_ID ASC),
   CONSTRAINT  [CHK_SchoolName] CHECK (DATALENGTH(School_Name) > 0 AND ISNUMERIC(School_Name) = 0)
