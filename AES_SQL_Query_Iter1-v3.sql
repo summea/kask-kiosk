@@ -43,11 +43,10 @@ CREATE TABLE Applicant (
 CREATE UNIQUE INDEX IDX_Person ON Applicant (FirstName, LastName, SSN ASC);
 
 /* DATAS FOR APPLICANT RELATION*/ 
-INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Khanh', 'Nguyen', 1992, 'M');
-INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Khanh', 'Nguyen', 1986, 'M');
-INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Andy', 'Summers', 1985, 'M');
-INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Andy', 'Summers', 1983, 'M');
-INSERT INTO Applicant(FirstName, LastName, SSN, Gender) VALUES ('Smahane', 'Douyeb', 1987, 'F');
+INSERT INTO Applicant(FirstName, MiddleName, LastName, SSN, Gender, ApplicantAddress, Phone, NameAlias) VALUES ('Khanh', 'W', 'Nguyen', 1992, 'M', '123 Oak Grove Ct, Sunnyville, AT 10001', '123-456-7890', 'KW');
+INSERT INTO Applicant(FirstName, MiddleName, LastName, SSN, Gender, ApplicantAddress, Phone, NameAlias) VALUES ('Khanh', 'X', 'Nguyen', 1986, 'M', '234 Mountain View Rd, Sunnyville, AT 10001', '123-123-4567', 'KX');
+INSERT INTO Applicant(FirstName, MiddleName, LastName, SSN, Gender, ApplicantAddress, Phone, NameAlias) VALUES ('Andy', 'Y','Summers', 1985, 'M', '345 Willow St, Sunnyville, AT 10001', '123-456-3254', 'AY');
+INSERT INTO Applicant(FirstName, MiddleName, LastName, SSN, Gender, ApplicantAddress, Phone, NameAlias) VALUES ('Smahane', 'Z', 'Douyeb', 1987, 'F', '456 Valley View Ct, Sunnyville, AT 10001', '123-123-3145', 'SD');
 
 /********************************************************************************
                 SKILLS RELATION
@@ -137,9 +136,10 @@ CREATE TABLE Application (
 );
 
 /* DATA FOR APPLICATIONS RELATION */
-INSERT INTO Application(ApplicationStatus) VALUES ('Submitted');
-INSERT INTO Application(ApplicationStatus) VALUES ('Rejected');
-INSERT INTO Application(ApplicationStatus) VALUES ('Reviewed');
+INSERT INTO Application(ApplicationStatus, SalaryExpectation, FullTime, AvailableForDays, AvailableForEvenings, AvailableForWeekends, MondayFrom, TuesdayFrom, WednesdayFrom, ThursdayFrom, FridayFrom, SaturdayFrom, SundayFrom, MondayTo, TuesdayTo, WednesdayTo, ThursdayTo, FridayTo, SaturdayTo, SundayTo) VALUES ('Submitted', '12345', 1, 1, 1, 1, '01:00:00', '02:00:00', '03:00:00', '04:00:00', '05:00:00', '06:00:00', '07:00:00', '08:00:00', '09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00')
+INSERT INTO Application(ApplicationStatus, SalaryExpectation, FullTime, AvailableForDays, AvailableForEvenings, AvailableForWeekends, MondayFrom, TuesdayFrom, WednesdayFrom, ThursdayFrom, FridayFrom, SaturdayFrom, SundayFrom, MondayTo, TuesdayTo, WednesdayTo, ThursdayTo, FridayTo, SaturdayTo, SundayTo) VALUES ('Submitted', '23456', 1, 0, 0, 1, '02:00:00', '03:00:00', '04:00:00', '05:00:00', '06:00:00', '07:00:00', '08:00:00', '09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00')
+INSERT INTO Application(ApplicationStatus, SalaryExpectation, FullTime, AvailableForDays, AvailableForEvenings, AvailableForWeekends, MondayFrom, TuesdayFrom, WednesdayFrom, ThursdayFrom, FridayFrom, SaturdayFrom, SundayFrom, MondayTo, TuesdayTo, WednesdayTo, ThursdayTo, FridayTo, SaturdayTo, SundayTo) VALUES ('Rejected', '34567', 1, 0, 1, 1, '03:00:00', '04:00:00', '05:00:00', '06:00:00', '07:00:00', '08:00:00', '09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00', '16:00:00')
+INSERT INTO Application(ApplicationStatus, SalaryExpectation, FullTime, AvailableForDays, AvailableForEvenings, AvailableForWeekends, MondayFrom, TuesdayFrom, WednesdayFrom, ThursdayFrom, FridayFrom, SaturdayFrom, SundayFrom, MondayTo, TuesdayTo, WednesdayTo, ThursdayTo, FridayTo, SaturdayTo, SundayTo) VALUES ('Reviewed', '45678', 1, 1, 0, 1, '04:00:00', '05:00:00', '06:00:00', '07:00:00', '08:00:00', '09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00', '16:00:00', '17:00:00')
 
 /********************************************************************************
                 JOB RELATION
@@ -159,6 +159,9 @@ CREATE TABLE Job (
 /* DATA FOR JOBS RELATION */
 INSERT INTO Job(Title) VALUES ('Factory Worker');
 INSERT INTO Job(Title) VALUES ('Receptionist');
+INSERT INTO Job(Title) VALUES ('Tester');
+INSERT INTO Job(Title) VALUES ('Manager');
+
 
 /********************************************************************************
               JOB_REQUIREMENT RELATION
@@ -218,8 +221,9 @@ CREATE TABLE Applied (
 
 /* DATA FOR APPLIED RELATION */
 INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (1, 1, 1, GETDATE());
-INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (3, 2, 1, GETDATE());
-INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (4, 3, 2, '12-30-2013');
+INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (2, 2, 2, GETDATE());
+INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (3, 3, 3, '12-30-2013');
+INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (4, 4, 4, '12-30-2013');
 
 /********************************************************************************
                 SCHOOL RELATION 
@@ -238,11 +242,10 @@ CREATE TABLE School (
 );
 
 /* DATA FOR SCHOOL RELATION */
-INSERT INTO School(School_Name) VALUES ('PCC');
-INSERT INTO School(School_Name) VALUES ('OIT');
-INSERT INTO School(School_Name) VALUES ('CCC');
-INSERT INTO School(School_Name) VALUES ('WSU');
-INSERT INTO School(School_Name) VALUES ('MIT');
+INSERT INTO School(School_Name, School_Address) VALUES ('PCC', '123 N Sky St, Sunnyville');
+INSERT INTO School(School_Name, School_Address) VALUES ('OIT', '234 E Wind St, Sunnyville');
+INSERT INTO School(School_Name, School_Address) VALUES ('CCC', '345 W Tower Ct, Sunnyville');
+INSERT INTO School(School_Name, School_Address) VALUES ('WSU', '456 S Cloud Ct, Sunnyville');
 
 /********************************************************************************
                 EDUCATION RELATION  
@@ -272,11 +275,13 @@ CREATE TABLE Education (
 );
 
 /* DATA FOR EDUCATION RELATION */
-INSERT INTO Education(Applicant_ID, School_ID) VALUES (1, 2);
-INSERT INTO Education(Applicant_ID, School_ID) VALUES (2, 1);
-INSERT INTO Education(Applicant_ID, School_ID) VALUES (3, 4);
-INSERT INTO Education(Applicant_ID, School_ID) VALUES (4, 3);
-
+INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (1, 1, '2002-09-01', '2006-06-01', 1, 'BS Computer Science');
+INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (2, 2, '2000-09-01', '2004-06-01', 1, 'BA Public Speaking');
+INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (2, 3, '2005-09-01', '2006-06-01', 1, 'Master''s in Public Speaking');
+INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (3, 3, '2002-09-01', '2006-06-01', 0, 'Economics');
+INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (4, 4, '2002-09-01', '2006-06-01', 1, 'BA Psychology');
+INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (4, 3, '2006-09-01', '2007-06-01', 1, 'Master''s in Psychology');
+INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (4, 2, '2008-09-01', '2009-06-01', 1, 'Master''s in Teaching');
 /********************************************************************************
                 EMPLOYER RELATION 
 *********************************************************************************/
@@ -295,9 +300,10 @@ CREATE TABLE Employer (
 );
 
 /* DATA FOR EMPLOYER RELATION */
-INSERT INTO Employer(Name) VALUES ('Intel');
-INSERT INTO Employer(Name) VALUES ('Google');
-INSERT INTO Employer(Name) VALUES ('Microsoft');
+INSERT INTO Employer(Name, EmployerAddress, PhoneNumber) VALUES ('Intely', '123 NW Way, Sunnyville', '123-412-2345');
+INSERT INTO Employer(Name, EmployerAddress, PhoneNumber) VALUES ('Googles', '234 SW Way, Sunnyville', '123-414-1234');
+INSERT INTO Employer(Name, EmployerAddress, PhoneNumber) VALUES ('Microsoftor', '345 SE Ct, Sunnyville', '123-122-4334');
+INSERT INTO Employer(Name, EmployerAddress, PhoneNumber) VALUES ('Applet', '456 NE Ct, Sunnyville', '123-111-1111');
 
 /********************************************************************************
                 EMPLOYMENT RELATION 
@@ -332,9 +338,13 @@ CREATE TABLE Employment (
 );
 
 /* DATA FOR EMPLOYMENT RELATION */
-INSERT INTO Employment(Applicant_ID, Employer_ID) VALUES (1, 2);
-INSERT INTO Employment(Applicant_ID, Employer_ID) VALUES (2, 1);
-INSERT INTO Employment(Applicant_ID, Employer_ID) VALUES (3, 3);
+INSERT INTO Employment(Applicant_ID, Employer_ID, MayWeContactCurrentEmployer, EmployedFrom, EmployedTo, Supervisor, Position, StartingSalary, EndingSalary, ReasonForLeaving, Responsibilities) VALUES (1, 1, 1, '2002-09-01', '2006-06-01', 'Jay', 'First Year Worker', '24000', '26000', 'Another job opportunity opened up...', 'Taking care of first year worker duties.');
+INSERT INTO Employment(Applicant_ID, Employer_ID, MayWeContactCurrentEmployer, EmployedFrom, EmployedTo, Supervisor, Position, StartingSalary, EndingSalary, ReasonForLeaving, Responsibilities) VALUES (2, 1, 0, '2000-09-01', '2004-06-01', 'Quan', 'First Year Worker', '24000', '26000', 'Another job opportunity opened up...', 'Taking care of first year worker duties.');
+INSERT INTO Employment(Applicant_ID, Employer_ID, MayWeContactCurrentEmployer, EmployedFrom, EmployedTo, Supervisor, Position, StartingSalary, EndingSalary, ReasonForLeaving, Responsibilities) VALUES (2, 2, 1, '2005-09-01', '2006-06-01', 'Sherry', 'Second Year Worker', '30000', '1', 'Felt like moving on...', 'Taking care of second year worker duties.');
+INSERT INTO Employment(Applicant_ID, Employer_ID, MayWeContactCurrentEmployer, EmployedFrom, EmployedTo, Supervisor, Position, StartingSalary, EndingSalary, ReasonForLeaving, Responsibilities) VALUES (3, 1, 0, '2002-09-01', '2006-06-01', 'Rich', 'First Year Worker', '24000', '26000', 'Another job opportunity opened up...', 'Taking care of first year worker duties.');
+INSERT INTO Employment(Applicant_ID, Employer_ID, MayWeContactCurrentEmployer, EmployedFrom, EmployedTo, Supervisor, Position, StartingSalary, EndingSalary, ReasonForLeaving, Responsibilities) VALUES (4, 1, 0, '2002-09-01', '2006-06-01', 'Rich', 'First Year Worker', '24000', '26000', 'Another job opportunity opened up...', 'Taking care of first year worker duties.');
+INSERT INTO Employment(Applicant_ID, Employer_ID, MayWeContactCurrentEmployer, EmployedFrom, EmployedTo, Supervisor, Position, StartingSalary, EndingSalary, ReasonForLeaving, Responsibilities) VALUES (4, 2, 0, '2002-09-01', '2006-06-01', 'Jay', 'Second Year Worker', '26000', '30000', 'Wanted to remain upwardly mobile.', 'Taking care of second year worker duties.');
+INSERT INTO Employment(Applicant_ID, Employer_ID, MayWeContactCurrentEmployer, EmployedFrom, EmployedTo, Supervisor, Position, StartingSalary, EndingSalary, ReasonForLeaving, Responsibilities) VALUES (4, 3, 0, '2002-09-01', '2006-06-01', 'Buffalo', 'Third Year Worker', '35000', '50000', 'Wanted to face new challenges.', 'Taking care of third year worker duties.');
 
 /********************************************************************************
                 REFERENCE RELATION 
