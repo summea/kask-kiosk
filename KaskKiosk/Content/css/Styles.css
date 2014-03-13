@@ -67,6 +67,7 @@ textarea {
 #menu li {
 	display:inline-block;
 	margin: 10px;
+    margin-right:2px;
 	color: #000;
 	background:#fff;
 	background: rgba(255,255,255, 0.5);

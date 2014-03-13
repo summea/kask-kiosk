@@ -7,9 +7,9 @@
     <li data-menuanchor="welcome" class="active"><a href="#welcome">Welcome</a></li>
     <li data-menuanchor="personal" class="active"><a href="#personal">Personal</a></li>
     <li data-menuanchor="position" class="active"><a href="#position">Position</a></li>
-    <li data-menuanchor="jobHistory1" class="active"><a href="#jobHistory1">Job History 1</a></li>
-    <li data-menuanchor="jobHistory2" class="active"><a href="#jobHistory2">Job History 2</a></li>
-    <li data-menuanchor="jobHistory3" class="active"><a href="#jobHistory3">Job History 3</a></li>
+    <li data-menuanchor="employmentHistory1" class="active"><a href="#employmentHistory1">Employment History 1</a></li>
+    <li data-menuanchor="employmentHistory2" class="active"><a href="#employmentHistory2">Employment History 2</a></li>
+    <li data-menuanchor="employmentHistory3" class="active"><a href="#employmentHistory3">Employment History 3</a></li>
     <li data-menuanchor="education1" class="active"><a href="#education1">Education 1</a></li>
     <li data-menuanchor="education2" class="active"><a href="#education2">Education 2</a></li>
     <li data-menuanchor="education3" class="active"><a href="#education3">Education 3</a></li>
@@ -260,7 +260,7 @@
     
     for (var i = 1; i < 4; i++)
     {
-        <div class="section" id="section_job_history_@i">
+        <div class="section" id="section_employment_history_@i">
         <h2>Employment History @i</h2>
         <p class="lead italic">Please tell us a little about your past employment history...</p>
         <div class="form-group spacing" style="width:400px;float:left;">
@@ -269,11 +269,11 @@
         </div>
         <div class="form-group spacing" style="width:200px;float:left;">
             @Html.Label("From:")
-            <input type="text" class="form-control" name="EmployedFrom_@i" id="EmployedFrom_@i" placeholder="month/year" />
+            <input type="text" class="form-control" name="EmployedFrom_@i" id="EmployedFrom_@i" placeholder="07/2001" />
         </div>
         <div class="form-group spacing" style="width:200px;float:left;">
             @Html.Label("To:")
-            <input type="text" class="form-control" name="EmployedTo_@i" id="EmployedTo_@i" placeholder="month/year" />
+            <input type="text" class="form-control" name="EmployedTo_@i" id="EmployedTo_@i" placeholder="08/2001" />
         </div>
         <div class="form-group spacing" style="width:400px;float:left;clear:both;">
             @Html.Label("Address:")
@@ -305,7 +305,7 @@
         </div>
         <div class="form-group spacing" style="width:800px;float:left;clear:both;">
             @Html.Label("Describe your Responsibilities:")
-            <textarea class="form-control" name="EmployedResponsibilities_@i" id="EmployedResponsibilities_@i" placeholder="Enter job responsibilities"></textarea>
+            <textarea class="form-control" name="EmployedResponsibilities_@i" id="EmployedResponsibilities_@i" placeholder="Enter employment-related responsibilities"></textarea>
         </div>
         <div class="form-group spacing" style="width:800px;float:left;">
             @Html.Label("May we contact this employer?")
@@ -337,7 +337,7 @@
         </div>
         <div class="form-group spacing" style="width:200px;float:left;">
             @Html.Label("Years Attended To:")
-            <input type="text" class="form-control" name="YearsAttendedTo_@i" id="YearsAttendedTo_@i" placeholder="9/2000" />
+            <input type="text" class="form-control" name="YearsAttendedTo_@i" id="YearsAttendedTo_@i" placeholder="12/2001" />
         </div>
         <div class="form-group spacing" style="width:100px;float:left;">
             @Html.Label("Graduated:")
