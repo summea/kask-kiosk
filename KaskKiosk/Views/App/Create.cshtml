@@ -4,6 +4,7 @@
 }
 
 <ul id="menu">
+    <li><a href="@ViewBag.baseURL"><span class="glyphicon glyphicon-home"></span></a></li>
     <li data-menuanchor="welcome" class="active"><a href="#welcome">Welcome</a></li>
     <li data-menuanchor="personal" class="active"><a href="#personal">Personal</a></li>
     <li data-menuanchor="position" class="active"><a href="#position">Position</a></li>
@@ -355,7 +356,7 @@
     }
     
     <div class="section center" id="section5">
-        <a href="@ViewBag.baseURL" class="btn btn-danger">Cancel Application</a>
+        <a href="@ViewBag.baseURL" class="btn btn-danger">Cancel Application</a>&nbsp;&nbsp;&nbsp;
         <input type="submit" id="submit" value="Submit Application" class="btn btn-success" />
     </div>
 }
