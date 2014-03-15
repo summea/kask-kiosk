@@ -69,6 +69,7 @@ namespace Kask.UnitTests
 
             list.Add(applicationService.GetApplicationByID(applicant1.ApplicantID));
 
+            // TODO: This MockApplicationService function is wrong.
             list2 = applicationService.GetApplicationsByName(applicant1.FirstName, applicant1.LastName, applicant1.SSN) ;
 
             Assert.AreEqual(list, list2);
