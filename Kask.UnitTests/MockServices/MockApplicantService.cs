@@ -10,7 +10,7 @@ namespace Kask.UnitTests
     {
         List<ApplicantDAO> Applicants = new List<ApplicantDAO>();
 
-        public Kask.Services.DAO.ApplicantDAO GetApplicantByID(int id)
+        public ApplicantDAO GetApplicantByID(int id)
         {
             foreach (var applicant in Applicants)
                 if (applicant.ApplicantID == id)
@@ -18,18 +18,18 @@ namespace Kask.UnitTests
             throw new Exception("Applicant not found");
         }
 
-        public IList<Kask.Services.DAO.ApplicantDAO> GetApplicants()
+        public IList<ApplicantDAO> GetApplicants()
         {
             return Applicants;
         }
 
-        public bool CreateApplicant(Kask.Services.DAO.ApplicantDAO a)
+        public bool CreateApplicant(ApplicantDAO a)
         {
             Applicants.Add(a);
             return true;
         }
 
-        public bool UpdateApplicant(Kask.Services.DAO.ApplicantDAO newApp)
+        public bool UpdateApplicant(ApplicantDAO newApp)
         {
             foreach(var applicant in Applicants)
                 if (applicant.ApplicantID == newApp.ApplicantID)
