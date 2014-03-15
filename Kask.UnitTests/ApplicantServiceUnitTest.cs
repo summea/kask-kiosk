@@ -28,6 +28,7 @@ namespace Kask.UnitTests
 
 
         [TestMethod]
+
         public void Test_GetApplicantByID()
         {
             applicantService.CreateApplicant(applicant1);   //(new Kask.Services.DAO.ApplicantDAO() { ApplicantID = 1, FirstName = "Sam1", LastName = "Edy1", Phone = "000 000 0000", SSN = "1111" });
