@@ -50,9 +50,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="EducationServiceUnitTest.cs" />
     <Compile Include="MockServices\MockApplicantService.cs" />
     <Compile Include="ApplicantServiceUnitTest.cs" />
     <Compile Include="MockServices\MockApplicationService.cs" />
+    <Compile Include="MockServices\MockAppliedService.cs" />
+    <Compile Include="MockServices\MockEducationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ApplicationServiceUnitTest.cs" />
   </ItemGroup>
