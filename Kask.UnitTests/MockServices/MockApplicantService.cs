@@ -10,6 +10,19 @@ namespace Kask.UnitTests
     {
         List<ApplicantDAO> Applicants = new List<ApplicantDAO>();
 
+        internal void SetUp()
+        {
+            ApplicantDAO applicant1 = new ApplicantDAO() { ApplicantID = 1, FirstName = "First1", LastName = "Last1", Phone = "1111", SSN = "0001" };
+            ApplicantDAO applicant2 = new ApplicantDAO() { ApplicantID = 2, FirstName = "First2", LastName = "Last2", Phone = "2222", SSN = "0002" };
+            ApplicantDAO applicant3 = new ApplicantDAO() { ApplicantID = 3, FirstName = "First3", LastName = "Last3", Phone = "3333", SSN = "0003" };
+            ApplicantDAO applicant4 = new ApplicantDAO() { ApplicantID = 4, FirstName = "First4", LastName = "Last4", Phone = "4444", SSN = "0004" };
+
+            Applicants.Add(applicant1);
+            Applicants.Add(applicant2);
+            Applicants.Add(applicant3);
+            Applicants.Add(applicant4);
+        }
+
         public ApplicantDAO GetApplicantByID(int id)
         {
             foreach (var applicant in Applicants)
