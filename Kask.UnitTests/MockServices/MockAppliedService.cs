@@ -7,7 +7,7 @@ using Kask.Services.DAO;
 using Kask.Services.Interfaces;
 using Kask.UnitTests;
 
-namespace KaskUnitTests.MockServices
+namespace Kask.UnitTests
 {
     public class MockAppliedService : IAppliedService
     {
@@ -52,6 +52,16 @@ namespace KaskUnitTests.MockServices
                     return true;
                 }
             return false;                    
+        }
+
+        private void initializeApplied(AppliedDAO applied, int id, int appliedID, int applicantID, int applicantionID, int applicationID, int jobID, DateTime dateApplied)
+        {
+            applied.ID = id;
+            applied.AppliedID = appliedID;
+            applied.ApplicantID = applicantID;
+            applied.ApplicationID = applicationID;
+            applied.JobID = jobID;
+            applied.DateApplied = dateApplied;
         }
     }
 }
