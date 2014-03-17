@@ -64,5 +64,19 @@ namespace Kask.UnitTests
                 }
             return false;
         }
+
+        private void initializeApplicant( ApplicantDAO applicant, int id, int applicantID, string firstname, string middlename, string lastname, string ssn, string gender, string applicantAddress, string phone, string nameAlias )
+        {
+            applicant.ID = id;
+            applicant.ApplicantID = applicantID;
+            applicant.FirstName = firstname;
+            applicant.LastName = lastname;
+            applicant.MiddleName = middlename;
+            applicant.SSN = ssn;
+            applicant.Gender = gender;
+            applicant.ApplicantAddress = applicantAddress;
+            applicant.Phone = phone;
+            applicant.NameAlias = nameAlias;
+        }
     }
 }
