@@ -30,7 +30,7 @@ namespace Kask.UnitTests
         }
 
         [TestMethod]
-        [Description("Fail GetApplicationByID")]
+        [Description("Fail GetEducationByID")]
         [ExpectedException(typeof(Exception))]
         public void Test_GetEducationByIDFail()
         {
@@ -48,10 +48,8 @@ namespace Kask.UnitTests
         public void Test_CreateEducation()
         {
             EducationDAO education5 = new EducationDAO() { ID = 5, ApplicantID = 5, EducationID = 1, SchoolID = 1, DegreeAndMajor = "BIO" };
-            Educations.Add(education5);
-            Assert.AreEqual(education5.EducationID, 1);
-            Assert.AreEqual(education5.ID, 5);
-            Assert.AreEqual(education5.DegreeAndMajor, "BIO");
+            educationService.CreateEducation(education5);
+            Assert.AreEqual(educationService.GetEducations().Count, 5);
         }
 
         [TestMethod]
@@ -59,14 +57,15 @@ namespace Kask.UnitTests
         {
             EducationDAO education4 = new EducationDAO() { ID = 7, ApplicantID = 7, EducationID = 4, SchoolID = 7, DegreeAndMajor = "TEST" };
             educationService.UpdateEducation(education4);
-            Assert.AreEqual(education4.ID, 7);
-            Assert.AreEqual(education4.DegreeAndMajor, "TEST");
+            Assert.AreEqual(educationService.GetEducationByID(4).ID, 7);
+            Assert.AreEqual(educationService.GetEducationByID(4).DegreeAndMajor, "TEST");
         }
 
         [TestMethod]
         public void Test_DeleteEducation()
         {
             Assert.IsTrue(educationService.DeleteEducation(3));
+            Assert.AreEqual(educationService.GetEducations().Count, 3);
         }
     }
 }

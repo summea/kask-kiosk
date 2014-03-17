@@ -44,8 +44,9 @@ namespace Kask.UnitTests
         public void Test_CreateApplicant()
         {
             ApplicantDAO applicant6 = new ApplicantDAO() { ApplicantID = 6, FirstName = "TestFirst", LastName = "TestLast", Phone = "TestNum", SSN = "TestSSN" };
-            Applicants.Add(applicant6);
+            applicantService.CreateApplicant(applicant6);
             Assert.AreEqual(applicant6.ApplicantID, 6);
+            Assert.IsNotNull(applicantService.GetApplicantByID(6));
         }
 
         [TestMethod]
@@ -55,17 +56,17 @@ namespace Kask.UnitTests
 
             applicantService.UpdateApplicant(applicant4);
             Assert.AreEqual(applicant4.ApplicantID, 4);
-            Assert.AreEqual(applicant4.FirstName, "NewFirst4");
-            Assert.AreEqual(applicant4.LastName, "NewLast4");
-            Assert.AreEqual(applicant4.SSN, "0005");
-            Assert.AreEqual(applicant4.Phone, "4444");
-            
+            Assert.AreEqual(applicantService.GetApplicantByID(4).FirstName, "NewFirst4");
+            Assert.AreEqual(applicantService.GetApplicantByID(4).LastName, "NewLast4");
+            Assert.AreEqual(applicantService.GetApplicantByID(4).SSN, "0005");
+            Assert.AreEqual(applicantService.GetApplicantByID(4).Phone, "4444");            
         }
 
         [TestMethod]
         public void Test_DeleteApplicant()
         {            
             Assert.IsTrue(applicantService.DeleteApplicant(4));
+            Assert.AreEqual(applicantService.GetApplicants().Count, 3);
         }
     }
 }

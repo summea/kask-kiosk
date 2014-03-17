@@ -76,7 +76,6 @@ namespace Kask.UnitTests
 
         private void initializeEducation(EducationDAO education, int id, int educationID, int applicantID, int schoolID, string degreeAndmajor)
         {
-            //ApplicationDAO application = new ApplicationDAO();
             education.ID = id;
             education.EducationID = educationID;
             education.ApplicantID = applicantID;
