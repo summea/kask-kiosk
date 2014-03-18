@@ -12,6 +12,7 @@ namespace Kask.UnitTests
     public class MockAppliedService : IAppliedService
     {
         List<AppliedDAO> Applieds = new List<AppliedDAO>();
+
         public AppliedDAO GetAppliedByID(int id)
         {
             foreach (var a in Applieds)
