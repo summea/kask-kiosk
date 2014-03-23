@@ -432,11 +432,6 @@ namespace Kask.Services
 
         public bool CreateApplied(AppliedDAO app)
         {
-<<<<<<< HEAD
-            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
-            {
-                db.Applieds.InsertOnSubmit(a);
-=======
             Applied a = new Applied
             {
                 Applied_ID = app.AppliedID,
@@ -450,7 +445,6 @@ namespace Kask.Services
             {
                 db.Applieds.InsertOnSubmit(a);
 
->>>>>>> origin/views
                 try
                 {
                     db.SubmitChanges();
@@ -460,10 +454,6 @@ namespace Kask.Services
                     throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
-<<<<<<< HEAD
-
-            return true;
-=======
 
             return true;
         }
@@ -471,7 +461,6 @@ namespace Kask.Services
         public bool UpdateApplied(AppliedDAO newApp)
         {
             throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason("Unsupported Method"));
->>>>>>> origin/views
         }
 
         public bool DeleteApplied(int id)
@@ -492,8 +481,6 @@ namespace Kask.Services
             }
 
             return true;
-<<<<<<< HEAD
-=======
         }
 
         public EmployerDAO GetEmployerByID(int id)
@@ -1208,7 +1195,6 @@ namespace Kask.Services
             }
 
             return true;
->>>>>>> origin/views
         }
     }
 }

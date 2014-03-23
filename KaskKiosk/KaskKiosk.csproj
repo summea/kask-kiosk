@@ -238,8 +238,6 @@
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\App\Create.cshtml" />
-    <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Shared\_PublicLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>

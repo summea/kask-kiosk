@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="afd2c9df-53b6-42b1-a847-28fec7976a8d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
-=======
 <ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ffc7dfb1-5155-41db-b19a-88a7aaf66d06" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
->>>>>>> origin/views
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -26,21 +22,12 @@
     <MetadataSource Address="http://localhost:1760/AESApplicationService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-<<<<<<< HEAD
-    <MetadataFile FileName="AESApplicationService.wsdl" MetadataType="Wsdl" ID="ea3f6d78-efcb-4ebc-9099-416acbc13d7f" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?wsdl" />
-    <MetadataFile FileName="AESApplicationService.disco" MetadataType="Disco" ID="70d7a132-0b86-4109-b3c1-ca8022c09b15" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?disco" />
-    <MetadataFile FileName="AESApplicationService.xsd" MetadataType="Schema" ID="b050fd3d-03bb-4ce8-90e6-312544dd56fa" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?xsd=xsd0" />
-    <MetadataFile FileName="AESApplicationService1.xsd" MetadataType="Schema" ID="66190eae-746e-4757-b2c6-48e160902029" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?xsd=xsd2" />
-    <MetadataFile FileName="AESApplicationService2.xsd" MetadataType="Schema" ID="5e524b5a-dc22-4403-8df3-cb9f8a6858e4" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?xsd=xsd1" />
-    <MetadataFile FileName="AESApplicationService3.xsd" MetadataType="Schema" ID="b8d61a0b-10bd-40a6-ae0e-520ed20e759c" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?xsd=xsd3" />
-=======
     <MetadataFile FileName="AESApplicationService.wsdl" MetadataType="Wsdl" ID="316fdb09-c5cd-4414-a689-d747362d70de" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?wsdl" />
     <MetadataFile FileName="AESApplicationService.disco" MetadataType="Disco" ID="c6e01a4c-b86a-45ee-a540-d3b145101ec5" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?disco" />
     <MetadataFile FileName="AESApplicationService.xsd" MetadataType="Schema" ID="2cf0b783-53ba-4dd6-9545-d1b840cff8f3" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?xsd=xsd0" />
     <MetadataFile FileName="AESApplicationService1.xsd" MetadataType="Schema" ID="27afaf80-f454-418f-ae02-265f16aa0874" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?xsd=xsd2" />
     <MetadataFile FileName="AESApplicationService2.xsd" MetadataType="Schema" ID="833ed7af-1962-483a-ae18-6466b7e687f8" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?xsd=xsd1" />
     <MetadataFile FileName="AESApplicationService3.xsd" MetadataType="Schema" ID="36b79fce-6ba1-4864-b0a4-46d6f4282141" SourceId="1" SourceUrl="http://localhost:1760/AESApplicationService.svc?xsd=xsd3" />
->>>>>>> origin/views
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
