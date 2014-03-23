@@ -18,6 +18,14 @@
       <Association Name="Applicant_Education" Member="Educations" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Education" />
     </Type>
   </Table>
+  <Table Name="dbo.Skill" Member="Skills">
+    <Type Name="Skill">
+      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SkillName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Skill_Expertise" Member="Expertises" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Expertise" />
+      <Association Name="Skill_JobRequirement" Member="JobRequirements" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="JobRequirement" />
+    </Type>
+  </Table>
   <Table Name="dbo.Application" Member="Applications">
     <Type Name="Application">
       <Column Name="Application_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -76,26 +84,6 @@
       <Association Name="Employer_Employment" Member="Employments" ThisKey="Employer_ID" OtherKey="Employer_ID" Type="Employment" />
     </Type>
   </Table>
-<<<<<<< HEAD:Kask.DAL2/AESDatabase.dbml
-  <Table Name="dbo.Employment" Member="Employments">
-    <Type Name="Employment">
-      <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Employer_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MayWeContactCurrentEmployer" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="EmployedFrom" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EmployedTo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Supervisor" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="Position" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="StartingSalary" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="EndingSalary" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="ReasonForLeaving" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Responsibilities" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="Applicant_Employment" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="Employer_Employment" Member="Employer" ThisKey="Employer_ID" OtherKey="Employer_ID" Type="Employer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-=======
->>>>>>> origin/views:Kask.DAL/AESDatabase.dbml
   <Table Name="dbo.Expertise" Member="Expertises">
     <Type Name="Expertise">
       <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -154,14 +142,6 @@
       <Association Name="School_Education" Member="Educations" ThisKey="School_ID" OtherKey="School_ID" Type="Education" />
     </Type>
   </Table>
-<<<<<<< HEAD:Kask.DAL2/AESDatabase.dbml
-  <Table Name="dbo.Skill" Member="Skills">
-    <Type Name="Skill">
-      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SkillName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Skill_Expertise" Member="Expertises" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Expertise" />
-      <Association Name="Skill_JobRequirement" Member="JobRequirements" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="JobRequirement" />
-=======
   <Table Name="dbo.Education" Member="Educations">
     <Type Name="Education">
       <Column Name="Education_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -173,7 +153,6 @@
       <Column Name="DegreeAndMajor" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Association Name="Applicant_Education" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="School_Education" Member="School" ThisKey="School_ID" OtherKey="School_ID" Type="School" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
->>>>>>> origin/views:Kask.DAL/AESDatabase.dbml
     </Type>
   </Table>
 </Database>

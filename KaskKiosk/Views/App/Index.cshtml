@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.Application>
-=======
 ﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.ApplicationDAO>
->>>>>>> origin/views
 
 @{
     ViewBag.Title = "Index";
@@ -14,22 +10,14 @@
     <tr>
         <th>id</th>
         <th>Application Status</th>
-<<<<<<< HEAD
-=======
         <th>Actions</th>
->>>>>>> origin/views
     </tr>
 @foreach (var item in ViewBag.applications)
 {
     <tr>
-<<<<<<< HEAD
-        <td>@item.Application_ID</td>
-        <td>@item.ApplicationStatus</td>
-=======
         <td>@item.ApplicationID</td>
         <td>@item.ApplicationStatus</td>
         <td>@Html.ActionLink("View Details", "Details", new { id=item.ApplicationID })</td>
->>>>>>> origin/views
     </tr>
 }
 </table>
