@@ -153,100 +153,102 @@ namespace KaskKiosk.Controllers
         {
             try
             {
-                // save application form data back to database through service
-                using (HttpClient httpClient = new HttpClient())
+                if (!string.IsNullOrEmpty(Request.Form["FirstName"]) && !string.IsNullOrEmpty(Request.Form["LastName"]) && !string.IsNullOrEmpty(Request.Form["SSN"]))
                 {
-                    httpClient.BaseAddress = new Uri("http://localhost:51309");
-                    httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                    HttpResponseMessage result = new HttpResponseMessage();
-                    string resultContent = "";
-
-                    // gather Applicant form data
-                    ApplicantDAO applicant = new ApplicantDAO();
-                    applicant.FirstName = Request.Form["FirstName"];
-                    applicant.MiddleName = Request.Form["MiddleName"];
-                    applicant.LastName = Request.Form["LastName"];
-                    applicant.SSN = Request.Form["SSN"];
-                    applicant.ApplicantAddress = Request.Form["ApplicantAddress"];
-                    applicant.Phone = Request.Form["ApplicantPhone"];
-                    applicant.NameAlias = Request.Form["NameAlias"];
-
-                    // post (save) applicant data
-                    result = httpClient.PostAsJsonAsync(uriApplicant, applicant).Result;
-                    resultContent = result.Content.ReadAsStringAsync().Result;
-
-                    // gather Application form data
-                    ApplicationDAO application = new ApplicationDAO();
-                    application.ApplicationStatus = "Submitted";
-                    application.SalaryExpectation = Request.Form["SalaryExpectation"];
-                    application.FullTime = Convert.ToByte(Request.Form["FullTime"]);
-                    application.AvailableForDays = Convert.ToByte(Request.Form["AvailableForDays"]);
-                    application.AvailableForEvenings = Convert.ToByte(Request.Form["AvailableForEvenings"]);
-                    application.AvailableForWeekends = Convert.ToByte(Request.Form["AvailableForWeekends"]);
-                    application.MondayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["MondayFrom"]));
-                    application.TuesdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["TuesdayFrom"]));
-                    application.WednesdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["WednesdayFrom"]));
-                    application.ThursdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["ThursdayFrom"]));
-                    application.FridayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["FridayFrom"]));
-                    application.SaturdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SaturdayFrom"]));
-                    application.SundayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SundayFrom"]));
-                    application.MondayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["MondayTo"]));
-                    application.TuesdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["TuesdayTo"]));
-                    application.WednesdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["WednesdayTo"]));
-                    application.ThursdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["ThursdayTo"]));
-                    application.FridayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["FridayTo"]));
-                    application.SaturdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SaturdayTo"]));
-                    application.SundayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SundayTo"]));
-
-                    // post (save) application data
-                    result = httpClient.PostAsJsonAsync(uriApplication, application).Result;
-                    resultContent = result.Content.ReadAsStringAsync().Result;
-
-                    // get correct applicant id
-                    // TODO: there is still something we might need to change about this...
-                    // ***** We don't, it's safe to assume that id would be the last item on the list
-                    // since we're using auto incremented id. *****
-                    var applicants = await GetApplicantsAsync();
-                    applicant.ApplicantID = applicants.Last().ApplicantID;
-
-                    // get correct application id
-                    // TODO: there is still something we might need to change about this...
-                    var applications = await GetApplicationsAsync();
-                    application.ApplicationID = applications.Last().ApplicationID;
-
-                    int jobId = 1;
-                    if (Request.Form["JobID"] != null)
-                        jobId = Convert.ToInt32(Request.Form["JobID"]);
-
-                    // Create Applied DAO;
-                    AppliedDAO applied = new AppliedDAO();
-                    applied.ApplicantID = applicant.ApplicantID;
-                    applied.ApplicationID = application.ApplicationID;
-                    applied.JobID = jobId;
-                    applied.DateApplied = DateTime.Now;
-
-                    // post (save) applied data
-                    result = httpClient.PostAsJsonAsync(uriApplied, applied).Result;
-                    resultContent = result.Content.ReadAsStringAsync().Result;
-
-                    // gather Employer data
-                    EmployerDAO employer = new EmployerDAO();
-                    var employers = await GetEmployersAsync();
-                    EmploymentDAO employment = new EmploymentDAO();
-                    
-                    for (int i = 1; i < 4; i++ )
+                    // save application form data back to database through service
+                    using (HttpClient httpClient = new HttpClient())
                     {
-                        // make sure this form item is filled in...
-                        if (( !string.IsNullOrWhiteSpace(Request.Form["EmployerName_" + i]) && 
-                              !string.IsNullOrWhiteSpace(Request.Form["EmployerAddress_" + i])))
-                        {
-                            employer.Name = Request.Form["EmployerName_" + i];
-                            employer.EmployerAddress = Request.Form["EmployerAddress_" + i];
-                            if (!string.IsNullOrWhiteSpace(Request.Form["EmployerPhone_" + i]))
-                                employer.PhoneNumber = Request.Form["EmployerPhone_" + i];
+                        httpClient.BaseAddress = new Uri("http://localhost:51309");
+                        httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        HttpResponseMessage result = new HttpResponseMessage();
+                        string resultContent = "";
 
-                            //if (!string.IsNullOrWhiteSpace(employer.Name))
-                            //{
+                        // gather Applicant form data
+                        ApplicantDAO applicant = new ApplicantDAO();
+                        applicant.FirstName = Request.Form["FirstName"];
+                        applicant.MiddleName = Request.Form["MiddleName"];
+                        applicant.LastName = Request.Form["LastName"];
+                        applicant.SSN = Request.Form["SSN"];
+                        applicant.ApplicantAddress = Request.Form["ApplicantAddress"];
+                        applicant.Phone = Request.Form["ApplicantPhone"];
+                        applicant.NameAlias = Request.Form["NameAlias"];
+
+                        // post (save) applicant data
+                        result = httpClient.PostAsJsonAsync(uriApplicant, applicant).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+
+                        // gather Application form data
+                        ApplicationDAO application = new ApplicationDAO();
+                        application.ApplicationStatus = "Submitted";
+                        application.SalaryExpectation = Request.Form["SalaryExpectation"];
+                        application.FullTime = Convert.ToByte(Request.Form["FullTime"]);
+                        application.AvailableForDays = Convert.ToByte(Request.Form["AvailableForDays"]);
+                        application.AvailableForEvenings = Convert.ToByte(Request.Form["AvailableForEvenings"]);
+                        application.AvailableForWeekends = Convert.ToByte(Request.Form["AvailableForWeekends"]);
+                        application.MondayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["MondayFrom"]));
+                        application.TuesdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["TuesdayFrom"]));
+                        application.WednesdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["WednesdayFrom"]));
+                        application.ThursdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["ThursdayFrom"]));
+                        application.FridayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["FridayFrom"]));
+                        application.SaturdayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SaturdayFrom"]));
+                        application.SundayFrom = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SundayFrom"]));
+                        application.MondayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["MondayTo"]));
+                        application.TuesdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["TuesdayTo"]));
+                        application.WednesdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["WednesdayTo"]));
+                        application.ThursdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["ThursdayTo"]));
+                        application.FridayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["FridayTo"]));
+                        application.SaturdayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SaturdayTo"]));
+                        application.SundayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SundayTo"]));
+
+                        // post (save) application data
+                        result = httpClient.PostAsJsonAsync(uriApplication, application).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+
+                        // get correct applicant id
+                        // TODO: there is still something we might need to change about this...
+                        // ***** We don't, it's safe to assume that id would be the last item on the list
+                        // since we're using auto incremented id. *****
+                        var applicants = await GetApplicantsAsync();
+                        applicant.ApplicantID = applicants.Last().ApplicantID;
+
+                        // get correct application id
+                        // TODO: there is still something we might need to change about this...
+                        var applications = await GetApplicationsAsync();
+                        application.ApplicationID = applications.Last().ApplicationID;
+
+                        int jobId = 1;
+                        if (Request.Form["JobID"] != null)
+                            jobId = Convert.ToInt32(Request.Form["JobID"]);
+
+                        // Create Applied DAO;
+                        AppliedDAO applied = new AppliedDAO();
+                        applied.ApplicantID = applicant.ApplicantID;
+                        applied.ApplicationID = application.ApplicationID;
+                        applied.JobID = jobId;
+                        applied.DateApplied = DateTime.Now;
+
+                        // post (save) applied data
+                        result = httpClient.PostAsJsonAsync(uriApplied, applied).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+
+                        // gather Employer data
+                        EmployerDAO employer = new EmployerDAO();
+                        var employers = await GetEmployersAsync();
+                        EmploymentDAO employment = new EmploymentDAO();
+
+                        for (int i = 1; i < 4; i++)
+                        {
+                            // make sure this form item is filled in...
+                            if ((!string.IsNullOrWhiteSpace(Request.Form["EmployerName_" + i]) &&
+                                  !string.IsNullOrWhiteSpace(Request.Form["EmployerAddress_" + i])))
+                            {
+                                employer.Name = Request.Form["EmployerName_" + i];
+                                employer.EmployerAddress = Request.Form["EmployerAddress_" + i];
+                                if (!string.IsNullOrWhiteSpace(Request.Form["EmployerPhone_" + i]))
+                                    employer.PhoneNumber = Request.Form["EmployerPhone_" + i];
+
+                                //if (!string.IsNullOrWhiteSpace(employer.Name))
+                                //{
                                 // TODO: check if employer already exists in database
                                 // TODO: if employer exists in database: don't insert data
                                 // if employer !exists in database: insert data
@@ -254,60 +256,60 @@ namespace KaskKiosk.Controllers
                                 // post (save) employer data
                                 result = httpClient.PostAsJsonAsync(uriEmployer, employer).Result;
                                 resultContent = result.Content.ReadAsStringAsync().Result;
-                            //}
+                                //}
 
-                            // get correct employer id
-                            // TODO: there is still something we might need to change about this...
-                            employers = await GetEmployersAsync();
-                            employer.EmployerID = employers.Last().EmployerID;
+                                // get correct employer id
+                                // TODO: there is still something we might need to change about this...
+                                employers = await GetEmployersAsync();
+                                employer.EmployerID = employers.Last().EmployerID;
 
 
-                            // gather Employment data
-                            employment = new EmploymentDAO();
-                            employment.ApplicantID = applicant.ApplicantID;
-                            employment.EmployerID = employer.EmployerID;
-                            if (!string.IsNullOrWhiteSpace(Request.Form["MayWeContactCurrentEmployer_" + i]))
-                                employment.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_" + i]);
-                            if (!string.IsNullOrWhiteSpace(Request.Form["EmployedFrom_" + i]))
-                                employment.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_" + i]);
-                            if (!string.IsNullOrWhiteSpace(Request.Form["EmployedTo_" + i]))
-                                employment.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_" + i]);
-                            if (!string.IsNullOrWhiteSpace(Request.Form["EmployerSupervisor_" + i]))
-                                employment.Supervisor = Request.Form["EmployerSupervisor_" + i];
-                            if (!string.IsNullOrWhiteSpace(Request.Form["EmployedPosition_" + i]))
-                                employment.Position = Request.Form["EmployedPosition_" + i];
-                            if (!string.IsNullOrWhiteSpace(Request.Form["EmployedStartingSalary_" + i]))
-                                employment.StartingSalary = Request.Form["EmployedStartingSalary_" + i];
-                            if (!string.IsNullOrWhiteSpace(Request.Form["EmployedEndingSalary_" + i]))
-                                employment.EndingSalary = Request.Form["EmployedEndingSalary_" + i];
-                            if (!string.IsNullOrWhiteSpace(Request.Form["EmployedReasonForLeaving_" + i]))
-                                employment.ReasonForLeaving = Request.Form["EmployedReasonForLeaving_" + i];
-                            if (!string.IsNullOrWhiteSpace(Request.Form["EmployedResponsibilities_" + i]))
-                                employment.Responsibilities = Request.Form["EmployedResponsibilities_" + i];
+                                // gather Employment data
+                                employment = new EmploymentDAO();
+                                employment.ApplicantID = applicant.ApplicantID;
+                                employment.EmployerID = employer.EmployerID;
+                                if (!string.IsNullOrWhiteSpace(Request.Form["MayWeContactCurrentEmployer_" + i]))
+                                    employment.MayWeContactCurrentEmployer = Convert.ToByte(Request.Form["MayWeContactCurrentEmployer_" + i]);
+                                if (!string.IsNullOrWhiteSpace(Request.Form["EmployedFrom_" + i]))
+                                    employment.EmployedFrom = Convert.ToDateTime(Request.Form["EmployedFrom_" + i]);
+                                if (!string.IsNullOrWhiteSpace(Request.Form["EmployedTo_" + i]))
+                                    employment.EmployedTo = Convert.ToDateTime(Request.Form["EmployedTo_" + i]);
+                                if (!string.IsNullOrWhiteSpace(Request.Form["EmployerSupervisor_" + i]))
+                                    employment.Supervisor = Request.Form["EmployerSupervisor_" + i];
+                                if (!string.IsNullOrWhiteSpace(Request.Form["EmployedPosition_" + i]))
+                                    employment.Position = Request.Form["EmployedPosition_" + i];
+                                if (!string.IsNullOrWhiteSpace(Request.Form["EmployedStartingSalary_" + i]))
+                                    employment.StartingSalary = Request.Form["EmployedStartingSalary_" + i];
+                                if (!string.IsNullOrWhiteSpace(Request.Form["EmployedEndingSalary_" + i]))
+                                    employment.EndingSalary = Request.Form["EmployedEndingSalary_" + i];
+                                if (!string.IsNullOrWhiteSpace(Request.Form["EmployedReasonForLeaving_" + i]))
+                                    employment.ReasonForLeaving = Request.Form["EmployedReasonForLeaving_" + i];
+                                if (!string.IsNullOrWhiteSpace(Request.Form["EmployedResponsibilities_" + i]))
+                                    employment.Responsibilities = Request.Form["EmployedResponsibilities_" + i];
 
-                            // post (save) employment data
-                            result = httpClient.PostAsJsonAsync(uriEmployment, employment).Result;
-                            resultContent = result.Content.ReadAsStringAsync().Result;
+                                // post (save) employment data
+                                result = httpClient.PostAsJsonAsync(uriEmployment, employment).Result;
+                                resultContent = result.Content.ReadAsStringAsync().Result;
+                            }
                         }
-                    }
 
-                    // gather School and Education data
-                    SchoolDAO school = new SchoolDAO();
-                    var schools = await GetSchoolsAsync();
-                    EducationDAO education = new EducationDAO();
-                    
-                    for (int i = 1; i < 4; i++ )
-                    {
-                        // make sure this form item is filled in...
-                        if (( !string.IsNullOrWhiteSpace(Request.Form["SchoolName_" + i]) && 
-                              !string.IsNullOrWhiteSpace(Request.Form["SchoolAddress_" + i])))
+                        // gather School and Education data
+                        SchoolDAO school = new SchoolDAO();
+                        var schools = await GetSchoolsAsync();
+                        EducationDAO education = new EducationDAO();
+
+                        for (int i = 1; i < 4; i++)
                         {
-                            school = new SchoolDAO();
-                            school.SchoolName = Request.Form["SchoolName_" + i];
-                            school.SchoolAddress = Request.Form["SchoolAddress_" + i];
+                            // make sure this form item is filled in...
+                            if ((!string.IsNullOrWhiteSpace(Request.Form["SchoolName_" + i]) &&
+                                  !string.IsNullOrWhiteSpace(Request.Form["SchoolAddress_" + i])))
+                            {
+                                school = new SchoolDAO();
+                                school.SchoolName = Request.Form["SchoolName_" + i];
+                                school.SchoolAddress = Request.Form["SchoolAddress_" + i];
 
-                            //if (!string.IsNullOrWhiteSpace(school.SchoolName))
-                            //{
+                                //if (!string.IsNullOrWhiteSpace(school.SchoolName))
+                                //{
                                 // TODO: check if school already exists in database
                                 // TODO: if school exists in database: don't insert data
                                 // if school !exists in database: insert data
@@ -315,34 +317,40 @@ namespace KaskKiosk.Controllers
                                 // post (save) school data
                                 result = httpClient.PostAsJsonAsync(uriSchool, school).Result;
                                 resultContent = result.Content.ReadAsStringAsync().Result;
-                            //}
+                                //}
 
-                            // get correct school id
-                            // TODO: there is still something we might need to change about this...
-                            schools = await GetSchoolsAsync();
-                            school.SchoolID = schools.Last().SchoolID;
+                                // get correct school id
+                                // TODO: there is still something we might need to change about this...
+                                schools = await GetSchoolsAsync();
+                                school.SchoolID = schools.Last().SchoolID;
 
-                            // gather Education data
-                            education = new EducationDAO();
-                            education.ApplicantID = applicant.ApplicantID;
-                            education.SchoolID = school.SchoolID;
-                            if (!string.IsNullOrWhiteSpace(Request.Form["YearsAttendedFrom_" + i]))
-                                education.YearsAttendedFrom = Convert.ToDateTime(Request.Form["YearsAttendedFrom_" + i]);
-                            if (!string.IsNullOrWhiteSpace(Request.Form["YearsAttendedTo_" + i]))
-                                education.YearsAttendedTo = Convert.ToDateTime(Request.Form["YearsAttendedTo_" + i]);
-                            if (!string.IsNullOrWhiteSpace(Request.Form["Graduated_" + i]))
-                                education.Graduated = Convert.ToByte(Request.Form["Graduated_" + i]);
-                            if (!string.IsNullOrWhiteSpace(Request.Form["DegreeAndMajor_" + i]))
-                                education.DegreeAndMajor = Request.Form["DegreeAndMajor_" + i];
+                                // gather Education data
+                                education = new EducationDAO();
+                                education.ApplicantID = applicant.ApplicantID;
+                                education.SchoolID = school.SchoolID;
+                                if (!string.IsNullOrWhiteSpace(Request.Form["YearsAttendedFrom_" + i]))
+                                    education.YearsAttendedFrom = Convert.ToDateTime(Request.Form["YearsAttendedFrom_" + i]);
+                                if (!string.IsNullOrWhiteSpace(Request.Form["YearsAttendedTo_" + i]))
+                                    education.YearsAttendedTo = Convert.ToDateTime(Request.Form["YearsAttendedTo_" + i]);
+                                if (!string.IsNullOrWhiteSpace(Request.Form["Graduated_" + i]))
+                                    education.Graduated = Convert.ToByte(Request.Form["Graduated_" + i]);
+                                if (!string.IsNullOrWhiteSpace(Request.Form["DegreeAndMajor_" + i]))
+                                    education.DegreeAndMajor = Request.Form["DegreeAndMajor_" + i];
 
-                            // post (save) education data
-                            result = httpClient.PostAsJsonAsync(uriEducation, education).Result;
-                            resultContent = result.Content.ReadAsStringAsync().Result;
+                                // post (save) education data
+                                result = httpClient.PostAsJsonAsync(uriEducation, education).Result;
+                                resultContent = result.Content.ReadAsStringAsync().Result;
+                            }
                         }
                     }
-                }
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    // TODO: validation later on...
+                    return RedirectToAction("Create");
+                }
             }
             catch
             {
