@@ -61,9 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AESApplicationService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\DataObjects.cs" />
     <Compile Include="Exceptions\KaskService.Exception.cs" />
     <Compile Include="Interfaces\IApplicantService.cs" />
     <Compile Include="Interfaces\IApplicationService.cs" />
@@ -71,6 +74,11 @@
       <DependentUpon>AESApplicationService.svc</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IAppliedService.cs" />
+    <Compile Include="Interfaces\IEducationService.cs" />
+    <Compile Include="Interfaces\IEmployerService.cs" />
+    <Compile Include="Interfaces\IEmploymentService.cs" />
+    <Compile Include="Interfaces\IJobService.cs" />
+    <Compile Include="Interfaces\ISchoolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,9 +93,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Kask.DAL2\Kask.DAL2.csproj">
-      <Project>{b4e36210-2ad0-447a-9141-62f6518d875b}</Project>
-      <Name>Kask.DAL2</Name>
+    <ProjectReference Include="..\Kask.DAL\Kask.DAL.csproj">
+      <Project>{55538119-4e6d-4fbd-8dc4-6b194f7d5f67}</Project>
+      <Name>Kask.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

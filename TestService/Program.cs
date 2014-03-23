@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestService.AESApplicationServiceRef;
-using Kask.DAL2.Models;
+using Kask.DAL.Models;
 
 namespace TestService
 {

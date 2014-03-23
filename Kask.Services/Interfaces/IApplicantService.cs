@@ -1,4 +1,5 @@
-﻿using Kask.DAL2.Models;
+﻿using Kask.Services.DAO;
+
 using Kask.Services.Exceptions;
 using System.Collections.Generic;
 using System.ServiceModel;
@@ -10,19 +11,19 @@ namespace Kask.Services.Interfaces
     {
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        Applicant GetApplicantByID(int id);
+        ApplicantDAO GetApplicantByID(int id);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        IList<Applicant> GetApplicants();
+        IList<ApplicantDAO> GetApplicants();
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool CreateApplicant(Applicant a);
+        bool CreateApplicant(ApplicantDAO a);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool UpdateApplicant(Applicant newApp);
+        bool UpdateApplicant(ApplicantDAO newApp);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]

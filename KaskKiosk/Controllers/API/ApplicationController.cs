@@ -14,13 +14,21 @@ namespace KaskKiosk.Controllers.API
     {
         // GET: /Application/
         [HttpGet]
+<<<<<<< HEAD
         public IEnumerable<Application> GetApplications()
+=======
+        public IEnumerable<ApplicationDAO> GetApplications()
+>>>>>>> origin/views
         {
             ApplicationServiceClient client = new ApplicationServiceClient();
 
             try
             {
+<<<<<<< HEAD
                 IEnumerable<Application> result = client.GetApplications();
+=======
+                IEnumerable<ApplicationDAO> result = client.GetApplications();
+>>>>>>> origin/views
                 return result;
             }
             catch (FaultException<KaskServiceException> e)
@@ -31,13 +39,21 @@ namespace KaskKiosk.Controllers.API
 
         // GET: /Application/id
         [HttpGet]
+<<<<<<< HEAD
         public Application GetApplication(int id)
+=======
+        public ApplicationDAO GetApplication(int id)
+>>>>>>> origin/views
         {
             ApplicationServiceClient client = new ApplicationServiceClient();
 
             try
             {
+<<<<<<< HEAD
                 Application result = client.GetApplicationById(id);
+=======
+                ApplicationDAO result = client.GetApplicationByID(id);
+>>>>>>> origin/views
                 return result;
             }
             catch (FaultException<KaskServiceException> e)
@@ -47,7 +63,11 @@ namespace KaskKiosk.Controllers.API
         }
 
         [HttpPost]
+<<<<<<< HEAD
         public bool PostApplication(Application app)
+=======
+        public bool PostApplication(ApplicationDAO app)
+>>>>>>> origin/views
         {
             ApplicationServiceClient client = new ApplicationServiceClient();
 
@@ -62,4 +82,8 @@ namespace KaskKiosk.Controllers.API
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/views
