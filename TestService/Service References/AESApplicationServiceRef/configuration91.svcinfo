@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="tDVZNsTwcB0xBly9lkTIi8gAc0U=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="B+hPU47LuIJwhHmjsfLv0dc08Kc=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IApplicationService1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IApplicationService">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IApplicationService1</serializedValue>
+          <serializedValue>BasicHttpBinding_IApplicationService</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -110,10 +110,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IApplicantService1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IApplicantService">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IApplicantService1</serializedValue>
+          <serializedValue>BasicHttpBinding_IApplicantService</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -219,10 +219,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IAppliedService1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IAppliedService">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IAppliedService1</serializedValue>
+          <serializedValue>BasicHttpBinding_IAppliedService</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -330,7 +330,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IApplicationService1" contract="AESApplicationServiceRef.IApplicationService" bindingType="basicHttpBinding" address="http://localhost:1760/AESApplicationService.svc/Application" bindingConfiguration="BasicHttpBinding_IApplicationService1">
+    <endpoint name="BasicHttpBinding_IApplicationService" contract="AESApplicationServiceRef.IApplicationService" bindingType="basicHttpBinding" address="http://localhost:1760/AESApplicationService.svc/Application" bindingConfiguration="BasicHttpBinding_IApplicationService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:1760/AESApplicationService.svc/Application</serializedValue>
@@ -342,7 +342,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IApplicationService1</serializedValue>
+          <serializedValue>BasicHttpBinding_IApplicationService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>AESApplicationServiceRef.IApplicationService</serializedValue>
@@ -405,7 +405,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IApplicationService1</serializedValue>
+          <serializedValue>BasicHttpBinding_IApplicationService</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -415,7 +415,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="BasicHttpBinding_IApplicantService1" contract="AESApplicationServiceRef.IApplicantService" bindingType="basicHttpBinding" address="http://localhost:1760/AESApplicationService.svc/Applicant" bindingConfiguration="BasicHttpBinding_IApplicantService1">
+    <endpoint name="BasicHttpBinding_IApplicantService" contract="AESApplicationServiceRef.IApplicantService" bindingType="basicHttpBinding" address="http://localhost:1760/AESApplicationService.svc/Applicant" bindingConfiguration="BasicHttpBinding_IApplicantService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:1760/AESApplicationService.svc/Applicant</serializedValue>
@@ -427,7 +427,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IApplicantService1</serializedValue>
+          <serializedValue>BasicHttpBinding_IApplicantService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>AESApplicationServiceRef.IApplicantService</serializedValue>
@@ -490,7 +490,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IApplicantService1</serializedValue>
+          <serializedValue>BasicHttpBinding_IApplicantService</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -500,7 +500,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="BasicHttpBinding_IAppliedService1" contract="AESApplicationServiceRef.IAppliedService" bindingType="basicHttpBinding" address="http://localhost:1760/AESApplicationService.svc/Applied" bindingConfiguration="BasicHttpBinding_IAppliedService1">
+    <endpoint name="BasicHttpBinding_IAppliedService" contract="AESApplicationServiceRef.IAppliedService" bindingType="basicHttpBinding" address="http://localhost:1760/AESApplicationService.svc/Applied" bindingConfiguration="BasicHttpBinding_IAppliedService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:1760/AESApplicationService.svc/Applied</serializedValue>
@@ -512,7 +512,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IAppliedService1</serializedValue>
+          <serializedValue>BasicHttpBinding_IAppliedService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>AESApplicationServiceRef.IAppliedService</serializedValue>
@@ -575,7 +575,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IAppliedService1</serializedValue>
+          <serializedValue>BasicHttpBinding_IAppliedService</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

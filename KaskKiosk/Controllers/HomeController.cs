@@ -16,4 +16,8 @@ namespace KaskKiosk.Controllers
             return View();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/views

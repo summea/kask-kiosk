@@ -1,14 +1,35 @@
 ﻿@{
+<<<<<<< HEAD
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Create.cshtml";
 }
 
 <h2>New Application</h2>
+=======
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    ViewBag.Title = "Create.cshtml";
+}
+
+<ul id="menu">
+    <li><a href="@ViewBag.baseURL"><span class="glyphicon glyphicon-home"></span></a></li>
+    <li data-menuanchor="welcome" class="active"><a href="#welcome">Welcome</a></li>
+    <li data-menuanchor="personal" class="active"><a href="#personal">Personal</a></li>
+    <li data-menuanchor="position" class="active"><a href="#position">Position</a></li>
+    <li data-menuanchor="employmentHistory1" class="active"><a href="#employmentHistory1">Employment History 1</a></li>
+    <li data-menuanchor="employmentHistory2" class="active"><a href="#employmentHistory2">Employment History 2</a></li>
+    <li data-menuanchor="employmentHistory3" class="active"><a href="#employmentHistory3">Employment History 3</a></li>
+    <li data-menuanchor="education1" class="active"><a href="#education1">Education 1</a></li>
+    <li data-menuanchor="education2" class="active"><a href="#education2">Education 2</a></li>
+    <li data-menuanchor="education3" class="active"><a href="#education3">Education 3</a></li>
+    <li data-menuanchor="submitApplication" class="active"><a href="#submitApplication">Submit Application</a></li>
+</ul>
+>>>>>>> origin/views
 
 @using (Html.BeginForm("Create", "App", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
+<<<<<<< HEAD
     <h3>Personal</h3>
     <div class="form-group spacing" style="width:200px;float:left;">
         @Html.Label("First Name:")
@@ -423,3 +444,358 @@
     
     <input type="submit" />
 }
+=======
+    <div class="section" id="section0">
+        <div class="cover">
+            <h1 class="cover-heading">Welcome to Kask Kiosk</h1>
+            <p class="lead">
+                Click the <button id="moveDownExample" class="btn btn-info">Next &rarr;</button> button to begin.
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="section1">
+        <h2>Personal</h2>
+        <p class="lead italic">Please tell us a little about yourself...</p>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("First Name:")
+            <input type="text" class="form-control" name="FirstName" id="FirstName" placeholder="Enter First Name" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Middle Name:")
+            <input type="text" class="form-control" name="MiddleName" id="MiddleName" placeholder="Enter Middle Name" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Last Name:")
+            <input type="text" class="form-control" name="LastName" id="LastName" placeholder="Enter Last Name" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Social Security Number:")
+            <input type="password" class="form-control" name="SSN" id="SSN" placeholder="Enter SSN" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;clear:both;">
+            @Html.Label("Address:")
+            <input type="text" class="form-control" name="ApplicantAddress" id="ApplicantAddress" placeholder="Street, City, State, Zip" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Phone:")
+            <input type="text" class="form-control" name="ApplicantPhone" id="ApplicantPhone" placeholder="Enter Phone Number" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Name Alias:")
+            <input type="text" class="form-control" name="NameAlias" id="NameAlias" placeholder="Alternate Name (if any)"/>
+        </div>
+        <br style="clear:both;"/>
+    </div>
+    
+    <div class="section" id="section2">
+        <h2>Position</h2>
+        <p class="lead italic">Please tell us a little about your availability and expectations for this job...</p>
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Position Applying For:")
+            @if (ViewBag.jobs != null)
+            {
+                <select class="form-control" name="JobID" id="JobID">
+                @foreach (var job in @ViewBag.jobs)
+                {
+                    <option value="@job.JobID">@job.Title</option>
+                }
+                </select>
+            }
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Salary Expectation:")
+            <input type="text" class="form-control" name="SalaryExpectation" id="SalaryExpectation" placeholder="Enter Salary Expectation" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Full Time:")
+            <select class="form-control" name="FullTime" id="FullTime">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;clear:both;">
+            @Html.Label("Days?")
+            <select class="form-control" name="AvailableForDays" id="AvailableForDays">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Evenings?")
+            <select class="form-control" name="AvailableForEvenings" id="AvailableForEvenings">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Weekends?")
+            <select class="form-control" name="AvailableForWeekends" id="AvailableForWeekends">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <table class="table table-bordered">
+            <tr>
+                <td style="width:100px;">@Html.Label("Available:")</td>
+                <td>
+                    @Html.Label("Monday")<br />
+                </td>
+                <td>
+                    @Html.Label("Tuesday")<br />
+                </td>
+                <td>
+                    @Html.Label("Wednesday")<br />
+                </td>
+                <td>
+                    @Html.Label("Thursday")<br />
+                </td>
+                <td>
+                    @Html.Label("Friday")<br />
+                </td>
+                <td>
+                    @Html.Label("Saturday")<br />
+                </td>
+                <td>
+                    @Html.Label("Sunday")<br />
+                </td>
+            </tr>
+            <tr>
+                <td>From</td>
+                <td>
+                    <select class="form-control" name="MondayFrom" id="MondayFrom">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="TuesdayFrom" id="TuesdayFrom">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="WednesdayFrom" id="WednesdayFrom">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="ThursdayFrom" id="ThursdayFrom">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="FridayFrom" id="FridayFrom">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="SaturdayFrom" id="SaturdayFrom">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="SundayFrom" id="SundayFrom">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>To</td>
+                <td>
+                    <select class="form-control" name="MondayTo" id="MondayTo">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="TuesdayTo" id="TuesdayTo">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="WednesdayTo" id="WednesdayTo">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="ThursdayTo" id="ThursdayTo">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="FridayTo" id="FridayTo">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="SaturdayTo" id="SaturdayTo">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" name="SundayTo" id="SundayTo">
+                        @foreach (var item in ViewBag.timePickerList)
+                        {
+                            <option value="@item">@item:00</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <br style="clear:both;"/>
+    </div>
+    
+    for (var i = 1; i < 4; i++)
+    {
+        <div class="section" id="section_employment_history_@i">
+        <h2>Employment History @i</h2>
+        <p class="lead italic">Please tell us a little about your past employment history...</p>
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Employer:")
+            <input type="text" class="form-control" name="EmployerName_@i" id="EmployerName_@i" placeholder="Enter Employer" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("From:")
+            <input type="text" class="form-control" name="EmployedFrom_@i" id="EmployedFrom_@i" placeholder="07/2001" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("To:")
+            <input type="text" class="form-control" name="EmployedTo_@i" id="EmployedTo_@i" placeholder="08/2001" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;clear:both;">
+            @Html.Label("Address:")
+            <input type="text" class="form-control" name="EmployerAddress_@i" id="EmployerAddress_@i" placeholder="Street, City, State, Zip" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Phone:")
+            <input type="text" class="form-control" name="EmployerPhone_@i" id="EmployerPhone_@i" placeholder="Enter Phone Number" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Supervisor:")
+            <input type="text" class="form-control" name="EmployerSupervisor_@i" id="EmployerSupervisor_@i" placeholder="Enter Supervisor name" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;clear:both;">
+            @Html.Label("Position:")
+            <input type="text" class="form-control" name="EmployedPosition_@i" id="EmployedPosition_@i" placeholder="Enter position" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Starting Salary:")
+            <input type="text" class="form-control" name="EmployedStartingSalary_@i" id="EmployedStartingSalary_@i" placeholder="$" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Ending Salary:")
+            <input type="text" class="form-control" name="EmployedEndingSalary_@i" id="EmployedEndingSalary_@i" placeholder="$" />
+        </div>
+        <div class="form-group spacing" style="width:800px;float:left;clear:both;">
+            @Html.Label("Reason for leaving:")
+            <input type="text" class="form-control" name="EmployedReasonForLeaving_@i" id="EmployedReasonForLeaving_@i" placeholder="Enter reason for leaving" />
+        </div>
+        <div class="form-group spacing" style="width:800px;float:left;clear:both;">
+            @Html.Label("Describe your Responsibilities:")
+            <textarea class="form-control" name="EmployedResponsibilities_@i" id="EmployedResponsibilities_@i" placeholder="Enter employment-related responsibilities"></textarea>
+        </div>
+        <div class="form-group spacing" style="width:800px;float:left;">
+            @Html.Label("May we contact this employer?")
+            <select class="form-control" name="MayWeContactCurrentEmployer_@i" id="MayWeContactCurrentEmployer_@i">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <br style="clear:both;"/>
+        </div>
+    }
+        
+    for (var i = 1; i < 4; i++)
+    {
+        <div class="section" id="section_education_@i">
+        <h2>Education @i</h2>
+        <p class="lead italic">Please tell us a little about your past education...</p>
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("School Name:")
+            <input type="text" class="form-control" name="SchoolName_@i" id="SchoolName_@i" placeholder="Enter Name and Address of School" />
+        </div>
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("School Address:")
+            <input type="text" class="form-control" name="SchoolAddress_@i" id="SchoolAddress_@i" placeholder="Enter Name and Address of School" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;clear:both;">
+            @Html.Label("Years Attended From:")
+            <input type="text" class="form-control" name="YearsAttendedFrom_@i" id="YearsAttendedFrom_@i" placeholder="9/2000" />
+        </div>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Years Attended To:")
+            <input type="text" class="form-control" name="YearsAttendedTo_@i" id="YearsAttendedTo_@i" placeholder="12/2001" />
+        </div>
+        <div class="form-group spacing" style="width:100px;float:left;">
+            @Html.Label("Graduated:")
+            <select class="form-control" name="Graduated_@i" id="Graduated_@i">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group spacing" style="width:300px;float:left;">
+            @Html.Label("Degree/Major:")
+            <input type="text" class="form-control" name="DegreeAndMajor_@i" id="DegreeAndMajor_@i" placeholder="Enter Degree and Major" />
+        </div>
+        <br style="clear:both;"/>
+        </div>
+    }
+    
+    <div class="section center" id="section5">
+        <a href="@ViewBag.baseURL" class="btn btn-danger">Cancel Application</a>&nbsp;&nbsp;&nbsp;
+        <input type="submit" id="submit" value="Submit Application" class="btn btn-success" />
+    </div>
+}
+
+<div class="center">
+    <button id="moveUp" class="btn btn-info">&larr; Prev</button>    
+    <button id="moveDown" class="btn btn-info">Next &rarr;</button>
+</div>
+
+<!-- create more space at bottom of view page for now... -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+>>>>>>> origin/views
