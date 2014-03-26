@@ -372,7 +372,8 @@ INSERT INTO Reference(YearsKnown) VALUES (10);
 /********************************************************************************
                 ASSOCIATE RELATION 
 *********************************************************************************/
-
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKAssociateID')
+  ALTER TABLE Associate DROP CONSTRAINT [PKAssociateID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantIDForAssociate')
   ALTER TABLE Associate DROP CONSTRAINT [FKApplicantIDForAssociate];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKReferenceIDForAssociate')
@@ -380,11 +381,13 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKReferenceIDFor
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Associate')
   DROP TABLE Associate;
 CREATE TABLE Associate (
+  Associate_ID    int NOT NULL IDENTITY(1, 1),
   Applicant_ID    int NOT NULL,
   Reference_ID	  int NOT NULL,
   Name            varchar(255) NULL,
   Phone           varchar(50) NULL,
   Title           varchar(50) NULL,
+  CONSTRAINT [PKAssociateID] PRIMARY KEY (Associate_ID ASC),
   CONSTRAINT [FKApplicantIDForAssociate] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT [FKReferenceIDForAssociate] FOREIGN KEY (Reference_ID) REFERENCES Reference (Reference_ID)
