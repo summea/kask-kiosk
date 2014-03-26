@@ -74,7 +74,8 @@ INSERT INTO Skill (SkillName) VALUES ('Assembly');
 /********************************************************************************
                 EXPERTISE RELATION
 *********************************************************************************/
-
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKExpertiseID')
+  ALTER TABLE [Expertise] DROP CONSTRAINT [PKExpertiseID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKExpertiseApplicantID')
   ALTER TABLE [Expertise] DROP CONSTRAINT [FKExpertiseApplicantID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKExpertiseSkillID')
@@ -82,8 +83,10 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKExpertiseSkill
 IF EXISTS (SELECT * FROM information_schema.tables WHERE table_name = N'Expertise') 
   DROP TABLE Expertise;
 CREATE TABLE Expertise (
+  Expertise_ID  int NOT NULL IDENTITY(1,1),
   Applicant_ID  int NOT NULL,
   Skill_ID      int NOT NULL,
+  CONSTRAINT [PKExpertiseID] PRIMARY KEY (Expertise_ID ASC),
   CONSTRAINT [FKExpertiseApplicantID] FOREIGN KEY (Applicant_ID) REFERENCES Applicant(Applicant_ID) 
     ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT [FKExpertiseSkillID] FOREIGN KEY (Skill_ID) REFERENCES Skill (Skill_ID) 
@@ -166,7 +169,8 @@ INSERT INTO Job(Title) VALUES ('Manager');
 /********************************************************************************
               JOB_REQUIREMENT RELATION
 *********************************************************************************/
-
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKJobReqID')
+  ALTER TABLE JobRequirement DROP CONSTRAINT [PKJobReqID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobReqID')
   ALTER TABLE JobRequirement DROP CONSTRAINT [FKJobReqID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSkillReqID')
@@ -174,9 +178,11 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSkillReqID')
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'JobRequirement')
   DROP TABLE JobRequirement;
 CREATE TABLE JobRequirement (
-  Job_ID    int     NOT NULL,
-  Skill_ID  int     NOT NULL  UNIQUE,
-  Notes     varchar(20) NULL,
+  JobRequirement_ID int     NOT NULL IDENTITY(1, 1),
+  Job_ID            int     NOT NULL,
+  Skill_ID          int     NOT NULL  UNIQUE,
+  Notes             varchar(20) NULL,
+  CONSTRAINT [PKJobReqID] PRIMARY KEY (JobRequirement_ID ASC),
   CONSTRAINT [FKJobReqID] FOREIGN KEY (Job_ID) REFERENCES Job (Job_ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT [FKSkillReqID] FOREIGN KEY (Skill_ID) REFERENCES Skill (Skill_ID)
