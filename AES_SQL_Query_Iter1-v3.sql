@@ -18,7 +18,59 @@ USE AESDatabase;
 GO
 
 /********************************************************************************
-                APPLICANT RELATIONS 
+                STORE MANAGER RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PK_StoreManagerID') 
+  ALTER TABLE StoreManager DROP CONSTRAINT [PK_StoreManagerID];
+IF EXISTS (SELECT * FROM information_schema.tables WHERE table_name = N'StoreManager') 
+  DROP TABLE StoreManager;
+CREATE TABLE StoreManager (
+  StoreManager_ID   int IDENTITY(1,1),
+  FirstName         varchar(50) NOT NULL,
+  MiddleName        varchar(50) NULL,
+  LastName      	varchar(50) NOT NULL,
+  Phone             varchar(50) NOT NULL,
+  CONSTRAINT [PK_StoreManagerID] PRIMARY KEY (StoreManager_ID ASC),
+  CONSTRAINT [CHK_Name] CHECK (DATALENGTH(FirstName) > 0 AND DATALENGTH(LastName) > 0)
+);
+CREATE UNIQUE INDEX IDX_Person ON StoreManager (FirstName, MiddleName, LastName ASC);
+
+INSERT INTO StoreManager (FirstName, MiddleName, LastName, Phone) VALUES ('John', 'W.', 'Scott', '555-143-7437');
+INSERT INTO StoreManager (FirstName, MiddleName, LastName, Phone) VALUES ('Mary', 'E.', 'Smith', '505-145-7437');
+INSERT INTO StoreManager (FirstName, MiddleName, LastName, Phone) VALUES ('Ashley', 'L.', 'Abott', '503-899-1258');
+INSERT INTO StoreManager (FirstName, MiddleName, LastName, Phone) VALUES ('Katie', 'C.', 'Johnson', '971-543-7454');
+INSERT INTO StoreManager (FirstName, MiddleName, LastName, Phone) VALUES ('Miranda', 'P.', 'Mason', '541-255-9803');
+
+
+/********************************************************************************
+                STORE RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PK_StoreID') 
+  ALTER TABLE Store DROP CONSTRAINT [PK_StoreID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKStoreManagerID')
+  ALTER TABLE [Store] DROP CONSTRAINT [FKStoreManagerID];
+IF EXISTS (SELECT * FROM information_schema.tables WHERE table_name = N'Store') 
+  DROP TABLE Store;
+CREATE TABLE Store (
+  Store_ID          int IDENTITY(1,1),
+  Location          varchar(50) NULL UNIQUE,
+  Manager_ID		int NOT NULL,
+  CONSTRAINT [PK_StoreID] PRIMARY KEY (Store_ID ASC),
+  CONSTRAINT [FKStoreManagerID] FOREIGN KEY (Manager_ID) REFERENCES StoreManager(StoreManager_ID) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [CHK_Store] CHECK (DATALENGTH(Location) > 0)
+);
+
+INSERT INTO Store (Location, Manager_ID) VALUES ('Lake Oswego', 1);
+INSERT INTO Store (Location, Manager_ID) VALUES ('Hillsboro', 2);
+INSERT INTO Store (Location, Manager_ID) VALUES ('Wilsonville', 3);
+INSERT INTO Store (Location, Manager_ID) VALUES ('Hawaii', 5);
+INSERT INTO Store (Location, Manager_ID) VALUES ('New York', 4);
+
+/********************************************************************************
+                APPLICANT RELATION 
 *********************************************************************************/
 
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'IDX_Person')
@@ -165,7 +217,6 @@ INSERT INTO Job(Title) VALUES ('Receptionist');
 INSERT INTO Job(Title) VALUES ('Tester');
 INSERT INTO Job(Title) VALUES ('Manager');
 
-
 /********************************************************************************
               JOB_REQUIREMENT RELATION
 *********************************************************************************/
@@ -195,6 +246,30 @@ INSERT INTO JobRequirement(Job_ID, Skill_ID, Notes) VALUES (1, 3, '');
 INSERT INTO JobRequirement(Job_ID, Skill_ID, Notes) VALUES (1, 5, 'Preferred');
 INSERT INTO JobRequirement(Job_ID, Skill_ID, Notes) VALUES (2, 4, '');
 INSERT INTO JobRequirement(Job_ID, Skill_ID, Notes) VALUES (2, 1, 'Not Required');
+
+/********************************************************************************
+                JOB OPENING RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKJobOpeningID')
+  ALTER TABLE [JobOpening] DROP CONSTRAINT [PKJobOpeningID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKJobOpeningJobID')
+  ALTER TABLE [JobOpening] DROP CONSTRAINT [FKJobOpeningJobID];
+IF EXISTS (SELECT * FROM information_schema.tables WHERE table_name = N'JobOpening') 
+  DROP TABLE JobOpening;
+CREATE TABLE JobOpening (
+  JobOpening_ID     int IDENTITY (1,1),
+  OpenDate          date NOT NULL,
+  Job_ID            int  NOT NULL,
+  CONSTRAINT [PKJobOpeningID] PRIMARY KEY (JobOpening_ID ASC),
+  CONSTRAINT [FKJobOpeningJobID] FOREIGN KEY (Job_ID) REFERENCES Job (Job_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE
+);    
+
+INSERT INTO JobOpening (OpenDate, Job_ID) VALUES ('04-08-2014', 1);
+INSERT INTO JobOpening (OpenDate, Job_ID) VALUES ('09-13-2013', 4);
+INSERT INTO JobOpening (OpenDate, Job_ID) VALUES ('03-18-2014', 3);
+INSERT INTO JobOpening (OpenDate, Job_ID) VALUES ('11-28-2013', 2);
 
 /********************************************************************************
                 APPLIED RELATION  
