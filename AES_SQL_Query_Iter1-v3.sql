@@ -42,33 +42,6 @@ INSERT INTO StoreManager (FirstName, MiddleName, LastName, Phone) VALUES ('Ashle
 INSERT INTO StoreManager (FirstName, MiddleName, LastName, Phone) VALUES ('Katie', 'C.', 'Johnson', '971-543-7454');
 INSERT INTO StoreManager (FirstName, MiddleName, LastName, Phone) VALUES ('Miranda', 'P.', 'Mason', '541-255-9803');
 
-
-/********************************************************************************
-                STORE RELATION 
-*********************************************************************************/
-
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PK_StoreID') 
-  ALTER TABLE Store DROP CONSTRAINT [PK_StoreID];
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKStoreManagerID')
-  ALTER TABLE [Store] DROP CONSTRAINT [FKStoreManagerID];
-IF EXISTS (SELECT * FROM information_schema.tables WHERE table_name = N'Store') 
-  DROP TABLE Store;
-CREATE TABLE Store (
-  Store_ID          int IDENTITY(1,1),
-  Location          varchar(50) NULL UNIQUE,
-  Manager_ID		int NOT NULL,
-  CONSTRAINT [PK_StoreID] PRIMARY KEY (Store_ID ASC),
-  CONSTRAINT [FKStoreManagerID] FOREIGN KEY (Manager_ID) REFERENCES StoreManager(StoreManager_ID) 
-    ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT [CHK_Store] CHECK (DATALENGTH(Location) > 0)
-);
-
-INSERT INTO Store (Location, Manager_ID) VALUES ('Lake Oswego', 1);
-INSERT INTO Store (Location, Manager_ID) VALUES ('Hillsboro', 2);
-INSERT INTO Store (Location, Manager_ID) VALUES ('Wilsonville', 3);
-INSERT INTO Store (Location, Manager_ID) VALUES ('Hawaii', 5);
-INSERT INTO Store (Location, Manager_ID) VALUES ('New York', 4);
-
 /********************************************************************************
                 APPLICANT RELATION 
 *********************************************************************************/
@@ -270,6 +243,36 @@ INSERT INTO JobOpening (OpenDate, Job_ID) VALUES ('04-08-2014', 1);
 INSERT INTO JobOpening (OpenDate, Job_ID) VALUES ('09-13-2013', 4);
 INSERT INTO JobOpening (OpenDate, Job_ID) VALUES ('03-18-2014', 3);
 INSERT INTO JobOpening (OpenDate, Job_ID) VALUES ('11-28-2013', 2);
+
+/********************************************************************************
+                STORE RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PK_StoreID') 
+  ALTER TABLE Store DROP CONSTRAINT [PK_StoreID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKStoreManagerID')
+  ALTER TABLE [Store] DROP CONSTRAINT [FKStoreManagerID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKJobOpeningID')
+  ALTER TABLE [Store] DROP CONSTRAINT [FKJobOpeningID];
+IF EXISTS (SELECT * FROM information_schema.tables WHERE table_name = N'Store') 
+  DROP TABLE Store;
+CREATE TABLE Store (
+  Store_ID          int IDENTITY(1,1),
+  Location          varchar(50) NULL UNIQUE,
+  Manager_ID		int NOT NULL,
+  JobOpening_ID     int NOT NULL,
+  CONSTRAINT [PK_StoreID] PRIMARY KEY (Store_ID ASC),
+  CONSTRAINT [FKStoreManagerID] FOREIGN KEY (Manager_ID) REFERENCES StoreManager(StoreManager_ID) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKJobOpeningID] FOREIGN KEY (JobOpening_ID) REFERENCES JobOpening (JobOpening_ID),
+  CONSTRAINT [CHK_Store] CHECK (DATALENGTH(Location) > 0)
+);
+
+INSERT INTO Store (Location, Manager_ID, JobOpening_ID) VALUES ('Lake Oswego', 1, 2);
+INSERT INTO Store (Location, Manager_ID, JobOpening_ID) VALUES ('Hillsboro', 2, 4);
+INSERT INTO Store (Location, Manager_ID, JobOpening_ID) VALUES ('Wilsonville', 3, 1);
+INSERT INTO Store (Location, Manager_ID, JobOpening_ID) VALUES ('Hawaii', 5, 3);
+INSERT INTO Store (Location, Manager_ID, JobOpening_ID) VALUES ('New York', 4, 1);
 
 /********************************************************************************
                 APPLIED RELATION  
