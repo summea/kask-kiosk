@@ -13,17 +13,19 @@
       <Column Name="NameAlias" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Association Name="Applicant_Applied" Member="Applieds" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applied" />
       <Association Name="Applicant_Associate" Member="Associates" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Associate" />
-      <Association Name="Applicant_Expertise" Member="Expertises" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Expertise" />
-      <Association Name="Applicant_Employment" Member="Employments" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Employment" />
       <Association Name="Applicant_Education" Member="Educations" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Education" />
+      <Association Name="Applicant_Employment" Member="Employments" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Employment" />
+      <Association Name="Applicant_Expertise" Member="Expertises" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Expertise" />
     </Type>
   </Table>
-  <Table Name="dbo.Skill" Member="Skills">
-    <Type Name="Skill">
-      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SkillName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Skill_Expertise" Member="Expertises" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Expertise" />
-      <Association Name="Skill_JobRequirement" Member="JobRequirements" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="JobRequirement" />
+  <Table Name="dbo.StoreManager" Member="StoreManagers">
+    <Type Name="StoreManager">
+      <Column Name="StoreManager_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MiddleName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="StoreManager_Store" Member="Stores" ThisKey="StoreManager_ID" OtherKey="Manager_ID" Type="Store" />
     </Type>
   </Table>
   <Table Name="dbo.Application" Member="Applications">
@@ -66,6 +68,7 @@
   </Table>
   <Table Name="dbo.Associate" Member="Associates">
     <Type Name="Associate">
+      <Column Name="Associate_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Reference_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
@@ -75,6 +78,19 @@
       <Association Name="Reference_Associate" Member="Reference" ThisKey="Reference_ID" OtherKey="Reference_ID" Type="Reference" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Education" Member="Educations">
+    <Type Name="Education">
+      <Column Name="Education_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="School_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="YearsAttendedFrom" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="YearsAttendedTo" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Graduated" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DegreeAndMajor" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Applicant_Education" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="School_Education" Member="School" ThisKey="School_ID" OtherKey="School_ID" Type="School" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Employer" Member="Employers">
     <Type Name="Employer">
       <Column Name="Employer_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -82,38 +98,6 @@
       <Column Name="EmployerAddress" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="Employer_Employment" Member="Employments" ThisKey="Employer_ID" OtherKey="Employer_ID" Type="Employment" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Expertise" Member="Expertises">
-    <Type Name="Expertise">
-      <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Applicant_Expertise" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="Skill_Expertise" Member="Skill" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Skill" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Job" Member="Jobs">
-    <Type Name="Job">
-      <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Job_Applied" Member="Applieds" ThisKey="Job_ID" OtherKey="Job_ID" Type="Applied" />
-      <Association Name="Job_JobRequirement" Member="JobRequirements" ThisKey="Job_ID" OtherKey="Job_ID" Type="JobRequirement" />
-    </Type>
-  </Table>
-  <Table Name="dbo.JobRequirement" Member="JobRequirements">
-    <Type Name="JobRequirement">
-      <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Notes" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="Job_JobRequirement" Member="Job" ThisKey="Job_ID" OtherKey="Job_ID" Type="Job" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="Skill_JobRequirement" Member="Skill" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Skill" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Reference" Member="References">
-    <Type Name="Reference">
-      <Column Name="Reference_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="YearsKnown" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Reference_Associate" Member="Associates" ThisKey="Reference_ID" OtherKey="Reference_ID" Type="Associate" />
     </Type>
   </Table>
   <Table Name="dbo.Employment" Member="Employments">
@@ -134,6 +118,50 @@
       <Association Name="Employer_Employment" Member="Employer" ThisKey="Employer_ID" OtherKey="Employer_ID" Type="Employer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Expertise" Member="Expertises">
+    <Type Name="Expertise">
+      <Column Name="Expertise_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Applicant_Expertise" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Skill_Expertise" Member="Skill" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Skill" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job" Member="Jobs">
+    <Type Name="Job">
+      <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Job_Applied" Member="Applieds" ThisKey="Job_ID" OtherKey="Job_ID" Type="Applied" />
+      <Association Name="Job_JobOpening" Member="JobOpenings" ThisKey="Job_ID" OtherKey="Job_ID" Type="JobOpening" />
+      <Association Name="Job_JobRequirement" Member="JobRequirements" ThisKey="Job_ID" OtherKey="Job_ID" Type="JobRequirement" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobOpening" Member="JobOpenings">
+    <Type Name="JobOpening">
+      <Column Name="JobOpening_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OpenDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="JobOpening_Store" Member="Stores" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="Store" />
+      <Association Name="Job_JobOpening" Member="Job" ThisKey="Job_ID" OtherKey="Job_ID" Type="Job" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobRequirement" Member="JobRequirements">
+    <Type Name="JobRequirement">
+      <Column Name="JobRequirement_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="Job_JobRequirement" Member="Job" ThisKey="Job_ID" OtherKey="Job_ID" Type="Job" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Skill_JobRequirement" Member="Skill" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Skill" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reference" Member="References">
+    <Type Name="Reference">
+      <Column Name="Reference_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="YearsKnown" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Reference_Associate" Member="Associates" ThisKey="Reference_ID" OtherKey="Reference_ID" Type="Associate" />
+    </Type>
+  </Table>
   <Table Name="dbo.School" Member="Schools">
     <Type Name="School">
       <Column Name="School_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -142,17 +170,22 @@
       <Association Name="School_Education" Member="Educations" ThisKey="School_ID" OtherKey="School_ID" Type="Education" />
     </Type>
   </Table>
-  <Table Name="dbo.Education" Member="Educations">
-    <Type Name="Education">
-      <Column Name="Education_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="School_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="YearsAttendedFrom" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="YearsAttendedTo" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Graduated" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="DegreeAndMajor" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="Applicant_Education" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="School_Education" Member="School" ThisKey="School_ID" OtherKey="School_ID" Type="School" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+  <Table Name="dbo.Skill" Member="Skills">
+    <Type Name="Skill">
+      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SkillName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Skill_Expertise" Member="Expertises" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Expertise" />
+      <Association Name="Skill_JobRequirement" Member="JobRequirements" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="JobRequirement" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Store" Member="Stores">
+    <Type Name="Store">
+      <Column Name="Store_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Manager_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JobOpening_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="JobOpening_Store" Member="JobOpening" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="JobOpening" IsForeignKey="true" />
+      <Association Name="StoreManager_Store" Member="StoreManager" ThisKey="Manager_ID" OtherKey="StoreManager_ID" Type="StoreManager" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>
