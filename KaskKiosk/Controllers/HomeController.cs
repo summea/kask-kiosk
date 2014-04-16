@@ -11,7 +11,17 @@ namespace KaskKiosk.Controllers
         //
         // GET: /Home/Welcome
 
+        [AllowAnonymous]
         public ActionResult Welcome()
+        {
+            return View();
+        }
+
+        //
+        // GET: /Home/Backend
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Backend()
         {
             return View();
         }

@@ -120,6 +120,7 @@ namespace KaskKiosk.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> Index()
         {
             var apps = await GetApplicationsAsync();
@@ -127,6 +128,7 @@ namespace KaskKiosk.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public async Task<ActionResult> Create()
         {
             List<JobDAO> jobs = await GetJobsAsync();
@@ -149,6 +151,7 @@ namespace KaskKiosk.Controllers
         /// ********************************************************************** ///
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> Create(FormCollection collection)
         {
             try
@@ -395,6 +398,7 @@ namespace KaskKiosk.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> Details(int id = 0)
         {
             AppliedDAO applied = await GetAppliedIdAsync(id);

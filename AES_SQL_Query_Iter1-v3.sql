@@ -474,3 +474,146 @@ CREATE TABLE Associate (
 
 /* DATA FOR EMPLOYMENT_REFERENCE RELATION */
 INSERT INTO Associate(Applicant_ID, Reference_ID, Name, Phone, Title) VALUES (1,1, 'Bill Gates', '911', 'CEO');
+
+/* Auth */
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table UserProfile    Script Date: 4/13/2014 9:56:43 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'UserProfile')
+  DROP TABLE UserProfile;
+CREATE TABLE UserProfile(
+	[UserId] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table webpages_Membership    Script Date: 4/13/2014 9:56:43 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'webpages_Membership')
+  DROP TABLE webpages_Membership;
+CREATE TABLE webpages_Membership(
+	[UserId] [int] NOT NULL,
+	[CreateDate] [datetime] NULL,
+	[ConfirmationToken] [nvarchar](128) NULL,
+	[IsConfirmed] [bit] NULL,
+	[LastPasswordFailureDate] [datetime] NULL,
+	[PasswordFailuresSinceLastSuccess] [int] NOT NULL,
+	[Password] [nvarchar](128) NOT NULL,
+	[PasswordChangedDate] [datetime] NULL,
+	[PasswordSalt] [nvarchar](128) NOT NULL,
+	[PasswordVerificationToken] [nvarchar](128) NULL,
+	[PasswordVerificationTokenExpirationDate] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table webpages_OAuthMembership    Script Date: 4/13/2014 9:56:43 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'webpages_OAuthMembership')
+  DROP TABLE webpages_OAuthMembership;
+CREATE TABLE webpages_OAuthMembership(
+	[Provider] [nvarchar](30) NOT NULL,
+	[ProviderUserId] [nvarchar](100) NOT NULL,
+	[UserId] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Provider] ASC,
+	[ProviderUserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table webpages_Roles    Script Date: 4/13/2014 9:56:43 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'webpages_Roles')
+  DROP TABLE webpages_Roles;
+CREATE TABLE webpages_Roles(
+	[RoleId] [int] IDENTITY(1,1) NOT NULL,
+	[RoleName] [nvarchar](256) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table webpages_UsersInRoles    Script Date: 4/13/2014 9:56:43 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'webpages_UsersInRoles')
+  DROP TABLE webpages_UsersInRoles;
+CREATE TABLE webpages_UsersInRoles(
+	[UserId] [int] NOT NULL,
+	[RoleId] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+SET IDENTITY_INSERT UserProfile ON 
+
+INSERT UserProfile ([UserId], [UserName]) VALUES (1, N'firstuser')
+INSERT UserProfile ([UserId], [UserName]) VALUES (2, N'seconduser')
+SET IDENTITY_INSERT UserProfile OFF
+INSERT webpages_Membership ([UserId], [CreateDate], [ConfirmationToken], [IsConfirmed], [LastPasswordFailureDate], [PasswordFailuresSinceLastSuccess], [Password], [PasswordChangedDate], [PasswordSalt], [PasswordVerificationToken], [PasswordVerificationTokenExpirationDate]) VALUES (1, CAST(0x0000A30A014888CB AS DateTime), NULL, 1, NULL, 0, N'AK6QsQuK6SsoW8qMDh2BBGT84QRJu4GrHh8lW9CkxN3828bGC91oq5vl+Syjr7hErw==', CAST(0x0000A30A014888CB AS DateTime), N'', NULL, NULL)
+INSERT webpages_Membership ([UserId], [CreateDate], [ConfirmationToken], [IsConfirmed], [LastPasswordFailureDate], [PasswordFailuresSinceLastSuccess], [Password], [PasswordChangedDate], [PasswordSalt], [PasswordVerificationToken], [PasswordVerificationTokenExpirationDate]) VALUES (2, CAST(0x0000A30A0167AC10 AS DateTime), NULL, 1, NULL, 0, N'ABvcOO2m6JZMXxccn+Rp5VGa1Ut7GuPqxEEfs8StdcShWCgM8S6HpH/RebrNOypkoQ==', CAST(0x0000A30A0167AC10 AS DateTime), N'', NULL, NULL)
+SET IDENTITY_INSERT webpages_Roles ON 
+
+INSERT webpages_Roles ([RoleId], [RoleName]) VALUES (1, N'Administrator')
+INSERT webpages_Roles ([RoleId], [RoleName]) VALUES (2, N'Applicant')
+SET IDENTITY_INSERT webpages_Roles OFF
+INSERT webpages_UsersInRoles ([UserId], [RoleId]) VALUES (1, 1)
+INSERT webpages_UsersInRoles ([UserId], [RoleId]) VALUES (2, 2)
+SET ANSI_PADDING ON
+
+GO
+/****** Object:  Index [UQ__webpages__8A2B616042D5758F]    Script Date: 4/13/2014 9:56:43 AM ******/
+ALTER TABLE webpages_Roles ADD UNIQUE NONCLUSTERED 
+(
+	[RoleName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE webpages_Membership ADD  DEFAULT ((0)) FOR [IsConfirmed]
+GO
+ALTER TABLE webpages_Membership ADD  DEFAULT ((0)) FOR [PasswordFailuresSinceLastSuccess]
+GO
+ALTER TABLE webpages_UsersInRoles  WITH CHECK ADD  CONSTRAINT [fk_RoleId] FOREIGN KEY([RoleId])
+REFERENCES webpages_Roles ([RoleId])
+GO
+ALTER TABLE webpages_UsersInRoles CHECK CONSTRAINT [fk_RoleId]
+GO
+ALTER TABLE webpages_UsersInRoles  WITH CHECK ADD  CONSTRAINT [fk_UserId] FOREIGN KEY([UserId])
+REFERENCES UserProfile ([UserId])
+GO
+ALTER TABLE webpages_UsersInRoles CHECK CONSTRAINT [fk_UserId]
+GO
+USE [master]
+GO
+ALTER DATABASE [AESDatabase] SET  READ_WRITE 
+GO
