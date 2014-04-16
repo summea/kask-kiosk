@@ -347,7 +347,7 @@ namespace KaskKiosk.Controllers
                         }
                     }
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Welcome", "Home");
                 }
                 else
                 {
