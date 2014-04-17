@@ -12,7 +12,7 @@ namespace Kask.Services.Exceptions
         [EnumMember]
         UNAUTHORIZED = 0x01,
         [EnumMember]
-        INVALIDID = 0x02,
+        INVALID_REQUEST = 0x02,
         [EnumMember]
         UNKNOWN = 0xff
     };
