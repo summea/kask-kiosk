@@ -15,6 +15,10 @@ namespace Kask.Services.Interfaces
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
+        IList<JobOpeningDAO> GetJobOpeningsByStoreID(int storeID);
+
+        [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         IList<JobOpeningDAO> GetJobOpenings();
 
         [OperationContract]
