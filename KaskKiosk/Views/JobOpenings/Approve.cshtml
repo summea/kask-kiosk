@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+    ViewBag.Title = "Approve Job Opening";
+}
+
+<h2>Approve Job Opening</h2>
+@using (Html.BeginForm("Approve", "JobOpenings", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="section" id="section0">
+        <h3>Are you sure you want to approve this job opening?</h3>
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Job Type:")
+            @if (ViewBag.jobs != null)
+            {
+                foreach (var job in @ViewBag.jobs)
+                {
+                    if (job.JobID == @ViewBag.jobOpening.JobID)
+                    {
+                        @job.Title
+                    }
+                }
+            }
+        </div>
+        <input type="hidden" name="JobOpeningID" id="JobOpeningID" value="@ViewBag.jobOpening.JobOpeningID" />
+        <br style="clear:both;"/>
+    </div>
+    
+    <a href="@Html.Encode("/JobOpenings/Index")" class="btn btn-danger">Cancel</a>@Html.Raw("&nbsp;&nbsp;&nbsp;")
+    <input type="submit" id="submit" value="Approve" class="btn btn-success" />
+}

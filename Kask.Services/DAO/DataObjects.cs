@@ -290,6 +290,25 @@ namespace Kask.Services.DAO
     }
 
     [DataContract]
+    public class JobOpeningDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int JobOpeningID { get; set; }
+
+        [DataMember]
+        public DateTime? OpenDate { get; set; }
+
+        [DataMember]
+        public int JobID { get; set; }
+
+        [DataMember]
+        public int Approved { get; set; }
+    }
+
+    [DataContract]
     public class JobRequirementDAO : IDataObject
     {
         [DataMember]

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.JobOpeningDAO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+}
+
+<h2>All Job Openings</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Open Date</th>
+        <th>Title</th>
+        <th>Approved</th>
+        <th>Actions</th>
+    </tr>
+@foreach (var item in ViewBag.jobOpenings)
+{
+    <tr>
+        <td>@item.JobOpeningID</td>
+        <td>@item.OpenDate</td>
+        <td>
+            @if (ViewBag.jobs != null)
+            {
+                foreach (var job in @ViewBag.jobs)
+                {
+                    if (job.JobID == @item.JobID)
+                    {
+                        @job.Title
+                    }
+                }
+            }
+        </td>
+        <td>@(item.Approved == 1 ? "Yes" : "No")</td>
+        <td>
+            @foreach (var allowedAction in @ViewBag.allowableActions)
+            {
+                if(allowedAction == "approve")
+                {
+                    @Html.ActionLink("Approve", "Approve", new { id=item.JobOpeningID })
+                    @Html.Raw(" | ")
+                }
+                if(allowedAction == "reject")
+                {
+                    @Html.ActionLink("Reject", "Reject", new { id=item.JobOpeningID })
+                    @Html.Raw(" | ")
+                }
+            }
+            @Html.ActionLink("View Details", "Details", new { id=item.JobID })
+        </td>
+    </tr>
+}
+</table>

@@ -125,32 +125,14 @@
       <Association Name="Skill_Expertise" Member="Skill" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Skill" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Job" Member="Jobs">
-    <Type Name="Job">
-      <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Job_Applied" Member="Applieds" ThisKey="Job_ID" OtherKey="Job_ID" Type="Applied" />
-      <Association Name="Job_JobOpening" Member="JobOpenings" ThisKey="Job_ID" OtherKey="Job_ID" Type="JobOpening" />
-      <Association Name="Job_JobRequirement" Member="JobRequirements" ThisKey="Job_ID" OtherKey="Job_ID" Type="JobRequirement" />
-    </Type>
-  </Table>
-  <Table Name="dbo.JobOpening" Member="JobOpenings">
-    <Type Name="JobOpening">
-      <Column Name="JobOpening_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="OpenDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="JobOpening_Store" Member="Stores" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="Store" />
-      <Association Name="Job_JobOpening" Member="Job" ThisKey="Job_ID" OtherKey="Job_ID" Type="Job" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.JobRequirement" Member="JobRequirements">
     <Type Name="JobRequirement">
       <Column Name="JobRequirement_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Notes" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="Job_JobRequirement" Member="Job" ThisKey="Job_ID" OtherKey="Job_ID" Type="Job" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="Skill_JobRequirement" Member="Skill" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Skill" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Job_JobRequirement" Member="Job" ThisKey="Job_ID" OtherKey="Job_ID" Type="Job" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Reference" Member="References">
@@ -182,8 +164,8 @@
       <Column Name="Location" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Manager_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="JobOpening_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="JobOpening_Store" Member="JobOpening" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="JobOpening" IsForeignKey="true" />
       <Association Name="StoreManager_Store" Member="StoreManager" ThisKey="Manager_ID" OtherKey="StoreManager_ID" Type="StoreManager" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="JobOpening_Store" Member="JobOpening" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="JobOpening" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.StoreManager" Member="StoreManagers">
@@ -230,6 +212,25 @@
       <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
       <Association Name="webpages_Role_webpages_UsersInRole" Member="webpages_UsersInRoles" ThisKey="RoleId" OtherKey="RoleId" Type="webpages_UsersInRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job" Member="Jobs">
+    <Type Name="Job">
+      <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Job_Applied" Member="Applieds" ThisKey="Job_ID" OtherKey="Job_ID" Type="Applied" />
+      <Association Name="Job_JobRequirement" Member="JobRequirements" ThisKey="Job_ID" OtherKey="Job_ID" Type="JobRequirement" />
+      <Association Name="Job_JobOpening" Member="JobOpenings" ThisKey="Job_ID" OtherKey="Job_ID" Type="JobOpening" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobOpening" Member="JobOpenings">
+    <Type Name="JobOpening">
+      <Column Name="JobOpening_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OpenDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Association Name="JobOpening_Store" Member="Stores" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="Store" />
+      <Association Name="Job_JobOpening" Member="Job" ThisKey="Job_ID" OtherKey="Job_ID" Type="Job" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

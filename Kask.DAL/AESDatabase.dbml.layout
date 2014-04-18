@@ -56,18 +56,6 @@
         <elementListCompartment Id="fd0c2223-0325-4167-ad52-f57ad796e414" absoluteBounds="3.6400000000000006, 6.9600000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="fb441c56-b6c7-4c6a-bf04-15cfa575cf21" absoluteBounds="1.125, 8.625, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/AESDatabaseDataContext/Job" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b3721b19-5441-4c2a-b156-0737ba3e4ceb" absoluteBounds="1.1400000000000001, 9.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="724c10d1-c85a-49ac-83a3-41b0b5ddb8eb" absoluteBounds="1.125, 10.375, 2, 1.3862939453124987">
-      <DataClassMoniker Name="/AESDatabaseDataContext/JobOpening" />
-      <nestedChildShapes>
-        <elementListCompartment Id="545cb2c6-ed1c-4058-9efa-afeb522621f1" absoluteBounds="1.1400000000000001, 10.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="f99a5627-aa83-4fd3-9dc3-9334d9c8938f" absoluteBounds="1.125, 6.5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/AESDatabaseDataContext/JobRequirement" />
       <nestedChildShapes>
@@ -128,14 +116,14 @@
         <elementListCompartment Id="e62d609e-8051-4891-b0ae-0fe8bf54a002" absoluteBounds="9.765, 5.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.625 : 11); (4.625 : 10.3958968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.5937475 : 11); (4.5937475 : 10.3958968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/AESDatabaseDataContext/Applicant/Applicant_Applied" />
       <nodes>
         <classShapeMoniker Id="a4bb92d8-2ee6-44ae-8f70-fdbce13e474f" />
         <classShapeMoniker Id="67777075-b53b-42cd-b7ae-515819ddb7b4" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.75 : 9.51044840494792); (5.625 : 9.51044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(6.75 : 9.51044840494792); (6.08333333333333 : 9.51044840494792 : JumpStart); (5.91666666666667 : 9.51044840494792 : JumpEnd); (5.625 : 9.51044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/AESDatabaseDataContext/Application/Application_Applied" />
       <nodes>
         <classShapeMoniker Id="1659a7cf-d18f-4ed8-818e-c3701553b6b1" />
@@ -177,27 +165,6 @@
         <classShapeMoniker Id="2eaa1e20-fb91-4034-a954-b010bc465b68" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.125 : 9.22199625651042); (3.625 : 9.22199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/AESDatabaseDataContext/Job/Job_Applied" />
-      <nodes>
-        <classShapeMoniker Id="fb441c56-b6c7-4c6a-bf04-15cfa575cf21" />
-        <classShapeMoniker Id="67777075-b53b-42cd-b7ae-515819ddb7b4" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.125 : 9.81899251302083); (2.125 : 10.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/AESDatabaseDataContext/Job/Job_JobOpening" />
-      <nodes>
-        <classShapeMoniker Id="fb441c56-b6c7-4c6a-bf04-15cfa575cf21" />
-        <classShapeMoniker Id="724c10d1-c85a-49ac-83a3-41b0b5ddb8eb" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.125 : 8.625); (2.125 : 8.07859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/AESDatabaseDataContext/Job/Job_JobRequirement" />
-      <nodes>
-        <classShapeMoniker Id="fb441c56-b6c7-4c6a-bf04-15cfa575cf21" />
-        <classShapeMoniker Id="f99a5627-aa83-4fd3-9dc3-9334d9c8938f" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(9.125 : 13.7219962565104); (8.75 : 13.7219962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/AESDatabaseDataContext/Reference/Reference_Associate" />
       <nodes>
@@ -226,13 +193,6 @@
         <classShapeMoniker Id="f99a5627-aa83-4fd3-9dc3-9334d9c8938f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.125 : 11.7612939453125); (2.125 : 12.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/AESDatabaseDataContext/JobOpening/JobOpening_Store" />
-      <nodes>
-        <classShapeMoniker Id="724c10d1-c85a-49ac-83a3-41b0b5ddb8eb" />
-        <classShapeMoniker Id="47c1c261-07dd-4342-ad31-d507444d04d4" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(2.125 : 15.125); (2.125 : 14.2035953776042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/AESDatabaseDataContext/StoreManager/StoreManager_Store" />
       <nodes>
@@ -252,6 +212,46 @@
       <nodes>
         <classShapeMoniker Id="b8a09d08-7ba7-468d-8a63-c026ea4ea094" />
         <classShapeMoniker Id="6e329d4f-288b-47e9-b51c-d24ac8305f8a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="44bf9eeb-53b0-4d65-a865-b4bd197afe3c" absoluteBounds="1.125, 8.625, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/AESDatabaseDataContext/Job" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e41b1b98-a1fb-44f0-b540-fd3938d4aa05" absoluteBounds="1.1400000000000001, 9.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.125 : 9.22199625651042); (3.625 : 9.22199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AESDatabaseDataContext/Job/Job_Applied" />
+      <nodes>
+        <classShapeMoniker Id="44bf9eeb-53b0-4d65-a865-b4bd197afe3c" />
+        <classShapeMoniker Id="67777075-b53b-42cd-b7ae-515819ddb7b4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.125 : 8.625); (2.125 : 8.07859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AESDatabaseDataContext/Job/Job_JobRequirement" />
+      <nodes>
+        <classShapeMoniker Id="44bf9eeb-53b0-4d65-a865-b4bd197afe3c" />
+        <classShapeMoniker Id="f99a5627-aa83-4fd3-9dc3-9334d9c8938f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="434a73b6-5278-4ca1-951f-ce2fc9bb4902" absoluteBounds="1.125, 10.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/AESDatabaseDataContext/JobOpening" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2d1b1bee-19ee-49db-9262-0747b08ea182" absoluteBounds="1.1400000000000001, 10.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.125 : 12.0785953776042); (2.125 : 12.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AESDatabaseDataContext/JobOpening/JobOpening_Store" />
+      <nodes>
+        <classShapeMoniker Id="434a73b6-5278-4ca1-951f-ce2fc9bb4902" />
+        <classShapeMoniker Id="47c1c261-07dd-4342-ad31-d507444d04d4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.125 : 9.81899251302083); (2.125 : 10.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AESDatabaseDataContext/Job/Job_JobOpening" />
+      <nodes>
+        <classShapeMoniker Id="44bf9eeb-53b0-4d65-a865-b4bd197afe3c" />
+        <classShapeMoniker Id="434a73b6-5278-4ca1-951f-ce2fc9bb4902" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
