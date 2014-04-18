@@ -1113,6 +1113,7 @@ namespace Kask.Services
                 {
                     IList<Job> jobs = db.Jobs.ToList();
                     List<JobDAO> result = new List<JobDAO>();
+
                     foreach (var job in jobs)
                     {
                         JobDAO temp = new JobDAO
@@ -1161,7 +1162,6 @@ namespace Kask.Services
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 Job job = db.Jobs.Single(jb => jb.Job_ID == newJb.JobID);
-
                 job.Title = newJb.Title;
 
                 try
@@ -1221,6 +1221,30 @@ namespace Kask.Services
             }
         }
 
+        public IList<JobOpeningDAO> GetJobOpeningsByStoreID (int storeID)
+        {
+            try 
+            {
+
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Store> stores = (from store in db.Stores where store.Store_ID == storeID select store).ToList();
+                    List<JobOpeningDAO> result = new List<JobOpeningDAO>();
+
+                    foreach (var str in stores)
+                    {
+                        result.Add(GetJobOpeningByID(str.JobOpening_ID));
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
         public IList<JobOpeningDAO> GetJobOpenings()
         {
             try
@@ -1229,6 +1253,7 @@ namespace Kask.Services
                 {
                     IList<JobOpening> jobOpenings = db.JobOpenings.ToList();
                     List<JobOpeningDAO> result = new List<JobOpeningDAO>();
+
                     foreach (var jobOpening in jobOpenings)
                     {
                         JobOpeningDAO temp = new JobOpeningDAO
