@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+    ViewBag.Title = "Request Job Opening";
+}
+
+<h2>Request Job Opening</h2>
+@using (Html.BeginForm("Create", "JobOpenings", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="section" id="section0">
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Job Type:")
+            @if (ViewBag.jobs != null)
+            {
+                <select class="form-control" name="JobID" id="JobID">
+                @foreach (var job in @ViewBag.jobs)
+                {
+                    <option value="@job.JobID">@job.Title</option>
+                }
+                </select>
+            }
+        </div>
+        <br style="clear:both;"/>
+    </div>
+    
+    <a href="@Html.Encode("/Home/Backend")" class="btn btn-danger">Cancel</a>@Html.Raw("&nbsp;&nbsp;&nbsp;")
+    <input type="submit" id="submit" value="Save" class="btn btn-success" />
+}

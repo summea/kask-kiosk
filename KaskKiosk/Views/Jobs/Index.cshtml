@@ -1,0 +1,23 @@
+﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.JobDAO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+}
+
+<h2>All Job Types</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Title</th>
+        <th>Actions</th>
+    </tr>
+@foreach (var item in ViewBag.jobs)
+{
+    <tr>
+        <td>@item.JobID</td>
+        <td>@item.Title</td>
+        <td>@Html.ActionLink("View Details", "Details", new { id=item.JobID })</td>
+    </tr>
+}
+</table>

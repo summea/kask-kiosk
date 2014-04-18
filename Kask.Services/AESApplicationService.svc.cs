@@ -10,7 +10,7 @@ using Kask.DAL.Models;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, IJobService, ISchoolService
+    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, IJobService, IJobOpeningService, ISchoolService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -1183,6 +1183,137 @@ namespace Kask.Services
             {
                 Job job = db.Jobs.Single(jb => jb.Job_ID == ID);
                 db.Jobs.DeleteOnSubmit(job);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public JobOpeningDAO GetJobOpeningByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    JobOpening jobOpening = (from jbOp in db.JobOpenings where jbOp.JobOpening_ID == id select jbOp).FirstOrDefault();
+                    JobOpeningDAO result = new JobOpeningDAO
+                    {
+                        JobOpeningID = jobOpening.JobOpening_ID,
+                        OpenDate = jobOpening.OpenDate,
+                        JobID = jobOpening.Job_ID,
+                        Approved = (byte)jobOpening.Approved
+
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<JobOpeningDAO> GetJobOpenings()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<JobOpening> jobOpenings = db.JobOpenings.ToList();
+                    List<JobOpeningDAO> result = new List<JobOpeningDAO>();
+                    foreach (var jobOpening in jobOpenings)
+                    {
+                        JobOpeningDAO temp = new JobOpeningDAO
+                        {
+                            JobOpeningID = jobOpening.JobOpening_ID,
+                            OpenDate = jobOpening.OpenDate,
+                            JobID = jobOpening.Job_ID,
+                            Approved = (byte)jobOpening.Approved
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateJobOpening(JobOpeningDAO jbOp)
+        {
+            JobOpening jobOpening = new JobOpening
+            {
+                JobOpening_ID = jbOp.JobOpeningID,
+                OpenDate = (DateTime)jbOp.OpenDate,
+                Job_ID = jbOp.JobID,
+                Approved = (byte)jbOp.Approved
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.JobOpenings.InsertOnSubmit(jobOpening);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateJobOpening(JobOpeningDAO newJbOp)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                JobOpening jobOpening = db.JobOpenings.Single(jbOp => jbOp.JobOpening_ID == newJbOp.JobOpeningID);
+
+                if (newJbOp.JobOpeningID > 0)
+                    jobOpening.JobOpening_ID = newJbOp.JobOpeningID;
+
+                if (newJbOp.OpenDate != null)
+                    jobOpening.OpenDate = (DateTime)newJbOp.OpenDate;
+
+                if (newJbOp.JobID > 0)
+                    jobOpening.Job_ID = newJbOp.JobID;
+
+                if (newJbOp.Approved == 0 || newJbOp.Approved == 1)
+                    jobOpening.Approved = (byte)newJbOp.Approved;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteJobOpening(int ID)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                JobOpening jobOpening = db.JobOpenings.Single(jbOp => jbOp.JobOpening_ID == ID);
+                db.JobOpenings.DeleteOnSubmit(jobOpening);
 
                 try
                 {
