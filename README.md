@@ -1,6 +1,9 @@
 # kask-kiosk
 Team junior project
 
+#### Build Status
+* Build Passing as of 2014-04-18 (merged iteration-2 back into master)
+
 #### Branches Breakdown:
 * MASTER:                 Applicant Relations and all.  (Should be for Iteration 1)
 * Application-Service:    Application's Service (WCF)   (Service Layer to expose models from DAL layer)
