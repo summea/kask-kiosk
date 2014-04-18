@@ -34,7 +34,7 @@ namespace KaskKiosk.Controllers
             }
         }
 
-        private async Task<JobOpeningDAO> GetJobApplicationByIdAsync(int id = 0)
+        private async Task<JobOpeningDAO> GetJobOpeningByIdAsync(int id = 0)
         {
             using (HttpClient httpClient = new HttpClient())
             {
@@ -190,7 +190,7 @@ namespace KaskKiosk.Controllers
         public async Task<ActionResult> Approve(int id)
         {
             List<JobDAO> jobs = await GetJobsAsync();
-            JobOpeningDAO jobOpening = await GetJobApplicationByIdAsync(id);
+            JobOpeningDAO jobOpening = await GetJobOpeningByIdAsync(id);
 
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.jobs = jobs;
@@ -249,7 +249,7 @@ namespace KaskKiosk.Controllers
         public async Task<ActionResult> Reject(int id)
         {
             List<JobDAO> jobs = await GetJobsAsync();
-            JobOpeningDAO jobOpening = await GetJobApplicationByIdAsync(id);
+            JobOpeningDAO jobOpening = await GetJobOpeningByIdAsync(id);
 
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.jobs = jobs;
