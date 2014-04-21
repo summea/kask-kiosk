@@ -17,7 +17,22 @@
     <tr>
         <td>@item.ApplicationID</td>
         <td>@item.ApplicationStatus</td>
-        <td>@Html.ActionLink("View Details", "Details", new { id=item.ApplicationID })</td>
+        <td>
+             @foreach (var allowedAction in @ViewBag.allowableActions)
+            {
+                if(allowedAction == "approve")
+                {
+                    @Html.ActionLink("Approve", "Approve", new { id=item.ApplicationID })
+                    @Html.Raw(" | ")
+                }
+                if(allowedAction == "reject")
+                {
+                    @Html.ActionLink("Reject", "Reject", new { id=item.ApplicationID })
+                    @Html.Raw(" | ")
+                }
+            }
+            @Html.ActionLink("View Details", "Details", new { id=item.ApplicationID })
+        </td>
     </tr>
 }
 </table>

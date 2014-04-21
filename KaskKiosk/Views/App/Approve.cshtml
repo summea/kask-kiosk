@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+    ViewBag.Title = "Approve Application";
+}
+
+<h2>Approve Application</h2>
+@using (Html.BeginForm("Approve", "App", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="section" id="section0">
+        <h3>Are you sure you want to approve this application?</h3>
+        <input type="hidden" name="ApplicationID" id="ApplicationID" value="@ViewBag.applicationID" />
+        <br style="clear:both;"/>
+    </div>
+    
+    <a href="@Html.Encode("/App/Index")" class="btn btn-danger">Cancel</a>@Html.Raw("&nbsp;&nbsp;&nbsp;")
+    <input type="submit" id="submit" value="Approve" class="btn btn-success" />
+}

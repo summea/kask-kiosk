@@ -53,7 +53,13 @@ namespace KaskKiosk.Controllers.API
 
             try
             {
-                bool result = client.CreateApplication(app);
+                bool result = false;
+
+                // are we editing or creating this item?
+                if (app.ApplicationID > 0)
+                    result = client.UpdateApplication(app);
+                else
+                    result = client.CreateApplication(app);
                 return result;
             }
             catch (FaultException<KaskServiceException> e)
