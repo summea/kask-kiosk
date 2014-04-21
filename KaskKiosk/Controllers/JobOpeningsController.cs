@@ -237,8 +237,7 @@ namespace KaskKiosk.Controllers
             }
             catch
             {
-                // TODO: validation later on...
-                return RedirectToAction("Create");
+                return RedirectToAction("Index", "JobOpenings");
             }
         }
 
@@ -296,8 +295,7 @@ namespace KaskKiosk.Controllers
             }
             catch
             {
-                // TODO: validation later on...
-                return RedirectToAction("Create");
+                return RedirectToAction("Index", "JobOpenings");
             }
         }
     }

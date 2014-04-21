@@ -120,10 +120,19 @@ namespace KaskKiosk.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, HiringManager")]
         public async Task<ActionResult> Index()
         {
             var apps = await GetApplicationsAsync();
+            List<string> allowableActions = new List<string>();
+
+            if (this.User.IsInRole("HiringManager"))
+            {
+                allowableActions.Add("approve");
+                allowableActions.Add("reject");
+            }
+
+            ViewBag.allowableActions = allowableActions;
             ViewBag.applications = apps;
             return View();
         }
@@ -398,7 +407,7 @@ namespace KaskKiosk.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, HiringManager")]
         public async Task<ActionResult> Details(int id = 0)
         {
             AppliedDAO applied = await GetAppliedIdAsync(id);
@@ -457,6 +466,116 @@ namespace KaskKiosk.Controllers
             ViewBag.generalTimeFormat = generalTimeFormat;
 
             return View(applied);
+        }
+
+        //
+        // GET: /App/Approve
+
+        [Authorize(Roles = "Administrator, HiringManager")]
+        public async Task<ActionResult> Approve(int id)
+        {
+            ViewBag.baseURL = Url.Content("~/");
+            ViewBag.applicationID = id;
+            return View();
+        }
+
+        //
+        // POST: /App/Approve
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator, HiringManager")]
+        public async Task<ActionResult> Approve(FormCollection collection)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(Request.Form["ApplicationID"]))
+                {
+                    // save application form data back to database through service
+                    using (HttpClient httpClient = new HttpClient())
+                    {
+                        httpClient.BaseAddress = new Uri("http://localhost:51309");
+                        httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        HttpResponseMessage result = new HttpResponseMessage();
+                        string resultContent = "";
+
+                        // gather application form data
+                        ApplicationDAO updatedApp = new ApplicationDAO();
+                        updatedApp.ApplicationID = Convert.ToInt32(Request.Form["ApplicationID"]);
+                        updatedApp.ApplicationStatus = "Approved";
+
+                        // post (save) application data
+                        result = httpClient.PostAsJsonAsync(uriApplication, updatedApp).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+                    }
+
+                    return RedirectToAction("Index", "App");
+                }
+                else
+                {
+                    // TODO: validation later on...
+                    return RedirectToAction("Index", "App");
+                }
+            }
+            catch
+            {
+                // TODO: validation later on...
+                return RedirectToAction("Index", "App");
+            }
+        }
+
+        //
+        // GET: /App/Reject
+
+        [Authorize(Roles = "Administrator, HiringManager")]
+        public async Task<ActionResult> Reject(int id)
+        {
+            ViewBag.baseURL = Url.Content("~/");
+            ViewBag.applicationID = id;
+            return View();
+        }
+
+        //
+        // POST: /App/Reject
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator, HiringManager")]
+        public async Task<ActionResult> Reject(FormCollection collection)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(Request.Form["ApplicationID"]))
+                {
+                    // save application form data back to database through service
+                    using (HttpClient httpClient = new HttpClient())
+                    {
+                        httpClient.BaseAddress = new Uri("http://localhost:51309");
+                        httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        HttpResponseMessage result = new HttpResponseMessage();
+                        string resultContent = "";
+
+                        // gather application form data
+                        ApplicationDAO updatedApp = new ApplicationDAO();
+                        updatedApp.ApplicationID = Convert.ToInt32(Request.Form["ApplicationID"]);
+                        updatedApp.ApplicationStatus = "Rejected";
+
+                        // post (save) application data
+                        result = httpClient.PostAsJsonAsync(uriApplication, updatedApp).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+                    }
+
+                    return RedirectToAction("Index", "App");
+                }
+                else
+                {
+                    // TODO: validation later on...
+                    return RedirectToAction("Index", "App");
+                }
+            }
+            catch
+            {
+                // TODO: validation later on...
+                return RedirectToAction("Index", "App");
+            }
         }
     }
 }

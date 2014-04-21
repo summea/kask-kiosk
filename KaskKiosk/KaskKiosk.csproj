@@ -291,6 +291,8 @@
     <Content Include="Views\JobOpenings\Approve.cshtml" />
     <Content Include="Views\JobOpenings\Reject.cshtml" />
     <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\App\Approve.cshtml" />
+    <Content Include="Views\App\Reject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
