@@ -13,44 +13,14 @@ namespace KaskKiosk.Controllers
 {
     public class JobOpeningsController : Controller
     {
-        readonly string uriJob = "http://localhost:51309/api/Job";
-        readonly string uriJobOpening = "http://localhost:51309/api/JobOpening";
-
-        private async Task<List<JobDAO>> GetJobsAsync()
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriJob);
-                return JsonConvert.DeserializeObjectAsync<List<JobDAO>>(response).Result;
-            }
-        }
-
-        private async Task<List<JobOpeningDAO>> GetJobOpeningsAsync()
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriJobOpening);
-                return JsonConvert.DeserializeObjectAsync<List<JobOpeningDAO>>(response).Result;
-            }
-        }
-
-        private async Task<JobOpeningDAO> GetJobOpeningByIdAsync(int id = 0)
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriJobOpening + "/" + id.ToString());
-                return JsonConvert.DeserializeObjectAsync<JobOpeningDAO>(response).Result;
-            }
-        }
-
         //
         // GET: /JobOpenings/
 
         [Authorize(Roles = "Administrator, HiringManager, StoreManager")]
         public async Task<ActionResult> Index()
         {
-            List<JobDAO> jobs = await GetJobsAsync();
-            List<JobOpeningDAO> jobOpenings = await GetJobOpeningsAsync();
+            List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
+            List<JobOpeningDAO> jobOpenings = await ServerResponse<List<JobOpeningDAO>>.GetResponseAsync(ServiceURIs.ServiceJobOpeningUri);
             List<string> allowableActions = new List<string>();
             
             if (this.User.IsInRole("StoreManager"))
@@ -78,7 +48,7 @@ namespace KaskKiosk.Controllers
         [Authorize(Roles = "Administrator, HiringManager, StoreManager")]
         public async Task<ActionResult> Create()
         {
-            List<JobDAO> jobs = await GetJobsAsync();
+            List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
 
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.jobs = jobs;
@@ -112,7 +82,7 @@ namespace KaskKiosk.Controllers
                         jobOpening.Approved = 0;    // "not approved" by default
 
                         // post (save) JobOpening data
-                        result = httpClient.PostAsJsonAsync(uriJobOpening, jobOpening).Result;
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceJobOpeningUri, jobOpening).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
                     }
 
@@ -189,8 +159,8 @@ namespace KaskKiosk.Controllers
         [Authorize(Roles = "Administrator, StoreManager")]
         public async Task<ActionResult> Approve(int id)
         {
-            List<JobDAO> jobs = await GetJobsAsync();
-            JobOpeningDAO jobOpening = await GetJobOpeningByIdAsync(id);
+            List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
+            JobOpeningDAO jobOpening = await ServerResponse<JobOpeningDAO>.GetResponseByIdAsync(ServiceURIs.ServiceJobOpeningUri, id);
 
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.jobs = jobs;
@@ -223,7 +193,7 @@ namespace KaskKiosk.Controllers
                         jobOpening.Approved = 1;
 
                         // post (save) JobOpening data
-                        result = httpClient.PostAsJsonAsync(uriJobOpening, jobOpening).Result;
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceJobOpeningUri, jobOpening).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
                     }
 
@@ -247,8 +217,8 @@ namespace KaskKiosk.Controllers
         [Authorize(Roles = "Administrator, StoreManager")]
         public async Task<ActionResult> Reject(int id)
         {
-            List<JobDAO> jobs = await GetJobsAsync();
-            JobOpeningDAO jobOpening = await GetJobOpeningByIdAsync(id);
+            List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
+            JobOpeningDAO jobOpening = await ServerResponse<JobOpeningDAO>.GetResponseByIdAsync(ServiceURIs.ServiceJobOpeningUri, id);
 
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.jobs = jobs;
@@ -281,7 +251,7 @@ namespace KaskKiosk.Controllers
                         jobOpening.Approved = 0;
 
                         // post (save) JobOpening data
-                        result = httpClient.PostAsJsonAsync(uriJobOpening, jobOpening).Result;
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceJobOpeningUri, jobOpening).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
                     }
 
