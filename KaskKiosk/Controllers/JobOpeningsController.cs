@@ -160,7 +160,7 @@ namespace KaskKiosk.Controllers
         public async Task<ActionResult> Approve(int id)
         {
             List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
-            JobOpeningDAO jobOpening = await ServerResponse<JobOpeningDAO>.GetResponseByIdAsync(ServiceURIs.ServiceJobOpeningUri, id);
+            JobOpeningDAO jobOpening = await ServerResponse<JobOpeningDAO>.GetResponseByParamsAsync(ServiceURIs.ServiceJobOpeningUri, id);
 
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.jobs = jobs;
@@ -218,7 +218,7 @@ namespace KaskKiosk.Controllers
         public async Task<ActionResult> Reject(int id)
         {
             List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
-            JobOpeningDAO jobOpening = await ServerResponse<JobOpeningDAO>.GetResponseByIdAsync(ServiceURIs.ServiceJobOpeningUri, id);
+            JobOpeningDAO jobOpening = await ServerResponse<JobOpeningDAO>.GetResponseByParamsAsync(ServiceURIs.ServiceJobOpeningUri, id);
 
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.jobs = jobs;

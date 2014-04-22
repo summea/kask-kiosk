@@ -13,117 +13,13 @@ namespace KaskKiosk.Controllers
 {
     public class AppController : Controller
     {
-        /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        /// TODO: MAKE THIS INTO A WRAPPER
-        /// THIS WILL ALLOW MULTI THREADING AS WELL
-        readonly string uriApplication = "http://localhost:51309/api/Application";
-        readonly string uriApplicant = "http://localhost:51309/api/Applicant";
-        readonly string uriApplied = "http://localhost:51309/api/Applied";
-        readonly string uriEducation = "http://localhost:51309/api/Education";
-        readonly string uriEmployer = "http://localhost:51309/api/Employer";
-        readonly string uriEmployment = "http://localhost:51309/api/Employment";
-        readonly string uriJob = "http://localhost:51309/api/Job";
-        readonly string uriSchool = "http://localhost:51309/api/School";
-
         readonly string generalDateFormat = "M/yyyy";
         readonly string generalTimeFormat = "{0:hh\\:mm}";
-
-        private async Task<List<ApplicationDAO>> GetApplicationsAsync()
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriApplication);
-                return JsonConvert.DeserializeObjectAsync<List<ApplicationDAO>>(response).Result;
-            }
-        }
-
-        private async Task<List<ApplicantDAO>> GetApplicantsAsync()
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriApplicant);
-                return JsonConvert.DeserializeObjectAsync<List<ApplicantDAO>>(response).Result;
-            }
-        }
-
-        private async Task<List<EmployerDAO>> GetEmployersAsync()
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriEmployer);
-                return JsonConvert.DeserializeObjectAsync<List<EmployerDAO>>(response).Result;
-            }
-        }
-
-        private async Task<List<JobDAO>> GetJobsAsync()
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriJob);
-                return JsonConvert.DeserializeObjectAsync<List<JobDAO>>(response).Result;
-            }
-        }
-
-        private async Task<List<SchoolDAO>> GetSchoolsAsync()
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriSchool);
-                return JsonConvert.DeserializeObjectAsync<List<SchoolDAO>>(response).Result;
-            }
-        }
-
-        private async Task<AppliedDAO> GetAppliedIdAsync(int id = 0)
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriApplied + "/" + id.ToString());
-                return JsonConvert.DeserializeObjectAsync<AppliedDAO>(response).Result;
-            }
-        }
-
-        private async Task<ApplicantDAO> GetApplicantIdAsync(int id = 0)
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriApplicant + "/" + id.ToString());
-                return JsonConvert.DeserializeObjectAsync<ApplicantDAO>(response).Result;
-            }
-        }
-
-        private async Task<ApplicationDAO> GetApplicationIdAsync(int id = 0)
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriApplication + "/" + id.ToString());
-                return JsonConvert.DeserializeObjectAsync<ApplicationDAO>(response).Result;
-            }
-        }
-
-        private async Task<List<EmploymentDAO>> GetEmploymentsForApplicantAsync(string first, string last, string ssn, int id = 0)
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                //var response = await httpClient.GetStringAsync(uriEmployment + "?first=" + first + "&last=" + last + "&ssn=" + ssn);
-                var response = await httpClient.GetStringAsync(uriEmployment + "/" + first + "/" + last + "/" + ssn);
-                return JsonConvert.DeserializeObjectAsync<List<EmploymentDAO>>(response).Result;
-            }
-        }
-
-        private async Task<List<EducationDAO>> GetEducationsForApplicantAsync(string first, string last, string ssn, int id = 0)
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                //var response = await httpClient.GetStringAsync(uriEducation + "?first=" + first + "&last=" + last + "&ssn=" + ssn);
-                var response = await httpClient.GetStringAsync(uriEducation + "/" + first + "/" + last + "/" + ssn);
-                return JsonConvert.DeserializeObjectAsync<List<EducationDAO>>(response).Result;
-            }
-        }
 
         [Authorize(Roles = "Administrator, HiringManager")]
         public async Task<ActionResult> Index()
         {
-            var apps = await GetApplicationsAsync();
+            var apps = await ServerResponse<List<ApplicationDAO>>.GetResponseAsync(ServiceURIs.ServiceApplicationUri);
             List<string> allowableActions = new List<string>();
 
             if (this.User.IsInRole("HiringManager"))
@@ -140,7 +36,7 @@ namespace KaskKiosk.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Create()
         {
-            List<JobDAO> jobs = await GetJobsAsync();
+            var jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
             List<String> timePickerList = new List<String>();
 
             // create time picker range (in hours)
@@ -186,7 +82,7 @@ namespace KaskKiosk.Controllers
                         applicant.NameAlias = Request.Form["NameAlias"];
 
                         // post (save) applicant data
-                        result = httpClient.PostAsJsonAsync(uriApplicant, applicant).Result;
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceApplicantUri, applicant).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
 
                         // gather Application form data
@@ -213,19 +109,19 @@ namespace KaskKiosk.Controllers
                         application.SundayTo = System.TimeSpan.FromHours(Convert.ToDouble(Request.Form["SundayTo"]));
 
                         // post (save) application data
-                        result = httpClient.PostAsJsonAsync(uriApplication, application).Result;
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceApplicationUri, application).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
 
                         // get correct applicant id
                         // TODO: there is still something we might need to change about this...
                         // ***** We don't, it's safe to assume that id would be the last item on the list
                         // since we're using auto incremented id. *****
-                        var applicants = await GetApplicantsAsync();
+                        var applicants = await ServerResponse<List<ApplicantDAO>>.GetResponseAsync(ServiceURIs.ServiceApplicantUri); ;
                         applicant.ApplicantID = applicants.Last().ApplicantID;
 
                         // get correct application id
                         // TODO: there is still something we might need to change about this...
-                        var applications = await GetApplicationsAsync();
+                        var applications = await ServerResponse<List<ApplicationDAO>>.GetResponseAsync(ServiceURIs.ServiceApplicationUri);
                         application.ApplicationID = applications.Last().ApplicationID;
 
                         int jobId = 1;
@@ -240,12 +136,12 @@ namespace KaskKiosk.Controllers
                         applied.DateApplied = DateTime.Now;
 
                         // post (save) applied data
-                        result = httpClient.PostAsJsonAsync(uriApplied, applied).Result;
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceAppliedUri, applied).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
 
                         // gather Employer data
                         EmployerDAO employer = new EmployerDAO();
-                        var employers = await GetEmployersAsync();
+                        var employers = await ServerResponse<List<EmployerDAO>>.GetResponseAsync(ServiceURIs.ServiceEmployerUri);
                         EmploymentDAO employment = new EmploymentDAO();
 
                         for (int i = 1; i < 4; i++)
@@ -266,13 +162,13 @@ namespace KaskKiosk.Controllers
                                 // if employer !exists in database: insert data
 
                                 // post (save) employer data
-                                result = httpClient.PostAsJsonAsync(uriEmployer, employer).Result;
+                                result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceEmployerUri, employer).Result;
                                 resultContent = result.Content.ReadAsStringAsync().Result;
                                 //}
 
                                 // get correct employer id
                                 // TODO: there is still something we might need to change about this...
-                                employers = await GetEmployersAsync();
+                                employers = await ServerResponse<List<EmployerDAO>>.GetResponseAsync(ServiceURIs.ServiceEmployerUri); ;
                                 employer.EmployerID = employers.Last().EmployerID;
 
 
@@ -300,14 +196,14 @@ namespace KaskKiosk.Controllers
                                     employment.Responsibilities = Request.Form["EmployedResponsibilities_" + i];
 
                                 // post (save) employment data
-                                result = httpClient.PostAsJsonAsync(uriEmployment, employment).Result;
+                                result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceEmploymentUri, employment).Result;
                                 resultContent = result.Content.ReadAsStringAsync().Result;
                             }
                         }
 
                         // gather School and Education data
                         SchoolDAO school = new SchoolDAO();
-                        var schools = await GetSchoolsAsync();
+                        var schools = await ServerResponse<List<SchoolDAO>>.GetResponseAsync(ServiceURIs.ServiceSchoolUri);
                         EducationDAO education = new EducationDAO();
 
                         for (int i = 1; i < 4; i++)
@@ -327,13 +223,13 @@ namespace KaskKiosk.Controllers
                                 // if school !exists in database: insert data
 
                                 // post (save) school data
-                                result = httpClient.PostAsJsonAsync(uriSchool, school).Result;
+                                result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceSchoolUri, school).Result;
                                 resultContent = result.Content.ReadAsStringAsync().Result;
                                 //}
 
                                 // get correct school id
                                 // TODO: there is still something we might need to change about this...
-                                schools = await GetSchoolsAsync();
+                                schools = await ServerResponse<List<SchoolDAO>>.GetResponseAsync(ServiceURIs.ServiceSchoolUri);
                                 school.SchoolID = schools.Last().SchoolID;
 
                                 // gather Education data
@@ -350,7 +246,7 @@ namespace KaskKiosk.Controllers
                                     education.DegreeAndMajor = Request.Form["DegreeAndMajor_" + i];
 
                                 // post (save) education data
-                                result = httpClient.PostAsJsonAsync(uriEducation, education).Result;
+                                result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceEducationUri, education).Result;
                                 resultContent = result.Content.ReadAsStringAsync().Result;
                             }
                         }
@@ -410,14 +306,14 @@ namespace KaskKiosk.Controllers
         [Authorize(Roles = "Administrator, HiringManager")]
         public async Task<ActionResult> Details(int id = 0)
         {
-            AppliedDAO applied = await GetAppliedIdAsync(id);
-            ApplicantDAO applicant = await GetApplicantIdAsync(applied.ApplicantID);
-            ApplicationDAO application = await GetApplicationIdAsync(applied.ApplicationID);
-            List<EmploymentDAO> applicantEmployments = await GetEmploymentsForApplicantAsync(applicant.FirstName, applicant.LastName, applicant.SSN);
-            List<EducationDAO> applicantEducations = await GetEducationsForApplicantAsync(applicant.FirstName, applicant.LastName, applicant.SSN);
-            List<EmployerDAO> employers = await GetEmployersAsync();
-            List<JobDAO> jobs = await GetJobsAsync();
-            List<SchoolDAO> schools = await GetSchoolsAsync();
+            AppliedDAO applied = await ServerResponse<AppliedDAO>.GetResponseByParamsAsync(ServiceURIs.ServiceAppliedUri, id);
+            ApplicantDAO applicant = await ServerResponse<ApplicantDAO>.GetResponseByParamsAsync(ServiceURIs.ServiceApplicantUri, applied.ApplicantID);
+            ApplicationDAO application = await ServerResponse<ApplicationDAO>.GetResponseByParamsAsync(ServiceURIs.ServiceApplicationUri, applied.ApplicationID);
+            List<EmploymentDAO> applicantEmployments = await ServerResponse<List<EmploymentDAO>>.GetResponseByParamsAsync(ServiceURIs.ServiceEmploymentUri, 0, applicant.FirstName, applicant.LastName, applicant.SSN);
+            List<EducationDAO> applicantEducations = await ServerResponse<List<EducationDAO>>.GetResponseByParamsAsync(ServiceURIs.ServiceEducationUri, 0, applicant.FirstName, applicant.LastName, applicant.SSN);
+            List<EmployerDAO> employers = await ServerResponse<List<EmployerDAO>>.GetResponseAsync(ServiceURIs.ServiceEmployerUri);
+            List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
+            List<SchoolDAO> schools = await ServerResponse<List<SchoolDAO>>.GetResponseAsync(ServiceURIs.ServiceSchoolUri);
             List<String> timePickerList = new List<String>();
 
             Dictionary<int, EmployerDAO> employersByEmployerId = new Dictionary<int, EmployerDAO>();
@@ -504,7 +400,7 @@ namespace KaskKiosk.Controllers
                         updatedApp.ApplicationStatus = "Approved";
 
                         // post (save) application data
-                        result = httpClient.PostAsJsonAsync(uriApplication, updatedApp).Result;
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceApplicationUri, updatedApp).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
                     }
 
@@ -559,7 +455,7 @@ namespace KaskKiosk.Controllers
                         updatedApp.ApplicationStatus = "Rejected";
 
                         // post (save) application data
-                        result = httpClient.PostAsJsonAsync(uriApplication, updatedApp).Result;
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceApplicationUri, updatedApp).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
                     }
 
