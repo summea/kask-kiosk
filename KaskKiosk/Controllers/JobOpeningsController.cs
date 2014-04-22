@@ -90,7 +90,7 @@ namespace KaskKiosk.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator, HiringManager, StoreManager")]
-        public async Task<ActionResult> Create(FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
@@ -203,7 +203,7 @@ namespace KaskKiosk.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator, StoreManager")]
-        public async Task<ActionResult> Approve(FormCollection collection)
+        public ActionResult Approve(FormCollection collection)
         {
             try
             {
@@ -261,7 +261,7 @@ namespace KaskKiosk.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator, StoreManager")]
-        public async Task<ActionResult> Reject(FormCollection collection)
+        public ActionResult Reject(FormCollection collection)
         {
             try
             {

@@ -472,7 +472,7 @@ namespace KaskKiosk.Controllers
         // GET: /App/Approve
 
         [Authorize(Roles = "Administrator, HiringManager")]
-        public async Task<ActionResult> Approve(int id)
+        public ActionResult Approve(int id)
         {
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.applicationID = id;
@@ -484,7 +484,7 @@ namespace KaskKiosk.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator, HiringManager")]
-        public async Task<ActionResult> Approve(FormCollection collection)
+        public ActionResult Approve(FormCollection collection)
         {
             try
             {
@@ -527,7 +527,7 @@ namespace KaskKiosk.Controllers
         // GET: /App/Reject
 
         [Authorize(Roles = "Administrator, HiringManager")]
-        public async Task<ActionResult> Reject(int id)
+        public ActionResult Reject(int id)
         {
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.applicationID = id;
@@ -539,7 +539,7 @@ namespace KaskKiosk.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator, HiringManager")]
-        public async Task<ActionResult> Reject(FormCollection collection)
+        public ActionResult Reject(FormCollection collection)
         {
             try
             {

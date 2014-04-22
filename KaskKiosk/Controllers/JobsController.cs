@@ -46,7 +46,7 @@ namespace KaskKiosk.Controllers
         //
         // GET: /Jobs/Create
         [Authorize(Roles = "Administrator, HiringManager, StoreManager")]
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
             ViewBag.baseURL = Url.Content("~/");
             return View();
@@ -57,7 +57,7 @@ namespace KaskKiosk.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator, HiringManager, StoreManager")]
-        public async Task<ActionResult> Create(FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
