@@ -29,11 +29,23 @@ namespace KaskKiosk.Controllers
             }
         }
 
-        public async static Task<T> GetResponseByIdAsync(string uri, int id = 0)
+        public async static Task<T> GetResponseByParamsAsync(string uri, int id = 0, params string[] list)
         {
             using (HttpClient cli = new HttpClient())
             {
-                var response = await cli.GetStringAsync(uri + "/" + id.ToString());
+                string request = uri;
+
+                if (list.Length != 0)
+                {
+                    for (int i = 0; i < list.Length; i++)
+                        request += '/' + list[i].ToString();
+                }
+                else
+                {
+                    request += '/' + id.ToString();
+                }
+
+                var response = await cli.GetStringAsync(request);
                 return JsonConvert.DeserializeObjectAsync<T>(response).Result;
             }
         }
