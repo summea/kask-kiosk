@@ -13,24 +13,13 @@ namespace KaskKiosk.Controllers
 {
     public class JobsController : Controller
     {
-        readonly string uriJob = "http://localhost:51309/api/Job";
-
-        private async Task<List<JobDAO>> GetJobsAsync()
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetStringAsync(uriJob);
-                return JsonConvert.DeserializeObjectAsync<List<JobDAO>>(response).Result;
-            }
-        }
-
         //
         // GET: /Jobs/
 
         [Authorize(Roles = "Administrator, HiringManager, StoreManager")]
         public async Task<ActionResult> Index()
         {
-            var jobs = await GetJobsAsync();
+            var jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
             ViewBag.jobs = jobs;
             return View();
         }
@@ -77,7 +66,7 @@ namespace KaskKiosk.Controllers
                         job.Title = Request.Form["title"];
 
                         // post (save) JobOpening data
-                        result = httpClient.PostAsJsonAsync(uriJob, job).Result;
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceJobUri, job).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
                     }
 
