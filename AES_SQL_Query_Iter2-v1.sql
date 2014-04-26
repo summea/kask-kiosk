@@ -99,6 +99,7 @@ INSERT INTO Skill (SkillName) VALUES ('Assembly');
 /********************************************************************************
                 EXPERTISE RELATION
 *********************************************************************************/
+
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKExpertiseID')
   ALTER TABLE [Expertise] DROP CONSTRAINT [PKExpertiseID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE Name = N'FKExpertiseApplicantID')
@@ -193,6 +194,7 @@ INSERT INTO Job(Title) VALUES ('Manager');
 /********************************************************************************
               JOB_REQUIREMENT RELATION
 *********************************************************************************/
+
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKJobReqID')
   ALTER TABLE JobRequirement DROP CONSTRAINT [PKJobReqID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobReqID')
@@ -367,6 +369,7 @@ INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedT
 INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (4, 4, '2002-09-01', '2006-06-01', 1, 'BA Psychology');
 INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (4, 3, '2006-09-01', '2007-06-01', 1, 'Master''s in Psychology');
 INSERT INTO Education(Applicant_ID, School_ID, YearsAttendedFrom, YearsAttendedTo, Graduated, DegreeAndMajor) VALUES (4, 2, '2008-09-01', '2009-06-01', 1, 'Master''s in Teaching');
+
 /********************************************************************************
                 EMPLOYER RELATION 
 *********************************************************************************/
@@ -451,6 +454,7 @@ INSERT INTO Reference(YearsKnown) VALUES (10);
 /********************************************************************************
                 ASSOCIATE RELATION 
 *********************************************************************************/
+
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKAssociateID')
   ALTER TABLE Associate DROP CONSTRAINT [PKAssociateID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantIDForAssociate')
@@ -476,7 +480,10 @@ CREATE TABLE Associate (
 /* DATA FOR EMPLOYMENT_REFERENCE RELATION */
 INSERT INTO Associate(Applicant_ID, Reference_ID, Name, Phone, Title) VALUES (1,1, 'Bill Gates', '911', 'CEO');
 
-/* Auth */
+/********************************************************************************
+                AUTHORIZATION
+*********************************************************************************/
+
 GO
 SET ANSI_PADDING ON
 GO
