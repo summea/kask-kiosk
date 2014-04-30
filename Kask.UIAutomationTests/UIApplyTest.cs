@@ -13,7 +13,7 @@ using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 namespace Kask.UIAutomationTests
 {
     /// <summary>
-    /// Summary description for CodedUITest1
+    /// Summary description for UIApplyTest
     /// </summary>
     [CodedUITest]
     public class ApplyForJob
