@@ -13,6 +13,17 @@ namespace Kask.UnitTests
     {
         List<AppliedDAO> Applieds = new List<AppliedDAO>();
 
+        internal void SetUp()
+        {
+            AppliedDAO applied1 = new AppliedDAO() { AppliedID = 1, ApplicantID = 1, ApplicationID = 1, JobID = 1 };
+            AppliedDAO applied2 = new AppliedDAO() { AppliedID = 2, ApplicantID = 2, ApplicationID = 2, JobID = 2 };
+            AppliedDAO applied3 = new AppliedDAO() { AppliedID = 3, ApplicantID = 3, ApplicationID = 3, JobID = 3 };
+
+            Applieds.Add(applied1);
+            Applieds.Add(applied2);
+            Applieds.Add(applied3);
+        }
+
         public AppliedDAO GetAppliedByID(int id)
         {
             foreach (var a in Applieds)
