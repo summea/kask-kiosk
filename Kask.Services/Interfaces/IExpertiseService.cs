@@ -8,31 +8,31 @@ using System.ServiceModel.Web;
 namespace Kask.Services.Interfaces
 {
     [ServiceContract]
-    public interface IAppliedService
+    public interface IExpertiseService
     {
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        AppliedDAO GetAppliedByID(int id);
+        ExpertiseDAO GetExpertiseByID(int id);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        IList<AppliedDAO> GetApplieds();
+        IList<ExpertiseDAO> GetExpertises();
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        [WebGet(UriTemplate = "Applied?first={first}&last={last}&ssn={ssn}")]
-        IList<AppliedDAO> GetAppliedsByName(string first, string last, string ssn);
+        [WebGet(UriTemplate = "Expertise?first={first}&last={last}&ssn={ssn}")]
+        IList<ExpertiseDAO> GetExpertisesByName(string first, string last, string ssn);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool CreateApplied(AppliedDAO a);
+        bool CreateExpertise(ExpertiseDAO e);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool UpdateApplied(AppliedDAO newApp);
+        bool UpdateExpertise(ExpertiseDAO newExp);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool DeleteApplied(int id);
+        bool DeleteExpertise(int id);
     }
 }

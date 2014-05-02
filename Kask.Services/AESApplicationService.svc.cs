@@ -11,7 +11,7 @@ using Kask.DAL.Models;
 namespace Kask.Services
 {
     public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, 
-                                        IJobService, IJobOpeningService, ISchoolService, ISkillService
+                                        IJobService, IJobOpeningService, ISchoolService, ISkillService, IExpertiseService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -423,6 +423,40 @@ namespace Kask.Services
                     }
 
                     return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<AppliedDAO> GetAppliedsByName(string first, string last, string ssn)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Applicant applicant = (from a in db.Applicants where a.SSN == ssn && a.FirstName == first && a.LastName == last select a).FirstOrDefault();
+                    IList<Applied> applieds = (from a in db.Applieds where a.Applicant_ID == applicant.Applicant_ID select a).ToList();
+                    List<AppliedDAO> result = new List<AppliedDAO>();
+
+                    foreach (var a in applieds)
+                    {
+                        AppliedDAO app = new AppliedDAO
+                        {
+                            ID = a.Applied_ID,
+                            AppliedID = a.Applied_ID,
+                            ApplicantID = a.Applicant_ID,
+                            ApplicationID = a.Application_ID,
+                            JobID = a.Job_ID,
+                            DateApplied = a.DateApplied
+                        };
+
+                        result.Add(app);
+                    }
+
+                    return result;
                 }
             }
             catch (Exception e)
@@ -1469,6 +1503,115 @@ namespace Kask.Services
                 catch (Exception e)
                 {
                     throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public ExpertiseDAO GetExpertiseByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Expertise expertise = (from exp in db.Expertises where exp.Expertise_ID == id select exp).FirstOrDefault();
+                    ExpertiseDAO result = new ExpertiseDAO
+                    {
+                        ID = expertise.Expertise_ID,
+                        ExpertiseID = expertise.Expertise_ID,
+                        ApplicantID = expertise.Applicant_ID,
+                        SkillID = expertise.Skill_ID
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<ExpertiseDAO> GetExpertises()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Expertise> exps = db.Expertises.ToList();
+                    List<ExpertiseDAO> result = new List<ExpertiseDAO>();
+                    foreach (var e in exps)
+                    {
+                        ExpertiseDAO temp = new ExpertiseDAO
+                        {
+                            ID = e.Expertise_ID,
+                            ExpertiseID = e.Expertise_ID,
+                            ApplicantID = e.Applicant_ID,
+                            SkillID = e.Skill_ID
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<ExpertiseDAO> GetExpertisesByName(string first, string last, string ssn)
+        {
+            throw new NotImplementedException();
+        }        
+
+        public bool CreateExpertise(ExpertiseDAO exp)
+        {
+            Expertise e = new Expertise
+            {
+                Applicant_ID = exp.ApplicantID,
+                Expertise_ID = exp.ExpertiseID,
+                Skill_ID = exp.SkillID
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Expertises.InsertOnSubmit(e);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(ex.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateExpertise(ExpertiseDAO newExp)
+        {
+            throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason("Unsupported Method"));
+        }
+
+        public bool DeleteExpertise(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Expertise e = db.Expertises.Single(app => app.Applicant_ID == id);
+                db.Expertises.DeleteOnSubmit(e);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(ex.Message));
                 }
             }
 
