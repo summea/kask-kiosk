@@ -10,7 +10,8 @@ using Kask.DAL.Models;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, IJobService, IJobOpeningService, ISchoolService
+    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, 
+                                        IJobService, IJobOpeningService, ISchoolService, ISkillService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -1093,6 +1094,7 @@ namespace Kask.Services
                     Job job = (from jb in db.Jobs where jb.Job_ID == id select jb).FirstOrDefault();
                     JobDAO result = new JobDAO
                     {
+                        ID = job.Job_ID,
                         JobID = job.Job_ID,
                         Title = job.Title
                     };
@@ -1118,6 +1120,7 @@ namespace Kask.Services
                     {
                         JobDAO temp = new JobDAO
                         {
+                            ID = job.Job_ID,
                             JobID = job.Job_ID,
                             Title = job.Title
                         };
@@ -1206,6 +1209,7 @@ namespace Kask.Services
                     JobOpening jobOpening = (from jbOp in db.JobOpenings where jbOp.JobOpening_ID == id select jbOp).FirstOrDefault();
                     JobOpeningDAO result = new JobOpeningDAO
                     {
+                        ID = jobOpening.JobOpening_ID,
                         JobOpeningID = jobOpening.JobOpening_ID,
                         OpenDate = jobOpening.OpenDate,
                         JobID = jobOpening.Job_ID,
@@ -1258,6 +1262,7 @@ namespace Kask.Services
                     {
                         JobOpeningDAO temp = new JobOpeningDAO
                         {
+                            ID = jobOpening.JobOpening_ID,
                             JobOpeningID = jobOpening.JobOpening_ID,
                             OpenDate = jobOpening.OpenDate,
                             JobID = jobOpening.Job_ID,
@@ -1339,6 +1344,123 @@ namespace Kask.Services
             {
                 JobOpening jobOpening = db.JobOpenings.Single(jbOp => jbOp.JobOpening_ID == ID);
                 db.JobOpenings.DeleteOnSubmit(jobOpening);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public SkillDAO GetSkillByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Skill skill = (from sk in db.Skills where sk.Skill_ID == id select sk).FirstOrDefault();
+                    SkillDAO result = new SkillDAO
+                    {
+                        ID = skill.Skill_ID,
+                        SkillID = skill.Skill_ID,
+                        SkillName = skill.SkillName
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<SkillDAO> GetSkills()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Skill> skills = db.Skills.ToList();
+                    List<SkillDAO> result = new List<SkillDAO>();
+
+                    foreach (var skill in skills)
+                    {
+                        SkillDAO temp = new SkillDAO
+                        {
+                            ID = skill.Skill_ID,
+                            SkillID = skill.Skill_ID,
+                            SkillName = skill.SkillName
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateSkill(SkillDAO s)
+        {
+            Skill skill = new Skill
+            {
+                Skill_ID = s.SkillID,
+                SkillName = s.SkillName
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Skills.InsertOnSubmit(skill);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateSkill(SkillDAO newSkill)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Skill skill = db.Skills.Single(s => s.Skill_ID == newSkill.SkillID);
+                skill.SkillName = newSkill.SkillName;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteSkill(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Skill skill = db.Skills.Single(sk => sk.Skill_ID == id);
+                db.Skills.DeleteOnSubmit(skill);
 
                 try
                 {
