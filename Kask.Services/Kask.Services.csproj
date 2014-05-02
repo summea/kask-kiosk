@@ -80,6 +80,7 @@
     <Compile Include="Interfaces\IJobOpeningService.cs" />
     <Compile Include="Interfaces\IJobService.cs" />
     <Compile Include="Interfaces\ISchoolService.cs" />
+    <Compile Include="Interfaces\ISkillService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
