@@ -269,6 +269,8 @@ namespace Kask.Services.DAO
         [DataMember]
         public int ID { get; set; }
 
+        public int ExpertiseID { get; set; }
+
         [DataMember]
         public int ApplicantID { get; set; }
 

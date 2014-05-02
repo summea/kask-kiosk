@@ -75,5 +75,11 @@ namespace Kask.UnitTests
             applied.JobID = jobID;
             applied.DateApplied = dateApplied;
         }
+
+        // TODO: Implement this mock test
+        public IList<AppliedDAO> GetAppliedsByName(string first, string last, string ssn)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
