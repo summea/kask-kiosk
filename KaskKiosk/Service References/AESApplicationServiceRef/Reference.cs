@@ -1330,7 +1330,7 @@ namespace KaskKiosk.AESApplicationServiceRef {
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int JobIDField;
+        private int JobOpeningIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int JobRequirementIDField;
@@ -1365,14 +1365,14 @@ namespace KaskKiosk.AESApplicationServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int JobID {
+        public int JobOpeningID {
             get {
-                return this.JobIDField;
+                return this.JobOpeningIDField;
             }
             set {
-                if ((this.JobIDField.Equals(value) != true)) {
-                    this.JobIDField = value;
-                    this.RaisePropertyChanged("JobID");
+                if ((this.JobOpeningIDField.Equals(value) != true)) {
+                    this.JobOpeningIDField = value;
+                    this.RaisePropertyChanged("JobOpeningID");
                 }
             }
         }
@@ -1439,6 +1439,9 @@ namespace KaskKiosk.AESApplicationServiceRef {
         private int ApprovedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1449,6 +1452,9 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> OpenDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StoreIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1469,6 +1475,19 @@ namespace KaskKiosk.AESApplicationServiceRef {
                 if ((this.ApprovedField.Equals(value) != true)) {
                     this.ApprovedField = value;
                     this.RaisePropertyChanged("Approved");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
                 }
             }
         }
@@ -1521,6 +1540,19 @@ namespace KaskKiosk.AESApplicationServiceRef {
                 if ((this.OpenDateField.Equals(value) != true)) {
                     this.OpenDateField = value;
                     this.RaisePropertyChanged("OpenDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StoreID {
+            get {
+                return this.StoreIDField;
+            }
+            set {
+                if ((this.StoreIDField.Equals(value) != true)) {
+                    this.StoreIDField = value;
+                    this.RaisePropertyChanged("StoreID");
                 }
             }
         }
@@ -1691,6 +1723,99 @@ namespace KaskKiosk.AESApplicationServiceRef {
                 if ((object.ReferenceEquals(this.SkillNameField, value) != true)) {
                     this.SkillNameField = value;
                     this.RaisePropertyChanged("SkillName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StoreDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class StoreDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Manager_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StoreIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Location {
+            get {
+                return this.LocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
+                    this.LocationField = value;
+                    this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Manager_ID {
+            get {
+                return this.Manager_IDField;
+            }
+            set {
+                if ((this.Manager_IDField.Equals(value) != true)) {
+                    this.Manager_IDField = value;
+                    this.RaisePropertyChanged("Manager_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StoreID {
+            get {
+                return this.StoreIDField;
+            }
+            set {
+                if ((this.StoreIDField.Equals(value) != true)) {
+                    this.StoreIDField = value;
+                    this.RaisePropertyChanged("StoreID");
                 }
             }
         }
@@ -2978,6 +3103,114 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<bool> DeleteSkillAsync(int id) {
             return base.Channel.DeleteSkillAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IStoreService")]
+    public interface IStoreService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/GetStoreByID", ReplyAction="http://tempuri.org/IStoreService/GetStoreByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IStoreService/GetStoreByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.StoreDAO GetStoreByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/GetStoreByID", ReplyAction="http://tempuri.org/IStoreService/GetStoreByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.StoreDAO> GetStoreByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/GetStores", ReplyAction="http://tempuri.org/IStoreService/GetStoresResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IStoreService/GetStoresKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.StoreDAO[] GetStores();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/GetStores", ReplyAction="http://tempuri.org/IStoreService/GetStoresResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.StoreDAO[]> GetStoresAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/CreateStore", ReplyAction="http://tempuri.org/IStoreService/CreateStoreResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IStoreService/CreateStoreKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateStore(KaskKiosk.AESApplicationServiceRef.StoreDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/CreateStore", ReplyAction="http://tempuri.org/IStoreService/CreateStoreResponse")]
+        System.Threading.Tasks.Task<bool> CreateStoreAsync(KaskKiosk.AESApplicationServiceRef.StoreDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/UpdateStore", ReplyAction="http://tempuri.org/IStoreService/UpdateStoreResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IStoreService/UpdateStoreKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateStore(KaskKiosk.AESApplicationServiceRef.StoreDAO newEmp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/UpdateStore", ReplyAction="http://tempuri.org/IStoreService/UpdateStoreResponse")]
+        System.Threading.Tasks.Task<bool> UpdateStoreAsync(KaskKiosk.AESApplicationServiceRef.StoreDAO newEmp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/DeleteStore", ReplyAction="http://tempuri.org/IStoreService/DeleteStoreResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IStoreService/DeleteStoreKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteStore(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStoreService/DeleteStore", ReplyAction="http://tempuri.org/IStoreService/DeleteStoreResponse")]
+        System.Threading.Tasks.Task<bool> DeleteStoreAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IStoreServiceChannel : KaskKiosk.AESApplicationServiceRef.IStoreService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class StoreServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IStoreService>, KaskKiosk.AESApplicationServiceRef.IStoreService {
+        
+        public StoreServiceClient() {
+        }
+        
+        public StoreServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public StoreServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public StoreServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public StoreServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.StoreDAO GetStoreByID(int id) {
+            return base.Channel.GetStoreByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.StoreDAO> GetStoreByIDAsync(int id) {
+            return base.Channel.GetStoreByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.StoreDAO[] GetStores() {
+            return base.Channel.GetStores();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.StoreDAO[]> GetStoresAsync() {
+            return base.Channel.GetStoresAsync();
+        }
+        
+        public bool CreateStore(KaskKiosk.AESApplicationServiceRef.StoreDAO e) {
+            return base.Channel.CreateStore(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateStoreAsync(KaskKiosk.AESApplicationServiceRef.StoreDAO e) {
+            return base.Channel.CreateStoreAsync(e);
+        }
+        
+        public bool UpdateStore(KaskKiosk.AESApplicationServiceRef.StoreDAO newEmp) {
+            return base.Channel.UpdateStore(newEmp);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateStoreAsync(KaskKiosk.AESApplicationServiceRef.StoreDAO newEmp) {
+            return base.Channel.UpdateStoreAsync(newEmp);
+        }
+        
+        public bool DeleteStore(int id) {
+            return base.Channel.DeleteStore(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteStoreAsync(int id) {
+            return base.Channel.DeleteStoreAsync(id);
         }
     }
 }

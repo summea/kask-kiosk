@@ -548,6 +548,51 @@
   <wsdl:message name="ISkillService_DeleteSkill_KaskServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q60="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q60:KaskServiceException" />
   </wsdl:message>
+  <wsdl:message name="IStoreService_GetStoreByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStoreByID" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_GetStoreByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStoreByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_GetStoreByID_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q61="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q61:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_GetStores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStores" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_GetStores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_GetStores_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q62="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q62:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_CreateStore_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateStore" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_CreateStore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateStoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_CreateStore_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q63="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q63:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_UpdateStore_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStore" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_UpdateStore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_UpdateStore_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q64="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q64:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_DeleteStore_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStore" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_DeleteStore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStoreService_DeleteStore_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q65="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q65:KaskServiceException" />
+  </wsdl:message>
   <wsdl:portType name="IApplicationService">
     <wsdl:operation name="GetApplicationByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IApplicationService/GetApplicationByID" message="tns:IApplicationService_GetApplicationByID_InputMessage" />
@@ -868,6 +913,33 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISkillService/DeleteSkill" message="tns:ISkillService_DeleteSkill_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISkillService/DeleteSkillResponse" message="tns:ISkillService_DeleteSkill_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ISkillService/DeleteSkillKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:ISkillService_DeleteSkill_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IStoreService">
+    <wsdl:operation name="GetStoreByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStoreService/GetStoreByID" message="tns:IStoreService_GetStoreByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStoreService/GetStoreByIDResponse" message="tns:IStoreService_GetStoreByID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IStoreService/GetStoreByIDKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IStoreService_GetStoreByID_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStoreService/GetStores" message="tns:IStoreService_GetStores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStoreService/GetStoresResponse" message="tns:IStoreService_GetStores_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IStoreService/GetStoresKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IStoreService_GetStores_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateStore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStoreService/CreateStore" message="tns:IStoreService_CreateStore_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStoreService/CreateStoreResponse" message="tns:IStoreService_CreateStore_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IStoreService/CreateStoreKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IStoreService_CreateStore_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStoreService/UpdateStore" message="tns:IStoreService_UpdateStore_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStoreService/UpdateStoreResponse" message="tns:IStoreService_UpdateStore_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IStoreService/UpdateStoreKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IStoreService_UpdateStore_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStoreService/DeleteStore" message="tns:IStoreService_DeleteStore_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStoreService/DeleteStoreResponse" message="tns:IStoreService_DeleteStore_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IStoreService/DeleteStoreKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IStoreService_DeleteStore_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IApplicationService" type="tns:IApplicationService">
@@ -1623,6 +1695,69 @@
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IStoreService" type="tns:IStoreService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetStoreByID">
+      <soap:operation soapAction="http://tempuri.org/IStoreService/GetStoreByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetStores">
+      <soap:operation soapAction="http://tempuri.org/IStoreService/GetStores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateStore">
+      <soap:operation soapAction="http://tempuri.org/IStoreService/CreateStore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStore">
+      <soap:operation soapAction="http://tempuri.org/IStoreService/UpdateStore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStore">
+      <soap:operation soapAction="http://tempuri.org/IStoreService/DeleteStore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="AESApplicationService">
     <wsdl:port name="BasicHttpBinding_IApplicationService" binding="tns:BasicHttpBinding_IApplicationService">
       <soap:address location="http://localhost:1760/AESApplicationService.svc/Application" />
@@ -1656,6 +1791,9 @@
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_ISkillService" binding="tns:BasicHttpBinding_ISkillService">
       <soap:address location="http://localhost:1760/AESApplicationService.svc/Skill" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IStoreService" binding="tns:BasicHttpBinding_IStoreService">
+      <soap:address location="http://localhost:1760/AESApplicationService.svc/Store" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
