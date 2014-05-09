@@ -308,6 +308,12 @@ namespace Kask.Services.DAO
 
         [DataMember]
         public int Approved { get; set; }
+
+        [DataMember]
+        public string Description { get; set; }
+
+        [DataMember]
+        public int StoreID { get; set; }
     }
 
     [DataContract]
@@ -320,7 +326,7 @@ namespace Kask.Services.DAO
         public int JobRequirementID { get; set; }
 
         [DataMember]
-        public int JobID { get; set; }
+        public int JobOpeningID { get; set; }
 
         [DataMember]
         public int SkillID { get; set; }
@@ -356,5 +362,21 @@ namespace Kask.Services.DAO
 
         [DataMember]
         public string SchoolAddress { get; set; }
+    }
+
+    [DataContract]
+    public class StoreDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int StoreID { get; set; }
+
+        [DataMember]
+        public string Location { get; set; }
+
+        [DataMember]
+        public int Manager_ID { get; set; }
     }
 }

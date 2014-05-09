@@ -38,8 +38,25 @@ namespace KaskKiosk.Controllers
         //
         // GET: /JobOpenings/Details/5
 
-        public ActionResult Details(int id)
+        [Authorize(Roles = "Administrator, HiringManager, StoreManager")]
+        public async Task<ActionResult> Details(int id)
         {
+            List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
+            JobOpeningDAO jobOpening = await ServerResponse<JobOpeningDAO>.GetResponseAsync(ServiceURIs.ServiceJobOpeningUri + "/" + id);
+            List<JobRequirementDAO> jobRequirements = await ServerResponse<List<JobRequirementDAO>>.GetResponseAsync(ServiceURIs.ServiceJobRequirementUri);
+            List<SkillDAO> skills = await ServerResponse<List<SkillDAO>>.GetResponseAsync(ServiceURIs.ServiceSkillUri);
+            List<StoreDAO> stores = await ServerResponse<List<StoreDAO>>.GetResponseAsync(ServiceURIs.ServiceStoreUri);
+
+            // TODO: refactor this section so that we only find relevant
+            // job requirements for this job opening...
+            // at the moment, we loop through all job requirements and pick out what we want
+
+            ViewBag.baseURL = Url.Content("~/");
+            ViewBag.jobs = jobs;
+            ViewBag.jobOpening = jobOpening;
+            ViewBag.jobRequirements = jobRequirements;
+            ViewBag.skills = skills;
+            ViewBag.stores = stores;
             return View();
         }
 
@@ -50,8 +67,10 @@ namespace KaskKiosk.Controllers
         {
             List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
             List<SkillDAO> skills = await ServerResponse<List<SkillDAO>>.GetResponseAsync(ServiceURIs.ServiceSkillUri);
+            List<StoreDAO> stores = await ServerResponse<List<StoreDAO>>.GetResponseAsync(ServiceURIs.ServiceStoreUri);
 
             ViewBag.baseURL = Url.Content("~/");
+            ViewBag.stores = stores;
             ViewBag.jobs = jobs;
             ViewBag.skills = skills;
             return View();
@@ -62,7 +81,7 @@ namespace KaskKiosk.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator, HiringManager, StoreManager")]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
@@ -78,22 +97,48 @@ namespace KaskKiosk.Controllers
 
                         // gather JobOpening form data
                         JobOpeningDAO jobOpening = new JobOpeningDAO();
-                        //jobOpening.OpenDate = Convert.ToDateTime(Request.Form["OpenDate"]);
                         jobOpening.OpenDate = DateTime.Now; // note: this could change to the above "OpenDate" line of code in the future...
                         jobOpening.JobID = Convert.ToInt32(Request.Form["JobID"]);
                         jobOpening.Approved = 0;    // "not approved" by default
-
-                        // TODO: save job requirement data
-                        // this will probably involve:
-                        // 1. see which checkboxes are checked
-                        // 2. create new JobRequirement entries and tie those back to this JobOpening
+                        jobOpening.Description = Request.Form["Description"];
+                        jobOpening.StoreID = Convert.ToInt32(Request.Form["StoreID"]);
 
                         // post (save) JobOpening data
                         result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceJobOpeningUri, jobOpening).Result;
                         resultContent = result.Content.ReadAsStringAsync().Result;
+
+                        // save job requirement data
+                        // 1. see which checkboxes are checked
+                        // 2. create new JobRequirement entries and tie those back to this JobOpening
+
+                        // get correct job opening id of the job opening we just saved
+                        var jobOpenings = await ServerResponse<List<JobOpeningDAO>>.GetResponseAsync(ServiceURIs.ServiceJobOpeningUri);
+                        int jobOpeningId = jobOpenings.Last().JobOpeningID;
+
+                        // TODO: change the hardcoded "50" into the length of all available skills
+                        for (int i = 0; i < 50; i++)
+                        {
+                            try
+                            {
+                                if (Request.Form["Skill_" + i] != null)
+                                {
+                                    // NOTE: renamed Job_ID to JobOpening_ID in JobRequirement table?
+                                    // because we aren't really linking these requirements to a "job type" in the Job table
+                                    // we are actually linking these to JobOpenings...
+                                    JobRequirementDAO jobRequirement = new JobRequirementDAO();
+                                    jobRequirement.JobOpeningID = jobOpeningId;
+                                    jobRequirement.SkillID = i;
+
+                                    // post (save) JobRequirement data
+                                    result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceJobRequirementUri, jobRequirement).Result;
+                                    resultContent = result.Content.ReadAsStringAsync().Result;
+                                }
+                            }
+                            catch { }
+                        }
                     }
 
-                    return RedirectToAction("Welcome", "Home");
+                    return RedirectToAction("Backend", "Home");
                 }
                 else
                 {
