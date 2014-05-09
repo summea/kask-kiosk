@@ -79,6 +79,7 @@
     <Compile Include="Interfaces\IEmploymentService.cs" />
     <Compile Include="Interfaces\IExpertiseService.cs" />
     <Compile Include="Interfaces\IJobOpeningService.cs" />
+    <Compile Include="Interfaces\IJobRequirementService.cs" />
     <Compile Include="Interfaces\IJobService.cs" />
     <Compile Include="Interfaces\ISchoolService.cs" />
     <Compile Include="Interfaces\ISkillService.cs" />

@@ -11,7 +11,7 @@ using Kask.DAL.Models;
 namespace Kask.Services
 {
     public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, 
-                                        IJobService, IJobOpeningService, ISchoolService, ISkillService, IExpertiseService
+                                        IJobService, IJobOpeningService, IJobRequirementService, ISchoolService, ISkillService, IExpertiseService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -1612,6 +1612,129 @@ namespace Kask.Services
                 catch (Exception ex)
                 {
                     throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(ex.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public JobRequirementDAO GetJobRequirementByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    JobRequirement jobRequirement = (from jbReqt in db.JobRequirements where jbReqt.JobRequirement_ID == id select jbReqt).FirstOrDefault();
+                    JobRequirementDAO result = new JobRequirementDAO
+                    {
+                        ID = jobRequirement.JobRequirement_ID,
+                        JobRequirementID = jobRequirement.JobRequirement_ID,
+                        JobID = jobRequirement.Job_ID,
+                        SkillID = jobRequirement.Skill_ID,
+                        Notes = jobRequirement.Notes
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<JobRequirementDAO> GetJobRequirements()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<JobRequirement> jobRequirements = db.JobRequirements.ToList();
+                    List<JobRequirementDAO> result = new List<JobRequirementDAO>();
+
+                    foreach (var jobRequirement in jobRequirements)
+                    {
+                        JobRequirementDAO temp = new JobRequirementDAO
+                        {
+                            ID = jobRequirement.JobRequirement_ID,
+                            JobRequirementID = jobRequirement.JobRequirement_ID,
+                            JobID = jobRequirement.Job_ID,
+                            SkillID = jobRequirement.Skill_ID,
+                            Notes = jobRequirement.Notes
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateJobRequirement(JobRequirementDAO jbReqt)
+        {
+            JobRequirement jobRequirement = new JobRequirement
+            {
+                Job_ID = jbReqt.JobID,
+                Skill_ID = jbReqt.SkillID,
+                Notes = jbReqt.Notes
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.JobRequirements.InsertOnSubmit(jobRequirement);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateJobRequirement(JobRequirementDAO newJb)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                JobRequirement jobRequirement = db.JobRequirements.Single(jbReqt => jbReqt.JobRequirement_ID == newJb.JobRequirementID);
+                jobRequirement.Job_ID = newJb.JobID;
+                jobRequirement.Skill_ID = newJb.SkillID;
+                jobRequirement.Notes = newJb.Notes;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteJobRequirement(int ID)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                JobRequirement jobRequirement = db.JobRequirements.Single(jbReqt => jbReqt.JobRequirement_ID == ID);
+                db.JobRequirements.DeleteOnSubmit(jobRequirement);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
                 }
             }
 

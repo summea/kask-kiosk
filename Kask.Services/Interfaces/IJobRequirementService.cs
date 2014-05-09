@@ -11,26 +11,26 @@ using System.Threading.Tasks;
 namespace Kask.Services.Interfaces
 {
     [ServiceContract]
-    public interface ISkillService
+    public interface IJobRequirementService
     {
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        SkillDAO GetSkillByID(int id);
+        JobRequirementDAO GetJobRequirementByID(int id);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        IList<SkillDAO> GetSkills();
+        IList<JobRequirementDAO> GetJobRequirements();
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool CreateSkill(SkillDAO e);
+        bool CreateJobRequirement(JobRequirementDAO e);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool UpdateSkill(SkillDAO newSkill);
+        bool UpdateJobRequirement(JobRequirementDAO newJobRequirement);
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
-        bool DeleteSkill(int id);
+        bool DeleteJobRequirement(int id);
     }
 }

@@ -317,6 +317,9 @@ namespace Kask.Services.DAO
         public int ID { get; set; }
 
         [DataMember]
+        public int JobRequirementID { get; set; }
+
+        [DataMember]
         public int JobID { get; set; }
 
         [DataMember]
