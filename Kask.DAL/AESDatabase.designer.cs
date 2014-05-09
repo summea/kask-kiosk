@@ -57,9 +57,6 @@ namespace Kask.DAL.Models
     partial void InsertExpertise(Expertise instance);
     partial void UpdateExpertise(Expertise instance);
     partial void DeleteExpertise(Expertise instance);
-    partial void InsertJobRequirement(JobRequirement instance);
-    partial void UpdateJobRequirement(JobRequirement instance);
-    partial void DeleteJobRequirement(JobRequirement instance);
     partial void InsertReference(Reference instance);
     partial void UpdateReference(Reference instance);
     partial void DeleteReference(Reference instance);
@@ -69,9 +66,6 @@ namespace Kask.DAL.Models
     partial void InsertSkill(Skill instance);
     partial void UpdateSkill(Skill instance);
     partial void DeleteSkill(Skill instance);
-    partial void InsertStore(Store instance);
-    partial void UpdateStore(Store instance);
-    partial void DeleteStore(Store instance);
     partial void InsertStoreManager(StoreManager instance);
     partial void UpdateStoreManager(StoreManager instance);
     partial void DeleteStoreManager(StoreManager instance);
@@ -90,9 +84,15 @@ namespace Kask.DAL.Models
     partial void InsertJob(Job instance);
     partial void UpdateJob(Job instance);
     partial void DeleteJob(Job instance);
+    partial void InsertJobRequirement(JobRequirement instance);
+    partial void UpdateJobRequirement(JobRequirement instance);
+    partial void DeleteJobRequirement(JobRequirement instance);
     partial void InsertJobOpening(JobOpening instance);
     partial void UpdateJobOpening(JobOpening instance);
     partial void DeleteJobOpening(JobOpening instance);
+    partial void InsertStore(Store instance);
+    partial void UpdateStore(Store instance);
+    partial void DeleteStore(Store instance);
     #endregion
 		
 		public AESDatabaseDataContext() : 
@@ -197,14 +197,6 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<JobRequirement> JobRequirements
-		{
-			get
-			{
-				return this.GetTable<JobRequirement>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Reference> References
 		{
 			get
@@ -226,14 +218,6 @@ namespace Kask.DAL.Models
 			get
 			{
 				return this.GetTable<Skill>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Store> Stores
-		{
-			get
-			{
-				return this.GetTable<Store>();
 			}
 		}
 		
@@ -285,11 +269,27 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<JobRequirement> JobRequirements
+		{
+			get
+			{
+				return this.GetTable<JobRequirement>();
+			}
+		}
+		
 		public System.Data.Linq.Table<JobOpening> JobOpenings
 		{
 			get
 			{
 				return this.GetTable<JobOpening>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Store> Stores
+		{
+			get
+			{
+				return this.GetTable<Store>();
 			}
 		}
 	}
@@ -3021,222 +3021,6 @@ namespace Kask.DAL.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.JobRequirement")]
-	public partial class JobRequirement : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _JobRequirement_ID;
-		
-		private int _Job_ID;
-		
-		private int _Skill_ID;
-		
-		private string _Notes;
-		
-		private EntityRef<Skill> _Skill;
-		
-		private EntityRef<Job> _Job;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnJobRequirement_IDChanging(int value);
-    partial void OnJobRequirement_IDChanged();
-    partial void OnJob_IDChanging(int value);
-    partial void OnJob_IDChanged();
-    partial void OnSkill_IDChanging(int value);
-    partial void OnSkill_IDChanged();
-    partial void OnNotesChanging(string value);
-    partial void OnNotesChanged();
-    #endregion
-		
-		public JobRequirement()
-		{
-			this._Skill = default(EntityRef<Skill>);
-			this._Job = default(EntityRef<Job>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobRequirement_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int JobRequirement_ID
-		{
-			get
-			{
-				return this._JobRequirement_ID;
-			}
-			set
-			{
-				if ((this._JobRequirement_ID != value))
-				{
-					this.OnJobRequirement_IDChanging(value);
-					this.SendPropertyChanging();
-					this._JobRequirement_ID = value;
-					this.SendPropertyChanged("JobRequirement_ID");
-					this.OnJobRequirement_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Job_ID", DbType="Int NOT NULL")]
-		public int Job_ID
-		{
-			get
-			{
-				return this._Job_ID;
-			}
-			set
-			{
-				if ((this._Job_ID != value))
-				{
-					if (this._Job.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnJob_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Job_ID = value;
-					this.SendPropertyChanged("Job_ID");
-					this.OnJob_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skill_ID", DbType="Int NOT NULL")]
-		public int Skill_ID
-		{
-			get
-			{
-				return this._Skill_ID;
-			}
-			set
-			{
-				if ((this._Skill_ID != value))
-				{
-					if (this._Skill.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSkill_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Skill_ID = value;
-					this.SendPropertyChanged("Skill_ID");
-					this.OnSkill_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(20)")]
-		public string Notes
-		{
-			get
-			{
-				return this._Notes;
-			}
-			set
-			{
-				if ((this._Notes != value))
-				{
-					this.OnNotesChanging(value);
-					this.SendPropertyChanging();
-					this._Notes = value;
-					this.SendPropertyChanged("Notes");
-					this.OnNotesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Skill_JobRequirement", Storage="_Skill", ThisKey="Skill_ID", OtherKey="Skill_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Skill Skill
-		{
-			get
-			{
-				return this._Skill.Entity;
-			}
-			set
-			{
-				Skill previousValue = this._Skill.Entity;
-				if (((previousValue != value) 
-							|| (this._Skill.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Skill.Entity = null;
-						previousValue.JobRequirements.Remove(this);
-					}
-					this._Skill.Entity = value;
-					if ((value != null))
-					{
-						value.JobRequirements.Add(this);
-						this._Skill_ID = value.Skill_ID;
-					}
-					else
-					{
-						this._Skill_ID = default(int);
-					}
-					this.SendPropertyChanged("Skill");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_JobRequirement", Storage="_Job", ThisKey="Job_ID", OtherKey="Job_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Job Job
-		{
-			get
-			{
-				return this._Job.Entity;
-			}
-			set
-			{
-				Job previousValue = this._Job.Entity;
-				if (((previousValue != value) 
-							|| (this._Job.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Job.Entity = null;
-						previousValue.JobRequirements.Remove(this);
-					}
-					this._Job.Entity = value;
-					if ((value != null))
-					{
-						value.JobRequirements.Add(this);
-						this._Job_ID = value.Job_ID;
-					}
-					else
-					{
-						this._Job_ID = default(int);
-					}
-					this.SendPropertyChanged("Job");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Reference")]
 	public partial class Reference : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3628,222 +3412,6 @@ namespace Kask.DAL.Models
 		{
 			this.SendPropertyChanging();
 			entity.Skill = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Store")]
-	public partial class Store : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Store_ID;
-		
-		private string _Location;
-		
-		private int _Manager_ID;
-		
-		private int _JobOpening_ID;
-		
-		private EntityRef<StoreManager> _StoreManager;
-		
-		private EntityRef<JobOpening> _JobOpening;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnStore_IDChanging(int value);
-    partial void OnStore_IDChanged();
-    partial void OnLocationChanging(string value);
-    partial void OnLocationChanged();
-    partial void OnManager_IDChanging(int value);
-    partial void OnManager_IDChanged();
-    partial void OnJobOpening_IDChanging(int value);
-    partial void OnJobOpening_IDChanged();
-    #endregion
-		
-		public Store()
-		{
-			this._StoreManager = default(EntityRef<StoreManager>);
-			this._JobOpening = default(EntityRef<JobOpening>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Store_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Store_ID
-		{
-			get
-			{
-				return this._Store_ID;
-			}
-			set
-			{
-				if ((this._Store_ID != value))
-				{
-					this.OnStore_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Store_ID = value;
-					this.SendPropertyChanged("Store_ID");
-					this.OnStore_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="VarChar(50)")]
-		public string Location
-		{
-			get
-			{
-				return this._Location;
-			}
-			set
-			{
-				if ((this._Location != value))
-				{
-					this.OnLocationChanging(value);
-					this.SendPropertyChanging();
-					this._Location = value;
-					this.SendPropertyChanged("Location");
-					this.OnLocationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Manager_ID", DbType="Int NOT NULL")]
-		public int Manager_ID
-		{
-			get
-			{
-				return this._Manager_ID;
-			}
-			set
-			{
-				if ((this._Manager_ID != value))
-				{
-					if (this._StoreManager.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnManager_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Manager_ID = value;
-					this.SendPropertyChanged("Manager_ID");
-					this.OnManager_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobOpening_ID", DbType="Int NOT NULL")]
-		public int JobOpening_ID
-		{
-			get
-			{
-				return this._JobOpening_ID;
-			}
-			set
-			{
-				if ((this._JobOpening_ID != value))
-				{
-					if (this._JobOpening.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnJobOpening_IDChanging(value);
-					this.SendPropertyChanging();
-					this._JobOpening_ID = value;
-					this.SendPropertyChanged("JobOpening_ID");
-					this.OnJobOpening_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="StoreManager_Store", Storage="_StoreManager", ThisKey="Manager_ID", OtherKey="StoreManager_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public StoreManager StoreManager
-		{
-			get
-			{
-				return this._StoreManager.Entity;
-			}
-			set
-			{
-				StoreManager previousValue = this._StoreManager.Entity;
-				if (((previousValue != value) 
-							|| (this._StoreManager.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._StoreManager.Entity = null;
-						previousValue.Stores.Remove(this);
-					}
-					this._StoreManager.Entity = value;
-					if ((value != null))
-					{
-						value.Stores.Add(this);
-						this._Manager_ID = value.StoreManager_ID;
-					}
-					else
-					{
-						this._Manager_ID = default(int);
-					}
-					this.SendPropertyChanged("StoreManager");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_Store", Storage="_JobOpening", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID", IsForeignKey=true)]
-		public JobOpening JobOpening
-		{
-			get
-			{
-				return this._JobOpening.Entity;
-			}
-			set
-			{
-				JobOpening previousValue = this._JobOpening.Entity;
-				if (((previousValue != value) 
-							|| (this._JobOpening.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._JobOpening.Entity = null;
-						previousValue.Stores.Remove(this);
-					}
-					this._JobOpening.Entity = value;
-					if ((value != null))
-					{
-						value.Stores.Add(this);
-						this._JobOpening_ID = value.JobOpening_ID;
-					}
-					else
-					{
-						this._JobOpening_ID = default(int);
-					}
-					this.SendPropertyChanged("JobOpening");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -4685,8 +4253,6 @@ namespace Kask.DAL.Models
 		
 		private EntitySet<Applied> _Applieds;
 		
-		private EntitySet<JobRequirement> _JobRequirements;
-		
 		private EntitySet<JobOpening> _JobOpenings;
 		
     #region Extensibility Method Definitions
@@ -4702,7 +4268,6 @@ namespace Kask.DAL.Models
 		public Job()
 		{
 			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
-			this._JobRequirements = new EntitySet<JobRequirement>(new Action<JobRequirement>(this.attach_JobRequirements), new Action<JobRequirement>(this.detach_JobRequirements));
 			this._JobOpenings = new EntitySet<JobOpening>(new Action<JobOpening>(this.attach_JobOpenings), new Action<JobOpening>(this.detach_JobOpenings));
 			OnCreated();
 		}
@@ -4760,19 +4325,6 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_JobRequirement", Storage="_JobRequirements", ThisKey="Job_ID", OtherKey="Job_ID")]
-		public EntitySet<JobRequirement> JobRequirements
-		{
-			get
-			{
-				return this._JobRequirements;
-			}
-			set
-			{
-				this._JobRequirements.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_JobOpening", Storage="_JobOpenings", ThisKey="Job_ID", OtherKey="Job_ID")]
 		public EntitySet<JobOpening> JobOpenings
 		{
@@ -4818,18 +4370,6 @@ namespace Kask.DAL.Models
 			entity.Job = null;
 		}
 		
-		private void attach_JobRequirements(JobRequirement entity)
-		{
-			this.SendPropertyChanging();
-			entity.Job = this;
-		}
-		
-		private void detach_JobRequirements(JobRequirement entity)
-		{
-			this.SendPropertyChanging();
-			entity.Job = null;
-		}
-		
 		private void attach_JobOpenings(JobOpening entity)
 		{
 			this.SendPropertyChanging();
@@ -4840,6 +4380,222 @@ namespace Kask.DAL.Models
 		{
 			this.SendPropertyChanging();
 			entity.Job = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.JobRequirement")]
+	public partial class JobRequirement : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _JobRequirement_ID;
+		
+		private int _JobOpening_ID;
+		
+		private int _Skill_ID;
+		
+		private string _Notes;
+		
+		private EntityRef<Skill> _Skill;
+		
+		private EntityRef<JobOpening> _JobOpening;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnJobRequirement_IDChanging(int value);
+    partial void OnJobRequirement_IDChanged();
+    partial void OnJobOpening_IDChanging(int value);
+    partial void OnJobOpening_IDChanged();
+    partial void OnSkill_IDChanging(int value);
+    partial void OnSkill_IDChanged();
+    partial void OnNotesChanging(string value);
+    partial void OnNotesChanged();
+    #endregion
+		
+		public JobRequirement()
+		{
+			this._Skill = default(EntityRef<Skill>);
+			this._JobOpening = default(EntityRef<JobOpening>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobRequirement_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int JobRequirement_ID
+		{
+			get
+			{
+				return this._JobRequirement_ID;
+			}
+			set
+			{
+				if ((this._JobRequirement_ID != value))
+				{
+					this.OnJobRequirement_IDChanging(value);
+					this.SendPropertyChanging();
+					this._JobRequirement_ID = value;
+					this.SendPropertyChanged("JobRequirement_ID");
+					this.OnJobRequirement_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobOpening_ID", DbType="Int NOT NULL")]
+		public int JobOpening_ID
+		{
+			get
+			{
+				return this._JobOpening_ID;
+			}
+			set
+			{
+				if ((this._JobOpening_ID != value))
+				{
+					if (this._JobOpening.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnJobOpening_IDChanging(value);
+					this.SendPropertyChanging();
+					this._JobOpening_ID = value;
+					this.SendPropertyChanged("JobOpening_ID");
+					this.OnJobOpening_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skill_ID", DbType="Int NOT NULL")]
+		public int Skill_ID
+		{
+			get
+			{
+				return this._Skill_ID;
+			}
+			set
+			{
+				if ((this._Skill_ID != value))
+				{
+					if (this._Skill.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSkill_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Skill_ID = value;
+					this.SendPropertyChanged("Skill_ID");
+					this.OnSkill_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(20)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this.OnNotesChanging(value);
+					this.SendPropertyChanging();
+					this._Notes = value;
+					this.SendPropertyChanged("Notes");
+					this.OnNotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Skill_JobRequirement", Storage="_Skill", ThisKey="Skill_ID", OtherKey="Skill_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Skill Skill
+		{
+			get
+			{
+				return this._Skill.Entity;
+			}
+			set
+			{
+				Skill previousValue = this._Skill.Entity;
+				if (((previousValue != value) 
+							|| (this._Skill.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Skill.Entity = null;
+						previousValue.JobRequirements.Remove(this);
+					}
+					this._Skill.Entity = value;
+					if ((value != null))
+					{
+						value.JobRequirements.Add(this);
+						this._Skill_ID = value.Skill_ID;
+					}
+					else
+					{
+						this._Skill_ID = default(int);
+					}
+					this.SendPropertyChanged("Skill");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_JobRequirement", Storage="_JobOpening", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public JobOpening JobOpening
+		{
+			get
+			{
+				return this._JobOpening.Entity;
+			}
+			set
+			{
+				JobOpening previousValue = this._JobOpening.Entity;
+				if (((previousValue != value) 
+							|| (this._JobOpening.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._JobOpening.Entity = null;
+						previousValue.JobRequirements.Remove(this);
+					}
+					this._JobOpening.Entity = value;
+					if ((value != null))
+					{
+						value.JobRequirements.Add(this);
+						this._JobOpening_ID = value.JobOpening_ID;
+					}
+					else
+					{
+						this._JobOpening_ID = default(int);
+					}
+					this.SendPropertyChanged("JobOpening");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -4857,9 +4613,15 @@ namespace Kask.DAL.Models
 		
 		private System.Nullable<byte> _Approved;
 		
-		private EntitySet<Store> _Stores;
+		private string _Description;
+		
+		private int _Store_ID;
+		
+		private EntitySet<JobRequirement> _JobRequirements;
 		
 		private EntityRef<Job> _Job;
+		
+		private EntityRef<Store> _Store;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4873,12 +4635,17 @@ namespace Kask.DAL.Models
     partial void OnJob_IDChanged();
     partial void OnApprovedChanging(System.Nullable<byte> value);
     partial void OnApprovedChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnStore_IDChanging(int value);
+    partial void OnStore_IDChanged();
     #endregion
 		
 		public JobOpening()
 		{
-			this._Stores = new EntitySet<Store>(new Action<Store>(this.attach_Stores), new Action<Store>(this.detach_Stores));
+			this._JobRequirements = new EntitySet<JobRequirement>(new Action<JobRequirement>(this.attach_JobRequirements), new Action<JobRequirement>(this.detach_JobRequirements));
 			this._Job = default(EntityRef<Job>);
+			this._Store = default(EntityRef<Store>);
 			OnCreated();
 		}
 		
@@ -4966,20 +4733,64 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_Store", Storage="_Stores", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID")]
-		public EntitySet<Store> Stores
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Description
 		{
 			get
 			{
-				return this._Stores;
+				return this._Description;
 			}
 			set
 			{
-				this._Stores.Assign(value);
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_JobOpening", Storage="_Job", ThisKey="Job_ID", OtherKey="Job_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Store_ID", DbType="Int NOT NULL")]
+		public int Store_ID
+		{
+			get
+			{
+				return this._Store_ID;
+			}
+			set
+			{
+				if ((this._Store_ID != value))
+				{
+					if (this._Store.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnStore_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Store_ID = value;
+					this.SendPropertyChanged("Store_ID");
+					this.OnStore_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_JobRequirement", Storage="_JobRequirements", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID")]
+		public EntitySet<JobRequirement> JobRequirements
+		{
+			get
+			{
+				return this._JobRequirements;
+			}
+			set
+			{
+				this._JobRequirements.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_JobOpening", Storage="_Job", ThisKey="Job_ID", OtherKey="Job_ID", IsForeignKey=true)]
 		public Job Job
 		{
 			get
@@ -5013,6 +4824,40 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Store_JobOpening", Storage="_Store", ThisKey="Store_ID", OtherKey="Store_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Store Store
+		{
+			get
+			{
+				return this._Store.Entity;
+			}
+			set
+			{
+				Store previousValue = this._Store.Entity;
+				if (((previousValue != value) 
+							|| (this._Store.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Store.Entity = null;
+						previousValue.JobOpenings.Remove(this);
+					}
+					this._Store.Entity = value;
+					if ((value != null))
+					{
+						value.JobOpenings.Add(this);
+						this._Store_ID = value.Store_ID;
+					}
+					else
+					{
+						this._Store_ID = default(int);
+					}
+					this.SendPropertyChanged("Store");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5033,16 +4878,195 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		private void attach_Stores(Store entity)
+		private void attach_JobRequirements(JobRequirement entity)
 		{
 			this.SendPropertyChanging();
 			entity.JobOpening = this;
 		}
 		
-		private void detach_Stores(Store entity)
+		private void detach_JobRequirements(JobRequirement entity)
 		{
 			this.SendPropertyChanging();
 			entity.JobOpening = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Store")]
+	public partial class Store : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Store_ID;
+		
+		private string _Location;
+		
+		private int _Manager_ID;
+		
+		private EntitySet<JobOpening> _JobOpenings;
+		
+		private EntityRef<StoreManager> _StoreManager;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStore_IDChanging(int value);
+    partial void OnStore_IDChanged();
+    partial void OnLocationChanging(string value);
+    partial void OnLocationChanged();
+    partial void OnManager_IDChanging(int value);
+    partial void OnManager_IDChanged();
+    #endregion
+		
+		public Store()
+		{
+			this._JobOpenings = new EntitySet<JobOpening>(new Action<JobOpening>(this.attach_JobOpenings), new Action<JobOpening>(this.detach_JobOpenings));
+			this._StoreManager = default(EntityRef<StoreManager>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Store_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Store_ID
+		{
+			get
+			{
+				return this._Store_ID;
+			}
+			set
+			{
+				if ((this._Store_ID != value))
+				{
+					this.OnStore_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Store_ID = value;
+					this.SendPropertyChanged("Store_ID");
+					this.OnStore_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="VarChar(50)")]
+		public string Location
+		{
+			get
+			{
+				return this._Location;
+			}
+			set
+			{
+				if ((this._Location != value))
+				{
+					this.OnLocationChanging(value);
+					this.SendPropertyChanging();
+					this._Location = value;
+					this.SendPropertyChanged("Location");
+					this.OnLocationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Manager_ID", DbType="Int NOT NULL")]
+		public int Manager_ID
+		{
+			get
+			{
+				return this._Manager_ID;
+			}
+			set
+			{
+				if ((this._Manager_ID != value))
+				{
+					if (this._StoreManager.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnManager_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Manager_ID = value;
+					this.SendPropertyChanged("Manager_ID");
+					this.OnManager_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Store_JobOpening", Storage="_JobOpenings", ThisKey="Store_ID", OtherKey="Store_ID")]
+		public EntitySet<JobOpening> JobOpenings
+		{
+			get
+			{
+				return this._JobOpenings;
+			}
+			set
+			{
+				this._JobOpenings.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="StoreManager_Store", Storage="_StoreManager", ThisKey="Manager_ID", OtherKey="StoreManager_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public StoreManager StoreManager
+		{
+			get
+			{
+				return this._StoreManager.Entity;
+			}
+			set
+			{
+				StoreManager previousValue = this._StoreManager.Entity;
+				if (((previousValue != value) 
+							|| (this._StoreManager.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._StoreManager.Entity = null;
+						previousValue.Stores.Remove(this);
+					}
+					this._StoreManager.Entity = value;
+					if ((value != null))
+					{
+						value.Stores.Add(this);
+						this._Manager_ID = value.StoreManager_ID;
+					}
+					else
+					{
+						this._Manager_ID = default(int);
+					}
+					this.SendPropertyChanged("StoreManager");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_JobOpenings(JobOpening entity)
+		{
+			this.SendPropertyChanging();
+			entity.Store = this;
+		}
+		
+		private void detach_JobOpenings(JobOpening entity)
+		{
+			this.SendPropertyChanging();
+			entity.Store = null;
 		}
 	}
 }

@@ -148,7 +148,7 @@
   <xs:complexType name="JobRequirementDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:int" />
-      <xs:element minOccurs="0" name="JobID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobOpeningID" type="xs:int" />
       <xs:element minOccurs="0" name="JobRequirementID" type="xs:int" />
       <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SkillID" type="xs:int" />
@@ -164,10 +164,12 @@
   <xs:complexType name="JobOpeningDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Approved" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="JobID" type="xs:int" />
       <xs:element minOccurs="0" name="JobOpeningID" type="xs:int" />
       <xs:element minOccurs="0" name="OpenDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StoreID" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="JobOpeningDAO" nillable="true" type="tns:JobOpeningDAO" />
@@ -206,4 +208,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSkillDAO" nillable="true" type="tns:ArrayOfSkillDAO" />
+  <xs:complexType name="StoreDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Manager_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="StoreID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StoreDAO" nillable="true" type="tns:StoreDAO" />
+  <xs:complexType name="ArrayOfStoreDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StoreDAO" nillable="true" type="tns:StoreDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStoreDAO" nillable="true" type="tns:ArrayOfStoreDAO" />
 </xs:schema>

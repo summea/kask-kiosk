@@ -10,8 +10,8 @@ using Kask.DAL.Models;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, 
-                                        IJobService, IJobOpeningService, IJobRequirementService, ISchoolService, ISkillService, IExpertiseService
+    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, IExpertiseService,
+                                        IJobService, IJobOpeningService, IJobRequirementService, ISchoolService, ISkillService, IStoreService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -1247,8 +1247,9 @@ namespace Kask.Services
                         JobOpeningID = jobOpening.JobOpening_ID,
                         OpenDate = jobOpening.OpenDate,
                         JobID = jobOpening.Job_ID,
-                        Approved = (byte)jobOpening.Approved
-
+                        Approved = (byte)jobOpening.Approved,
+                        Description = jobOpening.Description,
+                        StoreID = jobOpening.Store_ID
                     };
                     return (result != null ? result : null);
                 }
@@ -1263,13 +1264,13 @@ namespace Kask.Services
         {
             try 
             {
-
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    IList<Store> stores = (from store in db.Stores where store.Store_ID == storeID select store).ToList();
+                    //IList<Store> stores = (from store in db.Stores where store.Store_ID == storeID select store).ToList();
+                    IList<JobOpening> jobOpenings = (from jobOpening in db.JobOpenings where jobOpening.Store_ID == storeID select jobOpening).ToList();
                     List<JobOpeningDAO> result = new List<JobOpeningDAO>();
 
-                    foreach (var str in stores)
+                    foreach (var str in jobOpenings)
                     {
                         result.Add(GetJobOpeningByID(str.JobOpening_ID));
                     }
@@ -1300,7 +1301,9 @@ namespace Kask.Services
                             JobOpeningID = jobOpening.JobOpening_ID,
                             OpenDate = jobOpening.OpenDate,
                             JobID = jobOpening.Job_ID,
-                            Approved = (byte)jobOpening.Approved
+                            Approved = (byte)jobOpening.Approved,
+                            Description = jobOpening.Description,
+                            StoreID = jobOpening.Store_ID
                         };
 
                         result.Add(temp);
@@ -1322,7 +1325,9 @@ namespace Kask.Services
                 JobOpening_ID = jbOp.JobOpeningID,
                 OpenDate = (DateTime)jbOp.OpenDate,
                 Job_ID = jbOp.JobID,
-                Approved = (byte)jbOp.Approved
+                Approved = (byte)jbOp.Approved,
+                Description = jbOp.Description,
+                Store_ID = jbOp.StoreID
             };
 
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
@@ -1358,6 +1363,11 @@ namespace Kask.Services
 
                 if (newJbOp.Approved == 0 || newJbOp.Approved == 1)
                     jobOpening.Approved = (byte)newJbOp.Approved;
+
+                jobOpening.Description = newJbOp.Description;
+
+                if (newJbOp.StoreID > 0)
+                    jobOpening.Store_ID = newJbOp.StoreID;
 
                 try
                 {
@@ -1629,7 +1639,7 @@ namespace Kask.Services
                     {
                         ID = jobRequirement.JobRequirement_ID,
                         JobRequirementID = jobRequirement.JobRequirement_ID,
-                        JobID = jobRequirement.Job_ID,
+                        JobOpeningID = jobRequirement.JobOpening_ID,
                         SkillID = jobRequirement.Skill_ID,
                         Notes = jobRequirement.Notes
                     };
@@ -1657,7 +1667,7 @@ namespace Kask.Services
                         {
                             ID = jobRequirement.JobRequirement_ID,
                             JobRequirementID = jobRequirement.JobRequirement_ID,
-                            JobID = jobRequirement.Job_ID,
+                            JobOpeningID = jobRequirement.JobOpening_ID,
                             SkillID = jobRequirement.Skill_ID,
                             Notes = jobRequirement.Notes
                         };
@@ -1678,7 +1688,7 @@ namespace Kask.Services
         {
             JobRequirement jobRequirement = new JobRequirement
             {
-                Job_ID = jbReqt.JobID,
+                JobOpening_ID = jbReqt.JobOpeningID,
                 Skill_ID = jbReqt.SkillID,
                 Notes = jbReqt.Notes
             };
@@ -1704,7 +1714,7 @@ namespace Kask.Services
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
             {
                 JobRequirement jobRequirement = db.JobRequirements.Single(jbReqt => jbReqt.JobRequirement_ID == newJb.JobRequirementID);
-                jobRequirement.Job_ID = newJb.JobID;
+                jobRequirement.JobOpening_ID = newJb.JobOpeningID;
                 jobRequirement.Skill_ID = newJb.SkillID;
                 jobRequirement.Notes = newJb.Notes;
 
@@ -1727,6 +1737,127 @@ namespace Kask.Services
             {
                 JobRequirement jobRequirement = db.JobRequirements.Single(jbReqt => jbReqt.JobRequirement_ID == ID);
                 db.JobRequirements.DeleteOnSubmit(jobRequirement);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public StoreDAO GetStoreByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Store store = (from st in db.Stores where st.Store_ID == id select st).FirstOrDefault();
+                    StoreDAO result = new StoreDAO
+                    {
+                        ID = store.Store_ID,
+                        StoreID = store.Store_ID,
+                        Location = store.Location,
+                        Manager_ID = store.Manager_ID
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<StoreDAO> GetStores()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Store> stores = db.Stores.ToList();
+                    List<StoreDAO> result = new List<StoreDAO>();
+
+                    foreach (var store in stores)
+                    {
+                        StoreDAO temp = new StoreDAO
+                        {
+                            ID = store.Store_ID,
+                            StoreID = store.Store_ID,
+                            Location = store.Location,
+                            Manager_ID = store.Manager_ID
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateStore(StoreDAO s)
+        {
+            Store store = new Store
+            {
+                Store_ID = s.StoreID,
+                Location = s.Location,
+                Manager_ID = s.Manager_ID
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Stores.InsertOnSubmit(store);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateStore(StoreDAO newStore)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Store store = db.Stores.Single(s => s.Store_ID == newStore.StoreID);
+                store.Location = newStore.Location;
+                store.Manager_ID = newStore.Manager_ID;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteStore(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Store store = db.Stores.Single(st => st.Store_ID == id);
+                db.Stores.DeleteOnSubmit(store);
 
                 try
                 {

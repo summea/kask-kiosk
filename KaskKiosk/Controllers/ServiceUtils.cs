@@ -7,16 +7,18 @@ namespace KaskKiosk.Controllers
 {
     public class ServiceURIs
     {
-        public static readonly string ServiceApplicantUri   =   "http://localhost:51309/api/Applicant";
-        public static readonly string ServiceApplicationUri =   "http://localhost:51309/api/Application";
-        public static readonly string ServiceAppliedUri     =   "http://localhost:51309/api/Applied";
-        public static readonly string ServiceEducationUri   =   "http://localhost:51309/api/Education";
-        public static readonly string ServiceEmployerUri    =   "http://localhost:51309/api/Employer";
-        public static readonly string ServiceEmploymentUri  =   "http://localhost:51309/api/Employment";
-        public static readonly string ServiceJobOpeningUri  =   "http://localhost:51309/api/JobOpening";
-        public static readonly string ServiceJobUri         =   "http://localhost:51309/api/Job";
-        public static readonly string ServiceSchoolUri      =   "http://localhost:51309/api/School";
-        public static readonly string ServiceSkillUri       =   "http://localhost:51309/api/Skill";
+        public static readonly string ServiceApplicantUri       =   "http://localhost:51309/api/Applicant";
+        public static readonly string ServiceApplicationUri     =   "http://localhost:51309/api/Application";
+        public static readonly string ServiceAppliedUri         =   "http://localhost:51309/api/Applied";
+        public static readonly string ServiceEducationUri       =   "http://localhost:51309/api/Education";
+        public static readonly string ServiceEmployerUri        =   "http://localhost:51309/api/Employer";
+        public static readonly string ServiceEmploymentUri      =   "http://localhost:51309/api/Employment";
+        public static readonly string ServiceJobOpeningUri      =   "http://localhost:51309/api/JobOpening";
+        public static readonly string ServiceJobRequirementUri  =   "http://localhost:51309/api/JobRequirement";
+        public static readonly string ServiceJobUri             =   "http://localhost:51309/api/Job";
+        public static readonly string ServiceSchoolUri          =   "http://localhost:51309/api/School";
+        public static readonly string ServiceSkillUri           =   "http://localhost:51309/api/Skill";
+        public static readonly string ServiceStoreUri           =   "http://localhost:51309/api/Store";
     }
 
     public class ServerResponse<T> where T : class
