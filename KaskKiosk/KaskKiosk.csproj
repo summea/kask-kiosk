@@ -152,7 +152,9 @@
     <Compile Include="Controllers\API\EmploymentController.cs" />
     <Compile Include="Controllers\API\JobController.cs" />
     <Compile Include="Controllers\API\JobOpeningController.cs" />
+    <Compile Include="Controllers\API\JobRequirementController.cs" />
     <Compile Include="Controllers\API\SchoolController.cs" />
+    <Compile Include="Controllers\API\SkillController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOpeningsController.cs" />
@@ -233,7 +235,13 @@
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.JobOpeningDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.JobRequirementDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SchoolDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SkillDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">
@@ -275,6 +283,13 @@
     <Content Include="Views\Home\Backend.cshtml" />
     <Content Include="Views\Shared\_BackendLayout.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\JobOpenings\Index.cshtml" />
+    <Content Include="Views\JobOpenings\Create.cshtml" />
+    <Content Include="Views\JobOpenings\Approve.cshtml" />
+    <Content Include="Views\JobOpenings\Reject.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\App\Approve.cshtml" />
+    <Content Include="Views\App\Reject.cshtml" />
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -287,13 +302,6 @@
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\JobOpenings\Index.cshtml" />
-    <Content Include="Views\JobOpenings\Create.cshtml" />
-    <Content Include="Views\JobOpenings\Approve.cshtml" />
-    <Content Include="Views\JobOpenings\Reject.cshtml" />
-    <Content Include="Views\Jobs\Create.cshtml" />
-    <Content Include="Views\App\Approve.cshtml" />
-    <Content Include="Views\App\Reject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

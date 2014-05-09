@@ -145,6 +145,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfJobDAO" nillable="true" type="tns:ArrayOfJobDAO" />
+  <xs:complexType name="JobRequirementDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobRequirementID" type="xs:int" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkillID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobRequirementDAO" nillable="true" type="tns:JobRequirementDAO" />
+  <xs:complexType name="ArrayOfJobRequirementDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JobRequirementDAO" nillable="true" type="tns:JobRequirementDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJobRequirementDAO" nillable="true" type="tns:ArrayOfJobRequirementDAO" />
   <xs:complexType name="JobOpeningDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Approved" type="xs:int" />
@@ -176,4 +192,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSchoolDAO" nillable="true" type="tns:ArrayOfSchoolDAO" />
+  <xs:complexType name="SkillDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SkillID" type="xs:int" />
+      <xs:element minOccurs="0" name="SkillName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SkillDAO" nillable="true" type="tns:SkillDAO" />
+  <xs:complexType name="ArrayOfSkillDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SkillDAO" nillable="true" type="tns:SkillDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSkillDAO" nillable="true" type="tns:ArrayOfSkillDAO" />
 </xs:schema>

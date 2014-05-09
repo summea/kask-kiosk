@@ -125,6 +125,15 @@
   <wsdl:message name="IAppliedService_GetApplieds_KaskServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q13:KaskServiceException" />
   </wsdl:message>
+  <wsdl:message name="IAppliedService_GetAppliedsByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppliedsByName" />
+  </wsdl:message>
+  <wsdl:message name="IAppliedService_GetAppliedsByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppliedsByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppliedService_GetAppliedsByName_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q14:KaskServiceException" />
+  </wsdl:message>
   <wsdl:message name="IAppliedService_CreateApplied_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateApplied" />
   </wsdl:message>
@@ -132,7 +141,7 @@
     <wsdl:part name="parameters" element="tns:CreateAppliedResponse" />
   </wsdl:message>
   <wsdl:message name="IAppliedService_CreateApplied_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q14:KaskServiceException" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q15:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IAppliedService_UpdateApplied_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateApplied" />
@@ -141,7 +150,7 @@
     <wsdl:part name="parameters" element="tns:UpdateAppliedResponse" />
   </wsdl:message>
   <wsdl:message name="IAppliedService_UpdateApplied_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q15:KaskServiceException" />
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q16:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IAppliedService_DeleteApplied_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteApplied" />
@@ -150,7 +159,7 @@
     <wsdl:part name="parameters" element="tns:DeleteAppliedResponse" />
   </wsdl:message>
   <wsdl:message name="IAppliedService_DeleteApplied_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q16:KaskServiceException" />
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q17:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEducationService_GetEducationByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEducationByID" />
@@ -159,7 +168,7 @@
     <wsdl:part name="parameters" element="tns:GetEducationByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IEducationService_GetEducationByID_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q17:KaskServiceException" />
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q18:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEducationService_GetEducations_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEducations" />
@@ -168,7 +177,7 @@
     <wsdl:part name="parameters" element="tns:GetEducationsResponse" />
   </wsdl:message>
   <wsdl:message name="IEducationService_GetEducations_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q18:KaskServiceException" />
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q19:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEducationService_GetEducationsByName_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEducationsByName" />
@@ -177,7 +186,7 @@
     <wsdl:part name="parameters" element="tns:GetEducationsByNameResponse" />
   </wsdl:message>
   <wsdl:message name="IEducationService_GetEducationsByName_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q19:KaskServiceException" />
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q20:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEducationService_CreateEducation_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateEducation" />
@@ -186,7 +195,7 @@
     <wsdl:part name="parameters" element="tns:CreateEducationResponse" />
   </wsdl:message>
   <wsdl:message name="IEducationService_CreateEducation_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q20:KaskServiceException" />
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q21:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEducationService_UpdateEducation_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEducation" />
@@ -195,7 +204,7 @@
     <wsdl:part name="parameters" element="tns:UpdateEducationResponse" />
   </wsdl:message>
   <wsdl:message name="IEducationService_UpdateEducation_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q21:KaskServiceException" />
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q22:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEducationService_DeleteEducation_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteEducation" />
@@ -204,7 +213,7 @@
     <wsdl:part name="parameters" element="tns:DeleteEducationResponse" />
   </wsdl:message>
   <wsdl:message name="IEducationService_DeleteEducation_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q22:KaskServiceException" />
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q23:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_GetEmployerByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployerByID" />
@@ -213,7 +222,7 @@
     <wsdl:part name="parameters" element="tns:GetEmployerByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_GetEmployerByID_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q23:KaskServiceException" />
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q24:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_GetEmployers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployers" />
@@ -222,7 +231,7 @@
     <wsdl:part name="parameters" element="tns:GetEmployersResponse" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_GetEmployers_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q24:KaskServiceException" />
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q25:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_CreateEmployer_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateEmployer" />
@@ -231,7 +240,7 @@
     <wsdl:part name="parameters" element="tns:CreateEmployerResponse" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_CreateEmployer_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q25:KaskServiceException" />
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q26:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_UpdateEmployer_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEmployer" />
@@ -240,7 +249,7 @@
     <wsdl:part name="parameters" element="tns:UpdateEmployerResponse" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_UpdateEmployer_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q26:KaskServiceException" />
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q27:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_DeleteEmployer_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteEmployer" />
@@ -249,7 +258,7 @@
     <wsdl:part name="parameters" element="tns:DeleteEmployerResponse" />
   </wsdl:message>
   <wsdl:message name="IEmployerService_DeleteEmployer_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q27:KaskServiceException" />
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q28:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_GetEmploymentByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmploymentByID" />
@@ -258,7 +267,7 @@
     <wsdl:part name="parameters" element="tns:GetEmploymentByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_GetEmploymentByID_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q28:KaskServiceException" />
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q29:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_GetEmployments_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployments" />
@@ -267,7 +276,7 @@
     <wsdl:part name="parameters" element="tns:GetEmploymentsResponse" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_GetEmployments_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q29:KaskServiceException" />
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q30:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_GetEmploymentsByName_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmploymentsByName" />
@@ -276,7 +285,7 @@
     <wsdl:part name="parameters" element="tns:GetEmploymentsByNameResponse" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_GetEmploymentsByName_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q30:KaskServiceException" />
+    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q31:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_CreateEmployment_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateEmployment" />
@@ -285,7 +294,7 @@
     <wsdl:part name="parameters" element="tns:CreateEmploymentResponse" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_CreateEmployment_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q31:KaskServiceException" />
+    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q32:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_UpdateEmployment_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEmployment" />
@@ -294,7 +303,7 @@
     <wsdl:part name="parameters" element="tns:UpdateEmploymentResponse" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_UpdateEmployment_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q32:KaskServiceException" />
+    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q33:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_DeleteEmployment_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteEmployment" />
@@ -303,7 +312,7 @@
     <wsdl:part name="parameters" element="tns:DeleteEmploymentResponse" />
   </wsdl:message>
   <wsdl:message name="IEmploymentService_DeleteEmployment_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q33:KaskServiceException" />
+    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q34:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobService_GetJobByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetJobByID" />
@@ -312,7 +321,7 @@
     <wsdl:part name="parameters" element="tns:GetJobByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IJobService_GetJobByID_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q34:KaskServiceException" />
+    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q35:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobService_GetJobs_InputMessage">
     <wsdl:part name="parameters" element="tns:GetJobs" />
@@ -321,7 +330,7 @@
     <wsdl:part name="parameters" element="tns:GetJobsResponse" />
   </wsdl:message>
   <wsdl:message name="IJobService_GetJobs_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q35:KaskServiceException" />
+    <wsdl:part xmlns:q36="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q36:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobService_CreateJob_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateJob" />
@@ -330,7 +339,7 @@
     <wsdl:part name="parameters" element="tns:CreateJobResponse" />
   </wsdl:message>
   <wsdl:message name="IJobService_CreateJob_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q36="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q36:KaskServiceException" />
+    <wsdl:part xmlns:q37="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q37:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobService_UpdateJob_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateJob" />
@@ -339,7 +348,7 @@
     <wsdl:part name="parameters" element="tns:UpdateJobResponse" />
   </wsdl:message>
   <wsdl:message name="IJobService_UpdateJob_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q37="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q37:KaskServiceException" />
+    <wsdl:part xmlns:q38="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q38:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobService_DeleteJob_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteJob" />
@@ -348,7 +357,52 @@
     <wsdl:part name="parameters" element="tns:DeleteJobResponse" />
   </wsdl:message>
   <wsdl:message name="IJobService_DeleteJob_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q38="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q38:KaskServiceException" />
+    <wsdl:part xmlns:q39="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q39:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_GetJobRequirementByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobRequirementByID" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_GetJobRequirementByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobRequirementByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_GetJobRequirementByID_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q40="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q40:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_GetJobRequirements_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobRequirements" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_GetJobRequirements_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobRequirementsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_GetJobRequirements_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q41="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q41:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_CreateJobRequirement_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateJobRequirement" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_CreateJobRequirement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateJobRequirementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_CreateJobRequirement_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q42="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q42:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_UpdateJobRequirement_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateJobRequirement" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_UpdateJobRequirement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateJobRequirementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_UpdateJobRequirement_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q43="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q43:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_DeleteJobRequirement_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteJobRequirement" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_DeleteJobRequirement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteJobRequirementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobRequirementService_DeleteJobRequirement_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q44="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q44:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_GetJobOpeningByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetJobOpeningByID" />
@@ -357,7 +411,16 @@
     <wsdl:part name="parameters" element="tns:GetJobOpeningByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_GetJobOpeningByID_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q39="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q39:KaskServiceException" />
+    <wsdl:part xmlns:q45="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q45:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IJobOpeningService_GetJobOpeningsByStoreID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobOpeningsByStoreID" />
+  </wsdl:message>
+  <wsdl:message name="IJobOpeningService_GetJobOpeningsByStoreID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobOpeningsByStoreIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobOpeningService_GetJobOpeningsByStoreID_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q46="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q46:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_GetJobOpenings_InputMessage">
     <wsdl:part name="parameters" element="tns:GetJobOpenings" />
@@ -366,7 +429,7 @@
     <wsdl:part name="parameters" element="tns:GetJobOpeningsResponse" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_GetJobOpenings_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q40="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q40:KaskServiceException" />
+    <wsdl:part xmlns:q47="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q47:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_CreateJobOpening_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateJobOpening" />
@@ -375,7 +438,7 @@
     <wsdl:part name="parameters" element="tns:CreateJobOpeningResponse" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_CreateJobOpening_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q41="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q41:KaskServiceException" />
+    <wsdl:part xmlns:q48="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q48:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_UpdateJobOpening_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateJobOpening" />
@@ -384,7 +447,7 @@
     <wsdl:part name="parameters" element="tns:UpdateJobOpeningResponse" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_UpdateJobOpening_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q42="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q42:KaskServiceException" />
+    <wsdl:part xmlns:q49="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q49:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_DeleteJobOpening_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteJobOpening" />
@@ -393,7 +456,7 @@
     <wsdl:part name="parameters" element="tns:DeleteJobOpeningResponse" />
   </wsdl:message>
   <wsdl:message name="IJobOpeningService_DeleteJobOpening_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q43="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q43:KaskServiceException" />
+    <wsdl:part xmlns:q50="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q50:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_GetSchoolByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSchoolByID" />
@@ -402,7 +465,7 @@
     <wsdl:part name="parameters" element="tns:GetSchoolByIDResponse" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_GetSchoolByID_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q44="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q44:KaskServiceException" />
+    <wsdl:part xmlns:q51="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q51:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_GetSchools_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSchools" />
@@ -411,7 +474,7 @@
     <wsdl:part name="parameters" element="tns:GetSchoolsResponse" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_GetSchools_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q45="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q45:KaskServiceException" />
+    <wsdl:part xmlns:q52="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q52:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_CreateSchool_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateSchool" />
@@ -420,7 +483,7 @@
     <wsdl:part name="parameters" element="tns:CreateSchoolResponse" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_CreateSchool_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q46="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q46:KaskServiceException" />
+    <wsdl:part xmlns:q53="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q53:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_UpdateSchool_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateSchool" />
@@ -429,7 +492,7 @@
     <wsdl:part name="parameters" element="tns:UpdateSchoolResponse" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_UpdateSchool_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q47="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q47:KaskServiceException" />
+    <wsdl:part xmlns:q54="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q54:KaskServiceException" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_DeleteSchool_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteSchool" />
@@ -438,7 +501,52 @@
     <wsdl:part name="parameters" element="tns:DeleteSchoolResponse" />
   </wsdl:message>
   <wsdl:message name="ISchoolService_DeleteSchool_KaskServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q48="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q48:KaskServiceException" />
+    <wsdl:part xmlns:q55="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q55:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_GetSkillByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkillByID" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_GetSkillByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkillByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_GetSkillByID_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q56="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q56:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_GetSkills_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkills" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_GetSkills_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkillsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_GetSkills_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q57="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q57:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_CreateSkill_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSkill" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_CreateSkill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSkillResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_CreateSkill_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q58="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q58:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_UpdateSkill_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSkill" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_UpdateSkill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSkillResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_UpdateSkill_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q59="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q59:KaskServiceException" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_DeleteSkill_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSkill" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_DeleteSkill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSkillResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISkillService_DeleteSkill_KaskServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q60="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions" name="detail" element="q60:KaskServiceException" />
   </wsdl:message>
   <wsdl:portType name="IApplicationService">
     <wsdl:operation name="GetApplicationByID">
@@ -509,6 +617,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAppliedService/GetApplieds" message="tns:IAppliedService_GetApplieds_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedsResponse" message="tns:IAppliedService_GetApplieds_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedsKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IAppliedService_GetApplieds_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedsByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedsByName" message="tns:IAppliedService_GetAppliedsByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedsByNameResponse" message="tns:IAppliedService_GetAppliedsByName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAppliedService/GetAppliedsByNameKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IAppliedService_GetAppliedsByName_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateApplied">
       <wsdl:input wsaw:Action="http://tempuri.org/IAppliedService/CreateApplied" message="tns:IAppliedService_CreateApplied_InputMessage" />
@@ -644,11 +757,43 @@
       <wsdl:fault wsaw:Action="http://tempuri.org/IJobService/DeleteJobKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IJobService_DeleteJob_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="IJobRequirementService">
+    <wsdl:operation name="GetJobRequirementByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobRequirementService/GetJobRequirementByID" message="tns:IJobRequirementService_GetJobRequirementByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobRequirementService/GetJobRequirementByIDResponse" message="tns:IJobRequirementService_GetJobRequirementByID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IJobRequirementService/GetJobRequirementByIDKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IJobRequirementService_GetJobRequirementByID_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobRequirements">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobRequirementService/GetJobRequirements" message="tns:IJobRequirementService_GetJobRequirements_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobRequirementService/GetJobRequirementsResponse" message="tns:IJobRequirementService_GetJobRequirements_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IJobRequirementService/GetJobRequirementsKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IJobRequirementService_GetJobRequirements_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateJobRequirement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobRequirementService/CreateJobRequirement" message="tns:IJobRequirementService_CreateJobRequirement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobRequirementService/CreateJobRequirementResponse" message="tns:IJobRequirementService_CreateJobRequirement_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IJobRequirementService/CreateJobRequirementKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IJobRequirementService_CreateJobRequirement_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJobRequirement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobRequirementService/UpdateJobRequirement" message="tns:IJobRequirementService_UpdateJobRequirement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobRequirementService/UpdateJobRequirementResponse" message="tns:IJobRequirementService_UpdateJobRequirement_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IJobRequirementService/UpdateJobRequirementKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IJobRequirementService_UpdateJobRequirement_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteJobRequirement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobRequirementService/DeleteJobRequirement" message="tns:IJobRequirementService_DeleteJobRequirement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobRequirementService/DeleteJobRequirementResponse" message="tns:IJobRequirementService_DeleteJobRequirement_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IJobRequirementService/DeleteJobRequirementKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IJobRequirementService_DeleteJobRequirement_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:portType name="IJobOpeningService">
     <wsdl:operation name="GetJobOpeningByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IJobOpeningService/GetJobOpeningByID" message="tns:IJobOpeningService_GetJobOpeningByID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJobOpeningService/GetJobOpeningByIDResponse" message="tns:IJobOpeningService_GetJobOpeningByID_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IJobOpeningService/GetJobOpeningByIDKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IJobOpeningService_GetJobOpeningByID_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobOpeningsByStoreID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobOpeningService/GetJobOpeningsByStoreID" message="tns:IJobOpeningService_GetJobOpeningsByStoreID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobOpeningService/GetJobOpeningsByStoreIDResponse" message="tns:IJobOpeningService_GetJobOpeningsByStoreID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IJobOpeningService/GetJobOpeningsByStoreIDKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:IJobOpeningService_GetJobOpeningsByStoreID_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetJobOpenings">
       <wsdl:input wsaw:Action="http://tempuri.org/IJobOpeningService/GetJobOpenings" message="tns:IJobOpeningService_GetJobOpenings_InputMessage" />
@@ -696,6 +841,33 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISchoolService/DeleteSchool" message="tns:ISchoolService_DeleteSchool_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISchoolService/DeleteSchoolResponse" message="tns:ISchoolService_DeleteSchool_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ISchoolService/DeleteSchoolKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:ISchoolService_DeleteSchool_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ISkillService">
+    <wsdl:operation name="GetSkillByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISkillService/GetSkillByID" message="tns:ISkillService_GetSkillByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISkillService/GetSkillByIDResponse" message="tns:ISkillService_GetSkillByID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISkillService/GetSkillByIDKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:ISkillService_GetSkillByID_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSkills">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISkillService/GetSkills" message="tns:ISkillService_GetSkills_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISkillService/GetSkillsResponse" message="tns:ISkillService_GetSkills_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISkillService/GetSkillsKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:ISkillService_GetSkills_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSkill">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISkillService/CreateSkill" message="tns:ISkillService_CreateSkill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISkillService/CreateSkillResponse" message="tns:ISkillService_CreateSkill_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISkillService/CreateSkillKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:ISkillService_CreateSkill_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSkill">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISkillService/UpdateSkill" message="tns:ISkillService_UpdateSkill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISkillService/UpdateSkillResponse" message="tns:ISkillService_UpdateSkill_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISkillService/UpdateSkillKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:ISkillService_UpdateSkill_KaskServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSkill">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISkillService/DeleteSkill" message="tns:ISkillService_DeleteSkill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISkillService/DeleteSkillResponse" message="tns:ISkillService_DeleteSkill_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISkillService/DeleteSkillKaskServiceExceptionFault" name="KaskServiceExceptionFault" message="tns:ISkillService_DeleteSkill_KaskServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IApplicationService" type="tns:IApplicationService">
@@ -852,6 +1024,18 @@
     </wsdl:operation>
     <wsdl:operation name="GetApplieds">
       <soap:operation soapAction="http://tempuri.org/IAppliedService/GetApplieds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedsByName">
+      <soap:operation soapAction="http://tempuri.org/IAppliedService/GetAppliedsByName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1175,10 +1359,85 @@
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IJobRequirementService" type="tns:IJobRequirementService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetJobRequirementByID">
+      <soap:operation soapAction="http://tempuri.org/IJobRequirementService/GetJobRequirementByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobRequirements">
+      <soap:operation soapAction="http://tempuri.org/IJobRequirementService/GetJobRequirements" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateJobRequirement">
+      <soap:operation soapAction="http://tempuri.org/IJobRequirementService/CreateJobRequirement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJobRequirement">
+      <soap:operation soapAction="http://tempuri.org/IJobRequirementService/UpdateJobRequirement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteJobRequirement">
+      <soap:operation soapAction="http://tempuri.org/IJobRequirementService/DeleteJobRequirement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IJobOpeningService" type="tns:IJobOpeningService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetJobOpeningByID">
       <soap:operation soapAction="http://tempuri.org/IJobOpeningService/GetJobOpeningByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobOpeningsByStoreID">
+      <soap:operation soapAction="http://tempuri.org/IJobOpeningService/GetJobOpeningsByStoreID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1301,6 +1560,69 @@
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ISkillService" type="tns:ISkillService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSkillByID">
+      <soap:operation soapAction="http://tempuri.org/ISkillService/GetSkillByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSkills">
+      <soap:operation soapAction="http://tempuri.org/ISkillService/GetSkills" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSkill">
+      <soap:operation soapAction="http://tempuri.org/ISkillService/CreateSkill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSkill">
+      <soap:operation soapAction="http://tempuri.org/ISkillService/UpdateSkill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSkill">
+      <soap:operation soapAction="http://tempuri.org/ISkillService/DeleteSkill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="KaskServiceExceptionFault">
+        <soap:fault use="literal" name="KaskServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="AESApplicationService">
     <wsdl:port name="BasicHttpBinding_IApplicationService" binding="tns:BasicHttpBinding_IApplicationService">
       <soap:address location="http://localhost:1760/AESApplicationService.svc/Application" />
@@ -1323,11 +1645,17 @@
     <wsdl:port name="BasicHttpBinding_IJobService" binding="tns:BasicHttpBinding_IJobService">
       <soap:address location="http://localhost:1760/AESApplicationService.svc/Job" />
     </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IJobRequirementService" binding="tns:BasicHttpBinding_IJobRequirementService">
+      <soap:address location="http://localhost:1760/AESApplicationService.svc/JobRequirement" />
+    </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IJobOpeningService" binding="tns:BasicHttpBinding_IJobOpeningService">
       <soap:address location="http://localhost:1760/AESApplicationService.svc/JobOpening" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_ISchoolService" binding="tns:BasicHttpBinding_ISchoolService">
       <soap:address location="http://localhost:1760/AESApplicationService.svc/School" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ISkillService" binding="tns:BasicHttpBinding_ISkillService">
+      <soap:address location="http://localhost:1760/AESApplicationService.svc/Skill" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
