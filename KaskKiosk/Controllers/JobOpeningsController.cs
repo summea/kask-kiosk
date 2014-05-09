@@ -49,9 +49,11 @@ namespace KaskKiosk.Controllers
         public async Task<ActionResult> Create()
         {
             List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
+            List<SkillDAO> skills = await ServerResponse<List<SkillDAO>>.GetResponseAsync(ServiceURIs.ServiceSkillUri);
 
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.jobs = jobs;
+            ViewBag.skills = skills;
             return View();
         }
 
@@ -80,6 +82,11 @@ namespace KaskKiosk.Controllers
                         jobOpening.OpenDate = DateTime.Now; // note: this could change to the above "OpenDate" line of code in the future...
                         jobOpening.JobID = Convert.ToInt32(Request.Form["JobID"]);
                         jobOpening.Approved = 0;    // "not approved" by default
+
+                        // TODO: save job requirement data
+                        // this will probably involve:
+                        // 1. see which checkboxes are checked
+                        // 2. create new JobRequirement entries and tie those back to this JobOpening
 
                         // post (save) JobOpening data
                         result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceJobOpeningUri, jobOpening).Result;
