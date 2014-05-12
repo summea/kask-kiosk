@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    Layout = "~/Views/Shared/_PublicKioskLayout.cshtml";
     ViewBag.Title = "Create.cshtml";
 }
 
@@ -68,16 +68,8 @@
         <h2>Position</h2>
         <p class="lead italic">Please tell us a little about your availability and expectations for this job...</p>
         <div class="form-group spacing" style="width:400px;float:left;">
-            @Html.Label("Position Applying For:")
-            @if (ViewBag.jobs != null)
-            {
-                <select class="form-control" name="JobID" id="JobID">
-                @foreach (var job in @ViewBag.jobs)
-                {
-                    <option value="@job.JobID">@job.Title</option>
-                }
-                </select>
-            }
+            @Html.Label("Applying for Job#:")<br />
+            <input type="text" name="JobOpeningIDReferenceNumber", id="JobOpeningIDReferenceNumber" style="width:400px;" class="form-control" readonly />
         </div>
         <div class="form-group spacing" style="width:200px;float:left;">
             @Html.Label("Salary Expectation:")

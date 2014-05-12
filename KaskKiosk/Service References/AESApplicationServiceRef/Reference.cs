@@ -637,7 +637,7 @@ namespace KaskKiosk.AESApplicationServiceRef {
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int JobIDField;
+        private int JobOpeningIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -715,14 +715,14 @@ namespace KaskKiosk.AESApplicationServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int JobID {
+        public int JobOpeningID {
             get {
-                return this.JobIDField;
+                return this.JobOpeningIDField;
             }
             set {
-                if ((this.JobIDField.Equals(value) != true)) {
-                    this.JobIDField = value;
-                    this.RaisePropertyChanged("JobID");
+                if ((this.JobOpeningIDField.Equals(value) != true)) {
+                    this.JobOpeningIDField = value;
+                    this.RaisePropertyChanged("JobOpeningID");
                 }
             }
         }

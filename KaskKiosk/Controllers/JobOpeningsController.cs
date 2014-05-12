@@ -320,5 +320,20 @@ namespace KaskKiosk.Controllers
                 return RedirectToAction("Index", "JobOpenings");
             }
         }
+
+        [AllowAnonymous]
+        public async Task<ActionResult> ViewCurrentOpenings()
+        {
+            List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
+            List<JobOpeningDAO> jobOpenings = await ServerResponse<List<JobOpeningDAO>>.GetResponseAsync(ServiceURIs.ServiceJobOpeningUri);
+            List<StoreDAO> stores = await ServerResponse<List<StoreDAO>>.GetResponseAsync(ServiceURIs.ServiceStoreUri);
+
+            var jobsSortedByDate = jobOpenings.OrderByDescending(o => o.OpenDate);
+
+            ViewBag.jobs = jobs;
+            ViewBag.jobOpenings = jobsSortedByDate;
+            ViewBag.stores = stores;
+            return View();
+        }
     }
 }

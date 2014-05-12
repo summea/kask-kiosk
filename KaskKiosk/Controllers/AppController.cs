@@ -124,15 +124,11 @@ namespace KaskKiosk.Controllers
                         var applications = await ServerResponse<List<ApplicationDAO>>.GetResponseAsync(ServiceURIs.ServiceApplicationUri);
                         application.ApplicationID = applications.Last().ApplicationID;
 
-                        int jobId = 1;
-                        if (Request.Form["JobID"] != null)
-                            jobId = Convert.ToInt32(Request.Form["JobID"]);
-
                         // Create Applied DAO;
                         AppliedDAO applied = new AppliedDAO();
                         applied.ApplicantID = applicant.ApplicantID;
                         applied.ApplicationID = application.ApplicationID;
-                        applied.JobID = jobId;
+                        applied.JobOpeningID = Convert.ToInt32(Request.Form["JobOpeningIDReferenceNumber"]);
                         applied.DateApplied = DateTime.Now;
 
                         // post (save) applied data

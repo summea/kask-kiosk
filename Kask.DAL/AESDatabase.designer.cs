@@ -39,9 +39,6 @@ namespace Kask.DAL.Models
     partial void InsertApplication(Application instance);
     partial void UpdateApplication(Application instance);
     partial void DeleteApplication(Application instance);
-    partial void InsertApplied(Applied instance);
-    partial void UpdateApplied(Applied instance);
-    partial void DeleteApplied(Applied instance);
     partial void InsertAssociate(Associate instance);
     partial void UpdateAssociate(Associate instance);
     partial void DeleteAssociate(Associate instance);
@@ -93,6 +90,9 @@ namespace Kask.DAL.Models
     partial void InsertStore(Store instance);
     partial void UpdateStore(Store instance);
     partial void DeleteStore(Store instance);
+    partial void InsertApplied(Applied instance);
+    partial void UpdateApplied(Applied instance);
+    partial void DeleteApplied(Applied instance);
     #endregion
 		
 		public AESDatabaseDataContext() : 
@@ -146,14 +146,6 @@ namespace Kask.DAL.Models
 			get
 			{
 				return this.GetTable<Application>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Applied> Applieds
-		{
-			get
-			{
-				return this.GetTable<Applied>();
 			}
 		}
 		
@@ -292,6 +284,14 @@ namespace Kask.DAL.Models
 				return this.GetTable<Store>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Applied> Applieds
+		{
+			get
+			{
+				return this.GetTable<Applied>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Applicant")]
@@ -318,8 +318,6 @@ namespace Kask.DAL.Models
 		
 		private string _NameAlias;
 		
-		private EntitySet<Applied> _Applieds;
-		
 		private EntitySet<Associate> _Associates;
 		
 		private EntitySet<Education> _Educations;
@@ -327,6 +325,8 @@ namespace Kask.DAL.Models
 		private EntitySet<Employment> _Employments;
 		
 		private EntitySet<Expertise> _Expertises;
+		
+		private EntitySet<Applied> _Applieds;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -354,11 +354,11 @@ namespace Kask.DAL.Models
 		
 		public Applicant()
 		{
-			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
 			this._Associates = new EntitySet<Associate>(new Action<Associate>(this.attach_Associates), new Action<Associate>(this.detach_Associates));
 			this._Educations = new EntitySet<Education>(new Action<Education>(this.attach_Educations), new Action<Education>(this.detach_Educations));
 			this._Employments = new EntitySet<Employment>(new Action<Employment>(this.attach_Employments), new Action<Employment>(this.detach_Employments));
 			this._Expertises = new EntitySet<Expertise>(new Action<Expertise>(this.attach_Expertises), new Action<Expertise>(this.detach_Expertises));
+			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
 			OnCreated();
 		}
 		
@@ -542,19 +542,6 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Applied", Storage="_Applieds", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
-		public EntitySet<Applied> Applieds
-		{
-			get
-			{
-				return this._Applieds;
-			}
-			set
-			{
-				this._Applieds.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Associate", Storage="_Associates", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
 		public EntitySet<Associate> Associates
 		{
@@ -607,6 +594,19 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Applied", Storage="_Applieds", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
+		public EntitySet<Applied> Applieds
+		{
+			get
+			{
+				return this._Applieds;
+			}
+			set
+			{
+				this._Applieds.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -625,18 +625,6 @@ namespace Kask.DAL.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Applieds(Applied entity)
-		{
-			this.SendPropertyChanging();
-			entity.Applicant = this;
-		}
-		
-		private void detach_Applieds(Applied entity)
-		{
-			this.SendPropertyChanging();
-			entity.Applicant = null;
 		}
 		
 		private void attach_Associates(Associate entity)
@@ -682,6 +670,18 @@ namespace Kask.DAL.Models
 		}
 		
 		private void detach_Expertises(Expertise entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = null;
+		}
+		
+		private void attach_Applieds(Applied entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = this;
+		}
+		
+		private void detach_Applieds(Applied entity)
 		{
 			this.SendPropertyChanging();
 			entity.Applicant = null;
@@ -1423,287 +1423,6 @@ namespace Kask.DAL.Models
 		{
 			this.SendPropertyChanging();
 			entity.Application = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Applied")]
-	public partial class Applied : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Applied_ID;
-		
-		private int _Applicant_ID;
-		
-		private int _Application_ID;
-		
-		private int _Job_ID;
-		
-		private System.DateTime _DateApplied;
-		
-		private EntityRef<Applicant> _Applicant;
-		
-		private EntityRef<Application> _Application;
-		
-		private EntityRef<Job> _Job;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnApplied_IDChanging(int value);
-    partial void OnApplied_IDChanged();
-    partial void OnApplicant_IDChanging(int value);
-    partial void OnApplicant_IDChanged();
-    partial void OnApplication_IDChanging(int value);
-    partial void OnApplication_IDChanged();
-    partial void OnJob_IDChanging(int value);
-    partial void OnJob_IDChanged();
-    partial void OnDateAppliedChanging(System.DateTime value);
-    partial void OnDateAppliedChanged();
-    #endregion
-		
-		public Applied()
-		{
-			this._Applicant = default(EntityRef<Applicant>);
-			this._Application = default(EntityRef<Application>);
-			this._Job = default(EntityRef<Job>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applied_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Applied_ID
-		{
-			get
-			{
-				return this._Applied_ID;
-			}
-			set
-			{
-				if ((this._Applied_ID != value))
-				{
-					this.OnApplied_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Applied_ID = value;
-					this.SendPropertyChanged("Applied_ID");
-					this.OnApplied_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
-		public int Applicant_ID
-		{
-			get
-			{
-				return this._Applicant_ID;
-			}
-			set
-			{
-				if ((this._Applicant_ID != value))
-				{
-					if (this._Applicant.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnApplicant_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Applicant_ID = value;
-					this.SendPropertyChanged("Applicant_ID");
-					this.OnApplicant_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Application_ID", DbType="Int NOT NULL")]
-		public int Application_ID
-		{
-			get
-			{
-				return this._Application_ID;
-			}
-			set
-			{
-				if ((this._Application_ID != value))
-				{
-					if (this._Application.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnApplication_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Application_ID = value;
-					this.SendPropertyChanged("Application_ID");
-					this.OnApplication_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Job_ID", DbType="Int NOT NULL")]
-		public int Job_ID
-		{
-			get
-			{
-				return this._Job_ID;
-			}
-			set
-			{
-				if ((this._Job_ID != value))
-				{
-					if (this._Job.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnJob_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Job_ID = value;
-					this.SendPropertyChanged("Job_ID");
-					this.OnJob_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateApplied", DbType="Date NOT NULL")]
-		public System.DateTime DateApplied
-		{
-			get
-			{
-				return this._DateApplied;
-			}
-			set
-			{
-				if ((this._DateApplied != value))
-				{
-					this.OnDateAppliedChanging(value);
-					this.SendPropertyChanging();
-					this._DateApplied = value;
-					this.SendPropertyChanged("DateApplied");
-					this.OnDateAppliedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Applied", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Applicant Applicant
-		{
-			get
-			{
-				return this._Applicant.Entity;
-			}
-			set
-			{
-				Applicant previousValue = this._Applicant.Entity;
-				if (((previousValue != value) 
-							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Applicant.Entity = null;
-						previousValue.Applieds.Remove(this);
-					}
-					this._Applicant.Entity = value;
-					if ((value != null))
-					{
-						value.Applieds.Add(this);
-						this._Applicant_ID = value.Applicant_ID;
-					}
-					else
-					{
-						this._Applicant_ID = default(int);
-					}
-					this.SendPropertyChanged("Applicant");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Application_Applied", Storage="_Application", ThisKey="Application_ID", OtherKey="Application_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Application Application
-		{
-			get
-			{
-				return this._Application.Entity;
-			}
-			set
-			{
-				Application previousValue = this._Application.Entity;
-				if (((previousValue != value) 
-							|| (this._Application.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Application.Entity = null;
-						previousValue.Applieds.Remove(this);
-					}
-					this._Application.Entity = value;
-					if ((value != null))
-					{
-						value.Applieds.Add(this);
-						this._Application_ID = value.Application_ID;
-					}
-					else
-					{
-						this._Application_ID = default(int);
-					}
-					this.SendPropertyChanged("Application");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_Applied", Storage="_Job", ThisKey="Job_ID", OtherKey="Job_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Job Job
-		{
-			get
-			{
-				return this._Job.Entity;
-			}
-			set
-			{
-				Job previousValue = this._Job.Entity;
-				if (((previousValue != value) 
-							|| (this._Job.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Job.Entity = null;
-						previousValue.Applieds.Remove(this);
-					}
-					this._Job.Entity = value;
-					if ((value != null))
-					{
-						value.Applieds.Add(this);
-						this._Job_ID = value.Job_ID;
-					}
-					else
-					{
-						this._Job_ID = default(int);
-					}
-					this.SendPropertyChanged("Job");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -4251,8 +3970,6 @@ namespace Kask.DAL.Models
 		
 		private string _Title;
 		
-		private EntitySet<Applied> _Applieds;
-		
 		private EntitySet<JobOpening> _JobOpenings;
 		
     #region Extensibility Method Definitions
@@ -4267,7 +3984,6 @@ namespace Kask.DAL.Models
 		
 		public Job()
 		{
-			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
 			this._JobOpenings = new EntitySet<JobOpening>(new Action<JobOpening>(this.attach_JobOpenings), new Action<JobOpening>(this.detach_JobOpenings));
 			OnCreated();
 		}
@@ -4312,19 +4028,6 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_Applied", Storage="_Applieds", ThisKey="Job_ID", OtherKey="Job_ID")]
-		public EntitySet<Applied> Applieds
-		{
-			get
-			{
-				return this._Applieds;
-			}
-			set
-			{
-				this._Applieds.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_JobOpening", Storage="_JobOpenings", ThisKey="Job_ID", OtherKey="Job_ID")]
 		public EntitySet<JobOpening> JobOpenings
 		{
@@ -4356,18 +4059,6 @@ namespace Kask.DAL.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Applieds(Applied entity)
-		{
-			this.SendPropertyChanging();
-			entity.Job = this;
-		}
-		
-		private void detach_Applieds(Applied entity)
-		{
-			this.SendPropertyChanging();
-			entity.Job = null;
 		}
 		
 		private void attach_JobOpenings(JobOpening entity)
@@ -4619,6 +4310,8 @@ namespace Kask.DAL.Models
 		
 		private EntitySet<JobRequirement> _JobRequirements;
 		
+		private EntitySet<Applied> _Applieds;
+		
 		private EntityRef<Job> _Job;
 		
 		private EntityRef<Store> _Store;
@@ -4644,6 +4337,7 @@ namespace Kask.DAL.Models
 		public JobOpening()
 		{
 			this._JobRequirements = new EntitySet<JobRequirement>(new Action<JobRequirement>(this.attach_JobRequirements), new Action<JobRequirement>(this.detach_JobRequirements));
+			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
 			this._Job = default(EntityRef<Job>);
 			this._Store = default(EntityRef<Store>);
 			OnCreated();
@@ -4790,6 +4484,19 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_Applied", Storage="_Applieds", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID")]
+		public EntitySet<Applied> Applieds
+		{
+			get
+			{
+				return this._Applieds;
+			}
+			set
+			{
+				this._Applieds.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_JobOpening", Storage="_Job", ThisKey="Job_ID", OtherKey="Job_ID", IsForeignKey=true)]
 		public Job Job
 		{
@@ -4885,6 +4592,18 @@ namespace Kask.DAL.Models
 		}
 		
 		private void detach_JobRequirements(JobRequirement entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobOpening = null;
+		}
+		
+		private void attach_Applieds(Applied entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobOpening = this;
+		}
+		
+		private void detach_Applieds(Applied entity)
 		{
 			this.SendPropertyChanging();
 			entity.JobOpening = null;
@@ -5067,6 +4786,287 @@ namespace Kask.DAL.Models
 		{
 			this.SendPropertyChanging();
 			entity.Store = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Applied")]
+	public partial class Applied : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Applied_ID;
+		
+		private int _Applicant_ID;
+		
+		private int _Application_ID;
+		
+		private int _JobOpening_ID;
+		
+		private System.DateTime _DateApplied;
+		
+		private EntityRef<Applicant> _Applicant;
+		
+		private EntityRef<Application> _Application;
+		
+		private EntityRef<JobOpening> _JobOpening;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnApplied_IDChanging(int value);
+    partial void OnApplied_IDChanged();
+    partial void OnApplicant_IDChanging(int value);
+    partial void OnApplicant_IDChanged();
+    partial void OnApplication_IDChanging(int value);
+    partial void OnApplication_IDChanged();
+    partial void OnJobOpening_IDChanging(int value);
+    partial void OnJobOpening_IDChanged();
+    partial void OnDateAppliedChanging(System.DateTime value);
+    partial void OnDateAppliedChanged();
+    #endregion
+		
+		public Applied()
+		{
+			this._Applicant = default(EntityRef<Applicant>);
+			this._Application = default(EntityRef<Application>);
+			this._JobOpening = default(EntityRef<JobOpening>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applied_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Applied_ID
+		{
+			get
+			{
+				return this._Applied_ID;
+			}
+			set
+			{
+				if ((this._Applied_ID != value))
+				{
+					this.OnApplied_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Applied_ID = value;
+					this.SendPropertyChanged("Applied_ID");
+					this.OnApplied_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
+		public int Applicant_ID
+		{
+			get
+			{
+				return this._Applicant_ID;
+			}
+			set
+			{
+				if ((this._Applicant_ID != value))
+				{
+					if (this._Applicant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnApplicant_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Applicant_ID = value;
+					this.SendPropertyChanged("Applicant_ID");
+					this.OnApplicant_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Application_ID", DbType="Int NOT NULL")]
+		public int Application_ID
+		{
+			get
+			{
+				return this._Application_ID;
+			}
+			set
+			{
+				if ((this._Application_ID != value))
+				{
+					if (this._Application.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnApplication_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Application_ID = value;
+					this.SendPropertyChanged("Application_ID");
+					this.OnApplication_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobOpening_ID", DbType="Int NOT NULL")]
+		public int JobOpening_ID
+		{
+			get
+			{
+				return this._JobOpening_ID;
+			}
+			set
+			{
+				if ((this._JobOpening_ID != value))
+				{
+					if (this._JobOpening.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnJobOpening_IDChanging(value);
+					this.SendPropertyChanging();
+					this._JobOpening_ID = value;
+					this.SendPropertyChanged("JobOpening_ID");
+					this.OnJobOpening_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateApplied", DbType="Date NOT NULL")]
+		public System.DateTime DateApplied
+		{
+			get
+			{
+				return this._DateApplied;
+			}
+			set
+			{
+				if ((this._DateApplied != value))
+				{
+					this.OnDateAppliedChanging(value);
+					this.SendPropertyChanging();
+					this._DateApplied = value;
+					this.SendPropertyChanged("DateApplied");
+					this.OnDateAppliedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Applied", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Applicant Applicant
+		{
+			get
+			{
+				return this._Applicant.Entity;
+			}
+			set
+			{
+				Applicant previousValue = this._Applicant.Entity;
+				if (((previousValue != value) 
+							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Applicant.Entity = null;
+						previousValue.Applieds.Remove(this);
+					}
+					this._Applicant.Entity = value;
+					if ((value != null))
+					{
+						value.Applieds.Add(this);
+						this._Applicant_ID = value.Applicant_ID;
+					}
+					else
+					{
+						this._Applicant_ID = default(int);
+					}
+					this.SendPropertyChanged("Applicant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Application_Applied", Storage="_Application", ThisKey="Application_ID", OtherKey="Application_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Application Application
+		{
+			get
+			{
+				return this._Application.Entity;
+			}
+			set
+			{
+				Application previousValue = this._Application.Entity;
+				if (((previousValue != value) 
+							|| (this._Application.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Application.Entity = null;
+						previousValue.Applieds.Remove(this);
+					}
+					this._Application.Entity = value;
+					if ((value != null))
+					{
+						value.Applieds.Add(this);
+						this._Application_ID = value.Application_ID;
+					}
+					else
+					{
+						this._Application_ID = default(int);
+					}
+					this.SendPropertyChanged("Application");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_Applied", Storage="_JobOpening", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public JobOpening JobOpening
+		{
+			get
+			{
+				return this._JobOpening.Entity;
+			}
+			set
+			{
+				JobOpening previousValue = this._JobOpening.Entity;
+				if (((previousValue != value) 
+							|| (this._JobOpening.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._JobOpening.Entity = null;
+						previousValue.Applieds.Remove(this);
+					}
+					this._JobOpening.Entity = value;
+					if ((value != null))
+					{
+						value.Applieds.Add(this);
+						this._JobOpening_ID = value.JobOpening_ID;
+					}
+					else
+					{
+						this._JobOpening_ID = default(int);
+					}
+					this.SendPropertyChanged("JobOpening");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

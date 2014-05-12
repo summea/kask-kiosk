@@ -15,9 +15,9 @@ namespace Kask.UnitTests
 
         internal void SetUp()
         {
-            AppliedDAO applied1 = new AppliedDAO() { AppliedID = 1, ApplicantID = 1, ApplicationID = 1, JobID = 1 };
-            AppliedDAO applied2 = new AppliedDAO() { AppliedID = 2, ApplicantID = 2, ApplicationID = 2, JobID = 2 };
-            AppliedDAO applied3 = new AppliedDAO() { AppliedID = 3, ApplicantID = 3, ApplicationID = 3, JobID = 3 };
+            AppliedDAO applied1 = new AppliedDAO() { AppliedID = 1, ApplicantID = 1, ApplicationID = 1, JobOpeningID = 1 };
+            AppliedDAO applied2 = new AppliedDAO() { AppliedID = 2, ApplicantID = 2, ApplicationID = 2, JobOpeningID = 2 };
+            AppliedDAO applied3 = new AppliedDAO() { AppliedID = 3, ApplicantID = 3, ApplicationID = 3, JobOpeningID = 3 };
 
             Applieds.Add(applied1);
             Applieds.Add(applied2);
@@ -66,13 +66,13 @@ namespace Kask.UnitTests
             return false;                    
         }
 
-        private void initializeApplied(AppliedDAO applied, int id, int appliedID, int applicantID, int applicantionID, int applicationID, int jobID, DateTime dateApplied)
+        private void initializeApplied(AppliedDAO applied, int id, int appliedID, int applicantID, int applicantionID, int applicationID, int JobOpeningID, DateTime dateApplied)
         {
             applied.ID = id;
             applied.AppliedID = appliedID;
             applied.ApplicantID = applicantID;
             applied.ApplicationID = applicationID;
-            applied.JobID = jobID;
+            applied.JobOpeningID = JobOpeningID;
             applied.DateApplied = dateApplied;
         }
 

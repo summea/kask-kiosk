@@ -298,30 +298,30 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantID')
   ALTER TABLE Applied DROP CONSTRAINT [FKApplicantID];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantionID')
   ALTER TABLE Applied DROP CONSTRAINT [FKApplicationID];
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobID')
-  ALTER TABLE Applied DROP CONSTRAINT [FKJobID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobOpeningIDForApplied')
+  ALTER TABLE Applied DROP CONSTRAINT [FKJobOpeningIDForApplied];
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Applied')
   DROP TABLE Applied;
 CREATE TABLE Applied (
   Applied_ID      int IDENTITY(1,1) NOT NULL,
   Applicant_ID    int NOT NULL,
   Application_ID  int NOT NULL UNIQUE,
-  Job_ID          int NOT NULL,
+  JobOpening_ID   int NOT NULL,
   DateApplied     date NOT NULL,
   CONSTRAINT [PKAppliedID] PRIMARY KEY (Applied_ID ASC),
   CONSTRAINT [FKApplicantID] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT [FKApplicationID] FOREIGN KEY (Application_ID) REFERENCES Application (Application_ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT [FKJobID] FOREIGN KEY (Job_ID) REFERENCES Job (Job_ID)
+  CONSTRAINT [FKJobOpeningIDForApplied] FOREIGN KEY (JobOpening_ID) REFERENCES JobOpening (JobOpening_ID)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /* DATA FOR APPLIED RELATION */
-INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (1, 1, 1, GETDATE());
-INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (2, 2, 2, GETDATE());
-INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (3, 3, 3, '12-30-2013');
-INSERT INTO Applied(Applicant_ID, Application_ID, Job_ID, DateApplied) VALUES (4, 4, 4, '12-30-2013');
+INSERT INTO Applied(Applicant_ID, Application_ID, JobOpening_ID, DateApplied) VALUES (1, 1, 1, GETDATE());
+INSERT INTO Applied(Applicant_ID, Application_ID, JobOpening_ID, DateApplied) VALUES (2, 2, 2, GETDATE());
+INSERT INTO Applied(Applicant_ID, Application_ID, JobOpening_ID, DateApplied) VALUES (3, 3, 3, '12-30-2013');
+INSERT INTO Applied(Applicant_ID, Application_ID, JobOpening_ID, DateApplied) VALUES (4, 4, 4, '12-30-2013');
 
 /********************************************************************************
                 SCHOOL RELATION 

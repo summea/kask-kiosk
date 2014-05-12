@@ -132,7 +132,7 @@ namespace Kask.Services.DAO
         public int ApplicationID { get; set; }
 
         [DataMember]
-        public int JobID { get; set; }
+        public int JobOpeningID { get; set; }
 
         [DataMember]
         public DateTime DateApplied { get; set; }
