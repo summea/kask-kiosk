@@ -492,6 +492,139 @@ CREATE TABLE Associate (
 INSERT INTO Associate(Applicant_ID, Reference_ID, Name, Phone, Title) VALUES (1,1, 'Bill Gates', '911', 'CEO');
 
 /********************************************************************************
+                MULTIPLE CHOICE OPTIONS RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKMCOptionID')
+  ALTER TABLE MCOptions DROP CONSTRAINT [PKMCOptionID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'MCOptions')
+  DROP TABLE MCOptions;
+CREATE TABLE MCOptions (
+  MCOption_ID			int IDENTITY(1,1) NOT NULL,
+  OptionDescription		varchar(255) NOT NULL,
+  CONSTRAINT [PKMCOptionID] PRIMARY KEY (MCOption_ID ASC)
+)
+
+/* DATA FOR MULTIPLE CHOICE OPTIONS RELATION */
+INSERT INTO MCOptions(OptionDescription) VALUES ('Yes');
+INSERT INTO MCOptions(OptionDescription) VALUES ('No');
+INSERT INTO MCOptions(OptionDescription) VALUES ('Don''t Know');
+INSERT INTO MCOptions(OptionDescription) VALUES ('Maybe');
+INSERT INTO MCOptions(OptionDescription) VALUES ('Not Sure');
+
+/********************************************************************************
+                MULTIPLE CHOICE QUESTIONS RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKMCQuestionID')
+  ALTER TABLE MCQuestions DROP CONSTRAINT [PKMCQUestionID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'MCQuestions')
+  DROP TABLE MCQuestions;
+CREATE TABLE MCQuestions (
+  MCQuestion_ID				int IDENTITY(1,1) NOT NULL,
+  MCQuestion				varchar(255) NOT NULL,
+  CONSTRAINT [PKMCQuestionID]	PRIMARY KEY (MCQuestion_ID ASC)
+)
+
+/* DATA FOR MULTIPLE CHOICE QUESTIONS RELATION */
+INSERT INTO MCQuestions(MCQuestion) VALUES ('Can you lift 50 lbs?');
+INSERT INTO MCQuestions(MCQuestion) VALUES ('Have you ever been convicted for any crime?');
+
+/********************************************************************************
+                QUESTION BANK RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKMCQuestionBankID')
+  ALTER TABLE QuestionBank DROP CONSTRAINT [PKMCQuestionBankID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKMCQuestionIDForQuestionBank')
+  ALTER TABLE QuestionBank DROP CONSTRAINT [FKMCQuestionIDForQuestionBank];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKMCOptionIDForQuestionBank')
+  ALTER TABLE QuestionBank DROP CONSTRAINT [FKMCOptionIDForQuestionBank];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'QuestionBank')
+  DROP TABLE QuestionBank;
+CREATE TABLE QuestionBank (
+  QuestionBank_ID			int IDENTITY(1,1) NOT NULL,
+  MCQuestion_ID				int NOT NULL,
+  MCOption_ID				int NOT NULL,
+  CONSTRAINT [PKMCQuestionBankID]	PRIMARY KEY (QuestionBank_ID ASC),
+  CONSTRAINT [FKMCQuestionIDForQuestionBank] FOREIGN KEY (MCQuestion_ID) REFERENCES MCQuestions (MCQuestion_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKMCOptionIDForQuestionBank] FOREIGN KEY (MCOption_ID) REFERENCES MCOptions (MCOption_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+/* DATA FOR QUESTION BANK RELATION */
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID) VALUES (1, 1);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID) VALUES (1, 2);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID) VALUES (2, 1);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID) VALUES (2, 2);
+
+/********************************************************************************
+                ASSESSMENT RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKAssessmentID')
+  ALTER TABLE Assessment DROP CONSTRAINT [PKAssessmentID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantIDForAssessment')
+  ALTER TABLE Assessment DROP CONSTRAINT [FKApplicantIDForAssessment];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKQuestionBankIDForAssessment')
+  ALTER TABLE Assessment DROP CONSTRAINT [FKQuestionBankIDForAssessment];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Assessment')
+  DROP TABLE Assessment;
+CREATE TABLE Assessment (
+  Assessment_ID		  int IDENTITY(1,1) NOT NULL,
+  Applicant_ID		  int NOT NULL,
+  QuestionBank_ID	  int NOT NULL,
+  CONSTRAINT [PKAssessmentID] PRIMARY KEY (Assessment_ID ASC),
+  CONSTRAINT [FKApplicantIDForAssessment] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKQuestionBankIDForAssessment] FOREIGN KEY (QuestionBank_ID) REFERENCES QuestionBank (QuestionBank_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+/* DATA FOR ASSESSMENT RELATION */
+INSERT INTO Assessment(Applicant_ID, QuestionBank_ID) VALUES (1, 1);
+INSERT INTO Assessment(Applicant_ID, QuestionBank_ID) VALUES (2, 2);
+INSERT INTO Assessment(Applicant_ID, QuestionBank_ID) VALUES (3, 2);
+
+/********************************************************************************
+                SHORT ANSWER QUESTIONS RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKSAQuestionID')
+  ALTER TABLE SAQuestions DROP CONSTRAINT [PKSAQuestionID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'SAQuestions')
+  DROP TABLE SAQuestions;
+CREATE TABLE SAQuestions (
+  SAQuestion_ID			int IDENTITY(1,1) NOT NULL,
+  Question				varchar(255) NOT NULL,
+  CONSTRAINT [PKSAQuestionID] PRIMARY KEY (SAQuestion_ID ASC)
+)
+
+/* DATA FOR SHORT ANSWER QUESTION RELATION */
+INSERT INTO SAQuestions(Question) VALUES ('What are your weaknesses?');
+INSERT INTO SAQuestions(Question) VALUES ('What are your strengths?');
+INSERT INTO SAQuestions(Question) VALUES ('What would you do to resolve a conflict?');
+
+/********************************************************************************
+                SHORT ANSWER RESPONSES RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKSAResponseID')
+  ALTER TABLE SAResponses DROP CONSTRAINT [PKSAResponseID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'SAResponses')
+  DROP TABLE SAResponses;
+CREATE TABLE SAResponses (
+  SAResponse_ID				int IDENTITY(1,1) NOT NULL,
+  Response  				varchar(255) NOT NULL,
+  CONSTRAINT [PKSAResponseID]	PRIMARY KEY (SAResponse_ID ASC)
+)
+
+/* DATA FOR MULTIPLE CHOICE QUESTIONS RELATION */
+INSERT INTO SAResponses(Response) VALUES ('I don''t have any weaknesses.');
+INSERT INTO SAResponses(Response) VALUES ('I try not to be in any sort of conflicts.');
+
+/********************************************************************************
                 AUTHORIZATION
 *********************************************************************************/
 
@@ -644,3 +777,44 @@ USE [master]
 GO
 ALTER DATABASE [AESDatabase] SET  READ_WRITE 
 GO
+USE [AESDatabase]
+GO
+
+/********************************************************************************
+                INTERVIEW RELATION 
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKInterviewID')
+  ALTER TABLE Interview DROP CONSTRAINT [PKInterviewID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKApplicantIDForInterview')
+  ALTER TABLE Interview DROP CONSTRAINT [FKApplicantIDForInterview];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSAQuestionIDForInterview')
+  ALTER TABLE Interview DROP CONSTRAINT [FKSAQuestionIDForInterview];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSAResponseIDForInterview')
+  ALTER TABLE Interview DROP CONSTRAINT [FKSAResponseIDForInterview];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKUserIDForInterview')
+  ALTER TABLE Interview DROP CONSTRAINT [FKUserIDForInterview];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Interview')
+  DROP TABLE Interview;
+CREATE TABLE Interview (
+  Interview_ID				int IDENTITY(1,1) NOT NULL,
+  Applicant_ID				int NOT NULL,
+  SAQuestion_ID				int NOT NULL,
+  SAResponse_ID				int NOT NULL,
+  UserID					int NOT NULL,
+  CONSTRAINT [PKInterviewID]	PRIMARY KEY (Interview_ID ASC),
+  CONSTRAINT [FKApplicantIDForInterview] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKSAQuestionIDForInterview] FOREIGN KEY (SAQuestion_ID) REFERENCES SAQuestions (SAQuestion_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKSAResponseIDForInterview] FOREIGN KEY (SAResponse_ID) REFERENCES SAResponses (SAResponse_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKUserIDForInterview] FOREIGN KEY (UserID) REFERENCES UserProfile (UserID)
+    ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+/* DATA FOR INTERVIEW RELATION */
+INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID, UserID) VALUES (1, 1, 1, 3);
+INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID, UserID) VALUES (2, 2, 2, 4);
+INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID, UserID) VALUES (3, 3, 1, 4);
+INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID, UserID) VALUES (4, 2, 1, 3);
