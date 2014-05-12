@@ -62,7 +62,7 @@
       <xs:element minOccurs="0" name="AppliedID" type="xs:int" />
       <xs:element minOccurs="0" name="DateApplied" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
-      <xs:element minOccurs="0" name="JobID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobOpeningID" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AppliedDAO" nillable="true" type="tns:AppliedDAO" />

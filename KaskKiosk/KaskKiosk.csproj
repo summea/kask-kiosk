@@ -273,7 +273,7 @@
     <Content Include="Content\js\fullPage-js\.gitignore" />
     <Content Include="Content\js\fullPage-js\bower.json" />
     <Content Include="Content\js\fullPage-js\README.md" />
-    <Content Include="Views\Shared\_PublicLayout.cshtml" />
+    <Content Include="Views\Shared\_PublicKioskLayout.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
@@ -307,6 +307,8 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\JobOpenings\Details.cshtml" />
+    <Content Include="Views\JobOpenings\ViewCurrentOpenings.cshtml" />
+    <Content Include="Views\Shared\_PublicLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

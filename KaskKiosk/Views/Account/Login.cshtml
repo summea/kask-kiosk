@@ -1,37 +1,28 @@
 ﻿@model KaskKiosk.Models.LoginModel
 
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "Log In";
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title</h1>
-</hgroup>
-
 <section id="loginForm">
+<h2>@ViewBag.Title</h2>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <ul>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </li>
-            <!--<li>
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-            </li>-->
-        </ul>
-        <input type="submit" value="Log in" />
-    </fieldset>
+    <ul>
+        <li>
+            @Html.LabelFor(m => m.UserName):<br />
+            @Html.TextBoxFor(m => m.UserName)<br />
+            @Html.ValidationMessageFor(m => m.UserName)
+        </li>
+        <li>
+            @Html.LabelFor(m => m.Password):<br />
+            @Html.PasswordFor(m => m.Password)<br />
+            @Html.ValidationMessageFor(m => m.Password)
+        </li>
+    </ul>
+    <input type="submit" value="Log In" class="btn btn-primary" />
     <!--
     <p>
         @Html.ActionLink("Register", "Register") if you don't have an account.

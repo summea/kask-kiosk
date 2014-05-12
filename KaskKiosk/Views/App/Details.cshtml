@@ -66,11 +66,8 @@
 <table class="table table-striped table-bordered">
     <tr>
         <td colspan="4">
-            @Html.Label("Position Applying For:")<br />
-            @if (ViewBag.jobsByJobId.ContainsKey(@ViewBag.applied.JobID))
-            {
-                @ViewBag.jobsByJobId[@ViewBag.applied.JobID].Title
-            }
+            @Html.Label("Applying for Job#:")<br />
+            @ViewBag.applied.JobOpeningID
         </td>
         <td colspan="2">
             @Html.Label("Salary Expectation:")<br />

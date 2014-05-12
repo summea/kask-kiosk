@@ -46,7 +46,7 @@ namespace Kask.UnitTests
         [TestMethod]
         public void Test_CreateApplied()
         {
-            AppliedDAO applied4 = new AppliedDAO() { AppliedID = 4, ApplicantID = 4, ApplicationID = 4, JobID = 4 };
+            AppliedDAO applied4 = new AppliedDAO() { AppliedID = 4, ApplicantID = 4, ApplicationID = 4, JobOpeningID = 4 };
             appliedService.CreateApplied(applied4);
             Assert.AreEqual(appliedService.GetApplieds().Count, 4);
             Assert.IsNotNull(appliedService.GetAppliedByID(4));
@@ -55,10 +55,10 @@ namespace Kask.UnitTests
         [TestMethod]
         public void Test_UpdateApplied()
         {
-            AppliedDAO applied4 = new AppliedDAO() { AppliedID = 3, ApplicantID = 3, ApplicationID = 3, JobID = 4 };
+            AppliedDAO applied4 = new AppliedDAO() { AppliedID = 3, ApplicantID = 3, ApplicationID = 3, JobOpeningID = 4 };
             appliedService.UpdateApplied(applied4);
             Assert.AreEqual(appliedService.GetAppliedByID(3).AppliedID, 3);
-            Assert.AreEqual(appliedService.GetAppliedByID(3).JobID, 4);
+            Assert.AreEqual(appliedService.GetAppliedByID(3).JobOpeningID, 4);
         }
 
         [TestMethod]

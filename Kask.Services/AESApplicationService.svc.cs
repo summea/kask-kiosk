@@ -386,7 +386,7 @@ namespace Kask.Services
                         AppliedID = applied.Applied_ID,
                         ApplicantID = applied.Applicant_ID,
                         ApplicationID = applied.Application_ID,
-                        JobID = applied.Job_ID,
+                        JobOpeningID = applied.JobOpening_ID,
                         DateApplied = applied.DateApplied
                     };
 
@@ -415,7 +415,7 @@ namespace Kask.Services
                             AppliedID = a.Applied_ID,
                             ApplicantID = a.Applicant_ID,
                             ApplicationID = a.Application_ID,
-                            JobID = a.Job_ID,
+                            JobOpeningID = a.JobOpening_ID,
                             DateApplied = a.DateApplied
                         };
 
@@ -449,7 +449,7 @@ namespace Kask.Services
                             AppliedID = a.Applied_ID,
                             ApplicantID = a.Applicant_ID,
                             ApplicationID = a.Application_ID,
-                            JobID = a.Job_ID,
+                            JobOpeningID = a.JobOpening_ID,
                             DateApplied = a.DateApplied
                         };
 
@@ -472,7 +472,7 @@ namespace Kask.Services
                 Applied_ID = app.AppliedID,
                 Applicant_ID = app.ApplicantID,
                 Application_ID = app.ApplicationID,
-                Job_ID = app.JobID,
+                JobOpening_ID = app.JobOpeningID,
                 DateApplied = app.DateApplied
             };
 
