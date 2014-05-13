@@ -379,4 +379,110 @@ namespace Kask.Services.DAO
         [DataMember]
         public int Manager_ID { get; set; }
     }
+
+    [DataContract]
+    public class MCOptionDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int MCOptionID { get; set; }
+
+        [DataMember]
+        public string MCOptionDescription { get; set; }
+    }
+
+    [DataContract]
+    public class MCQuestionDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int MCQuestionID { get; set; }
+
+        [DataMember]
+        public string MCQuestionDescription { get; set; }
+    }
+
+    [DataContract]
+    public class SAQuestionDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int SAQuestionID { get; set; }
+
+        [DataMember]
+        public string SAQuestionDescription { get; set; }
+    }
+
+    [DataContract]
+    public class SAResponseDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int SAResponseID { get; set; }
+
+        [DataMember]
+        public string SAResponseDescription { get; set; }
+    }
+
+    [DataContract]
+    public class AssessmentDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int AssessmentID { get; set; }
+
+        [DataMember]
+        public int ApplicantID { get; set; }
+
+        [DataMember]
+        public int QuestionBankID { get; set; }
+    }
+
+    [DataContract]
+    public class InterviewDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int InterviewID { get; set; }
+
+        [DataMember]
+        public int ApplicantID { get; set; }
+
+        [DataMember]
+        public int SAQuestionID { get; set; }
+
+        [DataMember]
+        public int SAResponseID { get; set; }
+
+        [DataMember]
+        public int UserID { get; set; }
+    }
+
+    [DataContract]
+    public class QuestionBankDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int QuestionBankID { get; set; }
+
+        [DataMember]
+        public int MCQuestionID { get; set; }
+
+        [DataMember]
+        public int MCOptionID { get; set; }
+    }
 }

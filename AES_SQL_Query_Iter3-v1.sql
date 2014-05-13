@@ -256,7 +256,7 @@ INSERT INTO JobOpening (OpenDate, Job_ID, Approved, Description, Store_ID) VALUE
 
 
 /********************************************************************************
-              JOB_REQUIREMENT RELATION
+              JOB REQUIREMENT RELATION
 *********************************************************************************/
 
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKJobReqID')
@@ -501,16 +501,16 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'MCOption
   DROP TABLE MCOptions;
 CREATE TABLE MCOptions (
   MCOption_ID			int IDENTITY(1,1) NOT NULL,
-  OptionDescription		varchar(255) NOT NULL,
+  MCOptionDescription	varchar(255) NOT NULL,
   CONSTRAINT [PKMCOptionID] PRIMARY KEY (MCOption_ID ASC)
 )
 
 /* DATA FOR MULTIPLE CHOICE OPTIONS RELATION */
-INSERT INTO MCOptions(OptionDescription) VALUES ('Yes');
-INSERT INTO MCOptions(OptionDescription) VALUES ('No');
-INSERT INTO MCOptions(OptionDescription) VALUES ('Don''t Know');
-INSERT INTO MCOptions(OptionDescription) VALUES ('Maybe');
-INSERT INTO MCOptions(OptionDescription) VALUES ('Not Sure');
+INSERT INTO MCOptions(MCOptionDescription) VALUES ('Yes');
+INSERT INTO MCOptions(MCOptionDescription) VALUES ('No');
+INSERT INTO MCOptions(MCOptionDescription) VALUES ('Don''t Know');
+INSERT INTO MCOptions(MCOptionDescription) VALUES ('Maybe');
+INSERT INTO MCOptions(MCOptionDescription) VALUES ('Not Sure');
 
 /********************************************************************************
                 MULTIPLE CHOICE QUESTIONS RELATION 
@@ -522,13 +522,13 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'MCQuesti
   DROP TABLE MCQuestions;
 CREATE TABLE MCQuestions (
   MCQuestion_ID				int IDENTITY(1,1) NOT NULL,
-  MCQuestion				varchar(255) NOT NULL,
+  MCQuestionDescription		varchar(255) NOT NULL,
   CONSTRAINT [PKMCQuestionID]	PRIMARY KEY (MCQuestion_ID ASC)
 )
 
 /* DATA FOR MULTIPLE CHOICE QUESTIONS RELATION */
-INSERT INTO MCQuestions(MCQuestion) VALUES ('Can you lift 50 lbs?');
-INSERT INTO MCQuestions(MCQuestion) VALUES ('Have you ever been convicted for any crime?');
+INSERT INTO MCQuestions(MCQuestionDescription) VALUES ('Can you lift 50 lbs?');
+INSERT INTO MCQuestions(MCQuestionDescription) VALUES ('Have you ever been convicted for any crime?');
 
 /********************************************************************************
                 QUESTION BANK RELATION 
@@ -597,14 +597,14 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'SAQuesti
   DROP TABLE SAQuestions;
 CREATE TABLE SAQuestions (
   SAQuestion_ID			int IDENTITY(1,1) NOT NULL,
-  Question				varchar(255) NOT NULL,
+  SAQuestionDescription	varchar(255) NOT NULL,
   CONSTRAINT [PKSAQuestionID] PRIMARY KEY (SAQuestion_ID ASC)
 )
 
 /* DATA FOR SHORT ANSWER QUESTION RELATION */
-INSERT INTO SAQuestions(Question) VALUES ('What are your weaknesses?');
-INSERT INTO SAQuestions(Question) VALUES ('What are your strengths?');
-INSERT INTO SAQuestions(Question) VALUES ('What would you do to resolve a conflict?');
+INSERT INTO SAQuestions(SAQuestionDescription) VALUES ('What are your weaknesses?');
+INSERT INTO SAQuestions(SAQuestionDescription) VALUES ('What are your strengths?');
+INSERT INTO SAQuestions(SAQuestionDescription) VALUES ('What would you do to resolve a conflict?');
 
 /********************************************************************************
                 SHORT ANSWER RESPONSES RELATION 
@@ -616,13 +616,13 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'SARespon
   DROP TABLE SAResponses;
 CREATE TABLE SAResponses (
   SAResponse_ID				int IDENTITY(1,1) NOT NULL,
-  Response  				varchar(255) NOT NULL,
+  SAResponseDescription		varchar(255) NOT NULL,
   CONSTRAINT [PKSAResponseID]	PRIMARY KEY (SAResponse_ID ASC)
 )
 
 /* DATA FOR MULTIPLE CHOICE QUESTIONS RELATION */
-INSERT INTO SAResponses(Response) VALUES ('I don''t have any weaknesses.');
-INSERT INTO SAResponses(Response) VALUES ('I try not to be in any sort of conflicts.');
+INSERT INTO SAResponses(SAResponseDescription) VALUES ('I don''t have any weaknesses.');
+INSERT INTO SAResponses(SAResponseDescription) VALUES ('I try not to be in any sort of conflicts.');
 
 /********************************************************************************
                 AUTHORIZATION
