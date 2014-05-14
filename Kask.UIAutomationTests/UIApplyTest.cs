@@ -26,7 +26,8 @@ namespace Kask.UIAutomationTests
         public static void OpenApplication(TestContext context)
         {
             Playback.Initialize();
-            BrowserWindow browser = BrowserWindow.Launch(new Uri("http://localhost:51309/"));
+            BrowserWindow browser = BrowserWindow.Launch(new Uri("http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=1"));
+            //BrowserWindow browser = BrowserWindow.Launch(new Uri("http://localhost:51309"));
             browser.CloseOnPlaybackCleanup = false;
             var ui = new UIMap();
             ui.ApplyAndNavigateToWelcomeScreen();

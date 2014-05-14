@@ -74,13 +74,20 @@
       <DependentUpon>AESApplicationService.svc</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IAppliedService.cs" />
+    <Compile Include="Interfaces\IAssessmentService.cs" />
     <Compile Include="Interfaces\IEducationService.cs" />
     <Compile Include="Interfaces\IEmployerService.cs" />
     <Compile Include="Interfaces\IEmploymentService.cs" />
     <Compile Include="Interfaces\IExpertiseService.cs" />
+    <Compile Include="Interfaces\IInterviewService.cs" />
     <Compile Include="Interfaces\IJobOpeningService.cs" />
     <Compile Include="Interfaces\IJobRequirementService.cs" />
     <Compile Include="Interfaces\IJobService.cs" />
+    <Compile Include="Interfaces\IMCOptionService.cs" />
+    <Compile Include="Interfaces\IMCQuestionService.cs" />
+    <Compile Include="Interfaces\IQuestionBankService.cs" />
+    <Compile Include="Interfaces\ISAQuestionService.cs" />
+    <Compile Include="Interfaces\ISAResponseService.cs" />
     <Compile Include="Interfaces\ISchoolService.cs" />
     <Compile Include="Interfaces\ISkillService.cs" />
     <Compile Include="Interfaces\IStoreService.cs" />

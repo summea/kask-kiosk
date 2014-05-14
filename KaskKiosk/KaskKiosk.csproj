@@ -147,12 +147,19 @@
     <Compile Include="Controllers\API\ApplicantController.cs" />
     <Compile Include="Controllers\API\ApplicationController.cs" />
     <Compile Include="Controllers\API\AppliedController.cs" />
+    <Compile Include="Controllers\API\AssessmentController.cs" />
     <Compile Include="Controllers\API\EducationController.cs" />
     <Compile Include="Controllers\API\EmployerController.cs" />
     <Compile Include="Controllers\API\EmploymentController.cs" />
+    <Compile Include="Controllers\API\InterviewController.cs" />
     <Compile Include="Controllers\API\JobController.cs" />
     <Compile Include="Controllers\API\JobOpeningController.cs" />
     <Compile Include="Controllers\API\JobRequirementController.cs" />
+    <Compile Include="Controllers\API\MCOptionController.cs" />
+    <Compile Include="Controllers\API\MCQuestionController.cs" />
+    <Compile Include="Controllers\API\QuestionBankController.cs" />
+    <Compile Include="Controllers\API\SAQuestionController.cs" />
+    <Compile Include="Controllers\API\SAResponseController.cs" />
     <Compile Include="Controllers\API\SchoolController.cs" />
     <Compile Include="Controllers\API\SkillController.cs" />
     <Compile Include="Controllers\API\StoreController.cs" />
@@ -160,6 +167,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOpeningsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\MCOptionsController.cs" />
+    <Compile Include="Controllers\MCQuestionsController.cs" />
+    <Compile Include="Controllers\SAQuestionController.cs" />
+    <Compile Include="Controllers\SAResponseController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -248,6 +259,27 @@
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.StoreDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.AssessmentDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.MCOptionDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.MCQuestionDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.QuestionBankDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.InterviewDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SAQuestionDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SAResponseDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -309,9 +341,19 @@
     <Content Include="Views\JobOpenings\Details.cshtml" />
     <Content Include="Views\JobOpenings\ViewCurrentOpenings.cshtml" />
     <Content Include="Views\Shared\_PublicLayout.cshtml" />
+    <Content Include="Views\MCQuestions\Create.cshtml" />
+    <Content Include="Views\MCQuestions\Index.cshtml" />
+    <Content Include="Views\MCOptions\Index.cshtml" />
+    <Content Include="Views\MCOptions\Create.cshtml" />
+    <Content Include="Views\SAQuestions\Index.cshtml" />
+    <Content Include="Views\SAQuestions\Create.cshtml" />
+    <Content Include="Views\SAResponses\Index.cshtml" />
+    <Content Include="Views\SAResponses\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Assessments\" />
+    <Folder Include="Views\Interviews\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

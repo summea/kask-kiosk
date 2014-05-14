@@ -739,6 +739,99 @@ namespace KaskKiosk.AESApplicationServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AssessmentDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class AssessmentDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ApplicantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AssessmentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuestionBankIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ApplicantID {
+            get {
+                return this.ApplicantIDField;
+            }
+            set {
+                if ((this.ApplicantIDField.Equals(value) != true)) {
+                    this.ApplicantIDField = value;
+                    this.RaisePropertyChanged("ApplicantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AssessmentID {
+            get {
+                return this.AssessmentIDField;
+            }
+            set {
+                if ((this.AssessmentIDField.Equals(value) != true)) {
+                    this.AssessmentIDField = value;
+                    this.RaisePropertyChanged("AssessmentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int QuestionBankID {
+            get {
+                return this.QuestionBankIDField;
+            }
+            set {
+                if ((this.QuestionBankIDField.Equals(value) != true)) {
+                    this.QuestionBankIDField = value;
+                    this.RaisePropertyChanged("QuestionBankID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EducationDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
     [System.SerializableAttribute()]
     public partial class EducationDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1242,6 +1335,131 @@ namespace KaskKiosk.AESApplicationServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InterviewDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class InterviewDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ApplicantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int InterviewIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SAQuestionIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SAResponseIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ApplicantID {
+            get {
+                return this.ApplicantIDField;
+            }
+            set {
+                if ((this.ApplicantIDField.Equals(value) != true)) {
+                    this.ApplicantIDField = value;
+                    this.RaisePropertyChanged("ApplicantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int InterviewID {
+            get {
+                return this.InterviewIDField;
+            }
+            set {
+                if ((this.InterviewIDField.Equals(value) != true)) {
+                    this.InterviewIDField = value;
+                    this.RaisePropertyChanged("InterviewID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SAQuestionID {
+            get {
+                return this.SAQuestionIDField;
+            }
+            set {
+                if ((this.SAQuestionIDField.Equals(value) != true)) {
+                    this.SAQuestionIDField = value;
+                    this.RaisePropertyChanged("SAQuestionID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SAResponseID {
+            get {
+                return this.SAResponseIDField;
+            }
+            set {
+                if ((this.SAResponseIDField.Equals(value) != true)) {
+                    this.SAResponseIDField = value;
+                    this.RaisePropertyChanged("SAResponseID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((this.UserIDField.Equals(value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="JobDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
     [System.SerializableAttribute()]
     public partial class JobDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1553,6 +1771,407 @@ namespace KaskKiosk.AESApplicationServiceRef {
                 if ((this.StoreIDField.Equals(value) != true)) {
                     this.StoreIDField = value;
                     this.RaisePropertyChanged("StoreID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QuestionBankDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class QuestionBankDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MCOptionIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MCQuestionIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuestionBankIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MCOptionID {
+            get {
+                return this.MCOptionIDField;
+            }
+            set {
+                if ((this.MCOptionIDField.Equals(value) != true)) {
+                    this.MCOptionIDField = value;
+                    this.RaisePropertyChanged("MCOptionID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MCQuestionID {
+            get {
+                return this.MCQuestionIDField;
+            }
+            set {
+                if ((this.MCQuestionIDField.Equals(value) != true)) {
+                    this.MCQuestionIDField = value;
+                    this.RaisePropertyChanged("MCQuestionID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int QuestionBankID {
+            get {
+                return this.QuestionBankIDField;
+            }
+            set {
+                if ((this.QuestionBankIDField.Equals(value) != true)) {
+                    this.QuestionBankIDField = value;
+                    this.RaisePropertyChanged("QuestionBankID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MCQuestionDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class MCQuestionDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MCQuestionDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MCQuestionIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MCQuestionDescription {
+            get {
+                return this.MCQuestionDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MCQuestionDescriptionField, value) != true)) {
+                    this.MCQuestionDescriptionField = value;
+                    this.RaisePropertyChanged("MCQuestionDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MCQuestionID {
+            get {
+                return this.MCQuestionIDField;
+            }
+            set {
+                if ((this.MCQuestionIDField.Equals(value) != true)) {
+                    this.MCQuestionIDField = value;
+                    this.RaisePropertyChanged("MCQuestionID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MCOptionDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class MCOptionDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MCOptionDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MCOptionIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MCOptionDescription {
+            get {
+                return this.MCOptionDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MCOptionDescriptionField, value) != true)) {
+                    this.MCOptionDescriptionField = value;
+                    this.RaisePropertyChanged("MCOptionDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MCOptionID {
+            get {
+                return this.MCOptionIDField;
+            }
+            set {
+                if ((this.MCOptionIDField.Equals(value) != true)) {
+                    this.MCOptionIDField = value;
+                    this.RaisePropertyChanged("MCOptionID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SAQuestionDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class SAQuestionDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SAQuestionDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SAQuestionIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SAQuestionDescription {
+            get {
+                return this.SAQuestionDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SAQuestionDescriptionField, value) != true)) {
+                    this.SAQuestionDescriptionField = value;
+                    this.RaisePropertyChanged("SAQuestionDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SAQuestionID {
+            get {
+                return this.SAQuestionIDField;
+            }
+            set {
+                if ((this.SAQuestionIDField.Equals(value) != true)) {
+                    this.SAQuestionIDField = value;
+                    this.RaisePropertyChanged("SAQuestionID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SAResponseDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class SAResponseDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SAResponseDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SAResponseIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SAResponseDescription {
+            get {
+                return this.SAResponseDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SAResponseDescriptionField, value) != true)) {
+                    this.SAResponseDescriptionField = value;
+                    this.RaisePropertyChanged("SAResponseDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SAResponseID {
+            get {
+                return this.SAResponseIDField;
+            }
+            set {
+                if ((this.SAResponseIDField.Equals(value) != true)) {
+                    this.SAResponseIDField = value;
+                    this.RaisePropertyChanged("SAResponseID");
                 }
             }
         }
@@ -2190,6 +2809,114 @@ namespace KaskKiosk.AESApplicationServiceRef {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IAssessmentService")]
+    public interface IAssessmentService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/GetAssessmentByID", ReplyAction="http://tempuri.org/IAssessmentService/GetAssessmentByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAssessmentService/GetAssessmentByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.AssessmentDAO GetAssessmentByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/GetAssessmentByID", ReplyAction="http://tempuri.org/IAssessmentService/GetAssessmentByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.AssessmentDAO> GetAssessmentByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/GetAssessments", ReplyAction="http://tempuri.org/IAssessmentService/GetAssessmentsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAssessmentService/GetAssessmentsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.AssessmentDAO[] GetAssessments();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/GetAssessments", ReplyAction="http://tempuri.org/IAssessmentService/GetAssessmentsResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.AssessmentDAO[]> GetAssessmentsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/CreateAssessment", ReplyAction="http://tempuri.org/IAssessmentService/CreateAssessmentResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAssessmentService/CreateAssessmentKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateAssessment(KaskKiosk.AESApplicationServiceRef.AssessmentDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/CreateAssessment", ReplyAction="http://tempuri.org/IAssessmentService/CreateAssessmentResponse")]
+        System.Threading.Tasks.Task<bool> CreateAssessmentAsync(KaskKiosk.AESApplicationServiceRef.AssessmentDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/UpdateAssessment", ReplyAction="http://tempuri.org/IAssessmentService/UpdateAssessmentResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAssessmentService/UpdateAssessmentKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateAssessment(KaskKiosk.AESApplicationServiceRef.AssessmentDAO newAssessment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/UpdateAssessment", ReplyAction="http://tempuri.org/IAssessmentService/UpdateAssessmentResponse")]
+        System.Threading.Tasks.Task<bool> UpdateAssessmentAsync(KaskKiosk.AESApplicationServiceRef.AssessmentDAO newAssessment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/DeleteAssessment", ReplyAction="http://tempuri.org/IAssessmentService/DeleteAssessmentResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IAssessmentService/DeleteAssessmentKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteAssessment(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssessmentService/DeleteAssessment", ReplyAction="http://tempuri.org/IAssessmentService/DeleteAssessmentResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAssessmentAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IAssessmentServiceChannel : KaskKiosk.AESApplicationServiceRef.IAssessmentService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AssessmentServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IAssessmentService>, KaskKiosk.AESApplicationServiceRef.IAssessmentService {
+        
+        public AssessmentServiceClient() {
+        }
+        
+        public AssessmentServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public AssessmentServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AssessmentServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AssessmentServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.AssessmentDAO GetAssessmentByID(int id) {
+            return base.Channel.GetAssessmentByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.AssessmentDAO> GetAssessmentByIDAsync(int id) {
+            return base.Channel.GetAssessmentByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.AssessmentDAO[] GetAssessments() {
+            return base.Channel.GetAssessments();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.AssessmentDAO[]> GetAssessmentsAsync() {
+            return base.Channel.GetAssessmentsAsync();
+        }
+        
+        public bool CreateAssessment(KaskKiosk.AESApplicationServiceRef.AssessmentDAO e) {
+            return base.Channel.CreateAssessment(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateAssessmentAsync(KaskKiosk.AESApplicationServiceRef.AssessmentDAO e) {
+            return base.Channel.CreateAssessmentAsync(e);
+        }
+        
+        public bool UpdateAssessment(KaskKiosk.AESApplicationServiceRef.AssessmentDAO newAssessment) {
+            return base.Channel.UpdateAssessment(newAssessment);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateAssessmentAsync(KaskKiosk.AESApplicationServiceRef.AssessmentDAO newAssessment) {
+            return base.Channel.UpdateAssessmentAsync(newAssessment);
+        }
+        
+        public bool DeleteAssessment(int id) {
+            return base.Channel.DeleteAssessment(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAssessmentAsync(int id) {
+            return base.Channel.DeleteAssessmentAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IEducationService")]
     public interface IEducationService {
         
@@ -2546,6 +3273,114 @@ namespace KaskKiosk.AESApplicationServiceRef {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IInterviewService")]
+    public interface IInterviewService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/GetInterviewByID", ReplyAction="http://tempuri.org/IInterviewService/GetInterviewByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IInterviewService/GetInterviewByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.InterviewDAO GetInterviewByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/GetInterviewByID", ReplyAction="http://tempuri.org/IInterviewService/GetInterviewByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.InterviewDAO> GetInterviewByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/GetInterviews", ReplyAction="http://tempuri.org/IInterviewService/GetInterviewsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IInterviewService/GetInterviewsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.InterviewDAO[] GetInterviews();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/GetInterviews", ReplyAction="http://tempuri.org/IInterviewService/GetInterviewsResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.InterviewDAO[]> GetInterviewsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/CreateInterview", ReplyAction="http://tempuri.org/IInterviewService/CreateInterviewResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IInterviewService/CreateInterviewKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateInterview(KaskKiosk.AESApplicationServiceRef.InterviewDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/CreateInterview", ReplyAction="http://tempuri.org/IInterviewService/CreateInterviewResponse")]
+        System.Threading.Tasks.Task<bool> CreateInterviewAsync(KaskKiosk.AESApplicationServiceRef.InterviewDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/UpdateInterview", ReplyAction="http://tempuri.org/IInterviewService/UpdateInterviewResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IInterviewService/UpdateInterviewKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateInterview(KaskKiosk.AESApplicationServiceRef.InterviewDAO newInterview);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/UpdateInterview", ReplyAction="http://tempuri.org/IInterviewService/UpdateInterviewResponse")]
+        System.Threading.Tasks.Task<bool> UpdateInterviewAsync(KaskKiosk.AESApplicationServiceRef.InterviewDAO newInterview);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/DeleteInterview", ReplyAction="http://tempuri.org/IInterviewService/DeleteInterviewResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IInterviewService/DeleteInterviewKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteInterview(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/DeleteInterview", ReplyAction="http://tempuri.org/IInterviewService/DeleteInterviewResponse")]
+        System.Threading.Tasks.Task<bool> DeleteInterviewAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IInterviewServiceChannel : KaskKiosk.AESApplicationServiceRef.IInterviewService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InterviewServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IInterviewService>, KaskKiosk.AESApplicationServiceRef.IInterviewService {
+        
+        public InterviewServiceClient() {
+        }
+        
+        public InterviewServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public InterviewServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public InterviewServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public InterviewServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.InterviewDAO GetInterviewByID(int id) {
+            return base.Channel.GetInterviewByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.InterviewDAO> GetInterviewByIDAsync(int id) {
+            return base.Channel.GetInterviewByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.InterviewDAO[] GetInterviews() {
+            return base.Channel.GetInterviews();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.InterviewDAO[]> GetInterviewsAsync() {
+            return base.Channel.GetInterviewsAsync();
+        }
+        
+        public bool CreateInterview(KaskKiosk.AESApplicationServiceRef.InterviewDAO e) {
+            return base.Channel.CreateInterview(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateInterviewAsync(KaskKiosk.AESApplicationServiceRef.InterviewDAO e) {
+            return base.Channel.CreateInterviewAsync(e);
+        }
+        
+        public bool UpdateInterview(KaskKiosk.AESApplicationServiceRef.InterviewDAO newInterview) {
+            return base.Channel.UpdateInterview(newInterview);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateInterviewAsync(KaskKiosk.AESApplicationServiceRef.InterviewDAO newInterview) {
+            return base.Channel.UpdateInterviewAsync(newInterview);
+        }
+        
+        public bool DeleteInterview(int id) {
+            return base.Channel.DeleteInterview(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteInterviewAsync(int id) {
+            return base.Channel.DeleteInterviewAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IJobService")]
     public interface IJobService {
         
@@ -2887,6 +3722,551 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<bool> DeleteJobOpeningAsync(int id) {
             return base.Channel.DeleteJobOpeningAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IQuestionBankService")]
+    public interface IQuestionBankService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/GetQuestionBankByID", ReplyAction="http://tempuri.org/IQuestionBankService/GetQuestionBankByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IQuestionBankService/GetQuestionBankByIDKaskServiceExceptionFa" +
+            "ult", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.QuestionBankDAO GetQuestionBankByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/GetQuestionBankByID", ReplyAction="http://tempuri.org/IQuestionBankService/GetQuestionBankByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.QuestionBankDAO> GetQuestionBankByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/GetQuestionBanks", ReplyAction="http://tempuri.org/IQuestionBankService/GetQuestionBanksResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IQuestionBankService/GetQuestionBanksKaskServiceExceptionFault" +
+            "", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.QuestionBankDAO[] GetQuestionBanks();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/GetQuestionBanks", ReplyAction="http://tempuri.org/IQuestionBankService/GetQuestionBanksResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.QuestionBankDAO[]> GetQuestionBanksAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/CreateQuestionBank", ReplyAction="http://tempuri.org/IQuestionBankService/CreateQuestionBankResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IQuestionBankService/CreateQuestionBankKaskServiceExceptionFau" +
+            "lt", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateQuestionBank(KaskKiosk.AESApplicationServiceRef.QuestionBankDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/CreateQuestionBank", ReplyAction="http://tempuri.org/IQuestionBankService/CreateQuestionBankResponse")]
+        System.Threading.Tasks.Task<bool> CreateQuestionBankAsync(KaskKiosk.AESApplicationServiceRef.QuestionBankDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/UpdateQuestionBank", ReplyAction="http://tempuri.org/IQuestionBankService/UpdateQuestionBankResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IQuestionBankService/UpdateQuestionBankKaskServiceExceptionFau" +
+            "lt", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateQuestionBank(KaskKiosk.AESApplicationServiceRef.QuestionBankDAO newQuestionBank);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/UpdateQuestionBank", ReplyAction="http://tempuri.org/IQuestionBankService/UpdateQuestionBankResponse")]
+        System.Threading.Tasks.Task<bool> UpdateQuestionBankAsync(KaskKiosk.AESApplicationServiceRef.QuestionBankDAO newQuestionBank);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/DeleteQuestionBank", ReplyAction="http://tempuri.org/IQuestionBankService/DeleteQuestionBankResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IQuestionBankService/DeleteQuestionBankKaskServiceExceptionFau" +
+            "lt", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteQuestionBank(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/DeleteQuestionBank", ReplyAction="http://tempuri.org/IQuestionBankService/DeleteQuestionBankResponse")]
+        System.Threading.Tasks.Task<bool> DeleteQuestionBankAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IQuestionBankServiceChannel : KaskKiosk.AESApplicationServiceRef.IQuestionBankService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class QuestionBankServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IQuestionBankService>, KaskKiosk.AESApplicationServiceRef.IQuestionBankService {
+        
+        public QuestionBankServiceClient() {
+        }
+        
+        public QuestionBankServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public QuestionBankServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public QuestionBankServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public QuestionBankServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.QuestionBankDAO GetQuestionBankByID(int id) {
+            return base.Channel.GetQuestionBankByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.QuestionBankDAO> GetQuestionBankByIDAsync(int id) {
+            return base.Channel.GetQuestionBankByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.QuestionBankDAO[] GetQuestionBanks() {
+            return base.Channel.GetQuestionBanks();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.QuestionBankDAO[]> GetQuestionBanksAsync() {
+            return base.Channel.GetQuestionBanksAsync();
+        }
+        
+        public bool CreateQuestionBank(KaskKiosk.AESApplicationServiceRef.QuestionBankDAO e) {
+            return base.Channel.CreateQuestionBank(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateQuestionBankAsync(KaskKiosk.AESApplicationServiceRef.QuestionBankDAO e) {
+            return base.Channel.CreateQuestionBankAsync(e);
+        }
+        
+        public bool UpdateQuestionBank(KaskKiosk.AESApplicationServiceRef.QuestionBankDAO newQuestionBank) {
+            return base.Channel.UpdateQuestionBank(newQuestionBank);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateQuestionBankAsync(KaskKiosk.AESApplicationServiceRef.QuestionBankDAO newQuestionBank) {
+            return base.Channel.UpdateQuestionBankAsync(newQuestionBank);
+        }
+        
+        public bool DeleteQuestionBank(int id) {
+            return base.Channel.DeleteQuestionBank(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteQuestionBankAsync(int id) {
+            return base.Channel.DeleteQuestionBankAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IMCQuestionService")]
+    public interface IMCQuestionService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/GetMCQuestionByID", ReplyAction="http://tempuri.org/IMCQuestionService/GetMCQuestionByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCQuestionService/GetMCQuestionByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.MCQuestionDAO GetMCQuestionByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/GetMCQuestionByID", ReplyAction="http://tempuri.org/IMCQuestionService/GetMCQuestionByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.MCQuestionDAO> GetMCQuestionByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/GetMCQuestions", ReplyAction="http://tempuri.org/IMCQuestionService/GetMCQuestionsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCQuestionService/GetMCQuestionsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.MCQuestionDAO[] GetMCQuestions();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/GetMCQuestions", ReplyAction="http://tempuri.org/IMCQuestionService/GetMCQuestionsResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.MCQuestionDAO[]> GetMCQuestionsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/CreateMCQuestion", ReplyAction="http://tempuri.org/IMCQuestionService/CreateMCQuestionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCQuestionService/CreateMCQuestionKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateMCQuestion(KaskKiosk.AESApplicationServiceRef.MCQuestionDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/CreateMCQuestion", ReplyAction="http://tempuri.org/IMCQuestionService/CreateMCQuestionResponse")]
+        System.Threading.Tasks.Task<bool> CreateMCQuestionAsync(KaskKiosk.AESApplicationServiceRef.MCQuestionDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/UpdateMCQuestion", ReplyAction="http://tempuri.org/IMCQuestionService/UpdateMCQuestionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCQuestionService/UpdateMCQuestionKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateMCQuestion(KaskKiosk.AESApplicationServiceRef.MCQuestionDAO newMCQuestion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/UpdateMCQuestion", ReplyAction="http://tempuri.org/IMCQuestionService/UpdateMCQuestionResponse")]
+        System.Threading.Tasks.Task<bool> UpdateMCQuestionAsync(KaskKiosk.AESApplicationServiceRef.MCQuestionDAO newMCQuestion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/DeleteMCQuestion", ReplyAction="http://tempuri.org/IMCQuestionService/DeleteMCQuestionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCQuestionService/DeleteMCQuestionKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteMCQuestion(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCQuestionService/DeleteMCQuestion", ReplyAction="http://tempuri.org/IMCQuestionService/DeleteMCQuestionResponse")]
+        System.Threading.Tasks.Task<bool> DeleteMCQuestionAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IMCQuestionServiceChannel : KaskKiosk.AESApplicationServiceRef.IMCQuestionService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MCQuestionServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IMCQuestionService>, KaskKiosk.AESApplicationServiceRef.IMCQuestionService {
+        
+        public MCQuestionServiceClient() {
+        }
+        
+        public MCQuestionServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public MCQuestionServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MCQuestionServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MCQuestionServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.MCQuestionDAO GetMCQuestionByID(int id) {
+            return base.Channel.GetMCQuestionByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.MCQuestionDAO> GetMCQuestionByIDAsync(int id) {
+            return base.Channel.GetMCQuestionByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.MCQuestionDAO[] GetMCQuestions() {
+            return base.Channel.GetMCQuestions();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.MCQuestionDAO[]> GetMCQuestionsAsync() {
+            return base.Channel.GetMCQuestionsAsync();
+        }
+        
+        public bool CreateMCQuestion(KaskKiosk.AESApplicationServiceRef.MCQuestionDAO e) {
+            return base.Channel.CreateMCQuestion(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateMCQuestionAsync(KaskKiosk.AESApplicationServiceRef.MCQuestionDAO e) {
+            return base.Channel.CreateMCQuestionAsync(e);
+        }
+        
+        public bool UpdateMCQuestion(KaskKiosk.AESApplicationServiceRef.MCQuestionDAO newMCQuestion) {
+            return base.Channel.UpdateMCQuestion(newMCQuestion);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateMCQuestionAsync(KaskKiosk.AESApplicationServiceRef.MCQuestionDAO newMCQuestion) {
+            return base.Channel.UpdateMCQuestionAsync(newMCQuestion);
+        }
+        
+        public bool DeleteMCQuestion(int id) {
+            return base.Channel.DeleteMCQuestion(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteMCQuestionAsync(int id) {
+            return base.Channel.DeleteMCQuestionAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IMCOptionService")]
+    public interface IMCOptionService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/GetMCOptionByID", ReplyAction="http://tempuri.org/IMCOptionService/GetMCOptionByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCOptionService/GetMCOptionByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.MCOptionDAO GetMCOptionByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/GetMCOptionByID", ReplyAction="http://tempuri.org/IMCOptionService/GetMCOptionByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.MCOptionDAO> GetMCOptionByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/GetMCOptions", ReplyAction="http://tempuri.org/IMCOptionService/GetMCOptionsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCOptionService/GetMCOptionsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.MCOptionDAO[] GetMCOptions();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/GetMCOptions", ReplyAction="http://tempuri.org/IMCOptionService/GetMCOptionsResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.MCOptionDAO[]> GetMCOptionsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/CreateMCOption", ReplyAction="http://tempuri.org/IMCOptionService/CreateMCOptionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCOptionService/CreateMCOptionKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateMCOption(KaskKiosk.AESApplicationServiceRef.MCOptionDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/CreateMCOption", ReplyAction="http://tempuri.org/IMCOptionService/CreateMCOptionResponse")]
+        System.Threading.Tasks.Task<bool> CreateMCOptionAsync(KaskKiosk.AESApplicationServiceRef.MCOptionDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/UpdateMCOption", ReplyAction="http://tempuri.org/IMCOptionService/UpdateMCOptionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCOptionService/UpdateMCOptionKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateMCOption(KaskKiosk.AESApplicationServiceRef.MCOptionDAO newMCOption);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/UpdateMCOption", ReplyAction="http://tempuri.org/IMCOptionService/UpdateMCOptionResponse")]
+        System.Threading.Tasks.Task<bool> UpdateMCOptionAsync(KaskKiosk.AESApplicationServiceRef.MCOptionDAO newMCOption);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/DeleteMCOption", ReplyAction="http://tempuri.org/IMCOptionService/DeleteMCOptionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IMCOptionService/DeleteMCOptionKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteMCOption(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMCOptionService/DeleteMCOption", ReplyAction="http://tempuri.org/IMCOptionService/DeleteMCOptionResponse")]
+        System.Threading.Tasks.Task<bool> DeleteMCOptionAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IMCOptionServiceChannel : KaskKiosk.AESApplicationServiceRef.IMCOptionService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MCOptionServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IMCOptionService>, KaskKiosk.AESApplicationServiceRef.IMCOptionService {
+        
+        public MCOptionServiceClient() {
+        }
+        
+        public MCOptionServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public MCOptionServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MCOptionServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MCOptionServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.MCOptionDAO GetMCOptionByID(int id) {
+            return base.Channel.GetMCOptionByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.MCOptionDAO> GetMCOptionByIDAsync(int id) {
+            return base.Channel.GetMCOptionByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.MCOptionDAO[] GetMCOptions() {
+            return base.Channel.GetMCOptions();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.MCOptionDAO[]> GetMCOptionsAsync() {
+            return base.Channel.GetMCOptionsAsync();
+        }
+        
+        public bool CreateMCOption(KaskKiosk.AESApplicationServiceRef.MCOptionDAO e) {
+            return base.Channel.CreateMCOption(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateMCOptionAsync(KaskKiosk.AESApplicationServiceRef.MCOptionDAO e) {
+            return base.Channel.CreateMCOptionAsync(e);
+        }
+        
+        public bool UpdateMCOption(KaskKiosk.AESApplicationServiceRef.MCOptionDAO newMCOption) {
+            return base.Channel.UpdateMCOption(newMCOption);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateMCOptionAsync(KaskKiosk.AESApplicationServiceRef.MCOptionDAO newMCOption) {
+            return base.Channel.UpdateMCOptionAsync(newMCOption);
+        }
+        
+        public bool DeleteMCOption(int id) {
+            return base.Channel.DeleteMCOption(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteMCOptionAsync(int id) {
+            return base.Channel.DeleteMCOptionAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.ISAQuestionService")]
+    public interface ISAQuestionService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/GetSAQuestionByID", ReplyAction="http://tempuri.org/ISAQuestionService/GetSAQuestionByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAQuestionService/GetSAQuestionByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.SAQuestionDAO GetSAQuestionByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/GetSAQuestionByID", ReplyAction="http://tempuri.org/ISAQuestionService/GetSAQuestionByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SAQuestionDAO> GetSAQuestionByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/GetSAQuestions", ReplyAction="http://tempuri.org/ISAQuestionService/GetSAQuestionsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAQuestionService/GetSAQuestionsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.SAQuestionDAO[] GetSAQuestions();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/GetSAQuestions", ReplyAction="http://tempuri.org/ISAQuestionService/GetSAQuestionsResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SAQuestionDAO[]> GetSAQuestionsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/CreateSAQuestion", ReplyAction="http://tempuri.org/ISAQuestionService/CreateSAQuestionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAQuestionService/CreateSAQuestionKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateSAQuestion(KaskKiosk.AESApplicationServiceRef.SAQuestionDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/CreateSAQuestion", ReplyAction="http://tempuri.org/ISAQuestionService/CreateSAQuestionResponse")]
+        System.Threading.Tasks.Task<bool> CreateSAQuestionAsync(KaskKiosk.AESApplicationServiceRef.SAQuestionDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/UpdateSAQuestion", ReplyAction="http://tempuri.org/ISAQuestionService/UpdateSAQuestionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAQuestionService/UpdateSAQuestionKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateSAQuestion(KaskKiosk.AESApplicationServiceRef.SAQuestionDAO newSAQuestion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/UpdateSAQuestion", ReplyAction="http://tempuri.org/ISAQuestionService/UpdateSAQuestionResponse")]
+        System.Threading.Tasks.Task<bool> UpdateSAQuestionAsync(KaskKiosk.AESApplicationServiceRef.SAQuestionDAO newSAQuestion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/DeleteSAQuestion", ReplyAction="http://tempuri.org/ISAQuestionService/DeleteSAQuestionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAQuestionService/DeleteSAQuestionKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteSAQuestion(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAQuestionService/DeleteSAQuestion", ReplyAction="http://tempuri.org/ISAQuestionService/DeleteSAQuestionResponse")]
+        System.Threading.Tasks.Task<bool> DeleteSAQuestionAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ISAQuestionServiceChannel : KaskKiosk.AESApplicationServiceRef.ISAQuestionService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SAQuestionServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.ISAQuestionService>, KaskKiosk.AESApplicationServiceRef.ISAQuestionService {
+        
+        public SAQuestionServiceClient() {
+        }
+        
+        public SAQuestionServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public SAQuestionServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public SAQuestionServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public SAQuestionServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.SAQuestionDAO GetSAQuestionByID(int id) {
+            return base.Channel.GetSAQuestionByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SAQuestionDAO> GetSAQuestionByIDAsync(int id) {
+            return base.Channel.GetSAQuestionByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.SAQuestionDAO[] GetSAQuestions() {
+            return base.Channel.GetSAQuestions();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SAQuestionDAO[]> GetSAQuestionsAsync() {
+            return base.Channel.GetSAQuestionsAsync();
+        }
+        
+        public bool CreateSAQuestion(KaskKiosk.AESApplicationServiceRef.SAQuestionDAO e) {
+            return base.Channel.CreateSAQuestion(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateSAQuestionAsync(KaskKiosk.AESApplicationServiceRef.SAQuestionDAO e) {
+            return base.Channel.CreateSAQuestionAsync(e);
+        }
+        
+        public bool UpdateSAQuestion(KaskKiosk.AESApplicationServiceRef.SAQuestionDAO newSAQuestion) {
+            return base.Channel.UpdateSAQuestion(newSAQuestion);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateSAQuestionAsync(KaskKiosk.AESApplicationServiceRef.SAQuestionDAO newSAQuestion) {
+            return base.Channel.UpdateSAQuestionAsync(newSAQuestion);
+        }
+        
+        public bool DeleteSAQuestion(int id) {
+            return base.Channel.DeleteSAQuestion(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteSAQuestionAsync(int id) {
+            return base.Channel.DeleteSAQuestionAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.ISAResponseService")]
+    public interface ISAResponseService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/GetSAResponseByID", ReplyAction="http://tempuri.org/ISAResponseService/GetSAResponseByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAResponseService/GetSAResponseByIDKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.SAResponseDAO GetSAResponseByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/GetSAResponseByID", ReplyAction="http://tempuri.org/ISAResponseService/GetSAResponseByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SAResponseDAO> GetSAResponseByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/GetSAResponses", ReplyAction="http://tempuri.org/ISAResponseService/GetSAResponsesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAResponseService/GetSAResponsesKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.SAResponseDAO[] GetSAResponses();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/GetSAResponses", ReplyAction="http://tempuri.org/ISAResponseService/GetSAResponsesResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SAResponseDAO[]> GetSAResponsesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/CreateSAResponse", ReplyAction="http://tempuri.org/ISAResponseService/CreateSAResponseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAResponseService/CreateSAResponseKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateSAResponse(KaskKiosk.AESApplicationServiceRef.SAResponseDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/CreateSAResponse", ReplyAction="http://tempuri.org/ISAResponseService/CreateSAResponseResponse")]
+        System.Threading.Tasks.Task<bool> CreateSAResponseAsync(KaskKiosk.AESApplicationServiceRef.SAResponseDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/UpdateSAResponse", ReplyAction="http://tempuri.org/ISAResponseService/UpdateSAResponseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAResponseService/UpdateSAResponseKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateSAResponse(KaskKiosk.AESApplicationServiceRef.SAResponseDAO newSAResponse);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/UpdateSAResponse", ReplyAction="http://tempuri.org/ISAResponseService/UpdateSAResponseResponse")]
+        System.Threading.Tasks.Task<bool> UpdateSAResponseAsync(KaskKiosk.AESApplicationServiceRef.SAResponseDAO newSAResponse);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/DeleteSAResponse", ReplyAction="http://tempuri.org/ISAResponseService/DeleteSAResponseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISAResponseService/DeleteSAResponseKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteSAResponse(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISAResponseService/DeleteSAResponse", ReplyAction="http://tempuri.org/ISAResponseService/DeleteSAResponseResponse")]
+        System.Threading.Tasks.Task<bool> DeleteSAResponseAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ISAResponseServiceChannel : KaskKiosk.AESApplicationServiceRef.ISAResponseService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SAResponseServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.ISAResponseService>, KaskKiosk.AESApplicationServiceRef.ISAResponseService {
+        
+        public SAResponseServiceClient() {
+        }
+        
+        public SAResponseServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public SAResponseServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public SAResponseServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public SAResponseServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.SAResponseDAO GetSAResponseByID(int id) {
+            return base.Channel.GetSAResponseByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SAResponseDAO> GetSAResponseByIDAsync(int id) {
+            return base.Channel.GetSAResponseByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.SAResponseDAO[] GetSAResponses() {
+            return base.Channel.GetSAResponses();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SAResponseDAO[]> GetSAResponsesAsync() {
+            return base.Channel.GetSAResponsesAsync();
+        }
+        
+        public bool CreateSAResponse(KaskKiosk.AESApplicationServiceRef.SAResponseDAO e) {
+            return base.Channel.CreateSAResponse(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateSAResponseAsync(KaskKiosk.AESApplicationServiceRef.SAResponseDAO e) {
+            return base.Channel.CreateSAResponseAsync(e);
+        }
+        
+        public bool UpdateSAResponse(KaskKiosk.AESApplicationServiceRef.SAResponseDAO newSAResponse) {
+            return base.Channel.UpdateSAResponse(newSAResponse);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateSAResponseAsync(KaskKiosk.AESApplicationServiceRef.SAResponseDAO newSAResponse) {
+            return base.Channel.UpdateSAResponseAsync(newSAResponse);
+        }
+        
+        public bool DeleteSAResponse(int id) {
+            return base.Channel.DeleteSAResponse(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteSAResponseAsync(int id) {
+            return base.Channel.DeleteSAResponseAsync(id);
         }
     }
     

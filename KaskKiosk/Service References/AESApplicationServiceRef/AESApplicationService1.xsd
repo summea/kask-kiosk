@@ -72,6 +72,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAppliedDAO" nillable="true" type="tns:ArrayOfAppliedDAO" />
+  <xs:complexType name="AssessmentDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicantID" type="xs:int" />
+      <xs:element minOccurs="0" name="AssessmentID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="QuestionBankID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssessmentDAO" nillable="true" type="tns:AssessmentDAO" />
+  <xs:complexType name="ArrayOfAssessmentDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssessmentDAO" nillable="true" type="tns:AssessmentDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssessmentDAO" nillable="true" type="tns:ArrayOfAssessmentDAO" />
   <xs:complexType name="EducationDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ApplicantID" type="xs:int" />
@@ -131,6 +146,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfEmploymentDAO" nillable="true" type="tns:ArrayOfEmploymentDAO" />
+  <xs:complexType name="InterviewDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicantID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="InterviewID" type="xs:int" />
+      <xs:element minOccurs="0" name="SAQuestionID" type="xs:int" />
+      <xs:element minOccurs="0" name="SAResponseID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InterviewDAO" nillable="true" type="tns:InterviewDAO" />
+  <xs:complexType name="ArrayOfInterviewDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InterviewDAO" nillable="true" type="tns:InterviewDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInterviewDAO" nillable="true" type="tns:ArrayOfInterviewDAO" />
   <xs:complexType name="JobDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:int" />
@@ -179,6 +211,77 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfJobOpeningDAO" nillable="true" type="tns:ArrayOfJobOpeningDAO" />
+  <xs:complexType name="QuestionBankDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="MCOptionID" type="xs:int" />
+      <xs:element minOccurs="0" name="MCQuestionID" type="xs:int" />
+      <xs:element minOccurs="0" name="QuestionBankID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QuestionBankDAO" nillable="true" type="tns:QuestionBankDAO" />
+  <xs:complexType name="ArrayOfQuestionBankDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QuestionBankDAO" nillable="true" type="tns:QuestionBankDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQuestionBankDAO" nillable="true" type="tns:ArrayOfQuestionBankDAO" />
+  <xs:complexType name="MCQuestionDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="MCQuestionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MCQuestionID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MCQuestionDAO" nillable="true" type="tns:MCQuestionDAO" />
+  <xs:complexType name="ArrayOfMCQuestionDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MCQuestionDAO" nillable="true" type="tns:MCQuestionDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMCQuestionDAO" nillable="true" type="tns:ArrayOfMCQuestionDAO" />
+  <xs:complexType name="MCOptionDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="MCOptionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MCOptionID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MCOptionDAO" nillable="true" type="tns:MCOptionDAO" />
+  <xs:complexType name="ArrayOfMCOptionDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MCOptionDAO" nillable="true" type="tns:MCOptionDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMCOptionDAO" nillable="true" type="tns:ArrayOfMCOptionDAO" />
+  <xs:complexType name="SAQuestionDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SAQuestionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SAQuestionID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SAQuestionDAO" nillable="true" type="tns:SAQuestionDAO" />
+  <xs:complexType name="ArrayOfSAQuestionDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SAQuestionDAO" nillable="true" type="tns:SAQuestionDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSAQuestionDAO" nillable="true" type="tns:ArrayOfSAQuestionDAO" />
+  <xs:complexType name="SAResponseDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SAResponseDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SAResponseID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SAResponseDAO" nillable="true" type="tns:SAResponseDAO" />
+  <xs:complexType name="ArrayOfSAResponseDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SAResponseDAO" nillable="true" type="tns:SAResponseDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSAResponseDAO" nillable="true" type="tns:ArrayOfSAResponseDAO" />
   <xs:complexType name="SchoolDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:int" />

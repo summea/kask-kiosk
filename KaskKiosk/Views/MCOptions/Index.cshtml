@@ -1,0 +1,23 @@
+﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.MCOptionDAO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+}
+
+<h2>All Multiple Choice Options</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Option</th>
+        <th>Actions</th>
+    </tr>
+@foreach (var item in ViewBag.mCOptions)
+{
+    <tr>
+        <td>@item.MCOptionID</td>
+        <td>@item.MCOptionDescription</td>
+        <td>@Html.ActionLink("View Details", "Details", new { id=item.MCOptionID })</td>
+    </tr>
+}
+</table>
