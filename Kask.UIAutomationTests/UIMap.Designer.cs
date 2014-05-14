@@ -42,7 +42,7 @@ namespace Kask.UIAutomationTests
             #endregion
 
             // Click 'Apply' link
-            Mouse.Click(uIApplyHyperlink, new Point(48, 20));
+            //Mouse.Click(uIApplyHyperlink, new Point(48, 20));
 
             // Click 'Welcome' link
             Mouse.Click(uIWelcomeHyperlink, new Point(26, 9));
@@ -387,7 +387,7 @@ namespace Kask.UIAutomationTests
             // Type '{Tab}' in 'ApplicantPhone' text box
             Keyboard.SendKeys(uIApplicantPhoneEdit, this.FilleUpPersonalPageParams.UIApplicantPhoneEditSendKeys, ModifierKeys.None);
 
-            // Type 'Otjer' in 'NameAlias' text box
+            // Type 'Other' in 'NameAlias' text box
             uINameAliasEdit.Text = this.FilleUpPersonalPageParams.UINameAliasEditText;
 
             // Type '********' in 'SSN' text box
@@ -1432,14 +1432,14 @@ namespace Kask.UIAutomationTests
         public string UIApplicantPhoneEditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type 'Otjer' in 'NameAlias' text box
+        /// Type 'Other' in 'NameAlias' text box
         /// </summary>
-        public string UINameAliasEditText = "Otjer";
+        public string UINameAliasEditText = "Other";
         
         /// <summary>
         /// Type '********' in 'SSN' text box
         /// </summary>
-        public string UISSNEditPassword = "ENztNZBuh+wKnDapqiQnGdZw3scoJnRa";
+        public string UISSNEditPassword = "213243";
         #endregion
     }
     

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.SAQuestionDAO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+}
+
+<h2>All Short Answer Questions</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Question</th>
+        <th>Actions</th>
+    </tr>
+@foreach (var item in ViewBag.sAQuestions)
+{
+    <tr>
+        <td>@item.SAQuestionID</td>
+        <td>@item.SAQuestionDescription</td>
+        <td>@Html.ActionLink("View Details", "Details", new { id=item.SAQuestionID })</td>
+    </tr>
+}
+</table>

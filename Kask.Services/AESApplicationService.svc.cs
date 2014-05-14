@@ -10,8 +10,8 @@ using Kask.DAL.Models;
 
 namespace Kask.Services
 {
-    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IEducationService, IEmployerService, IEmploymentService, IExpertiseService,
-                                        IJobService, IJobOpeningService, IJobRequirementService, ISchoolService, ISkillService, IStoreService
+    public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IAssessmentService, IEducationService, IEmployerService, IEmploymentService, IExpertiseService, IInterviewService,
+                                        IJobService, IJobOpeningService, IJobRequirementService, IMCOptionService, IMCQuestionService, IQuestionBankService, ISAQuestionService, ISAResponseService, ISchoolService, ISkillService, IStoreService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -1858,6 +1858,852 @@ namespace Kask.Services
             {
                 Store store = db.Stores.Single(st => st.Store_ID == id);
                 db.Stores.DeleteOnSubmit(store);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public AssessmentDAO GetAssessmentByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Assessment assessment = (from asmt in db.Assessments where asmt.Assessment_ID == id select asmt).FirstOrDefault();
+                    AssessmentDAO result = new AssessmentDAO
+                    {
+                        ID = assessment.Assessment_ID,
+                        AssessmentID = assessment.Assessment_ID,
+                        ApplicantID = assessment.Applicant_ID,
+                        QuestionBankID = assessment.QuestionBank_ID
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<AssessmentDAO> GetAssessments()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Assessment> assessments = db.Assessments.ToList();
+                    List<AssessmentDAO> result = new List<AssessmentDAO>();
+
+                    foreach (var assessment in assessments)
+                    {
+                        AssessmentDAO temp = new AssessmentDAO
+                        {
+                            ID = assessment.Assessment_ID,
+                            AssessmentID = assessment.Assessment_ID,
+                            ApplicantID = assessment.Applicant_ID,
+                            QuestionBankID = assessment.QuestionBank_ID
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateAssessment(AssessmentDAO s)
+        {
+            Assessment assessment = new Assessment
+            {
+                Assessment_ID = s.AssessmentID,
+                Applicant_ID = s.ApplicantID,
+                QuestionBank_ID = s.QuestionBankID
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Assessments.InsertOnSubmit(assessment);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateAssessment(AssessmentDAO newAssessment)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Assessment assessment = db.Assessments.Single(s => s.Assessment_ID == newAssessment.AssessmentID);
+                assessment.Assessment_ID = newAssessment.AssessmentID;
+                assessment.Applicant_ID = newAssessment.ApplicantID;
+                assessment.QuestionBank_ID = newAssessment.QuestionBankID;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteAssessment(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Assessment assessment = db.Assessments.Single(asmt => asmt.Assessment_ID == id);
+                db.Assessments.DeleteOnSubmit(assessment);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public QuestionBankDAO GetQuestionBankByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    QuestionBank questionBank = (from qubk in db.QuestionBanks where qubk.QuestionBank_ID == id select qubk).FirstOrDefault();
+                    QuestionBankDAO result = new QuestionBankDAO
+                    {
+                        ID = questionBank.QuestionBank_ID,
+                        QuestionBankID = questionBank.QuestionBank_ID,
+                        MCQuestionID = questionBank.MCQuestion_ID,
+                        MCOptionID = questionBank.MCOption_ID
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<QuestionBankDAO> GetQuestionBanks()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<QuestionBank> questionBanks = db.QuestionBanks.ToList();
+                    List<QuestionBankDAO> result = new List<QuestionBankDAO>();
+
+                    foreach (var questionBank in questionBanks)
+                    {
+                        QuestionBankDAO temp = new QuestionBankDAO
+                        {
+                            ID = questionBank.QuestionBank_ID,
+                            QuestionBankID = questionBank.QuestionBank_ID,
+                            MCQuestionID = questionBank.MCQuestion_ID,
+                            MCOptionID = questionBank.MCOption_ID
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateQuestionBank(QuestionBankDAO s)
+        {
+            QuestionBank questionBank = new QuestionBank
+            {
+                QuestionBank_ID = s.QuestionBankID,
+                MCQuestion_ID = s.MCQuestionID,
+                MCOption_ID = s.MCOptionID
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.QuestionBanks.InsertOnSubmit(questionBank);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateQuestionBank(QuestionBankDAO newQuestionBank)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                QuestionBank questionBank = db.QuestionBanks.Single(s => s.QuestionBank_ID == newQuestionBank.QuestionBankID);
+                questionBank.QuestionBank_ID = newQuestionBank.QuestionBankID;
+                questionBank.MCQuestion_ID = newQuestionBank.MCQuestionID;
+                questionBank.MCOption_ID = newQuestionBank.MCOptionID;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteQuestionBank(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                QuestionBank questionBank = db.QuestionBanks.Single(qubk => qubk.QuestionBank_ID == id);
+                db.QuestionBanks.DeleteOnSubmit(questionBank);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public MCQuestionDAO GetMCQuestionByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    MCQuestion mCQuestion = (from mcqu in db.MCQuestions where mcqu.MCQuestion_ID == id select mcqu).FirstOrDefault();
+                    MCQuestionDAO result = new MCQuestionDAO
+                    {
+                        ID = mCQuestion.MCQuestion_ID,
+                        MCQuestionID = mCQuestion.MCQuestion_ID,
+                        MCQuestionDescription = mCQuestion.MCQuestionDescription
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<MCQuestionDAO> GetMCQuestions()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<MCQuestion> mCQuestions = db.MCQuestions.ToList();
+                    List<MCQuestionDAO> result = new List<MCQuestionDAO>();
+
+                    foreach (var mCQuestion in mCQuestions)
+                    {
+                        MCQuestionDAO temp = new MCQuestionDAO
+                        {
+                            ID = mCQuestion.MCQuestion_ID,
+                            MCQuestionID = mCQuestion.MCQuestion_ID,
+                            MCQuestionDescription = mCQuestion.MCQuestionDescription
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateMCQuestion(MCQuestionDAO s)
+        {
+            MCQuestion mCQuestion = new MCQuestion
+            {
+                MCQuestion_ID = s.MCQuestionID,
+                MCQuestionDescription = s.MCQuestionDescription
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.MCQuestions.InsertOnSubmit(mCQuestion);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateMCQuestion(MCQuestionDAO newMCQuestion)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                MCQuestion mCQuestion = db.MCQuestions.Single(s => s.MCQuestion_ID == newMCQuestion.MCQuestionID);
+                mCQuestion.MCQuestion_ID = newMCQuestion.MCQuestionID;
+                mCQuestion.MCQuestionDescription = newMCQuestion.MCQuestionDescription;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteMCQuestion(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                MCQuestion mCQuestion = db.MCQuestions.Single(mcqu => mcqu.MCQuestion_ID == id);
+                db.MCQuestions.DeleteOnSubmit(mCQuestion);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public MCOptionDAO GetMCOptionByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    MCOption mCOption = (from mcopt in db.MCOptions where mcopt.MCOption_ID == id select mcopt).FirstOrDefault();
+                    MCOptionDAO result = new MCOptionDAO
+                    {
+                        ID = mCOption.MCOption_ID,
+                        MCOptionID = mCOption.MCOption_ID,
+                        MCOptionDescription = mCOption.MCOptionDescription
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<MCOptionDAO> GetMCOptions()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<MCOption> mCOptions = db.MCOptions.ToList();
+                    List<MCOptionDAO> result = new List<MCOptionDAO>();
+
+                    foreach (var mCOption in mCOptions)
+                    {
+                        MCOptionDAO temp = new MCOptionDAO
+                        {
+                            ID = mCOption.MCOption_ID,
+                            MCOptionID = mCOption.MCOption_ID,
+                            MCOptionDescription = mCOption.MCOptionDescription
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateMCOption(MCOptionDAO s)
+        {
+            MCOption mCOption = new MCOption
+            {
+                MCOption_ID = s.MCOptionID,
+                MCOptionDescription = s.MCOptionDescription
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.MCOptions.InsertOnSubmit(mCOption);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateMCOption(MCOptionDAO newMCOption)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                MCOption mCOption = db.MCOptions.Single(s => s.MCOption_ID == newMCOption.MCOptionID);
+                mCOption.MCOption_ID = newMCOption.MCOptionID;
+                mCOption.MCOptionDescription = newMCOption.MCOptionDescription;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteMCOption(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                MCOption mCOption = db.MCOptions.Single(mcopt => mcopt.MCOption_ID == id);
+                db.MCOptions.DeleteOnSubmit(mCOption);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public InterviewDAO GetInterviewByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    Interview interview = (from intvw in db.Interviews where intvw.Interview_ID == id select intvw).FirstOrDefault();
+                    InterviewDAO result = new InterviewDAO
+                    {
+                        ID = interview.Interview_ID,
+                        InterviewID = interview.Interview_ID,
+                        ApplicantID = interview.Applicant_ID,
+                        SAQuestionID = interview.SAQuestion_ID,
+                        SAResponseID = interview.SAResponse_ID,
+                        UserID = interview.UserID
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<InterviewDAO> GetInterviews()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Interview> interviews = db.Interviews.ToList();
+                    List<InterviewDAO> result = new List<InterviewDAO>();
+
+                    foreach (var interview in interviews)
+                    {
+                        InterviewDAO temp = new InterviewDAO
+                        {
+                            ID = interview.Interview_ID,
+                            InterviewID = interview.Interview_ID,
+                            ApplicantID = interview.Applicant_ID,
+                            SAQuestionID = interview.SAQuestion_ID,
+                            SAResponseID = interview.SAResponse_ID,
+                            UserID = interview.UserID
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateInterview(InterviewDAO s)
+        {
+            Interview interview = new Interview
+            {
+                Interview_ID = s.InterviewID,
+                Applicant_ID = s.ApplicantID,
+                SAQuestion_ID = s.SAQuestionID,
+                SAResponse_ID = s.SAResponseID,
+                UserID = s.UserID
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.Interviews.InsertOnSubmit(interview);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateInterview(InterviewDAO newInterview)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Interview interview = db.Interviews.Single(s => s.Interview_ID == newInterview.InterviewID);
+                interview.Interview_ID = newInterview.InterviewID;
+                interview.Applicant_ID = newInterview.ApplicantID;
+                interview.SAQuestion_ID = newInterview.SAQuestionID;
+                interview.SAResponse_ID = newInterview.SAResponseID;
+                interview.UserID = newInterview.UserID;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteInterview(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                Interview interview = db.Interviews.Single(intvw => intvw.Interview_ID == id);
+                db.Interviews.DeleteOnSubmit(interview);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public SAQuestionDAO GetSAQuestionByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    SAQuestion sAQuestion = (from saqu in db.SAQuestions where saqu.SAQuestion_ID == id select saqu).FirstOrDefault();
+                    SAQuestionDAO result = new SAQuestionDAO
+                    {
+                        ID = sAQuestion.SAQuestion_ID,
+                        SAQuestionID = sAQuestion.SAQuestion_ID,
+                        SAQuestionDescription = sAQuestion.SAQuestionDescription
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<SAQuestionDAO> GetSAQuestions()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<SAQuestion> sAQuestions = db.SAQuestions.ToList();
+                    List<SAQuestionDAO> result = new List<SAQuestionDAO>();
+
+                    foreach (var sAQuestion in sAQuestions)
+                    {
+                        SAQuestionDAO temp = new SAQuestionDAO
+                        {
+                            ID = sAQuestion.SAQuestion_ID,
+                            SAQuestionID = sAQuestion.SAQuestion_ID,
+                            SAQuestionDescription = sAQuestion.SAQuestionDescription
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateSAQuestion(SAQuestionDAO s)
+        {
+            SAQuestion sAQuestion = new SAQuestion
+            {
+                SAQuestion_ID = s.SAQuestionID,
+                SAQuestionDescription = s.SAQuestionDescription
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.SAQuestions.InsertOnSubmit(sAQuestion);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateSAQuestion(SAQuestionDAO newSAQuestion)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                SAQuestion sAQuestion = db.SAQuestions.Single(s => s.SAQuestion_ID == newSAQuestion.SAQuestionID);
+                sAQuestion.SAQuestion_ID = newSAQuestion.SAQuestionID;
+                sAQuestion.SAQuestionDescription = newSAQuestion.SAQuestionDescription;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteSAQuestion(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                SAQuestion sAQuestion = db.SAQuestions.Single(saqu => saqu.SAQuestion_ID == id);
+                db.SAQuestions.DeleteOnSubmit(sAQuestion);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public SAResponseDAO GetSAResponseByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    SAResponse sAResponse = (from sarpns in db.SAResponses where sarpns.SAResponse_ID == id select sarpns).FirstOrDefault();
+                    SAResponseDAO result = new SAResponseDAO
+                    {
+                        ID = sAResponse.SAResponse_ID,
+                        SAResponseID = sAResponse.SAResponse_ID,
+                        SAResponseDescription = sAResponse.SAResponseDescription
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<SAResponseDAO> GetSAResponses()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<SAResponse> sAResponses = db.SAResponses.ToList();
+                    List<SAResponseDAO> result = new List<SAResponseDAO>();
+
+                    foreach (var sAResponse in sAResponses)
+                    {
+                        SAResponseDAO temp = new SAResponseDAO
+                        {
+                            ID = sAResponse.SAResponse_ID,
+                            SAResponseID = sAResponse.SAResponse_ID,
+                            SAResponseDescription = sAResponse.SAResponseDescription
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateSAResponse(SAResponseDAO s)
+        {
+            SAResponse sAResponse = new SAResponse
+            {
+                SAResponse_ID = s.SAResponseID,
+                SAResponseDescription = s.SAResponseDescription
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.SAResponses.InsertOnSubmit(sAResponse);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateSAResponse(SAResponseDAO newSAResponse)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                SAResponse sAResponse = db.SAResponses.Single(s => s.SAResponse_ID == newSAResponse.SAResponseID);
+                sAResponse.SAResponse_ID = newSAResponse.SAResponseID;
+                sAResponse.SAResponseDescription = newSAResponse.SAResponseDescription;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteSAResponse(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                SAResponse sAResponse = db.SAResponses.Single(sarpns => sarpns.SAResponse_ID == id);
+                db.SAResponses.DeleteOnSubmit(sAResponse);
 
                 try
                 {

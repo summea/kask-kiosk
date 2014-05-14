@@ -194,16 +194,6 @@
       <Association Name="MCQuestion_QuestionBank" Member="QuestionBanks" ThisKey="MCQuestion_ID" OtherKey="MCQuestion_ID" Type="QuestionBank" />
     </Type>
   </Table>
-  <Table Name="dbo.QuestionBank" Member="QuestionBanks">
-    <Type Name="QuestionBank">
-      <Column Name="QuestionBank_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MCQuestion_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MCOption_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="QuestionBank_Assessment" Member="Assessments" ThisKey="QuestionBank_ID" OtherKey="QuestionBank_ID" Type="Assessment" />
-      <Association Name="MCOption_QuestionBank" Member="MCOption" ThisKey="MCOption_ID" OtherKey="MCOption_ID" Type="MCOption" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="MCQuestion_QuestionBank" Member="MCQuestion" ThisKey="MCQuestion_ID" OtherKey="MCQuestion_ID" Type="MCQuestion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Reference" Member="References">
     <Type Name="Reference">
       <Column Name="Reference_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -295,6 +285,16 @@
       <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
       <Association Name="webpages_Role_webpages_UsersInRole" Member="webpages_UsersInRoles" ThisKey="RoleId" OtherKey="RoleId" Type="webpages_UsersInRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuestionBank" Member="QuestionBanks">
+    <Type Name="QuestionBank">
+      <Column Name="QuestionBank_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MCQuestion_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MCOption_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="QuestionBank_Assessment" Member="Assessments" ThisKey="QuestionBank_ID" OtherKey="QuestionBank_ID" Type="Assessment" />
+      <Association Name="MCOption_QuestionBank" Member="MCOption" ThisKey="MCOption_ID" OtherKey="MCOption_ID" Type="MCOption" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="MCQuestion_QuestionBank" Member="MCQuestion" ThisKey="MCQuestion_ID" OtherKey="MCQuestion_ID" Type="MCQuestion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>
