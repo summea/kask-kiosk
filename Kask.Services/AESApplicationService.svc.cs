@@ -11,7 +11,7 @@ using Kask.DAL.Models;
 namespace Kask.Services
 {
     public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IAssessmentService, IEducationService, IEmployerService, IEmploymentService, IExpertiseService, IInterviewService,
-                                        IJobService, IJobOpeningService, IJobRequirementService, IMCOptionService, IMCQuestionService, IQuestionBankService, ISAQuestionService, ISAResponseService, ISchoolService, ISkillService, IStoreService
+                                        IJobService, IJobOpeningService, IJobRequirementService, IMCOptionService, IMCQuestionService, IQuestionBankService, ISAQuestionService, ISAResponseService, ISchoolService, ISkillService, ISkillQuestionBankService, IStoreService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -405,9 +405,9 @@ namespace Kask.Services
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    IList<Applied> apps = db.Applieds.ToList();
+                    IList<Applied> applieds = (from applied in db.Applieds select applied).OrderBy(o => o.Applied_ID).ToList();
                     List<AppliedDAO> result = new List<AppliedDAO>();
-                    foreach (var a in apps)
+                    foreach (var a in applieds)
                     {
                         AppliedDAO temp = new AppliedDAO
                         {
@@ -1430,7 +1430,7 @@ namespace Kask.Services
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    IList<Skill> skills = db.Skills.ToList();
+                    IList<Skill> skills = (from sk in db.Skills select sk).OrderBy(o => o.Skill_ID).ToList();
                     List<SkillDAO> result = new List<SkillDAO>();
 
                     foreach (var skill in skills)
@@ -2006,7 +2006,32 @@ namespace Kask.Services
                         ID = questionBank.QuestionBank_ID,
                         QuestionBankID = questionBank.QuestionBank_ID,
                         MCQuestionID = questionBank.MCQuestion_ID,
-                        MCOptionID = questionBank.MCOption_ID
+                        MCOptionID = questionBank.MCOption_ID,
+                        MCCorrectOption = questionBank.MCCorrectOption
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public QuestionBankDAO GetQuestionBankByMCQuestionIDAndMCOptionID(int MCQuestionID, int MCOptionID)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    QuestionBank questionBank = (from qubk in db.QuestionBanks where qubk.MCQuestion_ID == MCQuestionID && qubk.MCOption_ID == MCOptionID select qubk).FirstOrDefault();
+                    QuestionBankDAO result = new QuestionBankDAO
+                    {
+                        ID = questionBank.QuestionBank_ID,
+                        QuestionBankID = questionBank.QuestionBank_ID,
+                        MCQuestionID = questionBank.MCQuestion_ID,
+                        MCOptionID = questionBank.MCOption_ID,
+                        MCCorrectOption = questionBank.MCCorrectOption
                     };
                     return (result != null ? result : null);
                 }
@@ -2033,7 +2058,8 @@ namespace Kask.Services
                             ID = questionBank.QuestionBank_ID,
                             QuestionBankID = questionBank.QuestionBank_ID,
                             MCQuestionID = questionBank.MCQuestion_ID,
-                            MCOptionID = questionBank.MCOption_ID
+                            MCOptionID = questionBank.MCOption_ID,
+                            MCCorrectOption = questionBank.MCCorrectOption
                         };
 
                         result.Add(temp);
@@ -2054,7 +2080,8 @@ namespace Kask.Services
             {
                 QuestionBank_ID = s.QuestionBankID,
                 MCQuestion_ID = s.MCQuestionID,
-                MCOption_ID = s.MCOptionID
+                MCOption_ID = s.MCOptionID,
+                MCCorrectOption = s.MCCorrectOption
             };
 
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
@@ -2082,6 +2109,7 @@ namespace Kask.Services
                 questionBank.QuestionBank_ID = newQuestionBank.QuestionBankID;
                 questionBank.MCQuestion_ID = newQuestionBank.MCQuestionID;
                 questionBank.MCOption_ID = newQuestionBank.MCOptionID;
+                questionBank.MCCorrectOption = newQuestionBank.MCCorrectOption;
 
                 try
                 {
@@ -2704,6 +2732,127 @@ namespace Kask.Services
             {
                 SAResponse sAResponse = db.SAResponses.Single(sarpns => sarpns.SAResponse_ID == id);
                 db.SAResponses.DeleteOnSubmit(sAResponse);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public SkillQuestionBankDAO GetSkillQuestionBankByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    SkillQuestionBank skillQuestionBank = (from sk in db.SkillQuestionBanks where sk.SkillQuestionBank_ID == id select sk).FirstOrDefault();
+                    SkillQuestionBankDAO result = new SkillQuestionBankDAO
+                    {
+                        ID = skillQuestionBank.SkillQuestionBank_ID,
+                        SkillQuestionBankID = skillQuestionBank.SkillQuestionBank_ID,
+                        SkillID = skillQuestionBank.Skill_ID,
+                        QuestionBankID = skillQuestionBank.QuestionBank_ID
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<SkillQuestionBankDAO> GetSkillQuestionBanks()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<SkillQuestionBank> skillQuestionBanks = db.SkillQuestionBanks.ToList();
+                    List<SkillQuestionBankDAO> result = new List<SkillQuestionBankDAO>();
+
+                    foreach (var skillQuestionBank in skillQuestionBanks)
+                    {
+                        SkillQuestionBankDAO temp = new SkillQuestionBankDAO
+                        {
+                            ID = skillQuestionBank.SkillQuestionBank_ID,
+                            SkillQuestionBankID = skillQuestionBank.SkillQuestionBank_ID,
+                            SkillID = skillQuestionBank.Skill_ID,
+                            QuestionBankID = skillQuestionBank.QuestionBank_ID
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateSkillQuestionBank(SkillQuestionBankDAO s)
+        {
+            SkillQuestionBank skillQuestionBank = new SkillQuestionBank
+            {
+                SkillQuestionBank_ID = s.SkillQuestionBankID,
+                Skill_ID = s.SkillID,
+                QuestionBank_ID = s.QuestionBankID
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.SkillQuestionBanks.InsertOnSubmit(skillQuestionBank);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateSkillQuestionBank(SkillQuestionBankDAO newSkillQuestionBank)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                SkillQuestionBank skillQuestionBank = db.SkillQuestionBanks.Single(s => s.SkillQuestionBank_ID == newSkillQuestionBank.SkillQuestionBankID);
+                skillQuestionBank.Skill_ID = newSkillQuestionBank.SkillID;
+                skillQuestionBank.QuestionBank_ID = newSkillQuestionBank.QuestionBankID;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteSkillQuestionBank(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                SkillQuestionBank skillQuestionBank = db.SkillQuestionBanks.Single(sk => sk.SkillQuestionBank_ID == id);
+                db.SkillQuestionBanks.DeleteOnSubmit(skillQuestionBank);
 
                 try
                 {

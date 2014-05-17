@@ -42,6 +42,23 @@ namespace KaskKiosk.Controllers.API
             }
         }
 
+        // GET: /QuestionBank/questionId/optionId
+        [HttpGet]
+        public QuestionBankDAO GetQuestionBankFromQuestionAndOptionId(int questionId, int optionId)
+        {
+            QuestionBankServiceClient client = new QuestionBankServiceClient();
+
+            try
+            {
+                QuestionBankDAO result = client.GetQuestionBankByMCQuestionIDAndMCOptionID(questionId, optionId);
+                return result;
+            }
+            catch (FaultException<KaskServiceException> e)
+            {
+                throw new HttpException(e.Message);
+            }
+        }
+
         [HttpPost]
         public bool PostQuestionBank(QuestionBankDAO questionBank)
         {

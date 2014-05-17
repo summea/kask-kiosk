@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_PublicKioskAssessmentLayout.cshtml";
+    ViewBag.Title = "Create.cshtml";
+}
+
+<ul id="menu" class="text-center">
+    <li><a href="@ViewBag.baseURL"><span class="glyphicon glyphicon-home"></span></a></li>
+    <li data-menuanchor="welcome" class="active"><a href="#welcome">Welcome</a></li>
+    <li data-menuanchor="assessmentQuestions" class="active"><a href="#assessmentQuestions">Assessment Questions</a></li>
+    <li data-menuanchor="submitAssessment" class="active"><a href="#submitAssessment">Submit Assessment</a></li>
+</ul>
+
+@using (Html.BeginForm("Create", "Assessments", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="section" id="section0">
+        <div class="cover">
+            <h1 class="cover-heading">Welcome to Kask Kiosk Assessment Screening</h1>
+            <p class="lead">
+                Click the <button id="moveDownExample" class="btn btn-info">Next &rarr;</button> button to begin.
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="section1">
+        <h2>Assessment Questions</h2>
+        <p class="lead italic">Please answer the following questions...</p>
+        <div class="form-group spacing" style="width:800px;float:left;">
+            <!-- TODO: need to find a way to label the actual skill-questionbank we are using for later matching... -->
+            @if (ViewBag.allMcQuestions != null)
+            {
+                foreach (var mcQuestionRelatedId in @ViewBag.relatedMcQuestionIds)
+                {
+                    foreach (var mcQuestion in @ViewBag.allMcQuestions)
+                    {
+                        if (mcQuestionRelatedId == mcQuestion.MCQuestionID)
+                        {
+                            @mcQuestion.MCQuestionDescription @Html.Raw("&nbsp;&nbsp;")
+
+                            try
+                            {
+                                <!-- brute force loop for now... -->
+                                for (int questionBankIdIndex = 0; questionBankIdIndex < 50; questionBankIdIndex++)
+                                {
+                                    try
+                                    {
+                                        <!-- loop through related mc options, if key exists -->
+                                        foreach (var relatedMcOptionsForMcQuestionId in @ViewBag.relatedMcOptionsForMcQuestions[questionBankIdIndex][mcQuestionRelatedId])
+                                        {
+                                            foreach (var mcOption in @ViewBag.allMcOptions)
+                                            {
+                                                if (relatedMcOptionsForMcQuestionId == mcOption.MCOptionID)
+                                                {
+                                                <input type="radio" name="MCOption_@questionBankIdIndex@Html.Raw("_")@mcQuestion.MCQuestionID@Html.Raw("_")@mcOption.MCOptionID" value="1" /> @mcOption.MCOptionDescription @Html.Raw("&nbsp;&nbsp;")
+                                                }
+                                            }
+                                        }
+                                    }
+                                    catch { }
+                                }
+                            }
+                            catch
+                            { }
+                        }
+                    }
+                }
+            }
+        </div>
+        <br style="clear:both;"/>
+    </div>
+    
+    <div class="section center" id="section2">
+        <input type="checkbox" name="acknowledgeAccurateDataCheckbox" /> I acknowledge that I have provided accurate information<br /><br />
+        <a href="@ViewBag.baseURL" class="btn btn-danger">Cancel Application</a>&nbsp;&nbsp;&nbsp;
+        <input type="submit" id="submit" value="Submit Application" class="btn btn-success" />
+    </div>
+}
+
+<div class="center">
+    <button id="moveUp" class="btn btn-info">&larr; Prev</button>    
+    <button id="moveDown" class="btn btn-info">Next &rarr;</button>
+</div>
+
+<!-- create more space at bottom of view page for now... -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

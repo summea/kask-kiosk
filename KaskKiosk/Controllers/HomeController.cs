@@ -37,7 +37,9 @@ namespace KaskKiosk.Controllers
                                     "<a href=\"/SAQuestions/Index\">View All Short Answer Questions</a> | " +
                                     "<a href=\"/SAQuestions/Create\">Create New Short Answer Questions</a><br>" +
                                     "<a href=\"/SAResponses/Index\">View All Short Answer Responses</a> | " +
-                                    "<a href=\"/SAResponses/Create\">Create Short Answer Responses</a>";
+                                    "<a href=\"/SAResponses/Create\">Create Short Answer Responses</a><br>" +
+                                    "<a href=\"/Skills/Index\">View All Skills</a> | " +
+                                    "<a href=\"/Skills/Create\">Create New Skill</a>";
             }
             else if (this.User.IsInRole("StoreManager"))
             {

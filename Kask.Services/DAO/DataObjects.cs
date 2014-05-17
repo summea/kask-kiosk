@@ -484,5 +484,24 @@ namespace Kask.Services.DAO
 
         [DataMember]
         public int MCOptionID { get; set; }
+
+        [DataMember]
+        public byte? MCCorrectOption { get; set; }
+    }
+
+    [DataContract]
+    public class SkillQuestionBankDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int SkillQuestionBankID { get; set; }
+
+        [DataMember]
+        public int SkillID { get; set; }
+
+        [DataMember]
+        public int QuestionBankID { get; set; }
     }
 }

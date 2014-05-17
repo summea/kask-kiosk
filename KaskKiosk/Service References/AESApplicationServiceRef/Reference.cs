@@ -1798,6 +1798,9 @@ namespace KaskKiosk.AESApplicationServiceRef {
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<byte> MCCorrectOptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int MCOptionIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1825,6 +1828,19 @@ namespace KaskKiosk.AESApplicationServiceRef {
                 if ((this.IDField.Equals(value) != true)) {
                     this.IDField = value;
                     this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<byte> MCCorrectOption {
+            get {
+                return this.MCCorrectOptionField;
+            }
+            set {
+                if ((this.MCCorrectOptionField.Equals(value) != true)) {
+                    this.MCCorrectOptionField = value;
+                    this.RaisePropertyChanged("MCCorrectOption");
                 }
             }
         }
@@ -2342,6 +2358,99 @@ namespace KaskKiosk.AESApplicationServiceRef {
                 if ((object.ReferenceEquals(this.SkillNameField, value) != true)) {
                     this.SkillNameField = value;
                     this.RaisePropertyChanged("SkillName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SkillQuestionBankDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class SkillQuestionBankDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuestionBankIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SkillIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SkillQuestionBankIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int QuestionBankID {
+            get {
+                return this.QuestionBankIDField;
+            }
+            set {
+                if ((this.QuestionBankIDField.Equals(value) != true)) {
+                    this.QuestionBankIDField = value;
+                    this.RaisePropertyChanged("QuestionBankID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SkillID {
+            get {
+                return this.SkillIDField;
+            }
+            set {
+                if ((this.SkillIDField.Equals(value) != true)) {
+                    this.SkillIDField = value;
+                    this.RaisePropertyChanged("SkillID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SkillQuestionBankID {
+            get {
+                return this.SkillQuestionBankIDField;
+            }
+            set {
+                if ((this.SkillQuestionBankIDField.Equals(value) != true)) {
+                    this.SkillQuestionBankIDField = value;
+                    this.RaisePropertyChanged("SkillQuestionBankID");
                 }
             }
         }
@@ -3737,6 +3846,18 @@ namespace KaskKiosk.AESApplicationServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/GetQuestionBankByID", ReplyAction="http://tempuri.org/IQuestionBankService/GetQuestionBankByIDResponse")]
         System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.QuestionBankDAO> GetQuestionBankByIDAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/GetQuestionBankByMCQuestionIDAndMCOptionI" +
+            "D", ReplyAction="http://tempuri.org/IQuestionBankService/GetQuestionBankByMCQuestionIDAndMCOptionI" +
+            "DResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IQuestionBankService/GetQuestionBankByMCQuestionIDAndMCOptionI" +
+            "DKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.QuestionBankDAO GetQuestionBankByMCQuestionIDAndMCOptionID(int MCQuestionID, int MCOptionID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/GetQuestionBankByMCQuestionIDAndMCOptionI" +
+            "D", ReplyAction="http://tempuri.org/IQuestionBankService/GetQuestionBankByMCQuestionIDAndMCOptionI" +
+            "DResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.QuestionBankDAO> GetQuestionBankByMCQuestionIDAndMCOptionIDAsync(int MCQuestionID, int MCOptionID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionBankService/GetQuestionBanks", ReplyAction="http://tempuri.org/IQuestionBankService/GetQuestionBanksResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IQuestionBankService/GetQuestionBanksKaskServiceExceptionFault" +
             "", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
@@ -3803,6 +3924,14 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.QuestionBankDAO> GetQuestionBankByIDAsync(int id) {
             return base.Channel.GetQuestionBankByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.QuestionBankDAO GetQuestionBankByMCQuestionIDAndMCOptionID(int MCQuestionID, int MCOptionID) {
+            return base.Channel.GetQuestionBankByMCQuestionIDAndMCOptionID(MCQuestionID, MCOptionID);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.QuestionBankDAO> GetQuestionBankByMCQuestionIDAndMCOptionIDAsync(int MCQuestionID, int MCOptionID) {
+            return base.Channel.GetQuestionBankByMCQuestionIDAndMCOptionIDAsync(MCQuestionID, MCOptionID);
         }
         
         public KaskKiosk.AESApplicationServiceRef.QuestionBankDAO[] GetQuestionBanks() {
@@ -4483,6 +4612,119 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<bool> DeleteSkillAsync(int id) {
             return base.Channel.DeleteSkillAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.ISkillQuestionBankService")]
+    public interface ISkillQuestionBankService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBankByID", ReplyAction="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBankByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBankByIDKaskServiceE" +
+            "xceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO GetSkillQuestionBankByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBankByID", ReplyAction="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBankByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO> GetSkillQuestionBankByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBanks", ReplyAction="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBanksResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBanksKaskServiceExce" +
+            "ptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO[] GetSkillQuestionBanks();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBanks", ReplyAction="http://tempuri.org/ISkillQuestionBankService/GetSkillQuestionBanksResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO[]> GetSkillQuestionBanksAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/CreateSkillQuestionBank", ReplyAction="http://tempuri.org/ISkillQuestionBankService/CreateSkillQuestionBankResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISkillQuestionBankService/CreateSkillQuestionBankKaskServiceEx" +
+            "ceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateSkillQuestionBank(KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/CreateSkillQuestionBank", ReplyAction="http://tempuri.org/ISkillQuestionBankService/CreateSkillQuestionBankResponse")]
+        System.Threading.Tasks.Task<bool> CreateSkillQuestionBankAsync(KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/UpdateSkillQuestionBank", ReplyAction="http://tempuri.org/ISkillQuestionBankService/UpdateSkillQuestionBankResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISkillQuestionBankService/UpdateSkillQuestionBankKaskServiceEx" +
+            "ceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateSkillQuestionBank(KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO newSkillQuestionBank);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/UpdateSkillQuestionBank", ReplyAction="http://tempuri.org/ISkillQuestionBankService/UpdateSkillQuestionBankResponse")]
+        System.Threading.Tasks.Task<bool> UpdateSkillQuestionBankAsync(KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO newSkillQuestionBank);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/DeleteSkillQuestionBank", ReplyAction="http://tempuri.org/ISkillQuestionBankService/DeleteSkillQuestionBankResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/ISkillQuestionBankService/DeleteSkillQuestionBankKaskServiceEx" +
+            "ceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteSkillQuestionBank(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISkillQuestionBankService/DeleteSkillQuestionBank", ReplyAction="http://tempuri.org/ISkillQuestionBankService/DeleteSkillQuestionBankResponse")]
+        System.Threading.Tasks.Task<bool> DeleteSkillQuestionBankAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ISkillQuestionBankServiceChannel : KaskKiosk.AESApplicationServiceRef.ISkillQuestionBankService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SkillQuestionBankServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.ISkillQuestionBankService>, KaskKiosk.AESApplicationServiceRef.ISkillQuestionBankService {
+        
+        public SkillQuestionBankServiceClient() {
+        }
+        
+        public SkillQuestionBankServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public SkillQuestionBankServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public SkillQuestionBankServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public SkillQuestionBankServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO GetSkillQuestionBankByID(int id) {
+            return base.Channel.GetSkillQuestionBankByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO> GetSkillQuestionBankByIDAsync(int id) {
+            return base.Channel.GetSkillQuestionBankByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO[] GetSkillQuestionBanks() {
+            return base.Channel.GetSkillQuestionBanks();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO[]> GetSkillQuestionBanksAsync() {
+            return base.Channel.GetSkillQuestionBanksAsync();
+        }
+        
+        public bool CreateSkillQuestionBank(KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO e) {
+            return base.Channel.CreateSkillQuestionBank(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateSkillQuestionBankAsync(KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO e) {
+            return base.Channel.CreateSkillQuestionBankAsync(e);
+        }
+        
+        public bool UpdateSkillQuestionBank(KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO newSkillQuestionBank) {
+            return base.Channel.UpdateSkillQuestionBank(newSkillQuestionBank);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateSkillQuestionBankAsync(KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO newSkillQuestionBank) {
+            return base.Channel.UpdateSkillQuestionBankAsync(newSkillQuestionBank);
+        }
+        
+        public bool DeleteSkillQuestionBank(int id) {
+            return base.Channel.DeleteSkillQuestionBank(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteSkillQuestionBankAsync(int id) {
+            return base.Channel.DeleteSkillQuestionBankAsync(id);
         }
     }
     

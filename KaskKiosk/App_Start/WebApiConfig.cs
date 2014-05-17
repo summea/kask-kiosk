@@ -15,6 +15,11 @@ namespace KaskKiosk
                 defaults: new { action = "GetItemsForApplicant" }
             );
             config.Routes.MapHttpRoute(
+                name: "GetQuestionBankFromQuestionAndOptionId",
+                routeTemplate: "api/{controller}/{questionId}/{optionId}",
+                defaults: new { action = "GetQuestionBankFromQuestionAndOptionId" }
+            );
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

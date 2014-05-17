@@ -42,9 +42,6 @@ namespace Kask.DAL.Models
     partial void InsertApplied(Applied instance);
     partial void UpdateApplied(Applied instance);
     partial void DeleteApplied(Applied instance);
-    partial void InsertAssessment(Assessment instance);
-    partial void UpdateAssessment(Assessment instance);
-    partial void DeleteAssessment(Assessment instance);
     partial void InsertAssociate(Associate instance);
     partial void UpdateAssociate(Associate instance);
     partial void DeleteAssociate(Associate instance);
@@ -111,9 +108,15 @@ namespace Kask.DAL.Models
     partial void Insertwebpages_Role(webpages_Role instance);
     partial void Updatewebpages_Role(webpages_Role instance);
     partial void Deletewebpages_Role(webpages_Role instance);
+    partial void InsertSkillQuestionBank(SkillQuestionBank instance);
+    partial void UpdateSkillQuestionBank(SkillQuestionBank instance);
+    partial void DeleteSkillQuestionBank(SkillQuestionBank instance);
     partial void InsertQuestionBank(QuestionBank instance);
     partial void UpdateQuestionBank(QuestionBank instance);
     partial void DeleteQuestionBank(QuestionBank instance);
+    partial void InsertAssessment(Assessment instance);
+    partial void UpdateAssessment(Assessment instance);
+    partial void DeleteAssessment(Assessment instance);
     #endregion
 		
 		public AESDatabaseDataContext() : 
@@ -175,14 +178,6 @@ namespace Kask.DAL.Models
 			get
 			{
 				return this.GetTable<Applied>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Assessment> Assessments
-		{
-			get
-			{
-				return this.GetTable<Assessment>();
 			}
 		}
 		
@@ -362,11 +357,27 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<SkillQuestionBank> SkillQuestionBanks
+		{
+			get
+			{
+				return this.GetTable<SkillQuestionBank>();
+			}
+		}
+		
 		public System.Data.Linq.Table<QuestionBank> QuestionBanks
 		{
 			get
 			{
 				return this.GetTable<QuestionBank>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Assessment> Assessments
+		{
+			get
+			{
+				return this.GetTable<Assessment>();
 			}
 		}
 	}
@@ -397,8 +408,6 @@ namespace Kask.DAL.Models
 		
 		private EntitySet<Applied> _Applieds;
 		
-		private EntitySet<Assessment> _Assessments;
-		
 		private EntitySet<Associate> _Associates;
 		
 		private EntitySet<Education> _Educations;
@@ -408,6 +417,8 @@ namespace Kask.DAL.Models
 		private EntitySet<Expertise> _Expertises;
 		
 		private EntitySet<Interview> _Interviews;
+		
+		private EntitySet<Assessment> _Assessments;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -436,12 +447,12 @@ namespace Kask.DAL.Models
 		public Applicant()
 		{
 			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
-			this._Assessments = new EntitySet<Assessment>(new Action<Assessment>(this.attach_Assessments), new Action<Assessment>(this.detach_Assessments));
 			this._Associates = new EntitySet<Associate>(new Action<Associate>(this.attach_Associates), new Action<Associate>(this.detach_Associates));
 			this._Educations = new EntitySet<Education>(new Action<Education>(this.attach_Educations), new Action<Education>(this.detach_Educations));
 			this._Employments = new EntitySet<Employment>(new Action<Employment>(this.attach_Employments), new Action<Employment>(this.detach_Employments));
 			this._Expertises = new EntitySet<Expertise>(new Action<Expertise>(this.attach_Expertises), new Action<Expertise>(this.detach_Expertises));
 			this._Interviews = new EntitySet<Interview>(new Action<Interview>(this.attach_Interviews), new Action<Interview>(this.detach_Interviews));
+			this._Assessments = new EntitySet<Assessment>(new Action<Assessment>(this.attach_Assessments), new Action<Assessment>(this.detach_Assessments));
 			OnCreated();
 		}
 		
@@ -638,19 +649,6 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Assessment", Storage="_Assessments", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
-		public EntitySet<Assessment> Assessments
-		{
-			get
-			{
-				return this._Assessments;
-			}
-			set
-			{
-				this._Assessments.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Associate", Storage="_Associates", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
 		public EntitySet<Associate> Associates
 		{
@@ -716,6 +714,19 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Assessment", Storage="_Assessments", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
+		public EntitySet<Assessment> Assessments
+		{
+			get
+			{
+				return this._Assessments;
+			}
+			set
+			{
+				this._Assessments.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -743,18 +754,6 @@ namespace Kask.DAL.Models
 		}
 		
 		private void detach_Applieds(Applied entity)
-		{
-			this.SendPropertyChanging();
-			entity.Applicant = null;
-		}
-		
-		private void attach_Assessments(Assessment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Applicant = this;
-		}
-		
-		private void detach_Assessments(Assessment entity)
 		{
 			this.SendPropertyChanging();
 			entity.Applicant = null;
@@ -815,6 +814,18 @@ namespace Kask.DAL.Models
 		}
 		
 		private void detach_Interviews(Interview entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = null;
+		}
+		
+		private void attach_Assessments(Assessment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = this;
+		}
+		
+		private void detach_Assessments(Assessment entity)
 		{
 			this.SendPropertyChanging();
 			entity.Applicant = null;
@@ -1815,198 +1826,6 @@ namespace Kask.DAL.Models
 						this._JobOpening_ID = default(int);
 					}
 					this.SendPropertyChanged("JobOpening");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Assessment")]
-	public partial class Assessment : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Assessment_ID;
-		
-		private int _Applicant_ID;
-		
-		private int _QuestionBank_ID;
-		
-		private EntityRef<Applicant> _Applicant;
-		
-		private EntityRef<QuestionBank> _QuestionBank;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnAssessment_IDChanging(int value);
-    partial void OnAssessment_IDChanged();
-    partial void OnApplicant_IDChanging(int value);
-    partial void OnApplicant_IDChanged();
-    partial void OnQuestionBank_IDChanging(int value);
-    partial void OnQuestionBank_IDChanged();
-    #endregion
-		
-		public Assessment()
-		{
-			this._Applicant = default(EntityRef<Applicant>);
-			this._QuestionBank = default(EntityRef<QuestionBank>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assessment_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Assessment_ID
-		{
-			get
-			{
-				return this._Assessment_ID;
-			}
-			set
-			{
-				if ((this._Assessment_ID != value))
-				{
-					this.OnAssessment_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Assessment_ID = value;
-					this.SendPropertyChanged("Assessment_ID");
-					this.OnAssessment_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
-		public int Applicant_ID
-		{
-			get
-			{
-				return this._Applicant_ID;
-			}
-			set
-			{
-				if ((this._Applicant_ID != value))
-				{
-					if (this._Applicant.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnApplicant_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Applicant_ID = value;
-					this.SendPropertyChanged("Applicant_ID");
-					this.OnApplicant_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionBank_ID", DbType="Int NOT NULL")]
-		public int QuestionBank_ID
-		{
-			get
-			{
-				return this._QuestionBank_ID;
-			}
-			set
-			{
-				if ((this._QuestionBank_ID != value))
-				{
-					if (this._QuestionBank.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnQuestionBank_IDChanging(value);
-					this.SendPropertyChanging();
-					this._QuestionBank_ID = value;
-					this.SendPropertyChanged("QuestionBank_ID");
-					this.OnQuestionBank_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Assessment", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Applicant Applicant
-		{
-			get
-			{
-				return this._Applicant.Entity;
-			}
-			set
-			{
-				Applicant previousValue = this._Applicant.Entity;
-				if (((previousValue != value) 
-							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Applicant.Entity = null;
-						previousValue.Assessments.Remove(this);
-					}
-					this._Applicant.Entity = value;
-					if ((value != null))
-					{
-						value.Assessments.Add(this);
-						this._Applicant_ID = value.Applicant_ID;
-					}
-					else
-					{
-						this._Applicant_ID = default(int);
-					}
-					this.SendPropertyChanged("Applicant");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_Assessment", Storage="_QuestionBank", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public QuestionBank QuestionBank
-		{
-			get
-			{
-				return this._QuestionBank.Entity;
-			}
-			set
-			{
-				QuestionBank previousValue = this._QuestionBank.Entity;
-				if (((previousValue != value) 
-							|| (this._QuestionBank.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._QuestionBank.Entity = null;
-						previousValue.Assessments.Remove(this);
-					}
-					this._QuestionBank.Entity = value;
-					if ((value != null))
-					{
-						value.Assessments.Add(this);
-						this._QuestionBank_ID = value.QuestionBank_ID;
-					}
-					else
-					{
-						this._QuestionBank_ID = default(int);
-					}
-					this.SendPropertyChanged("QuestionBank");
 				}
 			}
 		}
@@ -5040,6 +4859,8 @@ namespace Kask.DAL.Models
 		
 		private EntitySet<JobRequirement> _JobRequirements;
 		
+		private EntitySet<SkillQuestionBank> _SkillQuestionBanks;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5054,6 +4875,7 @@ namespace Kask.DAL.Models
 		{
 			this._Expertises = new EntitySet<Expertise>(new Action<Expertise>(this.attach_Expertises), new Action<Expertise>(this.detach_Expertises));
 			this._JobRequirements = new EntitySet<JobRequirement>(new Action<JobRequirement>(this.attach_JobRequirements), new Action<JobRequirement>(this.detach_JobRequirements));
+			this._SkillQuestionBanks = new EntitySet<SkillQuestionBank>(new Action<SkillQuestionBank>(this.attach_SkillQuestionBanks), new Action<SkillQuestionBank>(this.detach_SkillQuestionBanks));
 			OnCreated();
 		}
 		
@@ -5123,6 +4945,19 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Skill_SkillQuestionBank", Storage="_SkillQuestionBanks", ThisKey="Skill_ID", OtherKey="Skill_ID")]
+		public EntitySet<SkillQuestionBank> SkillQuestionBanks
+		{
+			get
+			{
+				return this._SkillQuestionBanks;
+			}
+			set
+			{
+				this._SkillQuestionBanks.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5162,6 +4997,18 @@ namespace Kask.DAL.Models
 		}
 		
 		private void detach_JobRequirements(JobRequirement entity)
+		{
+			this.SendPropertyChanging();
+			entity.Skill = null;
+		}
+		
+		private void attach_SkillQuestionBanks(SkillQuestionBank entity)
+		{
+			this.SendPropertyChanging();
+			entity.Skill = this;
+		}
+		
+		private void detach_SkillQuestionBanks(SkillQuestionBank entity)
 		{
 			this.SendPropertyChanging();
 			entity.Skill = null;
@@ -6201,6 +6048,198 @@ namespace Kask.DAL.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SkillQuestionBank")]
+	public partial class SkillQuestionBank : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SkillQuestionBank_ID;
+		
+		private int _Skill_ID;
+		
+		private int _QuestionBank_ID;
+		
+		private EntityRef<Skill> _Skill;
+		
+		private EntityRef<QuestionBank> _QuestionBank;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSkillQuestionBank_IDChanging(int value);
+    partial void OnSkillQuestionBank_IDChanged();
+    partial void OnSkill_IDChanging(int value);
+    partial void OnSkill_IDChanged();
+    partial void OnQuestionBank_IDChanging(int value);
+    partial void OnQuestionBank_IDChanged();
+    #endregion
+		
+		public SkillQuestionBank()
+		{
+			this._Skill = default(EntityRef<Skill>);
+			this._QuestionBank = default(EntityRef<QuestionBank>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SkillQuestionBank_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SkillQuestionBank_ID
+		{
+			get
+			{
+				return this._SkillQuestionBank_ID;
+			}
+			set
+			{
+				if ((this._SkillQuestionBank_ID != value))
+				{
+					this.OnSkillQuestionBank_IDChanging(value);
+					this.SendPropertyChanging();
+					this._SkillQuestionBank_ID = value;
+					this.SendPropertyChanged("SkillQuestionBank_ID");
+					this.OnSkillQuestionBank_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skill_ID", DbType="Int NOT NULL")]
+		public int Skill_ID
+		{
+			get
+			{
+				return this._Skill_ID;
+			}
+			set
+			{
+				if ((this._Skill_ID != value))
+				{
+					if (this._Skill.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSkill_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Skill_ID = value;
+					this.SendPropertyChanged("Skill_ID");
+					this.OnSkill_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionBank_ID", DbType="Int NOT NULL")]
+		public int QuestionBank_ID
+		{
+			get
+			{
+				return this._QuestionBank_ID;
+			}
+			set
+			{
+				if ((this._QuestionBank_ID != value))
+				{
+					if (this._QuestionBank.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnQuestionBank_IDChanging(value);
+					this.SendPropertyChanging();
+					this._QuestionBank_ID = value;
+					this.SendPropertyChanged("QuestionBank_ID");
+					this.OnQuestionBank_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Skill_SkillQuestionBank", Storage="_Skill", ThisKey="Skill_ID", OtherKey="Skill_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Skill Skill
+		{
+			get
+			{
+				return this._Skill.Entity;
+			}
+			set
+			{
+				Skill previousValue = this._Skill.Entity;
+				if (((previousValue != value) 
+							|| (this._Skill.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Skill.Entity = null;
+						previousValue.SkillQuestionBanks.Remove(this);
+					}
+					this._Skill.Entity = value;
+					if ((value != null))
+					{
+						value.SkillQuestionBanks.Add(this);
+						this._Skill_ID = value.Skill_ID;
+					}
+					else
+					{
+						this._Skill_ID = default(int);
+					}
+					this.SendPropertyChanged("Skill");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_SkillQuestionBank", Storage="_QuestionBank", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public QuestionBank QuestionBank
+		{
+			get
+			{
+				return this._QuestionBank.Entity;
+			}
+			set
+			{
+				QuestionBank previousValue = this._QuestionBank.Entity;
+				if (((previousValue != value) 
+							|| (this._QuestionBank.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._QuestionBank.Entity = null;
+						previousValue.SkillQuestionBanks.Remove(this);
+					}
+					this._QuestionBank.Entity = value;
+					if ((value != null))
+					{
+						value.SkillQuestionBanks.Add(this);
+						this._QuestionBank_ID = value.QuestionBank_ID;
+					}
+					else
+					{
+						this._QuestionBank_ID = default(int);
+					}
+					this.SendPropertyChanged("QuestionBank");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuestionBank")]
 	public partial class QuestionBank : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -6212,6 +6251,10 @@ namespace Kask.DAL.Models
 		private int _MCQuestion_ID;
 		
 		private int _MCOption_ID;
+		
+		private System.Nullable<byte> _MCCorrectOption;
+		
+		private EntitySet<SkillQuestionBank> _SkillQuestionBanks;
 		
 		private EntitySet<Assessment> _Assessments;
 		
@@ -6229,10 +6272,13 @@ namespace Kask.DAL.Models
     partial void OnMCQuestion_IDChanged();
     partial void OnMCOption_IDChanging(int value);
     partial void OnMCOption_IDChanged();
+    partial void OnMCCorrectOptionChanging(System.Nullable<byte> value);
+    partial void OnMCCorrectOptionChanged();
     #endregion
 		
 		public QuestionBank()
 		{
+			this._SkillQuestionBanks = new EntitySet<SkillQuestionBank>(new Action<SkillQuestionBank>(this.attach_SkillQuestionBanks), new Action<SkillQuestionBank>(this.detach_SkillQuestionBanks));
 			this._Assessments = new EntitySet<Assessment>(new Action<Assessment>(this.attach_Assessments), new Action<Assessment>(this.detach_Assessments));
 			this._MCOption = default(EntityRef<MCOption>);
 			this._MCQuestion = default(EntityRef<MCQuestion>);
@@ -6304,6 +6350,39 @@ namespace Kask.DAL.Models
 					this.SendPropertyChanged("MCOption_ID");
 					this.OnMCOption_IDChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCCorrectOption", DbType="TinyInt")]
+		public System.Nullable<byte> MCCorrectOption
+		{
+			get
+			{
+				return this._MCCorrectOption;
+			}
+			set
+			{
+				if ((this._MCCorrectOption != value))
+				{
+					this.OnMCCorrectOptionChanging(value);
+					this.SendPropertyChanging();
+					this._MCCorrectOption = value;
+					this.SendPropertyChanged("MCCorrectOption");
+					this.OnMCCorrectOptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_SkillQuestionBank", Storage="_SkillQuestionBanks", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID")]
+		public EntitySet<SkillQuestionBank> SkillQuestionBanks
+		{
+			get
+			{
+				return this._SkillQuestionBanks;
+			}
+			set
+			{
+				this._SkillQuestionBanks.Assign(value);
 			}
 		}
 		
@@ -6408,6 +6487,18 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		private void attach_SkillQuestionBanks(SkillQuestionBank entity)
+		{
+			this.SendPropertyChanging();
+			entity.QuestionBank = this;
+		}
+		
+		private void detach_SkillQuestionBanks(SkillQuestionBank entity)
+		{
+			this.SendPropertyChanging();
+			entity.QuestionBank = null;
+		}
+		
 		private void attach_Assessments(Assessment entity)
 		{
 			this.SendPropertyChanging();
@@ -6418,6 +6509,198 @@ namespace Kask.DAL.Models
 		{
 			this.SendPropertyChanging();
 			entity.QuestionBank = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Assessment")]
+	public partial class Assessment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Assessment_ID;
+		
+		private int _Applicant_ID;
+		
+		private int _QuestionBank_ID;
+		
+		private EntityRef<Applicant> _Applicant;
+		
+		private EntityRef<QuestionBank> _QuestionBank;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnAssessment_IDChanging(int value);
+    partial void OnAssessment_IDChanged();
+    partial void OnApplicant_IDChanging(int value);
+    partial void OnApplicant_IDChanged();
+    partial void OnQuestionBank_IDChanging(int value);
+    partial void OnQuestionBank_IDChanged();
+    #endregion
+		
+		public Assessment()
+		{
+			this._Applicant = default(EntityRef<Applicant>);
+			this._QuestionBank = default(EntityRef<QuestionBank>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assessment_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Assessment_ID
+		{
+			get
+			{
+				return this._Assessment_ID;
+			}
+			set
+			{
+				if ((this._Assessment_ID != value))
+				{
+					this.OnAssessment_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Assessment_ID = value;
+					this.SendPropertyChanged("Assessment_ID");
+					this.OnAssessment_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
+		public int Applicant_ID
+		{
+			get
+			{
+				return this._Applicant_ID;
+			}
+			set
+			{
+				if ((this._Applicant_ID != value))
+				{
+					if (this._Applicant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnApplicant_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Applicant_ID = value;
+					this.SendPropertyChanged("Applicant_ID");
+					this.OnApplicant_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionBank_ID", DbType="Int NOT NULL")]
+		public int QuestionBank_ID
+		{
+			get
+			{
+				return this._QuestionBank_ID;
+			}
+			set
+			{
+				if ((this._QuestionBank_ID != value))
+				{
+					if (this._QuestionBank.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnQuestionBank_IDChanging(value);
+					this.SendPropertyChanging();
+					this._QuestionBank_ID = value;
+					this.SendPropertyChanged("QuestionBank_ID");
+					this.OnQuestionBank_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Assessment", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Applicant Applicant
+		{
+			get
+			{
+				return this._Applicant.Entity;
+			}
+			set
+			{
+				Applicant previousValue = this._Applicant.Entity;
+				if (((previousValue != value) 
+							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Applicant.Entity = null;
+						previousValue.Assessments.Remove(this);
+					}
+					this._Applicant.Entity = value;
+					if ((value != null))
+					{
+						value.Assessments.Add(this);
+						this._Applicant_ID = value.Applicant_ID;
+					}
+					else
+					{
+						this._Applicant_ID = default(int);
+					}
+					this.SendPropertyChanged("Applicant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_Assessment", Storage="_QuestionBank", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public QuestionBank QuestionBank
+		{
+			get
+			{
+				return this._QuestionBank.Entity;
+			}
+			set
+			{
+				QuestionBank previousValue = this._QuestionBank.Entity;
+				if (((previousValue != value) 
+							|| (this._QuestionBank.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._QuestionBank.Entity = null;
+						previousValue.Assessments.Remove(this);
+					}
+					this._QuestionBank.Entity = value;
+					if ((value != null))
+					{
+						value.Assessments.Add(this);
+						this._QuestionBank_ID = value.QuestionBank_ID;
+					}
+					else
+					{
+						this._QuestionBank_ID = default(int);
+					}
+					this.SendPropertyChanged("QuestionBank");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
