@@ -248,7 +248,15 @@ namespace KaskKiosk.Controllers
                         }
                     }
 
-                    return RedirectToAction("Welcome", "Home");
+                    try
+                    {
+                        // redirect to assessment questions, if possible
+                        return RedirectToAction("Create", "Assessments", new { ID = Convert.ToInt32(Request.Form["JobOpeningIDReferenceNumber"]) });
+                    }
+                    catch
+                    {
+                        return RedirectToAction("Welcome", "Home");
+                    }
                 }
                 else
                 {

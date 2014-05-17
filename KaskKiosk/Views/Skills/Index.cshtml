@@ -1,0 +1,23 @@
+﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.SkillDAO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+}
+
+<h2>All Skills</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+@foreach (var item in ViewBag.skills)
+{
+    <tr>
+        <td>@item.SkillID</td>
+        <td>@item.SkillName</td>
+        <td>@Html.ActionLink("View Details", "Details", new { id=item.SkillID })</td>
+    </tr>
+}
+</table>

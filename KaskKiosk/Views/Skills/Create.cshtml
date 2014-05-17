@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+    ViewBag.Title = "Create Skill";
+}
+
+<h2>Create Skill</h2><br />
+@using (Html.BeginForm("Create", "Skills", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="section" id="section0">
+        <div class="form-group spacing" style="width:200px;float:left;">
+            @Html.Label("Skill Name:")
+            <input type="text" class="form-control" name="skillName" id="skillName" placeholder="ex: Factory Work" />
+        </div>
+        <br style="clear:both;"/>
+    </div>
+    
+    <div class="section" id="section1">
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Multiple Choice Question for Skill:")
+            @if (ViewBag.mcQuestions != null)
+            {
+                <select class="form-control" name="MCQuestion_1" id="MCQuestion_1">
+                @foreach (var mcQuestion in @ViewBag.mcQuestions)
+                {
+                    <option value="@mcQuestion.MCQuestionID">@mcQuestion.MCQuestionDescription</option>
+                }
+                </select>
+            }
+        </div>
+        <br style="clear:both;"/>
+    
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Multiple Choice Options for Skill-related Question:")<br />
+            @if (ViewBag.mcOptions != null)
+            {
+                foreach (var mcOption in @ViewBag.mcOptions)
+                {
+                    <div style="width:150px;display:inline-block;"><input type="checkbox" name="MCOptionID_1_@mcOption.MCOptionID" value="1"/> @mcOption.MCOptionDescription</div>
+                    <input type="checkbox" name="Valid_MCOptionID_1_@mcOption.MCOptionID" value="1"/> @Html.Label("Valid Answer")<br />
+                }
+            }
+        </div>
+        <br style="clear:both;"/>
+    </div>
+       
+    <a href="@Html.Encode("/Home/Backend")" class="btn btn-danger">Cancel</a>@Html.Raw("&nbsp;&nbsp;&nbsp;")
+    <input type="submit" id="submit" value="Save" class="btn btn-success" />
+}

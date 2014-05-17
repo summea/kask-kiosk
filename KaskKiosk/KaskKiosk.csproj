@@ -162,8 +162,10 @@
     <Compile Include="Controllers\API\SAResponseController.cs" />
     <Compile Include="Controllers\API\SchoolController.cs" />
     <Compile Include="Controllers\API\SkillController.cs" />
+    <Compile Include="Controllers\API\SkillQuestionBankController.cs" />
     <Compile Include="Controllers\API\StoreController.cs" />
     <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\AssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOpeningsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
@@ -171,6 +173,7 @@
     <Compile Include="Controllers\MCQuestionsController.cs" />
     <Compile Include="Controllers\SAQuestionController.cs" />
     <Compile Include="Controllers\SAResponseController.cs" />
+    <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +201,7 @@
     <Content Include="Content\bootstrap\js\bootstrap.js" />
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\css\jquery.fullPage.css" />
+    <Content Include="Content\js\assessment-main.js" />
     <Content Include="Content\js\fullPage-js\example.css" />
     <Content Include="Content\js\fullPage-js\example.html" />
     <Content Include="Content\js\fullPage-js\example2.css" />
@@ -232,6 +236,9 @@
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.AppliedDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.AssessmentDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.EducationDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -239,6 +246,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.EmploymentDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.InterviewDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.JobDAO.datasource">
@@ -250,18 +260,6 @@
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.JobRequirementDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SchoolDAO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SkillDAO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.StoreDAO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.AssessmentDAO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.MCOptionDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -271,13 +269,22 @@
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.QuestionBankDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.InterviewDAO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SAQuestionDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SAResponseDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SchoolDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SkillDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.SkillQuestionBankDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.StoreDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">
@@ -326,6 +333,21 @@
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\App\Approve.cshtml" />
     <Content Include="Views\App\Reject.cshtml" />
+    <Content Include="Views\JobOpenings\Details.cshtml" />
+    <Content Include="Views\JobOpenings\ViewCurrentOpenings.cshtml" />
+    <Content Include="Views\Shared\_PublicLayout.cshtml" />
+    <Content Include="Views\MCQuestions\Create.cshtml" />
+    <Content Include="Views\MCQuestions\Index.cshtml" />
+    <Content Include="Views\MCOptions\Index.cshtml" />
+    <Content Include="Views\MCOptions\Create.cshtml" />
+    <Content Include="Views\SAQuestions\Index.cshtml" />
+    <Content Include="Views\SAQuestions\Create.cshtml" />
+    <Content Include="Views\SAResponses\Index.cshtml" />
+    <Content Include="Views\SAResponses\Create.cshtml" />
+    <Content Include="Views\Skills\Create.cshtml" />
+    <Content Include="Views\Skills\Index.cshtml" />
+    <Content Include="Views\Assessments\Create.cshtml" />
+    <Content Include="Views\Shared\_PublicKioskAssessmentLayout.cshtml" />
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -338,21 +360,9 @@
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\JobOpenings\Details.cshtml" />
-    <Content Include="Views\JobOpenings\ViewCurrentOpenings.cshtml" />
-    <Content Include="Views\Shared\_PublicLayout.cshtml" />
-    <Content Include="Views\MCQuestions\Create.cshtml" />
-    <Content Include="Views\MCQuestions\Index.cshtml" />
-    <Content Include="Views\MCOptions\Index.cshtml" />
-    <Content Include="Views\MCOptions\Create.cshtml" />
-    <Content Include="Views\SAQuestions\Index.cshtml" />
-    <Content Include="Views\SAQuestions\Create.cshtml" />
-    <Content Include="Views\SAResponses\Index.cshtml" />
-    <Content Include="Views\SAResponses\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Assessments\" />
     <Folder Include="Views\Interviews\" />
   </ItemGroup>
   <ItemGroup>

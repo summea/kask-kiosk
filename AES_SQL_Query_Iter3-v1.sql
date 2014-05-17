@@ -546,6 +546,7 @@ CREATE TABLE QuestionBank (
   QuestionBank_ID			int IDENTITY(1,1) NOT NULL,
   MCQuestion_ID				int NOT NULL,
   MCOption_ID				int NOT NULL,
+  MCCorrectOption           tinyint,
   CONSTRAINT [PKMCQuestionBankID]	PRIMARY KEY (QuestionBank_ID ASC),
   CONSTRAINT [FKMCQuestionIDForQuestionBank] FOREIGN KEY (MCQuestion_ID) REFERENCES MCQuestions (MCQuestion_ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
@@ -554,10 +555,34 @@ CREATE TABLE QuestionBank (
 )
 
 /* DATA FOR QUESTION BANK RELATION */
-INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID) VALUES (1, 1);
-INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID) VALUES (1, 2);
-INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID) VALUES (2, 1);
-INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID) VALUES (2, 2);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (1, 1, 1);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (1, 2, 0);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (2, 1, 1);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (2, 2, 0);
+
+/********************************************************************************
+              SKILL-QUESTIONBANK RELATION
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKSkillQuestionBankID')
+  ALTER TABLE SkillQuestionBank DROP CONSTRAINT [PKSkillQuestionBankID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSkillQuestionBank_SkillID')
+  ALTER TABLE SkillQuestionBank DROP CONSTRAINT [FKSkillQuestionBank_SkillID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'SkillQuestionBank')
+  DROP TABLE SkillQuestionBank;
+CREATE TABLE SkillQuestionBank (
+  SkillQuestionBank_ID int     NOT NULL IDENTITY(1, 1),
+  Skill_ID          int     NOT NULL,
+  QuestionBank_ID   int     NOT NULL,
+  CONSTRAINT [PKSkillQuestionBankID] PRIMARY KEY (SkillQuestionBank_ID ASC),
+  CONSTRAINT [FKSkillQuestionBank_SkillID] FOREIGN KEY (Skill_ID) REFERENCES Skill (Skill_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKSkillQuestionBank_QuestionBank_ID] FOREIGN KEY (QuestionBank_ID) REFERENCES QuestionBank (QuestionBank_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+/* DATA FOR SKILL-QUESTIONBANK RELATION */
+INSERT INTO SkillQuestionBank(Skill_ID, QuestionBank_ID) VALUES (1, 1);
 
 /********************************************************************************
                 ASSESSMENT RELATION 

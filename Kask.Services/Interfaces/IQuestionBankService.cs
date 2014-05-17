@@ -15,6 +15,10 @@ namespace Kask.Services.Interfaces
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
+        QuestionBankDAO GetQuestionBankByMCQuestionIDAndMCOptionID(int MCQuestionID, int MCOptionID);
+
+        [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         IList<QuestionBankDAO> GetQuestionBanks();
 
         [OperationContract]

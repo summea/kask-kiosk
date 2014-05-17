@@ -214,6 +214,7 @@
   <xs:complexType name="QuestionBankDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="MCCorrectOption" nillable="true" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="MCOptionID" type="xs:int" />
       <xs:element minOccurs="0" name="MCQuestionID" type="xs:int" />
       <xs:element minOccurs="0" name="QuestionBankID" type="xs:int" />
@@ -311,6 +312,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSkillDAO" nillable="true" type="tns:ArrayOfSkillDAO" />
+  <xs:complexType name="SkillQuestionBankDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="QuestionBankID" type="xs:int" />
+      <xs:element minOccurs="0" name="SkillID" type="xs:int" />
+      <xs:element minOccurs="0" name="SkillQuestionBankID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SkillQuestionBankDAO" nillable="true" type="tns:SkillQuestionBankDAO" />
+  <xs:complexType name="ArrayOfSkillQuestionBankDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SkillQuestionBankDAO" nillable="true" type="tns:SkillQuestionBankDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSkillQuestionBankDAO" nillable="true" type="tns:ArrayOfSkillQuestionBankDAO" />
   <xs:complexType name="StoreDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:int" />

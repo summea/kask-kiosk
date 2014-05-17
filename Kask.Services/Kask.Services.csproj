@@ -89,6 +89,7 @@
     <Compile Include="Interfaces\ISAQuestionService.cs" />
     <Compile Include="Interfaces\ISAResponseService.cs" />
     <Compile Include="Interfaces\ISchoolService.cs" />
+    <Compile Include="Interfaces\ISkillQuestionBankService.cs" />
     <Compile Include="Interfaces\ISkillService.cs" />
     <Compile Include="Interfaces\IStoreService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
