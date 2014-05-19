@@ -153,7 +153,6 @@
       <xs:element minOccurs="0" name="InterviewID" type="xs:int" />
       <xs:element minOccurs="0" name="SAQuestionID" type="xs:int" />
       <xs:element minOccurs="0" name="SAResponseID" type="xs:int" />
-      <xs:element minOccurs="0" name="UserID" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="InterviewDAO" nillable="true" type="tns:InterviewDAO" />
@@ -211,6 +210,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfJobOpeningDAO" nillable="true" type="tns:ArrayOfJobOpeningDAO" />
+  <xs:complexType name="JobOpeningInterviewQuestionDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobOpeningID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobOpeningInterviewQuestionID" type="xs:int" />
+      <xs:element minOccurs="0" name="SAQuestionID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobOpeningInterviewQuestionDAO" nillable="true" type="tns:JobOpeningInterviewQuestionDAO" />
+  <xs:complexType name="ArrayOfJobOpeningInterviewQuestionDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JobOpeningInterviewQuestionDAO" nillable="true" type="tns:JobOpeningInterviewQuestionDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJobOpeningInterviewQuestionDAO" nillable="true" type="tns:ArrayOfJobOpeningInterviewQuestionDAO" />
   <xs:complexType name="QuestionBankDAO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:int" />

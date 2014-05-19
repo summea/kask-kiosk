@@ -154,6 +154,7 @@
     <Compile Include="Controllers\API\InterviewController.cs" />
     <Compile Include="Controllers\API\JobController.cs" />
     <Compile Include="Controllers\API\JobOpeningController.cs" />
+    <Compile Include="Controllers\API\JobOpeningInterviewQuestionController.cs" />
     <Compile Include="Controllers\API\JobRequirementController.cs" />
     <Compile Include="Controllers\API\MCOptionController.cs" />
     <Compile Include="Controllers\API\MCQuestionController.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\AssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InterviewsController.cs" />
     <Compile Include="Controllers\JobOpeningsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\MCOptionsController.cs" />
@@ -219,6 +221,7 @@
     <Content Include="Content\js\fullPage-js\jquery.fullPage.js" />
     <Content Include="Content\js\fullPage-js\jquery.fullPage.min.js" />
     <Content Include="Content\js\fullPage-js\vendors\jquery.slimscroll.min.js" />
+    <Content Include="Content\js\interview-main.js" />
     <Content Include="Content\js\jquery-ui.min.js" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\main.js" />
@@ -285,6 +288,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.StoreDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.JobOpeningInterviewQuestionDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">
@@ -360,10 +366,11 @@
     <None Include="Service References\AESApplicationServiceRef\AESApplicationService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Interviews\Create.cshtml" />
+    <Content Include="Views\Shared\_PublicKioskInterviewLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Interviews\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

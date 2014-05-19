@@ -68,11 +68,13 @@ namespace KaskKiosk.Controllers
             List<JobDAO> jobs = await ServerResponse<List<JobDAO>>.GetResponseAsync(ServiceURIs.ServiceJobUri);
             List<SkillDAO> skills = await ServerResponse<List<SkillDAO>>.GetResponseAsync(ServiceURIs.ServiceSkillUri);
             List<StoreDAO> stores = await ServerResponse<List<StoreDAO>>.GetResponseAsync(ServiceURIs.ServiceStoreUri);
+            List<SAQuestionDAO> saQuestions = await ServerResponse<List<SAQuestionDAO>>.GetResponseAsync(ServiceURIs.ServiceSAQuestionUri);
 
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.stores = stores;
             ViewBag.jobs = jobs;
             ViewBag.skills = skills;
+            ViewBag.saQuestions = saQuestions;
             return View();
         }
 
@@ -131,6 +133,25 @@ namespace KaskKiosk.Controllers
 
                                     // post (save) JobRequirement data
                                     result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceJobRequirementUri, jobRequirement).Result;
+                                    resultContent = result.Content.ReadAsStringAsync().Result;
+                                }
+                            }
+                            catch { }
+                        }
+
+                        // TODO: change the hardcoded "50" into the length of all available short answer questions
+                        for (int i = 0; i < 50; i++)
+                        {
+                            try
+                            {
+                                if (Request.Form["SAQuestion_" + i] != null)
+                                {
+                                    JobOpeningInterviewQuestionDAO jobOpeningInterviewQuestion = new JobOpeningInterviewQuestionDAO();
+                                    jobOpeningInterviewQuestion.JobOpeningID = jobOpeningId;
+                                    jobOpeningInterviewQuestion.SAQuestionID = Convert.ToInt32(Request.Form["SAQuestion_" + i]);
+
+                                    // post (save) which SA Questions we want to use for this Job Opening
+                                    result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceJobOpeningInterviewQuestionUri, jobOpeningInterviewQuestion).Result;
                                     resultContent = result.Content.ReadAsStringAsync().Result;
                                 }
                             }

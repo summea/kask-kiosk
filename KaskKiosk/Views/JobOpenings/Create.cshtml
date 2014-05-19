@@ -56,6 +56,22 @@
         <br style="clear:both;"/>
     </div>
     
+    <div class="section" id="section2">
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Short Answer Questions for Interview:")
+            @if (ViewBag.saQuestions != null)
+            {
+                <select class="form-control" name="SAQuestion_1" id="SAQuestion_1">
+                @foreach (var saQuestion in @ViewBag.saQuestions)
+                {
+                    <option value="@saQuestion.SAQuestionID">@saQuestion.SAQuestionDescription</option>
+                }
+                </select>
+            }
+        </div>
+        <br style="clear:both;"/>
+    </div>
+    
     <a href="@Html.Encode("/Home/Backend")" class="btn btn-danger">Cancel</a>@Html.Raw("&nbsp;&nbsp;&nbsp;")
     <input type="submit" id="submit" value="Save" class="btn btn-success" />
 }

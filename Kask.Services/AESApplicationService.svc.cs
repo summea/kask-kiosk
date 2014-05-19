@@ -11,7 +11,7 @@ using Kask.DAL.Models;
 namespace Kask.Services
 {
     public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IAssessmentService, IEducationService, IEmployerService, IEmploymentService, IExpertiseService, IInterviewService,
-                                        IJobService, IJobOpeningService, IJobRequirementService, IMCOptionService, IMCQuestionService, IQuestionBankService, ISAQuestionService, ISAResponseService, ISchoolService, ISkillService, ISkillQuestionBankService, IStoreService
+                                        IJobService, IJobOpeningService, IJobOpeningInterviewQuestionService, IJobRequirementService, IMCOptionService, IMCQuestionService, IQuestionBankService, ISAQuestionService, ISAResponseService, ISchoolService, ISkillService, ISkillQuestionBankService, IStoreService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -264,9 +264,9 @@ namespace Kask.Services
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    IList<Applicant> apps = db.Applicants.ToList();
+                    IList<Applicant> applicants = (from applicant in db.Applicants select applicant).OrderBy(o => o.Applicant_ID).ToList();
                     List<ApplicantDAO> result = new List<ApplicantDAO>();
-                    foreach (var applicant in apps)
+                    foreach (var applicant in applicants)
                     {
                         ApplicantDAO temp = new ApplicantDAO
                         {
@@ -1290,7 +1290,8 @@ namespace Kask.Services
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    IList<JobOpening> jobOpenings = db.JobOpenings.ToList();
+                    //IList<JobOpening> jobOpenings = db.JobOpenings.ToList();
+                    IList<JobOpening> jobOpenings = (from jobOpening in db.JobOpenings select jobOpening).OrderBy(o => o.JobOpening_ID).ToList();
                     List<JobOpeningDAO> result = new List<JobOpeningDAO>();
 
                     foreach (var jobOpening in jobOpenings)
@@ -2393,8 +2394,8 @@ namespace Kask.Services
                         InterviewID = interview.Interview_ID,
                         ApplicantID = interview.Applicant_ID,
                         SAQuestionID = interview.SAQuestion_ID,
-                        SAResponseID = interview.SAResponse_ID,
-                        UserID = interview.UserID
+                        SAResponseID = interview.SAResponse_ID
+                        //UserID = interview.UserID
                     };
                     return (result != null ? result : null);
                 }
@@ -2422,8 +2423,8 @@ namespace Kask.Services
                             InterviewID = interview.Interview_ID,
                             ApplicantID = interview.Applicant_ID,
                             SAQuestionID = interview.SAQuestion_ID,
-                            SAResponseID = interview.SAResponse_ID,
-                            UserID = interview.UserID
+                            SAResponseID = interview.SAResponse_ID
+                            //UserID = interview.UserID
                         };
 
                         result.Add(temp);
@@ -2445,8 +2446,8 @@ namespace Kask.Services
                 Interview_ID = s.InterviewID,
                 Applicant_ID = s.ApplicantID,
                 SAQuestion_ID = s.SAQuestionID,
-                SAResponse_ID = s.SAResponseID,
-                UserID = s.UserID
+                SAResponse_ID = s.SAResponseID
+                //UserID = s.UserID
             };
 
             using (AESDatabaseDataContext db = new AESDatabaseDataContext())
@@ -2475,7 +2476,7 @@ namespace Kask.Services
                 interview.Applicant_ID = newInterview.ApplicantID;
                 interview.SAQuestion_ID = newInterview.SAQuestionID;
                 interview.SAResponse_ID = newInterview.SAResponseID;
-                interview.UserID = newInterview.UserID;
+                //interview.UserID = newInterview.UserID;
 
                 try
                 {
@@ -2656,7 +2657,7 @@ namespace Kask.Services
             {
                 using (AESDatabaseDataContext db = new AESDatabaseDataContext())
                 {
-                    IList<SAResponse> sAResponses = db.SAResponses.ToList();
+                    IList<SAResponse> sAResponses = (from saResponse in db.SAResponses select saResponse).OrderBy(o => o.SAResponse_ID).ToList();
                     List<SAResponseDAO> result = new List<SAResponseDAO>();
 
                     foreach (var sAResponse in sAResponses)
@@ -2853,6 +2854,127 @@ namespace Kask.Services
             {
                 SkillQuestionBank skillQuestionBank = db.SkillQuestionBanks.Single(sk => sk.SkillQuestionBank_ID == id);
                 db.SkillQuestionBanks.DeleteOnSubmit(skillQuestionBank);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public JobOpeningInterviewQuestionDAO GetJobOpeningInterviewQuestionByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    JobOpeningInterviewQuestion jobOpeningInterviewQuestion = (from jbopinqu in db.JobOpeningInterviewQuestions where jbopinqu.JobOpeningInterviewQuestion_ID == id select jbopinqu).FirstOrDefault();
+                    JobOpeningInterviewQuestionDAO result = new JobOpeningInterviewQuestionDAO
+                    {
+                        ID = jobOpeningInterviewQuestion.JobOpeningInterviewQuestion_ID,
+                        JobOpeningInterviewQuestionID = jobOpeningInterviewQuestion.JobOpeningInterviewQuestion_ID,
+                        JobOpeningID = jobOpeningInterviewQuestion.JobOpening_ID,
+                        SAQuestionID = jobOpeningInterviewQuestion.SAQuestion_ID
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<JobOpeningInterviewQuestionDAO> GetJobOpeningInterviewQuestions()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<JobOpeningInterviewQuestion> jobOpeningInterviewQuestions = db.JobOpeningInterviewQuestions.ToList();
+                    List<JobOpeningInterviewQuestionDAO> result = new List<JobOpeningInterviewQuestionDAO>();
+
+                    foreach (var jobOpeningInterviewQuestion in jobOpeningInterviewQuestions)
+                    {
+                        JobOpeningInterviewQuestionDAO temp = new JobOpeningInterviewQuestionDAO
+                        {
+                            ID = jobOpeningInterviewQuestion.JobOpeningInterviewQuestion_ID,
+                            JobOpeningInterviewQuestionID = jobOpeningInterviewQuestion.JobOpeningInterviewQuestion_ID,
+                            JobOpeningID = jobOpeningInterviewQuestion.JobOpening_ID,
+                            SAQuestionID = jobOpeningInterviewQuestion.SAQuestion_ID
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateJobOpeningInterviewQuestion(JobOpeningInterviewQuestionDAO s)
+        {
+            JobOpeningInterviewQuestion jobOpeningInterviewQuestion = new JobOpeningInterviewQuestion
+            {
+                JobOpeningInterviewQuestion_ID = s.JobOpeningInterviewQuestionID,
+                JobOpening_ID = s.JobOpeningID,
+                SAQuestion_ID = s.SAQuestionID
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.JobOpeningInterviewQuestions.InsertOnSubmit(jobOpeningInterviewQuestion);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateJobOpeningInterviewQuestion(JobOpeningInterviewQuestionDAO newJobOpeningInterviewQuestion)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                JobOpeningInterviewQuestion jobOpeningInterviewQuestion = db.JobOpeningInterviewQuestions.Single(s => s.JobOpeningInterviewQuestion_ID == newJobOpeningInterviewQuestion.JobOpeningInterviewQuestionID);
+                jobOpeningInterviewQuestion.JobOpening_ID = newJobOpeningInterviewQuestion.JobOpeningID;
+                jobOpeningInterviewQuestion.SAQuestion_ID = newJobOpeningInterviewQuestion.SAQuestionID;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteJobOpeningInterviewQuestion(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                JobOpeningInterviewQuestion jobOpeningInterviewQuestion = db.JobOpeningInterviewQuestions.Single(jbopinqu => jbopinqu.JobOpeningInterviewQuestion_ID == id);
+                db.JobOpeningInterviewQuestions.DeleteOnSubmit(jobOpeningInterviewQuestion);
 
                 try
                 {
