@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/_PublicKioskInterviewLayout.cshtml";
+    ViewBag.Title = "Create.cshtml";
+}
+
+<ul id="menu" class="text-center">
+    <li><a href="@ViewBag.baseURL"><span class="glyphicon glyphicon-home"></span></a></li>
+    <li data-menuanchor="welcome" class="active"><a href="#welcome">Welcome</a></li>
+    <li data-menuanchor="interviewQuestions" class="active"><a href="#interviewQuestions">Interview Questions</a></li>
+    <li data-menuanchor="submitInterview" class="active"><a href="#submitInterview">Submit Interview</a></li>
+</ul>
+
+@using (Html.BeginForm("Create", "Interviews", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="section" id="section0">
+        <div class="cover">
+            <h1 class="cover-heading">Welcome to the Kask Kiosk Phone Interview</h1>
+            <p class="lead">
+                Click the <button id="moveDownExample" class="btn btn-info">Next &rarr;</button> button to begin.
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="section1">
+        <h2>Interview Questions</h2>
+        <p class="lead italic">Please answer the following questions...</p>
+        <div class="form-group spacing" style="width:800px;float:left;">
+            @if (ViewBag.allSaQuestions != null)
+            {
+                foreach (var relatedSaQuestionId in @ViewBag.relatedSaQuestionIds)
+                {
+                    foreach (var saQuestion in @ViewBag.allSaQuestions)
+                    {
+                        if (relatedSaQuestionId == saQuestion.SAQuestionID)
+                        {
+                            @saQuestion.SAQuestionDescription @Html.Raw("&nbsp;&nbsp;")<br />
+                            <textarea name="SAResponse_@saQuestion.SAQuestionID" style="width:400px;"></textarea>
+                        }
+                    }
+                }
+            }
+        </div>
+        <br style="clear:both;"/>
+    </div>
+    
+    <div class="section center" id="section2">
+        <input type="checkbox" name="acknowledgeAccurateDataCheckbox" /> I acknowledge that I have provided accurate information<br /><br />
+        <a href="@ViewBag.baseURL" class="btn btn-danger">Cancel Application</a>&nbsp;&nbsp;&nbsp;
+        <input type="submit" id="submit" value="Submit Application" class="btn btn-success" />
+    </div>
+}
+
+<div class="center">
+    <button id="moveUp" class="btn btn-info">&larr; Prev</button>    
+    <button id="moveDown" class="btn btn-info">Next &rarr;</button>
+</div>
+
+<!-- create more space at bottom of view page for now... -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

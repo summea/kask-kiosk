@@ -16,8 +16,8 @@
       <Association Name="Applicant_Education" Member="Educations" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Education" />
       <Association Name="Applicant_Employment" Member="Employments" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Employment" />
       <Association Name="Applicant_Expertise" Member="Expertises" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Expertise" />
-      <Association Name="Applicant_Interview" Member="Interviews" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Interview" />
       <Association Name="Applicant_Assessment" Member="Assessments" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Assessment" />
+      <Association Name="Applicant_Interview" Member="Interviews" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Interview" />
     </Type>
   </Table>
   <Table Name="dbo.webpages_UsersInRoles" Member="webpages_UsersInRoles">
@@ -127,19 +127,6 @@
       <Association Name="Skill_Expertise" Member="Skill" ThisKey="Skill_ID" OtherKey="Skill_ID" Type="Skill" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Interview" Member="Interviews">
-    <Type Name="Interview">
-      <Column Name="Interview_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SAQuestion_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SAResponse_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Applicant_Interview" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="SAQuestion_Interview" Member="SAQuestion" ThisKey="SAQuestion_ID" OtherKey="SAQuestion_ID" Type="SAQuestion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="SAResponse_Interview" Member="SAResponse" ThisKey="SAResponse_ID" OtherKey="SAResponse_ID" Type="SAResponse" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="UserProfile_Interview" Member="UserProfile" ThisKey="UserID" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Job" Member="Jobs">
     <Type Name="Job">
       <Column Name="Job_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -157,6 +144,7 @@
       <Column Name="Store_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="JobOpening_Applied" Member="Applieds" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="Applied" />
       <Association Name="JobOpening_JobRequirement" Member="JobRequirements" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="JobRequirement" />
+      <Association Name="JobOpening_JobOpeningInterviewQuestion" Member="JobOpeningInterviewQuestions" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="JobOpeningInterviewQuestion" />
       <Association Name="Job_JobOpening" Member="Job" ThisKey="Job_ID" OtherKey="Job_ID" Type="Job" IsForeignKey="true" />
       <Association Name="Store_JobOpening" Member="Store" ThisKey="Store_ID" OtherKey="Store_ID" Type="Store" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
@@ -196,6 +184,7 @@
     <Type Name="SAQuestion">
       <Column Name="SAQuestion_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="SAQuestionDescription" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="SAQuestion_JobOpeningInterviewQuestion" Member="JobOpeningInterviewQuestions" ThisKey="SAQuestion_ID" OtherKey="SAQuestion_ID" Type="JobOpeningInterviewQuestion" />
       <Association Name="SAQuestion_Interview" Member="Interviews" ThisKey="SAQuestion_ID" OtherKey="SAQuestion_ID" Type="Interview" />
     </Type>
   </Table>
@@ -247,7 +236,6 @@
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="UserProfile_webpages_UsersInRole" Member="webpages_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="webpages_UsersInRole" />
-      <Association Name="UserProfile_Interview" Member="Interviews" ThisKey="UserId" OtherKey="UserID" Type="Interview" />
     </Type>
   </Table>
   <Table Name="dbo.webpages_Membership" Member="webpages_Memberships">
@@ -307,6 +295,26 @@
       <Column Name="QuestionBank_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Applicant_Assessment" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="QuestionBank_Assessment" Member="QuestionBank" ThisKey="QuestionBank_ID" OtherKey="QuestionBank_ID" Type="QuestionBank" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobOpeningInterviewQuestion" Member="JobOpeningInterviewQuestions">
+    <Type Name="JobOpeningInterviewQuestion">
+      <Column Name="JobOpeningInterviewQuestion_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="JobOpening_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SAQuestion_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="JobOpening_JobOpeningInterviewQuestion" Member="JobOpening" ThisKey="JobOpening_ID" OtherKey="JobOpening_ID" Type="JobOpening" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="SAQuestion_JobOpeningInterviewQuestion" Member="SAQuestion" ThisKey="SAQuestion_ID" OtherKey="SAQuestion_ID" Type="SAQuestion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Interview" Member="Interviews">
+    <Type Name="Interview">
+      <Column Name="Interview_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SAQuestion_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SAResponse_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Applicant_Interview" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="SAQuestion_Interview" Member="SAQuestion" ThisKey="SAQuestion_ID" OtherKey="SAQuestion_ID" Type="SAQuestion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="SAResponse_Interview" Member="SAResponse" ThisKey="SAResponse_ID" OtherKey="SAResponse_ID" Type="SAResponse" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

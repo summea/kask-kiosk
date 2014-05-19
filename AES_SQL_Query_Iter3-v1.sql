@@ -197,8 +197,8 @@ CREATE TABLE Store (
 INSERT INTO Store (Location, Manager_ID) VALUES ('Lake Oswego', 1);
 INSERT INTO Store (Location, Manager_ID) VALUES ('Hillsboro', 2);
 INSERT INTO Store (Location, Manager_ID) VALUES ('Wilsonville', 3);
-INSERT INTO Store (Location, Manager_ID) VALUES ('Hawaii', 5);
-INSERT INTO Store (Location, Manager_ID) VALUES ('New York', 4);
+INSERT INTO Store (Location, Manager_ID) VALUES ('Portland', 5);
+INSERT INTO Store (Location, Manager_ID) VALUES ('Sunnyside', 4);
 
 
 /********************************************************************************
@@ -817,8 +817,8 @@ IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSAQuestionIDFo
   ALTER TABLE Interview DROP CONSTRAINT [FKSAQuestionIDForInterview];
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKSAResponseIDForInterview')
   ALTER TABLE Interview DROP CONSTRAINT [FKSAResponseIDForInterview];
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKUserIDForInterview')
-  ALTER TABLE Interview DROP CONSTRAINT [FKUserIDForInterview];
+/*IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKUserIDForInterview')
+  ALTER TABLE Interview DROP CONSTRAINT [FKUserIDForInterview];*/
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Interview')
   DROP TABLE Interview;
 CREATE TABLE Interview (
@@ -826,7 +826,7 @@ CREATE TABLE Interview (
   Applicant_ID				int NOT NULL,
   SAQuestion_ID				int NOT NULL,
   SAResponse_ID				int NOT NULL,
-  UserID					int NOT NULL,
+  /*UserID					int NOT NULL,*/
   CONSTRAINT [PKInterviewID]	PRIMARY KEY (Interview_ID ASC),
   CONSTRAINT [FKApplicantIDForInterview] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
@@ -834,12 +834,41 @@ CREATE TABLE Interview (
     ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT [FKSAResponseIDForInterview] FOREIGN KEY (SAResponse_ID) REFERENCES SAResponses (SAResponse_ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT [FKUserIDForInterview] FOREIGN KEY (UserID) REFERENCES UserProfile (UserID)
-    ON DELETE CASCADE ON UPDATE CASCADE
+  /*CONSTRAINT [FKUserIDForInterview] FOREIGN KEY (UserID) REFERENCES UserProfile (UserID)
+    ON DELETE CASCADE ON UPDATE CASCADE*/
 )
 
 /* DATA FOR INTERVIEW RELATION */
-INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID, UserID) VALUES (1, 1, 1, 3);
-INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID, UserID) VALUES (2, 2, 2, 4);
-INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID, UserID) VALUES (3, 3, 1, 4);
-INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID, UserID) VALUES (4, 2, 1, 3);
+INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID) VALUES (1, 1, 1);
+INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID) VALUES (2, 2, 2);
+INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID) VALUES (3, 3, 1);
+INSERT INTO Interview(Applicant_ID, SAQuestion_ID, SAResponse_ID) VALUES (4, 2, 1);
+
+/********************************************************************************
+              JOB_OPENING-INTERVIEW_QUESTION RELATION
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKJobOpeningInterviewQuestionID')
+  ALTER TABLE JobOpeningInterviewQuestion DROP CONSTRAINT [PKJobOpeningInterviewQuestionID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobOpeningInterviewQuestion_JobOpeningID')
+  ALTER TABLE JobOpeningInterviewQuestion DROP CONSTRAINT [FKJobOpeningInterviewQuestion_SAQuestionID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKJobOpeningInterviewQuestion_SAQuestionID')
+  ALTER TABLE JobOpeningInterviewQuestion DROP CONSTRAINT [FKJobOpeningInterviewQuestion_JobOpeningID];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'JobOpeningInterviewQuestion')
+  DROP TABLE JobOpeningInterviewQuestion;
+CREATE TABLE JobOpeningInterviewQuestion (
+  JobOpeningInterviewQuestion_ID  int     NOT NULL IDENTITY(1, 1),
+  JobOpening_ID                   int     NOT NULL,
+  SAQuestion_ID                   int     NOT NULL,
+  CONSTRAINT [PKJobOpeningInterviewQuestionID] PRIMARY KEY (JobOpeningInterviewQuestion_ID ASC),
+  CONSTRAINT [FKJobOpeningInterviewQuestion_JobOpeningID] FOREIGN KEY (JobOpening_ID) REFERENCES JobOpening (JobOpening_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKJobOpeningInterviewQuestion_SAQuestionID] FOREIGN KEY (SAQuestion_ID) REFERENCES SAQuestions (SAQuestion_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+/* DATA FOR SKILL-QUESTIONBANK RELATION */
+INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (1, 1);
+INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (2, 2);
+INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (3, 1);
+INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (4, 2);

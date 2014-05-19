@@ -466,8 +466,8 @@ namespace Kask.Services.DAO
         [DataMember]
         public int SAResponseID { get; set; }
 
-        [DataMember]
-        public int UserID { get; set; }
+        //[DataMember]
+        //public int UserID { get; set; }
     }
 
     [DataContract]
@@ -503,5 +503,21 @@ namespace Kask.Services.DAO
 
         [DataMember]
         public int QuestionBankID { get; set; }
+    }
+
+    [DataContract]
+    public class JobOpeningInterviewQuestionDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int JobOpeningInterviewQuestionID { get; set; }
+
+        [DataMember]
+        public int JobOpeningID { get; set; }
+
+        [DataMember]
+        public int SAQuestionID { get; set; }
     }
 }
