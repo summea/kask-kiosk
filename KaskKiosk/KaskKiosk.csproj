@@ -368,6 +368,7 @@
     </None>
     <Content Include="Views\Interviews\Create.cshtml" />
     <Content Include="Views\Shared\_PublicKioskInterviewLayout.cshtml" />
+    <Content Include="Views\Assessments\Sorry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

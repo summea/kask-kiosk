@@ -71,6 +71,8 @@
     </div>
     
     <div class="section center" id="section2">
+        <input type="hidden" name="JobOpeningIDReferenceNumberOnAssessment" id="JobOpeningIDReferenceNumberOnAssessment" value="@ViewBag.jobOpeningIDReferenceNumber" readonly />
+        <input type="hidden" name="ApplicantID" id="ApplicantID" value="@ViewBag.applicantID" readonly />
         <input type="checkbox" name="acknowledgeAccurateDataCheckbox" /> I acknowledge that I have provided accurate information<br /><br />
         <a href="@ViewBag.baseURL" class="btn btn-danger">Cancel Application</a>&nbsp;&nbsp;&nbsp;
         <input type="submit" id="submit" value="Submit Application" class="btn btn-success" />
