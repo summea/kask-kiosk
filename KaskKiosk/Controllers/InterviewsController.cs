@@ -51,9 +51,15 @@ namespace KaskKiosk.Controllers
                     relatedSaQuestionIds.Add(item.SAQuestionID);
             }
 
+            // find applicant id from the previously submitted Application form
+            var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
+            int applicantID = applieds.Last().ApplicantID;
+
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.allSaQuestions = allSaQuestions;
             ViewBag.relatedSaQuestionIds = relatedSaQuestionIds;
+            ViewBag.JobOpeningIDReferenceNumber = id;
+            ViewBag.applicantID = applicantID;
             return View();
         }
 
@@ -74,10 +80,19 @@ namespace KaskKiosk.Controllers
                     HttpResponseMessage result = new HttpResponseMessage();
                     string resultContent = "";
 
-                    // find applicant id from the previously submitted Application form
-                    var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
-                    int applicantID = applieds.Last().ApplicantID;
-                    
+                    // find applicant id from the previously submitted Application form, if available
+                    int applicantID = 0;
+                    if (Convert.ToInt32(Request.Form["applicantID"]) > 0)
+                    {
+                        applicantID = Convert.ToInt32(Request.Form["applicantID"]);
+                    }
+                    // otherwise, get last applicant id from database
+                    else
+                    {
+                        var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
+                        applicantID = applieds.Last().ApplicantID;
+                    }
+
                     // and save the short answer responses (both to SAResponses and to Interview tables)
 
                     // TODO: change the hardcoded "50" into some sort of variable

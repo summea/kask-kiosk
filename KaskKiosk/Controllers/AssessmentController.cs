@@ -98,11 +98,17 @@ namespace KaskKiosk.Controllers
             // for now, get a list of all mc options (to use in the view)
             List<MCOptionDAO> allMcOptions = await ServerResponse<List<MCOptionDAO>>.GetResponseAsync(ServiceURIs.ServiceMCOptionUri);
 
+            // find applicant id from the previously submitted Application form
+            var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
+            int applicantID = applieds.Last().ApplicantID;
+
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.allMcQuestions = allMcQuestions;
             ViewBag.allMcOptions = allMcOptions;
             ViewBag.relatedMcQuestionIds = relatedMcQuestionIds;
             ViewBag.relatedMcOptionsForMcQuestions = relatedMcOptionsForMcQuestions;
+            ViewBag.jobOpeningIDReferenceNumber = id;
+            ViewBag.applicantID = applicantID;
             return View();
         }
 
@@ -123,9 +129,18 @@ namespace KaskKiosk.Controllers
                     HttpResponseMessage result = new HttpResponseMessage();
                     string resultContent = "";
 
-                    // find applicant id from the previously submitted Application form
-                    var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
-                    int applicantID = applieds.Last().ApplicantID;
+                    // find applicant id from the previously submitted Application form, if available
+                    int applicantID = 0;
+                    if (Convert.ToInt32(Request.Form["applicantID"]) > 0)
+                    {
+                        applicantID = Convert.ToInt32(Request.Form["applicantID"]);
+                    }
+                    // otherwise, get last applicant id from database
+                    else
+                    {
+                        var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
+                        applicantID = applieds.Last().ApplicantID;
+                    }
 
                     // gather AssessmentOpening form data
                     AssessmentDAO assessment = new AssessmentDAO();
@@ -137,6 +152,8 @@ namespace KaskKiosk.Controllers
 
                     int parsedQuestionBankId = 0;
                     int parsedOptionId = 0;
+
+                    var questionBankAnswers = await ServerResponse<List<QuestionBankDAO>>.GetResponseAsync(ServiceURIs.ServiceQuestionBankUri);
 
                     // TODO: change the hardcoded "50" into some sort of variable
                     // (i.e. the length of all possible questionBank ids, questions, and options)
@@ -152,6 +169,19 @@ namespace KaskKiosk.Controllers
                                     {
                                         parsedQuestionBankId = i;
                                         parsedOptionId = j;
+
+                                        // check to see if answer is valid or "correct"
+                                        // if not valid, redirect to "sorry" screen
+                                        foreach (QuestionBankDAO qbItem in questionBankAnswers)
+                                        {
+                                            if (qbItem.QuestionBankID.Equals(parsedQuestionBankId))
+                                            {
+                                                if (!parsedOptionId.Equals(Convert.ToInt32(qbItem.MCCorrectOption)))
+                                                {
+                                                    return RedirectToAction("Sorry");
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                                 catch { }
@@ -167,7 +197,8 @@ namespace KaskKiosk.Controllers
                     resultContent = result.Content.ReadAsStringAsync().Result;
                 }
 
-                return RedirectToAction("Welcome", "Home");
+                // redirect to phone interview questions, if possible
+                return RedirectToAction("Create", "Interviews", new { ID = Convert.ToInt32(Request.Form["JobOpeningIDReferenceNumberOnAssessment"]) });
             }
             catch
             {
@@ -226,6 +257,15 @@ namespace KaskKiosk.Controllers
             {
                 return View();
             }
+        }
+
+        //
+        // GET: /Assessments/Sorry
+
+        [AllowAnonymous]
+        public ActionResult Sorry()
+        {
+            return View();
         }
     }
 }
