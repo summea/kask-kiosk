@@ -529,6 +529,10 @@ CREATE TABLE MCQuestions (
 /* DATA FOR MULTIPLE CHOICE QUESTIONS RELATION */
 INSERT INTO MCQuestions(MCQuestionDescription) VALUES ('Can you lift 50 lbs?');
 INSERT INTO MCQuestions(MCQuestionDescription) VALUES ('Have you ever been convicted for any crime?');
+INSERT INTO MCQuestions(MCQuestionDescription) VALUES ('Do you work well with others?');
+INSERT INTO MCQuestions(MCQuestionDescription) VALUES ('Can you manage time?');
+INSERT INTO MCQuestions(MCQuestionDescription) VALUES ('Have you worked in our company before?');
+INSERT INTO MCQuestions(MCQuestionDescription) VALUES ('Are you a US citizen?');
 
 /********************************************************************************
                 QUESTION BANK RELATION 
@@ -630,6 +634,8 @@ CREATE TABLE SAQuestions (
 INSERT INTO SAQuestions(SAQuestionDescription) VALUES ('What are your weaknesses?');
 INSERT INTO SAQuestions(SAQuestionDescription) VALUES ('What are your strengths?');
 INSERT INTO SAQuestions(SAQuestionDescription) VALUES ('What would you do to resolve a conflict?');
+INSERT INTO SAQuestions(SAQuestionDescription) VALUES ('Tell me about a time when you went above and beyond yourself?');
+INSERT INTO SAQuestions(SAQuestionDescription) VALUES ('While working with projects, do you find yourself stuck. How did you do about it?');
 
 /********************************************************************************
                 SHORT ANSWER RESPONSES RELATION 

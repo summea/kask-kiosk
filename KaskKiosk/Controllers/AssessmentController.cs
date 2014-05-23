@@ -121,84 +121,94 @@ namespace KaskKiosk.Controllers
         {
             try
             {
-                // save application form data back to database through service
-                using (HttpClient httpClient = new HttpClient())
+                if (Request.Form["acknowledgeAccurateDataCheckbox"] != null)
                 {
-                    httpClient.BaseAddress = new Uri("http://localhost:51309");
-                    httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                    HttpResponseMessage result = new HttpResponseMessage();
-                    string resultContent = "";
-
-                    // find applicant id from the previously submitted Application form, if available
-                    int applicantID = 0;
-                    if (Convert.ToInt32(Request.Form["applicantID"]) > 0)
+                    // save application form data back to database through service
+                    using (HttpClient httpClient = new HttpClient())
                     {
-                        applicantID = Convert.ToInt32(Request.Form["applicantID"]);
-                    }
-                    // otherwise, get last applicant id from database
-                    else
-                    {
-                        var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
-                        applicantID = applieds.Last().ApplicantID;
-                    }
+                        httpClient.BaseAddress = new Uri("http://localhost:51309");
+                        httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        HttpResponseMessage result = new HttpResponseMessage();
+                        string resultContent = "";
 
-                    // gather AssessmentOpening form data
-                    AssessmentDAO assessment = new AssessmentDAO();
-                    assessment.ApplicantID = applicantID;
-
-                    // and save the mc answer chosen by applicant
-
-                    // first, parse the questionBankId and optionId of checkbox chosen by user
-
-                    int parsedQuestionBankId = 0;
-                    int parsedOptionId = 0;
-
-                    var questionBankAnswers = await ServerResponse<List<QuestionBankDAO>>.GetResponseAsync(ServiceURIs.ServiceQuestionBankUri);
-
-                    // TODO: change the hardcoded "50" into some sort of variable
-                    // (i.e. the length of all possible questionBank ids, questions, and options)
-                    for (int i = 0; i < 50; i++)
-                    {
-                        for (int j = 0; j < 50; j++)
+                        // find applicant id from the previously submitted Application form, if available
+                        int applicantID = 0;
+                        if (Convert.ToInt32(Request.Form["applicantID"]) > 0)
                         {
-                            for (int k = 0; k < 50; k++)
-                            {
-                                try
-                                {
-                                    if (Request.Form["MCOption_" + i + "_" + j + "_" + k] != null)
-                                    {
-                                        parsedQuestionBankId = i;
-                                        parsedOptionId = j;
+                            applicantID = Convert.ToInt32(Request.Form["applicantID"]);
+                        }
+                        // otherwise, get last applicant id from database
+                        else
+                        {
+                            var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
+                            applicantID = applieds.Last().ApplicantID;
+                        }
 
-                                        // check to see if answer is valid or "correct"
-                                        // if not valid, redirect to "sorry" screen
-                                        foreach (QuestionBankDAO qbItem in questionBankAnswers)
+                        // gather AssessmentOpening form data
+                        AssessmentDAO assessment = new AssessmentDAO();
+                        assessment.ApplicantID = applicantID;
+
+                        // and save the mc answer chosen by applicant
+
+                        // first, parse the questionBankId and optionId of checkbox chosen by user
+
+                        int parsedQuestionBankId = 0;
+                        int parsedQuestionId = 0;
+                        int parsedOptionId = 0;
+
+                        var questionBankAnswers = await ServerResponse<List<QuestionBankDAO>>.GetResponseAsync(ServiceURIs.ServiceQuestionBankUri);
+
+                        // TODO: change the hardcoded "50" into some sort of variable
+                        // (i.e. the length of all possible questionBank ids, questions, and options)
+                        for (int i = 0; i < 50; i++)
+                        {
+                            for (int j = 0; j < 50; j++)
+                            {
+                                for (int k = 0; k < 50; k++)
+                                {
+                                    try
+                                    {
+                                        if (Request.Form["MCOption_" + i + "_" + j + "_" + k] != null)
                                         {
-                                            if (qbItem.QuestionBankID.Equals(parsedQuestionBankId))
+                                            parsedQuestionBankId = i;
+                                            parsedQuestionId = j;
+                                            parsedOptionId = k;
+
+                                            // check to see if answer is valid or "correct"
+                                            // if not valid, redirect to "sorry" screen
+                                            foreach (QuestionBankDAO qbItem in questionBankAnswers)
                                             {
-                                                if (!parsedOptionId.Equals(Convert.ToInt32(qbItem.MCCorrectOption)))
+                                                if (qbItem.QuestionBankID.Equals(parsedQuestionBankId))
                                                 {
-                                                    return RedirectToAction("Sorry");
+                                                    if (!parsedOptionId.Equals(Convert.ToInt32(qbItem.MCCorrectOption)))
+                                                    {
+                                                        return RedirectToAction("Sorry");
+                                                    }
                                                 }
                                             }
                                         }
                                     }
+                                    catch { }
                                 }
-                                catch { }
                             }
                         }
+
+                        // this is the answer that the user chose for this particular QuestionBank question
+                        assessment.QuestionBankID = parsedQuestionBankId;
+
+                        // post (save) AssessmentOpening data
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceAssessmentUri, assessment).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
                     }
 
-                    // this is the answer that the user chose for this particular QuestionBank question
-                    assessment.QuestionBankID = parsedQuestionBankId;
-
-                    // post (save) AssessmentOpening data
-                    result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceAssessmentUri, assessment).Result;
-                    resultContent = result.Content.ReadAsStringAsync().Result;
+                    // redirect to phone interview questions, if possible
+                    return RedirectToAction("Create", "Interviews", new { ID = Convert.ToInt32(Request.Form["JobOpeningIDReferenceNumberOnAssessment"]) });
                 }
-
-                // redirect to phone interview questions, if possible
-                return RedirectToAction("Create", "Interviews", new { ID = Convert.ToInt32(Request.Form["JobOpeningIDReferenceNumberOnAssessment"]) });
+                else
+                {
+                    // TODO: validation later on...
+                    return RedirectToAction("Create");
+                }
             }
             catch
             {

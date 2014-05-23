@@ -27,7 +27,7 @@
         <h2>Assessment Questions</h2>
         <p class="lead italic">Please answer the following questions...</p>
         <div class="form-group spacing" style="width:800px;float:left;">
-            <!-- TODO: need to find a way to label the actual skill-questionbank we are using for later matching... -->
+            <table>
             @if (ViewBag.allMcQuestions != null)
             {
                 foreach (var mcQuestionRelatedId in @ViewBag.relatedMcQuestionIds)
@@ -36,8 +36,11 @@
                     {
                         if (mcQuestionRelatedId == mcQuestion.MCQuestionID)
                         {
+                            @Html.Raw("<tr>");
+                            @Html.Raw("<td>");
                             @mcQuestion.MCQuestionDescription @Html.Raw("&nbsp;&nbsp;")
-
+                            @Html.Raw("</td>");
+                            @Html.Raw("<td>");
                             try
                             {
                                 <!-- brute force loop for now... -->
@@ -62,10 +65,13 @@
                             }
                             catch
                             { }
+                            @Html.Raw("</td>");
                         }
                     }
+                    @Html.Raw("</tr>");
                 }
             }
+            </table>
         </div>
         <br style="clear:both;"/>
     </div>

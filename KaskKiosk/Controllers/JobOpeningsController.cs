@@ -349,7 +349,8 @@ namespace KaskKiosk.Controllers
             List<JobOpeningDAO> jobOpenings = await ServerResponse<List<JobOpeningDAO>>.GetResponseAsync(ServiceURIs.ServiceJobOpeningUri);
             List<StoreDAO> stores = await ServerResponse<List<StoreDAO>>.GetResponseAsync(ServiceURIs.ServiceStoreUri);
 
-            var jobsSortedByDate = jobOpenings.OrderByDescending(o => o.OpenDate);
+            // get approved job openings and order by open date
+            var jobsSortedByDate = jobOpenings.Where(x => x.Approved == 1).OrderByDescending(o => o.OpenDate);
 
             ViewBag.jobs = jobs;
             ViewBag.jobOpenings = jobsSortedByDate;

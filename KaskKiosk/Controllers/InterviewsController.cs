@@ -72,6 +72,8 @@ namespace KaskKiosk.Controllers
         {
             try
             {
+                if (Request.Form["acknowledgeAccurateDataCheckbox"] != null)
+                {
                 // save application form data back to database through service
                 using (HttpClient httpClient = new HttpClient())
                 {
@@ -133,6 +135,12 @@ namespace KaskKiosk.Controllers
                 }
 
                 return RedirectToAction("Welcome", "Home");
+                }
+                else
+                {
+                    // TODO: validation later on...
+                    return RedirectToAction("Create");
+                }
             }
             catch
             {
