@@ -83,49 +83,50 @@ namespace KaskKiosk.Controllers
                         // TODO: change the hardcoded "50" into the length of all available mc options
                         for (int i = 0; i < 50; i++)
                         {
-                            try
+                            for (int j = 0; j < 50; j++)
                             {
-                                QuestionBankDAO questionBank = new QuestionBankDAO();
-                                questionBank.MCQuestionID = Convert.ToInt32(Request.Form["MCQuestion_1"]);
-
-                                // TODO: the hardcoded "1" should match the number of mc questions we iterate over... for now, it's just 1
-                                // check if this is a selected multiple choice option
-                                if (Request.Form["MCOptionID_1_" + i] != null)
+                                try
                                 {
-                                    questionBank.MCOptionID = i;
-                                
-                                    // TODO: the hardcoded "1" should match the number of mc questions we iterate over... for now, it's just 1
-                                    // check if this is a valid option (a "correct answer")
-                                    if (Request.Form["Valid_MCOptionID_1_" + i] != null)
+                                    QuestionBankDAO questionBank = new QuestionBankDAO();
+                                    questionBank.MCQuestionID = Convert.ToInt32(Request.Form["MCQuestion_" + j]);
+
+                                    // check if this is a selected multiple choice option
+                                    if (Request.Form["MCOptionID_" + j + "_" + i] != null)
                                     {
-                                        questionBank.MCCorrectOption = 1;
+                                        questionBank.MCOptionID = i;
+
+                                        // check if this is a valid option (a "correct answer")
+                                        if (Request.Form["Valid_MCOptionID_" + j + "_" + i] != null)
+                                        {
+                                            questionBank.MCCorrectOption = 1;
+                                        }
+                                        else
+                                        {
+                                            questionBank.MCCorrectOption = 0;
+                                        }
+
+                                        // post data for QuestionBank
+                                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceQuestionBankUri, questionBank).Result;
+                                        resultContent = result.Content.ReadAsStringAsync().Result;
+
+                                        // get question bank id from last insert
+                                        // get correct question bank id of the question bank we just saved
+                                        var questionBanks = await ServerResponse<List<QuestionBankDAO>>.GetResponseAsync(ServiceURIs.ServiceQuestionBankUri);
+                                        int lastQuestionBankId = questionBanks.Last().QuestionBankID;
+
+                                        // then connect up QuestionBank data to SkillQuestionBank
+                                        // gather skill-question bank data
+                                        SkillQuestionBankDAO skillQuestionBank = new SkillQuestionBankDAO();
+                                        skillQuestionBank.SkillID = lastSkillId;
+                                        skillQuestionBank.QuestionBankID = lastQuestionBankId;
+
+                                        // and then post data for skill-question bank
+                                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceSkillQuestionBankUri, skillQuestionBank).Result;
+                                        resultContent = result.Content.ReadAsStringAsync().Result;
                                     }
-                                    else
-                                    {
-                                        questionBank.MCCorrectOption = 0;
-                                    }
-
-                                    // post data for QuestionBank
-                                    result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceQuestionBankUri, questionBank).Result;
-                                    resultContent = result.Content.ReadAsStringAsync().Result;
-
-                                    // get question bank id from last insert
-                                    // get correct question bank id of the question bank we just saved
-                                    var questionBanks = await ServerResponse<List<QuestionBankDAO>>.GetResponseAsync(ServiceURIs.ServiceQuestionBankUri);
-                                    int lastQuestionBankId = questionBanks.Last().QuestionBankID;
-
-                                    // then connect up QuestionBank data to SkillQuestionBank
-                                    // gather skill-question bank data
-                                    SkillQuestionBankDAO skillQuestionBank = new SkillQuestionBankDAO();
-                                    skillQuestionBank.SkillID = lastSkillId;
-                                    skillQuestionBank.QuestionBankID = lastQuestionBankId;
-
-                                    // and then post data for skill-question bank
-                                    result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceSkillQuestionBankUri, skillQuestionBank).Result;
-                                    resultContent = result.Content.ReadAsStringAsync().Result;
                                 }
+                                catch { }
                             }
-                            catch { }
                         }
                     }
 

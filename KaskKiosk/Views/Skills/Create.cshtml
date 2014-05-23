@@ -43,6 +43,59 @@
             }
         </div>
         <br style="clear:both;"/>
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Multiple Choice Question for Skill:")
+            @if (ViewBag.mcQuestions != null)
+            {
+                <select class="form-control" name="MCQuestion_2" id="MCQuestion_2">
+                @foreach (var mcQuestion in @ViewBag.mcQuestions)
+                {
+                    <option value="@mcQuestion.MCQuestionID">@mcQuestion.MCQuestionDescription</option>
+                }
+                </select>
+            }
+        </div>
+        <br style="clear:both;"/>
+    
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Multiple Choice Options for Skill-related Question:")<br />
+            @if (ViewBag.mcOptions != null)
+            {
+                foreach (var mcOption in @ViewBag.mcOptions)
+                {
+                    <div style="width:150px;display:inline-block;"><input type="checkbox" name="MCOptionID_2_@mcOption.MCOptionID" value="1"/> @mcOption.MCOptionDescription</div>
+                    <input type="checkbox" name="Valid_MCOptionID_2_@mcOption.MCOptionID" value="1"/> @Html.Label("Valid Answer")<br />
+                }
+            }
+        </div>
+        <br style="clear:both;"/>
+
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Multiple Choice Question for Skill:")
+            @if (ViewBag.mcQuestions != null)
+            {
+                <select class="form-control" name="MCQuestion_3" id="MCQuestion_3">
+                @foreach (var mcQuestion in @ViewBag.mcQuestions)
+                {
+                    <option value="@mcQuestion.MCQuestionID">@mcQuestion.MCQuestionDescription</option>
+                }
+                </select>
+            }
+        </div>
+        <br style="clear:both;"/>
+    
+        <div class="form-group spacing" style="width:400px;float:left;">
+            @Html.Label("Multiple Choice Options for Skill-related Question:")<br />
+            @if (ViewBag.mcOptions != null)
+            {
+                foreach (var mcOption in @ViewBag.mcOptions)
+                {
+                    <div style="width:150px;display:inline-block;"><input type="checkbox" name="MCOptionID_3_@mcOption.MCOptionID" value="1"/> @mcOption.MCOptionDescription</div>
+                    <input type="checkbox" name="Valid_MCOptionID_3_@mcOption.MCOptionID" value="1"/> @Html.Label("Valid Answer")<br />
+                }
+            }
+        </div>
+        <br style="clear:both;"/>
     </div>
        
     <a href="@Html.Encode("/Home/Backend")" class="btn btn-danger">Cancel</a>@Html.Raw("&nbsp;&nbsp;&nbsp;")

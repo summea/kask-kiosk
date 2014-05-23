@@ -61,7 +61,7 @@ namespace KaskKiosk.Controllers
         {
             try
             {
-                if (!string.IsNullOrEmpty(Request.Form["FirstName"]) && !string.IsNullOrEmpty(Request.Form["LastName"]) && !string.IsNullOrEmpty(Request.Form["SSN"]))
+                if (!string.IsNullOrEmpty(Request.Form["FirstName"]) && !string.IsNullOrEmpty(Request.Form["LastName"]) && !string.IsNullOrEmpty(Request.Form["SSN"]) && Request.Form["acknowledgeAccurateDataCheckbox"] != null)
                 {
                     // save application form data back to database through service
                     using (HttpClient httpClient = new HttpClient())
