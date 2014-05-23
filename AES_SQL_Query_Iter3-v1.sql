@@ -95,6 +95,7 @@ INSERT INTO Skill (SkillName) VALUES ('Social');
 INSERT INTO Skill (SkillName) VALUES ('Computer');
 INSERT INTO Skill (SkillName) VALUES ('Speaking');
 INSERT INTO Skill (SkillName) VALUES ('Assembly');
+INSERT INTO Skill (SkillName) VALUES ('playing ping pong');
 
 /********************************************************************************
                 EXPERTISE RELATION
@@ -250,9 +251,10 @@ CREATE TABLE JobOpening (
 );    
 
 INSERT INTO JobOpening (OpenDate, Job_ID, Approved, Description, Store_ID) VALUES ('04-08-2014', 1, 1, 'Description here...', 1);
-INSERT INTO JobOpening (OpenDate, Job_ID, Approved, Description, Store_ID) VALUES ('09-13-2013', 4, 1, 'Description here...', 1);
+INSERT INTO JobOpening (OpenDate, Job_ID, Approved, Description, Store_ID) VALUES ('09-13-2013', 4, 1, 'Description here...', 2);
 INSERT INTO JobOpening (OpenDate, Job_ID, Approved, Description, Store_ID) VALUES ('03-18-2014', 3, 0, 'Description here...', 1);
-INSERT INTO JobOpening (OpenDate, Job_ID, Approved, Description, Store_ID) VALUES ('11-28-2013', 2, 0, 'Description here...', 1);
+INSERT INTO JobOpening (OpenDate, Job_ID, Approved, Description, Store_ID) VALUES ('11-28-2013', 2, 0, 'Description here...', 2);
+INSERT INTO JobOpening (OpenDate, Job_ID, Approved, Description, Store_ID) VALUES ('05-23-2014', 4, 1, 'Looking for a ping pong player!', 1);
 
 
 /********************************************************************************
@@ -285,6 +287,7 @@ INSERT INTO JobRequirement(JobOpening_ID, Skill_ID, Notes) VALUES (1, 3, '');
 INSERT INTO JobRequirement(JobOpening_ID, Skill_ID, Notes) VALUES (1, 5, 'Preferred');
 INSERT INTO JobRequirement(JobOpening_ID, Skill_ID, Notes) VALUES (2, 4, '');
 INSERT INTO JobRequirement(JobOpening_ID, Skill_ID, Notes) VALUES (2, 1, 'Not Required');
+INSERT INTO JobRequirement(JobOpening_ID, Skill_ID, Notes) VALUES (5, 7, '');
 
 
 
@@ -563,6 +566,13 @@ INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (1,
 INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (1, 2, 0);
 INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (2, 1, 1);
 INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (2, 2, 0);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (1, 1, 1);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (3, 1, 1);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (4, 1, 1);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (1, 2, 0);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (3, 2, 0);
+INSERT INTO QuestionBank(MCQuestion_ID, MCOption_ID, MCCorrectOption) VALUES (4, 2, 0);
+
 
 /********************************************************************************
               SKILL-QUESTIONBANK RELATION
@@ -587,6 +597,12 @@ CREATE TABLE SkillQuestionBank (
 
 /* DATA FOR SKILL-QUESTIONBANK RELATION */
 INSERT INTO SkillQuestionBank(Skill_ID, QuestionBank_ID) VALUES (1, 1);
+INSERT INTO SkillQuestionBank(Skill_ID, QuestionBank_ID) VALUES (7, 5);
+INSERT INTO SkillQuestionBank(Skill_ID, QuestionBank_ID) VALUES (7, 6);
+INSERT INTO SkillQuestionBank(Skill_ID, QuestionBank_ID) VALUES (7, 7);
+INSERT INTO SkillQuestionBank(Skill_ID, QuestionBank_ID) VALUES (7, 8);
+INSERT INTO SkillQuestionBank(Skill_ID, QuestionBank_ID) VALUES (7, 9);
+INSERT INTO SkillQuestionBank(Skill_ID, QuestionBank_ID) VALUES (7, 10);
 
 /********************************************************************************
                 ASSESSMENT RELATION 
@@ -878,3 +894,6 @@ INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (1,
 INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (2, 2);
 INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (3, 1);
 INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (4, 2);
+INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (5, 1);
+INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (5, 2);
+INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (5, 3);
