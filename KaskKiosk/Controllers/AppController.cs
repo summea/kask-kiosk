@@ -349,6 +349,96 @@ namespace KaskKiosk.Controllers
                 timePickerList.Add(i.ToString());
             }
 
+            // TODO: in the future, use more specific API calls for these queries... or LINQ or something for this section
+
+            // get skill information for questions
+            // via job opening id in JobRequirement table
+            List<JobRequirementDAO> jobRequirements = await ServerResponse<List<JobRequirementDAO>>.GetResponseAsync(ServiceURIs.ServiceJobRequirementUri);
+
+            // find related skill ids
+            List<int> relatedSkillIds = new List<int>();
+            foreach (JobRequirementDAO requirementItem in jobRequirements)
+            {
+                if (requirementItem.JobOpeningID.Equals(applied.JobOpeningID))
+                    relatedSkillIds.Add(requirementItem.SkillID);
+            }
+
+            // then find related skill-questionbank items
+            List<SkillQuestionBankDAO> skillQuestionBanks = await ServerResponse<List<SkillQuestionBankDAO>>.GetResponseAsync(ServiceURIs.ServiceSkillQuestionBankUri);
+
+            List<int> relatedQuestionBankIds = new List<int>();
+            foreach (SkillQuestionBankDAO skillQuestionBankItem in skillQuestionBanks)
+            {
+                if (relatedSkillIds.Contains(skillQuestionBankItem.SkillID))
+                    relatedQuestionBankIds.Add(skillQuestionBankItem.QuestionBankID);
+            }
+
+            // then find related mc question banks
+            List<QuestionBankDAO> questionBanks = await ServerResponse<List<QuestionBankDAO>>.GetResponseAsync(ServiceURIs.ServiceQuestionBankUri);
+
+            HashSet<int> relatedMcQuestionIds = new HashSet<int>();
+
+            // idea for this:
+            // QuestionBankID -> QuestionID -> OptionID
+            Dictionary<int, Dictionary<int, HashSet<int>>> relatedMcOptionsForMcQuestions = new Dictionary<int, Dictionary<int, HashSet<int>>>();
+
+            foreach (QuestionBankDAO questionBankItem in questionBanks)
+            {
+                if (relatedQuestionBankIds.Contains(questionBankItem.QuestionBankID))
+                {
+                    // get related question ids
+                    relatedMcQuestionIds.Add(questionBankItem.MCQuestionID);
+
+                    // get related question options for each question id
+                    if (relatedMcOptionsForMcQuestions.ContainsKey(questionBankItem.MCQuestionID))
+                    {
+                        // key already exists, so just append
+                        relatedMcOptionsForMcQuestions[questionBankItem.QuestionBankID][questionBankItem.MCQuestionID].Add(questionBankItem.MCOptionID);
+                    }
+                    else
+                    {
+                        // create new key, then append
+                        relatedMcOptionsForMcQuestions.Add(questionBankItem.QuestionBankID, new Dictionary<int, HashSet<int>>());
+                        relatedMcOptionsForMcQuestions[questionBankItem.QuestionBankID].Add(questionBankItem.MCQuestionID, new HashSet<int> { questionBankItem.MCOptionID });
+                    }
+                }
+            }
+
+            // for now, get a list of all mc questions (to use in the view)
+            List<MCQuestionDAO> allMcQuestions = await ServerResponse<List<MCQuestionDAO>>.GetResponseAsync(ServiceURIs.ServiceMCQuestionUri);
+
+            // for now, get a list of all mc options (to use in the view)
+            List<MCOptionDAO> allMcOptions = await ServerResponse<List<MCOptionDAO>>.GetResponseAsync(ServiceURIs.ServiceMCOptionUri);
+
+            // for now, get a list of all question banks (to use in the view)
+            List<QuestionBankDAO> allQuestionBanks = await ServerResponse<List<QuestionBankDAO>>.GetResponseAsync(ServiceURIs.ServiceQuestionBankUri);
+
+            // for now, get a list of all assessments (to use in the view)
+            List<AssessmentDAO> allAssessments = await ServerResponse<List<AssessmentDAO>>.GetResponseAsync(ServiceURIs.ServiceAssessmentUri);
+
+            // for now, get a list of all interviews (to use in the view)
+            List<InterviewDAO> allInterviews = await ServerResponse<List<InterviewDAO>>.GetResponseAsync(ServiceURIs.ServiceInterviewUri);
+
+            // for now, get a list of all short answer questions (to use in the view)
+            List<SAQuestionDAO> allSAQuestions = await ServerResponse<List<SAQuestionDAO>>.GetResponseAsync(ServiceURIs.ServiceSAQuestionUri);
+
+            // for now, get a list of all short answer responses (to use in the view)
+            List<SAResponseDAO> allSAResponses = await ServerResponse<List<SAResponseDAO>>.GetResponseAsync(ServiceURIs.ServiceSAResponseUri);
+
+            ViewBag.baseURL = Url.Content("~/");
+            ViewBag.allAssessments = allAssessments;
+            ViewBag.allMcQuestions = allMcQuestions;
+            ViewBag.allMcOptions = allMcOptions;
+            ViewBag.allQuestionBanks = allQuestionBanks;
+            ViewBag.relatedMcQuestionIds = relatedMcQuestionIds;
+            ViewBag.relatedMcOptionsForMcQuestions = relatedMcOptionsForMcQuestions;
+            ViewBag.jobOpeningIDReferenceNumber = applied.JobOpeningID;
+            ViewBag.applicantID = applicant.ApplicantID;
+
+            ViewBag.allInterviews = allInterviews;
+            ViewBag.allSAQuestions = allSAQuestions;
+            ViewBag.allSAResponses = allSAResponses;
+
             // send all of these to the view because we are displaying entire "application"
             ViewBag.timePickerList = timePickerList;
             ViewBag.applied = applied;
