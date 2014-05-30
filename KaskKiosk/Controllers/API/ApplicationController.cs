@@ -67,5 +67,24 @@ namespace KaskKiosk.Controllers.API
                 throw new HttpException(e.Message);
             }
         }
+
+        [HttpDelete]
+        public bool DeleteApplication(int id)
+        {
+            try
+            {
+                bool result = false;
+                ApplicationServiceClient client = new ApplicationServiceClient();
+
+                if (client.DeleteApplication(id))
+                    result = true;
+
+                return result;
+            }
+            catch (FaultException<KaskServiceException> e)
+            {
+                throw new HttpException(e.Message);
+            }
+        }
     }
 }

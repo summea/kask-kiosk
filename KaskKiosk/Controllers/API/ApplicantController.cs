@@ -1,6 +1,7 @@
 ﻿using KaskKiosk.AESApplicationServiceRef;
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
@@ -56,6 +57,23 @@ namespace KaskKiosk.Controllers.API
             {
                 throw new HttpException(e.Message);
             }
+        }
+
+        [HttpDelete]
+        public bool DeleteApplicant(int id)
+        {
+            try
+            {
+                ApplicantServiceClient client = new ApplicantServiceClient();
+
+                if (client.DeleteApplicant(id))
+                    return true;
+            }
+            catch (FaultException<KaskServiceException> e)
+            {
+                throw new HttpException(e.Message);
+            }
+            return false;
         }
     }
 }
