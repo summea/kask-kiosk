@@ -191,7 +191,19 @@ namespace KaskKiosk.Controllers
                                                         // delete failed applicant
                                                         resultTwo = await httpClient.DeleteAsync(ServiceURIs.ServiceApplicantUri.ToString() + "/" + applicantID.ToString());
 
+                                                        // delete failed applied
+                                                        resultTwo = await httpClient.DeleteAsync(ServiceURIs.ServiceAppliedUri.ToString() + "/" + applicantID.ToString());
+
                                                         return RedirectToAction("Sorry");
+                                                    }
+                                                    else
+                                                    {
+                                                        // this is the answer that the user chose for this particular QuestionBank question
+                                                        assessment.QuestionBankID = parsedQuestionBankId;
+
+                                                        // post (save) AssessmentOpening data
+                                                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceAssessmentUri, assessment).Result;
+                                                        resultContent = result.Content.ReadAsStringAsync().Result;
                                                     }
                                                 }
                                             }
@@ -202,12 +214,7 @@ namespace KaskKiosk.Controllers
                             }
                         }
 
-                        // this is the answer that the user chose for this particular QuestionBank question
-                        assessment.QuestionBankID = parsedQuestionBankId;
-
-                        // post (save) AssessmentOpening data
-                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceAssessmentUri, assessment).Result;
-                        resultContent = result.Content.ReadAsStringAsync().Result;
+                        
                     }
 
                     // redirect to phone interview questions, if possible

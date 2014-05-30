@@ -380,7 +380,86 @@
         </tr>
     </table>
 }
-    
+
+<h3>Assessment Questions</h3>
+<table class="table table-striped table-bordered">
+@try
+{
+    foreach (var assessmentItem in @ViewBag.allAssessments)
+    {
+        // find assessment rows for this particular applicantID
+        if (assessmentItem.ApplicantID == ViewBag.applicantID)
+        {
+            // loop through all question bank items to get MCQuestion_ID and MCOption_ID
+            foreach (var questionBankItem in @ViewBag.allQuestionBanks)
+            {
+                if (questionBankItem.QuestionBankID == assessmentItem.QuestionBankID)
+                {
+                    foreach (var mcQuestion in @ViewBag.allMcQuestions)
+                    {
+                        if (questionBankItem.MCQuestionID == mcQuestion.MCQuestionID)
+                        {
+                            @Html.Raw("<tr>");
+                            @Html.Raw("<td>");
+                            @mcQuestion.MCQuestionDescription @Html.Raw("&nbsp;&nbsp;")
+                            @Html.Raw("</td>");
+                            @Html.Raw("<td>");
+                        }
+                    }
+                                    
+                    foreach (var mcOption in @ViewBag.allMcOptions)
+                    {
+                        if (questionBankItem.MCOptionID == mcOption.MCOptionID)
+                        {
+                            @mcOption.MCOptionDescription
+                            @Html.Raw("</tr>")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+catch
+{ }
+</table>
+
+<h3>Short Answer Questions</h3>
+<table class="table table-striped table-bordered">
+@try
+{
+    foreach (var interviewItem in @ViewBag.allInterviews)
+    {
+        // find assessment rows for this particular applicantID
+        if (interviewItem.ApplicantID == ViewBag.applicantID)
+        {
+            // loop through all short answer questions
+            foreach (var saQuestionItem in @ViewBag.allSAQuestions)
+            {
+                if (saQuestionItem.SAQuestionID == interviewItem.SAQuestionID)
+                {
+                    @Html.Raw("<tr>");
+                    @Html.Raw("<td>");
+                    @saQuestionItem.SAQuestionDescription @Html.Raw("&nbsp;&nbsp;")
+                    @Html.Raw("</td>");
+                    @Html.Raw("<td>");
+
+                    foreach (var saResponseItem in @ViewBag.allSAResponses)
+                    {
+                        if (saResponseItem.SAResponseID == interviewItem.SAResponseID)
+                        {
+                            @saResponseItem.SAResponseDescription
+                            @Html.Raw("</tr>")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+catch { }
+</table>
+
 <!-- create more space at bottom of view page for now... -->
 <br />
 <br />
