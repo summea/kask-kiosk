@@ -182,6 +182,15 @@ namespace KaskKiosk.Controllers
                                                 {
                                                     if (!parsedOptionId.Equals(Convert.ToInt32(qbItem.MCCorrectOption)))
                                                     {
+                                                        // delete failed application
+                                                        var applications = await ServerResponse<List<ApplicationDAO>>.GetResponseAsync(ServiceURIs.ServiceApplicationUri);
+                                                        int applicationID = applications.Last().ApplicationID;
+
+                                                        var resultTwo = await httpClient.DeleteAsync(ServiceURIs.ServiceApplicationUri.ToString() + "/" + applicationID.ToString());
+
+                                                        // delete failed applicant
+                                                        resultTwo = await httpClient.DeleteAsync(ServiceURIs.ServiceApplicantUri.ToString() + "/" + applicantID.ToString());
+
                                                         return RedirectToAction("Sorry");
                                                     }
                                                 }
