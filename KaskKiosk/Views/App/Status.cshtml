@@ -1,0 +1,21 @@
+﻿@model IEnumerable<KaskKiosk.AESApplicationServiceRef.ApplicationDAO>
+
+@{
+    ViewBag.Title = "Your Applications";
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+}
+
+<h2>Your Applications</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Application Status</th>
+    </tr>
+@foreach (var item in ViewBag.applications)
+{
+    <tr>
+        <td>@item.ApplicationID</td>
+        <td>@item.ApplicationStatus</td>
+    </tr>
+}
+</table>

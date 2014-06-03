@@ -165,6 +165,8 @@
     <Compile Include="Controllers\API\SkillController.cs" />
     <Compile Include="Controllers\API\SkillQuestionBankController.cs" />
     <Compile Include="Controllers\API\StoreController.cs" />
+    <Compile Include="Controllers\API\UserProfileController.cs" />
+    <Compile Include="Controllers\API\UserProfileToApplicantController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\AssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -293,6 +295,12 @@
     <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.JobOpeningInterviewQuestionDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AESApplicationServiceRef\KaskKiosk.AESApplicationServiceRef.UserProfileDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\AESApplicationServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -369,6 +377,7 @@
     <Content Include="Views\Interviews\Create.cshtml" />
     <Content Include="Views\Shared\_PublicKioskInterviewLayout.cshtml" />
     <Content Include="Views\Assessments\Sorry.cshtml" />
+    <Content Include="Views\App\Status.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

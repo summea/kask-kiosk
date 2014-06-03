@@ -74,67 +74,68 @@ namespace KaskKiosk.Controllers
             {
                 if (Request.Form["acknowledgeAccurateDataCheckbox"] != null)
                 {
-                // save application form data back to database through service
-                using (HttpClient httpClient = new HttpClient())
-                {
-                    httpClient.BaseAddress = new Uri("http://localhost:51309");
-                    httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                    HttpResponseMessage result = new HttpResponseMessage();
-                    string resultContent = "";
-
-                    // find applicant id from the previously submitted Application form, if available
-                    int applicantID = 0;
-                    if (Convert.ToInt32(Request.Form["applicantID"]) > 0)
+                    // save application form data back to database through service
+                    using (HttpClient httpClient = new HttpClient())
                     {
-                        applicantID = Convert.ToInt32(Request.Form["applicantID"]);
-                    }
-                    // otherwise, get last applicant id from database
-                    else
-                    {
-                        var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
-                        applicantID = applieds.Last().ApplicantID;
-                    }
+                        httpClient.BaseAddress = new Uri("http://localhost:51309");
+                        httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        HttpResponseMessage result = new HttpResponseMessage();
+                        string resultContent = "";
 
-                    // and save the short answer responses (both to SAResponses and to Interview tables)
-
-                    // TODO: change the hardcoded "50" into some sort of variable
-                    // (i.e. the length of all possible SA responses from form)
-                    for (int i = 0; i < 50; i++)
-                    {
-                        try
+                        // find applicant id from the previously submitted Application form, if available
+                        int applicantID = 0;
+                        if (Convert.ToInt32(Request.Form["applicantID"]) > 0)
                         {
-                            if (Request.Form["SAResponse_" + i] != null)
-                            {
-                                // save short answer response to SAResponses, first
-                                // so gather up response info:
-                                SAResponseDAO saResponse = new SAResponseDAO();
-                                saResponse.SAResponseDescription = Request.Form["SAResponse_" + i];
-
-                                // post (save) short answer response data to SAResponses
-                                result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceSAResponseUri, saResponse).Result;
-                                resultContent = result.Content.ReadAsStringAsync().Result;
-
-                                // then get last inserted short answer response ID for the Interview table later
-                                var saResponses = await ServerResponse<List<SAResponseDAO>>.GetResponseAsync(ServiceURIs.ServiceSAResponseUri);
-                                int lastInsertedSaResponseId = saResponses.Last().SAResponseID;
-
-                                // gather short answer response data
-                                InterviewDAO interview = new InterviewDAO();
-                                interview.ApplicantID = applicantID;
-                                interview.SAQuestionID = i;
-                                interview.SAResponseID = lastInsertedSaResponseId;
-                                //interview.UserID = applicantID; // this might be overlapping... we might just need applicantID for later matchups...
-
-                                // post (save) short answer response data to Interview table
-                                result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceInterviewUri, interview).Result;
-                                resultContent = result.Content.ReadAsStringAsync().Result;
-                            }
+                            applicantID = Convert.ToInt32(Request.Form["applicantID"]);
                         }
-                        catch { }
-                    }
-                }
+                        // otherwise, get last applicant id from database
+                        else
+                        {
+                            var applieds = await ServerResponse<List<AppliedDAO>>.GetResponseAsync(ServiceURIs.ServiceAppliedUri);
+                            applicantID = applieds.Last().ApplicantID;
+                        }
 
-                return RedirectToAction("Welcome", "Home");
+                        // and save the short answer responses (both to SAResponses and to Interview tables)
+
+                        // TODO: change the hardcoded "50" into some sort of variable
+                        // (i.e. the length of all possible SA responses from form)
+                        for (int i = 0; i < 50; i++)
+                        {
+                            try
+                            {
+                                if (Request.Form["SAResponse_" + i] != null)
+                                {
+                                    // save short answer response to SAResponses, first
+                                    // so gather up response info:
+                                    SAResponseDAO saResponse = new SAResponseDAO();
+                                    saResponse.SAResponseDescription = Request.Form["SAResponse_" + i];
+
+                                    // post (save) short answer response data to SAResponses
+                                    result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceSAResponseUri, saResponse).Result;
+                                    resultContent = result.Content.ReadAsStringAsync().Result;
+
+                                    // then get last inserted short answer response ID for the Interview table later
+                                    var saResponses = await ServerResponse<List<SAResponseDAO>>.GetResponseAsync(ServiceURIs.ServiceSAResponseUri);
+                                    int lastInsertedSaResponseId = saResponses.Last().SAResponseID;
+
+                                    // gather short answer response data
+                                    InterviewDAO interview = new InterviewDAO();
+                                    interview.ApplicantID = applicantID;
+                                    interview.SAQuestionID = i;
+                                    interview.SAResponseID = lastInsertedSaResponseId;
+                                    //interview.UserID = applicantID; // this might be overlapping... we might just need applicantID for later matchups...
+
+                                    // post (save) short answer response data to Interview table
+                                    result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceInterviewUri, interview).Result;
+                                    resultContent = result.Content.ReadAsStringAsync().Result;
+                                }
+                            }
+                            catch { }
+                        }
+                    }
+
+                    // allow applicant to either create new account or log in
+                    return RedirectToAction("Register", "Account");
                 }
                 else
                 {

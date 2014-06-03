@@ -33,6 +33,11 @@ namespace Kask.UnitTests
             throw new NotImplementedException();
         }
 
+        public IList<ApplicationDAO> GetApplicationsByApplicant(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<ApplicationDAO> GetApplications()
         {
             return Applications;

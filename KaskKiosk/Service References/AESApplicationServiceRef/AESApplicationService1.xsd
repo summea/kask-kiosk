@@ -356,4 +356,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfStoreDAO" nillable="true" type="tns:ArrayOfStoreDAO" />
+  <xs:complexType name="UserProfileDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserProfileDAO" nillable="true" type="tns:UserProfileDAO" />
+  <xs:complexType name="ArrayOfUserProfileDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserProfileDAO" nillable="true" type="tns:UserProfileDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserProfileDAO" nillable="true" type="tns:ArrayOfUserProfileDAO" />
+  <xs:complexType name="UserProfileToApplicantDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Applicant_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserProfileToApplicant_ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserProfileToApplicantDAO" nillable="true" type="tns:UserProfileToApplicantDAO" />
+  <xs:complexType name="ArrayOfUserProfileToApplicantDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserProfileToApplicantDAO" nillable="true" type="tns:UserProfileToApplicantDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserProfileToApplicantDAO" nillable="true" type="tns:ArrayOfUserProfileToApplicantDAO" />
 </xs:schema>

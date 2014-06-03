@@ -11,7 +11,7 @@ using Kask.DAL.Models;
 namespace Kask.Services
 {
     public class AESApplicationService : IApplicationService, IApplicantService, IAppliedService, IAssessmentService, IEducationService, IEmployerService, IEmploymentService, IExpertiseService, IInterviewService,
-                                        IJobService, IJobOpeningService, IJobOpeningInterviewQuestionService, IJobRequirementService, IMCOptionService, IMCQuestionService, IQuestionBankService, ISAQuestionService, ISAResponseService, ISchoolService, ISkillService, ISkillQuestionBankService, IStoreService
+                                        IJobService, IJobOpeningService, IJobOpeningInterviewQuestionService, IJobRequirementService, IMCOptionService, IMCQuestionService, IQuestionBankService, ISAQuestionService, ISAResponseService, ISchoolService, ISkillService, ISkillQuestionBankService, IStoreService, IUserProfileService, IUserProfileToApplicantService
     {
         public ApplicationDAO GetApplicationByID(int id)
         {
@@ -66,6 +66,63 @@ namespace Kask.Services
                     foreach (Applicant a in applicants)
                     {
                         result.Add(GetApplicationByID(a.Applicant_ID));
+                    }
+
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        // get applications for this particular applicant ID
+        public IList<ApplicationDAO> GetApplicationsByApplicant(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<Applied> allApplieds = (from a in db.Applieds where a.Applicant_ID==id select a).ToList();
+                    IList<Application> allApplications = (from a in db.Applications select a).ToList();
+                    List<ApplicationDAO> result = new List<ApplicationDAO>();
+
+                    foreach (var applied in allApplieds)
+                    {
+                        foreach (var application in allApplications)
+                        {
+                            if (applied.Application_ID == application.Application_ID)
+                            {
+                                ApplicationDAO app = new ApplicationDAO
+                                {
+                                    ApplicationID = application.Application_ID,
+                                    ID = application.Application_ID,
+                                    ApplicationStatus = application.ApplicationStatus,
+                                    SalaryExpectation = application.SalaryExpectation,
+                                    FullTime = application.FullTime,
+                                    AvailableForDays = application.AvailableForDays,
+                                    AvailableForEvenings = application.AvailableForEvenings,
+                                    AvailableForWeekends = application.AvailableForWeekends,
+                                    MondayFrom = application.MondayFrom,
+                                    TuesdayFrom = application.TuesdayFrom,
+                                    WednesdayFrom = application.WednesdayFrom,
+                                    ThursdayFrom = application.ThursdayFrom,
+                                    FridayFrom = application.FridayFrom,
+                                    SaturdayFrom = application.SaturdayFrom,
+                                    SundayFrom = application.SundayFrom,
+                                    MondayTo = application.MondayTo,
+                                    TuesdayTo = application.TuesdayTo,
+                                    WednesdayTo = application.WednesdayTo,
+                                    ThursdayTo = application.ThursdayTo,
+                                    FridayTo = application.FridayTo,
+                                    SaturdayTo = application.SaturdayTo,
+                                    SundayTo = application.SundayTo
+                                };
+
+                                result.Add(app);
+                            }
+                        }
                     }
 
                     return result;
@@ -2975,6 +3032,245 @@ namespace Kask.Services
             {
                 JobOpeningInterviewQuestion jobOpeningInterviewQuestion = db.JobOpeningInterviewQuestions.Single(jbopinqu => jbopinqu.JobOpeningInterviewQuestion_ID == id);
                 db.JobOpeningInterviewQuestions.DeleteOnSubmit(jobOpeningInterviewQuestion);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public UserProfileToApplicantDAO GetUserProfileToApplicantByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    UserProfileToApplicant userProfileToApplicant = (from upta in db.UserProfileToApplicants where upta.UserProfileToApplicant_ID == id select upta).FirstOrDefault();
+                    UserProfileToApplicantDAO result = new UserProfileToApplicantDAO
+                    {
+                        ID = userProfileToApplicant.UserProfileToApplicant_ID,
+                        UserProfileToApplicant_ID = userProfileToApplicant.UserProfileToApplicant_ID,
+                        Applicant_ID = userProfileToApplicant.Applicant_ID,
+                        UserId = userProfileToApplicant.UserId
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<UserProfileToApplicantDAO> GetUserProfileToApplicants()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<UserProfileToApplicant> userProfileToApplicants = db.UserProfileToApplicants.ToList();
+                    List<UserProfileToApplicantDAO> result = new List<UserProfileToApplicantDAO>();
+
+                    foreach (var userProfileToApplicant in userProfileToApplicants)
+                    {
+                        UserProfileToApplicantDAO temp = new UserProfileToApplicantDAO
+                        {
+                            ID = userProfileToApplicant.UserProfileToApplicant_ID,
+                            UserProfileToApplicant_ID = userProfileToApplicant.UserProfileToApplicant_ID,
+                            Applicant_ID = userProfileToApplicant.Applicant_ID,
+                            UserId = userProfileToApplicant.UserId
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateUserProfileToApplicant(UserProfileToApplicantDAO s)
+        {
+            UserProfileToApplicant userProfileToApplicant = new UserProfileToApplicant
+            {
+                UserProfileToApplicant_ID = s.UserProfileToApplicant_ID,
+                Applicant_ID = s.Applicant_ID,
+                UserId = s.UserId
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.UserProfileToApplicants.InsertOnSubmit(userProfileToApplicant);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateUserProfileToApplicant(UserProfileToApplicantDAO newUserProfileToApplicant)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                UserProfileToApplicant userProfileToApplicant = db.UserProfileToApplicants.Single(s => s.UserProfileToApplicant_ID == newUserProfileToApplicant.UserProfileToApplicant_ID);
+                userProfileToApplicant.Applicant_ID = newUserProfileToApplicant.Applicant_ID;
+                userProfileToApplicant.UserId = newUserProfileToApplicant.UserId;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteUserProfileToApplicant(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                UserProfileToApplicant userProfileToApplicant = db.UserProfileToApplicants.Single(upta => upta.UserProfileToApplicant_ID == id);
+                db.UserProfileToApplicants.DeleteOnSubmit(userProfileToApplicant);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public UserProfileDAO GetUserProfileByID(int id)
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    UserProfile userProfile = (from uspro in db.UserProfiles where uspro.UserId == id select uspro).FirstOrDefault();
+                    UserProfileDAO result = new UserProfileDAO
+                    {
+                        ID = userProfile.UserId,
+                        UserId = userProfile.UserId,
+                        UserName = userProfile.UserName
+                    };
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public IList<UserProfileDAO> GetUserProfiles()
+        {
+            try
+            {
+                using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+                {
+                    IList<UserProfile> userProfiles = (from userProfile in db.UserProfiles select userProfile).OrderBy(o => o.UserId).ToList();
+                    List<UserProfileDAO> result = new List<UserProfileDAO>();
+
+                    foreach (var userProfile in userProfiles)
+                    {
+                        UserProfileDAO temp = new UserProfileDAO
+                        {
+                            ID = userProfile.UserId,
+                            UserId = userProfile.UserId,
+                            UserName = userProfile.UserName
+                        };
+
+                        result.Add(temp);
+                    }
+
+                    return (result != null ? result : null);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+            }
+        }
+
+        public bool CreateUserProfile(UserProfileDAO s)
+        {
+            UserProfile userProfile = new UserProfile
+            {
+                UserId = s.UserId,
+                UserName = s.UserName
+            };
+
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                db.UserProfiles.InsertOnSubmit(userProfile);
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateUserProfile(UserProfileDAO newUserProfile)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                UserProfile userProfile = db.UserProfiles.Single(s => s.UserId == newUserProfile.UserId);
+                userProfile.UserId = newUserProfile.UserId;
+                userProfile.UserName = newUserProfile.UserName;
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    throw new FaultException<KaskServiceException>(new KaskServiceException(), new FaultReason(e.Message));
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteUserProfile(int id)
+        {
+            using (AESDatabaseDataContext db = new AESDatabaseDataContext())
+            {
+                UserProfile userProfile = db.UserProfiles.Single(uspro => uspro.UserId == id);
+                db.UserProfiles.DeleteOnSubmit(userProfile);
 
                 try
                 {

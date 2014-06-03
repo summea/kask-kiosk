@@ -29,6 +29,23 @@ namespace KaskKiosk.Controllers.API
             }
         }
 
+        // GET: /Application/by_applicant/id
+        [HttpGet]
+        public IEnumerable<ApplicationDAO> GetApplicationsByApplicant(int id)
+        {
+            ApplicationServiceClient client = new ApplicationServiceClient();
+
+            try
+            {
+                IEnumerable<ApplicationDAO> result = client.GetApplicationsByApplicant(id);
+                return result;
+            }
+            catch (FaultException<KaskServiceException> e)
+            {
+                throw new HttpException(e.Message);
+            }
+        }
+
         // GET: /Application/id
         [HttpGet]
         public ApplicationDAO GetApplication(int id)
