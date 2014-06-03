@@ -2635,6 +2635,176 @@ namespace KaskKiosk.AESApplicationServiceRef {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserProfileDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class UserProfileDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserProfileToApplicantDAO", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.DAO")]
+    [System.SerializableAttribute()]
+    public partial class UserProfileToApplicantDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Applicant_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserProfileToApplicant_IDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Applicant_ID {
+            get {
+                return this.Applicant_IDField;
+            }
+            set {
+                if ((this.Applicant_IDField.Equals(value) != true)) {
+                    this.Applicant_IDField = value;
+                    this.RaisePropertyChanged("Applicant_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserProfileToApplicant_ID {
+            get {
+                return this.UserProfileToApplicant_IDField;
+            }
+            set {
+                if ((this.UserProfileToApplicant_IDField.Equals(value) != true)) {
+                    this.UserProfileToApplicant_IDField = value;
+                    this.RaisePropertyChanged("UserProfileToApplicant_ID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IApplicationService")]
     public interface IApplicationService {
@@ -2654,6 +2824,14 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationsByName", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsByNameResponse")]
         System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO[]> GetApplicationsByNameAsync(string first, string last, string ssn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationsByApplicant", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsByApplicantResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicationService/GetApplicationsByApplicantKaskServiceExcep" +
+            "tionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.ApplicationDAO[] GetApplicationsByApplicant(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplicationsByApplicant", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsByApplicantResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO[]> GetApplicationsByApplicantAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IApplicationService/GetApplications", ReplyAction="http://tempuri.org/IApplicationService/GetApplicationsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IApplicationService/GetApplicationsKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
@@ -2728,6 +2906,14 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO[]> GetApplicationsByNameAsync(string first, string last, string ssn) {
             return base.Channel.GetApplicationsByNameAsync(first, last, ssn);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.ApplicationDAO[] GetApplicationsByApplicant(int id) {
+            return base.Channel.GetApplicationsByApplicant(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.ApplicationDAO[]> GetApplicationsByApplicantAsync(int id) {
+            return base.Channel.GetApplicationsByApplicantAsync(id);
         }
         
         public KaskKiosk.AESApplicationServiceRef.ApplicationDAO[] GetApplications() {
@@ -5043,6 +5229,241 @@ namespace KaskKiosk.AESApplicationServiceRef {
         
         public System.Threading.Tasks.Task<bool> DeleteStoreAsync(int id) {
             return base.Channel.DeleteStoreAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IUserProfileService")]
+    public interface IUserProfileService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/GetUserProfileByID", ReplyAction="http://tempuri.org/IUserProfileService/GetUserProfileByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileService/GetUserProfileByIDKaskServiceExceptionFaul" +
+            "t", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.UserProfileDAO GetUserProfileByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/GetUserProfileByID", ReplyAction="http://tempuri.org/IUserProfileService/GetUserProfileByIDResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.UserProfileDAO> GetUserProfileByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/GetUserProfiles", ReplyAction="http://tempuri.org/IUserProfileService/GetUserProfilesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileService/GetUserProfilesKaskServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.UserProfileDAO[] GetUserProfiles();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/GetUserProfiles", ReplyAction="http://tempuri.org/IUserProfileService/GetUserProfilesResponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.UserProfileDAO[]> GetUserProfilesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/CreateUserProfile", ReplyAction="http://tempuri.org/IUserProfileService/CreateUserProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileService/CreateUserProfileKaskServiceExceptionFault" +
+            "", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateUserProfile(KaskKiosk.AESApplicationServiceRef.UserProfileDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/CreateUserProfile", ReplyAction="http://tempuri.org/IUserProfileService/CreateUserProfileResponse")]
+        System.Threading.Tasks.Task<bool> CreateUserProfileAsync(KaskKiosk.AESApplicationServiceRef.UserProfileDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/UpdateUserProfile", ReplyAction="http://tempuri.org/IUserProfileService/UpdateUserProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileService/UpdateUserProfileKaskServiceExceptionFault" +
+            "", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateUserProfile(KaskKiosk.AESApplicationServiceRef.UserProfileDAO newUserProfileData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/UpdateUserProfile", ReplyAction="http://tempuri.org/IUserProfileService/UpdateUserProfileResponse")]
+        System.Threading.Tasks.Task<bool> UpdateUserProfileAsync(KaskKiosk.AESApplicationServiceRef.UserProfileDAO newUserProfileData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/DeleteUserProfile", ReplyAction="http://tempuri.org/IUserProfileService/DeleteUserProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileService/DeleteUserProfileKaskServiceExceptionFault" +
+            "", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteUserProfile(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileService/DeleteUserProfile", ReplyAction="http://tempuri.org/IUserProfileService/DeleteUserProfileResponse")]
+        System.Threading.Tasks.Task<bool> DeleteUserProfileAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserProfileServiceChannel : KaskKiosk.AESApplicationServiceRef.IUserProfileService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UserProfileServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IUserProfileService>, KaskKiosk.AESApplicationServiceRef.IUserProfileService {
+        
+        public UserProfileServiceClient() {
+        }
+        
+        public UserProfileServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public UserProfileServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserProfileServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserProfileServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.UserProfileDAO GetUserProfileByID(int id) {
+            return base.Channel.GetUserProfileByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.UserProfileDAO> GetUserProfileByIDAsync(int id) {
+            return base.Channel.GetUserProfileByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.UserProfileDAO[] GetUserProfiles() {
+            return base.Channel.GetUserProfiles();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.UserProfileDAO[]> GetUserProfilesAsync() {
+            return base.Channel.GetUserProfilesAsync();
+        }
+        
+        public bool CreateUserProfile(KaskKiosk.AESApplicationServiceRef.UserProfileDAO e) {
+            return base.Channel.CreateUserProfile(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateUserProfileAsync(KaskKiosk.AESApplicationServiceRef.UserProfileDAO e) {
+            return base.Channel.CreateUserProfileAsync(e);
+        }
+        
+        public bool UpdateUserProfile(KaskKiosk.AESApplicationServiceRef.UserProfileDAO newUserProfileData) {
+            return base.Channel.UpdateUserProfile(newUserProfileData);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateUserProfileAsync(KaskKiosk.AESApplicationServiceRef.UserProfileDAO newUserProfileData) {
+            return base.Channel.UpdateUserProfileAsync(newUserProfileData);
+        }
+        
+        public bool DeleteUserProfile(int id) {
+            return base.Channel.DeleteUserProfile(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteUserProfileAsync(int id) {
+            return base.Channel.DeleteUserProfileAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AESApplicationServiceRef.IUserProfileToApplicantService")]
+    public interface IUserProfileToApplicantService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicantByID", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicantByIDRe" +
+            "sponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicantByIDKa" +
+            "skServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO GetUserProfileToApplicantByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicantByID", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicantByIDRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO> GetUserProfileToApplicantByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicants", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicantsRespo" +
+            "nse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicantsKaskS" +
+            "erviceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO[] GetUserProfileToApplicants();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicants", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/GetUserProfileToApplicantsRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO[]> GetUserProfileToApplicantsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/CreateUserProfileToApplicant", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/CreateUserProfileToApplicantRes" +
+            "ponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileToApplicantService/CreateUserProfileToApplicantKas" +
+            "kServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool CreateUserProfileToApplicant(KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/CreateUserProfileToApplicant", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/CreateUserProfileToApplicantRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<bool> CreateUserProfileToApplicantAsync(KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO e);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/UpdateUserProfileToApplicant", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/UpdateUserProfileToApplicantRes" +
+            "ponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileToApplicantService/UpdateUserProfileToApplicantKas" +
+            "kServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool UpdateUserProfileToApplicant(KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO newUserProfileToApplicantData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/UpdateUserProfileToApplicant", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/UpdateUserProfileToApplicantRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<bool> UpdateUserProfileToApplicantAsync(KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO newUserProfileToApplicantData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/DeleteUserProfileToApplicant", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/DeleteUserProfileToApplicantRes" +
+            "ponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(KaskKiosk.AESApplicationServiceRef.KaskServiceException), Action="http://tempuri.org/IUserProfileToApplicantService/DeleteUserProfileToApplicantKas" +
+            "kServiceExceptionFault", Name="KaskServiceException", Namespace="http://schemas.datacontract.org/2004/07/Kask.Services.Exceptions")]
+        bool DeleteUserProfileToApplicant(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProfileToApplicantService/DeleteUserProfileToApplicant", ReplyAction="http://tempuri.org/IUserProfileToApplicantService/DeleteUserProfileToApplicantRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<bool> DeleteUserProfileToApplicantAsync(int id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserProfileToApplicantServiceChannel : KaskKiosk.AESApplicationServiceRef.IUserProfileToApplicantService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UserProfileToApplicantServiceClient : System.ServiceModel.ClientBase<KaskKiosk.AESApplicationServiceRef.IUserProfileToApplicantService>, KaskKiosk.AESApplicationServiceRef.IUserProfileToApplicantService {
+        
+        public UserProfileToApplicantServiceClient() {
+        }
+        
+        public UserProfileToApplicantServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public UserProfileToApplicantServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserProfileToApplicantServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserProfileToApplicantServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO GetUserProfileToApplicantByID(int id) {
+            return base.Channel.GetUserProfileToApplicantByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO> GetUserProfileToApplicantByIDAsync(int id) {
+            return base.Channel.GetUserProfileToApplicantByIDAsync(id);
+        }
+        
+        public KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO[] GetUserProfileToApplicants() {
+            return base.Channel.GetUserProfileToApplicants();
+        }
+        
+        public System.Threading.Tasks.Task<KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO[]> GetUserProfileToApplicantsAsync() {
+            return base.Channel.GetUserProfileToApplicantsAsync();
+        }
+        
+        public bool CreateUserProfileToApplicant(KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO e) {
+            return base.Channel.CreateUserProfileToApplicant(e);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateUserProfileToApplicantAsync(KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO e) {
+            return base.Channel.CreateUserProfileToApplicantAsync(e);
+        }
+        
+        public bool UpdateUserProfileToApplicant(KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO newUserProfileToApplicantData) {
+            return base.Channel.UpdateUserProfileToApplicant(newUserProfileToApplicantData);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateUserProfileToApplicantAsync(KaskKiosk.AESApplicationServiceRef.UserProfileToApplicantDAO newUserProfileToApplicantData) {
+            return base.Channel.UpdateUserProfileToApplicantAsync(newUserProfileToApplicantData);
+        }
+        
+        public bool DeleteUserProfileToApplicant(int id) {
+            return base.Channel.DeleteUserProfileToApplicant(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteUserProfileToApplicantAsync(int id) {
+            return base.Channel.DeleteUserProfileToApplicantAsync(id);
         }
     }
 }

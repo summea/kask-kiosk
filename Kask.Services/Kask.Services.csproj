@@ -93,6 +93,8 @@
     <Compile Include="Interfaces\ISkillQuestionBankService.cs" />
     <Compile Include="Interfaces\ISkillService.cs" />
     <Compile Include="Interfaces\IStoreService.cs" />
+    <Compile Include="Interfaces\IUserProfileService.cs" />
+    <Compile Include="Interfaces\IUserProfileToApplicantService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

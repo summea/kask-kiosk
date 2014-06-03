@@ -19,6 +19,10 @@ namespace Kask.Services.Interfaces
 
         [OperationContract]
         [FaultContract(typeof(KaskServiceException))]
+        IList<ApplicationDAO> GetApplicationsByApplicant(int id);
+
+        [OperationContract]
+        [FaultContract(typeof(KaskServiceException))]
         IList<ApplicationDAO> GetApplications();
 
         [OperationContract]

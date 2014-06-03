@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace KaskKiosk.Controllers
 {
@@ -566,6 +567,16 @@ namespace KaskKiosk.Controllers
                 // TODO: validation later on...
                 return RedirectToAction("Index", "App");
             }
+        }
+
+        [Authorize(Roles = "Applicant")]
+        public async Task<ActionResult> Status()
+        {
+            string userId = Membership.GetUser().ProviderUserKey.ToString();
+            var apps = await ServerResponse<List<ApplicationDAO>>.GetResponseAsync(ServiceURIs.ServiceApplicationUri + "/by_applicant/" + userId);
+
+            ViewBag.applications = apps;
+            return View();
         }
     }
 }

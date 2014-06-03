@@ -120,6 +120,9 @@ namespace Kask.DAL.Models
     partial void InsertInterview(Interview instance);
     partial void UpdateInterview(Interview instance);
     partial void DeleteInterview(Interview instance);
+    partial void InsertUserProfileToApplicant(UserProfileToApplicant instance);
+    partial void UpdateUserProfileToApplicant(UserProfileToApplicant instance);
+    partial void DeleteUserProfileToApplicant(UserProfileToApplicant instance);
     #endregion
 		
 		public AESDatabaseDataContext() : 
@@ -391,6 +394,14 @@ namespace Kask.DAL.Models
 				return this.GetTable<Interview>();
 			}
 		}
+		
+		public System.Data.Linq.Table<UserProfileToApplicant> UserProfileToApplicants
+		{
+			get
+			{
+				return this.GetTable<UserProfileToApplicant>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Applicant")]
@@ -431,6 +442,8 @@ namespace Kask.DAL.Models
 		
 		private EntitySet<Interview> _Interviews;
 		
+		private EntitySet<UserProfileToApplicant> _UserProfileToApplicants;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -464,6 +477,7 @@ namespace Kask.DAL.Models
 			this._Expertises = new EntitySet<Expertise>(new Action<Expertise>(this.attach_Expertises), new Action<Expertise>(this.detach_Expertises));
 			this._Assessments = new EntitySet<Assessment>(new Action<Assessment>(this.attach_Assessments), new Action<Assessment>(this.detach_Assessments));
 			this._Interviews = new EntitySet<Interview>(new Action<Interview>(this.attach_Interviews), new Action<Interview>(this.detach_Interviews));
+			this._UserProfileToApplicants = new EntitySet<UserProfileToApplicant>(new Action<UserProfileToApplicant>(this.attach_UserProfileToApplicants), new Action<UserProfileToApplicant>(this.detach_UserProfileToApplicants));
 			OnCreated();
 		}
 		
@@ -738,6 +752,19 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_UserProfileToApplicant", Storage="_UserProfileToApplicants", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
+		public EntitySet<UserProfileToApplicant> UserProfileToApplicants
+		{
+			get
+			{
+				return this._UserProfileToApplicants;
+			}
+			set
+			{
+				this._UserProfileToApplicants.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -837,6 +864,18 @@ namespace Kask.DAL.Models
 		}
 		
 		private void detach_Interviews(Interview entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = null;
+		}
+		
+		private void attach_UserProfileToApplicants(UserProfileToApplicant entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = this;
+		}
+		
+		private void detach_UserProfileToApplicants(UserProfileToApplicant entity)
 		{
 			this.SendPropertyChanging();
 			entity.Applicant = null;
@@ -5137,6 +5176,8 @@ namespace Kask.DAL.Models
 		
 		private EntitySet<webpages_UsersInRole> _webpages_UsersInRoles;
 		
+		private EntitySet<UserProfileToApplicant> _UserProfileToApplicants;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5150,6 +5191,7 @@ namespace Kask.DAL.Models
 		public UserProfile()
 		{
 			this._webpages_UsersInRoles = new EntitySet<webpages_UsersInRole>(new Action<webpages_UsersInRole>(this.attach_webpages_UsersInRoles), new Action<webpages_UsersInRole>(this.detach_webpages_UsersInRoles));
+			this._UserProfileToApplicants = new EntitySet<UserProfileToApplicant>(new Action<UserProfileToApplicant>(this.attach_UserProfileToApplicants), new Action<UserProfileToApplicant>(this.detach_UserProfileToApplicants));
 			OnCreated();
 		}
 		
@@ -5206,6 +5248,19 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileToApplicant", Storage="_UserProfileToApplicants", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<UserProfileToApplicant> UserProfileToApplicants
+		{
+			get
+			{
+				return this._UserProfileToApplicants;
+			}
+			set
+			{
+				this._UserProfileToApplicants.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5233,6 +5288,18 @@ namespace Kask.DAL.Models
 		}
 		
 		private void detach_webpages_UsersInRoles(webpages_UsersInRole entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+		
+		private void attach_UserProfileToApplicants(UserProfileToApplicant entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_UserProfileToApplicants(UserProfileToApplicant entity)
 		{
 			this.SendPropertyChanging();
 			entity.UserProfile = null;
@@ -6845,6 +6912,198 @@ namespace Kask.DAL.Models
 						this._SAResponse_ID = default(int);
 					}
 					this.SendPropertyChanged("SAResponse");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserProfileToApplicant")]
+	public partial class UserProfileToApplicant : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserProfileToApplicant_ID;
+		
+		private int _Applicant_ID;
+		
+		private int _UserId;
+		
+		private EntityRef<Applicant> _Applicant;
+		
+		private EntityRef<UserProfile> _UserProfile;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserProfileToApplicant_IDChanging(int value);
+    partial void OnUserProfileToApplicant_IDChanged();
+    partial void OnApplicant_IDChanging(int value);
+    partial void OnApplicant_IDChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    #endregion
+		
+		public UserProfileToApplicant()
+		{
+			this._Applicant = default(EntityRef<Applicant>);
+			this._UserProfile = default(EntityRef<UserProfile>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserProfileToApplicant_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserProfileToApplicant_ID
+		{
+			get
+			{
+				return this._UserProfileToApplicant_ID;
+			}
+			set
+			{
+				if ((this._UserProfileToApplicant_ID != value))
+				{
+					this.OnUserProfileToApplicant_IDChanging(value);
+					this.SendPropertyChanging();
+					this._UserProfileToApplicant_ID = value;
+					this.SendPropertyChanged("UserProfileToApplicant_ID");
+					this.OnUserProfileToApplicant_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
+		public int Applicant_ID
+		{
+			get
+			{
+				return this._Applicant_ID;
+			}
+			set
+			{
+				if ((this._Applicant_ID != value))
+				{
+					if (this._Applicant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnApplicant_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Applicant_ID = value;
+					this.SendPropertyChanged("Applicant_ID");
+					this.OnApplicant_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._UserProfile.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_UserProfileToApplicant", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Applicant Applicant
+		{
+			get
+			{
+				return this._Applicant.Entity;
+			}
+			set
+			{
+				Applicant previousValue = this._Applicant.Entity;
+				if (((previousValue != value) 
+							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Applicant.Entity = null;
+						previousValue.UserProfileToApplicants.Remove(this);
+					}
+					this._Applicant.Entity = value;
+					if ((value != null))
+					{
+						value.UserProfileToApplicants.Add(this);
+						this._Applicant_ID = value.Applicant_ID;
+					}
+					else
+					{
+						this._Applicant_ID = default(int);
+					}
+					this.SendPropertyChanged("Applicant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileToApplicant", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.UserProfileToApplicants.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.UserProfileToApplicants.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
 				}
 			}
 		}

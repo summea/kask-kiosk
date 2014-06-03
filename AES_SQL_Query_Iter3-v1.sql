@@ -897,3 +897,26 @@ INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (4,
 INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (5, 1);
 INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (5, 2);
 INSERT INTO JobOpeningInterviewQuestion(JobOpening_ID, SAQuestion_ID) VALUES (5, 3);
+
+/********************************************************************************
+              USER_PROFILE_TO_APPLICANT RELATION
+*********************************************************************************/
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'PKUserProfileToApplicantID')
+  ALTER TABLE UserProfileToApplicant DROP CONSTRAINT [PKUserProfileToApplicantID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKUserProfileToApplicant_ApplicantID')
+  ALTER TABLE UserProfileToApplicant DROP CONSTRAINT [FKUserProfileToApplicant_ApplicantID];
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE name = N'FKUserProfileToApplicant_UserId')
+  ALTER TABLE UserProfileToApplicant DROP CONSTRAINT [FKUserProfileToApplicant_UserId];
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'UserProfileToApplicant')
+  DROP TABLE UserProfileToApplicant;
+CREATE TABLE UserProfileToApplicant (
+  UserProfileToApplicant_ID       int     NOT NULL IDENTITY(1, 1),
+  Applicant_ID                    int     NOT NULL,
+  UserId                          int     NOT NULL,
+  CONSTRAINT [PKUserProfileToApplicantID] PRIMARY KEY (UserProfileToApplicant_ID ASC),
+  CONSTRAINT [FKUserProfileToApplicant_ApplicantID] FOREIGN KEY (Applicant_ID) REFERENCES Applicant (Applicant_ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT [FKUserProfileToApplicant_UserId] FOREIGN KEY (UserId) REFERENCES UserProfile (UserId)
+    ON DELETE CASCADE ON UPDATE CASCADE
+);

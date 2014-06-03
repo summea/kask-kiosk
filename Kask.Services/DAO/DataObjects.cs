@@ -520,4 +520,33 @@ namespace Kask.Services.DAO
         [DataMember]
         public int SAQuestionID { get; set; }
     }
+
+    [DataContract]
+    public class UserProfileDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int UserId { get; set; }
+
+        [DataMember]
+        public string UserName { get; set; }
+    }
+
+    [DataContract]
+    public class UserProfileToApplicantDAO : IDataObject
+    {
+        [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
+        public int UserProfileToApplicant_ID { get; set; }
+
+        [DataMember]
+        public int Applicant_ID { get; set; }
+
+        [DataMember]
+        public int UserId { get; set; }
+    }
 }

@@ -1,6 +1,10 @@
-﻿using System;
+﻿using KaskKiosk.AESApplicationServiceRef;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
@@ -85,7 +89,11 @@ namespace KaskKiosk.Controllers
                     Roles.AddUsersToRole(new[] { model.UserName }, "Applicant");
 
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "App");
+
+                    // connect new user account to last applicant ID for now
+                    return RedirectToAction("MapToUserProfile", "Account");
+                    
+                    //return RedirectToAction("Backend", "Home");
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -330,6 +338,41 @@ namespace KaskKiosk.Controllers
 
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
+        }
+
+        [AllowAnonymous]
+        public async Task<ActionResult> MapToUserProfile()
+        {
+            // get latest applicant ID and map to latest user ID account
+            // this is used to relate data between two separate database table entities (Applicant and UserProfile)
+            
+            // get latest applicant ID
+            var applicants = await ServerResponse<List<ApplicantDAO>>.GetResponseAsync(ServiceURIs.ServiceApplicantUri);
+            int applicantID = applicants.Last().ApplicantID;
+
+            // get latest user ID
+            var userProfiles = await ServerResponse<List<UserProfileDAO>>.GetResponseAsync(ServiceURIs.ServiceUserProfileUri);
+            int userProfileID = userProfiles.Last().UserId;
+
+            // save mapping data back to database through service
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new Uri("http://localhost:51309");
+                httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage result = new HttpResponseMessage();
+                string resultContent = "";
+
+                // save mapped results to UserProfileToApplicant table
+                UserProfileToApplicantDAO userProfileToApplicant = new UserProfileToApplicantDAO();
+                userProfileToApplicant.Applicant_ID = applicantID;
+                userProfileToApplicant.UserId = userProfileID;
+
+                // post (save) AssessmentOpening data
+                result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceUserProfileToApplicantUri, userProfileToApplicant).Result;
+                resultContent = result.Content.ReadAsStringAsync().Result;
+            }
+
+            return RedirectToAction("Welcome", "Home");
         }
 
         #region Helpers

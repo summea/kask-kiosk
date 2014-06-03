@@ -20,13 +20,14 @@ namespace KaskKiosk.Controllers
         //
         // GET: /Home/Backend
 
-        [Authorize(Roles = "Administrator, HiringManager, StoreManager")]
+        [Authorize(Roles = "Administrator, Applicant, HiringManager, StoreManager")]
         public ActionResult Backend()
         {
             string allowableActions = "";
             if (this.User.IsInRole("HiringManager"))
             {
-                allowableActions += "<a href=\"/Jobs/Index\">View Job Types</a> | " +
+                allowableActions += "<a href=\"/App/Index\">All Applications</a><br>" +
+                                    "<a href=\"/Jobs/Index\">View Job Types</a> | " +
                                     "<a href=\"/Jobs/Create\">Create New Job Type</a> | " +
                                     "<a href=\"/JobOpenings/Index\">View Current Job Openings</a> | " +
                                     "<a href=\"/JobOpenings/Create\">Request Job Opening</a><br>" + 
@@ -44,8 +45,12 @@ namespace KaskKiosk.Controllers
             else if (this.User.IsInRole("StoreManager"))
             {
                 allowableActions += "<a href=\"/Jobs/Index\">View Job Types</a> | " +
-                                    "<a href=\"/Jobs/Create\">Create New Job Type</a> | " + 
+                                    "<a href=\"/Jobs/Create\">Create New Job Type</a> | " +
                                     "<a href=\"/JobOpenings/Index\">View Current Job Openings</a> | ";
+            }
+            else
+            {
+                allowableActions += "<a href=\"/App/Status\">View Application Status</a>";
             }
             ViewBag.allowableActions = allowableActions;
             return View();

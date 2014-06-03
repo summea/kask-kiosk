@@ -18,6 +18,7 @@
       <Association Name="Applicant_Expertise" Member="Expertises" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Expertise" />
       <Association Name="Applicant_Assessment" Member="Assessments" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Assessment" />
       <Association Name="Applicant_Interview" Member="Interviews" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Interview" />
+      <Association Name="Applicant_UserProfileToApplicant" Member="UserProfileToApplicants" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="UserProfileToApplicant" />
     </Type>
   </Table>
   <Table Name="dbo.webpages_UsersInRoles" Member="webpages_UsersInRoles">
@@ -236,6 +237,7 @@
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="UserProfile_webpages_UsersInRole" Member="webpages_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="webpages_UsersInRole" />
+      <Association Name="UserProfile_UserProfileToApplicant" Member="UserProfileToApplicants" ThisKey="UserId" OtherKey="UserId" Type="UserProfileToApplicant" />
     </Type>
   </Table>
   <Table Name="dbo.webpages_Membership" Member="webpages_Memberships">
@@ -315,6 +317,15 @@
       <Association Name="Applicant_Interview" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="SAQuestion_Interview" Member="SAQuestion" ThisKey="SAQuestion_ID" OtherKey="SAQuestion_ID" Type="SAQuestion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="SAResponse_Interview" Member="SAResponse" ThisKey="SAResponse_ID" OtherKey="SAResponse_ID" Type="SAResponse" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserProfileToApplicant" Member="UserProfileToApplicants">
+    <Type Name="UserProfileToApplicant">
+      <Column Name="UserProfileToApplicant_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Applicant_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Applicant_UserProfileToApplicant" Member="Applicant" ThisKey="Applicant_ID" OtherKey="Applicant_ID" Type="Applicant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="UserProfile_UserProfileToApplicant" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

@@ -26,8 +26,10 @@ namespace KaskKiosk.Controllers
         public static readonly string ServiceSAResponseUri                  =   "http://localhost:51309/api/SAResponse";
         public static readonly string ServiceSchoolUri                      =   "http://localhost:51309/api/School";
         public static readonly string ServiceSkillUri                       =   "http://localhost:51309/api/Skill";
-        public static readonly string ServiceSkillQuestionBankUri           = "http://localhost:51309/api/SkillQuestionBank";
+        public static readonly string ServiceSkillQuestionBankUri           =   "http://localhost:51309/api/SkillQuestionBank";
         public static readonly string ServiceStoreUri                       =   "http://localhost:51309/api/Store";
+        public static readonly string ServiceUserProfileUri                 =   "http://localhost:51309/api/UserProfile";
+        public static readonly string ServiceUserProfileToApplicantUri      =   "http://localhost:51309/api/UserProfileToApplicant";
     }
 
     public class ServerResponse<T> where T : class
