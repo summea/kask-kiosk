@@ -9,9 +9,6 @@
 }
 
 h2 {
-  margin:0;
-  margin-top:10px;
-  padding:0;
 }
 
 .lead {
@@ -128,4 +125,35 @@ textarea {
 
 #loginForm ul li {
     padding-top:5px;
+}
+
+.dashboard {
+}
+
+.dashboard ul {
+    columns:2;
+    -webkit-columns:2;
+    -moz-columns:2;
+}
+
+@media (max-width: 767px) {
+    .dashboard ul {
+        columns:1;
+        -webkit-columns:1;
+        -moz-columns:1;
+    }
+}
+
+.dashboard ul li {
+    line-height:1.5em;
+}
+
+.dashboard h2 {
+    padding-bottom:5px;
+    border-bottom:5px solid #ddd;
+}
+
+.dashboard h3 {
+    padding-bottom:5px;
+    border-bottom:1px solid #ddd;
 }
