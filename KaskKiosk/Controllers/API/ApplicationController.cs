@@ -31,13 +31,13 @@ namespace KaskKiosk.Controllers.API
 
         // GET: /Application/by_applicant/id
         [HttpGet]
-        public IEnumerable<ApplicationDAO> GetApplicationsByApplicant(int id)
+        public IEnumerable<ApplicationDAO> GetApplicationsByApplicant(string by_applicant, string id)
         {
             ApplicationServiceClient client = new ApplicationServiceClient();
 
             try
             {
-                IEnumerable<ApplicationDAO> result = client.GetApplicationsByApplicant(id);
+                IEnumerable<ApplicationDAO> result = client.GetApplicationsByApplicant(Convert.ToInt32(id));
                 return result;
             }
             catch (FaultException<KaskServiceException> e)

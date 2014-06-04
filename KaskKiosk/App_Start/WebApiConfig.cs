@@ -16,7 +16,7 @@ namespace KaskKiosk
             );
             config.Routes.MapHttpRoute(
                 name: "GetApplicationsByApplicant",
-                routeTemplate: "api/{controller}/by_applicant/{id}",
+                routeTemplate: "api/{controller}/{by_applicant}/{id}",
                 defaults: new { action = "GetApplicationsByApplicant" }
             );
             config.Routes.MapHttpRoute(
