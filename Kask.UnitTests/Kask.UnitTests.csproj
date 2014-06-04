@@ -50,14 +50,24 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MockServices\MockAssessmentService.cs" />
     <Compile Include="MockServices\MockExpertiseService.cs" />
+    <Compile Include="MockServices\MockInterviewService.cs" />
+    <Compile Include="MockServices\MockJobOpeningQuestionService.cs" />
+    <Compile Include="MockServices\MockJobRequirementService.cs" />
+    <Compile Include="MockServices\MockMCOptionService.cs" />
+    <Compile Include="MockServices\MockMCQuestionService.cs" />
     <Compile Include="MockServices\MockSkillService.cs" />
     <Compile Include="ServiceUnitTests\AppliedServiceUnitTest.cs" />
+    <Compile Include="ServiceUnitTests\AssessmentServiceUnitTest.cs" />
     <Compile Include="ServiceUnitTests\EducationServiceUnitTest.cs" />
     <Compile Include="ServiceUnitTests\EmployerServiceUnitTest.cs" />
     <Compile Include="ServiceUnitTests\EmploymentServiceUnitTest.cs" />
     <Compile Include="ServiceUnitTests\ExpertiseServiceUnitTest.cs" />
+    <Compile Include="ServiceUnitTests\InterviewServiceUnitTest.cs" />
     <Compile Include="ServiceUnitTests\JobOpeningServiceUnitTest.cs" />
+    <Compile Include="ServiceUnitTests\JobOpenQuestionServiceUnitTest.cs" />
+    <Compile Include="ServiceUnitTests\JobRequirementServiceUnitTest.cs" />
     <Compile Include="ServiceUnitTests\JobServiceUnitTest.cs" />
     <Compile Include="MockServices\MockApplicantService.cs" />
     <Compile Include="ServiceUnitTests\ApplicantServiceUnitTest.cs" />
@@ -71,6 +81,7 @@
     <Compile Include="MockServices\MockSchoolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceUnitTests\ApplicationServiceUnitTest.cs" />
+    <Compile Include="ServiceUnitTests\MCOptionUnitTest.cs" />
     <Compile Include="ServiceUnitTests\SchoolServiceUnitTest.cs" />
     <Compile Include="ServiceUnitTests\SkillServiceUnitTest.cs" />
   </ItemGroup>
@@ -91,10 +102,7 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ControllersServiceTests\" />
-    <Folder Include="MockControllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
