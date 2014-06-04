@@ -426,6 +426,29 @@ namespace KaskKiosk.Controllers
             // for now, get a list of all short answer responses (to use in the view)
             List<SAResponseDAO> allSAResponses = await ServerResponse<List<SAResponseDAO>>.GetResponseAsync(ServiceURIs.ServiceSAResponseUri);
 
+            try
+            {
+                // mark application status as "reviewed" when viewing Application Details, if viewed for first time
+                if (application.ApplicationStatus.Equals("Submitted"))
+                {
+                    application.ApplicationStatus = "Reviewed";
+
+                    // save application form data back to database through service
+                    using (HttpClient httpClient = new HttpClient())
+                    {
+                        httpClient.BaseAddress = new Uri("http://localhost:51309");
+                        httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        HttpResponseMessage result = new HttpResponseMessage();
+                        string resultContent = "";
+
+                        // post (save) application data
+                        result = httpClient.PostAsJsonAsync(ServiceURIs.ServiceApplicationUri, application).Result;
+                        resultContent = result.Content.ReadAsStringAsync().Result;
+                    }
+                }
+            }
+            catch { }
+
             ViewBag.baseURL = Url.Content("~/");
             ViewBag.allAssessments = allAssessments;
             ViewBag.allMcQuestions = allMcQuestions;
