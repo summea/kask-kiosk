@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Windows.Forms;
 using System.Drawing;
+using Microsoft.VisualStudio.TestTools.UITest.Common.UIMap;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
@@ -13,45 +14,45 @@ using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 namespace Kask.UIAutomationTests
 {
     /// <summary>
-    /// Summary description for UIApplyTest
+    /// Summary description for KaskUIAutomation
     /// </summary>
     [CodedUITest]
-    public class ApplyForJob
+    public class KaskUIAutomation
     {
-        public ApplyForJob()
+        public KaskUIAutomation()
         {
         }
-        
+
         [ClassInitialize]
         public static void OpenApplication(TestContext context)
         {
             Playback.Initialize();
-            BrowserWindow browser = BrowserWindow.Launch(new Uri("http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=1"));
-            //BrowserWindow browser = BrowserWindow.Launch(new Uri("http://localhost:51309"));
+            BrowserWindow browser = BrowserWindow.Launch(new Uri("http://localhost:51309"));
             browser.CloseOnPlaybackCleanup = false;
             var ui = new UIMap();
-            ui.ApplyAndNavigateToWelcomeScreen();
-            
         }
 
 
         [TestMethod]
-        public void FilleUpPersonalPageTest()
+        public void ApplicantApplysForAJob()
         {
-            
-            this.UIMap.FilleUpPersonalPage();
-            this.UIMap.FilleUpPositionPage();
-            this.UIMap.EmployementHistroy1();
-            this.UIMap.FilleUpEmploymentHistory2Page();
-            this.UIMap.FillUpEmploymentHistory3Page();
-            this.UIMap.FillUpEducation1Page();
-            this.UIMap.FillUpEducation2Page();
-            this.UIMap.FillUpEducation3Page();
+
+            this.UIMap.ViewJobOpenning();
+            this.UIMap.ApplyForAChosenJob();
+            this.UIMap.PersonalPage();
+            this.UIMap.PositionPage();
+            this.UIMap.EmployementHistory1();
+            this.UIMap.EmployementHistory2();
+            this.UIMap.EmployementHistory3();
+            this.UIMap.EducationPage1();
+            this.UIMap.EducationPage2();
+            this.UIMap.EducationPage3();
             this.UIMap.SubmitApplication();
 
         }
 
-    
+
+
         #region Additional test attributes
 
         // You can use the following additional attributes as you write your tests:

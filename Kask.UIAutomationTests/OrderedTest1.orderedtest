@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<OrderedTest name="orderedtest1" storage="c:\users\khanh\documents\github\kask-kiosk\kask.uiautomationtests\orderedtest1.orderedtest" id="57babd01-f777-4384-8320-704171466830" continueAfterFailure="true" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
-  <TestLinks>
-    <TestLink id="8337a09c-8ba1-0a19-2b2f-10cff853b78c" name="FilleUpPersonalPageTest" storage="bin\release\kask.uiautomationtests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  </TestLinks>
-</OrderedTest>

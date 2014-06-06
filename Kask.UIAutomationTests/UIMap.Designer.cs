@@ -19,7 +19,6 @@ namespace Kask.UIAutomationTests
     using Microsoft.VisualStudio.TestTools.UITest.Extension;
     using Microsoft.VisualStudio.TestTools.UITesting;
     using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-    using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
     using Mouse = Microsoft.VisualStudio.TestTools.UITesting.Mouse;
@@ -31,826 +30,742 @@ namespace Kask.UIAutomationTests
     {
         
         /// <summary>
-        /// ApplyAndNavigateToWelcomeScreen
+        /// ViewJobOpenning
         /// </summary>
-        public void ApplyAndNavigateToWelcomeScreen()
+        public void ViewJobOpenning()
         {
             #region Variable Declarations
-            HtmlHyperlink uIApplyHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument.UISuperContainerPane.UIApplyHyperlink;
-            HtmlHyperlink uIWelcomeHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIMenuCustom.UIWelcomeHyperlink;
-            HtmlButton uINextButton1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UINextButton1;
+            HtmlHyperlink uIViewJobOpeningsHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument.UIViewJobOpeningsHyperlink;
+            #endregion
+
+            // Click 'View Job Openings' link
+            Mouse.Click(uIViewJobOpeningsHyperlink, new Point(70, 23));
+        }
+        
+        /// <summary>
+        /// ApplyForAChosenJob
+        /// </summary>
+        public void ApplyForAChosenJob()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uIApplyHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIApplyHyperlink;
             #endregion
 
             // Click 'Apply' link
-            //Mouse.Click(uIApplyHyperlink, new Point(48, 20));
+            Mouse.Click(uIApplyHyperlink, new Point(50, 23));
+        }
+        
+        /// <summary>
+        /// PersonalPage - Use 'PersonalPageParams' to pass parameters into this method.
+        /// </summary>
+        public void PersonalPage()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uIWelcomeHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIMenuCustom.UIWelcomeHyperlink;
+            HtmlHyperlink uIPersonalHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIMenuCustom.UIPersonalHyperlink;
+            HtmlEdit uIFirstNameEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIFirstNameEdit;
+            HtmlEdit uIMiddleNameEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIMiddleNameEdit;
+            HtmlEdit uILastNameEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UILastNameEdit;
+            HtmlEdit uISSNEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UISSNEdit;
+            HtmlEdit uIApplicantAddressEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIApplicantAddressEdit;
+            HtmlEdit uIApplicantPhoneEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIApplicantPhoneEdit;
+            HtmlEdit uINameAliasEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UINameAliasEdit;
+            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UINextButton;
+            #endregion
 
             // Click 'Welcome' link
-            Mouse.Click(uIWelcomeHyperlink, new Point(26, 9));
-
-            // Click 'Next →' button
-            Mouse.Click(uINextButton1, new Point(43, 17));
-        }
-        
-        /// <summary>
-        /// EmployementHistroy1 - Use 'EmployementHistroy1Params' to pass parameters into this method.
-        /// </summary>
-        public void EmployementHistroy1()
-        {
-            #region Variable Declarations
-            HtmlHyperlink uIEmploymentHistory1Hyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIMenuCustom.UIEmploymentHistory1Hyperlink;
-            HtmlEdit uIEmployerName_1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIEmployerName_1Edit;
-            HtmlEdit uIEmployedFrom_1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIEmployedFrom_1Edit;
-            HtmlEdit uIEmployedTo_1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIEmployedTo_1Edit;
-            HtmlEdit uIItem1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIItem1Edit;
-            HtmlEdit uIItem1Edit1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIItem1Edit1;
-            HtmlEdit uIItem1Edit2 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIItem1Edit2;
-            HtmlEdit uIItem1Edit3 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIItem1Edit3;
-            HtmlEdit uIItem1Edit4 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIItem1Edit4;
-            HtmlEdit uIItem1Edit5 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIItem1Edit5;
-            HtmlEdit uIItem1Edit6 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIItem1Edit6;
-            HtmlTextArea uIItem1Edit7 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIItem1Edit7;
-            HtmlComboBox uIItem1ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIItem1ComboBox;
-            HtmlDiv uIWelcomePersonalPositPane = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UISuperContainerPane.UIWelcomePersonalPositPane;
-            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UINextButton;
-            #endregion
-
-            // Click 'Employment History 1' link
-            Mouse.Click(uIEmploymentHistory1Hyperlink, new Point(54, 15));
-
-            // Type 'StoreX' in 'EmployerName_1' text box
-            uIEmployerName_1Edit.Text = this.EmployementHistroy1Params.UIEmployerName_1EditText;
-
-            // Type '{Tab}' in 'EmployerName_1' text box
-            Keyboard.SendKeys(uIEmployerName_1Edit, this.EmployementHistroy1Params.UIEmployerName_1EditSendKeys, ModifierKeys.None);
-
-            // Type '09/2004' in 'EmployedFrom_1' text box
-            uIEmployedFrom_1Edit.Text = this.EmployementHistroy1Params.UIEmployedFrom_1EditText;
-
-            // Type '{Tab}' in 'EmployedFrom_1' text box
-            Keyboard.SendKeys(uIEmployedFrom_1Edit, this.EmployementHistroy1Params.UIEmployedFrom_1EditSendKeys, ModifierKeys.None);
-
-            // Type '04/2006' in 'EmployedTo_1' text box
-            uIEmployedTo_1Edit.Text = this.EmployementHistroy1Params.UIEmployedTo_1EditText;
-
-            // Type '{Tab}' in 'EmployedTo_1' text box
-            Keyboard.SendKeys(uIEmployedTo_1Edit, this.EmployementHistroy1Params.UIEmployedTo_1EditSendKeys, ModifierKeys.None);
-
-            // Type '1234 SW 1234 Ave Portland OR 98000' in '1' text box
-            uIItem1Edit.Text = this.EmployementHistroy1Params.UIItem1EditText;
-
-            // Type '{Tab}' in '1' text box
-            Keyboard.SendKeys(uIItem1Edit, this.EmployementHistroy1Params.UIItem1EditSendKeys, ModifierKeys.None);
-
-            // Type '2223334444' in '1' text box
-            uIItem1Edit1.Text = this.EmployementHistroy1Params.UIItem1Edit1Text;
-
-            // Type '{Tab}' in '1' text box
-            Keyboard.SendKeys(uIItem1Edit1, this.EmployementHistroy1Params.UIItem1Edit1SendKeys, ModifierKeys.None);
-
-            // Type 'Kyle' in '1' text box
-            uIItem1Edit2.Text = this.EmployementHistroy1Params.UIItem1Edit2Text;
-
-            // Type '{Tab}' in '1' text box
-            Keyboard.SendKeys(uIItem1Edit2, this.EmployementHistroy1Params.UIItem1Edit2SendKeys, ModifierKeys.None);
-
-            // Type 'Receptionest' in '1' text box
-            uIItem1Edit3.Text = this.EmployementHistroy1Params.UIItem1Edit3Text;
-
-            // Type '{Tab}' in '1' text box
-            Keyboard.SendKeys(uIItem1Edit3, this.EmployementHistroy1Params.UIItem1Edit3SendKeys, ModifierKeys.None);
-
-            // Type '$30' in '1' text box
-            uIItem1Edit4.Text = this.EmployementHistroy1Params.UIItem1Edit4Text;
-
-            // Type '{Tab}' in '1' text box
-            Keyboard.SendKeys(uIItem1Edit4, this.EmployementHistroy1Params.UIItem1Edit4SendKeys, ModifierKeys.None);
-
-            // Type '$40' in '1' text box
-            uIItem1Edit5.Text = this.EmployementHistroy1Params.UIItem1Edit5Text;
-
-            // Type '{Tab}' in '1' text box
-            Keyboard.SendKeys(uIItem1Edit5, this.EmployementHistroy1Params.UIItem1Edit5SendKeys, ModifierKeys.None);
-
-            // Type 'Went back to school' in '1' text box
-            uIItem1Edit6.Text = this.EmployementHistroy1Params.UIItem1Edit6Text;
-
-            // Type '{Tab}' in '1' text box
-            Keyboard.SendKeys(uIItem1Edit6, this.EmployementHistroy1Params.UIItem1Edit6SendKeys, ModifierKeys.None);
-
-            // Type 'Help customers' in '1' text box
-            uIItem1Edit7.Text = this.EmployementHistroy1Params.UIItem1Edit7Text;
-
-            // Select 'Yes' in '1' combo box
-            uIItem1ComboBox.SelectedItem = this.EmployementHistroy1Params.UIItem1ComboBoxSelectedItem;
-
-            // Click 'Welcome Personal Position' pane
-            Mouse.Click(uIWelcomePersonalPositPane, new Point(1137, 2438));
-
-            // Click 'Next →' button
-            Mouse.Click(uINextButton, new Point(40, 11));
-        }
-        
-        /// <summary>
-        /// FilleUpEmploymentHistory1Page - Use 'FilleUpEmploymentHistory1PageParams' to pass parameters into this method.
-        /// </summary>
-        public void FilleUpEmploymentHistory1Page()
-        {
-            #region Variable Declarations
-            HtmlComboBox uIJobIDComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIJobIDComboBox;
-            HtmlEdit uISalaryExpectationEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UISalaryExpectationEdit;
-            HtmlComboBox uIFullTimeComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIFullTimeComboBox;
-            HtmlComboBox uIAvailableForDaysComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIAvailableForDaysComboBox;
-            HtmlComboBox uIAvailableForEveningsComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIAvailableForEveningsComboBox;
-            HtmlComboBox uIAvailableForWeekendsComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIAvailableForWeekendsComboBox;
-            HtmlComboBox uIMondayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIMondayFromComboBox;
-            HtmlComboBox uIMondayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIMondayToComboBox;
-            HtmlComboBox uITuesdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UITuesdayFromComboBox;
-            HtmlComboBox uITuesdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UITuesdayToComboBox;
-            HtmlComboBox uIWednesdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIWednesdayFromComboBox;
-            HtmlComboBox uIWednesdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIWednesdayToComboBox;
-            HtmlComboBox uIThursdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIThursdayFromComboBox;
-            HtmlComboBox uIThursdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIThursdayToComboBox;
-            HtmlComboBox uIFridayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIFridayFromComboBox;
-            HtmlComboBox uIFridayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UIFridayToComboBox;
-            HtmlComboBox uISaturdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UISaturdayFromComboBox;
-            HtmlComboBox uISundayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UISundayFromComboBox;
-            HtmlComboBox uISaturdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UISaturdayToComboBox;
-            HtmlComboBox uISundayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UISundayToComboBox;
-            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument2.UINextButton;
-            #endregion
-
-            // Select 'Receptionist' in 'JobID' combo box
-            uIJobIDComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIJobIDComboBoxSelectedItem;
-
-            // Type '$50' in 'SalaryExpectation' text box
-            uISalaryExpectationEdit.Text = this.FilleUpEmploymentHistory1PageParams.UISalaryExpectationEditText;
-
-            // Select 'Yes' in 'FullTime' combo box
-            uIFullTimeComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIFullTimeComboBoxSelectedItem;
-
-            // Select 'Yes' in 'AvailableForDays' combo box
-            uIAvailableForDaysComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIAvailableForDaysComboBoxSelectedItem;
-
-            // Select 'No' in 'AvailableForEvenings' combo box
-            uIAvailableForEveningsComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIAvailableForEveningsComboBoxSelectedItem;
-
-            // Select 'No' in 'AvailableForWeekends' combo box
-            uIAvailableForWeekendsComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIAvailableForWeekendsComboBoxSelectedItem;
-
-            // Select '6:00' in 'MondayFrom' combo box
-            uIMondayFromComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIMondayFromComboBoxSelectedItem;
-
-            // Select '18:00' in 'MondayTo' combo box
-            uIMondayToComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIMondayToComboBoxSelectedItem;
-
-            // Select '6:00' in 'TuesdayFrom' combo box
-            uITuesdayFromComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UITuesdayFromComboBoxSelectedItem;
-
-            // Select '18:00' in 'TuesdayTo' combo box
-            uITuesdayToComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UITuesdayToComboBoxSelectedItem;
-
-            // Select '6:00' in 'WednesdayFrom' combo box
-            uIWednesdayFromComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIWednesdayFromComboBoxSelectedItem;
-
-            // Select '18:00' in 'WednesdayTo' combo box
-            uIWednesdayToComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIWednesdayToComboBoxSelectedItem;
-
-            // Select '7:00' in 'ThursdayFrom' combo box
-            uIThursdayFromComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIThursdayFromComboBoxSelectedItem;
-
-            // Select '19:00' in 'ThursdayTo' combo box
-            uIThursdayToComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIThursdayToComboBoxSelectedItem;
-
-            // Select '10:00' in 'FridayFrom' combo box
-            uIFridayFromComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIFridayFromComboBoxSelectedItem;
-
-            // Select '22:00' in 'FridayTo' combo box
-            uIFridayToComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UIFridayToComboBoxSelectedItem;
-
-            // Select '0:00' in 'SaturdayFrom' combo box
-            uISaturdayFromComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UISaturdayFromComboBoxSelectedItem;
-
-            // Select '0:00' in 'SundayFrom' combo box
-            uISundayFromComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UISundayFromComboBoxSelectedItem;
-
-            // Select '0:00' in 'SaturdayTo' combo box
-            uISaturdayToComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UISaturdayToComboBoxSelectedItem;
-
-            // Select '0:00' in 'SundayTo' combo box
-            uISundayToComboBox.SelectedItem = this.FilleUpEmploymentHistory1PageParams.UISundayToComboBoxSelectedItem;
-
-            // Click 'Next →' button
-            Mouse.Click(uINextButton, new Point(49, 22));
-        }
-        
-        /// <summary>
-        /// FilleUpEmploymentHistory2Page - Use 'FilleUpEmploymentHistory2PageParams' to pass parameters into this method.
-        /// </summary>
-        public void FilleUpEmploymentHistory2Page()
-        {
-            #region Variable Declarations
-            HtmlEdit uIEmployerName_2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIEmployerName_2Edit;
-            HtmlEdit uIEmployedFrom_2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIEmployedFrom_2Edit;
-            HtmlEdit uIEmployedTo_2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIEmployedTo_2Edit;
-            HtmlEdit uIItem2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem2Edit;
-            HtmlEdit uIItem2Edit1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem2Edit1;
-            HtmlEdit uIItem2Edit2 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem2Edit2;
-            HtmlEdit uIItem2Edit3 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem2Edit3;
-            HtmlEdit uIItem2Edit4 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem2Edit4;
-            HtmlEdit uIItem2Edit5 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem2Edit5;
-            HtmlEdit uIItem2Edit6 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem2Edit6;
-            HtmlTextArea uIItem2Edit7 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem2Edit7;
-            HtmlComboBox uIItem2ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem2ComboBox;
-            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UINextButton;
-            #endregion
-
-            // Type 'Cosco' in 'EmployerName_2' text box
-            uIEmployerName_2Edit.Text = this.FilleUpEmploymentHistory2PageParams.UIEmployerName_2EditText;
-
-            // Type '{Tab}' in 'EmployerName_2' text box
-            Keyboard.SendKeys(uIEmployerName_2Edit, this.FilleUpEmploymentHistory2PageParams.UIEmployerName_2EditSendKeys, ModifierKeys.None);
-
-            // Type '02/2009' in 'EmployedFrom_2' text box
-            uIEmployedFrom_2Edit.Text = this.FilleUpEmploymentHistory2PageParams.UIEmployedFrom_2EditText;
-
-            // Type '{Tab}' in 'EmployedFrom_2' text box
-            Keyboard.SendKeys(uIEmployedFrom_2Edit, this.FilleUpEmploymentHistory2PageParams.UIEmployedFrom_2EditSendKeys, ModifierKeys.None);
-
-            // Type '02/2010' in 'EmployedTo_2' text box
-            uIEmployedTo_2Edit.Text = this.FilleUpEmploymentHistory2PageParams.UIEmployedTo_2EditText;
-
-            // Type '{Tab}' in 'EmployedTo_2' text box
-            Keyboard.SendKeys(uIEmployedTo_2Edit, this.FilleUpEmploymentHistory2PageParams.UIEmployedTo_2EditSendKeys, ModifierKeys.None);
-
-            // Type '1111 SW 124nd Ave Portland OR 91111' in '2' text box
-            uIItem2Edit.Text = this.FilleUpEmploymentHistory2PageParams.UIItem2EditText;
-
-            // Type '{Tab}' in '2' text box
-            Keyboard.SendKeys(uIItem2Edit, this.FilleUpEmploymentHistory2PageParams.UIItem2EditSendKeys, ModifierKeys.None);
-
-            // Type '222 222 2222' in '2' text box
-            uIItem2Edit1.Text = this.FilleUpEmploymentHistory2PageParams.UIItem2Edit1Text;
-
-            // Type '{Tab}' in '2' text box
-            Keyboard.SendKeys(uIItem2Edit1, this.FilleUpEmploymentHistory2PageParams.UIItem2Edit1SendKeys, ModifierKeys.None);
-
-            // Type 'Adam' in '2' text box
-            uIItem2Edit2.Text = this.FilleUpEmploymentHistory2PageParams.UIItem2Edit2Text;
-
-            // Type '{Tab}' in '2' text box
-            Keyboard.SendKeys(uIItem2Edit2, this.FilleUpEmploymentHistory2PageParams.UIItem2Edit2SendKeys, ModifierKeys.None);
-
-            // Type 'Customer Support' in '2' text box
-            uIItem2Edit3.Text = this.FilleUpEmploymentHistory2PageParams.UIItem2Edit3Text;
-
-            // Type '{Tab}' in '2' text box
-            Keyboard.SendKeys(uIItem2Edit3, this.FilleUpEmploymentHistory2PageParams.UIItem2Edit3SendKeys, ModifierKeys.None);
-
-            // Type '$30' in '2' text box
-            uIItem2Edit4.Text = this.FilleUpEmploymentHistory2PageParams.UIItem2Edit4Text;
-
-            // Type '{Tab}' in '2' text box
-            Keyboard.SendKeys(uIItem2Edit4, this.FilleUpEmploymentHistory2PageParams.UIItem2Edit4SendKeys, ModifierKeys.None);
-
-            // Type '$30' in '2' text box
-            uIItem2Edit5.Text = this.FilleUpEmploymentHistory2PageParams.UIItem2Edit5Text;
-
-            // Type '{Tab}' in '2' text box
-            Keyboard.SendKeys(uIItem2Edit5, this.FilleUpEmploymentHistory2PageParams.UIItem2Edit5SendKeys, ModifierKeys.None);
-
-            // Type 'My contract ended' in '2' text box
-            uIItem2Edit6.Text = this.FilleUpEmploymentHistory2PageParams.UIItem2Edit6Text;
-
-            // Type '{Tab}' in '2' text box
-            Keyboard.SendKeys(uIItem2Edit6, this.FilleUpEmploymentHistory2PageParams.UIItem2Edit6SendKeys, ModifierKeys.None);
-
-            // Type 'Answer customer's questions' in '2' text box
-            uIItem2Edit7.Text = this.FilleUpEmploymentHistory2PageParams.UIItem2Edit7Text;
-
-            // Select 'Yes' in '2' combo box
-            uIItem2ComboBox.SelectedItem = this.FilleUpEmploymentHistory2PageParams.UIItem2ComboBoxSelectedItem;
-
-            // Click 'Next →' button
-            Mouse.Click(uINextButton, new Point(22, 6));
-        }
-        
-        /// <summary>
-        /// FilleUpPersonalPage - Use 'FilleUpPersonalPageParams' to pass parameters into this method.
-        /// </summary>
-        public void FilleUpPersonalPage()
-        {
-            #region Variable Declarations
-            HtmlHyperlink uIPersonalHyperlink = this.UIKaskKioskInternetExpWindow1.UIKaskKioskDocument.UIMenuCustom.UIPersonalHyperlink;
-            HtmlEdit uIFirstNameEdit = this.UIKaskKioskInternetExpWindow1.UIKaskKioskDocument.UIFirstNameEdit;
-            HtmlEdit uIMiddleNameEdit = this.UIKaskKioskInternetExpWindow1.UIKaskKioskDocument.UIMiddleNameEdit;
-            HtmlEdit uILastNameEdit = this.UIKaskKioskInternetExpWindow1.UIKaskKioskDocument.UILastNameEdit;
-            HtmlEdit uISSNEdit = this.UIKaskKioskInternetExpWindow1.UIKaskKioskDocument.UISSNEdit;
-            HtmlEdit uIApplicantAddressEdit = this.UIKaskKioskInternetExpWindow1.UIKaskKioskDocument.UIApplicantAddressEdit;
-            HtmlEdit uIApplicantPhoneEdit = this.UIKaskKioskInternetExpWindow1.UIKaskKioskDocument.UIApplicantPhoneEdit;
-            HtmlEdit uINameAliasEdit = this.UIKaskKioskInternetExpWindow1.UIKaskKioskDocument.UINameAliasEdit;
-            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow1.UIKaskKioskDocument.UINextButton;
-            #endregion
+            Mouse.Click(uIWelcomeHyperlink, new Point(50, 12));
 
             // Click 'Personal' link
-            Mouse.Click(uIPersonalHyperlink, new Point(57, 12));
+            Mouse.Click(uIPersonalHyperlink, new Point(41, 12));
 
-            // Type 'Applicant1Name' in 'FirstName' text box
-            uIFirstNameEdit.Text = this.FilleUpPersonalPageParams.UIFirstNameEditText;
+            // Type 'FistName1' in 'FirstName' text box
+            uIFirstNameEdit.Text = this.PersonalPageParams.UIFirstNameEditText;
 
             // Type '{Tab}' in 'FirstName' text box
-            Keyboard.SendKeys(uIFirstNameEdit, this.FilleUpPersonalPageParams.UIFirstNameEditSendKeys, ModifierKeys.None);
+            Keyboard.SendKeys(uIFirstNameEdit, this.PersonalPageParams.UIFirstNameEditSendKeys, ModifierKeys.None);
 
-            // Type 'Applicant1Middle' in 'MiddleName' text box
-            uIMiddleNameEdit.Text = this.FilleUpPersonalPageParams.UIMiddleNameEditText;
+            // Type 'MiddleName1' in 'MiddleName' text box
+            uIMiddleNameEdit.Text = this.PersonalPageParams.UIMiddleNameEditText;
 
             // Type '{Tab}' in 'MiddleName' text box
-            Keyboard.SendKeys(uIMiddleNameEdit, this.FilleUpPersonalPageParams.UIMiddleNameEditSendKeys, ModifierKeys.None);
+            Keyboard.SendKeys(uIMiddleNameEdit, this.PersonalPageParams.UIMiddleNameEditSendKeys, ModifierKeys.None);
 
-            // Type 'Applicant1Last' in 'LastName' text box
-            uILastNameEdit.Text = this.FilleUpPersonalPageParams.UILastNameEditText;
+            // Type 'LastName1' in 'LastName' text box
+            uILastNameEdit.Text = this.PersonalPageParams.UILastNameEditText;
 
             // Type '{Tab}' in 'LastName' text box
-            Keyboard.SendKeys(uILastNameEdit, this.FilleUpPersonalPageParams.UILastNameEditSendKeys, ModifierKeys.None);
-
-            // Type '{Tab}' in 'SSN' text box
-            Keyboard.SendKeys(uISSNEdit, this.FilleUpPersonalPageParams.UISSNEditSendKeys, ModifierKeys.None);
-
-            // Type '2341 SW 10th Ave Portland OR 97000' in 'ApplicantAddress' text box
-            uIApplicantAddressEdit.Text = this.FilleUpPersonalPageParams.UIApplicantAddressEditText;
-
-            // Type '{Tab}' in 'ApplicantAddress' text box
-            Keyboard.SendKeys(uIApplicantAddressEdit, this.FilleUpPersonalPageParams.UIApplicantAddressEditSendKeys, ModifierKeys.None);
-
-            // Type '333 444 5555' in 'ApplicantPhone' text box
-            uIApplicantPhoneEdit.Text = this.FilleUpPersonalPageParams.UIApplicantPhoneEditText;
-
-            // Type '{Tab}' in 'ApplicantPhone' text box
-            Keyboard.SendKeys(uIApplicantPhoneEdit, this.FilleUpPersonalPageParams.UIApplicantPhoneEditSendKeys, ModifierKeys.None);
-
-            // Type 'Other' in 'NameAlias' text box
-            uINameAliasEdit.Text = this.FilleUpPersonalPageParams.UINameAliasEditText;
+            Keyboard.SendKeys(uILastNameEdit, this.PersonalPageParams.UILastNameEditSendKeys, ModifierKeys.None);
 
             // Type '********' in 'SSN' text box
-            uISSNEdit.Password = this.FilleUpPersonalPageParams.UISSNEditPassword;
+            uISSNEdit.Password = this.PersonalPageParams.UISSNEditPassword;
+
+            // Type '{Tab}' in 'SSN' text box
+            Keyboard.SendKeys(uISSNEdit, this.PersonalPageParams.UISSNEditSendKeys, ModifierKeys.None);
+
+            // Type '111 SW Kelly way Beaverton OR 09000' in 'ApplicantAddress' text box
+            uIApplicantAddressEdit.Text = this.PersonalPageParams.UIApplicantAddressEditText;
+
+            // Type '{Tab}' in 'ApplicantAddress' text box
+            Keyboard.SendKeys(uIApplicantAddressEdit, this.PersonalPageParams.UIApplicantAddressEditSendKeys, ModifierKeys.None);
+
+            // Type '1111111111' in 'ApplicantPhone' text box
+            uIApplicantPhoneEdit.Text = this.PersonalPageParams.UIApplicantPhoneEditText;
+
+            // Type '{Tab}' in 'ApplicantPhone' text box
+            Keyboard.SendKeys(uIApplicantPhoneEdit, this.PersonalPageParams.UIApplicantPhoneEditSendKeys, ModifierKeys.None);
+
+            // Type 'Jack' in 'NameAlias' text box
+            uINameAliasEdit.Text = this.PersonalPageParams.UINameAliasEditText;
 
             // Click 'Next →' button
-            Mouse.Click(uINextButton, new Point(37, 24));
+            Mouse.Click(uINextButton, new Point(30, 22));
         }
         
         /// <summary>
-        /// FilleUpPositionPage - Use 'FilleUpPositionPageParams' to pass parameters into this method.
+        /// PositionPage - Use 'PositionPageParams' to pass parameters into this method.
         /// </summary>
-        public void FilleUpPositionPage()
+        public void PositionPage()
         {
             #region Variable Declarations
-            HtmlHyperlink uIPositionHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIMenuCustom.UIPositionHyperlink;
-            HtmlComboBox uIJobIDComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIJobIDComboBox;
-            HtmlEdit uISalaryExpectationEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UISalaryExpectationEdit;
-            HtmlComboBox uIFullTimeComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIFullTimeComboBox;
-            HtmlComboBox uIAvailableForDaysComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIAvailableForDaysComboBox;
-            HtmlComboBox uIAvailableForEveningsComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIAvailableForEveningsComboBox;
-            HtmlComboBox uIAvailableForWeekendsComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIAvailableForWeekendsComboBox;
-            HtmlComboBox uIMondayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIMondayFromComboBox;
-            HtmlComboBox uIMondayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIMondayToComboBox;
-            HtmlComboBox uITuesdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UITuesdayFromComboBox;
-            HtmlComboBox uITuesdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UITuesdayToComboBox;
-            HtmlComboBox uIWednesdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIWednesdayFromComboBox;
-            HtmlComboBox uIWednesdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIWednesdayToComboBox;
-            HtmlComboBox uIThursdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIThursdayFromComboBox;
-            HtmlComboBox uIThursdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIThursdayToComboBox;
-            HtmlComboBox uIFridayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIFridayFromComboBox;
-            HtmlComboBox uIFridayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UIFridayToComboBox;
-            HtmlComboBox uISaturdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UISaturdayFromComboBox;
-            HtmlComboBox uISaturdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UISaturdayToComboBox;
-            HtmlComboBox uISundayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UISundayFromComboBox;
-            HtmlComboBox uISundayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UISundayToComboBox;
-            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument1.UINextButton;
+            HtmlHyperlink uIPositionHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIMenuCustom.UIPositionHyperlink;
+            HtmlEdit uISalaryExpectationEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UISalaryExpectationEdit;
+            HtmlComboBox uIFullTimeComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIFullTimeComboBox;
+            HtmlComboBox uIAvailableForDaysComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIAvailableForDaysComboBox;
+            HtmlComboBox uIAvailableForEveningsComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIAvailableForEveningsComboBox;
+            HtmlComboBox uIAvailableForWeekendsComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIAvailableForWeekendsComboBox;
+            HtmlComboBox uIMondayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIMondayFromComboBox;
+            HtmlComboBox uIMondayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIMondayToComboBox;
+            HtmlComboBox uITuesdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UITuesdayFromComboBox;
+            HtmlComboBox uITuesdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UITuesdayToComboBox;
+            HtmlComboBox uIWednesdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIWednesdayFromComboBox;
+            HtmlComboBox uIWednesdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIWednesdayToComboBox;
+            HtmlComboBox uIThursdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIThursdayFromComboBox;
+            HtmlComboBox uIThursdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIThursdayToComboBox;
+            HtmlComboBox uIFridayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIFridayFromComboBox;
+            HtmlComboBox uIFridayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UIFridayToComboBox;
+            HtmlComboBox uISaturdayFromComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UISaturdayFromComboBox;
+            HtmlComboBox uISaturdayToComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UISaturdayToComboBox;
+            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument3.UINextButton;
             #endregion
 
             // Click 'Position' link
-            Mouse.Click(uIPositionHyperlink, new Point(49, 9));
+            Mouse.Click(uIPositionHyperlink, new Point(29, 13));
 
-            // Select 'Receptionist' in 'JobID' combo box
-            uIJobIDComboBox.SelectedItem = this.FilleUpPositionPageParams.UIJobIDComboBoxSelectedItem;
+            // Type '$40000' in 'SalaryExpectation' text box
+            uISalaryExpectationEdit.Text = this.PositionPageParams.UISalaryExpectationEditText;
 
-            // Type '$50' in 'SalaryExpectation' text box
-            uISalaryExpectationEdit.Text = this.FilleUpPositionPageParams.UISalaryExpectationEditText;
-
-            // Select 'No' in 'FullTime' combo box
-            uIFullTimeComboBox.SelectedItem = this.FilleUpPositionPageParams.UIFullTimeComboBoxSelectedItem;
+            // Select 'Yes' in 'FullTime' combo box
+            uIFullTimeComboBox.SelectedItem = this.PositionPageParams.UIFullTimeComboBoxSelectedItem;
 
             // Select 'Yes' in 'AvailableForDays' combo box
-            uIAvailableForDaysComboBox.SelectedItem = this.FilleUpPositionPageParams.UIAvailableForDaysComboBoxSelectedItem;
+            uIAvailableForDaysComboBox.SelectedItem = this.PositionPageParams.UIAvailableForDaysComboBoxSelectedItem;
 
-            // Select 'No' in 'AvailableForEvenings' combo box
-            uIAvailableForEveningsComboBox.SelectedItem = this.FilleUpPositionPageParams.UIAvailableForEveningsComboBoxSelectedItem;
+            // Select 'Yes' in 'AvailableForEvenings' combo box
+            uIAvailableForEveningsComboBox.SelectedItem = this.PositionPageParams.UIAvailableForEveningsComboBoxSelectedItem;
 
             // Select 'No' in 'AvailableForWeekends' combo box
-            uIAvailableForWeekendsComboBox.SelectedItem = this.FilleUpPositionPageParams.UIAvailableForWeekendsComboBoxSelectedItem;
+            uIAvailableForWeekendsComboBox.SelectedItem = this.PositionPageParams.UIAvailableForWeekendsComboBoxSelectedItem;
 
-            // Select '2:00' in 'MondayFrom' combo box
-            uIMondayFromComboBox.SelectedItem = this.FilleUpPositionPageParams.UIMondayFromComboBoxSelectedItem;
+            // Select '1:00' in 'MondayFrom' combo box
+            uIMondayFromComboBox.SelectedItem = this.PositionPageParams.UIMondayFromComboBoxSelectedItem;
 
-            // Select '15:00' in 'MondayTo' combo box
-            uIMondayToComboBox.SelectedItem = this.FilleUpPositionPageParams.UIMondayToComboBoxSelectedItem;
+            // Select '13:00' in 'MondayTo' combo box
+            uIMondayToComboBox.SelectedItem = this.PositionPageParams.UIMondayToComboBoxSelectedItem;
 
             // Select '4:00' in 'TuesdayFrom' combo box
-            uITuesdayFromComboBox.SelectedItem = this.FilleUpPositionPageParams.UITuesdayFromComboBoxSelectedItem;
+            uITuesdayFromComboBox.SelectedItem = this.PositionPageParams.UITuesdayFromComboBoxSelectedItem;
 
-            // Select '21:00' in 'TuesdayTo' combo box
-            uITuesdayToComboBox.SelectedItem = this.FilleUpPositionPageParams.UITuesdayToComboBoxSelectedItem;
+            // Select '17:00' in 'TuesdayTo' combo box
+            uITuesdayToComboBox.SelectedItem = this.PositionPageParams.UITuesdayToComboBoxSelectedItem;
 
-            // Select '8:00' in 'WednesdayFrom' combo box
-            uIWednesdayFromComboBox.SelectedItem = this.FilleUpPositionPageParams.UIWednesdayFromComboBoxSelectedItem;
+            // Select '6:00' in 'WednesdayFrom' combo box
+            uIWednesdayFromComboBox.SelectedItem = this.PositionPageParams.UIWednesdayFromComboBoxSelectedItem;
 
-            // Select '16:00' in 'WednesdayTo' combo box
-            uIWednesdayToComboBox.SelectedItem = this.FilleUpPositionPageParams.UIWednesdayToComboBoxSelectedItem;
+            // Select '18:00' in 'WednesdayTo' combo box
+            uIWednesdayToComboBox.SelectedItem = this.PositionPageParams.UIWednesdayToComboBoxSelectedItem;
 
-            // Select '7:00' in 'ThursdayFrom' combo box
-            uIThursdayFromComboBox.SelectedItem = this.FilleUpPositionPageParams.UIThursdayFromComboBoxSelectedItem;
+            // Select '5:00' in 'ThursdayFrom' combo box
+            uIThursdayFromComboBox.SelectedItem = this.PositionPageParams.UIThursdayFromComboBoxSelectedItem;
 
-            // Select '20:00' in 'ThursdayTo' combo box
-            uIThursdayToComboBox.SelectedItem = this.FilleUpPositionPageParams.UIThursdayToComboBoxSelectedItem;
+            // Select '17:00' in 'ThursdayTo' combo box
+            uIThursdayToComboBox.SelectedItem = this.PositionPageParams.UIThursdayToComboBoxSelectedItem;
 
             // Select '8:00' in 'FridayFrom' combo box
-            uIFridayFromComboBox.SelectedItem = this.FilleUpPositionPageParams.UIFridayFromComboBoxSelectedItem;
+            uIFridayFromComboBox.SelectedItem = this.PositionPageParams.UIFridayFromComboBoxSelectedItem;
 
-            // Select '14:00' in 'FridayTo' combo box
-            uIFridayToComboBox.SelectedItem = this.FilleUpPositionPageParams.UIFridayToComboBoxSelectedItem;
+            // Select '23:00' in 'FridayTo' combo box
+            uIFridayToComboBox.SelectedItem = this.PositionPageParams.UIFridayToComboBoxSelectedItem;
 
-            // Select '6:00' in 'SaturdayFrom' combo box
-            uISaturdayFromComboBox.SelectedItem = this.FilleUpPositionPageParams.UISaturdayFromComboBoxSelectedItem;
+            // Select '0:00' in 'SaturdayFrom' combo box
+            uISaturdayFromComboBox.SelectedItem = this.PositionPageParams.UISaturdayFromComboBoxSelectedItem;
 
-            // Select '18:00' in 'SaturdayTo' combo box
-            uISaturdayToComboBox.SelectedItem = this.FilleUpPositionPageParams.UISaturdayToComboBoxSelectedItem;
-
-            // Select '5:00' in 'SundayFrom' combo box
-            uISundayFromComboBox.SelectedItem = this.FilleUpPositionPageParams.UISundayFromComboBoxSelectedItem;
-
-            // Select '11:00' in 'SundayTo' combo box
-            uISundayToComboBox.SelectedItem = this.FilleUpPositionPageParams.UISundayToComboBoxSelectedItem;
+            // Select '0:00' in 'SaturdayTo' combo box
+            uISaturdayToComboBox.SelectedItem = this.PositionPageParams.UISaturdayToComboBoxSelectedItem;
 
             // Click 'Next →' button
-            Mouse.Click(uINextButton, new Point(36, 22));
+            Mouse.Click(uINextButton, new Point(32, 13));
         }
         
         /// <summary>
-        /// FillUpEmploymentHistory3Page - Use 'FillUpEmploymentHistory3PageParams' to pass parameters into this method.
+        /// EmployementHistory1 - Use 'EmployementHistory1Params' to pass parameters into this method.
         /// </summary>
-        public void FillUpEmploymentHistory3Page()
+        public void EmployementHistory1()
         {
             #region Variable Declarations
-            HtmlDiv uIEmploymentHistory3PlPane = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UISection_employment_hPane.UIEmploymentHistory3PlPane;
-            HtmlEdit uIEmployerName_3Edit = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIEmployerName_3Edit;
-            HtmlEdit uIEmployedFrom_3Edit = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIEmployedFrom_3Edit;
-            HtmlEdit uIEmployedTo_3Edit = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIEmployedTo_3Edit;
-            HtmlEdit uIItem3Edit = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIItem3Edit;
-            HtmlEdit uIItem3Edit1 = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIItem3Edit1;
-            HtmlEdit uIItem3Edit2 = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIItem3Edit2;
-            HtmlEdit uIItem3Edit3 = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIItem3Edit3;
-            HtmlEdit uIItem3Edit4 = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIItem3Edit4;
-            HtmlEdit uIItem3Edit5 = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIItem3Edit5;
-            HtmlEdit uIItem3Edit6 = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIItem3Edit6;
-            HtmlTextArea uIItem3Edit7 = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIItem3Edit7;
-            HtmlComboBox uIItem3ComboBox = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UIItem3ComboBox;
-            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow3.UIKaskKioskDocument.UINextButton;
+            HtmlHyperlink uIEmploymentHistory1Hyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIMenuCustom.UIEmploymentHistory1Hyperlink;
+            HtmlEdit uIEmployerName_1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIEmployerName_1Edit;
+            HtmlEdit uIEmployedFrom_1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIEmployedFrom_1Edit;
+            HtmlEdit uIEmployedTo_1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIEmployedTo_1Edit;
+            HtmlEdit uIItem1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem1Edit;
+            HtmlEdit uIItem1Edit1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem1Edit1;
+            HtmlEdit uIItem1Edit2 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem1Edit2;
+            HtmlEdit uIItem1Edit3 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem1Edit3;
+            HtmlEdit uIItem1Edit4 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem1Edit4;
+            HtmlEdit uIItem1Edit5 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem1Edit5;
+            HtmlEdit uIItem1Edit6 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem1Edit6;
+            HtmlTextArea uIItem1Edit7 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem1Edit7;
+            HtmlComboBox uIItem1ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UIItem1ComboBox;
+            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument4.UINextButton;
             #endregion
 
-            // Click 'Employment History 3 Please tell us a' pane
-            Mouse.Click(uIEmploymentHistory3PlPane, new Point(182, 192));
+            // Click 'Employment History 1' link
+            Mouse.Click(uIEmploymentHistory1Hyperlink, new Point(75, 13));
 
-            // Type 'safeway3' in 'EmployerName_3' text box
-            uIEmployerName_3Edit.Text = this.FillUpEmploymentHistory3PageParams.UIEmployerName_3EditText;
+            // Type 'SafeWay' in 'EmployerName_1' text box
+            uIEmployerName_1Edit.Text = this.EmployementHistory1Params.UIEmployerName_1EditText;
 
-            // Type '{Tab}' in 'EmployerName_3' text box
-            Keyboard.SendKeys(uIEmployerName_3Edit, this.FillUpEmploymentHistory3PageParams.UIEmployerName_3EditSendKeys, ModifierKeys.None);
+            // Type '{Tab}' in 'EmployerName_1' text box
+            Keyboard.SendKeys(uIEmployerName_1Edit, this.EmployementHistory1Params.UIEmployerName_1EditSendKeys, ModifierKeys.None);
 
-            // Type '04/2001' in 'EmployedFrom_3' text box
-            uIEmployedFrom_3Edit.Text = this.FillUpEmploymentHistory3PageParams.UIEmployedFrom_3EditText;
+            // Type '02/2001' in 'EmployedFrom_1' text box
+            uIEmployedFrom_1Edit.Text = this.EmployementHistory1Params.UIEmployedFrom_1EditText;
 
-            // Type '{Tab}' in 'EmployedFrom_3' text box
-            Keyboard.SendKeys(uIEmployedFrom_3Edit, this.FillUpEmploymentHistory3PageParams.UIEmployedFrom_3EditSendKeys, ModifierKeys.None);
+            // Type '{Tab}' in 'EmployedFrom_1' text box
+            Keyboard.SendKeys(uIEmployedFrom_1Edit, this.EmployementHistory1Params.UIEmployedFrom_1EditSendKeys, ModifierKeys.None);
 
-            // Type '05/2010' in 'EmployedTo_3' text box
-            uIEmployedTo_3Edit.Text = this.FillUpEmploymentHistory3PageParams.UIEmployedTo_3EditText;
+            // Type '05/2004' in 'EmployedTo_1' text box
+            uIEmployedTo_1Edit.Text = this.EmployementHistory1Params.UIEmployedTo_1EditText;
 
-            // Type '{Tab}' in 'EmployedTo_3' text box
-            Keyboard.SendKeys(uIEmployedTo_3Edit, this.FillUpEmploymentHistory3PageParams.UIEmployedTo_3EditSendKeys, ModifierKeys.None);
-
-            // Type '3212 SE 234th Ave Vancouver WA 97223' in '3' text box
-            uIItem3Edit.Text = this.FillUpEmploymentHistory3PageParams.UIItem3EditText;
-
-            // Type '{Tab}' in '3' text box
-            Keyboard.SendKeys(uIItem3Edit, this.FillUpEmploymentHistory3PageParams.UIItem3EditSendKeys, ModifierKeys.None);
-
-            // Type '3334445555' in '3' text box
-            uIItem3Edit1.Text = this.FillUpEmploymentHistory3PageParams.UIItem3Edit1Text;
-
-            // Type '{Tab}' in '3' text box
-            Keyboard.SendKeys(uIItem3Edit1, this.FillUpEmploymentHistory3PageParams.UIItem3Edit1SendKeys, ModifierKeys.None);
-
-            // Type 'Dany' in '3' text box
-            uIItem3Edit2.Text = this.FillUpEmploymentHistory3PageParams.UIItem3Edit2Text;
-
-            // Type '{Tab}' in '3' text box
-            Keyboard.SendKeys(uIItem3Edit2, this.FillUpEmploymentHistory3PageParams.UIItem3Edit2SendKeys, ModifierKeys.None);
-
-            // Type 'Cashier' in '3' text box
-            uIItem3Edit3.Text = this.FillUpEmploymentHistory3PageParams.UIItem3Edit3Text;
-
-            // Type '{Tab}' in '3' text box
-            Keyboard.SendKeys(uIItem3Edit3, this.FillUpEmploymentHistory3PageParams.UIItem3Edit3SendKeys, ModifierKeys.None);
-
-            // Type '$30' in '3' text box
-            uIItem3Edit4.Text = this.FillUpEmploymentHistory3PageParams.UIItem3Edit4Text;
-
-            // Type '{Tab}' in '3' text box
-            Keyboard.SendKeys(uIItem3Edit4, this.FillUpEmploymentHistory3PageParams.UIItem3Edit4SendKeys, ModifierKeys.None);
-
-            // Type '$40' in '3' text box
-            uIItem3Edit5.Text = this.FillUpEmploymentHistory3PageParams.UIItem3Edit5Text;
-
-            // Type '{Tab}' in '3' text box
-            Keyboard.SendKeys(uIItem3Edit5, this.FillUpEmploymentHistory3PageParams.UIItem3Edit5SendKeys, ModifierKeys.None);
-
-            // Type 'Not enough work' in '3' text box
-            uIItem3Edit6.Text = this.FillUpEmploymentHistory3PageParams.UIItem3Edit6Text;
-
-            // Type '{Tab}' in '3' text box
-            Keyboard.SendKeys(uIItem3Edit6, this.FillUpEmploymentHistory3PageParams.UIItem3Edit6SendKeys, ModifierKeys.None);
-
-            // Type 'Just customers for items they buy' in '3' text box
-            uIItem3Edit7.Text = this.FillUpEmploymentHistory3PageParams.UIItem3Edit7Text;
-
-            // Type '{Tab}' in '3' text box
-            Keyboard.SendKeys(uIItem3Edit7, this.FillUpEmploymentHistory3PageParams.UIItem3Edit7SendKeys, ModifierKeys.None);
-
-            // Select 'No' in '3' combo box
-            uIItem3ComboBox.SelectedItem = this.FillUpEmploymentHistory3PageParams.UIItem3ComboBoxSelectedItem;
-
-            // Click 'Next →' button
-            Mouse.Click(uINextButton, new Point(55, 16));
-        }
-        
-        /// <summary>
-        /// FillUpEducation1Page - Use 'FillUpEducation1PageParams' to pass parameters into this method.
-        /// </summary>
-        public void FillUpEducation1Page()
-        {
-            #region Variable Declarations
-            HtmlEdit uISchoolName_1Edit = this.UIKaskKioskInternetExpWindow4.UIKaskKioskDocument.UISchoolName_1Edit;
-            HtmlEdit uIItem1Edit = this.UIKaskKioskInternetExpWindow4.UIKaskKioskDocument.UIItem1Edit;
-            HtmlEdit uIItem1Edit1 = this.UIKaskKioskInternetExpWindow4.UIKaskKioskDocument.UIItem1Edit1;
-            HtmlEdit uIItem1Edit2 = this.UIKaskKioskInternetExpWindow4.UIKaskKioskDocument.UIItem1Edit2;
-            HtmlComboBox uIGraduated_1ComboBox = this.UIKaskKioskInternetExpWindow4.UIKaskKioskDocument.UIGraduated_1ComboBox;
-            HtmlEdit uIItem1Edit3 = this.UIKaskKioskInternetExpWindow4.UIKaskKioskDocument.UIItem1Edit3;
-            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow4.UIKaskKioskDocument.UINextButton;
-            #endregion
-
-            // Type 'PCC' in 'SchoolName_1' text box
-            uISchoolName_1Edit.Text = this.FillUpEducation1PageParams.UISchoolName_1EditText;
-
-            // Type '{Tab}' in 'SchoolName_1' text box
-            Keyboard.SendKeys(uISchoolName_1Edit, this.FillUpEducation1PageParams.UISchoolName_1EditSendKeys, ModifierKeys.None);
+            // Type '{Tab}' in 'EmployedTo_1' text box
+            Keyboard.SendKeys(uIEmployedTo_1Edit, this.EmployementHistory1Params.UIEmployedTo_1EditSendKeys, ModifierKeys.None);
 
             // Type 'Portland OR' in '1' text box
-            uIItem1Edit.Text = this.FillUpEducation1PageParams.UIItem1EditText;
+            uIItem1Edit.Text = this.EmployementHistory1Params.UIItem1EditText;
 
             // Type '{Tab}' in '1' text box
-            Keyboard.SendKeys(uIItem1Edit, this.FillUpEducation1PageParams.UIItem1EditSendKeys, ModifierKeys.None);
+            Keyboard.SendKeys(uIItem1Edit, this.EmployementHistory1Params.UIItem1EditSendKeys, ModifierKeys.None);
+
+            // Type '2222222222' in '1' text box
+            uIItem1Edit1.Text = this.EmployementHistory1Params.UIItem1Edit1Text;
+
+            // Type '{Tab}' in '1' text box
+            Keyboard.SendKeys(uIItem1Edit1, this.EmployementHistory1Params.UIItem1Edit1SendKeys, ModifierKeys.None);
+
+            // Type 'Adam' in '1' text box
+            uIItem1Edit2.Text = this.EmployementHistory1Params.UIItem1Edit2Text;
+
+            // Type '{Tab}' in '1' text box
+            Keyboard.SendKeys(uIItem1Edit2, this.EmployementHistory1Params.UIItem1Edit2SendKeys, ModifierKeys.None);
+
+            // Type 'Cashier' in '1' text box
+            uIItem1Edit3.Text = this.EmployementHistory1Params.UIItem1Edit3Text;
+
+            // Type '{Tab}' in '1' text box
+            Keyboard.SendKeys(uIItem1Edit3, this.EmployementHistory1Params.UIItem1Edit3SendKeys, ModifierKeys.None);
+
+            // Type '$35000' in '1' text box
+            uIItem1Edit4.Text = this.EmployementHistory1Params.UIItem1Edit4Text;
+
+            // Type '{Tab}' in '1' text box
+            Keyboard.SendKeys(uIItem1Edit4, this.EmployementHistory1Params.UIItem1Edit4SendKeys, ModifierKeys.None);
+
+            // Type '$40000' in '1' text box
+            uIItem1Edit5.Text = this.EmployementHistory1Params.UIItem1Edit5Text;
+
+            // Type '{Tab}' in '1' text box
+            Keyboard.SendKeys(uIItem1Edit5, this.EmployementHistory1Params.UIItem1Edit5SendKeys, ModifierKeys.None);
+
+            // Type 'School' in '1' text box
+            uIItem1Edit6.Text = this.EmployementHistory1Params.UIItem1Edit6Text;
+
+            // Type '{Tab}' in '1' text box
+            Keyboard.SendKeys(uIItem1Edit6, this.EmployementHistory1Params.UIItem1Edit6SendKeys, ModifierKeys.None);
+
+            // Type 'Cashier' in '1' text box
+            uIItem1Edit7.Text = this.EmployementHistory1Params.UIItem1Edit7Text;
+
+            // Select 'Yes' in '1' combo box
+            uIItem1ComboBox.SelectedItem = this.EmployementHistory1Params.UIItem1ComboBoxSelectedItem;
+
+            // Click 'Next →' button
+            Mouse.Click(uINextButton, new Point(41, 13));
+        }
+        
+        /// <summary>
+        /// EmployementHistory2 - Use 'EmployementHistory2Params' to pass parameters into this method.
+        /// </summary>
+        public void EmployementHistory2()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uIEmploymentHistory2Hyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIMenuCustom.UIEmploymentHistory2Hyperlink;
+            HtmlEdit uIEmployerName_2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIEmployerName_2Edit;
+            HtmlEdit uIEmployedFrom_2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIEmployedFrom_2Edit;
+            HtmlEdit uIEmployedTo_2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIEmployedTo_2Edit;
+            HtmlEdit uIItem2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIItem2Edit;
+            HtmlEdit uIItem2Edit1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIItem2Edit1;
+            HtmlEdit uIItem2Edit2 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIItem2Edit2;
+            HtmlEdit uIItem2Edit3 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIItem2Edit3;
+            HtmlEdit uIItem2Edit4 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIItem2Edit4;
+            HtmlEdit uIItem2Edit5 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIItem2Edit5;
+            HtmlEdit uIItem2Edit6 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIItem2Edit6;
+            HtmlTextArea uIItem2Edit7 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIItem2Edit7;
+            HtmlComboBox uIItem2ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UIItem2ComboBox;
+            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument5.UINextButton;
+            #endregion
+
+            // Click 'Employment History 2' link
+            Mouse.Click(uIEmploymentHistory2Hyperlink, new Point(118, 20));
+
+            // Type 'Costco' in 'EmployerName_2' text box
+            uIEmployerName_2Edit.Text = this.EmployementHistory2Params.UIEmployerName_2EditText;
+
+            // Type '{Tab}' in 'EmployerName_2' text box
+            Keyboard.SendKeys(uIEmployerName_2Edit, this.EmployementHistory2Params.UIEmployerName_2EditSendKeys, ModifierKeys.None);
+
+            // Type '03/2006' in 'EmployedFrom_2' text box
+            uIEmployedFrom_2Edit.Text = this.EmployementHistory2Params.UIEmployedFrom_2EditText;
+
+            // Type '{Tab}' in 'EmployedFrom_2' text box
+            Keyboard.SendKeys(uIEmployedFrom_2Edit, this.EmployementHistory2Params.UIEmployedFrom_2EditSendKeys, ModifierKeys.None);
+
+            // Type '04/2008' in 'EmployedTo_2' text box
+            uIEmployedTo_2Edit.Text = this.EmployementHistory2Params.UIEmployedTo_2EditText;
+
+            // Type '{Tab}' in 'EmployedTo_2' text box
+            Keyboard.SendKeys(uIEmployedTo_2Edit, this.EmployementHistory2Params.UIEmployedTo_2EditSendKeys, ModifierKeys.None);
+
+            // Type 'Vancouver WA' in '2' text box
+            uIItem2Edit.Text = this.EmployementHistory2Params.UIItem2EditText;
+
+            // Type '{Tab}' in '2' text box
+            Keyboard.SendKeys(uIItem2Edit, this.EmployementHistory2Params.UIItem2EditSendKeys, ModifierKeys.None);
+
+            // Type '4444444444' in '2' text box
+            uIItem2Edit1.Text = this.EmployementHistory2Params.UIItem2Edit1Text;
+
+            // Type '{Tab}' in '2' text box
+            Keyboard.SendKeys(uIItem2Edit1, this.EmployementHistory2Params.UIItem2Edit1SendKeys, ModifierKeys.None);
+
+            // Type 'John' in '2' text box
+            uIItem2Edit2.Text = this.EmployementHistory2Params.UIItem2Edit2Text;
+
+            // Type '{Tab}' in '2' text box
+            Keyboard.SendKeys(uIItem2Edit2, this.EmployementHistory2Params.UIItem2Edit2SendKeys, ModifierKeys.None);
+
+            // Type 'Manager' in '2' text box
+            uIItem2Edit3.Text = this.EmployementHistory2Params.UIItem2Edit3Text;
+
+            // Type '{Tab}' in '2' text box
+            Keyboard.SendKeys(uIItem2Edit3, this.EmployementHistory2Params.UIItem2Edit3SendKeys, ModifierKeys.None);
+
+            // Type '$40000' in '2' text box
+            uIItem2Edit4.Text = this.EmployementHistory2Params.UIItem2Edit4Text;
+
+            // Type '{Tab}' in '2' text box
+            Keyboard.SendKeys(uIItem2Edit4, this.EmployementHistory2Params.UIItem2Edit4SendKeys, ModifierKeys.None);
+
+            // Type '$42000' in '2' text box
+            uIItem2Edit5.Text = this.EmployementHistory2Params.UIItem2Edit5Text;
+
+            // Type '{Tab}' in '2' text box
+            Keyboard.SendKeys(uIItem2Edit5, this.EmployementHistory2Params.UIItem2Edit5SendKeys, ModifierKeys.None);
+
+            // Type 'Moving to another state' in '2' text box
+            uIItem2Edit6.Text = this.EmployementHistory2Params.UIItem2Edit6Text;
+
+            // Type '{Tab}' in '2' text box
+            Keyboard.SendKeys(uIItem2Edit6, this.EmployementHistory2Params.UIItem2Edit6SendKeys, ModifierKeys.None);
+
+            // Type 'Manage employees' in '2' text box
+            uIItem2Edit7.Text = this.EmployementHistory2Params.UIItem2Edit7Text;
+
+            // Select 'No' in '2' combo box
+            uIItem2ComboBox.SelectedItem = this.EmployementHistory2Params.UIItem2ComboBoxSelectedItem;
+
+            // Click 'Next →' button
+            Mouse.Click(uINextButton, new Point(42, 21));
+        }
+        
+        /// <summary>
+        /// EmployementHistory3 - Use 'EmployementHistory3Params' to pass parameters into this method.
+        /// </summary>
+        public void EmployementHistory3()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uIEmploymentHistory3Hyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIMenuCustom.UIEmploymentHistory3Hyperlink;
+            HtmlEdit uIEmployerName_3Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIEmployerName_3Edit;
+            HtmlEdit uIEmployedFrom_3Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIEmployedFrom_3Edit;
+            HtmlEdit uIEmployedTo_3Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIEmployedTo_3Edit;
+            HtmlEdit uIItem3Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIItem3Edit;
+            HtmlEdit uIItem3Edit1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIItem3Edit1;
+            HtmlEdit uIItem3Edit2 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIItem3Edit2;
+            HtmlEdit uIItem3Edit3 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIItem3Edit3;
+            HtmlEdit uIItem3Edit4 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIItem3Edit4;
+            HtmlEdit uIItem3Edit5 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIItem3Edit5;
+            HtmlEdit uIItem3Edit6 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIItem3Edit6;
+            HtmlTextArea uIItem3Edit7 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIItem3Edit7;
+            HtmlComboBox uIItem3ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UIItem3ComboBox;
+            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument6.UINextButton;
+            #endregion
+
+            // Click 'Employment History 3' link
+            Mouse.Click(uIEmploymentHistory3Hyperlink, new Point(111, 9));
+
+            // Type 'Fredmyer' in 'EmployerName_3' text box
+            uIEmployerName_3Edit.Text = this.EmployementHistory3Params.UIEmployerName_3EditText;
+
+            // Type '{Tab}' in 'EmployerName_3' text box
+            Keyboard.SendKeys(uIEmployerName_3Edit, this.EmployementHistory3Params.UIEmployerName_3EditSendKeys, ModifierKeys.None);
+
+            // Type '06/2010' in 'EmployedFrom_3' text box
+            uIEmployedFrom_3Edit.Text = this.EmployementHistory3Params.UIEmployedFrom_3EditText;
+
+            // Type '{Tab}' in 'EmployedFrom_3' text box
+            Keyboard.SendKeys(uIEmployedFrom_3Edit, this.EmployementHistory3Params.UIEmployedFrom_3EditSendKeys, ModifierKeys.None);
+
+            // Type '05/2012' in 'EmployedTo_3' text box
+            uIEmployedTo_3Edit.Text = this.EmployementHistory3Params.UIEmployedTo_3EditText;
+
+            // Type '{Tab}' in 'EmployedTo_3' text box
+            Keyboard.SendKeys(uIEmployedTo_3Edit, this.EmployementHistory3Params.UIEmployedTo_3EditSendKeys, ModifierKeys.None);
+
+            // Type 'Beaverton OR' in '3' text box
+            uIItem3Edit.Text = this.EmployementHistory3Params.UIItem3EditText;
+
+            // Type '{Tab}' in '3' text box
+            Keyboard.SendKeys(uIItem3Edit, this.EmployementHistory3Params.UIItem3EditSendKeys, ModifierKeys.None);
+
+            // Type '4444444444' in '3' text box
+            uIItem3Edit1.Text = this.EmployementHistory3Params.UIItem3Edit1Text;
+
+            // Type '{Tab}' in '3' text box
+            Keyboard.SendKeys(uIItem3Edit1, this.EmployementHistory3Params.UIItem3Edit1SendKeys, ModifierKeys.None);
+
+            // Type 'Liz' in '3' text box
+            uIItem3Edit2.Text = this.EmployementHistory3Params.UIItem3Edit2Text;
+
+            // Type '{Tab}' in '3' text box
+            Keyboard.SendKeys(uIItem3Edit2, this.EmployementHistory3Params.UIItem3Edit2SendKeys, ModifierKeys.None);
+
+            // Type 'Customer service' in '3' text box
+            uIItem3Edit3.Text = this.EmployementHistory3Params.UIItem3Edit3Text;
+
+            // Type '{Tab}' in '3' text box
+            Keyboard.SendKeys(uIItem3Edit3, this.EmployementHistory3Params.UIItem3Edit3SendKeys, ModifierKeys.None);
+
+            // Type '$30000' in '3' text box
+            uIItem3Edit4.Text = this.EmployementHistory3Params.UIItem3Edit4Text;
+
+            // Type '{Tab}' in '3' text box
+            Keyboard.SendKeys(uIItem3Edit4, this.EmployementHistory3Params.UIItem3Edit4SendKeys, ModifierKeys.None);
+
+            // Type '$30000' in '3' text box
+            uIItem3Edit5.Text = this.EmployementHistory3Params.UIItem3Edit5Text;
+
+            // Type '{Tab}' in '3' text box
+            Keyboard.SendKeys(uIItem3Edit5, this.EmployementHistory3Params.UIItem3Edit5SendKeys, ModifierKeys.None);
+
+            // Type 'Not enough hours offered' in '3' text box
+            uIItem3Edit6.Text = this.EmployementHistory3Params.UIItem3Edit6Text;
+
+            // Type '{Tab}' in '3' text box
+            Keyboard.SendKeys(uIItem3Edit6, this.EmployementHistory3Params.UIItem3Edit6SendKeys, ModifierKeys.None);
+
+            // Type 'Helping customers' in '3' text box
+            uIItem3Edit7.Text = this.EmployementHistory3Params.UIItem3Edit7Text;
+
+            // Select 'Yes' in '3' combo box
+            uIItem3ComboBox.SelectedItem = this.EmployementHistory3Params.UIItem3ComboBoxSelectedItem;
+
+            // Click 'Next →' button
+            Mouse.Click(uINextButton, new Point(56, 15));
+        }
+        
+        /// <summary>
+        /// EducationPage1 - Use 'EducationPage1Params' to pass parameters into this method.
+        /// </summary>
+        public void EducationPage1()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uIEducation1Hyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument7.UIMenuCustom.UIEducation1Hyperlink;
+            HtmlEdit uISchoolName_1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument7.UISchoolName_1Edit;
+            HtmlEdit uIItem1Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument7.UIItem1Edit;
+            HtmlEdit uIItem1Edit1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument7.UIItem1Edit1;
+            HtmlEdit uIItem1Edit2 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument7.UIItem1Edit2;
+            HtmlComboBox uIGraduated_1ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument7.UIGraduated_1ComboBox;
+            HtmlEdit uIItem1Edit3 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument7.UIItem1Edit3;
+            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument7.UINextButton;
+            #endregion
+
+            // Click 'Education 1' link
+            Mouse.Click(uIEducation1Hyperlink, new Point(38, 12));
+
+            // Type 'PCC' in 'SchoolName_1' text box
+            uISchoolName_1Edit.Text = this.EducationPage1Params.UISchoolName_1EditText;
+
+            // Type '{Tab}' in 'SchoolName_1' text box
+            Keyboard.SendKeys(uISchoolName_1Edit, this.EducationPage1Params.UISchoolName_1EditSendKeys, ModifierKeys.None);
+
+            // Type 'Portland OR' in '1' text box
+            uIItem1Edit.Text = this.EducationPage1Params.UIItem1EditText;
 
             // Type '09/2000' in '1' text box
-            uIItem1Edit1.Text = this.FillUpEducation1PageParams.UIItem1Edit1Text;
+            uIItem1Edit1.Text = this.EducationPage1Params.UIItem1Edit1Text;
 
             // Type '{Tab}' in '1' text box
-            Keyboard.SendKeys(uIItem1Edit1, this.FillUpEducation1PageParams.UIItem1Edit1SendKeys, ModifierKeys.None);
+            Keyboard.SendKeys(uIItem1Edit1, this.EducationPage1Params.UIItem1Edit1SendKeys, ModifierKeys.None);
 
-            // Type '06/2002' in '1' text box
-            uIItem1Edit2.Text = this.FillUpEducation1PageParams.UIItem1Edit2Text;
+            // Type '10/2011' in '1' text box
+            uIItem1Edit2.Text = this.EducationPage1Params.UIItem1Edit2Text;
 
-            // Select 'Yes' in 'Graduated_1' combo box
-            uIGraduated_1ComboBox.SelectedItem = this.FillUpEducation1PageParams.UIGraduated_1ComboBoxSelectedItem;
+            // Select 'No' in 'Graduated_1' combo box
+            uIGraduated_1ComboBox.SelectedItem = this.EducationPage1Params.UIGraduated_1ComboBoxSelectedItem;
 
-            // Type '' in '1' text box
-            uIItem1Edit3.Text = this.FillUpEducation1PageParams.UIItem1Edit3Text;
-
-            // Type 'Associate Degree' in '1' text box
-            uIItem1Edit3.Text = this.FillUpEducation1PageParams.UIItem1Edit3Text1;
+            // Type 'None' in '1' text box
+            uIItem1Edit3.Text = this.EducationPage1Params.UIItem1Edit3Text;
 
             // Click 'Next →' button
-            Mouse.Click(uINextButton, new Point(63, 14));
+            Mouse.Click(uINextButton, new Point(37, 10));
         }
         
         /// <summary>
-        /// FillUpEducation2Page - Use 'FillUpEducation2PageParams' to pass parameters into this method.
+        /// EducationPage2 - Use 'EducationPage2Params' to pass parameters into this method.
         /// </summary>
-        public void FillUpEducation2Page()
+        public void EducationPage2()
         {
             #region Variable Declarations
-            HtmlDiv uIEducation2PleasetellPane = this.UIKaskKioskInternetExpWindow5.UIKaskKioskDocument.UISection_education_2Pane.UIEducation2PleasetellPane;
-            HtmlHyperlink uIEducation2Hyperlink = this.UIKaskKioskInternetExpWindow5.UIKaskKioskDocument.UIMenuCustom.UIEducation2Hyperlink;
-            HtmlEdit uISchoolName_2Edit = this.UIKaskKioskInternetExpWindow5.UIKaskKioskDocument.UISchoolName_2Edit;
-            HtmlEdit uIItem2Edit = this.UIKaskKioskInternetExpWindow5.UIKaskKioskDocument.UIItem2Edit;
-            HtmlEdit uIItem2Edit1 = this.UIKaskKioskInternetExpWindow5.UIKaskKioskDocument.UIItem2Edit1;
-            HtmlEdit uIItem2Edit2 = this.UIKaskKioskInternetExpWindow5.UIKaskKioskDocument.UIItem2Edit2;
-            HtmlComboBox uIGraduated_2ComboBox = this.UIKaskKioskInternetExpWindow5.UIKaskKioskDocument.UIGraduated_2ComboBox;
-            HtmlEdit uIItem2Edit3 = this.UIKaskKioskInternetExpWindow5.UIKaskKioskDocument.UIItem2Edit3;
-            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow5.UIKaskKioskDocument.UINextButton;
+            HtmlHyperlink uIEducation2Hyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument8.UIMenuCustom.UIEducation2Hyperlink;
+            HtmlEdit uISchoolName_2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument8.UISchoolName_2Edit;
+            HtmlEdit uIItem2Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument8.UIItem2Edit;
+            HtmlEdit uIItem2Edit1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument8.UIItem2Edit1;
+            HtmlEdit uIItem2Edit2 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument8.UIItem2Edit2;
+            HtmlComboBox uIGraduated_2ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument8.UIGraduated_2ComboBox;
+            HtmlEdit uIItem2Edit3 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument8.UIItem2Edit3;
+            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument8.UINextButton;
             #endregion
-
-            // Click 'Education 2 Please tell us a little a' pane
-            Mouse.Click(uIEducation2PleasetellPane, new Point(672, 95));
 
             // Click 'Education 2' link
-            Mouse.Click(uIEducation2Hyperlink, new Point(47, 12));
+            Mouse.Click(uIEducation2Hyperlink, new Point(43, 7));
 
-            // Type 'OIT' in 'SchoolName_2' text box
-            uISchoolName_2Edit.Text = this.FillUpEducation2PageParams.UISchoolName_2EditText;
+            // Type 'Pcc' in 'SchoolName_2' text box
+            uISchoolName_2Edit.Text = this.EducationPage2Params.UISchoolName_2EditText;
 
             // Type '{Tab}' in 'SchoolName_2' text box
-            Keyboard.SendKeys(uISchoolName_2Edit, this.FillUpEducation2PageParams.UISchoolName_2EditSendKeys, ModifierKeys.None);
+            Keyboard.SendKeys(uISchoolName_2Edit, this.EducationPage2Params.UISchoolName_2EditSendKeys, ModifierKeys.None);
 
-            // Type 'Wilsonvill portland' in '2' text box
-            uIItem2Edit.Text = this.FillUpEducation2PageParams.UIItem2EditText;
-
-            // Type '{Tab}' in '2' text box
-            Keyboard.SendKeys(uIItem2Edit, this.FillUpEducation2PageParams.UIItem2EditSendKeys, ModifierKeys.None);
-
-            // Type '02/2004' in '2' text box
-            uIItem2Edit1.Text = this.FillUpEducation2PageParams.UIItem2Edit1Text;
+            // Type 'Beverton OR' in '2' text box
+            uIItem2Edit.Text = this.EducationPage2Params.UIItem2EditText;
 
             // Type '{Tab}' in '2' text box
-            Keyboard.SendKeys(uIItem2Edit1, this.FillUpEducation2PageParams.UIItem2Edit1SendKeys, ModifierKeys.None);
+            Keyboard.SendKeys(uIItem2Edit, this.EducationPage2Params.UIItem2EditSendKeys, ModifierKeys.None);
 
-            // Type '04/2005' in '2' text box
-            uIItem2Edit2.Text = this.FillUpEducation2PageParams.UIItem2Edit2Text;
+            // Type '08/2004' in '2' text box
+            uIItem2Edit1.Text = this.EducationPage2Params.UIItem2Edit1Text;
 
-            // Select 'No' in 'Graduated_2' combo box
-            uIGraduated_2ComboBox.SelectedItem = this.FillUpEducation2PageParams.UIGraduated_2ComboBoxSelectedItem;
+            // Type '{Tab}' in '2' text box
+            Keyboard.SendKeys(uIItem2Edit1, this.EducationPage2Params.UIItem2Edit1SendKeys, ModifierKeys.None);
 
-            // Type 'NA' in '2' text box
-            uIItem2Edit3.Text = this.FillUpEducation2PageParams.UIItem2Edit3Text;
+            // Type '07/2005' in '2' text box
+            uIItem2Edit2.Text = this.EducationPage2Params.UIItem2Edit2Text;
+
+            // Select 'Yes' in 'Graduated_2' combo box
+            uIGraduated_2ComboBox.SelectedItem = this.EducationPage2Params.UIGraduated_2ComboBoxSelectedItem;
+
+            // Type 'Communication' in '2' text box
+            uIItem2Edit3.Text = this.EducationPage2Params.UIItem2Edit3Text;
 
             // Click 'Next →' button
-            Mouse.Click(uINextButton, new Point(43, 22));
+            Mouse.Click(uINextButton, new Point(35, 7));
         }
         
         /// <summary>
-        /// FillUpEducation3Page - Use 'FillUpEducation3PageParams' to pass parameters into this method.
+        /// EducationPage3 - Use 'EducationPage3Params' to pass parameters into this method.
         /// </summary>
-        public void FillUpEducation3Page()
+        public void EducationPage3()
         {
             #region Variable Declarations
-            HtmlDiv uIEducation3PleasetellPane = this.UIKaskKioskInternetExpWindow6.UIKaskKioskDocument.UISection_education_3Pane.UIEducation3PleasetellPane;
-            HtmlEdit uISchoolName_3Edit = this.UIKaskKioskInternetExpWindow6.UIKaskKioskDocument.UISchoolName_3Edit;
-            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow6.UIKaskKioskDocument.UINextButton;
+            HtmlHyperlink uIEducation3Hyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument9.UIMenuCustom.UIEducation3Hyperlink;
+            HtmlEdit uISchoolName_3Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument9.UISchoolName_3Edit;
+            HtmlEdit uIItem3Edit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument9.UIItem3Edit;
+            HtmlEdit uIItem3Edit1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument9.UIItem3Edit1;
+            HtmlEdit uIItem3Edit2 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument9.UIItem3Edit2;
+            HtmlComboBox uIGraduated_3ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument9.UIGraduated_3ComboBox;
+            HtmlEdit uIItem3Edit3 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument9.UIItem3Edit3;
+            HtmlButton uINextButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument9.UINextButton;
             #endregion
 
-            // Click 'Education 3 Please tell us a little a' pane
-            Mouse.Click(uIEducation3PleasetellPane, new Point(142, 266));
+            // Click 'Education 3' link
+            Mouse.Click(uIEducation3Hyperlink, new Point(43, 5));
 
-            // Type 'NA' in 'SchoolName_3' text box
-            uISchoolName_3Edit.Text = this.FillUpEducation3PageParams.UISchoolName_3EditText;
+            // Type 'OIT' in 'SchoolName_3' text box
+            uISchoolName_3Edit.Text = this.EducationPage3Params.UISchoolName_3EditText;
+
+            // Type '{Tab}' in 'SchoolName_3' text box
+            Keyboard.SendKeys(uISchoolName_3Edit, this.EducationPage3Params.UISchoolName_3EditSendKeys, ModifierKeys.None);
+
+            // Type 'Willsonville' in '3' text box
+            uIItem3Edit.Text = this.EducationPage3Params.UIItem3EditText;
+
+            // Type '{Tab}' in '3' text box
+            Keyboard.SendKeys(uIItem3Edit, this.EducationPage3Params.UIItem3EditSendKeys, ModifierKeys.None);
+
+            // Type '02/2010' in '3' text box
+            uIItem3Edit1.Text = this.EducationPage3Params.UIItem3Edit1Text;
+
+            // Type '{Tab}' in '3' text box
+            Keyboard.SendKeys(uIItem3Edit1, this.EducationPage3Params.UIItem3Edit1SendKeys, ModifierKeys.None);
+
+            // Type '06/2011' in '3' text box
+            uIItem3Edit2.Text = this.EducationPage3Params.UIItem3Edit2Text;
+
+            // Select 'No' in 'Graduated_3' combo box
+            uIGraduated_3ComboBox.SelectedItem = this.EducationPage3Params.UIGraduated_3ComboBoxSelectedItem;
+
+            // Type 'None' in '3' text box
+            uIItem3Edit3.Text = this.EducationPage3Params.UIItem3Edit3Text;
 
             // Click 'Next →' button
-            Mouse.Click(uINextButton, new Point(59, 23));
+            Mouse.Click(uINextButton, new Point(39, 25));
         }
         
         /// <summary>
-        /// SubmitApplication
+        /// SubmitApplication - Use 'SubmitApplicationParams' to pass parameters into this method.
         /// </summary>
         public void SubmitApplication()
         {
             #region Variable Declarations
-            HtmlDiv uICancelApplicationPane1 = this.UIKaskKioskInternetExpWindow7.UIKaskKioskDocument.UICancelApplicationPane.UICancelApplicationPane1;
-            HtmlInputButton uISubmitApplicationButton = this.UIKaskKioskInternetExpWindow7.UIKaskKioskDocument.UISubmitApplicationButton;
+            HtmlHyperlink uISubmitApplicationHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument10.UIMenuCustom.UISubmitApplicationHyperlink;
+            HtmlCheckBox uIAcknowledgeAccurateDCheckBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument10.UIAcknowledgeAccurateDCheckBox;
+            HtmlInputButton uISubmitApplicationButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument10.UISubmitApplicationButton;
             #endregion
 
-            // Click 'Cancel Application' pane
-            Mouse.Click(uICancelApplicationPane1, new Point(517, 541));
+            // Click 'Submit Application' link
+            Mouse.Click(uISubmitApplicationHyperlink, new Point(83, 3));
+
+            // Select 'acknowledgeAccurateDataCheckbox' check box
+            uIAcknowledgeAccurateDCheckBox.Checked = this.SubmitApplicationParams.UIAcknowledgeAccurateDCheckBoxChecked;
 
             // Click 'Submit Application' button
-            Mouse.Click(uISubmitApplicationButton, new Point(81, 18));
+            Mouse.Click(uISubmitApplicationButton, new Point(82, 18));
         }
         
         #region Properties
-        public virtual EmployementHistroy1Params EmployementHistroy1Params
+        public virtual PersonalPageParams PersonalPageParams
         {
             get
             {
-                if ((this.mEmployementHistroy1Params == null))
+                if ((this.mPersonalPageParams == null))
                 {
-                    this.mEmployementHistroy1Params = new EmployementHistroy1Params();
+                    this.mPersonalPageParams = new PersonalPageParams();
                 }
-                return this.mEmployementHistroy1Params;
+                return this.mPersonalPageParams;
             }
         }
         
-        public virtual FilleUpEmploymentHistory1PageParams FilleUpEmploymentHistory1PageParams
+        public virtual PositionPageParams PositionPageParams
         {
             get
             {
-                if ((this.mFilleUpEmploymentHistory1PageParams == null))
+                if ((this.mPositionPageParams == null))
                 {
-                    this.mFilleUpEmploymentHistory1PageParams = new FilleUpEmploymentHistory1PageParams();
+                    this.mPositionPageParams = new PositionPageParams();
                 }
-                return this.mFilleUpEmploymentHistory1PageParams;
+                return this.mPositionPageParams;
             }
         }
         
-        public virtual FilleUpEmploymentHistory2PageParams FilleUpEmploymentHistory2PageParams
+        public virtual EmployementHistory1Params EmployementHistory1Params
         {
             get
             {
-                if ((this.mFilleUpEmploymentHistory2PageParams == null))
+                if ((this.mEmployementHistory1Params == null))
                 {
-                    this.mFilleUpEmploymentHistory2PageParams = new FilleUpEmploymentHistory2PageParams();
+                    this.mEmployementHistory1Params = new EmployementHistory1Params();
                 }
-                return this.mFilleUpEmploymentHistory2PageParams;
+                return this.mEmployementHistory1Params;
             }
         }
         
-        public virtual FilleUpPersonalPageParams FilleUpPersonalPageParams
+        public virtual EmployementHistory2Params EmployementHistory2Params
         {
             get
             {
-                if ((this.mFilleUpPersonalPageParams == null))
+                if ((this.mEmployementHistory2Params == null))
                 {
-                    this.mFilleUpPersonalPageParams = new FilleUpPersonalPageParams();
+                    this.mEmployementHistory2Params = new EmployementHistory2Params();
                 }
-                return this.mFilleUpPersonalPageParams;
+                return this.mEmployementHistory2Params;
             }
         }
         
-        public virtual FilleUpPositionPageParams FilleUpPositionPageParams
+        public virtual EmployementHistory3Params EmployementHistory3Params
         {
             get
             {
-                if ((this.mFilleUpPositionPageParams == null))
+                if ((this.mEmployementHistory3Params == null))
                 {
-                    this.mFilleUpPositionPageParams = new FilleUpPositionPageParams();
+                    this.mEmployementHistory3Params = new EmployementHistory3Params();
                 }
-                return this.mFilleUpPositionPageParams;
+                return this.mEmployementHistory3Params;
             }
         }
         
-        public virtual FillUpEmploymentHistory3PageParams FillUpEmploymentHistory3PageParams
+        public virtual EducationPage1Params EducationPage1Params
         {
             get
             {
-                if ((this.mFillUpEmploymentHistory3PageParams == null))
+                if ((this.mEducationPage1Params == null))
                 {
-                    this.mFillUpEmploymentHistory3PageParams = new FillUpEmploymentHistory3PageParams();
+                    this.mEducationPage1Params = new EducationPage1Params();
                 }
-                return this.mFillUpEmploymentHistory3PageParams;
+                return this.mEducationPage1Params;
             }
         }
         
-        public virtual FillUpEducation1PageParams FillUpEducation1PageParams
+        public virtual EducationPage2Params EducationPage2Params
         {
             get
             {
-                if ((this.mFillUpEducation1PageParams == null))
+                if ((this.mEducationPage2Params == null))
                 {
-                    this.mFillUpEducation1PageParams = new FillUpEducation1PageParams();
+                    this.mEducationPage2Params = new EducationPage2Params();
                 }
-                return this.mFillUpEducation1PageParams;
+                return this.mEducationPage2Params;
             }
         }
         
-        public virtual FillUpEducation2PageParams FillUpEducation2PageParams
+        public virtual EducationPage3Params EducationPage3Params
         {
             get
             {
-                if ((this.mFillUpEducation2PageParams == null))
+                if ((this.mEducationPage3Params == null))
                 {
-                    this.mFillUpEducation2PageParams = new FillUpEducation2PageParams();
+                    this.mEducationPage3Params = new EducationPage3Params();
                 }
-                return this.mFillUpEducation2PageParams;
+                return this.mEducationPage3Params;
             }
         }
         
-        public virtual FillUpEducation3PageParams FillUpEducation3PageParams
+        public virtual SubmitApplicationParams SubmitApplicationParams
         {
             get
             {
-                if ((this.mFillUpEducation3PageParams == null))
+                if ((this.mSubmitApplicationParams == null))
                 {
-                    this.mFillUpEducation3PageParams = new FillUpEducation3PageParams();
+                    this.mSubmitApplicationParams = new SubmitApplicationParams();
                 }
-                return this.mFillUpEducation3PageParams;
-            }
-        }
-        
-        public UIGoogleInternetExplorWindow UIGoogleInternetExplorWindow
-        {
-            get
-            {
-                if ((this.mUIGoogleInternetExplorWindow == null))
-                {
-                    this.mUIGoogleInternetExplorWindow = new UIGoogleInternetExplorWindow();
-                }
-                return this.mUIGoogleInternetExplorWindow;
+                return this.mSubmitApplicationParams;
             }
         }
         
@@ -865,296 +780,118 @@ namespace Kask.UIAutomationTests
                 return this.mUIKaskKioskInternetExpWindow;
             }
         }
-        
-        public UIGoogleInternetExplorWindow1 UIGoogleInternetExplorWindow1
-        {
-            get
-            {
-                if ((this.mUIGoogleInternetExplorWindow1 == null))
-                {
-                    this.mUIGoogleInternetExplorWindow1 = new UIGoogleInternetExplorWindow1();
-                }
-                return this.mUIGoogleInternetExplorWindow1;
-            }
-        }
-        
-        public UIKaskKioskInternetExpWindow1 UIKaskKioskInternetExpWindow1
-        {
-            get
-            {
-                if ((this.mUIKaskKioskInternetExpWindow1 == null))
-                {
-                    this.mUIKaskKioskInternetExpWindow1 = new UIKaskKioskInternetExpWindow1();
-                }
-                return this.mUIKaskKioskInternetExpWindow1;
-            }
-        }
-        
-        public UIKaskKioskInternetExpWindow2 UIKaskKioskInternetExpWindow2
-        {
-            get
-            {
-                if ((this.mUIKaskKioskInternetExpWindow2 == null))
-                {
-                    this.mUIKaskKioskInternetExpWindow2 = new UIKaskKioskInternetExpWindow2();
-                }
-                return this.mUIKaskKioskInternetExpWindow2;
-            }
-        }
-        
-        public UIKaskKioskInternetExpWindow3 UIKaskKioskInternetExpWindow3
-        {
-            get
-            {
-                if ((this.mUIKaskKioskInternetExpWindow3 == null))
-                {
-                    this.mUIKaskKioskInternetExpWindow3 = new UIKaskKioskInternetExpWindow3();
-                }
-                return this.mUIKaskKioskInternetExpWindow3;
-            }
-        }
-        
-        public UIKaskKioskInternetExpWindow4 UIKaskKioskInternetExpWindow4
-        {
-            get
-            {
-                if ((this.mUIKaskKioskInternetExpWindow4 == null))
-                {
-                    this.mUIKaskKioskInternetExpWindow4 = new UIKaskKioskInternetExpWindow4();
-                }
-                return this.mUIKaskKioskInternetExpWindow4;
-            }
-        }
-        
-        public UIKaskKioskInternetExpWindow5 UIKaskKioskInternetExpWindow5
-        {
-            get
-            {
-                if ((this.mUIKaskKioskInternetExpWindow5 == null))
-                {
-                    this.mUIKaskKioskInternetExpWindow5 = new UIKaskKioskInternetExpWindow5();
-                }
-                return this.mUIKaskKioskInternetExpWindow5;
-            }
-        }
-        
-        public UIKaskKioskInternetExpWindow6 UIKaskKioskInternetExpWindow6
-        {
-            get
-            {
-                if ((this.mUIKaskKioskInternetExpWindow6 == null))
-                {
-                    this.mUIKaskKioskInternetExpWindow6 = new UIKaskKioskInternetExpWindow6();
-                }
-                return this.mUIKaskKioskInternetExpWindow6;
-            }
-        }
-        
-        public UIKaskKioskInternetExpWindow7 UIKaskKioskInternetExpWindow7
-        {
-            get
-            {
-                if ((this.mUIKaskKioskInternetExpWindow7 == null))
-                {
-                    this.mUIKaskKioskInternetExpWindow7 = new UIKaskKioskInternetExpWindow7();
-                }
-                return this.mUIKaskKioskInternetExpWindow7;
-            }
-        }
-        
-        public UIKaskKioskInternetExpWindow11 UIKaskKioskInternetExpWindow11
-        {
-            get
-            {
-                if ((this.mUIKaskKioskInternetExpWindow11 == null))
-                {
-                    this.mUIKaskKioskInternetExpWindow11 = new UIKaskKioskInternetExpWindow11();
-                }
-                return this.mUIKaskKioskInternetExpWindow11;
-            }
-        }
         #endregion
         
         #region Fields
-        private EmployementHistroy1Params mEmployementHistroy1Params;
+        private PersonalPageParams mPersonalPageParams;
         
-        private FilleUpEmploymentHistory1PageParams mFilleUpEmploymentHistory1PageParams;
+        private PositionPageParams mPositionPageParams;
         
-        private FilleUpEmploymentHistory2PageParams mFilleUpEmploymentHistory2PageParams;
+        private EmployementHistory1Params mEmployementHistory1Params;
         
-        private FilleUpPersonalPageParams mFilleUpPersonalPageParams;
+        private EmployementHistory2Params mEmployementHistory2Params;
         
-        private FilleUpPositionPageParams mFilleUpPositionPageParams;
+        private EmployementHistory3Params mEmployementHistory3Params;
         
-        private FillUpEmploymentHistory3PageParams mFillUpEmploymentHistory3PageParams;
+        private EducationPage1Params mEducationPage1Params;
         
-        private FillUpEducation1PageParams mFillUpEducation1PageParams;
+        private EducationPage2Params mEducationPage2Params;
         
-        private FillUpEducation2PageParams mFillUpEducation2PageParams;
+        private EducationPage3Params mEducationPage3Params;
         
-        private FillUpEducation3PageParams mFillUpEducation3PageParams;
-        
-        private UIGoogleInternetExplorWindow mUIGoogleInternetExplorWindow;
+        private SubmitApplicationParams mSubmitApplicationParams;
         
         private UIKaskKioskInternetExpWindow mUIKaskKioskInternetExpWindow;
-        
-        private UIGoogleInternetExplorWindow1 mUIGoogleInternetExplorWindow1;
-        
-        private UIKaskKioskInternetExpWindow1 mUIKaskKioskInternetExpWindow1;
-        
-        private UIKaskKioskInternetExpWindow2 mUIKaskKioskInternetExpWindow2;
-        
-        private UIKaskKioskInternetExpWindow3 mUIKaskKioskInternetExpWindow3;
-        
-        private UIKaskKioskInternetExpWindow4 mUIKaskKioskInternetExpWindow4;
-        
-        private UIKaskKioskInternetExpWindow5 mUIKaskKioskInternetExpWindow5;
-        
-        private UIKaskKioskInternetExpWindow6 mUIKaskKioskInternetExpWindow6;
-        
-        private UIKaskKioskInternetExpWindow7 mUIKaskKioskInternetExpWindow7;
-        
-        private UIKaskKioskInternetExpWindow11 mUIKaskKioskInternetExpWindow11;
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'EmployementHistroy1'
+    /// Parameters to be passed into 'PersonalPage'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class EmployementHistroy1Params
+    public class PersonalPageParams
     {
         
         #region Fields
         /// <summary>
-        /// Type 'StoreX' in 'EmployerName_1' text box
+        /// Type 'FistName1' in 'FirstName' text box
         /// </summary>
-        public string UIEmployerName_1EditText = "StoreX";
+        public string UIFirstNameEditText = "FistName1";
         
         /// <summary>
-        /// Type '{Tab}' in 'EmployerName_1' text box
+        /// Type '{Tab}' in 'FirstName' text box
         /// </summary>
-        public string UIEmployerName_1EditSendKeys = "{Tab}";
+        public string UIFirstNameEditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '09/2004' in 'EmployedFrom_1' text box
+        /// Type 'MiddleName1' in 'MiddleName' text box
         /// </summary>
-        public string UIEmployedFrom_1EditText = "09/2004";
+        public string UIMiddleNameEditText = "MiddleName1";
         
         /// <summary>
-        /// Type '{Tab}' in 'EmployedFrom_1' text box
+        /// Type '{Tab}' in 'MiddleName' text box
         /// </summary>
-        public string UIEmployedFrom_1EditSendKeys = "{Tab}";
+        public string UIMiddleNameEditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '04/2006' in 'EmployedTo_1' text box
+        /// Type 'LastName1' in 'LastName' text box
         /// </summary>
-        public string UIEmployedTo_1EditText = "04/2006";
+        public string UILastNameEditText = "LastName1";
         
         /// <summary>
-        /// Type '{Tab}' in 'EmployedTo_1' text box
+        /// Type '{Tab}' in 'LastName' text box
         /// </summary>
-        public string UIEmployedTo_1EditSendKeys = "{Tab}";
+        public string UILastNameEditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '1234 SW 1234 Ave Portland OR 98000' in '1' text box
+        /// Type '********' in 'SSN' text box
         /// </summary>
-        public string UIItem1EditText = "1234 SW 1234 Ave Portland OR 98000";
+        public string UISSNEditPassword = "ENztNZBuh+yKrL6jEQwBUBQxHaGgWD2M";
         
         /// <summary>
-        /// Type '{Tab}' in '1' text box
+        /// Type '{Tab}' in 'SSN' text box
         /// </summary>
-        public string UIItem1EditSendKeys = "{Tab}";
+        public string UISSNEditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '2223334444' in '1' text box
+        /// Type '111 SW Kelly way Beaverton OR 09000' in 'ApplicantAddress' text box
         /// </summary>
-        public string UIItem1Edit1Text = "2223334444";
+        public string UIApplicantAddressEditText = "111 SW Kelly way Beaverton OR 09000";
         
         /// <summary>
-        /// Type '{Tab}' in '1' text box
+        /// Type '{Tab}' in 'ApplicantAddress' text box
         /// </summary>
-        public string UIItem1Edit1SendKeys = "{Tab}";
+        public string UIApplicantAddressEditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type 'Kyle' in '1' text box
+        /// Type '1111111111' in 'ApplicantPhone' text box
         /// </summary>
-        public string UIItem1Edit2Text = "Kyle";
+        public string UIApplicantPhoneEditText = "1111111111";
         
         /// <summary>
-        /// Type '{Tab}' in '1' text box
+        /// Type '{Tab}' in 'ApplicantPhone' text box
         /// </summary>
-        public string UIItem1Edit2SendKeys = "{Tab}";
+        public string UIApplicantPhoneEditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type 'Receptionest' in '1' text box
+        /// Type 'Jack' in 'NameAlias' text box
         /// </summary>
-        public string UIItem1Edit3Text = "Receptionest";
-        
-        /// <summary>
-        /// Type '{Tab}' in '1' text box
-        /// </summary>
-        public string UIItem1Edit3SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '$30' in '1' text box
-        /// </summary>
-        public string UIItem1Edit4Text = "$30";
-        
-        /// <summary>
-        /// Type '{Tab}' in '1' text box
-        /// </summary>
-        public string UIItem1Edit4SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '$40' in '1' text box
-        /// </summary>
-        public string UIItem1Edit5Text = "$40";
-        
-        /// <summary>
-        /// Type '{Tab}' in '1' text box
-        /// </summary>
-        public string UIItem1Edit5SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type 'Went back to school' in '1' text box
-        /// </summary>
-        public string UIItem1Edit6Text = "Went back to school";
-        
-        /// <summary>
-        /// Type '{Tab}' in '1' text box
-        /// </summary>
-        public string UIItem1Edit6SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type 'Help customers' in '1' text box
-        /// </summary>
-        public string UIItem1Edit7Text = "Help customers";
-        
-        /// <summary>
-        /// Select 'Yes' in '1' combo box
-        /// </summary>
-        public string UIItem1ComboBoxSelectedItem = "Yes";
+        public string UINameAliasEditText = "Jack";
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'FilleUpEmploymentHistory1Page'
+    /// Parameters to be passed into 'PositionPage'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class FilleUpEmploymentHistory1PageParams
+    public class PositionPageParams
     {
         
         #region Fields
         /// <summary>
-        /// Select 'Receptionist' in 'JobID' combo box
+        /// Type '$40000' in 'SalaryExpectation' text box
         /// </summary>
-        public string UIJobIDComboBoxSelectedItem = "Receptionist";
-        
-        /// <summary>
-        /// Type '$50' in 'SalaryExpectation' text box
-        /// </summary>
-        public string UISalaryExpectationEditText = "$50";
+        public string UISalaryExpectationEditText = "$40000";
         
         /// <summary>
         /// Select 'Yes' in 'FullTime' combo box
@@ -1167,9 +904,9 @@ namespace Kask.UIAutomationTests
         public string UIAvailableForDaysComboBoxSelectedItem = "Yes";
         
         /// <summary>
-        /// Select 'No' in 'AvailableForEvenings' combo box
+        /// Select 'Yes' in 'AvailableForEvenings' combo box
         /// </summary>
-        public string UIAvailableForEveningsComboBoxSelectedItem = "No";
+        public string UIAvailableForEveningsComboBoxSelectedItem = "Yes";
         
         /// <summary>
         /// Select 'No' in 'AvailableForWeekends' combo box
@@ -1177,24 +914,24 @@ namespace Kask.UIAutomationTests
         public string UIAvailableForWeekendsComboBoxSelectedItem = "No";
         
         /// <summary>
-        /// Select '6:00' in 'MondayFrom' combo box
+        /// Select '1:00' in 'MondayFrom' combo box
         /// </summary>
-        public string UIMondayFromComboBoxSelectedItem = "6:00";
+        public string UIMondayFromComboBoxSelectedItem = "1:00";
         
         /// <summary>
-        /// Select '18:00' in 'MondayTo' combo box
+        /// Select '13:00' in 'MondayTo' combo box
         /// </summary>
-        public string UIMondayToComboBoxSelectedItem = "18:00";
+        public string UIMondayToComboBoxSelectedItem = "13:00";
         
         /// <summary>
-        /// Select '6:00' in 'TuesdayFrom' combo box
+        /// Select '4:00' in 'TuesdayFrom' combo box
         /// </summary>
-        public string UITuesdayFromComboBoxSelectedItem = "6:00";
+        public string UITuesdayFromComboBoxSelectedItem = "4:00";
         
         /// <summary>
-        /// Select '18:00' in 'TuesdayTo' combo box
+        /// Select '17:00' in 'TuesdayTo' combo box
         /// </summary>
-        public string UITuesdayToComboBoxSelectedItem = "18:00";
+        public string UITuesdayToComboBoxSelectedItem = "17:00";
         
         /// <summary>
         /// Select '6:00' in 'WednesdayFrom' combo box
@@ -1207,319 +944,14 @@ namespace Kask.UIAutomationTests
         public string UIWednesdayToComboBoxSelectedItem = "18:00";
         
         /// <summary>
-        /// Select '7:00' in 'ThursdayFrom' combo box
+        /// Select '5:00' in 'ThursdayFrom' combo box
         /// </summary>
-        public string UIThursdayFromComboBoxSelectedItem = "7:00";
+        public string UIThursdayFromComboBoxSelectedItem = "5:00";
         
         /// <summary>
-        /// Select '19:00' in 'ThursdayTo' combo box
+        /// Select '17:00' in 'ThursdayTo' combo box
         /// </summary>
-        public string UIThursdayToComboBoxSelectedItem = "19:00";
-        
-        /// <summary>
-        /// Select '10:00' in 'FridayFrom' combo box
-        /// </summary>
-        public string UIFridayFromComboBoxSelectedItem = "10:00";
-        
-        /// <summary>
-        /// Select '22:00' in 'FridayTo' combo box
-        /// </summary>
-        public string UIFridayToComboBoxSelectedItem = "22:00";
-        
-        /// <summary>
-        /// Select '0:00' in 'SaturdayFrom' combo box
-        /// </summary>
-        public string UISaturdayFromComboBoxSelectedItem = "0:00";
-        
-        /// <summary>
-        /// Select '0:00' in 'SundayFrom' combo box
-        /// </summary>
-        public string UISundayFromComboBoxSelectedItem = "0:00";
-        
-        /// <summary>
-        /// Select '0:00' in 'SaturdayTo' combo box
-        /// </summary>
-        public string UISaturdayToComboBoxSelectedItem = "0:00";
-        
-        /// <summary>
-        /// Select '0:00' in 'SundayTo' combo box
-        /// </summary>
-        public string UISundayToComboBoxSelectedItem = "0:00";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'FilleUpEmploymentHistory2Page'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class FilleUpEmploymentHistory2PageParams
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Type 'Cosco' in 'EmployerName_2' text box
-        /// </summary>
-        public string UIEmployerName_2EditText = "Cosco";
-        
-        /// <summary>
-        /// Type '{Tab}' in 'EmployerName_2' text box
-        /// </summary>
-        public string UIEmployerName_2EditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '02/2009' in 'EmployedFrom_2' text box
-        /// </summary>
-        public string UIEmployedFrom_2EditText = "02/2009";
-        
-        /// <summary>
-        /// Type '{Tab}' in 'EmployedFrom_2' text box
-        /// </summary>
-        public string UIEmployedFrom_2EditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '02/2010' in 'EmployedTo_2' text box
-        /// </summary>
-        public string UIEmployedTo_2EditText = "02/2010";
-        
-        /// <summary>
-        /// Type '{Tab}' in 'EmployedTo_2' text box
-        /// </summary>
-        public string UIEmployedTo_2EditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '1111 SW 124nd Ave Portland OR 91111' in '2' text box
-        /// </summary>
-        public string UIItem2EditText = "1111 SW 124nd Ave Portland OR 91111";
-        
-        /// <summary>
-        /// Type '{Tab}' in '2' text box
-        /// </summary>
-        public string UIItem2EditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '222 222 2222' in '2' text box
-        /// </summary>
-        public string UIItem2Edit1Text = "222 222 2222";
-        
-        /// <summary>
-        /// Type '{Tab}' in '2' text box
-        /// </summary>
-        public string UIItem2Edit1SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type 'Adam' in '2' text box
-        /// </summary>
-        public string UIItem2Edit2Text = "Adam";
-        
-        /// <summary>
-        /// Type '{Tab}' in '2' text box
-        /// </summary>
-        public string UIItem2Edit2SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type 'Customer Support' in '2' text box
-        /// </summary>
-        public string UIItem2Edit3Text = "Customer Support";
-        
-        /// <summary>
-        /// Type '{Tab}' in '2' text box
-        /// </summary>
-        public string UIItem2Edit3SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '$30' in '2' text box
-        /// </summary>
-        public string UIItem2Edit4Text = "$30";
-        
-        /// <summary>
-        /// Type '{Tab}' in '2' text box
-        /// </summary>
-        public string UIItem2Edit4SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '$30' in '2' text box
-        /// </summary>
-        public string UIItem2Edit5Text = "$30";
-        
-        /// <summary>
-        /// Type '{Tab}' in '2' text box
-        /// </summary>
-        public string UIItem2Edit5SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type 'My contract ended' in '2' text box
-        /// </summary>
-        public string UIItem2Edit6Text = "My contract ended";
-        
-        /// <summary>
-        /// Type '{Tab}' in '2' text box
-        /// </summary>
-        public string UIItem2Edit6SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type 'Answer customer's questions' in '2' text box
-        /// </summary>
-        public string UIItem2Edit7Text = "Answer customer\'s questions";
-        
-        /// <summary>
-        /// Select 'Yes' in '2' combo box
-        /// </summary>
-        public string UIItem2ComboBoxSelectedItem = "Yes";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'FilleUpPersonalPage'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class FilleUpPersonalPageParams
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Type 'Applicant1Name' in 'FirstName' text box
-        /// </summary>
-        public string UIFirstNameEditText = "Applicant1Name";
-        
-        /// <summary>
-        /// Type '{Tab}' in 'FirstName' text box
-        /// </summary>
-        public string UIFirstNameEditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type 'Applicant1Middle' in 'MiddleName' text box
-        /// </summary>
-        public string UIMiddleNameEditText = "Applicant1Middle";
-        
-        /// <summary>
-        /// Type '{Tab}' in 'MiddleName' text box
-        /// </summary>
-        public string UIMiddleNameEditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type 'Applicant1Last' in 'LastName' text box
-        /// </summary>
-        public string UILastNameEditText = "Applicant1Last";
-        
-        /// <summary>
-        /// Type '{Tab}' in 'LastName' text box
-        /// </summary>
-        public string UILastNameEditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '{Tab}' in 'SSN' text box
-        /// </summary>
-        public string UISSNEditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '2341 SW 10th Ave Portland OR 97000' in 'ApplicantAddress' text box
-        /// </summary>
-        public string UIApplicantAddressEditText = "2341 SW 10th Ave Portland OR 97000";
-        
-        /// <summary>
-        /// Type '{Tab}' in 'ApplicantAddress' text box
-        /// </summary>
-        public string UIApplicantAddressEditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type '333 444 5555' in 'ApplicantPhone' text box
-        /// </summary>
-        public string UIApplicantPhoneEditText = "333 444 5555";
-        
-        /// <summary>
-        /// Type '{Tab}' in 'ApplicantPhone' text box
-        /// </summary>
-        public string UIApplicantPhoneEditSendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Type 'Other' in 'NameAlias' text box
-        /// </summary>
-        public string UINameAliasEditText = "Other";
-        
-        /// <summary>
-        /// Type '********' in 'SSN' text box
-        /// </summary>
-        public string UISSNEditPassword = "213243";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'FilleUpPositionPage'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class FilleUpPositionPageParams
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Select 'Receptionist' in 'JobID' combo box
-        /// </summary>
-        public string UIJobIDComboBoxSelectedItem = "Receptionist";
-        
-        /// <summary>
-        /// Type '$50' in 'SalaryExpectation' text box
-        /// </summary>
-        public string UISalaryExpectationEditText = "$50";
-        
-        /// <summary>
-        /// Select 'No' in 'FullTime' combo box
-        /// </summary>
-        public string UIFullTimeComboBoxSelectedItem = "No";
-        
-        /// <summary>
-        /// Select 'Yes' in 'AvailableForDays' combo box
-        /// </summary>
-        public string UIAvailableForDaysComboBoxSelectedItem = "Yes";
-        
-        /// <summary>
-        /// Select 'No' in 'AvailableForEvenings' combo box
-        /// </summary>
-        public string UIAvailableForEveningsComboBoxSelectedItem = "No";
-        
-        /// <summary>
-        /// Select 'No' in 'AvailableForWeekends' combo box
-        /// </summary>
-        public string UIAvailableForWeekendsComboBoxSelectedItem = "No";
-        
-        /// <summary>
-        /// Select '2:00' in 'MondayFrom' combo box
-        /// </summary>
-        public string UIMondayFromComboBoxSelectedItem = "2:00";
-        
-        /// <summary>
-        /// Select '15:00' in 'MondayTo' combo box
-        /// </summary>
-        public string UIMondayToComboBoxSelectedItem = "15:00";
-        
-        /// <summary>
-        /// Select '4:00' in 'TuesdayFrom' combo box
-        /// </summary>
-        public string UITuesdayFromComboBoxSelectedItem = "4:00";
-        
-        /// <summary>
-        /// Select '21:00' in 'TuesdayTo' combo box
-        /// </summary>
-        public string UITuesdayToComboBoxSelectedItem = "21:00";
-        
-        /// <summary>
-        /// Select '8:00' in 'WednesdayFrom' combo box
-        /// </summary>
-        public string UIWednesdayFromComboBoxSelectedItem = "8:00";
-        
-        /// <summary>
-        /// Select '16:00' in 'WednesdayTo' combo box
-        /// </summary>
-        public string UIWednesdayToComboBoxSelectedItem = "16:00";
-        
-        /// <summary>
-        /// Select '7:00' in 'ThursdayFrom' combo box
-        /// </summary>
-        public string UIThursdayFromComboBoxSelectedItem = "7:00";
-        
-        /// <summary>
-        /// Select '20:00' in 'ThursdayTo' combo box
-        /// </summary>
-        public string UIThursdayToComboBoxSelectedItem = "20:00";
+        public string UIThursdayToComboBoxSelectedItem = "17:00";
         
         /// <summary>
         /// Select '8:00' in 'FridayFrom' combo box
@@ -1527,44 +959,274 @@ namespace Kask.UIAutomationTests
         public string UIFridayFromComboBoxSelectedItem = "8:00";
         
         /// <summary>
-        /// Select '14:00' in 'FridayTo' combo box
+        /// Select '23:00' in 'FridayTo' combo box
         /// </summary>
-        public string UIFridayToComboBoxSelectedItem = "14:00";
+        public string UIFridayToComboBoxSelectedItem = "23:00";
         
         /// <summary>
-        /// Select '6:00' in 'SaturdayFrom' combo box
+        /// Select '0:00' in 'SaturdayFrom' combo box
         /// </summary>
-        public string UISaturdayFromComboBoxSelectedItem = "6:00";
+        public string UISaturdayFromComboBoxSelectedItem = "0:00";
         
         /// <summary>
-        /// Select '18:00' in 'SaturdayTo' combo box
+        /// Select '0:00' in 'SaturdayTo' combo box
         /// </summary>
-        public string UISaturdayToComboBoxSelectedItem = "18:00";
-        
-        /// <summary>
-        /// Select '5:00' in 'SundayFrom' combo box
-        /// </summary>
-        public string UISundayFromComboBoxSelectedItem = "5:00";
-        
-        /// <summary>
-        /// Select '11:00' in 'SundayTo' combo box
-        /// </summary>
-        public string UISundayToComboBoxSelectedItem = "11:00";
+        public string UISaturdayToComboBoxSelectedItem = "0:00";
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'FillUpEmploymentHistory3Page'
+    /// Parameters to be passed into 'EmployementHistory1'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class FillUpEmploymentHistory3PageParams
+    public class EmployementHistory1Params
     {
         
         #region Fields
         /// <summary>
-        /// Type 'safeway3' in 'EmployerName_3' text box
+        /// Type 'SafeWay' in 'EmployerName_1' text box
         /// </summary>
-        public string UIEmployerName_3EditText = "safeway3";
+        public string UIEmployerName_1EditText = "SafeWay";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'EmployerName_1' text box
+        /// </summary>
+        public string UIEmployerName_1EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '02/2001' in 'EmployedFrom_1' text box
+        /// </summary>
+        public string UIEmployedFrom_1EditText = "02/2001";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'EmployedFrom_1' text box
+        /// </summary>
+        public string UIEmployedFrom_1EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '05/2004' in 'EmployedTo_1' text box
+        /// </summary>
+        public string UIEmployedTo_1EditText = "05/2004";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'EmployedTo_1' text box
+        /// </summary>
+        public string UIEmployedTo_1EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'Portland OR' in '1' text box
+        /// </summary>
+        public string UIItem1EditText = "Portland OR";
+        
+        /// <summary>
+        /// Type '{Tab}' in '1' text box
+        /// </summary>
+        public string UIItem1EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '2222222222' in '1' text box
+        /// </summary>
+        public string UIItem1Edit1Text = "2222222222";
+        
+        /// <summary>
+        /// Type '{Tab}' in '1' text box
+        /// </summary>
+        public string UIItem1Edit1SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'Adam' in '1' text box
+        /// </summary>
+        public string UIItem1Edit2Text = "Adam";
+        
+        /// <summary>
+        /// Type '{Tab}' in '1' text box
+        /// </summary>
+        public string UIItem1Edit2SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'Cashier' in '1' text box
+        /// </summary>
+        public string UIItem1Edit3Text = "Cashier";
+        
+        /// <summary>
+        /// Type '{Tab}' in '1' text box
+        /// </summary>
+        public string UIItem1Edit3SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '$35000' in '1' text box
+        /// </summary>
+        public string UIItem1Edit4Text = "$35000";
+        
+        /// <summary>
+        /// Type '{Tab}' in '1' text box
+        /// </summary>
+        public string UIItem1Edit4SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '$40000' in '1' text box
+        /// </summary>
+        public string UIItem1Edit5Text = "$40000";
+        
+        /// <summary>
+        /// Type '{Tab}' in '1' text box
+        /// </summary>
+        public string UIItem1Edit5SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'School' in '1' text box
+        /// </summary>
+        public string UIItem1Edit6Text = "School";
+        
+        /// <summary>
+        /// Type '{Tab}' in '1' text box
+        /// </summary>
+        public string UIItem1Edit6SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'Cashier' in '1' text box
+        /// </summary>
+        public string UIItem1Edit7Text = "Cashier";
+        
+        /// <summary>
+        /// Select 'Yes' in '1' combo box
+        /// </summary>
+        public string UIItem1ComboBoxSelectedItem = "Yes";
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'EmployementHistory2'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class EmployementHistory2Params
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Type 'Costco' in 'EmployerName_2' text box
+        /// </summary>
+        public string UIEmployerName_2EditText = "Costco";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'EmployerName_2' text box
+        /// </summary>
+        public string UIEmployerName_2EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '03/2006' in 'EmployedFrom_2' text box
+        /// </summary>
+        public string UIEmployedFrom_2EditText = "03/2006";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'EmployedFrom_2' text box
+        /// </summary>
+        public string UIEmployedFrom_2EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '04/2008' in 'EmployedTo_2' text box
+        /// </summary>
+        public string UIEmployedTo_2EditText = "04/2008";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'EmployedTo_2' text box
+        /// </summary>
+        public string UIEmployedTo_2EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'Vancouver WA' in '2' text box
+        /// </summary>
+        public string UIItem2EditText = "Vancouver WA";
+        
+        /// <summary>
+        /// Type '{Tab}' in '2' text box
+        /// </summary>
+        public string UIItem2EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '4444444444' in '2' text box
+        /// </summary>
+        public string UIItem2Edit1Text = "4444444444";
+        
+        /// <summary>
+        /// Type '{Tab}' in '2' text box
+        /// </summary>
+        public string UIItem2Edit1SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'John' in '2' text box
+        /// </summary>
+        public string UIItem2Edit2Text = "John";
+        
+        /// <summary>
+        /// Type '{Tab}' in '2' text box
+        /// </summary>
+        public string UIItem2Edit2SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'Manager' in '2' text box
+        /// </summary>
+        public string UIItem2Edit3Text = "Manager";
+        
+        /// <summary>
+        /// Type '{Tab}' in '2' text box
+        /// </summary>
+        public string UIItem2Edit3SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '$40000' in '2' text box
+        /// </summary>
+        public string UIItem2Edit4Text = "$40000";
+        
+        /// <summary>
+        /// Type '{Tab}' in '2' text box
+        /// </summary>
+        public string UIItem2Edit4SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '$42000' in '2' text box
+        /// </summary>
+        public string UIItem2Edit5Text = "$42000";
+        
+        /// <summary>
+        /// Type '{Tab}' in '2' text box
+        /// </summary>
+        public string UIItem2Edit5SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'Moving to another state' in '2' text box
+        /// </summary>
+        public string UIItem2Edit6Text = "Moving to another state";
+        
+        /// <summary>
+        /// Type '{Tab}' in '2' text box
+        /// </summary>
+        public string UIItem2Edit6SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'Manage employees' in '2' text box
+        /// </summary>
+        public string UIItem2Edit7Text = "Manage employees";
+        
+        /// <summary>
+        /// Select 'No' in '2' combo box
+        /// </summary>
+        public string UIItem2ComboBoxSelectedItem = "No";
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'EmployementHistory3'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class EmployementHistory3Params
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Type 'Fredmyer' in 'EmployerName_3' text box
+        /// </summary>
+        public string UIEmployerName_3EditText = "Fredmyer";
         
         /// <summary>
         /// Type '{Tab}' in 'EmployerName_3' text box
@@ -1572,9 +1234,9 @@ namespace Kask.UIAutomationTests
         public string UIEmployerName_3EditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '04/2001' in 'EmployedFrom_3' text box
+        /// Type '06/2010' in 'EmployedFrom_3' text box
         /// </summary>
-        public string UIEmployedFrom_3EditText = "04/2001";
+        public string UIEmployedFrom_3EditText = "06/2010";
         
         /// <summary>
         /// Type '{Tab}' in 'EmployedFrom_3' text box
@@ -1582,9 +1244,9 @@ namespace Kask.UIAutomationTests
         public string UIEmployedFrom_3EditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '05/2010' in 'EmployedTo_3' text box
+        /// Type '05/2012' in 'EmployedTo_3' text box
         /// </summary>
-        public string UIEmployedTo_3EditText = "05/2010";
+        public string UIEmployedTo_3EditText = "05/2012";
         
         /// <summary>
         /// Type '{Tab}' in 'EmployedTo_3' text box
@@ -1592,9 +1254,9 @@ namespace Kask.UIAutomationTests
         public string UIEmployedTo_3EditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '3212 SE 234th Ave Vancouver WA 97223' in '3' text box
+        /// Type 'Beaverton OR' in '3' text box
         /// </summary>
-        public string UIItem3EditText = "3212 SE 234th Ave Vancouver WA 97223";
+        public string UIItem3EditText = "Beaverton OR";
         
         /// <summary>
         /// Type '{Tab}' in '3' text box
@@ -1602,9 +1264,9 @@ namespace Kask.UIAutomationTests
         public string UIItem3EditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '3334445555' in '3' text box
+        /// Type '4444444444' in '3' text box
         /// </summary>
-        public string UIItem3Edit1Text = "3334445555";
+        public string UIItem3Edit1Text = "4444444444";
         
         /// <summary>
         /// Type '{Tab}' in '3' text box
@@ -1612,9 +1274,9 @@ namespace Kask.UIAutomationTests
         public string UIItem3Edit1SendKeys = "{Tab}";
         
         /// <summary>
-        /// Type 'Dany' in '3' text box
+        /// Type 'Liz' in '3' text box
         /// </summary>
-        public string UIItem3Edit2Text = "Dany";
+        public string UIItem3Edit2Text = "Liz";
         
         /// <summary>
         /// Type '{Tab}' in '3' text box
@@ -1622,9 +1284,9 @@ namespace Kask.UIAutomationTests
         public string UIItem3Edit2SendKeys = "{Tab}";
         
         /// <summary>
-        /// Type 'Cashier' in '3' text box
+        /// Type 'Customer service' in '3' text box
         /// </summary>
-        public string UIItem3Edit3Text = "Cashier";
+        public string UIItem3Edit3Text = "Customer service";
         
         /// <summary>
         /// Type '{Tab}' in '3' text box
@@ -1632,9 +1294,9 @@ namespace Kask.UIAutomationTests
         public string UIItem3Edit3SendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '$30' in '3' text box
+        /// Type '$30000' in '3' text box
         /// </summary>
-        public string UIItem3Edit4Text = "$30";
+        public string UIItem3Edit4Text = "$30000";
         
         /// <summary>
         /// Type '{Tab}' in '3' text box
@@ -1642,9 +1304,9 @@ namespace Kask.UIAutomationTests
         public string UIItem3Edit4SendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '$40' in '3' text box
+        /// Type '$30000' in '3' text box
         /// </summary>
-        public string UIItem3Edit5Text = "$40";
+        public string UIItem3Edit5Text = "$30000";
         
         /// <summary>
         /// Type '{Tab}' in '3' text box
@@ -1652,9 +1314,9 @@ namespace Kask.UIAutomationTests
         public string UIItem3Edit5SendKeys = "{Tab}";
         
         /// <summary>
-        /// Type 'Not enough work' in '3' text box
+        /// Type 'Not enough hours offered' in '3' text box
         /// </summary>
-        public string UIItem3Edit6Text = "Not enough work";
+        public string UIItem3Edit6Text = "Not enough hours offered";
         
         /// <summary>
         /// Type '{Tab}' in '3' text box
@@ -1662,27 +1324,22 @@ namespace Kask.UIAutomationTests
         public string UIItem3Edit6SendKeys = "{Tab}";
         
         /// <summary>
-        /// Type 'Just customers for items they buy' in '3' text box
+        /// Type 'Helping customers' in '3' text box
         /// </summary>
-        public string UIItem3Edit7Text = "Just customers for items they buy";
+        public string UIItem3Edit7Text = "Helping customers";
         
         /// <summary>
-        /// Type '{Tab}' in '3' text box
+        /// Select 'Yes' in '3' combo box
         /// </summary>
-        public string UIItem3Edit7SendKeys = "{Tab}";
-        
-        /// <summary>
-        /// Select 'No' in '3' combo box
-        /// </summary>
-        public string UIItem3ComboBoxSelectedItem = "No";
+        public string UIItem3ComboBoxSelectedItem = "Yes";
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'FillUpEducation1Page'
+    /// Parameters to be passed into 'EducationPage1'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class FillUpEducation1PageParams
+    public class EducationPage1Params
     {
         
         #region Fields
@@ -1702,11 +1359,6 @@ namespace Kask.UIAutomationTests
         public string UIItem1EditText = "Portland OR";
         
         /// <summary>
-        /// Type '{Tab}' in '1' text box
-        /// </summary>
-        public string UIItem1EditSendKeys = "{Tab}";
-        
-        /// <summary>
         /// Type '09/2000' in '1' text box
         /// </summary>
         public string UIItem1Edit1Text = "09/2000";
@@ -1717,39 +1369,34 @@ namespace Kask.UIAutomationTests
         public string UIItem1Edit1SendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '06/2002' in '1' text box
+        /// Type '10/2011' in '1' text box
         /// </summary>
-        public string UIItem1Edit2Text = "06/2002";
+        public string UIItem1Edit2Text = "10/2011";
         
         /// <summary>
-        /// Select 'Yes' in 'Graduated_1' combo box
+        /// Select 'No' in 'Graduated_1' combo box
         /// </summary>
-        public string UIGraduated_1ComboBoxSelectedItem = "Yes";
+        public string UIGraduated_1ComboBoxSelectedItem = "No";
         
         /// <summary>
-        /// Type '' in '1' text box
+        /// Type 'None' in '1' text box
         /// </summary>
-        public string UIItem1Edit3Text = "";
-        
-        /// <summary>
-        /// Type 'Associate Degree' in '1' text box
-        /// </summary>
-        public string UIItem1Edit3Text1 = "Associate Degree";
+        public string UIItem1Edit3Text = "None";
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'FillUpEducation2Page'
+    /// Parameters to be passed into 'EducationPage2'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class FillUpEducation2PageParams
+    public class EducationPage2Params
     {
         
         #region Fields
         /// <summary>
-        /// Type 'OIT' in 'SchoolName_2' text box
+        /// Type 'Pcc' in 'SchoolName_2' text box
         /// </summary>
-        public string UISchoolName_2EditText = "OIT";
+        public string UISchoolName_2EditText = "Pcc";
         
         /// <summary>
         /// Type '{Tab}' in 'SchoolName_2' text box
@@ -1757,9 +1404,9 @@ namespace Kask.UIAutomationTests
         public string UISchoolName_2EditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type 'Wilsonvill portland' in '2' text box
+        /// Type 'Beverton OR' in '2' text box
         /// </summary>
-        public string UIItem2EditText = "Wilsonvill portland";
+        public string UIItem2EditText = "Beverton OR";
         
         /// <summary>
         /// Type '{Tab}' in '2' text box
@@ -1767,9 +1414,9 @@ namespace Kask.UIAutomationTests
         public string UIItem2EditSendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '02/2004' in '2' text box
+        /// Type '08/2004' in '2' text box
         /// </summary>
-        public string UIItem2Edit1Text = "02/2004";
+        public string UIItem2Edit1Text = "08/2004";
         
         /// <summary>
         /// Type '{Tab}' in '2' text box
@@ -1777,108 +1424,89 @@ namespace Kask.UIAutomationTests
         public string UIItem2Edit1SendKeys = "{Tab}";
         
         /// <summary>
-        /// Type '04/2005' in '2' text box
+        /// Type '07/2005' in '2' text box
         /// </summary>
-        public string UIItem2Edit2Text = "04/2005";
+        public string UIItem2Edit2Text = "07/2005";
         
         /// <summary>
-        /// Select 'No' in 'Graduated_2' combo box
+        /// Select 'Yes' in 'Graduated_2' combo box
         /// </summary>
-        public string UIGraduated_2ComboBoxSelectedItem = "No";
+        public string UIGraduated_2ComboBoxSelectedItem = "Yes";
         
         /// <summary>
-        /// Type 'NA' in '2' text box
+        /// Type 'Communication' in '2' text box
         /// </summary>
-        public string UIItem2Edit3Text = "NA";
+        public string UIItem2Edit3Text = "Communication";
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'FillUpEducation3Page'
+    /// Parameters to be passed into 'EducationPage3'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class FillUpEducation3PageParams
+    public class EducationPage3Params
     {
         
         #region Fields
         /// <summary>
-        /// Type 'NA' in 'SchoolName_3' text box
+        /// Type 'OIT' in 'SchoolName_3' text box
         /// </summary>
-        public string UISchoolName_3EditText = "NA";
+        public string UISchoolName_3EditText = "OIT";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'SchoolName_3' text box
+        /// </summary>
+        public string UISchoolName_3EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'Willsonville' in '3' text box
+        /// </summary>
+        public string UIItem3EditText = "Willsonville";
+        
+        /// <summary>
+        /// Type '{Tab}' in '3' text box
+        /// </summary>
+        public string UIItem3EditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '02/2010' in '3' text box
+        /// </summary>
+        public string UIItem3Edit1Text = "02/2010";
+        
+        /// <summary>
+        /// Type '{Tab}' in '3' text box
+        /// </summary>
+        public string UIItem3Edit1SendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '06/2011' in '3' text box
+        /// </summary>
+        public string UIItem3Edit2Text = "06/2011";
+        
+        /// <summary>
+        /// Select 'No' in 'Graduated_3' combo box
+        /// </summary>
+        public string UIGraduated_3ComboBoxSelectedItem = "No";
+        
+        /// <summary>
+        /// Type 'None' in '3' text box
+        /// </summary>
+        public string UIItem3Edit3Text = "None";
         #endregion
     }
     
+    /// <summary>
+    /// Parameters to be passed into 'SubmitApplication'
+    /// </summary>
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIGoogleInternetExplorWindow : BrowserWindow
+    public class SubmitApplicationParams
     {
         
-        public UIGoogleInternetExplorWindow()
-        {
-            #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Google";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.WindowTitles.Add("Google");
-            this.WindowTitles.Add("http://localhost:51309/");
-            #endregion
-        }
-        
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-        
-        #region Properties
-        public UIAddressComboControlToolBar UIAddressComboControlToolBar
-        {
-            get
-            {
-                if ((this.mUIAddressComboControlToolBar == null))
-                {
-                    this.mUIAddressComboControlToolBar = new UIAddressComboControlToolBar(this);
-                }
-                return this.mUIAddressComboControlToolBar;
-            }
-        }
-        #endregion
-        
         #region Fields
-        private UIAddressComboControlToolBar mUIAddressComboControlToolBar;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIAddressComboControlToolBar : WinToolBar
-    {
-        
-        public UIAddressComboControlToolBar(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[WinToolBar.PropertyNames.Name] = "Address Combo Control";
-            this.WindowTitles.Add("Google");
-            #endregion
-        }
-        
-        #region Properties
-        public WinMenuItem UIItemMenuItem
-        {
-            get
-            {
-                if ((this.mUIItemMenuItem == null))
-                {
-                    this.mUIItemMenuItem = new WinMenuItem(this);
-                    #region Search Criteria
-                    this.mUIItemMenuItem.SearchProperties[WinMenuItem.PropertyNames.Instance] = "2";
-                    this.mUIItemMenuItem.WindowTitles.Add("Google");
-                    #endregion
-                }
-                return this.mUIItemMenuItem;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private WinMenuItem mUIItemMenuItem;
+        /// <summary>
+        /// Select 'acknowledgeAccurateDataCheckbox' check box
+        /// </summary>
+        public bool UIAcknowledgeAccurateDCheckBoxChecked = true;
         #endregion
     }
     
@@ -1960,6 +1588,78 @@ namespace Kask.UIAutomationTests
                 return this.mUIKaskKioskDocument4;
             }
         }
+        
+        public UIKaskKioskDocument5 UIKaskKioskDocument5
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument5 == null))
+                {
+                    this.mUIKaskKioskDocument5 = new UIKaskKioskDocument5(this);
+                }
+                return this.mUIKaskKioskDocument5;
+            }
+        }
+        
+        public UIKaskKioskDocument6 UIKaskKioskDocument6
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument6 == null))
+                {
+                    this.mUIKaskKioskDocument6 = new UIKaskKioskDocument6(this);
+                }
+                return this.mUIKaskKioskDocument6;
+            }
+        }
+        
+        public UIKaskKioskDocument7 UIKaskKioskDocument7
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument7 == null))
+                {
+                    this.mUIKaskKioskDocument7 = new UIKaskKioskDocument7(this);
+                }
+                return this.mUIKaskKioskDocument7;
+            }
+        }
+        
+        public UIKaskKioskDocument8 UIKaskKioskDocument8
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument8 == null))
+                {
+                    this.mUIKaskKioskDocument8 = new UIKaskKioskDocument8(this);
+                }
+                return this.mUIKaskKioskDocument8;
+            }
+        }
+        
+        public UIKaskKioskDocument9 UIKaskKioskDocument9
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument9 == null))
+                {
+                    this.mUIKaskKioskDocument9 = new UIKaskKioskDocument9(this);
+                }
+                return this.mUIKaskKioskDocument9;
+            }
+        }
+        
+        public UIKaskKioskDocument10 UIKaskKioskDocument10
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument10 == null))
+                {
+                    this.mUIKaskKioskDocument10 = new UIKaskKioskDocument10(this);
+                }
+                return this.mUIKaskKioskDocument10;
+            }
+        }
         #endregion
         
         #region Fields
@@ -1972,6 +1672,18 @@ namespace Kask.UIAutomationTests
         private UIKaskKioskDocument3 mUIKaskKioskDocument3;
         
         private UIKaskKioskDocument4 mUIKaskKioskDocument4;
+        
+        private UIKaskKioskDocument5 mUIKaskKioskDocument5;
+        
+        private UIKaskKioskDocument6 mUIKaskKioskDocument6;
+        
+        private UIKaskKioskDocument7 mUIKaskKioskDocument7;
+        
+        private UIKaskKioskDocument8 mUIKaskKioskDocument8;
+        
+        private UIKaskKioskDocument9 mUIKaskKioskDocument9;
+        
+        private UIKaskKioskDocument10 mUIKaskKioskDocument10;
         #endregion
     }
     
@@ -1994,39 +1706,51 @@ namespace Kask.UIAutomationTests
         }
         
         #region Properties
-        public UISuperContainerPane UISuperContainerPane
+        public HtmlHyperlink UIViewJobOpeningsHyperlink
         {
             get
             {
-                if ((this.mUISuperContainerPane == null))
+                if ((this.mUIViewJobOpeningsHyperlink == null))
                 {
-                    this.mUISuperContainerPane = new UISuperContainerPane(this);
+                    this.mUIViewJobOpeningsHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIViewJobOpeningsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIViewJobOpeningsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIViewJobOpeningsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIViewJobOpeningsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "View Job Openings";
+                    this.mUIViewJobOpeningsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/JobOpenings/ViewCurrentOpenings";
+                    this.mUIViewJobOpeningsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIViewJobOpeningsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/JobOpenings/ViewCurrentOpenings";
+                    this.mUIViewJobOpeningsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = "btn btn-lg btn-default";
+                    this.mUIViewJobOpeningsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "class=\"btn btn-lg btn-default\" href=\"/Jo";
+                    this.mUIViewJobOpeningsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "3";
+                    this.mUIViewJobOpeningsHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
                 }
-                return this.mUISuperContainerPane;
+                return this.mUIViewJobOpeningsHyperlink;
             }
         }
         #endregion
         
         #region Fields
-        private UISuperContainerPane mUISuperContainerPane;
+        private HtmlHyperlink mUIViewJobOpeningsHyperlink;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UISuperContainerPane : HtmlDiv
+    public class UIKaskKioskDocument1 : HtmlDocument
     {
         
-        public UISuperContainerPane(UITestControl searchLimitContainer) : 
+        public UIKaskKioskDocument1(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
-            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "superContainer";
-            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Welcome to Kask Kiosk\r\n\r\nApply     Log I";
-            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "id=\"superContainer\"";
-            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "1";
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/JobOpenings/ViewCurrentOpenings";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/JobOpenings/ViewCurrentOpenings";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
@@ -2046,10 +1770,10 @@ namespace Kask.UIAutomationTests
                     this.mUIApplyHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Apply";
                     this.mUIApplyHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
                     this.mUIApplyHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
-                    this.mUIApplyHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create";
+                    this.mUIApplyHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5";
                     this.mUIApplyHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = "btn btn-lg btn-default";
                     this.mUIApplyHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "class=\"btn btn-lg btn-default\" href=\"/Ap";
-                    this.mUIApplyHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "1";
+                    this.mUIApplyHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "3";
                     this.mUIApplyHyperlink.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2064,10 +1788,10 @@ namespace Kask.UIAutomationTests
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument1 : HtmlDocument
+    public class UIKaskKioskDocument2 : HtmlDocument
     {
         
-        public UIKaskKioskDocument1(UITestControl searchLimitContainer) : 
+        public UIKaskKioskDocument2(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -2076,7 +1800,7 @@ namespace Kask.UIAutomationTests
             this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
             this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
             this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
@@ -2277,51 +2001,134 @@ namespace Kask.UIAutomationTests
                 return this.mUINextButton;
             }
         }
+        #endregion
         
-        public HtmlButton UINextButton1
+        #region Fields
+        private UIMenuCustom mUIMenuCustom;
+        
+        private HtmlEdit mUIFirstNameEdit;
+        
+        private HtmlEdit mUIMiddleNameEdit;
+        
+        private HtmlEdit mUILastNameEdit;
+        
+        private HtmlEdit mUISSNEdit;
+        
+        private HtmlEdit mUIApplicantAddressEdit;
+        
+        private HtmlEdit mUIApplicantPhoneEdit;
+        
+        private HtmlEdit mUINameAliasEdit;
+        
+        private HtmlButton mUINextButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIMenuCustom : HtmlCustom
+    {
+        
+        public UIMenuCustom(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties["TagName"] = "UL";
+            this.SearchProperties["Id"] = "menu";
+            this.SearchProperties[UITestControl.PropertyNames.Name] = null;
+            this.FilterProperties["Class"] = "text-center";
+            this.FilterProperties["ControlDefinition"] = "class=\"text-center\" id=\"menu\"";
+            this.FilterProperties["TagInstance"] = "1";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlHyperlink UIWelcomeHyperlink
         {
             get
             {
-                if ((this.mUINextButton1 == null))
+                if ((this.mUIWelcomeHyperlink == null))
                 {
-                    this.mUINextButton1 = new HtmlButton(this);
+                    this.mUIWelcomeHyperlink = new HtmlHyperlink(this);
                     #region Search Criteria
-                    this.mUINextButton1.SearchProperties[HtmlButton.PropertyNames.Id] = "moveDownExample";
-                    this.mUINextButton1.SearchProperties[HtmlButton.PropertyNames.Name] = null;
-                    this.mUINextButton1.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Next →";
-                    this.mUINextButton1.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
-                    this.mUINextButton1.FilterProperties[HtmlButton.PropertyNames.Title] = null;
-                    this.mUINextButton1.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-info";
-                    this.mUINextButton1.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-info\" id=\"moveDownExample";
-                    this.mUINextButton1.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "1";
-                    this.mUINextButton1.WindowTitles.Add("Kask Kiosk");
+                    this.mUIWelcomeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIWelcomeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIWelcomeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIWelcomeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Welcome";
+                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
+                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#welcome";
+                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#welcome\"";
+                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "2";
+                    this.mUIWelcomeHyperlink.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
-                return this.mUINextButton1;
+                return this.mUIWelcomeHyperlink;
             }
         }
         
-        public HtmlComboBox UIJobIDComboBox
+        public HtmlHyperlink UIPersonalHyperlink
         {
             get
             {
-                if ((this.mUIJobIDComboBox == null))
+                if ((this.mUIPersonalHyperlink == null))
                 {
-                    this.mUIJobIDComboBox = new HtmlComboBox(this);
+                    this.mUIPersonalHyperlink = new HtmlHyperlink(this);
                     #region Search Criteria
-                    this.mUIJobIDComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "JobID";
-                    this.mUIJobIDComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "JobID";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "4";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"JobID\" class=\"form-control\" id=\"Jo";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "1";
-                    this.mUIJobIDComboBox.WindowTitles.Add("Kask Kiosk");
+                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Personal";
+                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
+                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#personal";
+                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#personal\"";
+                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "3";
+                    this.mUIPersonalHyperlink.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
-                return this.mUIJobIDComboBox;
+                return this.mUIPersonalHyperlink;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlHyperlink mUIWelcomeHyperlink;
+        
+        private HtmlHyperlink mUIPersonalHyperlink;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskDocument3 : HtmlDocument
+    {
+        
+        public UIKaskKioskDocument3(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#position";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public UIMenuCustom1 UIMenuCustom
+        {
+            get
+            {
+                if ((this.mUIMenuCustom == null))
+                {
+                    this.mUIMenuCustom = new UIMenuCustom1(this);
+                }
+                return this.mUIMenuCustom;
             }
         }
         
@@ -2340,7 +2147,7 @@ namespace Kask.UIAutomationTests
                     this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SalaryExpectation\" class=\"form-con";
-                    this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "9";
+                    this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "10";
                     this.mUISalaryExpectationEdit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2364,7 +2171,7 @@ namespace Kask.UIAutomationTests
                     this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
                     this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"FullTime\" class=\"form-control\" id=";
-                    this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "2";
+                    this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "1";
                     this.mUIFullTimeComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2388,7 +2195,7 @@ namespace Kask.UIAutomationTests
                     this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
                     this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"AvailableForDays\" class=\"form-cont";
-                    this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "3";
+                    this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "2";
                     this.mUIAvailableForDaysComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2412,7 +2219,7 @@ namespace Kask.UIAutomationTests
                     this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
                     this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"AvailableForEvenings\" class=\"form-";
-                    this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "4";
+                    this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "3";
                     this.mUIAvailableForEveningsComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2436,7 +2243,7 @@ namespace Kask.UIAutomationTests
                     this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
                     this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"AvailableForWeekends\" class=\"form-";
-                    this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "5";
+                    this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "4";
                     this.mUIAvailableForWeekendsComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2460,7 +2267,7 @@ namespace Kask.UIAutomationTests
                     this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"MondayFrom\" class=\"form-control\" i";
-                    this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "6";
+                    this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "5";
                     this.mUIMondayFromComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2484,7 +2291,7 @@ namespace Kask.UIAutomationTests
                     this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"MondayTo\" class=\"form-control\" id=";
-                    this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "13";
+                    this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "12";
                     this.mUIMondayToComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2508,7 +2315,7 @@ namespace Kask.UIAutomationTests
                     this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"TuesdayFrom\" class=\"form-control\" ";
-                    this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "7";
+                    this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "6";
                     this.mUITuesdayFromComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2532,7 +2339,7 @@ namespace Kask.UIAutomationTests
                     this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"TuesdayTo\" class=\"form-control\" id";
-                    this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "14";
+                    this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "13";
                     this.mUITuesdayToComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2556,7 +2363,7 @@ namespace Kask.UIAutomationTests
                     this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"WednesdayFrom\" class=\"form-control";
-                    this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "8";
+                    this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "7";
                     this.mUIWednesdayFromComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2580,7 +2387,7 @@ namespace Kask.UIAutomationTests
                     this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"WednesdayTo\" class=\"form-control\" ";
-                    this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "15";
+                    this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "14";
                     this.mUIWednesdayToComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2604,7 +2411,7 @@ namespace Kask.UIAutomationTests
                     this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"ThursdayFrom\" class=\"form-control\"";
-                    this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "9";
+                    this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "8";
                     this.mUIThursdayFromComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2628,7 +2435,7 @@ namespace Kask.UIAutomationTests
                     this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"ThursdayTo\" class=\"form-control\" i";
-                    this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "16";
+                    this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "15";
                     this.mUIThursdayToComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2652,7 +2459,7 @@ namespace Kask.UIAutomationTests
                     this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"FridayFrom\" class=\"form-control\" i";
-                    this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "10";
+                    this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "9";
                     this.mUIFridayFromComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2676,7 +2483,7 @@ namespace Kask.UIAutomationTests
                     this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"FridayTo\" class=\"form-control\" id=";
-                    this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "17";
+                    this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "16";
                     this.mUIFridayToComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2700,7 +2507,7 @@ namespace Kask.UIAutomationTests
                     this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SaturdayFrom\" class=\"form-control\"";
-                    this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "11";
+                    this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "10";
                     this.mUISaturdayFromComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2724,7 +2531,7 @@ namespace Kask.UIAutomationTests
                     this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
                     this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SaturdayTo\" class=\"form-control\" i";
-                    this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "18";
+                    this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "17";
                     this.mUISaturdayToComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -2732,77 +2539,32 @@ namespace Kask.UIAutomationTests
             }
         }
         
-        public HtmlComboBox UISundayFromComboBox
+        public HtmlButton UINextButton
         {
             get
             {
-                if ((this.mUISundayFromComboBox == null))
+                if ((this.mUINextButton == null))
                 {
-                    this.mUISundayFromComboBox = new HtmlComboBox(this);
+                    this.mUINextButton = new HtmlButton(this);
                     #region Search Criteria
-                    this.mUISundayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "SundayFrom";
-                    this.mUISundayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "SundayFrom";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SundayFrom\" class=\"form-control\" i";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "12";
-                    this.mUISundayFromComboBox.WindowTitles.Add("Kask Kiosk");
+                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Id] = "moveDown";
+                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Next →";
+                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
+                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-info";
+                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-info\" id=\"moveDown\"";
+                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "3";
+                    this.mUINextButton.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
-                return this.mUISundayFromComboBox;
-            }
-        }
-        
-        public HtmlComboBox UISundayToComboBox
-        {
-            get
-            {
-                if ((this.mUISundayToComboBox == null))
-                {
-                    this.mUISundayToComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUISundayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "SundayTo";
-                    this.mUISundayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "SundayTo";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SundayTo\" class=\"form-control\" id=";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "19";
-                    this.mUISundayToComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUISundayToComboBox;
+                return this.mUINextButton;
             }
         }
         #endregion
         
         #region Fields
-        private UIMenuCustom mUIMenuCustom;
-        
-        private HtmlEdit mUIFirstNameEdit;
-        
-        private HtmlEdit mUIMiddleNameEdit;
-        
-        private HtmlEdit mUILastNameEdit;
-        
-        private HtmlEdit mUISSNEdit;
-        
-        private HtmlEdit mUIApplicantAddressEdit;
-        
-        private HtmlEdit mUIApplicantPhoneEdit;
-        
-        private HtmlEdit mUINameAliasEdit;
-        
-        private HtmlButton mUINextButton;
-        
-        private HtmlButton mUINextButton1;
-        
-        private HtmlComboBox mUIJobIDComboBox;
+        private UIMenuCustom1 mUIMenuCustom;
         
         private HtmlEdit mUISalaryExpectationEdit;
         
@@ -2838,17 +2600,15 @@ namespace Kask.UIAutomationTests
         
         private HtmlComboBox mUISaturdayToComboBox;
         
-        private HtmlComboBox mUISundayFromComboBox;
-        
-        private HtmlComboBox mUISundayToComboBox;
+        private HtmlButton mUINextButton;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIMenuCustom : HtmlCustom
+    public class UIMenuCustom1 : HtmlCustom
     {
         
-        public UIMenuCustom(UITestControl searchLimitContainer) : 
+        public UIMenuCustom1(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -2863,56 +2623,6 @@ namespace Kask.UIAutomationTests
         }
         
         #region Properties
-        public HtmlHyperlink UIPersonalHyperlink
-        {
-            get
-            {
-                if ((this.mUIPersonalHyperlink == null))
-                {
-                    this.mUIPersonalHyperlink = new HtmlHyperlink(this);
-                    #region Search Criteria
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Personal";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create#personal";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#personal\"";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "3";
-                    this.mUIPersonalHyperlink.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIPersonalHyperlink;
-            }
-        }
-        
-        public HtmlHyperlink UIWelcomeHyperlink
-        {
-            get
-            {
-                if ((this.mUIWelcomeHyperlink == null))
-                {
-                    this.mUIWelcomeHyperlink = new HtmlHyperlink(this);
-                    #region Search Criteria
-                    this.mUIWelcomeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
-                    this.mUIWelcomeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
-                    this.mUIWelcomeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
-                    this.mUIWelcomeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Welcome";
-                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
-                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
-                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create#welcome";
-                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
-                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#welcome\"";
-                    this.mUIWelcomeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "2";
-                    this.mUIWelcomeHyperlink.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIWelcomeHyperlink;
-            }
-        }
-        
         public HtmlHyperlink UIPositionHyperlink
         {
             get
@@ -2927,7 +2637,7 @@ namespace Kask.UIAutomationTests
                     this.mUIPositionHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Position";
                     this.mUIPositionHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
                     this.mUIPositionHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
-                    this.mUIPositionHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create#position";
+                    this.mUIPositionHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#position";
                     this.mUIPositionHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
                     this.mUIPositionHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#position\"";
                     this.mUIPositionHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "4";
@@ -2940,19 +2650,15 @@ namespace Kask.UIAutomationTests
         #endregion
         
         #region Fields
-        private HtmlHyperlink mUIPersonalHyperlink;
-        
-        private HtmlHyperlink mUIWelcomeHyperlink;
-        
         private HtmlHyperlink mUIPositionHyperlink;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument2 : HtmlDocument
+    public class UIKaskKioskDocument4 : HtmlDocument
     {
         
-        public UIKaskKioskDocument2(UITestControl searchLimitContainer) : 
+        public UIKaskKioskDocument4(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -2961,521 +2667,20 @@ namespace Kask.UIAutomationTests
             this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
             this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
             this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#position";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#employmentHistory" +
+                "1";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
-        public HtmlComboBox UIJobIDComboBox
-        {
-            get
-            {
-                if ((this.mUIJobIDComboBox == null))
-                {
-                    this.mUIJobIDComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIJobIDComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "JobID";
-                    this.mUIJobIDComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "JobID";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "4";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"JobID\" class=\"form-control\" id=\"Jo";
-                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "1";
-                    this.mUIJobIDComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIJobIDComboBox;
-            }
-        }
-        
-        public HtmlEdit UISalaryExpectationEdit
-        {
-            get
-            {
-                if ((this.mUISalaryExpectationEdit == null))
-                {
-                    this.mUISalaryExpectationEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUISalaryExpectationEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "SalaryExpectation";
-                    this.mUISalaryExpectationEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "SalaryExpectation";
-                    this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SalaryExpectation\" class=\"form-con";
-                    this.mUISalaryExpectationEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "9";
-                    this.mUISalaryExpectationEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUISalaryExpectationEdit;
-            }
-        }
-        
-        public HtmlComboBox UIFullTimeComboBox
-        {
-            get
-            {
-                if ((this.mUIFullTimeComboBox == null))
-                {
-                    this.mUIFullTimeComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIFullTimeComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "FullTime";
-                    this.mUIFullTimeComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "FullTime";
-                    this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
-                    this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"FullTime\" class=\"form-control\" id=";
-                    this.mUIFullTimeComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "2";
-                    this.mUIFullTimeComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIFullTimeComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIAvailableForDaysComboBox
-        {
-            get
-            {
-                if ((this.mUIAvailableForDaysComboBox == null))
-                {
-                    this.mUIAvailableForDaysComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIAvailableForDaysComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "AvailableForDays";
-                    this.mUIAvailableForDaysComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "AvailableForDays";
-                    this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
-                    this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"AvailableForDays\" class=\"form-cont";
-                    this.mUIAvailableForDaysComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "3";
-                    this.mUIAvailableForDaysComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIAvailableForDaysComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIAvailableForEveningsComboBox
-        {
-            get
-            {
-                if ((this.mUIAvailableForEveningsComboBox == null))
-                {
-                    this.mUIAvailableForEveningsComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIAvailableForEveningsComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "AvailableForEvenings";
-                    this.mUIAvailableForEveningsComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "AvailableForEvenings";
-                    this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
-                    this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"AvailableForEvenings\" class=\"form-";
-                    this.mUIAvailableForEveningsComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "4";
-                    this.mUIAvailableForEveningsComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIAvailableForEveningsComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIAvailableForWeekendsComboBox
-        {
-            get
-            {
-                if ((this.mUIAvailableForWeekendsComboBox == null))
-                {
-                    this.mUIAvailableForWeekendsComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIAvailableForWeekendsComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "AvailableForWeekends";
-                    this.mUIAvailableForWeekendsComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "AvailableForWeekends";
-                    this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
-                    this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"AvailableForWeekends\" class=\"form-";
-                    this.mUIAvailableForWeekendsComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "5";
-                    this.mUIAvailableForWeekendsComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIAvailableForWeekendsComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIMondayFromComboBox
-        {
-            get
-            {
-                if ((this.mUIMondayFromComboBox == null))
-                {
-                    this.mUIMondayFromComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIMondayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "MondayFrom";
-                    this.mUIMondayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "MondayFrom";
-                    this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"MondayFrom\" class=\"form-control\" i";
-                    this.mUIMondayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "6";
-                    this.mUIMondayFromComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIMondayFromComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIMondayToComboBox
-        {
-            get
-            {
-                if ((this.mUIMondayToComboBox == null))
-                {
-                    this.mUIMondayToComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIMondayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "MondayTo";
-                    this.mUIMondayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "MondayTo";
-                    this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"MondayTo\" class=\"form-control\" id=";
-                    this.mUIMondayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "13";
-                    this.mUIMondayToComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIMondayToComboBox;
-            }
-        }
-        
-        public HtmlComboBox UITuesdayFromComboBox
-        {
-            get
-            {
-                if ((this.mUITuesdayFromComboBox == null))
-                {
-                    this.mUITuesdayFromComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUITuesdayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "TuesdayFrom";
-                    this.mUITuesdayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "TuesdayFrom";
-                    this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"TuesdayFrom\" class=\"form-control\" ";
-                    this.mUITuesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "7";
-                    this.mUITuesdayFromComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUITuesdayFromComboBox;
-            }
-        }
-        
-        public HtmlComboBox UITuesdayToComboBox
-        {
-            get
-            {
-                if ((this.mUITuesdayToComboBox == null))
-                {
-                    this.mUITuesdayToComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUITuesdayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "TuesdayTo";
-                    this.mUITuesdayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "TuesdayTo";
-                    this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"TuesdayTo\" class=\"form-control\" id";
-                    this.mUITuesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "14";
-                    this.mUITuesdayToComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUITuesdayToComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIWednesdayFromComboBox
-        {
-            get
-            {
-                if ((this.mUIWednesdayFromComboBox == null))
-                {
-                    this.mUIWednesdayFromComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIWednesdayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "WednesdayFrom";
-                    this.mUIWednesdayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "WednesdayFrom";
-                    this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"WednesdayFrom\" class=\"form-control";
-                    this.mUIWednesdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "8";
-                    this.mUIWednesdayFromComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIWednesdayFromComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIWednesdayToComboBox
-        {
-            get
-            {
-                if ((this.mUIWednesdayToComboBox == null))
-                {
-                    this.mUIWednesdayToComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIWednesdayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "WednesdayTo";
-                    this.mUIWednesdayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "WednesdayTo";
-                    this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"WednesdayTo\" class=\"form-control\" ";
-                    this.mUIWednesdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "15";
-                    this.mUIWednesdayToComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIWednesdayToComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIThursdayFromComboBox
-        {
-            get
-            {
-                if ((this.mUIThursdayFromComboBox == null))
-                {
-                    this.mUIThursdayFromComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIThursdayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "ThursdayFrom";
-                    this.mUIThursdayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "ThursdayFrom";
-                    this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"ThursdayFrom\" class=\"form-control\"";
-                    this.mUIThursdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "9";
-                    this.mUIThursdayFromComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIThursdayFromComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIThursdayToComboBox
-        {
-            get
-            {
-                if ((this.mUIThursdayToComboBox == null))
-                {
-                    this.mUIThursdayToComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIThursdayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "ThursdayTo";
-                    this.mUIThursdayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "ThursdayTo";
-                    this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"ThursdayTo\" class=\"form-control\" i";
-                    this.mUIThursdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "16";
-                    this.mUIThursdayToComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIThursdayToComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIFridayFromComboBox
-        {
-            get
-            {
-                if ((this.mUIFridayFromComboBox == null))
-                {
-                    this.mUIFridayFromComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIFridayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "FridayFrom";
-                    this.mUIFridayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "FridayFrom";
-                    this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"FridayFrom\" class=\"form-control\" i";
-                    this.mUIFridayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "10";
-                    this.mUIFridayFromComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIFridayFromComboBox;
-            }
-        }
-        
-        public HtmlComboBox UIFridayToComboBox
-        {
-            get
-            {
-                if ((this.mUIFridayToComboBox == null))
-                {
-                    this.mUIFridayToComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIFridayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "FridayTo";
-                    this.mUIFridayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "FridayTo";
-                    this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"FridayTo\" class=\"form-control\" id=";
-                    this.mUIFridayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "17";
-                    this.mUIFridayToComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIFridayToComboBox;
-            }
-        }
-        
-        public HtmlComboBox UISaturdayFromComboBox
-        {
-            get
-            {
-                if ((this.mUISaturdayFromComboBox == null))
-                {
-                    this.mUISaturdayFromComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUISaturdayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "SaturdayFrom";
-                    this.mUISaturdayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "SaturdayFrom";
-                    this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SaturdayFrom\" class=\"form-control\"";
-                    this.mUISaturdayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "11";
-                    this.mUISaturdayFromComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUISaturdayFromComboBox;
-            }
-        }
-        
-        public HtmlComboBox UISundayFromComboBox
-        {
-            get
-            {
-                if ((this.mUISundayFromComboBox == null))
-                {
-                    this.mUISundayFromComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUISundayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "SundayFrom";
-                    this.mUISundayFromComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "SundayFrom";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SundayFrom\" class=\"form-control\" i";
-                    this.mUISundayFromComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "12";
-                    this.mUISundayFromComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUISundayFromComboBox;
-            }
-        }
-        
-        public HtmlComboBox UISaturdayToComboBox
-        {
-            get
-            {
-                if ((this.mUISaturdayToComboBox == null))
-                {
-                    this.mUISaturdayToComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUISaturdayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "SaturdayTo";
-                    this.mUISaturdayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "SaturdayTo";
-                    this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SaturdayTo\" class=\"form-control\" i";
-                    this.mUISaturdayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "18";
-                    this.mUISaturdayToComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUISaturdayToComboBox;
-            }
-        }
-        
-        public HtmlComboBox UISundayToComboBox
-        {
-            get
-            {
-                if ((this.mUISundayToComboBox == null))
-                {
-                    this.mUISundayToComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUISundayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "SundayTo";
-                    this.mUISundayToComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "SundayTo";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "24";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SundayTo\" class=\"form-control\" id=";
-                    this.mUISundayToComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "19";
-                    this.mUISundayToComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUISundayToComboBox;
-            }
-        }
-        
-        public HtmlButton UINextButton
-        {
-            get
-            {
-                if ((this.mUINextButton == null))
-                {
-                    this.mUINextButton = new HtmlButton(this);
-                    #region Search Criteria
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Id] = "moveDown";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Next →";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-info";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-info\" id=\"moveDown\"";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "3";
-                    this.mUINextButton.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUINextButton;
-            }
-        }
-        
-        public UIMenuCustom1 UIMenuCustom
+        public UIMenuCustom2 UIMenuCustom
         {
             get
             {
                 if ((this.mUIMenuCustom == null))
                 {
-                    this.mUIMenuCustom = new UIMenuCustom1(this);
+                    this.mUIMenuCustom = new UIMenuCustom2(this);
                 }
                 return this.mUIMenuCustom;
             }
@@ -3496,7 +2701,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerName_1\" class=\"form-contro";
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "10";
+                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "11";
                     this.mUIEmployerName_1Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3519,7 +2724,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedFrom_1\" class=\"form-contro";
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "11";
+                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "12";
                     this.mUIEmployedFrom_1Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3542,7 +2747,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedTo_1\" class=\"form-control\"";
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "12";
+                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "13";
                     this.mUIEmployedTo_1Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3565,7 +2770,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerAddress_1\" class=\"form-con";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "13";
+                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "14";
                     this.mUIItem1Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3588,7 +2793,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerPhone_1\" class=\"form-contr";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "14";
+                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "15";
                     this.mUIItem1Edit1.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3611,7 +2816,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerSupervisor_1\" class=\"form-";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "15";
+                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "16";
                     this.mUIItem1Edit2.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3634,7 +2839,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedPosition_1\" class=\"form-co";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "16";
+                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "17";
                     this.mUIItem1Edit3.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3657,7 +2862,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedStartingSalary_1\" class=\"f";
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "17";
+                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "18";
                     this.mUIItem1Edit4.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3680,7 +2885,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedEndingSalary_1\" class=\"for";
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "18";
+                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "19";
                     this.mUIItem1Edit5.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3703,7 +2908,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedReasonForLeaving_1\" class=";
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "19";
+                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "20";
                     this.mUIItem1Edit6.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3749,7 +2954,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
                     this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"MayWeContactCurrentEmployer_1\" cla";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "20";
+                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "19";
                     this.mUIItem1ComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -3757,63 +2962,32 @@ namespace Kask.UIAutomationTests
             }
         }
         
-        public UISuperContainerPane1 UISuperContainerPane
+        public HtmlButton UINextButton
         {
             get
             {
-                if ((this.mUISuperContainerPane == null))
+                if ((this.mUINextButton == null))
                 {
-                    this.mUISuperContainerPane = new UISuperContainerPane1(this);
+                    this.mUINextButton = new HtmlButton(this);
+                    #region Search Criteria
+                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Id] = "moveDown";
+                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Next →";
+                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
+                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-info";
+                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-info\" id=\"moveDown\"";
+                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "3";
+                    this.mUINextButton.WindowTitles.Add("Kask Kiosk");
+                    #endregion
                 }
-                return this.mUISuperContainerPane;
+                return this.mUINextButton;
             }
         }
         #endregion
         
         #region Fields
-        private HtmlComboBox mUIJobIDComboBox;
-        
-        private HtmlEdit mUISalaryExpectationEdit;
-        
-        private HtmlComboBox mUIFullTimeComboBox;
-        
-        private HtmlComboBox mUIAvailableForDaysComboBox;
-        
-        private HtmlComboBox mUIAvailableForEveningsComboBox;
-        
-        private HtmlComboBox mUIAvailableForWeekendsComboBox;
-        
-        private HtmlComboBox mUIMondayFromComboBox;
-        
-        private HtmlComboBox mUIMondayToComboBox;
-        
-        private HtmlComboBox mUITuesdayFromComboBox;
-        
-        private HtmlComboBox mUITuesdayToComboBox;
-        
-        private HtmlComboBox mUIWednesdayFromComboBox;
-        
-        private HtmlComboBox mUIWednesdayToComboBox;
-        
-        private HtmlComboBox mUIThursdayFromComboBox;
-        
-        private HtmlComboBox mUIThursdayToComboBox;
-        
-        private HtmlComboBox mUIFridayFromComboBox;
-        
-        private HtmlComboBox mUIFridayToComboBox;
-        
-        private HtmlComboBox mUISaturdayFromComboBox;
-        
-        private HtmlComboBox mUISundayFromComboBox;
-        
-        private HtmlComboBox mUISaturdayToComboBox;
-        
-        private HtmlComboBox mUISundayToComboBox;
-        
-        private HtmlButton mUINextButton;
-        
-        private UIMenuCustom1 mUIMenuCustom;
+        private UIMenuCustom2 mUIMenuCustom;
         
         private HtmlEdit mUIEmployerName_1Edit;
         
@@ -3839,15 +3013,15 @@ namespace Kask.UIAutomationTests
         
         private HtmlComboBox mUIItem1ComboBox;
         
-        private UISuperContainerPane1 mUISuperContainerPane;
+        private HtmlButton mUINextButton;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIMenuCustom1 : HtmlCustom
+    public class UIMenuCustom2 : HtmlCustom
     {
         
-        public UIMenuCustom1(UITestControl searchLimitContainer) : 
+        public UIMenuCustom2(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -3876,7 +3050,8 @@ namespace Kask.UIAutomationTests
                     this.mUIEmploymentHistory1Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Employment History 1";
                     this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
                     this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
-                    this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create#employmentHistory1";
+                    this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#employmentHistory" +
+                        "1";
                     this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
                     this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#employmentHistory1\"";
                     this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "5";
@@ -3894,58 +3069,10 @@ namespace Kask.UIAutomationTests
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UISuperContainerPane1 : HtmlDiv
+    public class UIKaskKioskDocument5 : HtmlDocument
     {
         
-        public UISuperContainerPane1(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "superContainer";
-            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Welcome\r\n\r\n \r\nPersonal\r\n\r\n \r\nPosition\r\n\r";
-            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "id=\"superContainer\" style=\"top: -1326px;\"";
-            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "1";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        #region Properties
-        public HtmlDiv UIWelcomePersonalPositPane
-        {
-            get
-            {
-                if ((this.mUIWelcomePersonalPositPane == null))
-                {
-                    this.mUIWelcomePersonalPositPane = new HtmlDiv(this);
-                    #region Search Criteria
-                    this.mUIWelcomePersonalPositPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
-                    this.mUIWelcomePersonalPositPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Welcome\r\n\r\n \r\nPersonal\r\n\r\n \r\nPosition\r\n\r";
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "default-layout";
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"default-layout\"";
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "2";
-                    this.mUIWelcomePersonalPositPane.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIWelcomePersonalPositPane;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private HtmlDiv mUIWelcomePersonalPositPane;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument3 : HtmlDocument
-    {
-        
-        public UIKaskKioskDocument3(UITestControl searchLimitContainer) : 
+        public UIKaskKioskDocument5(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -3954,422 +3081,25 @@ namespace Kask.UIAutomationTests
             this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
             this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
             this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#employmentHistory1";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#employmentHistory" +
+                "2";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
-        public HtmlEdit UIEmployerName_1Edit
+        public UIMenuCustom3 UIMenuCustom
         {
             get
             {
-                if ((this.mUIEmployerName_1Edit == null))
+                if ((this.mUIMenuCustom == null))
                 {
-                    this.mUIEmployerName_1Edit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIEmployerName_1Edit.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployerName_1";
-                    this.mUIEmployerName_1Edit.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployerName_1";
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerName_1\" class=\"form-contro";
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "10";
-                    this.mUIEmployerName_1Edit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
+                    this.mUIMenuCustom = new UIMenuCustom3(this);
                 }
-                return this.mUIEmployerName_1Edit;
+                return this.mUIMenuCustom;
             }
         }
         
-        public HtmlEdit UIEmployedFrom_1Edit
-        {
-            get
-            {
-                if ((this.mUIEmployedFrom_1Edit == null))
-                {
-                    this.mUIEmployedFrom_1Edit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIEmployedFrom_1Edit.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedFrom_1";
-                    this.mUIEmployedFrom_1Edit.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedFrom_1";
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedFrom_1\" class=\"form-contro";
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "11";
-                    this.mUIEmployedFrom_1Edit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIEmployedFrom_1Edit;
-            }
-        }
-        
-        public HtmlEdit UIEmployedTo_1Edit
-        {
-            get
-            {
-                if ((this.mUIEmployedTo_1Edit == null))
-                {
-                    this.mUIEmployedTo_1Edit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIEmployedTo_1Edit.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedTo_1";
-                    this.mUIEmployedTo_1Edit.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedTo_1";
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedTo_1\" class=\"form-control\"";
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "12";
-                    this.mUIEmployedTo_1Edit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIEmployedTo_1Edit;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit
-        {
-            get
-            {
-                if ((this.mUIItem1Edit == null))
-                {
-                    this.mUIItem1Edit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployerAddress_1";
-                    this.mUIItem1Edit.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployerAddress_1";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerAddress_1\" class=\"form-con";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "13";
-                    this.mUIItem1Edit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit1
-        {
-            get
-            {
-                if ((this.mUIItem1Edit1 == null))
-                {
-                    this.mUIItem1Edit1 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit1.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployerPhone_1";
-                    this.mUIItem1Edit1.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployerPhone_1";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerPhone_1\" class=\"form-contr";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "14";
-                    this.mUIItem1Edit1.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit1;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit2
-        {
-            get
-            {
-                if ((this.mUIItem1Edit2 == null))
-                {
-                    this.mUIItem1Edit2 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit2.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployerSupervisor_1";
-                    this.mUIItem1Edit2.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployerSupervisor_1";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerSupervisor_1\" class=\"form-";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "15";
-                    this.mUIItem1Edit2.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit2;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit3
-        {
-            get
-            {
-                if ((this.mUIItem1Edit3 == null))
-                {
-                    this.mUIItem1Edit3 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit3.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedPosition_1";
-                    this.mUIItem1Edit3.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedPosition_1";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedPosition_1\" class=\"form-co";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "16";
-                    this.mUIItem1Edit3.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit3;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit4
-        {
-            get
-            {
-                if ((this.mUIItem1Edit4 == null))
-                {
-                    this.mUIItem1Edit4 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit4.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedStartingSalary_1";
-                    this.mUIItem1Edit4.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedStartingSalary_1";
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedStartingSalary_1\" class=\"f";
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "17";
-                    this.mUIItem1Edit4.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit4;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit5
-        {
-            get
-            {
-                if ((this.mUIItem1Edit5 == null))
-                {
-                    this.mUIItem1Edit5 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit5.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedEndingSalary_1";
-                    this.mUIItem1Edit5.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedEndingSalary_1";
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedEndingSalary_1\" class=\"for";
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "18";
-                    this.mUIItem1Edit5.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit5;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit6
-        {
-            get
-            {
-                if ((this.mUIItem1Edit6 == null))
-                {
-                    this.mUIItem1Edit6 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit6.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedReasonForLeaving_1";
-                    this.mUIItem1Edit6.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedReasonForLeaving_1";
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedReasonForLeaving_1\" class=";
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "19";
-                    this.mUIItem1Edit6.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit6;
-            }
-        }
-        
-        public HtmlTextArea UIItem1Edit7
-        {
-            get
-            {
-                if ((this.mUIItem1Edit7 == null))
-                {
-                    this.mUIItem1Edit7 = new HtmlTextArea(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit7.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedResponsibilities_1";
-                    this.mUIItem1Edit7.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedResponsibilities_1";
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedResponsibilities_1\" class=";
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "1";
-                    this.mUIItem1Edit7.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit7;
-            }
-        }
-        
-        public HtmlComboBox UIItem1ComboBox
-        {
-            get
-            {
-                if ((this.mUIItem1ComboBox == null))
-                {
-                    this.mUIItem1ComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIItem1ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "MayWeContactCurrentEmployer_1";
-                    this.mUIItem1ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "MayWeContactCurrentEmployer_1";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"MayWeContactCurrentEmployer_1\" cla";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "20";
-                    this.mUIItem1ComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1ComboBox;
-            }
-        }
-        
-        public UISuperContainerPane2 UISuperContainerPane
-        {
-            get
-            {
-                if ((this.mUISuperContainerPane == null))
-                {
-                    this.mUISuperContainerPane = new UISuperContainerPane2(this);
-                }
-                return this.mUISuperContainerPane;
-            }
-        }
-        
-        public HtmlButton UINextButton
-        {
-            get
-            {
-                if ((this.mUINextButton == null))
-                {
-                    this.mUINextButton = new HtmlButton(this);
-                    #region Search Criteria
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Id] = "moveDown";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Next →";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-info";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-info\" id=\"moveDown\"";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "3";
-                    this.mUINextButton.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUINextButton;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private HtmlEdit mUIEmployerName_1Edit;
-        
-        private HtmlEdit mUIEmployedFrom_1Edit;
-        
-        private HtmlEdit mUIEmployedTo_1Edit;
-        
-        private HtmlEdit mUIItem1Edit;
-        
-        private HtmlEdit mUIItem1Edit1;
-        
-        private HtmlEdit mUIItem1Edit2;
-        
-        private HtmlEdit mUIItem1Edit3;
-        
-        private HtmlEdit mUIItem1Edit4;
-        
-        private HtmlEdit mUIItem1Edit5;
-        
-        private HtmlEdit mUIItem1Edit6;
-        
-        private HtmlTextArea mUIItem1Edit7;
-        
-        private HtmlComboBox mUIItem1ComboBox;
-        
-        private UISuperContainerPane2 mUISuperContainerPane;
-        
-        private HtmlButton mUINextButton;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UISuperContainerPane2 : HtmlDiv
-    {
-        
-        public UISuperContainerPane2(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "superContainer";
-            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Welcome\r\n\r\n \r\nPersonal\r\n\r\n \r\nPosition\r\n\r";
-            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "id=\"superContainer\" style=\"top: -2925px;\"";
-            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "1";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        #region Properties
-        public HtmlDiv UIWelcomePersonalPositPane
-        {
-            get
-            {
-                if ((this.mUIWelcomePersonalPositPane == null))
-                {
-                    this.mUIWelcomePersonalPositPane = new HtmlDiv(this);
-                    #region Search Criteria
-                    this.mUIWelcomePersonalPositPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
-                    this.mUIWelcomePersonalPositPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Welcome\r\n\r\n \r\nPersonal\r\n\r\n \r\nPosition\r\n\r";
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "default-layout";
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"default-layout\"";
-                    this.mUIWelcomePersonalPositPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "2";
-                    this.mUIWelcomePersonalPositPane.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIWelcomePersonalPositPane;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private HtmlDiv mUIWelcomePersonalPositPane;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument4 : HtmlDocument
-    {
-        
-        public UIKaskKioskDocument4(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
-            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
-            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
-            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
-            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#employmentHistory2";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        #region Properties
         public HtmlEdit UIEmployerName_2Edit
         {
             get
@@ -4385,7 +3115,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEmployerName_2Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIEmployerName_2Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIEmployerName_2Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerName_2\" class=\"form-contro";
-                    this.mUIEmployerName_2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "20";
+                    this.mUIEmployerName_2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "21";
                     this.mUIEmployerName_2Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4408,7 +3138,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEmployedFrom_2Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIEmployedFrom_2Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIEmployedFrom_2Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedFrom_2\" class=\"form-contro";
-                    this.mUIEmployedFrom_2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "21";
+                    this.mUIEmployedFrom_2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "22";
                     this.mUIEmployedFrom_2Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4431,7 +3161,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEmployedTo_2Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIEmployedTo_2Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIEmployedTo_2Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedTo_2\" class=\"form-control\"";
-                    this.mUIEmployedTo_2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "22";
+                    this.mUIEmployedTo_2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "23";
                     this.mUIEmployedTo_2Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4454,7 +3184,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerAddress_2\" class=\"form-con";
-                    this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "23";
+                    this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "24";
                     this.mUIItem2Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4477,7 +3207,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerPhone_2\" class=\"form-contr";
-                    this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "24";
+                    this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "25";
                     this.mUIItem2Edit1.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4500,7 +3230,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerSupervisor_2\" class=\"form-";
-                    this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "25";
+                    this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "26";
                     this.mUIItem2Edit2.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4523,7 +3253,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedPosition_2\" class=\"form-co";
-                    this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "26";
+                    this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "27";
                     this.mUIItem2Edit3.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4546,7 +3276,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit4.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit4.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit4.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedStartingSalary_2\" class=\"f";
-                    this.mUIItem2Edit4.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "27";
+                    this.mUIItem2Edit4.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "28";
                     this.mUIItem2Edit4.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4569,7 +3299,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit5.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit5.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit5.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedEndingSalary_2\" class=\"for";
-                    this.mUIItem2Edit5.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "28";
+                    this.mUIItem2Edit5.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "29";
                     this.mUIItem2Edit5.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4592,7 +3322,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit6.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit6.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit6.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedReasonForLeaving_2\" class=";
-                    this.mUIItem2Edit6.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "29";
+                    this.mUIItem2Edit6.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "30";
                     this.mUIItem2Edit6.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4638,7 +3368,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
                     this.mUIItem2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIItem2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"MayWeContactCurrentEmployer_2\" cla";
-                    this.mUIItem2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "21";
+                    this.mUIItem2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "20";
                     this.mUIItem2ComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -4671,6 +3401,8 @@ namespace Kask.UIAutomationTests
         #endregion
         
         #region Fields
+        private UIMenuCustom3 mUIMenuCustom;
+        
         private HtmlEdit mUIEmployerName_2Edit;
         
         private HtmlEdit mUIEmployedFrom_2Edit;
@@ -4700,688 +3432,6 @@ namespace Kask.UIAutomationTests
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIGoogleInternetExplorWindow1 : BrowserWindow
-    {
-        
-        public UIGoogleInternetExplorWindow1()
-        {
-            #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Google";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.WindowTitles.Add("Google");
-            this.WindowTitles.Add("http://localhost:51309/");
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskInternetExpWindow1 : BrowserWindow
-    {
-        
-        public UIKaskKioskInternetExpWindow1()
-        {
-            #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Kask Kiosk";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-        
-        #region Properties
-        public UIKaskKioskDocument5 UIKaskKioskDocument
-        {
-            get
-            {
-                if ((this.mUIKaskKioskDocument == null))
-                {
-                    this.mUIKaskKioskDocument = new UIKaskKioskDocument5(this);
-                }
-                return this.mUIKaskKioskDocument;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private UIKaskKioskDocument5 mUIKaskKioskDocument;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument5 : HtmlDocument
-    {
-        
-        public UIKaskKioskDocument5(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
-            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
-            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
-            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
-            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#welcome";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        #region Properties
-        public UIMenuCustom2 UIMenuCustom
-        {
-            get
-            {
-                if ((this.mUIMenuCustom == null))
-                {
-                    this.mUIMenuCustom = new UIMenuCustom2(this);
-                }
-                return this.mUIMenuCustom;
-            }
-        }
-        
-        public HtmlEdit UIFirstNameEdit
-        {
-            get
-            {
-                if ((this.mUIFirstNameEdit == null))
-                {
-                    this.mUIFirstNameEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIFirstNameEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "FirstName";
-                    this.mUIFirstNameEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "FirstName";
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"FirstName\" class=\"form-control\" id";
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "2";
-                    this.mUIFirstNameEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIFirstNameEdit;
-            }
-        }
-        
-        public HtmlEdit UIMiddleNameEdit
-        {
-            get
-            {
-                if ((this.mUIMiddleNameEdit == null))
-                {
-                    this.mUIMiddleNameEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIMiddleNameEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "MiddleName";
-                    this.mUIMiddleNameEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "MiddleName";
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"MiddleName\" class=\"form-control\" i";
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "3";
-                    this.mUIMiddleNameEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIMiddleNameEdit;
-            }
-        }
-        
-        public HtmlEdit UILastNameEdit
-        {
-            get
-            {
-                if ((this.mUILastNameEdit == null))
-                {
-                    this.mUILastNameEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUILastNameEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "LastName";
-                    this.mUILastNameEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "LastName";
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"LastName\" class=\"form-control\" id=";
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "4";
-                    this.mUILastNameEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUILastNameEdit;
-            }
-        }
-        
-        public HtmlEdit UISSNEdit
-        {
-            get
-            {
-                if ((this.mUISSNEdit == null))
-                {
-                    this.mUISSNEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUISSNEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "SSN";
-                    this.mUISSNEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "SSN";
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "PASSWORD";
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SSN\" class=\"form-control\" id=\"SSN\"";
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "5";
-                    this.mUISSNEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUISSNEdit;
-            }
-        }
-        
-        public HtmlEdit UIApplicantAddressEdit
-        {
-            get
-            {
-                if ((this.mUIApplicantAddressEdit == null))
-                {
-                    this.mUIApplicantAddressEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIApplicantAddressEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "ApplicantAddress";
-                    this.mUIApplicantAddressEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "ApplicantAddress";
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"ApplicantAddress\" class=\"form-cont";
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "6";
-                    this.mUIApplicantAddressEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIApplicantAddressEdit;
-            }
-        }
-        
-        public HtmlEdit UIApplicantPhoneEdit
-        {
-            get
-            {
-                if ((this.mUIApplicantPhoneEdit == null))
-                {
-                    this.mUIApplicantPhoneEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIApplicantPhoneEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "ApplicantPhone";
-                    this.mUIApplicantPhoneEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "ApplicantPhone";
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"ApplicantPhone\" class=\"form-contro";
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "7";
-                    this.mUIApplicantPhoneEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIApplicantPhoneEdit;
-            }
-        }
-        
-        public HtmlEdit UINameAliasEdit
-        {
-            get
-            {
-                if ((this.mUINameAliasEdit == null))
-                {
-                    this.mUINameAliasEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUINameAliasEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "NameAlias";
-                    this.mUINameAliasEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "NameAlias";
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"NameAlias\" class=\"form-control\" id";
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "8";
-                    this.mUINameAliasEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUINameAliasEdit;
-            }
-        }
-        
-        public HtmlButton UINextButton
-        {
-            get
-            {
-                if ((this.mUINextButton == null))
-                {
-                    this.mUINextButton = new HtmlButton(this);
-                    #region Search Criteria
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Id] = "moveDown";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Next →";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-info";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-info\" id=\"moveDown\"";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "3";
-                    this.mUINextButton.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUINextButton;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private UIMenuCustom2 mUIMenuCustom;
-        
-        private HtmlEdit mUIFirstNameEdit;
-        
-        private HtmlEdit mUIMiddleNameEdit;
-        
-        private HtmlEdit mUILastNameEdit;
-        
-        private HtmlEdit mUISSNEdit;
-        
-        private HtmlEdit mUIApplicantAddressEdit;
-        
-        private HtmlEdit mUIApplicantPhoneEdit;
-        
-        private HtmlEdit mUINameAliasEdit;
-        
-        private HtmlButton mUINextButton;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIMenuCustom2 : HtmlCustom
-    {
-        
-        public UIMenuCustom2(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties["TagName"] = "UL";
-            this.SearchProperties["Id"] = "menu";
-            this.SearchProperties[UITestControl.PropertyNames.Name] = null;
-            this.FilterProperties["Class"] = "text-center";
-            this.FilterProperties["ControlDefinition"] = "class=\"text-center\" id=\"menu\"";
-            this.FilterProperties["TagInstance"] = "1";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        #region Properties
-        public HtmlHyperlink UIPersonalHyperlink
-        {
-            get
-            {
-                if ((this.mUIPersonalHyperlink == null))
-                {
-                    this.mUIPersonalHyperlink = new HtmlHyperlink(this);
-                    #region Search Criteria
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Personal";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create#personal";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#personal\"";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "3";
-                    this.mUIPersonalHyperlink.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIPersonalHyperlink;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private HtmlHyperlink mUIPersonalHyperlink;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskInternetExpWindow2 : BrowserWindow
-    {
-        
-        public UIKaskKioskInternetExpWindow2()
-        {
-            #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Kask Kiosk";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-        
-        #region Properties
-        public UIKaskKioskDocument6 UIKaskKioskDocument
-        {
-            get
-            {
-                if ((this.mUIKaskKioskDocument == null))
-                {
-                    this.mUIKaskKioskDocument = new UIKaskKioskDocument6(this);
-                }
-                return this.mUIKaskKioskDocument;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private UIKaskKioskDocument6 mUIKaskKioskDocument;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument6 : HtmlDocument
-    {
-        
-        public UIKaskKioskDocument6(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
-            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
-            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
-            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
-            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#personal";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        #region Properties
-        public HtmlEdit UIFirstNameEdit
-        {
-            get
-            {
-                if ((this.mUIFirstNameEdit == null))
-                {
-                    this.mUIFirstNameEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIFirstNameEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "FirstName";
-                    this.mUIFirstNameEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "FirstName";
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"FirstName\" class=\"form-control\" id";
-                    this.mUIFirstNameEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "2";
-                    this.mUIFirstNameEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIFirstNameEdit;
-            }
-        }
-        
-        public HtmlEdit UIMiddleNameEdit
-        {
-            get
-            {
-                if ((this.mUIMiddleNameEdit == null))
-                {
-                    this.mUIMiddleNameEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIMiddleNameEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "MiddleName";
-                    this.mUIMiddleNameEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "MiddleName";
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"MiddleName\" class=\"form-control\" i";
-                    this.mUIMiddleNameEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "3";
-                    this.mUIMiddleNameEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIMiddleNameEdit;
-            }
-        }
-        
-        public HtmlEdit UILastNameEdit
-        {
-            get
-            {
-                if ((this.mUILastNameEdit == null))
-                {
-                    this.mUILastNameEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUILastNameEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "LastName";
-                    this.mUILastNameEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "LastName";
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"LastName\" class=\"form-control\" id=";
-                    this.mUILastNameEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "4";
-                    this.mUILastNameEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUILastNameEdit;
-            }
-        }
-        
-        public HtmlEdit UISSNEdit
-        {
-            get
-            {
-                if ((this.mUISSNEdit == null))
-                {
-                    this.mUISSNEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUISSNEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "SSN";
-                    this.mUISSNEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "SSN";
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "PASSWORD";
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SSN\" class=\"form-control\" id=\"SSN\"";
-                    this.mUISSNEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "5";
-                    this.mUISSNEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUISSNEdit;
-            }
-        }
-        
-        public HtmlEdit UIApplicantAddressEdit
-        {
-            get
-            {
-                if ((this.mUIApplicantAddressEdit == null))
-                {
-                    this.mUIApplicantAddressEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIApplicantAddressEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "ApplicantAddress";
-                    this.mUIApplicantAddressEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "ApplicantAddress";
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"ApplicantAddress\" class=\"form-cont";
-                    this.mUIApplicantAddressEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "6";
-                    this.mUIApplicantAddressEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIApplicantAddressEdit;
-            }
-        }
-        
-        public HtmlEdit UIApplicantPhoneEdit
-        {
-            get
-            {
-                if ((this.mUIApplicantPhoneEdit == null))
-                {
-                    this.mUIApplicantPhoneEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIApplicantPhoneEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "ApplicantPhone";
-                    this.mUIApplicantPhoneEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "ApplicantPhone";
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"ApplicantPhone\" class=\"form-contro";
-                    this.mUIApplicantPhoneEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "7";
-                    this.mUIApplicantPhoneEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIApplicantPhoneEdit;
-            }
-        }
-        
-        public HtmlEdit UINameAliasEdit
-        {
-            get
-            {
-                if ((this.mUINameAliasEdit == null))
-                {
-                    this.mUINameAliasEdit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUINameAliasEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "NameAlias";
-                    this.mUINameAliasEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "NameAlias";
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"NameAlias\" class=\"form-control\" id";
-                    this.mUINameAliasEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "8";
-                    this.mUINameAliasEdit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUINameAliasEdit;
-            }
-        }
-        
-        public HtmlButton UINextButton
-        {
-            get
-            {
-                if ((this.mUINextButton == null))
-                {
-                    this.mUINextButton = new HtmlButton(this);
-                    #region Search Criteria
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Id] = "moveDown";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Next →";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-info";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-info\" id=\"moveDown\"";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "3";
-                    this.mUINextButton.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUINextButton;
-            }
-        }
-        
-        public UISection1Pane UISection1Pane
-        {
-            get
-            {
-                if ((this.mUISection1Pane == null))
-                {
-                    this.mUISection1Pane = new UISection1Pane(this);
-                }
-                return this.mUISection1Pane;
-            }
-        }
-        
-        public UIMenuCustom3 UIMenuCustom
-        {
-            get
-            {
-                if ((this.mUIMenuCustom == null))
-                {
-                    this.mUIMenuCustom = new UIMenuCustom3(this);
-                }
-                return this.mUIMenuCustom;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private HtmlEdit mUIFirstNameEdit;
-        
-        private HtmlEdit mUIMiddleNameEdit;
-        
-        private HtmlEdit mUILastNameEdit;
-        
-        private HtmlEdit mUISSNEdit;
-        
-        private HtmlEdit mUIApplicantAddressEdit;
-        
-        private HtmlEdit mUIApplicantPhoneEdit;
-        
-        private HtmlEdit mUINameAliasEdit;
-        
-        private HtmlButton mUINextButton;
-        
-        private UISection1Pane mUISection1Pane;
-        
-        private UIMenuCustom3 mUIMenuCustom;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UISection1Pane : HtmlDiv
-    {
-        
-        public UISection1Pane(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "section1";
-            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Personal\r\n\r\nPlease tell us a little abou";
-            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.Class] = "section table active";
-            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"section table active\" id=\"section1\" style=\"padding: 0px 0px 3em; height: 9" +
-                "94px;\" data-anchor=\"personal\"";
-            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "9";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        #region Properties
-        public HtmlDiv UIPersonalPleasetellusPane
-        {
-            get
-            {
-                if ((this.mUIPersonalPleasetellusPane == null))
-                {
-                    this.mUIPersonalPleasetellusPane = new HtmlDiv(this);
-                    #region Search Criteria
-                    this.mUIPersonalPleasetellusPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
-                    this.mUIPersonalPleasetellusPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-                    this.mUIPersonalPleasetellusPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Personal\r\n\r\nPlease tell us a little abou";
-                    this.mUIPersonalPleasetellusPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-                    this.mUIPersonalPleasetellusPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "tableCell";
-                    this.mUIPersonalPleasetellusPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"tableCell\" style=\"height: 952px;\"";
-                    this.mUIPersonalPleasetellusPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "10";
-                    this.mUIPersonalPleasetellusPane.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIPersonalPleasetellusPane;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private HtmlDiv mUIPersonalPleasetellusPane;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
     public class UIMenuCustom3 : HtmlCustom
     {
         
@@ -5400,106 +3450,43 @@ namespace Kask.UIAutomationTests
         }
         
         #region Properties
-        public HtmlHyperlink UIPersonalHyperlink
+        public HtmlHyperlink UIEmploymentHistory2Hyperlink
         {
             get
             {
-                if ((this.mUIPersonalHyperlink == null))
+                if ((this.mUIEmploymentHistory2Hyperlink == null))
                 {
-                    this.mUIPersonalHyperlink = new HtmlHyperlink(this);
+                    this.mUIEmploymentHistory2Hyperlink = new HtmlHyperlink(this);
                     #region Search Criteria
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
-                    this.mUIPersonalHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Personal";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create#personal";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#personal\"";
-                    this.mUIPersonalHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "3";
-                    this.mUIPersonalHyperlink.WindowTitles.Add("Kask Kiosk");
+                    this.mUIEmploymentHistory2Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIEmploymentHistory2Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIEmploymentHistory2Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIEmploymentHistory2Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Employment History 2";
+                    this.mUIEmploymentHistory2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
+                    this.mUIEmploymentHistory2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIEmploymentHistory2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#employmentHistory" +
+                        "2";
+                    this.mUIEmploymentHistory2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIEmploymentHistory2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#employmentHistory2\"";
+                    this.mUIEmploymentHistory2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "6";
+                    this.mUIEmploymentHistory2Hyperlink.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
-                return this.mUIPersonalHyperlink;
-            }
-        }
-        
-        public HtmlHyperlink UIEmploymentHistory1Hyperlink
-        {
-            get
-            {
-                if ((this.mUIEmploymentHistory1Hyperlink == null))
-                {
-                    this.mUIEmploymentHistory1Hyperlink = new HtmlHyperlink(this);
-                    #region Search Criteria
-                    this.mUIEmploymentHistory1Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
-                    this.mUIEmploymentHistory1Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
-                    this.mUIEmploymentHistory1Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
-                    this.mUIEmploymentHistory1Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Employment History 1";
-                    this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
-                    this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
-                    this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create#employmentHistory1";
-                    this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
-                    this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#employmentHistory1\"";
-                    this.mUIEmploymentHistory1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "5";
-                    this.mUIEmploymentHistory1Hyperlink.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIEmploymentHistory1Hyperlink;
+                return this.mUIEmploymentHistory2Hyperlink;
             }
         }
         #endregion
         
         #region Fields
-        private HtmlHyperlink mUIPersonalHyperlink;
-        
-        private HtmlHyperlink mUIEmploymentHistory1Hyperlink;
+        private HtmlHyperlink mUIEmploymentHistory2Hyperlink;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskInternetExpWindow3 : BrowserWindow
+    public class UIKaskKioskDocument6 : HtmlDocument
     {
         
-        public UIKaskKioskInternetExpWindow3()
-        {
-            #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Kask Kiosk";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-        
-        #region Properties
-        public UIKaskKioskDocument7 UIKaskKioskDocument
-        {
-            get
-            {
-                if ((this.mUIKaskKioskDocument == null))
-                {
-                    this.mUIKaskKioskDocument = new UIKaskKioskDocument7(this);
-                }
-                return this.mUIKaskKioskDocument;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private UIKaskKioskDocument7 mUIKaskKioskDocument;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument7 : HtmlDocument
-    {
-        
-        public UIKaskKioskDocument7(UITestControl searchLimitContainer) : 
+        public UIKaskKioskDocument6(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -5508,21 +3495,22 @@ namespace Kask.UIAutomationTests
             this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
             this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
             this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#employmentHistory3";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#employmentHistory" +
+                "3";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
-        public UISection_employment_hPane UISection_employment_hPane
+        public UIMenuCustom4 UIMenuCustom
         {
             get
             {
-                if ((this.mUISection_employment_hPane == null))
+                if ((this.mUIMenuCustom == null))
                 {
-                    this.mUISection_employment_hPane = new UISection_employment_hPane(this);
+                    this.mUIMenuCustom = new UIMenuCustom4(this);
                 }
-                return this.mUISection_employment_hPane;
+                return this.mUIMenuCustom;
             }
         }
         
@@ -5541,7 +3529,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEmployerName_3Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIEmployerName_3Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIEmployerName_3Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerName_3\" class=\"form-contro";
-                    this.mUIEmployerName_3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "30";
+                    this.mUIEmployerName_3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "31";
                     this.mUIEmployerName_3Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5564,7 +3552,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEmployedFrom_3Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIEmployedFrom_3Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIEmployedFrom_3Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedFrom_3\" class=\"form-contro";
-                    this.mUIEmployedFrom_3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "31";
+                    this.mUIEmployedFrom_3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "32";
                     this.mUIEmployedFrom_3Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5587,7 +3575,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEmployedTo_3Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIEmployedTo_3Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIEmployedTo_3Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedTo_3\" class=\"form-control\"";
-                    this.mUIEmployedTo_3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "32";
+                    this.mUIEmployedTo_3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "33";
                     this.mUIEmployedTo_3Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5610,7 +3598,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerAddress_3\" class=\"form-con";
-                    this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "33";
+                    this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "34";
                     this.mUIItem3Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5633,7 +3621,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerPhone_3\" class=\"form-contr";
-                    this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "34";
+                    this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "35";
                     this.mUIItem3Edit1.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5656,7 +3644,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerSupervisor_3\" class=\"form-";
-                    this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "35";
+                    this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "36";
                     this.mUIItem3Edit2.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5679,7 +3667,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedPosition_3\" class=\"form-co";
-                    this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "36";
+                    this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "37";
                     this.mUIItem3Edit3.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5702,7 +3690,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem3Edit4.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem3Edit4.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem3Edit4.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedStartingSalary_3\" class=\"f";
-                    this.mUIItem3Edit4.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "37";
+                    this.mUIItem3Edit4.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "38";
                     this.mUIItem3Edit4.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5725,7 +3713,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem3Edit5.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem3Edit5.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem3Edit5.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedEndingSalary_3\" class=\"for";
-                    this.mUIItem3Edit5.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "38";
+                    this.mUIItem3Edit5.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "39";
                     this.mUIItem3Edit5.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5748,7 +3736,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem3Edit6.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem3Edit6.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem3Edit6.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedReasonForLeaving_3\" class=";
-                    this.mUIItem3Edit6.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "39";
+                    this.mUIItem3Edit6.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "40";
                     this.mUIItem3Edit6.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5794,7 +3782,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
                     this.mUIItem3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIItem3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"MayWeContactCurrentEmployer_3\" cla";
-                    this.mUIItem3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "22";
+                    this.mUIItem3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "21";
                     this.mUIItem3ComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -5827,7 +3815,7 @@ namespace Kask.UIAutomationTests
         #endregion
         
         #region Fields
-        private UISection_employment_hPane mUISection_employment_hPane;
+        private UIMenuCustom4 mUIMenuCustom;
         
         private HtmlEdit mUIEmployerName_3Edit;
         
@@ -5858,96 +3846,61 @@ namespace Kask.UIAutomationTests
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UISection_employment_hPane : HtmlDiv
+    public class UIMenuCustom4 : HtmlCustom
     {
         
-        public UISection_employment_hPane(UITestControl searchLimitContainer) : 
+        public UIMenuCustom4(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
-            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "section_employment_history_3";
-            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Employment History 3\r\n\r\nPlease tell us a";
-            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.Class] = "section table active";
-            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"section table active\" id=\"section_employment_history_3\" style=\"padding: 0p" +
-                "x 0px 3em; height: 994px;\" data-anchor=\"employmentHistory3\"";
-            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "54";
+            this.SearchProperties["TagName"] = "UL";
+            this.SearchProperties["Id"] = "menu";
+            this.SearchProperties[UITestControl.PropertyNames.Name] = null;
+            this.FilterProperties["Class"] = "text-center";
+            this.FilterProperties["ControlDefinition"] = "class=\"text-center\" id=\"menu\"";
+            this.FilterProperties["TagInstance"] = "1";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
-        public HtmlDiv UIEmploymentHistory3PlPane
+        public HtmlHyperlink UIEmploymentHistory3Hyperlink
         {
             get
             {
-                if ((this.mUIEmploymentHistory3PlPane == null))
+                if ((this.mUIEmploymentHistory3Hyperlink == null))
                 {
-                    this.mUIEmploymentHistory3PlPane = new HtmlDiv(this);
+                    this.mUIEmploymentHistory3Hyperlink = new HtmlHyperlink(this);
                     #region Search Criteria
-                    this.mUIEmploymentHistory3PlPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
-                    this.mUIEmploymentHistory3PlPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-                    this.mUIEmploymentHistory3PlPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Employment History 3\r\n\r\nPlease tell us a";
-                    this.mUIEmploymentHistory3PlPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-                    this.mUIEmploymentHistory3PlPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "tableCell";
-                    this.mUIEmploymentHistory3PlPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"tableCell\" style=\"height: 952px;\"";
-                    this.mUIEmploymentHistory3PlPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "55";
-                    this.mUIEmploymentHistory3PlPane.WindowTitles.Add("Kask Kiosk");
+                    this.mUIEmploymentHistory3Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIEmploymentHistory3Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIEmploymentHistory3Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIEmploymentHistory3Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Employment History 3";
+                    this.mUIEmploymentHistory3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
+                    this.mUIEmploymentHistory3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIEmploymentHistory3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#employmentHistory" +
+                        "3";
+                    this.mUIEmploymentHistory3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIEmploymentHistory3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#employmentHistory3\"";
+                    this.mUIEmploymentHistory3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "7";
+                    this.mUIEmploymentHistory3Hyperlink.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
-                return this.mUIEmploymentHistory3PlPane;
+                return this.mUIEmploymentHistory3Hyperlink;
             }
         }
         #endregion
         
         #region Fields
-        private HtmlDiv mUIEmploymentHistory3PlPane;
+        private HtmlHyperlink mUIEmploymentHistory3Hyperlink;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskInternetExpWindow4 : BrowserWindow
+    public class UIKaskKioskDocument7 : HtmlDocument
     {
         
-        public UIKaskKioskInternetExpWindow4()
-        {
-            #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Kask Kiosk";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-        
-        #region Properties
-        public UIKaskKioskDocument8 UIKaskKioskDocument
-        {
-            get
-            {
-                if ((this.mUIKaskKioskDocument == null))
-                {
-                    this.mUIKaskKioskDocument = new UIKaskKioskDocument8(this);
-                }
-                return this.mUIKaskKioskDocument;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private UIKaskKioskDocument8 mUIKaskKioskDocument;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument8 : HtmlDocument
-    {
-        
-        public UIKaskKioskDocument8(UITestControl searchLimitContainer) : 
+        public UIKaskKioskDocument7(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -5956,12 +3909,24 @@ namespace Kask.UIAutomationTests
             this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
             this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
             this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#education1";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#education1";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
+        public UIMenuCustom5 UIMenuCustom
+        {
+            get
+            {
+                if ((this.mUIMenuCustom == null))
+                {
+                    this.mUIMenuCustom = new UIMenuCustom5(this);
+                }
+                return this.mUIMenuCustom;
+            }
+        }
+        
         public HtmlEdit UISchoolName_1Edit
         {
             get
@@ -5977,7 +3942,7 @@ namespace Kask.UIAutomationTests
                     this.mUISchoolName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUISchoolName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUISchoolName_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SchoolName_1\" class=\"form-control\"";
-                    this.mUISchoolName_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "40";
+                    this.mUISchoolName_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "41";
                     this.mUISchoolName_1Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6000,7 +3965,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SchoolAddress_1\" class=\"form-contr";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "41";
+                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "42";
                     this.mUIItem1Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6023,7 +3988,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"YearsAttendedFrom_1\" class=\"form-c";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "42";
+                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "43";
                     this.mUIItem1Edit1.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6046,7 +4011,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"YearsAttendedTo_1\" class=\"form-con";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "43";
+                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "44";
                     this.mUIItem1Edit2.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6070,7 +4035,7 @@ namespace Kask.UIAutomationTests
                     this.mUIGraduated_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
                     this.mUIGraduated_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIGraduated_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"Graduated_1\" class=\"form-control\" ";
-                    this.mUIGraduated_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "23";
+                    this.mUIGraduated_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "22";
                     this.mUIGraduated_1ComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6093,7 +4058,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"DegreeAndMajor_1\" class=\"form-cont";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "44";
+                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "45";
                     this.mUIItem1Edit3.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6126,6 +4091,8 @@ namespace Kask.UIAutomationTests
         #endregion
         
         #region Fields
+        private UIMenuCustom5 mUIMenuCustom;
+        
         private HtmlEdit mUISchoolName_1Edit;
         
         private HtmlEdit mUIItem1Edit;
@@ -6143,47 +4110,60 @@ namespace Kask.UIAutomationTests
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskInternetExpWindow5 : BrowserWindow
+    public class UIMenuCustom5 : HtmlCustom
     {
         
-        public UIKaskKioskInternetExpWindow5()
+        public UIMenuCustom5(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
         {
             #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Kask Kiosk";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
+            this.SearchProperties["TagName"] = "UL";
+            this.SearchProperties["Id"] = "menu";
+            this.SearchProperties[UITestControl.PropertyNames.Name] = null;
+            this.FilterProperties["Class"] = "text-center";
+            this.FilterProperties["ControlDefinition"] = "class=\"text-center\" id=\"menu\"";
+            this.FilterProperties["TagInstance"] = "1";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-        
         #region Properties
-        public UIKaskKioskDocument9 UIKaskKioskDocument
+        public HtmlHyperlink UIEducation1Hyperlink
         {
             get
             {
-                if ((this.mUIKaskKioskDocument == null))
+                if ((this.mUIEducation1Hyperlink == null))
                 {
-                    this.mUIKaskKioskDocument = new UIKaskKioskDocument9(this);
+                    this.mUIEducation1Hyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIEducation1Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIEducation1Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIEducation1Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIEducation1Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Education 1";
+                    this.mUIEducation1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
+                    this.mUIEducation1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIEducation1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#education1";
+                    this.mUIEducation1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIEducation1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#education1\"";
+                    this.mUIEducation1Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "8";
+                    this.mUIEducation1Hyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
                 }
-                return this.mUIKaskKioskDocument;
+                return this.mUIEducation1Hyperlink;
             }
         }
         #endregion
         
         #region Fields
-        private UIKaskKioskDocument9 mUIKaskKioskDocument;
+        private HtmlHyperlink mUIEducation1Hyperlink;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument9 : HtmlDocument
+    public class UIKaskKioskDocument8 : HtmlDocument
     {
         
-        public UIKaskKioskDocument9(UITestControl searchLimitContainer) : 
+        public UIKaskKioskDocument8(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -6192,12 +4172,24 @@ namespace Kask.UIAutomationTests
             this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
             this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
             this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#education2";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#education2";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
+        public UIMenuCustom6 UIMenuCustom
+        {
+            get
+            {
+                if ((this.mUIMenuCustom == null))
+                {
+                    this.mUIMenuCustom = new UIMenuCustom6(this);
+                }
+                return this.mUIMenuCustom;
+            }
+        }
+        
         public HtmlEdit UISchoolName_2Edit
         {
             get
@@ -6213,7 +4205,7 @@ namespace Kask.UIAutomationTests
                     this.mUISchoolName_2Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUISchoolName_2Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUISchoolName_2Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SchoolName_2\" class=\"form-control\"";
-                    this.mUISchoolName_2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "45";
+                    this.mUISchoolName_2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "46";
                     this.mUISchoolName_2Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6236,7 +4228,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SchoolAddress_2\" class=\"form-contr";
-                    this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "46";
+                    this.mUIItem2Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "47";
                     this.mUIItem2Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6259,7 +4251,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"YearsAttendedFrom_2\" class=\"form-c";
-                    this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "47";
+                    this.mUIItem2Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "48";
                     this.mUIItem2Edit1.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6282,7 +4274,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"YearsAttendedTo_2\" class=\"form-con";
-                    this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "48";
+                    this.mUIItem2Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "49";
                     this.mUIItem2Edit2.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6306,7 +4298,7 @@ namespace Kask.UIAutomationTests
                     this.mUIGraduated_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
                     this.mUIGraduated_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
                     this.mUIGraduated_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"Graduated_2\" class=\"form-control\" ";
-                    this.mUIGraduated_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "24";
+                    this.mUIGraduated_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "23";
                     this.mUIGraduated_2ComboBox.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6329,7 +4321,7 @@ namespace Kask.UIAutomationTests
                     this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"DegreeAndMajor_2\" class=\"form-cont";
-                    this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "49";
+                    this.mUIItem2Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "50";
                     this.mUIItem2Edit3.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6359,33 +4351,11 @@ namespace Kask.UIAutomationTests
                 return this.mUINextButton;
             }
         }
-        
-        public UISection_education_2Pane UISection_education_2Pane
-        {
-            get
-            {
-                if ((this.mUISection_education_2Pane == null))
-                {
-                    this.mUISection_education_2Pane = new UISection_education_2Pane(this);
-                }
-                return this.mUISection_education_2Pane;
-            }
-        }
-        
-        public UIMenuCustom4 UIMenuCustom
-        {
-            get
-            {
-                if ((this.mUIMenuCustom == null))
-                {
-                    this.mUIMenuCustom = new UIMenuCustom4(this);
-                }
-                return this.mUIMenuCustom;
-            }
-        }
         #endregion
         
         #region Fields
+        private UIMenuCustom6 mUIMenuCustom;
+        
         private HtmlEdit mUISchoolName_2Edit;
         
         private HtmlEdit mUIItem2Edit;
@@ -6399,67 +4369,14 @@ namespace Kask.UIAutomationTests
         private HtmlEdit mUIItem2Edit3;
         
         private HtmlButton mUINextButton;
-        
-        private UISection_education_2Pane mUISection_education_2Pane;
-        
-        private UIMenuCustom4 mUIMenuCustom;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UISection_education_2Pane : HtmlDiv
+    public class UIMenuCustom6 : HtmlCustom
     {
         
-        public UISection_education_2Pane(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "section_education_2";
-            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Education 2\r\n\r\nPlease tell us a little a";
-            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.Class] = "section table active";
-            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"section table active\" id=\"section_education_2\" style=\"padding: 0px 0px 3em" +
-                "; height: 994px;\" data-anchor=\"education2\"";
-            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "76";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        #region Properties
-        public HtmlDiv UIEducation2PleasetellPane
-        {
-            get
-            {
-                if ((this.mUIEducation2PleasetellPane == null))
-                {
-                    this.mUIEducation2PleasetellPane = new HtmlDiv(this);
-                    #region Search Criteria
-                    this.mUIEducation2PleasetellPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
-                    this.mUIEducation2PleasetellPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-                    this.mUIEducation2PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Education 2\r\n\r\nPlease tell us a little a";
-                    this.mUIEducation2PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-                    this.mUIEducation2PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "tableCell";
-                    this.mUIEducation2PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"tableCell\" style=\"height: 952px;\"";
-                    this.mUIEducation2PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "77";
-                    this.mUIEducation2PleasetellPane.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIEducation2PleasetellPane;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private HtmlDiv mUIEducation2PleasetellPane;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIMenuCustom4 : HtmlCustom
-    {
-        
-        public UIMenuCustom4(UITestControl searchLimitContainer) : 
+        public UIMenuCustom6(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -6488,7 +4405,7 @@ namespace Kask.UIAutomationTests
                     this.mUIEducation2Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Education 2";
                     this.mUIEducation2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
                     this.mUIEducation2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
-                    this.mUIEducation2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create#education2";
+                    this.mUIEducation2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#education2";
                     this.mUIEducation2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
                     this.mUIEducation2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#education2\"";
                     this.mUIEducation2Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "9";
@@ -6506,47 +4423,10 @@ namespace Kask.UIAutomationTests
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskInternetExpWindow6 : BrowserWindow
+    public class UIKaskKioskDocument9 : HtmlDocument
     {
         
-        public UIKaskKioskInternetExpWindow6()
-        {
-            #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Kask Kiosk";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-        
-        #region Properties
-        public UIKaskKioskDocument10 UIKaskKioskDocument
-        {
-            get
-            {
-                if ((this.mUIKaskKioskDocument == null))
-                {
-                    this.mUIKaskKioskDocument = new UIKaskKioskDocument10(this);
-                }
-                return this.mUIKaskKioskDocument;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private UIKaskKioskDocument10 mUIKaskKioskDocument;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument10 : HtmlDocument
-    {
-        
-        public UIKaskKioskDocument10(UITestControl searchLimitContainer) : 
+        public UIKaskKioskDocument9(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -6555,21 +4435,21 @@ namespace Kask.UIAutomationTests
             this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
             this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
             this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#education3";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#education3";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
-        public UISection_education_3Pane UISection_education_3Pane
+        public UIMenuCustom7 UIMenuCustom
         {
             get
             {
-                if ((this.mUISection_education_3Pane == null))
+                if ((this.mUIMenuCustom == null))
                 {
-                    this.mUISection_education_3Pane = new UISection_education_3Pane(this);
+                    this.mUIMenuCustom = new UIMenuCustom7(this);
                 }
-                return this.mUISection_education_3Pane;
+                return this.mUIMenuCustom;
             }
         }
         
@@ -6588,11 +4468,127 @@ namespace Kask.UIAutomationTests
                     this.mUISchoolName_3Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
                     this.mUISchoolName_3Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
                     this.mUISchoolName_3Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SchoolName_3\" class=\"form-control\"";
-                    this.mUISchoolName_3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "50";
+                    this.mUISchoolName_3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "51";
                     this.mUISchoolName_3Edit.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
                 return this.mUISchoolName_3Edit;
+            }
+        }
+        
+        public HtmlEdit UIItem3Edit
+        {
+            get
+            {
+                if ((this.mUIItem3Edit == null))
+                {
+                    this.mUIItem3Edit = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIItem3Edit.SearchProperties[HtmlEdit.PropertyNames.Id] = "SchoolAddress_3";
+                    this.mUIItem3Edit.SearchProperties[HtmlEdit.PropertyNames.Name] = "SchoolAddress_3";
+                    this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
+                    this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"SchoolAddress_3\" class=\"form-contr";
+                    this.mUIItem3Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "52";
+                    this.mUIItem3Edit.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIItem3Edit;
+            }
+        }
+        
+        public HtmlEdit UIItem3Edit1
+        {
+            get
+            {
+                if ((this.mUIItem3Edit1 == null))
+                {
+                    this.mUIItem3Edit1 = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIItem3Edit1.SearchProperties[HtmlEdit.PropertyNames.Id] = "YearsAttendedFrom_3";
+                    this.mUIItem3Edit1.SearchProperties[HtmlEdit.PropertyNames.Name] = "YearsAttendedFrom_3";
+                    this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
+                    this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"YearsAttendedFrom_3\" class=\"form-c";
+                    this.mUIItem3Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "53";
+                    this.mUIItem3Edit1.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIItem3Edit1;
+            }
+        }
+        
+        public HtmlEdit UIItem3Edit2
+        {
+            get
+            {
+                if ((this.mUIItem3Edit2 == null))
+                {
+                    this.mUIItem3Edit2 = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIItem3Edit2.SearchProperties[HtmlEdit.PropertyNames.Id] = "YearsAttendedTo_3";
+                    this.mUIItem3Edit2.SearchProperties[HtmlEdit.PropertyNames.Name] = "YearsAttendedTo_3";
+                    this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
+                    this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"YearsAttendedTo_3\" class=\"form-con";
+                    this.mUIItem3Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "54";
+                    this.mUIItem3Edit2.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIItem3Edit2;
+            }
+        }
+        
+        public HtmlComboBox UIGraduated_3ComboBox
+        {
+            get
+            {
+                if ((this.mUIGraduated_3ComboBox == null))
+                {
+                    this.mUIGraduated_3ComboBox = new HtmlComboBox(this);
+                    #region Search Criteria
+                    this.mUIGraduated_3ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "Graduated_3";
+                    this.mUIGraduated_3ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "Graduated_3";
+                    this.mUIGraduated_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
+                    this.mUIGraduated_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
+                    this.mUIGraduated_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
+                    this.mUIGraduated_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
+                    this.mUIGraduated_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
+                    this.mUIGraduated_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"Graduated_3\" class=\"form-control\" ";
+                    this.mUIGraduated_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "24";
+                    this.mUIGraduated_3ComboBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIGraduated_3ComboBox;
+            }
+        }
+        
+        public HtmlEdit UIItem3Edit3
+        {
+            get
+            {
+                if ((this.mUIItem3Edit3 == null))
+                {
+                    this.mUIItem3Edit3 = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIItem3Edit3.SearchProperties[HtmlEdit.PropertyNames.Id] = "DegreeAndMajor_3";
+                    this.mUIItem3Edit3.SearchProperties[HtmlEdit.PropertyNames.Name] = "DegreeAndMajor_3";
+                    this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
+                    this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"DegreeAndMajor_3\" class=\"form-cont";
+                    this.mUIItem3Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "55";
+                    this.mUIItem3Edit3.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIItem3Edit3;
             }
         }
         
@@ -6621,105 +4617,79 @@ namespace Kask.UIAutomationTests
         #endregion
         
         #region Fields
-        private UISection_education_3Pane mUISection_education_3Pane;
+        private UIMenuCustom7 mUIMenuCustom;
         
         private HtmlEdit mUISchoolName_3Edit;
+        
+        private HtmlEdit mUIItem3Edit;
+        
+        private HtmlEdit mUIItem3Edit1;
+        
+        private HtmlEdit mUIItem3Edit2;
+        
+        private HtmlComboBox mUIGraduated_3ComboBox;
+        
+        private HtmlEdit mUIItem3Edit3;
         
         private HtmlButton mUINextButton;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UISection_education_3Pane : HtmlDiv
+    public class UIMenuCustom7 : HtmlCustom
     {
         
-        public UISection_education_3Pane(UITestControl searchLimitContainer) : 
+        public UIMenuCustom7(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
-            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "section_education_3";
-            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Education 3\r\n\r\nPlease tell us a little a";
-            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.Class] = "section table active";
-            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"section table active\" id=\"section_education_3\" style=\"padding: 0px 0px 3em" +
-                "; height: 994px;\" data-anchor=\"education3\"";
-            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "84";
+            this.SearchProperties["TagName"] = "UL";
+            this.SearchProperties["Id"] = "menu";
+            this.SearchProperties[UITestControl.PropertyNames.Name] = null;
+            this.FilterProperties["Class"] = "text-center";
+            this.FilterProperties["ControlDefinition"] = "class=\"text-center\" id=\"menu\"";
+            this.FilterProperties["TagInstance"] = "1";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
-        public HtmlDiv UIEducation3PleasetellPane
+        public HtmlHyperlink UIEducation3Hyperlink
         {
             get
             {
-                if ((this.mUIEducation3PleasetellPane == null))
+                if ((this.mUIEducation3Hyperlink == null))
                 {
-                    this.mUIEducation3PleasetellPane = new HtmlDiv(this);
+                    this.mUIEducation3Hyperlink = new HtmlHyperlink(this);
                     #region Search Criteria
-                    this.mUIEducation3PleasetellPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
-                    this.mUIEducation3PleasetellPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-                    this.mUIEducation3PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Education 3\r\n\r\nPlease tell us a little a";
-                    this.mUIEducation3PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-                    this.mUIEducation3PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "tableCell";
-                    this.mUIEducation3PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"tableCell\" style=\"height: 952px;\"";
-                    this.mUIEducation3PleasetellPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "85";
-                    this.mUIEducation3PleasetellPane.WindowTitles.Add("Kask Kiosk");
+                    this.mUIEducation3Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIEducation3Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIEducation3Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIEducation3Hyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Education 3";
+                    this.mUIEducation3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
+                    this.mUIEducation3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIEducation3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#education3";
+                    this.mUIEducation3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIEducation3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#education3\"";
+                    this.mUIEducation3Hyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "10";
+                    this.mUIEducation3Hyperlink.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
-                return this.mUIEducation3PleasetellPane;
+                return this.mUIEducation3Hyperlink;
             }
         }
         #endregion
         
         #region Fields
-        private HtmlDiv mUIEducation3PleasetellPane;
+        private HtmlHyperlink mUIEducation3Hyperlink;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskInternetExpWindow7 : BrowserWindow
+    public class UIKaskKioskDocument10 : HtmlDocument
     {
         
-        public UIKaskKioskInternetExpWindow7()
-        {
-            #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Kask Kiosk";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-        
-        #region Properties
-        public UIKaskKioskDocument11 UIKaskKioskDocument
-        {
-            get
-            {
-                if ((this.mUIKaskKioskDocument == null))
-                {
-                    this.mUIKaskKioskDocument = new UIKaskKioskDocument11(this);
-                }
-                return this.mUIKaskKioskDocument;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private UIKaskKioskDocument11 mUIKaskKioskDocument;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument11 : HtmlDocument
-    {
-        
-        public UIKaskKioskDocument11(UITestControl searchLimitContainer) : 
+        public UIKaskKioskDocument10(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -6728,21 +4698,45 @@ namespace Kask.UIAutomationTests
             this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
             this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
             this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#submitApplication";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#submitApplication" +
+                "";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
-        public UICancelApplicationPane UICancelApplicationPane
+        public UIMenuCustom8 UIMenuCustom
         {
             get
             {
-                if ((this.mUICancelApplicationPane == null))
+                if ((this.mUIMenuCustom == null))
                 {
-                    this.mUICancelApplicationPane = new UICancelApplicationPane(this);
+                    this.mUIMenuCustom = new UIMenuCustom8(this);
                 }
-                return this.mUICancelApplicationPane;
+                return this.mUIMenuCustom;
+            }
+        }
+        
+        public HtmlCheckBox UIAcknowledgeAccurateDCheckBox
+        {
+            get
+            {
+                if ((this.mUIAcknowledgeAccurateDCheckBox == null))
+                {
+                    this.mUIAcknowledgeAccurateDCheckBox = new HtmlCheckBox(this);
+                    #region Search Criteria
+                    this.mUIAcknowledgeAccurateDCheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Id] = null;
+                    this.mUIAcknowledgeAccurateDCheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Name] = "acknowledgeAccurateDataCheckbox";
+                    this.mUIAcknowledgeAccurateDCheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Value] = "on";
+                    this.mUIAcknowledgeAccurateDCheckBox.SearchProperties[HtmlCheckBox.PropertyNames.LabeledBy] = null;
+                    this.mUIAcknowledgeAccurateDCheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Title] = null;
+                    this.mUIAcknowledgeAccurateDCheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Class] = null;
+                    this.mUIAcknowledgeAccurateDCheckBox.FilterProperties[HtmlCheckBox.PropertyNames.ControlDefinition] = "name=\"acknowledgeAccurateDataCheckbox\" t";
+                    this.mUIAcknowledgeAccurateDCheckBox.FilterProperties[HtmlCheckBox.PropertyNames.TagInstance] = "56";
+                    this.mUIAcknowledgeAccurateDCheckBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIAcknowledgeAccurateDCheckBox;
             }
         }
         
@@ -6761,7 +4755,7 @@ namespace Kask.UIAutomationTests
                     this.mUISubmitApplicationButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
                     this.mUISubmitApplicationButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-success";
                     this.mUISubmitApplicationButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-success\" id=\"submit\" type";
-                    this.mUISubmitApplicationButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "55";
+                    this.mUISubmitApplicationButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "57";
                     this.mUISubmitApplicationButton.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
@@ -6771,444 +4765,62 @@ namespace Kask.UIAutomationTests
         #endregion
         
         #region Fields
-        private UICancelApplicationPane mUICancelApplicationPane;
+        private UIMenuCustom8 mUIMenuCustom;
+        
+        private HtmlCheckBox mUIAcknowledgeAccurateDCheckBox;
         
         private HtmlInputButton mUISubmitApplicationButton;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UICancelApplicationPane : HtmlDiv
+    public class UIMenuCustom8 : HtmlCustom
     {
         
-        public UICancelApplicationPane(UITestControl searchLimitContainer) : 
+        public UIMenuCustom8(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
-            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "section5";
-            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Cancel Application     ";
-            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-            this.FilterProperties[HtmlDiv.PropertyNames.Class] = "section center table active";
-            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"section center table active\" id=\"section5\" style=\"padding: 0px 0px 3em; he" +
-                "ight: 994px;\" data-anchor=\"submitApplication\"";
-            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "92";
+            this.SearchProperties["TagName"] = "UL";
+            this.SearchProperties["Id"] = "menu";
+            this.SearchProperties[UITestControl.PropertyNames.Name] = null;
+            this.FilterProperties["Class"] = "text-center";
+            this.FilterProperties["ControlDefinition"] = "class=\"text-center\" id=\"menu\"";
+            this.FilterProperties["TagInstance"] = "1";
             this.WindowTitles.Add("Kask Kiosk");
             #endregion
         }
         
         #region Properties
-        public HtmlDiv UICancelApplicationPane1
+        public HtmlHyperlink UISubmitApplicationHyperlink
         {
             get
             {
-                if ((this.mUICancelApplicationPane1 == null))
+                if ((this.mUISubmitApplicationHyperlink == null))
                 {
-                    this.mUICancelApplicationPane1 = new HtmlDiv(this);
+                    this.mUISubmitApplicationHyperlink = new HtmlHyperlink(this);
                     #region Search Criteria
-                    this.mUICancelApplicationPane1.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
-                    this.mUICancelApplicationPane1.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
-                    this.mUICancelApplicationPane1.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Cancel Application     ";
-                    this.mUICancelApplicationPane1.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
-                    this.mUICancelApplicationPane1.FilterProperties[HtmlDiv.PropertyNames.Class] = "tableCell";
-                    this.mUICancelApplicationPane1.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"tableCell\" style=\"height: 952px;\"";
-                    this.mUICancelApplicationPane1.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "93";
-                    this.mUICancelApplicationPane1.WindowTitles.Add("Kask Kiosk");
+                    this.mUISubmitApplicationHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUISubmitApplicationHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUISubmitApplicationHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUISubmitApplicationHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Submit Application";
+                    this.mUISubmitApplicationHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Create";
+                    this.mUISubmitApplicationHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUISubmitApplicationHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Create?JobOpeningIDReferenceNumber=5#submitApplication" +
+                        "";
+                    this.mUISubmitApplicationHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUISubmitApplicationHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"#submitApplication\"";
+                    this.mUISubmitApplicationHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "11";
+                    this.mUISubmitApplicationHyperlink.WindowTitles.Add("Kask Kiosk");
                     #endregion
                 }
-                return this.mUICancelApplicationPane1;
+                return this.mUISubmitApplicationHyperlink;
             }
         }
         #endregion
         
         #region Fields
-        private HtmlDiv mUICancelApplicationPane1;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskInternetExpWindow11 : BrowserWindow
-    {
-        
-        public UIKaskKioskInternetExpWindow11()
-        {
-            #region Search Criteria
-            this.SearchProperties[UITestControl.PropertyNames.Name] = "Kask Kiosk";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.FilterProperties["OrderOfInvocation"] = "2";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        public void LaunchUrl(System.Uri url)
-        {
-            this.CopyFrom(BrowserWindow.Launch(url));
-        }
-        
-        #region Properties
-        public UIKaskKioskDocument12 UIKaskKioskDocument
-        {
-            get
-            {
-                if ((this.mUIKaskKioskDocument == null))
-                {
-                    this.mUIKaskKioskDocument = new UIKaskKioskDocument12(this);
-                }
-                return this.mUIKaskKioskDocument;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private UIKaskKioskDocument12 mUIKaskKioskDocument;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
-    public class UIKaskKioskDocument12 : HtmlDocument
-    {
-        
-        public UIKaskKioskDocument12(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
-            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
-            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
-            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
-            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Create";
-            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Create#employmentHistory1";
-            this.WindowTitles.Add("Kask Kiosk");
-            #endregion
-        }
-        
-        #region Properties
-        public HtmlEdit UIEmployerName_1Edit
-        {
-            get
-            {
-                if ((this.mUIEmployerName_1Edit == null))
-                {
-                    this.mUIEmployerName_1Edit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIEmployerName_1Edit.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployerName_1";
-                    this.mUIEmployerName_1Edit.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployerName_1";
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerName_1\" class=\"form-contro";
-                    this.mUIEmployerName_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "10";
-                    this.mUIEmployerName_1Edit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIEmployerName_1Edit;
-            }
-        }
-        
-        public HtmlEdit UIEmployedFrom_1Edit
-        {
-            get
-            {
-                if ((this.mUIEmployedFrom_1Edit == null))
-                {
-                    this.mUIEmployedFrom_1Edit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIEmployedFrom_1Edit.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedFrom_1";
-                    this.mUIEmployedFrom_1Edit.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedFrom_1";
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedFrom_1\" class=\"form-contro";
-                    this.mUIEmployedFrom_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "11";
-                    this.mUIEmployedFrom_1Edit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIEmployedFrom_1Edit;
-            }
-        }
-        
-        public HtmlEdit UIEmployedTo_1Edit
-        {
-            get
-            {
-                if ((this.mUIEmployedTo_1Edit == null))
-                {
-                    this.mUIEmployedTo_1Edit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIEmployedTo_1Edit.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedTo_1";
-                    this.mUIEmployedTo_1Edit.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedTo_1";
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedTo_1\" class=\"form-control\"";
-                    this.mUIEmployedTo_1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "12";
-                    this.mUIEmployedTo_1Edit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIEmployedTo_1Edit;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit
-        {
-            get
-            {
-                if ((this.mUIItem1Edit == null))
-                {
-                    this.mUIItem1Edit = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployerAddress_1";
-                    this.mUIItem1Edit.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployerAddress_1";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerAddress_1\" class=\"form-con";
-                    this.mUIItem1Edit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "13";
-                    this.mUIItem1Edit.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit1
-        {
-            get
-            {
-                if ((this.mUIItem1Edit1 == null))
-                {
-                    this.mUIItem1Edit1 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit1.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployerPhone_1";
-                    this.mUIItem1Edit1.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployerPhone_1";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerPhone_1\" class=\"form-contr";
-                    this.mUIItem1Edit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "14";
-                    this.mUIItem1Edit1.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit1;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit2
-        {
-            get
-            {
-                if ((this.mUIItem1Edit2 == null))
-                {
-                    this.mUIItem1Edit2 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit2.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployerSupervisor_1";
-                    this.mUIItem1Edit2.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployerSupervisor_1";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployerSupervisor_1\" class=\"form-";
-                    this.mUIItem1Edit2.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "15";
-                    this.mUIItem1Edit2.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit2;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit3
-        {
-            get
-            {
-                if ((this.mUIItem1Edit3 == null))
-                {
-                    this.mUIItem1Edit3 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit3.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedPosition_1";
-                    this.mUIItem1Edit3.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedPosition_1";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedPosition_1\" class=\"form-co";
-                    this.mUIItem1Edit3.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "16";
-                    this.mUIItem1Edit3.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit3;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit4
-        {
-            get
-            {
-                if ((this.mUIItem1Edit4 == null))
-                {
-                    this.mUIItem1Edit4 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit4.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedStartingSalary_1";
-                    this.mUIItem1Edit4.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedStartingSalary_1";
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedStartingSalary_1\" class=\"f";
-                    this.mUIItem1Edit4.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "17";
-                    this.mUIItem1Edit4.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit4;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit5
-        {
-            get
-            {
-                if ((this.mUIItem1Edit5 == null))
-                {
-                    this.mUIItem1Edit5 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit5.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedEndingSalary_1";
-                    this.mUIItem1Edit5.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedEndingSalary_1";
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedEndingSalary_1\" class=\"for";
-                    this.mUIItem1Edit5.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "18";
-                    this.mUIItem1Edit5.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit5;
-            }
-        }
-        
-        public HtmlEdit UIItem1Edit6
-        {
-            get
-            {
-                if ((this.mUIItem1Edit6 == null))
-                {
-                    this.mUIItem1Edit6 = new HtmlEdit(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit6.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedReasonForLeaving_1";
-                    this.mUIItem1Edit6.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedReasonForLeaving_1";
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedReasonForLeaving_1\" class=";
-                    this.mUIItem1Edit6.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "19";
-                    this.mUIItem1Edit6.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit6;
-            }
-        }
-        
-        public HtmlTextArea UIItem1Edit7
-        {
-            get
-            {
-                if ((this.mUIItem1Edit7 == null))
-                {
-                    this.mUIItem1Edit7 = new HtmlTextArea(this);
-                    #region Search Criteria
-                    this.mUIItem1Edit7.SearchProperties[HtmlEdit.PropertyNames.Id] = "EmployedResponsibilities_1";
-                    this.mUIItem1Edit7.SearchProperties[HtmlEdit.PropertyNames.Name] = "EmployedResponsibilities_1";
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"EmployedResponsibilities_1\" class=";
-                    this.mUIItem1Edit7.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "1";
-                    this.mUIItem1Edit7.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1Edit7;
-            }
-        }
-        
-        public HtmlComboBox UIItem1ComboBox
-        {
-            get
-            {
-                if ((this.mUIItem1ComboBox == null))
-                {
-                    this.mUIItem1ComboBox = new HtmlComboBox(this);
-                    #region Search Criteria
-                    this.mUIItem1ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "MayWeContactCurrentEmployer_1";
-                    this.mUIItem1ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "MayWeContactCurrentEmployer_1";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "2";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"MayWeContactCurrentEmployer_1\" cla";
-                    this.mUIItem1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "20";
-                    this.mUIItem1ComboBox.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUIItem1ComboBox;
-            }
-        }
-        
-        public HtmlButton UINextButton
-        {
-            get
-            {
-                if ((this.mUINextButton == null))
-                {
-                    this.mUINextButton = new HtmlButton(this);
-                    #region Search Criteria
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Id] = "moveDown";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Next →";
-                    this.mUINextButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-info";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-info\" id=\"moveDown\"";
-                    this.mUINextButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "3";
-                    this.mUINextButton.WindowTitles.Add("Kask Kiosk");
-                    #endregion
-                }
-                return this.mUINextButton;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private HtmlEdit mUIEmployerName_1Edit;
-        
-        private HtmlEdit mUIEmployedFrom_1Edit;
-        
-        private HtmlEdit mUIEmployedTo_1Edit;
-        
-        private HtmlEdit mUIItem1Edit;
-        
-        private HtmlEdit mUIItem1Edit1;
-        
-        private HtmlEdit mUIItem1Edit2;
-        
-        private HtmlEdit mUIItem1Edit3;
-        
-        private HtmlEdit mUIItem1Edit4;
-        
-        private HtmlEdit mUIItem1Edit5;
-        
-        private HtmlEdit mUIItem1Edit6;
-        
-        private HtmlTextArea mUIItem1Edit7;
-        
-        private HtmlComboBox mUIItem1ComboBox;
-        
-        private HtmlButton mUINextButton;
+        private HtmlHyperlink mUISubmitApplicationHyperlink;
         #endregion
     }
 }
