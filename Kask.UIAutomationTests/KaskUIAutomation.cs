@@ -19,6 +19,7 @@ namespace Kask.UIAutomationTests
     [CodedUITest]
     public class KaskUIAutomation
     {
+        private BrowserWindow browser;
         public KaskUIAutomation()
         {
         }
@@ -27,7 +28,12 @@ namespace Kask.UIAutomationTests
         public static void OpenApplication(TestContext context)
         {
             Playback.Initialize();
-            BrowserWindow browser = BrowserWindow.Launch(new Uri("http://localhost:51309"));
+        }
+
+        [TestInitialize]
+        public  void OpenApplication()
+        {
+            browser = BrowserWindow.Launch(new Uri("http://localhost:51309"));
             browser.CloseOnPlaybackCleanup = false;
             var ui = new UIMap();
         }
@@ -51,7 +57,22 @@ namespace Kask.UIAutomationTests
 
         }
 
+        [TestMethod]
+        public void HiringManagerLoggin()
+        {
+            this.UIMap.NavigateToLogginPage();
+            this.UIMap.HiringManagerLogIn();
+            this.UIMap.CreateANewJob();
+            this.UIMap.RequestJobOpening();
+            this.UIMap.LogOff();
 
+        }
+
+        [TestCleanup]
+        public void TestCleanUp()
+        {
+            browser.CloseOnPlaybackCleanup = true;
+        }
 
         #region Additional test attributes
 

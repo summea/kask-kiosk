@@ -19,6 +19,7 @@ namespace Kask.UIAutomationTests
     using Microsoft.VisualStudio.TestTools.UITest.Extension;
     using Microsoft.VisualStudio.TestTools.UITesting;
     using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+    using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
     using Mouse = Microsoft.VisualStudio.TestTools.UITesting.Mouse;
@@ -660,6 +661,190 @@ namespace Kask.UIAutomationTests
             Mouse.Click(uISubmitApplicationButton, new Point(82, 18));
         }
         
+        /// <summary>
+        /// NavigateToLogginPage
+        /// </summary>
+        public void NavigateToLogginPage()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uIKaskKioskHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument.UIKaskKioskHyperlink;
+            HtmlHyperlink uILogInHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument.UILogInHyperlink;
+            #endregion
+
+            // Click 'Kask Kiosk' link
+            Mouse.Click(uIKaskKioskHyperlink, new Point(77, 17));
+
+            // Click 'Log In' link
+            Mouse.Click(uILogInHyperlink, new Point(36, 22));
+        }
+        
+        /// <summary>
+        /// HiringManagerLogIn - Use 'HiringManagerLogInParams' to pass parameters into this method.
+        /// </summary>
+        public void HiringManagerLogIn()
+        {
+            #region Variable Declarations
+            HtmlDiv uILogInUsernamePassworPane = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument11.UILogInUsernamePassworPane;
+            HtmlEdit uIUsernameEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument11.UIUsernameEdit;
+            HtmlEdit uIPasswordEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument11.UIPasswordEdit;
+            HtmlInputButton uILogInButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument11.UILoginFormCustom.UILogInButton;
+            #endregion
+
+            // Click 'Log In User name: Password:' pane
+            Mouse.Click(uILogInUsernamePassworPane, new Point(161, 28));
+
+            // Type 'hiringmanager' in 'User name' text box
+            uIUsernameEdit.Text = this.HiringManagerLogInParams.UIUsernameEditText;
+
+            // Type '{Tab}' in 'User name' text box
+            Keyboard.SendKeys(uIUsernameEdit, this.HiringManagerLogInParams.UIUsernameEditSendKeys, ModifierKeys.None);
+
+            // Type '********' in 'Password' text box
+            uIPasswordEdit.Password = this.HiringManagerLogInParams.UIPasswordEditPassword;
+
+            // Click 'Log In' button
+            Mouse.Click(uILogInButton, new Point(35, 19));
+        }
+        
+        /// <summary>
+        /// ApproveApplication
+        /// </summary>
+        public void ApproveApplication()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uIApproveHyperlink1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument21.UIApproveHyperlink1;
+            HtmlInputButton uIApproveButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument13.UIApproveButton;
+            HtmlHyperlink uIRejectHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument21.UIRejectHyperlink;
+            HtmlInputButton uIRejectButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument32.UIRejectButton;
+            HtmlHyperlink uIViewDetailsHyperlink1 = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument21.UIViewDetailsHyperlink1;
+            BrowserWindow uIKaskKioskInternetExpWindow = this.UIKaskKioskInternetExpWindow;
+            #endregion
+
+            // Click 'Approve' link
+            Mouse.Click(uIApproveHyperlink1, new Point(38, 10));
+
+            // Click 'Approve' button
+            Mouse.Click(uIApproveButton, new Point(52, 17));
+
+            // Click 'Reject' link
+            Mouse.Click(uIRejectHyperlink, new Point(29, 13));
+
+            // Click 'Reject' button
+            Mouse.Click(uIRejectButton, new Point(50, 15));
+
+            // Click 'View Details' link
+            Mouse.Click(uIViewDetailsHyperlink1, new Point(48, 11));
+
+            // Perform Back on Browser Window
+            uIKaskKioskInternetExpWindow.Back();
+        }
+        
+        /// <summary>
+        /// CreateANewJob - Use 'CreateANewJobParams' to pass parameters into this method.
+        /// </summary>
+        public void CreateANewJob()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uIDashboardHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument12.UIDashboardHyperlink;
+            HtmlHyperlink uICreateNewJobTypeHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument12.UICreateNewJobTypeHyperlink;
+            HtmlEdit uITitleEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument22.UITitleEdit;
+            HtmlInputButton uISaveButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument22.UISaveButton;
+            #endregion
+
+            // Click 'Dashboard' link
+            Mouse.Click(uIDashboardHyperlink, new Point(46, 19));
+
+            // Click 'Create New Job Type' link
+            Mouse.Click(uICreateNewJobTypeHyperlink, new Point(91, 5));
+
+            // Type 'House Keeper' in 'title' text box
+            uITitleEdit.Text = this.CreateANewJobParams.UITitleEditText;
+
+            // Click 'Save' button
+            Mouse.Click(uISaveButton, new Point(30, 25));
+        }
+        
+        /// <summary>
+        /// RequestJobOpening - Use 'RequestJobOpeningParams' to pass parameters into this method.
+        /// </summary>
+        public void RequestJobOpening()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uIDashboardHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument12.UIDashboardHyperlink;
+            HtmlHyperlink uIRequestJobOpeningHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument12.UIRequestJobOpeningHyperlink;
+            HtmlComboBox uIJobIDComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UIJobIDComboBox;
+            HtmlComboBox uIStoreIDComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UIStoreIDComboBox;
+            HtmlTextArea uIDescriptionEdit = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UIDescriptionEdit;
+            HtmlCheckBox uISkill_2CheckBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UISkill_2CheckBox;
+            HtmlCheckBox uISkill_3CheckBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UISkill_3CheckBox;
+            HtmlCheckBox uISkill_5CheckBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UISkill_5CheckBox;
+            HtmlCheckBox uISkill_4CheckBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UISkill_4CheckBox;
+            HtmlComboBox uISAQuestion_1ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UISAQuestion_1ComboBox;
+            HtmlComboBox uISAQuestion_2ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UISAQuestion_2ComboBox;
+            HtmlComboBox uISAQuestion_3ComboBox = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UISAQuestion_3ComboBox;
+            HtmlDiv uISection2Pane = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UISection2Pane;
+            HtmlInputButton uISaveButton = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument23.UISaveButton;
+            #endregion
+
+            // Click 'Dashboard' link
+            Mouse.Click(uIDashboardHyperlink, new Point(56, 22));
+
+            // Click 'Request Job Opening' link
+            Mouse.Click(uIRequestJobOpeningHyperlink, new Point(86, 13));
+
+            // Select 'House Keeper' in 'JobID' combo box
+            uIJobIDComboBox.SelectedItem = this.RequestJobOpeningParams.UIJobIDComboBoxSelectedItem;
+
+            // Select 'Wilsonville' in 'StoreID' combo box
+            uIStoreIDComboBox.SelectedItem = this.RequestJobOpeningParams.UIStoreIDComboBoxSelectedItem;
+
+            // Type 'Cleaning the store' in 'Description' text box
+            uIDescriptionEdit.Text = this.RequestJobOpeningParams.UIDescriptionEditText;
+
+            // Select 'Skill_2' check box
+            uISkill_2CheckBox.Checked = this.RequestJobOpeningParams.UISkill_2CheckBoxChecked;
+
+            // Select 'Skill_3' check box
+            uISkill_3CheckBox.Checked = this.RequestJobOpeningParams.UISkill_3CheckBoxChecked;
+
+            // Select 'Skill_5' check box
+            uISkill_5CheckBox.Checked = this.RequestJobOpeningParams.UISkill_5CheckBoxChecked;
+
+            // Select 'Skill_4' check box
+            uISkill_4CheckBox.Checked = this.RequestJobOpeningParams.UISkill_4CheckBoxChecked;
+
+            // Select 'What are your weaknesses?' in 'SAQuestion_1' combo box
+            uISAQuestion_1ComboBox.SelectedItem = this.RequestJobOpeningParams.UISAQuestion_1ComboBoxSelectedItem;
+
+            // Select 'Tell me about a time when you went above and beyond yourself?' in 'SAQuestion_1' combo box
+            uISAQuestion_1ComboBox.SelectedItem = this.RequestJobOpeningParams.UISAQuestion_1ComboBoxSelectedItem1;
+
+            // Select 'What are your strengths?' in 'SAQuestion_2' combo box
+            uISAQuestion_2ComboBox.SelectedItem = this.RequestJobOpeningParams.UISAQuestion_2ComboBoxSelectedItem;
+
+            // Select 'While working with projects, do you find yourself stuck. How did you do about it?' in 'SAQuestion_3' combo box
+            uISAQuestion_3ComboBox.SelectedItem = this.RequestJobOpeningParams.UISAQuestion_3ComboBoxSelectedItem;
+
+            // Click 'section2' pane
+            Mouse.Click(uISection2Pane, new Point(469, 11));
+
+            // Click 'Save' button
+            Mouse.Click(uISaveButton, new Point(34, 18));
+        }
+        
+        /// <summary>
+        /// LogOff
+        /// </summary>
+        public void LogOff()
+        {
+            #region Variable Declarations
+            HtmlHyperlink uILogoffHyperlink = this.UIKaskKioskInternetExpWindow.UIKaskKioskDocument12.UILogoutFormCustom.UILogoffHyperlink;
+            #endregion
+
+            // Click 'Log off' link
+            Mouse.Click(uILogoffHyperlink, new Point(20, 9));
+        }
+        
         #region Properties
         public virtual PersonalPageParams PersonalPageParams
         {
@@ -769,6 +954,42 @@ namespace Kask.UIAutomationTests
             }
         }
         
+        public virtual HiringManagerLogInParams HiringManagerLogInParams
+        {
+            get
+            {
+                if ((this.mHiringManagerLogInParams == null))
+                {
+                    this.mHiringManagerLogInParams = new HiringManagerLogInParams();
+                }
+                return this.mHiringManagerLogInParams;
+            }
+        }
+        
+        public virtual CreateANewJobParams CreateANewJobParams
+        {
+            get
+            {
+                if ((this.mCreateANewJobParams == null))
+                {
+                    this.mCreateANewJobParams = new CreateANewJobParams();
+                }
+                return this.mCreateANewJobParams;
+            }
+        }
+        
+        public virtual RequestJobOpeningParams RequestJobOpeningParams
+        {
+            get
+            {
+                if ((this.mRequestJobOpeningParams == null))
+                {
+                    this.mRequestJobOpeningParams = new RequestJobOpeningParams();
+                }
+                return this.mRequestJobOpeningParams;
+            }
+        }
+        
         public UIKaskKioskInternetExpWindow UIKaskKioskInternetExpWindow
         {
             get
@@ -778,6 +999,18 @@ namespace Kask.UIAutomationTests
                     this.mUIKaskKioskInternetExpWindow = new UIKaskKioskInternetExpWindow();
                 }
                 return this.mUIKaskKioskInternetExpWindow;
+            }
+        }
+        
+        public UIKaskKioskGoogleChromWindow UIKaskKioskGoogleChromWindow
+        {
+            get
+            {
+                if ((this.mUIKaskKioskGoogleChromWindow == null))
+                {
+                    this.mUIKaskKioskGoogleChromWindow = new UIKaskKioskGoogleChromWindow();
+                }
+                return this.mUIKaskKioskGoogleChromWindow;
             }
         }
         #endregion
@@ -801,7 +1034,15 @@ namespace Kask.UIAutomationTests
         
         private SubmitApplicationParams mSubmitApplicationParams;
         
+        private HiringManagerLogInParams mHiringManagerLogInParams;
+        
+        private CreateANewJobParams mCreateANewJobParams;
+        
+        private RequestJobOpeningParams mRequestJobOpeningParams;
+        
         private UIKaskKioskInternetExpWindow mUIKaskKioskInternetExpWindow;
+        
+        private UIKaskKioskGoogleChromWindow mUIKaskKioskGoogleChromWindow;
         #endregion
     }
     
@@ -1510,6 +1751,112 @@ namespace Kask.UIAutomationTests
         #endregion
     }
     
+    /// <summary>
+    /// Parameters to be passed into 'HiringManagerLogIn'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class HiringManagerLogInParams
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Type 'hiringmanager' in 'User name' text box
+        /// </summary>
+        public string UIUsernameEditText = "hiringmanager";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'User name' text box
+        /// </summary>
+        public string UIUsernameEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '********' in 'Password' text box
+        /// </summary>
+        public string UIPasswordEditPassword = "DRgZI3RMS/G1ZBScZqfQGB/36gRVbutw/T8F6Q/evBQ=";
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'CreateANewJob'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class CreateANewJobParams
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Type 'House Keeper' in 'title' text box
+        /// </summary>
+        public string UITitleEditText = "House Keeper";
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'RequestJobOpening'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class RequestJobOpeningParams
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Select 'House Keeper' in 'JobID' combo box
+        /// </summary>
+        public string UIJobIDComboBoxSelectedItem = "House Keeper";
+        
+        /// <summary>
+        /// Select 'Wilsonville' in 'StoreID' combo box
+        /// </summary>
+        public string UIStoreIDComboBoxSelectedItem = "Wilsonville";
+        
+        /// <summary>
+        /// Type 'Cleaning the store' in 'Description' text box
+        /// </summary>
+        public string UIDescriptionEditText = "Cleaning the store";
+        
+        /// <summary>
+        /// Select 'Skill_2' check box
+        /// </summary>
+        public bool UISkill_2CheckBoxChecked = true;
+        
+        /// <summary>
+        /// Select 'Skill_3' check box
+        /// </summary>
+        public bool UISkill_3CheckBoxChecked = true;
+        
+        /// <summary>
+        /// Select 'Skill_5' check box
+        /// </summary>
+        public bool UISkill_5CheckBoxChecked = true;
+        
+        /// <summary>
+        /// Select 'Skill_4' check box
+        /// </summary>
+        public bool UISkill_4CheckBoxChecked = true;
+        
+        /// <summary>
+        /// Select 'What are your weaknesses?' in 'SAQuestion_1' combo box
+        /// </summary>
+        public string UISAQuestion_1ComboBoxSelectedItem = "What are your weaknesses?";
+        
+        /// <summary>
+        /// Select 'Tell me about a time when you went above and beyond yourself?' in 'SAQuestion_1' combo box
+        /// </summary>
+        public string UISAQuestion_1ComboBoxSelectedItem1 = "Tell me about a time when you went above and beyond yourself?";
+        
+        /// <summary>
+        /// Select 'What are your strengths?' in 'SAQuestion_2' combo box
+        /// </summary>
+        public string UISAQuestion_2ComboBoxSelectedItem = "What are your strengths?";
+        
+        /// <summary>
+        /// Select 'While working with projects, do you find yourself stuck. How did you do about it?' in 'SAQuestion_3' combo box
+        /// </summary>
+        public string UISAQuestion_3ComboBoxSelectedItem = "While working with projects, do you find yourself stuck. How did you do about it?" +
+            "";
+        #endregion
+    }
+    
     [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
     public class UIKaskKioskInternetExpWindow : BrowserWindow
     {
@@ -1660,6 +2007,123 @@ namespace Kask.UIAutomationTests
                 return this.mUIKaskKioskDocument10;
             }
         }
+        
+        public UIKaskKioskDocument11 UIKaskKioskDocument11
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument11 == null))
+                {
+                    this.mUIKaskKioskDocument11 = new UIKaskKioskDocument11(this);
+                }
+                return this.mUIKaskKioskDocument11;
+            }
+        }
+        
+        public UIKaskKioskDocument12 UIKaskKioskDocument12
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument12 == null))
+                {
+                    this.mUIKaskKioskDocument12 = new UIKaskKioskDocument12(this);
+                }
+                return this.mUIKaskKioskDocument12;
+            }
+        }
+        
+        public UIKaskKioskDocument21 UIKaskKioskDocument21
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument21 == null))
+                {
+                    this.mUIKaskKioskDocument21 = new UIKaskKioskDocument21(this);
+                }
+                return this.mUIKaskKioskDocument21;
+            }
+        }
+        
+        public HtmlDocument UIKaskKioskDocument31
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument31 == null))
+                {
+                    this.mUIKaskKioskDocument31 = new HtmlDocument(this);
+                    #region Search Criteria
+                    this.mUIKaskKioskDocument31.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+                    this.mUIKaskKioskDocument31.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+                    this.mUIKaskKioskDocument31.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+                    this.mUIKaskKioskDocument31.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+                    this.mUIKaskKioskDocument31.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Details/9";
+                    this.mUIKaskKioskDocument31.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Details/9";
+                    this.mUIKaskKioskDocument31.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIKaskKioskDocument31;
+            }
+        }
+        
+        public UIKaskKioskDocument51 UIKaskKioskDocument51
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument51 == null))
+                {
+                    this.mUIKaskKioskDocument51 = new UIKaskKioskDocument51(this);
+                }
+                return this.mUIKaskKioskDocument51;
+            }
+        }
+        
+        public UIKaskKioskDocument13 UIKaskKioskDocument13
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument13 == null))
+                {
+                    this.mUIKaskKioskDocument13 = new UIKaskKioskDocument13(this);
+                }
+                return this.mUIKaskKioskDocument13;
+            }
+        }
+        
+        public UIKaskKioskDocument32 UIKaskKioskDocument32
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument32 == null))
+                {
+                    this.mUIKaskKioskDocument32 = new UIKaskKioskDocument32(this);
+                }
+                return this.mUIKaskKioskDocument32;
+            }
+        }
+        
+        public UIKaskKioskDocument22 UIKaskKioskDocument22
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument22 == null))
+                {
+                    this.mUIKaskKioskDocument22 = new UIKaskKioskDocument22(this);
+                }
+                return this.mUIKaskKioskDocument22;
+            }
+        }
+        
+        public UIKaskKioskDocument23 UIKaskKioskDocument23
+        {
+            get
+            {
+                if ((this.mUIKaskKioskDocument23 == null))
+                {
+                    this.mUIKaskKioskDocument23 = new UIKaskKioskDocument23(this);
+                }
+                return this.mUIKaskKioskDocument23;
+            }
+        }
         #endregion
         
         #region Fields
@@ -1684,6 +2148,24 @@ namespace Kask.UIAutomationTests
         private UIKaskKioskDocument9 mUIKaskKioskDocument9;
         
         private UIKaskKioskDocument10 mUIKaskKioskDocument10;
+        
+        private UIKaskKioskDocument11 mUIKaskKioskDocument11;
+        
+        private UIKaskKioskDocument12 mUIKaskKioskDocument12;
+        
+        private UIKaskKioskDocument21 mUIKaskKioskDocument21;
+        
+        private HtmlDocument mUIKaskKioskDocument31;
+        
+        private UIKaskKioskDocument51 mUIKaskKioskDocument51;
+        
+        private UIKaskKioskDocument13 mUIKaskKioskDocument13;
+        
+        private UIKaskKioskDocument32 mUIKaskKioskDocument32;
+        
+        private UIKaskKioskDocument22 mUIKaskKioskDocument22;
+        
+        private UIKaskKioskDocument23 mUIKaskKioskDocument23;
         #endregion
     }
     
@@ -1730,10 +2212,64 @@ namespace Kask.UIAutomationTests
                 return this.mUIViewJobOpeningsHyperlink;
             }
         }
+        
+        public HtmlHyperlink UIKaskKioskHyperlink
+        {
+            get
+            {
+                if ((this.mUIKaskKioskHyperlink == null))
+                {
+                    this.mUIKaskKioskHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIKaskKioskHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIKaskKioskHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIKaskKioskHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIKaskKioskHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Kask Kiosk";
+                    this.mUIKaskKioskHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/";
+                    this.mUIKaskKioskHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIKaskKioskHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/";
+                    this.mUIKaskKioskHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIKaskKioskHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/\"";
+                    this.mUIKaskKioskHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "1";
+                    this.mUIKaskKioskHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIKaskKioskHyperlink;
+            }
+        }
+        
+        public HtmlHyperlink UILogInHyperlink
+        {
+            get
+            {
+                if ((this.mUILogInHyperlink == null))
+                {
+                    this.mUILogInHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUILogInHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUILogInHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUILogInHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUILogInHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Log In";
+                    this.mUILogInHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/Home/Backend";
+                    this.mUILogInHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUILogInHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/Home/Backend";
+                    this.mUILogInHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = "btn btn-lg btn-default";
+                    this.mUILogInHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "class=\"btn btn-lg btn-default\" href=\"/Ho";
+                    this.mUILogInHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "3";
+                    this.mUILogInHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUILogInHyperlink;
+            }
+        }
         #endregion
         
         #region Fields
         private HtmlHyperlink mUIViewJobOpeningsHyperlink;
+        
+        private HtmlHyperlink mUIKaskKioskHyperlink;
+        
+        private HtmlHyperlink mUILogInHyperlink;
         #endregion
     }
     
@@ -4821,6 +5357,1247 @@ namespace Kask.UIAutomationTests
         
         #region Fields
         private HtmlHyperlink mUISubmitApplicationHyperlink;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskDocument11 : HtmlDocument
+    {
+        
+        public UIKaskKioskDocument11(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/Account/Login";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/Account/Login?ReturnUrl=%2fHome%2fBackend";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlDiv UILogInUsernamePassworPane
+        {
+            get
+            {
+                if ((this.mUILogInUsernamePassworPane == null))
+                {
+                    this.mUILogInUsernamePassworPane = new HtmlDiv(this);
+                    #region Search Criteria
+                    this.mUILogInUsernamePassworPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUILogInUsernamePassworPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUILogInUsernamePassworPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Log In\r\n\r\n User name:\r\n\r\n \r\nPassword:\r\n\r";
+                    this.mUILogInUsernamePassworPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUILogInUsernamePassworPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "row";
+                    this.mUILogInUsernamePassworPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"row\"";
+                    this.mUILogInUsernamePassworPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "4";
+                    this.mUILogInUsernamePassworPane.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUILogInUsernamePassworPane;
+            }
+        }
+        
+        public HtmlEdit UIUsernameEdit
+        {
+            get
+            {
+                if ((this.mUIUsernameEdit == null))
+                {
+                    this.mUIUsernameEdit = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIUsernameEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "UserName";
+                    this.mUIUsernameEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "UserName";
+                    this.mUIUsernameEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = "User name";
+                    this.mUIUsernameEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIUsernameEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIUsernameEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = null;
+                    this.mUIUsernameEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"UserName\" id=\"UserName\" type=\"text";
+                    this.mUIUsernameEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "2";
+                    this.mUIUsernameEdit.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIUsernameEdit;
+            }
+        }
+        
+        public HtmlEdit UIPasswordEdit
+        {
+            get
+            {
+                if ((this.mUIPasswordEdit == null))
+                {
+                    this.mUIPasswordEdit = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPasswordEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "Password";
+                    this.mUIPasswordEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "Password";
+                    this.mUIPasswordEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = "Password";
+                    this.mUIPasswordEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "PASSWORD";
+                    this.mUIPasswordEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPasswordEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = null;
+                    this.mUIPasswordEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"Password\" id=\"Password\" type=\"pass";
+                    this.mUIPasswordEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "3";
+                    this.mUIPasswordEdit.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIPasswordEdit;
+            }
+        }
+        
+        public UILoginFormCustom UILoginFormCustom
+        {
+            get
+            {
+                if ((this.mUILoginFormCustom == null))
+                {
+                    this.mUILoginFormCustom = new UILoginFormCustom(this);
+                }
+                return this.mUILoginFormCustom;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlDiv mUILogInUsernamePassworPane;
+        
+        private HtmlEdit mUIUsernameEdit;
+        
+        private HtmlEdit mUIPasswordEdit;
+        
+        private UILoginFormCustom mUILoginFormCustom;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UILoginFormCustom : HtmlCustom
+    {
+        
+        public UILoginFormCustom(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties["TagName"] = "SECTION";
+            this.SearchProperties["Id"] = "loginForm";
+            this.SearchProperties[UITestControl.PropertyNames.Name] = null;
+            this.FilterProperties["Class"] = null;
+            this.FilterProperties["ControlDefinition"] = "id=\"loginForm\"";
+            this.FilterProperties["TagInstance"] = "1";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlInputButton UILogInButton
+        {
+            get
+            {
+                if ((this.mUILogInButton == null))
+                {
+                    this.mUILogInButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUILogInButton.SearchProperties[HtmlButton.PropertyNames.Id] = null;
+                    this.mUILogInButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUILogInButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Log In";
+                    this.mUILogInButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
+                    this.mUILogInButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUILogInButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-primary";
+                    this.mUILogInButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-primary\" type=\"submit\" va";
+                    this.mUILogInButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "4";
+                    this.mUILogInButton.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUILogInButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlInputButton mUILogInButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskDocument12 : HtmlDocument
+    {
+        
+        public UIKaskKioskDocument12(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/Home/Backend";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/Home/Backend";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlHyperlink UIDashboardHyperlink
+        {
+            get
+            {
+                if ((this.mUIDashboardHyperlink == null))
+                {
+                    this.mUIDashboardHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIDashboardHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIDashboardHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIDashboardHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIDashboardHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Dashboard";
+                    this.mUIDashboardHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/Home/Backend";
+                    this.mUIDashboardHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIDashboardHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/Home/Backend";
+                    this.mUIDashboardHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIDashboardHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/Home/Backend\"";
+                    this.mUIDashboardHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "1";
+                    this.mUIDashboardHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIDashboardHyperlink;
+            }
+        }
+        
+        public HtmlHyperlink UIViewAllApplicationsHyperlink
+        {
+            get
+            {
+                if ((this.mUIViewAllApplicationsHyperlink == null))
+                {
+                    this.mUIViewAllApplicationsHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIViewAllApplicationsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIViewAllApplicationsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIViewAllApplicationsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIViewAllApplicationsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "View All Applications";
+                    this.mUIViewAllApplicationsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Index";
+                    this.mUIViewAllApplicationsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIViewAllApplicationsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Index";
+                    this.mUIViewAllApplicationsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIViewAllApplicationsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/App/Index\"";
+                    this.mUIViewAllApplicationsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "5";
+                    this.mUIViewAllApplicationsHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIViewAllApplicationsHyperlink;
+            }
+        }
+        
+        public HtmlHyperlink UICreateNewJobTypeHyperlink
+        {
+            get
+            {
+                if ((this.mUICreateNewJobTypeHyperlink == null))
+                {
+                    this.mUICreateNewJobTypeHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUICreateNewJobTypeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUICreateNewJobTypeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUICreateNewJobTypeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUICreateNewJobTypeHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Create New Job Type";
+                    this.mUICreateNewJobTypeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/Jobs/Create";
+                    this.mUICreateNewJobTypeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUICreateNewJobTypeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/Jobs/Create";
+                    this.mUICreateNewJobTypeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUICreateNewJobTypeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/Jobs/Create\"";
+                    this.mUICreateNewJobTypeHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "7";
+                    this.mUICreateNewJobTypeHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUICreateNewJobTypeHyperlink;
+            }
+        }
+        
+        public HtmlHyperlink UIRequestJobOpeningHyperlink
+        {
+            get
+            {
+                if ((this.mUIRequestJobOpeningHyperlink == null))
+                {
+                    this.mUIRequestJobOpeningHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIRequestJobOpeningHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIRequestJobOpeningHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIRequestJobOpeningHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIRequestJobOpeningHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Request Job Opening";
+                    this.mUIRequestJobOpeningHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/JobOpenings/Create";
+                    this.mUIRequestJobOpeningHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIRequestJobOpeningHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/JobOpenings/Create";
+                    this.mUIRequestJobOpeningHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIRequestJobOpeningHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/JobOpenings/Create\"";
+                    this.mUIRequestJobOpeningHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "9";
+                    this.mUIRequestJobOpeningHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIRequestJobOpeningHyperlink;
+            }
+        }
+        
+        public UILogoutFormCustom UILogoutFormCustom
+        {
+            get
+            {
+                if ((this.mUILogoutFormCustom == null))
+                {
+                    this.mUILogoutFormCustom = new UILogoutFormCustom(this);
+                }
+                return this.mUILogoutFormCustom;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlHyperlink mUIDashboardHyperlink;
+        
+        private HtmlHyperlink mUIViewAllApplicationsHyperlink;
+        
+        private HtmlHyperlink mUICreateNewJobTypeHyperlink;
+        
+        private HtmlHyperlink mUIRequestJobOpeningHyperlink;
+        
+        private UILogoutFormCustom mUILogoutFormCustom;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UILogoutFormCustom : HtmlCustom
+    {
+        
+        public UILogoutFormCustom(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties["TagName"] = "FORM";
+            this.SearchProperties["Id"] = "logoutForm";
+            this.SearchProperties[UITestControl.PropertyNames.Name] = null;
+            this.FilterProperties["Class"] = null;
+            this.FilterProperties["ControlDefinition"] = "id=\"logoutForm\" action=\"/Account/LogOff\"";
+            this.FilterProperties["TagInstance"] = "1";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlHyperlink UILogoffHyperlink
+        {
+            get
+            {
+                if ((this.mUILogoffHyperlink == null))
+                {
+                    this.mUILogoffHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUILogoffHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUILogoffHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUILogoffHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUILogoffHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Log off";
+                    this.mUILogoffHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "document.getElementById(\'logoutForm\').submit()";
+                    this.mUILogoffHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUILogoffHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "javascript:document.getElementById(\'logoutForm\').submit()";
+                    this.mUILogoffHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUILogoffHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"javascript:document.getElementById";
+                    this.mUILogoffHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "1";
+                    this.mUILogoffHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUILogoffHyperlink;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlHyperlink mUILogoffHyperlink;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskDocument21 : HtmlDocument
+    {
+        
+        public UIKaskKioskDocument21(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Index";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Index";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlHyperlink UIViewDetailsHyperlink
+        {
+            get
+            {
+                if ((this.mUIViewDetailsHyperlink == null))
+                {
+                    this.mUIViewDetailsHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIViewDetailsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIViewDetailsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIViewDetailsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIViewDetailsHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "View Details";
+                    this.mUIViewDetailsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Details/9";
+                    this.mUIViewDetailsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIViewDetailsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Details/9";
+                    this.mUIViewDetailsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIViewDetailsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/App/Details/9\"";
+                    this.mUIViewDetailsHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "31";
+                    this.mUIViewDetailsHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIViewDetailsHyperlink;
+            }
+        }
+        
+        public HtmlHyperlink UIApproveHyperlink
+        {
+            get
+            {
+                if ((this.mUIApproveHyperlink == null))
+                {
+                    this.mUIApproveHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIApproveHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIApproveHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIApproveHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIApproveHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Approve";
+                    this.mUIApproveHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Approve/9";
+                    this.mUIApproveHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIApproveHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Approve/9";
+                    this.mUIApproveHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIApproveHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/App/Approve/9\"";
+                    this.mUIApproveHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "29";
+                    this.mUIApproveHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIApproveHyperlink;
+            }
+        }
+        
+        public HtmlHyperlink UIApproveHyperlink1
+        {
+            get
+            {
+                if ((this.mUIApproveHyperlink1 == null))
+                {
+                    this.mUIApproveHyperlink1 = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIApproveHyperlink1.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIApproveHyperlink1.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIApproveHyperlink1.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIApproveHyperlink1.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Approve";
+                    this.mUIApproveHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Approve/1";
+                    this.mUIApproveHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIApproveHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Approve/1";
+                    this.mUIApproveHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIApproveHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/App/Approve/1\"";
+                    this.mUIApproveHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "5";
+                    this.mUIApproveHyperlink1.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIApproveHyperlink1;
+            }
+        }
+        
+        public HtmlHyperlink UIRejectHyperlink
+        {
+            get
+            {
+                if ((this.mUIRejectHyperlink == null))
+                {
+                    this.mUIRejectHyperlink = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIRejectHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIRejectHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIRejectHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIRejectHyperlink.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "Reject";
+                    this.mUIRejectHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Reject/2";
+                    this.mUIRejectHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIRejectHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Reject/2";
+                    this.mUIRejectHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIRejectHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/App/Reject/2\"";
+                    this.mUIRejectHyperlink.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "9";
+                    this.mUIRejectHyperlink.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIRejectHyperlink;
+            }
+        }
+        
+        public HtmlHyperlink UIViewDetailsHyperlink1
+        {
+            get
+            {
+                if ((this.mUIViewDetailsHyperlink1 == null))
+                {
+                    this.mUIViewDetailsHyperlink1 = new HtmlHyperlink(this);
+                    #region Search Criteria
+                    this.mUIViewDetailsHyperlink1.SearchProperties[HtmlHyperlink.PropertyNames.Id] = null;
+                    this.mUIViewDetailsHyperlink1.SearchProperties[HtmlHyperlink.PropertyNames.Name] = null;
+                    this.mUIViewDetailsHyperlink1.SearchProperties[HtmlHyperlink.PropertyNames.Target] = null;
+                    this.mUIViewDetailsHyperlink1.SearchProperties[HtmlHyperlink.PropertyNames.InnerText] = "View Details";
+                    this.mUIViewDetailsHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.AbsolutePath] = "/App/Details/3";
+                    this.mUIViewDetailsHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.Title] = null;
+                    this.mUIViewDetailsHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.Href] = "http://localhost:51309/App/Details/3";
+                    this.mUIViewDetailsHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.Class] = null;
+                    this.mUIViewDetailsHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.ControlDefinition] = "href=\"/App/Details/3\"";
+                    this.mUIViewDetailsHyperlink1.FilterProperties[HtmlHyperlink.PropertyNames.TagInstance] = "13";
+                    this.mUIViewDetailsHyperlink1.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIViewDetailsHyperlink1;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlHyperlink mUIViewDetailsHyperlink;
+        
+        private HtmlHyperlink mUIApproveHyperlink;
+        
+        private HtmlHyperlink mUIApproveHyperlink1;
+        
+        private HtmlHyperlink mUIRejectHyperlink;
+        
+        private HtmlHyperlink mUIViewDetailsHyperlink1;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskDocument51 : HtmlDocument
+    {
+        
+        public UIKaskKioskDocument51(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Approve/9";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Approve/9";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlInputButton UIApproveButton
+        {
+            get
+            {
+                if ((this.mUIApproveButton == null))
+                {
+                    this.mUIApproveButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUIApproveButton.SearchProperties[HtmlButton.PropertyNames.Id] = "submit";
+                    this.mUIApproveButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUIApproveButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Approve";
+                    this.mUIApproveButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
+                    this.mUIApproveButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUIApproveButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-success";
+                    this.mUIApproveButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-success\" id=\"submit\" type";
+                    this.mUIApproveButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "4";
+                    this.mUIApproveButton.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIApproveButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlInputButton mUIApproveButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskDocument13 : HtmlDocument
+    {
+        
+        public UIKaskKioskDocument13(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Approve/1";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Approve/1";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlInputButton UIApproveButton
+        {
+            get
+            {
+                if ((this.mUIApproveButton == null))
+                {
+                    this.mUIApproveButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUIApproveButton.SearchProperties[HtmlButton.PropertyNames.Id] = "submit";
+                    this.mUIApproveButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUIApproveButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Approve";
+                    this.mUIApproveButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
+                    this.mUIApproveButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUIApproveButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-success";
+                    this.mUIApproveButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-success\" id=\"submit\" type";
+                    this.mUIApproveButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "4";
+                    this.mUIApproveButton.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIApproveButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlInputButton mUIApproveButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskDocument32 : HtmlDocument
+    {
+        
+        public UIKaskKioskDocument32(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/App/Reject/2";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/App/Reject/2";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlInputButton UIRejectButton
+        {
+            get
+            {
+                if ((this.mUIRejectButton == null))
+                {
+                    this.mUIRejectButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUIRejectButton.SearchProperties[HtmlButton.PropertyNames.Id] = "submit";
+                    this.mUIRejectButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUIRejectButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Reject";
+                    this.mUIRejectButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
+                    this.mUIRejectButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUIRejectButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-success";
+                    this.mUIRejectButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-success\" id=\"submit\" type";
+                    this.mUIRejectButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "4";
+                    this.mUIRejectButton.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIRejectButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlInputButton mUIRejectButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskDocument22 : HtmlDocument
+    {
+        
+        public UIKaskKioskDocument22(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/Jobs/Create";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/Jobs/Create";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlEdit UITitleEdit
+        {
+            get
+            {
+                if ((this.mUITitleEdit == null))
+                {
+                    this.mUITitleEdit = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUITitleEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "title";
+                    this.mUITitleEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "title";
+                    this.mUITitleEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUITitleEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUITitleEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUITitleEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "form-control";
+                    this.mUITitleEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"title\" class=\"form-control\" id=\"ti";
+                    this.mUITitleEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "3";
+                    this.mUITitleEdit.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUITitleEdit;
+            }
+        }
+        
+        public HtmlInputButton UISaveButton
+        {
+            get
+            {
+                if ((this.mUISaveButton == null))
+                {
+                    this.mUISaveButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUISaveButton.SearchProperties[HtmlButton.PropertyNames.Id] = "submit";
+                    this.mUISaveButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUISaveButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Save";
+                    this.mUISaveButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
+                    this.mUISaveButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUISaveButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-success";
+                    this.mUISaveButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-success\" id=\"submit\" type";
+                    this.mUISaveButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "4";
+                    this.mUISaveButton.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISaveButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlEdit mUITitleEdit;
+        
+        private HtmlInputButton mUISaveButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskDocument23 : HtmlDocument
+    {
+        
+        public UIKaskKioskDocument23(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDocument.PropertyNames.Id] = null;
+            this.SearchProperties[HtmlDocument.PropertyNames.RedirectingPage] = "False";
+            this.SearchProperties[HtmlDocument.PropertyNames.FrameDocument] = "False";
+            this.FilterProperties[HtmlDocument.PropertyNames.Title] = "Kask Kiosk";
+            this.FilterProperties[HtmlDocument.PropertyNames.AbsolutePath] = "/JobOpenings/Create";
+            this.FilterProperties[HtmlDocument.PropertyNames.PageUrl] = "http://localhost:51309/JobOpenings/Create";
+            this.WindowTitles.Add("Kask Kiosk");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlComboBox UIJobIDComboBox
+        {
+            get
+            {
+                if ((this.mUIJobIDComboBox == null))
+                {
+                    this.mUIJobIDComboBox = new HtmlComboBox(this);
+                    #region Search Criteria
+                    this.mUIJobIDComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "JobID";
+                    this.mUIJobIDComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "JobID";
+                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
+                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
+                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
+                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "6";
+                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
+                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"JobID\" class=\"form-control\" id=\"Jo";
+                    this.mUIJobIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "1";
+                    this.mUIJobIDComboBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIJobIDComboBox;
+            }
+        }
+        
+        public HtmlComboBox UIStoreIDComboBox
+        {
+            get
+            {
+                if ((this.mUIStoreIDComboBox == null))
+                {
+                    this.mUIStoreIDComboBox = new HtmlComboBox(this);
+                    #region Search Criteria
+                    this.mUIStoreIDComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "StoreID";
+                    this.mUIStoreIDComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "StoreID";
+                    this.mUIStoreIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
+                    this.mUIStoreIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
+                    this.mUIStoreIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
+                    this.mUIStoreIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "5";
+                    this.mUIStoreIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
+                    this.mUIStoreIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"StoreID\" class=\"form-control\" id=\"";
+                    this.mUIStoreIDComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "2";
+                    this.mUIStoreIDComboBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIStoreIDComboBox;
+            }
+        }
+        
+        public HtmlTextArea UIDescriptionEdit
+        {
+            get
+            {
+                if ((this.mUIDescriptionEdit == null))
+                {
+                    this.mUIDescriptionEdit = new HtmlTextArea(this);
+                    #region Search Criteria
+                    this.mUIDescriptionEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "Description";
+                    this.mUIDescriptionEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "Description";
+                    this.mUIDescriptionEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIDescriptionEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIDescriptionEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = null;
+                    this.mUIDescriptionEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"Description\" id=\"Description\" styl";
+                    this.mUIDescriptionEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "1";
+                    this.mUIDescriptionEdit.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUIDescriptionEdit;
+            }
+        }
+        
+        public HtmlCheckBox UISkill_2CheckBox
+        {
+            get
+            {
+                if ((this.mUISkill_2CheckBox == null))
+                {
+                    this.mUISkill_2CheckBox = new HtmlCheckBox(this);
+                    #region Search Criteria
+                    this.mUISkill_2CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Id] = null;
+                    this.mUISkill_2CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Name] = "Skill_2";
+                    this.mUISkill_2CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Value] = "1";
+                    this.mUISkill_2CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.LabeledBy] = null;
+                    this.mUISkill_2CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Title] = null;
+                    this.mUISkill_2CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Class] = null;
+                    this.mUISkill_2CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.ControlDefinition] = "name=\"Skill_2\" type=\"checkbox\" value=\"1\"";
+                    this.mUISkill_2CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.TagInstance] = "4";
+                    this.mUISkill_2CheckBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISkill_2CheckBox;
+            }
+        }
+        
+        public HtmlCheckBox UISkill_3CheckBox
+        {
+            get
+            {
+                if ((this.mUISkill_3CheckBox == null))
+                {
+                    this.mUISkill_3CheckBox = new HtmlCheckBox(this);
+                    #region Search Criteria
+                    this.mUISkill_3CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Id] = null;
+                    this.mUISkill_3CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Name] = "Skill_3";
+                    this.mUISkill_3CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Value] = "1";
+                    this.mUISkill_3CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.LabeledBy] = null;
+                    this.mUISkill_3CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Title] = null;
+                    this.mUISkill_3CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Class] = null;
+                    this.mUISkill_3CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.ControlDefinition] = "name=\"Skill_3\" type=\"checkbox\" value=\"1\"";
+                    this.mUISkill_3CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.TagInstance] = "5";
+                    this.mUISkill_3CheckBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISkill_3CheckBox;
+            }
+        }
+        
+        public HtmlCheckBox UISkill_5CheckBox
+        {
+            get
+            {
+                if ((this.mUISkill_5CheckBox == null))
+                {
+                    this.mUISkill_5CheckBox = new HtmlCheckBox(this);
+                    #region Search Criteria
+                    this.mUISkill_5CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Id] = null;
+                    this.mUISkill_5CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Name] = "Skill_5";
+                    this.mUISkill_5CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Value] = "1";
+                    this.mUISkill_5CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.LabeledBy] = null;
+                    this.mUISkill_5CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Title] = null;
+                    this.mUISkill_5CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Class] = null;
+                    this.mUISkill_5CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.ControlDefinition] = "name=\"Skill_5\" type=\"checkbox\" value=\"1\"";
+                    this.mUISkill_5CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.TagInstance] = "7";
+                    this.mUISkill_5CheckBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISkill_5CheckBox;
+            }
+        }
+        
+        public HtmlCheckBox UISkill_4CheckBox
+        {
+            get
+            {
+                if ((this.mUISkill_4CheckBox == null))
+                {
+                    this.mUISkill_4CheckBox = new HtmlCheckBox(this);
+                    #region Search Criteria
+                    this.mUISkill_4CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Id] = null;
+                    this.mUISkill_4CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Name] = "Skill_4";
+                    this.mUISkill_4CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.Value] = "1";
+                    this.mUISkill_4CheckBox.SearchProperties[HtmlCheckBox.PropertyNames.LabeledBy] = null;
+                    this.mUISkill_4CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Title] = null;
+                    this.mUISkill_4CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.Class] = null;
+                    this.mUISkill_4CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.ControlDefinition] = "name=\"Skill_4\" type=\"checkbox\" value=\"1\"";
+                    this.mUISkill_4CheckBox.FilterProperties[HtmlCheckBox.PropertyNames.TagInstance] = "6";
+                    this.mUISkill_4CheckBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISkill_4CheckBox;
+            }
+        }
+        
+        public HtmlComboBox UISAQuestion_1ComboBox
+        {
+            get
+            {
+                if ((this.mUISAQuestion_1ComboBox == null))
+                {
+                    this.mUISAQuestion_1ComboBox = new HtmlComboBox(this);
+                    #region Search Criteria
+                    this.mUISAQuestion_1ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "SAQuestion_1";
+                    this.mUISAQuestion_1ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "SAQuestion_1";
+                    this.mUISAQuestion_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
+                    this.mUISAQuestion_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
+                    this.mUISAQuestion_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
+                    this.mUISAQuestion_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "5";
+                    this.mUISAQuestion_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
+                    this.mUISAQuestion_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SAQuestion_1\" class=\"form-control\"";
+                    this.mUISAQuestion_1ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "3";
+                    this.mUISAQuestion_1ComboBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISAQuestion_1ComboBox;
+            }
+        }
+        
+        public HtmlComboBox UISAQuestion_2ComboBox
+        {
+            get
+            {
+                if ((this.mUISAQuestion_2ComboBox == null))
+                {
+                    this.mUISAQuestion_2ComboBox = new HtmlComboBox(this);
+                    #region Search Criteria
+                    this.mUISAQuestion_2ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "SAQuestion_2";
+                    this.mUISAQuestion_2ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "SAQuestion_2";
+                    this.mUISAQuestion_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
+                    this.mUISAQuestion_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
+                    this.mUISAQuestion_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
+                    this.mUISAQuestion_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "5";
+                    this.mUISAQuestion_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
+                    this.mUISAQuestion_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SAQuestion_2\" class=\"form-control\"";
+                    this.mUISAQuestion_2ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "4";
+                    this.mUISAQuestion_2ComboBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISAQuestion_2ComboBox;
+            }
+        }
+        
+        public HtmlComboBox UISAQuestion_3ComboBox
+        {
+            get
+            {
+                if ((this.mUISAQuestion_3ComboBox == null))
+                {
+                    this.mUISAQuestion_3ComboBox = new HtmlComboBox(this);
+                    #region Search Criteria
+                    this.mUISAQuestion_3ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Id] = "SAQuestion_3";
+                    this.mUISAQuestion_3ComboBox.SearchProperties[HtmlComboBox.PropertyNames.Name] = "SAQuestion_3";
+                    this.mUISAQuestion_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.LabeledBy] = null;
+                    this.mUISAQuestion_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Size] = "0";
+                    this.mUISAQuestion_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Title] = null;
+                    this.mUISAQuestion_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ItemCount] = "5";
+                    this.mUISAQuestion_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.Class] = "form-control";
+                    this.mUISAQuestion_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.ControlDefinition] = "name=\"SAQuestion_3\" class=\"form-control\"";
+                    this.mUISAQuestion_3ComboBox.FilterProperties[HtmlComboBox.PropertyNames.TagInstance] = "5";
+                    this.mUISAQuestion_3ComboBox.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISAQuestion_3ComboBox;
+            }
+        }
+        
+        public HtmlDiv UISection2Pane
+        {
+            get
+            {
+                if ((this.mUISection2Pane == null))
+                {
+                    this.mUISection2Pane = new HtmlDiv(this);
+                    #region Search Criteria
+                    this.mUISection2Pane.SearchProperties[HtmlDiv.PropertyNames.Id] = "section2";
+                    this.mUISection2Pane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUISection2Pane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Short Answer Questions for Interview: \r\n";
+                    this.mUISection2Pane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUISection2Pane.FilterProperties[HtmlDiv.PropertyNames.Class] = "section";
+                    this.mUISection2Pane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"section\" id=\"section2\"";
+                    this.mUISection2Pane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "12";
+                    this.mUISection2Pane.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISection2Pane;
+            }
+        }
+        
+        public HtmlInputButton UISaveButton
+        {
+            get
+            {
+                if ((this.mUISaveButton == null))
+                {
+                    this.mUISaveButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUISaveButton.SearchProperties[HtmlButton.PropertyNames.Id] = "submit";
+                    this.mUISaveButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUISaveButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Save";
+                    this.mUISaveButton.SearchProperties[HtmlButton.PropertyNames.Type] = "submit";
+                    this.mUISaveButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUISaveButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn btn-success";
+                    this.mUISaveButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn btn-success\" id=\"submit\" type";
+                    this.mUISaveButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "10";
+                    this.mUISaveButton.WindowTitles.Add("Kask Kiosk");
+                    #endregion
+                }
+                return this.mUISaveButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlComboBox mUIJobIDComboBox;
+        
+        private HtmlComboBox mUIStoreIDComboBox;
+        
+        private HtmlTextArea mUIDescriptionEdit;
+        
+        private HtmlCheckBox mUISkill_2CheckBox;
+        
+        private HtmlCheckBox mUISkill_3CheckBox;
+        
+        private HtmlCheckBox mUISkill_5CheckBox;
+        
+        private HtmlCheckBox mUISkill_4CheckBox;
+        
+        private HtmlComboBox mUISAQuestion_1ComboBox;
+        
+        private HtmlComboBox mUISAQuestion_2ComboBox;
+        
+        private HtmlComboBox mUISAQuestion_3ComboBox;
+        
+        private HtmlDiv mUISection2Pane;
+        
+        private HtmlInputButton mUISaveButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskGoogleChromWindow : WinWindow
+    {
+        
+        public UIKaskKioskGoogleChromWindow()
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.Name] = "Kask Kiosk - Google Chrome";
+            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "Chrome_WidgetWin_1";
+            this.WindowTitles.Add("Kask Kiosk - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public UIChromeLegacyWindowWindow UIChromeLegacyWindowWindow
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow == null))
+                {
+                    this.mUIChromeLegacyWindowWindow = new UIChromeLegacyWindowWindow(this);
+                }
+                return this.mUIChromeLegacyWindowWindow;
+            }
+        }
+        
+        public UIKaskKioskGoogleChromClient UIKaskKioskGoogleChromClient
+        {
+            get
+            {
+                if ((this.mUIKaskKioskGoogleChromClient == null))
+                {
+                    this.mUIKaskKioskGoogleChromClient = new UIKaskKioskGoogleChromClient(this);
+                }
+                return this.mUIKaskKioskGoogleChromClient;
+            }
+        }
+        
+        public UIGoogleChromeToolbarToolBar UIGoogleChromeToolbarToolBar
+        {
+            get
+            {
+                if ((this.mUIGoogleChromeToolbarToolBar == null))
+                {
+                    this.mUIGoogleChromeToolbarToolBar = new UIGoogleChromeToolbarToolBar(this);
+                }
+                return this.mUIGoogleChromeToolbarToolBar;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIChromeLegacyWindowWindow mUIChromeLegacyWindowWindow;
+        
+        private UIKaskKioskGoogleChromClient mUIKaskKioskGoogleChromClient;
+        
+        private UIGoogleChromeToolbarToolBar mUIGoogleChromeToolbarToolBar;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIChromeLegacyWindowWindow : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "216763584";
+            this.WindowTitles.Add("Kask Kiosk - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinClient UIChromeLegacyWindowClient
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowClient == null))
+                {
+                    this.mUIChromeLegacyWindowClient = new WinClient(this);
+                    #region Search Criteria
+                    this.mUIChromeLegacyWindowClient.SearchProperties[WinControl.PropertyNames.Name] = "Chrome Legacy Window";
+                    this.mUIChromeLegacyWindowClient.WindowTitles.Add("Kask Kiosk - Google Chrome");
+                    #endregion
+                }
+                return this.mUIChromeLegacyWindowClient;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinClient mUIChromeLegacyWindowClient;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIKaskKioskGoogleChromClient : WinClient
+    {
+        
+        public UIKaskKioskGoogleChromClient(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.WindowTitles.Add("Kask Kiosk - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIItemDocument
+        {
+            get
+            {
+                if ((this.mUIItemDocument == null))
+                {
+                    this.mUIItemDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIItemDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIItemDocument.WindowTitles.Add("Kask Kiosk - Google Chrome");
+                    #endregion
+                }
+                return this.mUIItemDocument;
+            }
+        }
+        
+        public WinControl UIChromeLegacyWindowDocument
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowDocument == null))
+                {
+                    this.mUIChromeLegacyWindowDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIChromeLegacyWindowDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIChromeLegacyWindowDocument.WindowTitles.Add("Kask Kiosk - Google Chrome");
+                    #endregion
+                }
+                return this.mUIChromeLegacyWindowDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIItemDocument;
+        
+        private WinControl mUIChromeLegacyWindowDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "11.0.60315.1")]
+    public class UIGoogleChromeToolbarToolBar : WinToolBar
+    {
+        
+        public UIGoogleChromeToolbarToolBar(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinToolBar.PropertyNames.Name] = "Google Chrome Toolbar";
+            this.WindowTitles.Add("Kask Kiosk - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIBackDropDownButton
+        {
+            get
+            {
+                if ((this.mUIBackDropDownButton == null))
+                {
+                    this.mUIBackDropDownButton = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIBackDropDownButton.SearchProperties[UITestControl.PropertyNames.Name] = "Back";
+                    this.mUIBackDropDownButton.SearchProperties[UITestControl.PropertyNames.ControlType] = "DropDownButton";
+                    this.mUIBackDropDownButton.WindowTitles.Add("Kask Kiosk - Google Chrome");
+                    #endregion
+                }
+                return this.mUIBackDropDownButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIBackDropDownButton;
         #endregion
     }
 }
