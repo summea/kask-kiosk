@@ -42,6 +42,9 @@ namespace Kask.DAL.Models
     partial void InsertApplied(Applied instance);
     partial void UpdateApplied(Applied instance);
     partial void DeleteApplied(Applied instance);
+    partial void InsertAssessment(Assessment instance);
+    partial void UpdateAssessment(Assessment instance);
+    partial void DeleteAssessment(Assessment instance);
     partial void InsertAssociate(Associate instance);
     partial void UpdateAssociate(Associate instance);
     partial void DeleteAssociate(Associate instance);
@@ -57,12 +60,18 @@ namespace Kask.DAL.Models
     partial void InsertExpertise(Expertise instance);
     partial void UpdateExpertise(Expertise instance);
     partial void DeleteExpertise(Expertise instance);
+    partial void InsertInterview(Interview instance);
+    partial void UpdateInterview(Interview instance);
+    partial void DeleteInterview(Interview instance);
     partial void InsertJob(Job instance);
     partial void UpdateJob(Job instance);
     partial void DeleteJob(Job instance);
     partial void InsertJobOpening(JobOpening instance);
     partial void UpdateJobOpening(JobOpening instance);
     partial void DeleteJobOpening(JobOpening instance);
+    partial void InsertJobOpeningInterviewQuestion(JobOpeningInterviewQuestion instance);
+    partial void UpdateJobOpeningInterviewQuestion(JobOpeningInterviewQuestion instance);
+    partial void DeleteJobOpeningInterviewQuestion(JobOpeningInterviewQuestion instance);
     partial void InsertJobRequirement(JobRequirement instance);
     partial void UpdateJobRequirement(JobRequirement instance);
     partial void DeleteJobRequirement(JobRequirement instance);
@@ -72,6 +81,9 @@ namespace Kask.DAL.Models
     partial void InsertMCQuestion(MCQuestion instance);
     partial void UpdateMCQuestion(MCQuestion instance);
     partial void DeleteMCQuestion(MCQuestion instance);
+    partial void InsertQuestionBank(QuestionBank instance);
+    partial void UpdateQuestionBank(QuestionBank instance);
+    partial void DeleteQuestionBank(QuestionBank instance);
     partial void InsertReference(Reference instance);
     partial void UpdateReference(Reference instance);
     partial void DeleteReference(Reference instance);
@@ -87,6 +99,9 @@ namespace Kask.DAL.Models
     partial void InsertSkill(Skill instance);
     partial void UpdateSkill(Skill instance);
     partial void DeleteSkill(Skill instance);
+    partial void InsertSkillQuestionBank(SkillQuestionBank instance);
+    partial void UpdateSkillQuestionBank(SkillQuestionBank instance);
+    partial void DeleteSkillQuestionBank(SkillQuestionBank instance);
     partial void InsertStore(Store instance);
     partial void UpdateStore(Store instance);
     partial void DeleteStore(Store instance);
@@ -96,6 +111,9 @@ namespace Kask.DAL.Models
     partial void InsertUserProfile(UserProfile instance);
     partial void UpdateUserProfile(UserProfile instance);
     partial void DeleteUserProfile(UserProfile instance);
+    partial void InsertUserProfileToApplicant(UserProfileToApplicant instance);
+    partial void UpdateUserProfileToApplicant(UserProfileToApplicant instance);
+    partial void DeleteUserProfileToApplicant(UserProfileToApplicant instance);
     partial void Insertwebpages_Membership(webpages_Membership instance);
     partial void Updatewebpages_Membership(webpages_Membership instance);
     partial void Deletewebpages_Membership(webpages_Membership instance);
@@ -105,24 +123,6 @@ namespace Kask.DAL.Models
     partial void Insertwebpages_Role(webpages_Role instance);
     partial void Updatewebpages_Role(webpages_Role instance);
     partial void Deletewebpages_Role(webpages_Role instance);
-    partial void InsertSkillQuestionBank(SkillQuestionBank instance);
-    partial void UpdateSkillQuestionBank(SkillQuestionBank instance);
-    partial void DeleteSkillQuestionBank(SkillQuestionBank instance);
-    partial void InsertQuestionBank(QuestionBank instance);
-    partial void UpdateQuestionBank(QuestionBank instance);
-    partial void DeleteQuestionBank(QuestionBank instance);
-    partial void InsertAssessment(Assessment instance);
-    partial void UpdateAssessment(Assessment instance);
-    partial void DeleteAssessment(Assessment instance);
-    partial void InsertJobOpeningInterviewQuestion(JobOpeningInterviewQuestion instance);
-    partial void UpdateJobOpeningInterviewQuestion(JobOpeningInterviewQuestion instance);
-    partial void DeleteJobOpeningInterviewQuestion(JobOpeningInterviewQuestion instance);
-    partial void InsertInterview(Interview instance);
-    partial void UpdateInterview(Interview instance);
-    partial void DeleteInterview(Interview instance);
-    partial void InsertUserProfileToApplicant(UserProfileToApplicant instance);
-    partial void UpdateUserProfileToApplicant(UserProfileToApplicant instance);
-    partial void DeleteUserProfileToApplicant(UserProfileToApplicant instance);
     #endregion
 		
 		public AESDatabaseDataContext() : 
@@ -187,6 +187,14 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<Assessment> Assessments
+		{
+			get
+			{
+				return this.GetTable<Assessment>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Associate> Associates
 		{
 			get
@@ -227,6 +235,14 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<Interview> Interviews
+		{
+			get
+			{
+				return this.GetTable<Interview>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Job> Jobs
 		{
 			get
@@ -240,6 +256,14 @@ namespace Kask.DAL.Models
 			get
 			{
 				return this.GetTable<JobOpening>();
+			}
+		}
+		
+		public System.Data.Linq.Table<JobOpeningInterviewQuestion> JobOpeningInterviewQuestions
+		{
+			get
+			{
+				return this.GetTable<JobOpeningInterviewQuestion>();
 			}
 		}
 		
@@ -264,6 +288,14 @@ namespace Kask.DAL.Models
 			get
 			{
 				return this.GetTable<MCQuestion>();
+			}
+		}
+		
+		public System.Data.Linq.Table<QuestionBank> QuestionBanks
+		{
+			get
+			{
+				return this.GetTable<QuestionBank>();
 			}
 		}
 		
@@ -307,6 +339,14 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<SkillQuestionBank> SkillQuestionBanks
+		{
+			get
+			{
+				return this.GetTable<SkillQuestionBank>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Store> Stores
 		{
 			get
@@ -331,6 +371,14 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<UserProfileToApplicant> UserProfileToApplicants
+		{
+			get
+			{
+				return this.GetTable<UserProfileToApplicant>();
+			}
+		}
+		
 		public System.Data.Linq.Table<webpages_Membership> webpages_Memberships
 		{
 			get
@@ -352,54 +400,6 @@ namespace Kask.DAL.Models
 			get
 			{
 				return this.GetTable<webpages_Role>();
-			}
-		}
-		
-		public System.Data.Linq.Table<SkillQuestionBank> SkillQuestionBanks
-		{
-			get
-			{
-				return this.GetTable<SkillQuestionBank>();
-			}
-		}
-		
-		public System.Data.Linq.Table<QuestionBank> QuestionBanks
-		{
-			get
-			{
-				return this.GetTable<QuestionBank>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Assessment> Assessments
-		{
-			get
-			{
-				return this.GetTable<Assessment>();
-			}
-		}
-		
-		public System.Data.Linq.Table<JobOpeningInterviewQuestion> JobOpeningInterviewQuestions
-		{
-			get
-			{
-				return this.GetTable<JobOpeningInterviewQuestion>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Interview> Interviews
-		{
-			get
-			{
-				return this.GetTable<Interview>();
-			}
-		}
-		
-		public System.Data.Linq.Table<UserProfileToApplicant> UserProfileToApplicants
-		{
-			get
-			{
-				return this.GetTable<UserProfileToApplicant>();
 			}
 		}
 	}
@@ -430,6 +430,8 @@ namespace Kask.DAL.Models
 		
 		private EntitySet<Applied> _Applieds;
 		
+		private EntitySet<Assessment> _Assessments;
+		
 		private EntitySet<Associate> _Associates;
 		
 		private EntitySet<Education> _Educations;
@@ -437,8 +439,6 @@ namespace Kask.DAL.Models
 		private EntitySet<Employment> _Employments;
 		
 		private EntitySet<Expertise> _Expertises;
-		
-		private EntitySet<Assessment> _Assessments;
 		
 		private EntitySet<Interview> _Interviews;
 		
@@ -471,11 +471,11 @@ namespace Kask.DAL.Models
 		public Applicant()
 		{
 			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
+			this._Assessments = new EntitySet<Assessment>(new Action<Assessment>(this.attach_Assessments), new Action<Assessment>(this.detach_Assessments));
 			this._Associates = new EntitySet<Associate>(new Action<Associate>(this.attach_Associates), new Action<Associate>(this.detach_Associates));
 			this._Educations = new EntitySet<Education>(new Action<Education>(this.attach_Educations), new Action<Education>(this.detach_Educations));
 			this._Employments = new EntitySet<Employment>(new Action<Employment>(this.attach_Employments), new Action<Employment>(this.detach_Employments));
 			this._Expertises = new EntitySet<Expertise>(new Action<Expertise>(this.attach_Expertises), new Action<Expertise>(this.detach_Expertises));
-			this._Assessments = new EntitySet<Assessment>(new Action<Assessment>(this.attach_Assessments), new Action<Assessment>(this.detach_Assessments));
 			this._Interviews = new EntitySet<Interview>(new Action<Interview>(this.attach_Interviews), new Action<Interview>(this.detach_Interviews));
 			this._UserProfileToApplicants = new EntitySet<UserProfileToApplicant>(new Action<UserProfileToApplicant>(this.attach_UserProfileToApplicants), new Action<UserProfileToApplicant>(this.detach_UserProfileToApplicants));
 			OnCreated();
@@ -674,6 +674,19 @@ namespace Kask.DAL.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Assessment", Storage="_Assessments", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
+		public EntitySet<Assessment> Assessments
+		{
+			get
+			{
+				return this._Assessments;
+			}
+			set
+			{
+				this._Assessments.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Associate", Storage="_Associates", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
 		public EntitySet<Associate> Associates
 		{
@@ -723,19 +736,6 @@ namespace Kask.DAL.Models
 			set
 			{
 				this._Expertises.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Assessment", Storage="_Assessments", ThisKey="Applicant_ID", OtherKey="Applicant_ID")]
-		public EntitySet<Assessment> Assessments
-		{
-			get
-			{
-				return this._Assessments;
-			}
-			set
-			{
-				this._Assessments.Assign(value);
 			}
 		}
 		
@@ -797,6 +797,18 @@ namespace Kask.DAL.Models
 			entity.Applicant = null;
 		}
 		
+		private void attach_Assessments(Assessment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = this;
+		}
+		
+		private void detach_Assessments(Assessment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Applicant = null;
+		}
+		
 		private void attach_Associates(Associate entity)
 		{
 			this.SendPropertyChanging();
@@ -840,18 +852,6 @@ namespace Kask.DAL.Models
 		}
 		
 		private void detach_Expertises(Expertise entity)
-		{
-			this.SendPropertyChanging();
-			entity.Applicant = null;
-		}
-		
-		private void attach_Assessments(Assessment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Applicant = this;
-		}
-		
-		private void detach_Assessments(Assessment entity)
 		{
 			this.SendPropertyChanging();
 			entity.Applicant = null;
@@ -1876,6 +1876,198 @@ namespace Kask.DAL.Models
 						this._JobOpening_ID = default(int);
 					}
 					this.SendPropertyChanged("JobOpening");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Assessment")]
+	public partial class Assessment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Assessment_ID;
+		
+		private int _Applicant_ID;
+		
+		private int _QuestionBank_ID;
+		
+		private EntityRef<Applicant> _Applicant;
+		
+		private EntityRef<QuestionBank> _QuestionBank;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnAssessment_IDChanging(int value);
+    partial void OnAssessment_IDChanged();
+    partial void OnApplicant_IDChanging(int value);
+    partial void OnApplicant_IDChanged();
+    partial void OnQuestionBank_IDChanging(int value);
+    partial void OnQuestionBank_IDChanged();
+    #endregion
+		
+		public Assessment()
+		{
+			this._Applicant = default(EntityRef<Applicant>);
+			this._QuestionBank = default(EntityRef<QuestionBank>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assessment_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Assessment_ID
+		{
+			get
+			{
+				return this._Assessment_ID;
+			}
+			set
+			{
+				if ((this._Assessment_ID != value))
+				{
+					this.OnAssessment_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Assessment_ID = value;
+					this.SendPropertyChanged("Assessment_ID");
+					this.OnAssessment_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
+		public int Applicant_ID
+		{
+			get
+			{
+				return this._Applicant_ID;
+			}
+			set
+			{
+				if ((this._Applicant_ID != value))
+				{
+					if (this._Applicant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnApplicant_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Applicant_ID = value;
+					this.SendPropertyChanged("Applicant_ID");
+					this.OnApplicant_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionBank_ID", DbType="Int NOT NULL")]
+		public int QuestionBank_ID
+		{
+			get
+			{
+				return this._QuestionBank_ID;
+			}
+			set
+			{
+				if ((this._QuestionBank_ID != value))
+				{
+					if (this._QuestionBank.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnQuestionBank_IDChanging(value);
+					this.SendPropertyChanging();
+					this._QuestionBank_ID = value;
+					this.SendPropertyChanged("QuestionBank_ID");
+					this.OnQuestionBank_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Assessment", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Applicant Applicant
+		{
+			get
+			{
+				return this._Applicant.Entity;
+			}
+			set
+			{
+				Applicant previousValue = this._Applicant.Entity;
+				if (((previousValue != value) 
+							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Applicant.Entity = null;
+						previousValue.Assessments.Remove(this);
+					}
+					this._Applicant.Entity = value;
+					if ((value != null))
+					{
+						value.Assessments.Add(this);
+						this._Applicant_ID = value.Applicant_ID;
+					}
+					else
+					{
+						this._Applicant_ID = default(int);
+					}
+					this.SendPropertyChanged("Applicant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_Assessment", Storage="_QuestionBank", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public QuestionBank QuestionBank
+		{
+			get
+			{
+				return this._QuestionBank.Entity;
+			}
+			set
+			{
+				QuestionBank previousValue = this._QuestionBank.Entity;
+				if (((previousValue != value) 
+							|| (this._QuestionBank.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._QuestionBank.Entity = null;
+						previousValue.Assessments.Remove(this);
+					}
+					this._QuestionBank.Entity = value;
+					if ((value != null))
+					{
+						value.Assessments.Add(this);
+						this._QuestionBank_ID = value.QuestionBank_ID;
+					}
+					else
+					{
+						this._QuestionBank_ID = default(int);
+					}
+					this.SendPropertyChanged("QuestionBank");
 				}
 			}
 		}
@@ -3215,6 +3407,263 @@ namespace Kask.DAL.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Interview")]
+	public partial class Interview : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Interview_ID;
+		
+		private int _Applicant_ID;
+		
+		private int _SAQuestion_ID;
+		
+		private int _SAResponse_ID;
+		
+		private EntityRef<Applicant> _Applicant;
+		
+		private EntityRef<SAQuestion> _SAQuestion;
+		
+		private EntityRef<SAResponse> _SAResponse;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnInterview_IDChanging(int value);
+    partial void OnInterview_IDChanged();
+    partial void OnApplicant_IDChanging(int value);
+    partial void OnApplicant_IDChanged();
+    partial void OnSAQuestion_IDChanging(int value);
+    partial void OnSAQuestion_IDChanged();
+    partial void OnSAResponse_IDChanging(int value);
+    partial void OnSAResponse_IDChanged();
+    #endregion
+		
+		public Interview()
+		{
+			this._Applicant = default(EntityRef<Applicant>);
+			this._SAQuestion = default(EntityRef<SAQuestion>);
+			this._SAResponse = default(EntityRef<SAResponse>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Interview_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Interview_ID
+		{
+			get
+			{
+				return this._Interview_ID;
+			}
+			set
+			{
+				if ((this._Interview_ID != value))
+				{
+					this.OnInterview_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Interview_ID = value;
+					this.SendPropertyChanged("Interview_ID");
+					this.OnInterview_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
+		public int Applicant_ID
+		{
+			get
+			{
+				return this._Applicant_ID;
+			}
+			set
+			{
+				if ((this._Applicant_ID != value))
+				{
+					if (this._Applicant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnApplicant_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Applicant_ID = value;
+					this.SendPropertyChanged("Applicant_ID");
+					this.OnApplicant_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SAQuestion_ID", DbType="Int NOT NULL")]
+		public int SAQuestion_ID
+		{
+			get
+			{
+				return this._SAQuestion_ID;
+			}
+			set
+			{
+				if ((this._SAQuestion_ID != value))
+				{
+					if (this._SAQuestion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSAQuestion_IDChanging(value);
+					this.SendPropertyChanging();
+					this._SAQuestion_ID = value;
+					this.SendPropertyChanged("SAQuestion_ID");
+					this.OnSAQuestion_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SAResponse_ID", DbType="Int NOT NULL")]
+		public int SAResponse_ID
+		{
+			get
+			{
+				return this._SAResponse_ID;
+			}
+			set
+			{
+				if ((this._SAResponse_ID != value))
+				{
+					if (this._SAResponse.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSAResponse_IDChanging(value);
+					this.SendPropertyChanging();
+					this._SAResponse_ID = value;
+					this.SendPropertyChanged("SAResponse_ID");
+					this.OnSAResponse_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Interview", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Applicant Applicant
+		{
+			get
+			{
+				return this._Applicant.Entity;
+			}
+			set
+			{
+				Applicant previousValue = this._Applicant.Entity;
+				if (((previousValue != value) 
+							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Applicant.Entity = null;
+						previousValue.Interviews.Remove(this);
+					}
+					this._Applicant.Entity = value;
+					if ((value != null))
+					{
+						value.Interviews.Add(this);
+						this._Applicant_ID = value.Applicant_ID;
+					}
+					else
+					{
+						this._Applicant_ID = default(int);
+					}
+					this.SendPropertyChanged("Applicant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SAQuestion_Interview", Storage="_SAQuestion", ThisKey="SAQuestion_ID", OtherKey="SAQuestion_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public SAQuestion SAQuestion
+		{
+			get
+			{
+				return this._SAQuestion.Entity;
+			}
+			set
+			{
+				SAQuestion previousValue = this._SAQuestion.Entity;
+				if (((previousValue != value) 
+							|| (this._SAQuestion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SAQuestion.Entity = null;
+						previousValue.Interviews.Remove(this);
+					}
+					this._SAQuestion.Entity = value;
+					if ((value != null))
+					{
+						value.Interviews.Add(this);
+						this._SAQuestion_ID = value.SAQuestion_ID;
+					}
+					else
+					{
+						this._SAQuestion_ID = default(int);
+					}
+					this.SendPropertyChanged("SAQuestion");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SAResponse_Interview", Storage="_SAResponse", ThisKey="SAResponse_ID", OtherKey="SAResponse_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public SAResponse SAResponse
+		{
+			get
+			{
+				return this._SAResponse.Entity;
+			}
+			set
+			{
+				SAResponse previousValue = this._SAResponse.Entity;
+				if (((previousValue != value) 
+							|| (this._SAResponse.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SAResponse.Entity = null;
+						previousValue.Interviews.Remove(this);
+					}
+					this._SAResponse.Entity = value;
+					if ((value != null))
+					{
+						value.Interviews.Add(this);
+						this._SAResponse_ID = value.SAResponse_ID;
+					}
+					else
+					{
+						this._SAResponse_ID = default(int);
+					}
+					this.SendPropertyChanged("SAResponse");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Job")]
 	public partial class Job : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3349,9 +3798,9 @@ namespace Kask.DAL.Models
 		
 		private EntitySet<Applied> _Applieds;
 		
-		private EntitySet<JobRequirement> _JobRequirements;
-		
 		private EntitySet<JobOpeningInterviewQuestion> _JobOpeningInterviewQuestions;
+		
+		private EntitySet<JobRequirement> _JobRequirements;
 		
 		private EntityRef<Job> _Job;
 		
@@ -3378,8 +3827,8 @@ namespace Kask.DAL.Models
 		public JobOpening()
 		{
 			this._Applieds = new EntitySet<Applied>(new Action<Applied>(this.attach_Applieds), new Action<Applied>(this.detach_Applieds));
-			this._JobRequirements = new EntitySet<JobRequirement>(new Action<JobRequirement>(this.attach_JobRequirements), new Action<JobRequirement>(this.detach_JobRequirements));
 			this._JobOpeningInterviewQuestions = new EntitySet<JobOpeningInterviewQuestion>(new Action<JobOpeningInterviewQuestion>(this.attach_JobOpeningInterviewQuestions), new Action<JobOpeningInterviewQuestion>(this.detach_JobOpeningInterviewQuestions));
+			this._JobRequirements = new EntitySet<JobRequirement>(new Action<JobRequirement>(this.attach_JobRequirements), new Action<JobRequirement>(this.detach_JobRequirements));
 			this._Job = default(EntityRef<Job>);
 			this._Store = default(EntityRef<Store>);
 			OnCreated();
@@ -3526,19 +3975,6 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_JobRequirement", Storage="_JobRequirements", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID")]
-		public EntitySet<JobRequirement> JobRequirements
-		{
-			get
-			{
-				return this._JobRequirements;
-			}
-			set
-			{
-				this._JobRequirements.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_JobOpeningInterviewQuestion", Storage="_JobOpeningInterviewQuestions", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID")]
 		public EntitySet<JobOpeningInterviewQuestion> JobOpeningInterviewQuestions
 		{
@@ -3549,6 +3985,19 @@ namespace Kask.DAL.Models
 			set
 			{
 				this._JobOpeningInterviewQuestions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_JobRequirement", Storage="_JobRequirements", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID")]
+		public EntitySet<JobRequirement> JobRequirements
+		{
+			get
+			{
+				return this._JobRequirements;
+			}
+			set
+			{
+				this._JobRequirements.Assign(value);
 			}
 		}
 		
@@ -3652,6 +4101,18 @@ namespace Kask.DAL.Models
 			entity.JobOpening = null;
 		}
 		
+		private void attach_JobOpeningInterviewQuestions(JobOpeningInterviewQuestion entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobOpening = this;
+		}
+		
+		private void detach_JobOpeningInterviewQuestions(JobOpeningInterviewQuestion entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobOpening = null;
+		}
+		
 		private void attach_JobRequirements(JobRequirement entity)
 		{
 			this.SendPropertyChanging();
@@ -3663,17 +4124,197 @@ namespace Kask.DAL.Models
 			this.SendPropertyChanging();
 			entity.JobOpening = null;
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.JobOpeningInterviewQuestion")]
+	public partial class JobOpeningInterviewQuestion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		private void attach_JobOpeningInterviewQuestions(JobOpeningInterviewQuestion entity)
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _JobOpeningInterviewQuestion_ID;
+		
+		private int _JobOpening_ID;
+		
+		private int _SAQuestion_ID;
+		
+		private EntityRef<JobOpening> _JobOpening;
+		
+		private EntityRef<SAQuestion> _SAQuestion;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnJobOpeningInterviewQuestion_IDChanging(int value);
+    partial void OnJobOpeningInterviewQuestion_IDChanged();
+    partial void OnJobOpening_IDChanging(int value);
+    partial void OnJobOpening_IDChanged();
+    partial void OnSAQuestion_IDChanging(int value);
+    partial void OnSAQuestion_IDChanged();
+    #endregion
+		
+		public JobOpeningInterviewQuestion()
 		{
-			this.SendPropertyChanging();
-			entity.JobOpening = this;
+			this._JobOpening = default(EntityRef<JobOpening>);
+			this._SAQuestion = default(EntityRef<SAQuestion>);
+			OnCreated();
 		}
 		
-		private void detach_JobOpeningInterviewQuestions(JobOpeningInterviewQuestion entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobOpeningInterviewQuestion_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int JobOpeningInterviewQuestion_ID
 		{
-			this.SendPropertyChanging();
-			entity.JobOpening = null;
+			get
+			{
+				return this._JobOpeningInterviewQuestion_ID;
+			}
+			set
+			{
+				if ((this._JobOpeningInterviewQuestion_ID != value))
+				{
+					this.OnJobOpeningInterviewQuestion_IDChanging(value);
+					this.SendPropertyChanging();
+					this._JobOpeningInterviewQuestion_ID = value;
+					this.SendPropertyChanged("JobOpeningInterviewQuestion_ID");
+					this.OnJobOpeningInterviewQuestion_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobOpening_ID", DbType="Int NOT NULL")]
+		public int JobOpening_ID
+		{
+			get
+			{
+				return this._JobOpening_ID;
+			}
+			set
+			{
+				if ((this._JobOpening_ID != value))
+				{
+					if (this._JobOpening.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnJobOpening_IDChanging(value);
+					this.SendPropertyChanging();
+					this._JobOpening_ID = value;
+					this.SendPropertyChanged("JobOpening_ID");
+					this.OnJobOpening_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SAQuestion_ID", DbType="Int NOT NULL")]
+		public int SAQuestion_ID
+		{
+			get
+			{
+				return this._SAQuestion_ID;
+			}
+			set
+			{
+				if ((this._SAQuestion_ID != value))
+				{
+					if (this._SAQuestion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSAQuestion_IDChanging(value);
+					this.SendPropertyChanging();
+					this._SAQuestion_ID = value;
+					this.SendPropertyChanged("SAQuestion_ID");
+					this.OnSAQuestion_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_JobOpeningInterviewQuestion", Storage="_JobOpening", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public JobOpening JobOpening
+		{
+			get
+			{
+				return this._JobOpening.Entity;
+			}
+			set
+			{
+				JobOpening previousValue = this._JobOpening.Entity;
+				if (((previousValue != value) 
+							|| (this._JobOpening.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._JobOpening.Entity = null;
+						previousValue.JobOpeningInterviewQuestions.Remove(this);
+					}
+					this._JobOpening.Entity = value;
+					if ((value != null))
+					{
+						value.JobOpeningInterviewQuestions.Add(this);
+						this._JobOpening_ID = value.JobOpening_ID;
+					}
+					else
+					{
+						this._JobOpening_ID = default(int);
+					}
+					this.SendPropertyChanged("JobOpening");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SAQuestion_JobOpeningInterviewQuestion", Storage="_SAQuestion", ThisKey="SAQuestion_ID", OtherKey="SAQuestion_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public SAQuestion SAQuestion
+		{
+			get
+			{
+				return this._SAQuestion.Entity;
+			}
+			set
+			{
+				SAQuestion previousValue = this._SAQuestion.Entity;
+				if (((previousValue != value) 
+							|| (this._SAQuestion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SAQuestion.Entity = null;
+						previousValue.JobOpeningInterviewQuestions.Remove(this);
+					}
+					this._SAQuestion.Entity = value;
+					if ((value != null))
+					{
+						value.JobOpeningInterviewQuestions.Add(this);
+						this._SAQuestion_ID = value.SAQuestion_ID;
+					}
+					else
+					{
+						this._SAQuestion_ID = default(int);
+					}
+					this.SendPropertyChanged("SAQuestion");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -4121,6 +4762,278 @@ namespace Kask.DAL.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuestionBank")]
+	public partial class QuestionBank : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _QuestionBank_ID;
+		
+		private int _MCQuestion_ID;
+		
+		private int _MCOption_ID;
+		
+		private System.Nullable<byte> _MCCorrectOption;
+		
+		private EntitySet<Assessment> _Assessments;
+		
+		private EntitySet<SkillQuestionBank> _SkillQuestionBanks;
+		
+		private EntityRef<MCOption> _MCOption;
+		
+		private EntityRef<MCQuestion> _MCQuestion;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnQuestionBank_IDChanging(int value);
+    partial void OnQuestionBank_IDChanged();
+    partial void OnMCQuestion_IDChanging(int value);
+    partial void OnMCQuestion_IDChanged();
+    partial void OnMCOption_IDChanging(int value);
+    partial void OnMCOption_IDChanged();
+    partial void OnMCCorrectOptionChanging(System.Nullable<byte> value);
+    partial void OnMCCorrectOptionChanged();
+    #endregion
+		
+		public QuestionBank()
+		{
+			this._Assessments = new EntitySet<Assessment>(new Action<Assessment>(this.attach_Assessments), new Action<Assessment>(this.detach_Assessments));
+			this._SkillQuestionBanks = new EntitySet<SkillQuestionBank>(new Action<SkillQuestionBank>(this.attach_SkillQuestionBanks), new Action<SkillQuestionBank>(this.detach_SkillQuestionBanks));
+			this._MCOption = default(EntityRef<MCOption>);
+			this._MCQuestion = default(EntityRef<MCQuestion>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionBank_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int QuestionBank_ID
+		{
+			get
+			{
+				return this._QuestionBank_ID;
+			}
+			set
+			{
+				if ((this._QuestionBank_ID != value))
+				{
+					this.OnQuestionBank_IDChanging(value);
+					this.SendPropertyChanging();
+					this._QuestionBank_ID = value;
+					this.SendPropertyChanged("QuestionBank_ID");
+					this.OnQuestionBank_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCQuestion_ID", DbType="Int NOT NULL")]
+		public int MCQuestion_ID
+		{
+			get
+			{
+				return this._MCQuestion_ID;
+			}
+			set
+			{
+				if ((this._MCQuestion_ID != value))
+				{
+					if (this._MCQuestion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMCQuestion_IDChanging(value);
+					this.SendPropertyChanging();
+					this._MCQuestion_ID = value;
+					this.SendPropertyChanged("MCQuestion_ID");
+					this.OnMCQuestion_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCOption_ID", DbType="Int NOT NULL")]
+		public int MCOption_ID
+		{
+			get
+			{
+				return this._MCOption_ID;
+			}
+			set
+			{
+				if ((this._MCOption_ID != value))
+				{
+					if (this._MCOption.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMCOption_IDChanging(value);
+					this.SendPropertyChanging();
+					this._MCOption_ID = value;
+					this.SendPropertyChanged("MCOption_ID");
+					this.OnMCOption_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCCorrectOption", DbType="TinyInt")]
+		public System.Nullable<byte> MCCorrectOption
+		{
+			get
+			{
+				return this._MCCorrectOption;
+			}
+			set
+			{
+				if ((this._MCCorrectOption != value))
+				{
+					this.OnMCCorrectOptionChanging(value);
+					this.SendPropertyChanging();
+					this._MCCorrectOption = value;
+					this.SendPropertyChanged("MCCorrectOption");
+					this.OnMCCorrectOptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_Assessment", Storage="_Assessments", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID")]
+		public EntitySet<Assessment> Assessments
+		{
+			get
+			{
+				return this._Assessments;
+			}
+			set
+			{
+				this._Assessments.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_SkillQuestionBank", Storage="_SkillQuestionBanks", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID")]
+		public EntitySet<SkillQuestionBank> SkillQuestionBanks
+		{
+			get
+			{
+				return this._SkillQuestionBanks;
+			}
+			set
+			{
+				this._SkillQuestionBanks.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MCOption_QuestionBank", Storage="_MCOption", ThisKey="MCOption_ID", OtherKey="MCOption_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public MCOption MCOption
+		{
+			get
+			{
+				return this._MCOption.Entity;
+			}
+			set
+			{
+				MCOption previousValue = this._MCOption.Entity;
+				if (((previousValue != value) 
+							|| (this._MCOption.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MCOption.Entity = null;
+						previousValue.QuestionBanks.Remove(this);
+					}
+					this._MCOption.Entity = value;
+					if ((value != null))
+					{
+						value.QuestionBanks.Add(this);
+						this._MCOption_ID = value.MCOption_ID;
+					}
+					else
+					{
+						this._MCOption_ID = default(int);
+					}
+					this.SendPropertyChanged("MCOption");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MCQuestion_QuestionBank", Storage="_MCQuestion", ThisKey="MCQuestion_ID", OtherKey="MCQuestion_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public MCQuestion MCQuestion
+		{
+			get
+			{
+				return this._MCQuestion.Entity;
+			}
+			set
+			{
+				MCQuestion previousValue = this._MCQuestion.Entity;
+				if (((previousValue != value) 
+							|| (this._MCQuestion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MCQuestion.Entity = null;
+						previousValue.QuestionBanks.Remove(this);
+					}
+					this._MCQuestion.Entity = value;
+					if ((value != null))
+					{
+						value.QuestionBanks.Add(this);
+						this._MCQuestion_ID = value.MCQuestion_ID;
+					}
+					else
+					{
+						this._MCQuestion_ID = default(int);
+					}
+					this.SendPropertyChanged("MCQuestion");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Assessments(Assessment entity)
+		{
+			this.SendPropertyChanging();
+			entity.QuestionBank = this;
+		}
+		
+		private void detach_Assessments(Assessment entity)
+		{
+			this.SendPropertyChanging();
+			entity.QuestionBank = null;
+		}
+		
+		private void attach_SkillQuestionBanks(SkillQuestionBank entity)
+		{
+			this.SendPropertyChanging();
+			entity.QuestionBank = this;
+		}
+		
+		private void detach_SkillQuestionBanks(SkillQuestionBank entity)
+		{
+			this.SendPropertyChanging();
+			entity.QuestionBank = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Reference")]
 	public partial class Reference : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4245,9 +5158,9 @@ namespace Kask.DAL.Models
 		
 		private string _SAQuestionDescription;
 		
-		private EntitySet<JobOpeningInterviewQuestion> _JobOpeningInterviewQuestions;
-		
 		private EntitySet<Interview> _Interviews;
+		
+		private EntitySet<JobOpeningInterviewQuestion> _JobOpeningInterviewQuestions;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4261,8 +5174,8 @@ namespace Kask.DAL.Models
 		
 		public SAQuestion()
 		{
-			this._JobOpeningInterviewQuestions = new EntitySet<JobOpeningInterviewQuestion>(new Action<JobOpeningInterviewQuestion>(this.attach_JobOpeningInterviewQuestions), new Action<JobOpeningInterviewQuestion>(this.detach_JobOpeningInterviewQuestions));
 			this._Interviews = new EntitySet<Interview>(new Action<Interview>(this.attach_Interviews), new Action<Interview>(this.detach_Interviews));
+			this._JobOpeningInterviewQuestions = new EntitySet<JobOpeningInterviewQuestion>(new Action<JobOpeningInterviewQuestion>(this.attach_JobOpeningInterviewQuestions), new Action<JobOpeningInterviewQuestion>(this.detach_JobOpeningInterviewQuestions));
 			OnCreated();
 		}
 		
@@ -4306,19 +5219,6 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SAQuestion_JobOpeningInterviewQuestion", Storage="_JobOpeningInterviewQuestions", ThisKey="SAQuestion_ID", OtherKey="SAQuestion_ID")]
-		public EntitySet<JobOpeningInterviewQuestion> JobOpeningInterviewQuestions
-		{
-			get
-			{
-				return this._JobOpeningInterviewQuestions;
-			}
-			set
-			{
-				this._JobOpeningInterviewQuestions.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SAQuestion_Interview", Storage="_Interviews", ThisKey="SAQuestion_ID", OtherKey="SAQuestion_ID")]
 		public EntitySet<Interview> Interviews
 		{
@@ -4329,6 +5229,19 @@ namespace Kask.DAL.Models
 			set
 			{
 				this._Interviews.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SAQuestion_JobOpeningInterviewQuestion", Storage="_JobOpeningInterviewQuestions", ThisKey="SAQuestion_ID", OtherKey="SAQuestion_ID")]
+		public EntitySet<JobOpeningInterviewQuestion> JobOpeningInterviewQuestions
+		{
+			get
+			{
+				return this._JobOpeningInterviewQuestions;
+			}
+			set
+			{
+				this._JobOpeningInterviewQuestions.Assign(value);
 			}
 		}
 		
@@ -4352,18 +5265,6 @@ namespace Kask.DAL.Models
 			}
 		}
 		
-		private void attach_JobOpeningInterviewQuestions(JobOpeningInterviewQuestion entity)
-		{
-			this.SendPropertyChanging();
-			entity.SAQuestion = this;
-		}
-		
-		private void detach_JobOpeningInterviewQuestions(JobOpeningInterviewQuestion entity)
-		{
-			this.SendPropertyChanging();
-			entity.SAQuestion = null;
-		}
-		
 		private void attach_Interviews(Interview entity)
 		{
 			this.SendPropertyChanging();
@@ -4371,6 +5272,18 @@ namespace Kask.DAL.Models
 		}
 		
 		private void detach_Interviews(Interview entity)
+		{
+			this.SendPropertyChanging();
+			entity.SAQuestion = null;
+		}
+		
+		private void attach_JobOpeningInterviewQuestions(JobOpeningInterviewQuestion entity)
+		{
+			this.SendPropertyChanging();
+			entity.SAQuestion = this;
+		}
+		
+		private void detach_JobOpeningInterviewQuestions(JobOpeningInterviewQuestion entity)
 		{
 			this.SendPropertyChanging();
 			entity.SAQuestion = null;
@@ -4796,6 +5709,198 @@ namespace Kask.DAL.Models
 		{
 			this.SendPropertyChanging();
 			entity.Skill = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SkillQuestionBank")]
+	public partial class SkillQuestionBank : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SkillQuestionBank_ID;
+		
+		private int _Skill_ID;
+		
+		private int _QuestionBank_ID;
+		
+		private EntityRef<QuestionBank> _QuestionBank;
+		
+		private EntityRef<Skill> _Skill;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSkillQuestionBank_IDChanging(int value);
+    partial void OnSkillQuestionBank_IDChanged();
+    partial void OnSkill_IDChanging(int value);
+    partial void OnSkill_IDChanged();
+    partial void OnQuestionBank_IDChanging(int value);
+    partial void OnQuestionBank_IDChanged();
+    #endregion
+		
+		public SkillQuestionBank()
+		{
+			this._QuestionBank = default(EntityRef<QuestionBank>);
+			this._Skill = default(EntityRef<Skill>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SkillQuestionBank_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SkillQuestionBank_ID
+		{
+			get
+			{
+				return this._SkillQuestionBank_ID;
+			}
+			set
+			{
+				if ((this._SkillQuestionBank_ID != value))
+				{
+					this.OnSkillQuestionBank_IDChanging(value);
+					this.SendPropertyChanging();
+					this._SkillQuestionBank_ID = value;
+					this.SendPropertyChanged("SkillQuestionBank_ID");
+					this.OnSkillQuestionBank_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skill_ID", DbType="Int NOT NULL")]
+		public int Skill_ID
+		{
+			get
+			{
+				return this._Skill_ID;
+			}
+			set
+			{
+				if ((this._Skill_ID != value))
+				{
+					if (this._Skill.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSkill_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Skill_ID = value;
+					this.SendPropertyChanged("Skill_ID");
+					this.OnSkill_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionBank_ID", DbType="Int NOT NULL")]
+		public int QuestionBank_ID
+		{
+			get
+			{
+				return this._QuestionBank_ID;
+			}
+			set
+			{
+				if ((this._QuestionBank_ID != value))
+				{
+					if (this._QuestionBank.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnQuestionBank_IDChanging(value);
+					this.SendPropertyChanging();
+					this._QuestionBank_ID = value;
+					this.SendPropertyChanged("QuestionBank_ID");
+					this.OnQuestionBank_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_SkillQuestionBank", Storage="_QuestionBank", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public QuestionBank QuestionBank
+		{
+			get
+			{
+				return this._QuestionBank.Entity;
+			}
+			set
+			{
+				QuestionBank previousValue = this._QuestionBank.Entity;
+				if (((previousValue != value) 
+							|| (this._QuestionBank.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._QuestionBank.Entity = null;
+						previousValue.SkillQuestionBanks.Remove(this);
+					}
+					this._QuestionBank.Entity = value;
+					if ((value != null))
+					{
+						value.SkillQuestionBanks.Add(this);
+						this._QuestionBank_ID = value.QuestionBank_ID;
+					}
+					else
+					{
+						this._QuestionBank_ID = default(int);
+					}
+					this.SendPropertyChanged("QuestionBank");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Skill_SkillQuestionBank", Storage="_Skill", ThisKey="Skill_ID", OtherKey="Skill_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Skill Skill
+		{
+			get
+			{
+				return this._Skill.Entity;
+			}
+			set
+			{
+				Skill previousValue = this._Skill.Entity;
+				if (((previousValue != value) 
+							|| (this._Skill.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Skill.Entity = null;
+						previousValue.SkillQuestionBanks.Remove(this);
+					}
+					this._Skill.Entity = value;
+					if ((value != null))
+					{
+						value.SkillQuestionBanks.Add(this);
+						this._Skill_ID = value.Skill_ID;
+					}
+					else
+					{
+						this._Skill_ID = default(int);
+					}
+					this.SendPropertyChanged("Skill");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -5303,6 +6408,198 @@ namespace Kask.DAL.Models
 		{
 			this.SendPropertyChanging();
 			entity.UserProfile = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserProfileToApplicant")]
+	public partial class UserProfileToApplicant : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserProfileToApplicant_ID;
+		
+		private int _Applicant_ID;
+		
+		private int _UserId;
+		
+		private EntityRef<Applicant> _Applicant;
+		
+		private EntityRef<UserProfile> _UserProfile;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserProfileToApplicant_IDChanging(int value);
+    partial void OnUserProfileToApplicant_IDChanged();
+    partial void OnApplicant_IDChanging(int value);
+    partial void OnApplicant_IDChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    #endregion
+		
+		public UserProfileToApplicant()
+		{
+			this._Applicant = default(EntityRef<Applicant>);
+			this._UserProfile = default(EntityRef<UserProfile>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserProfileToApplicant_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserProfileToApplicant_ID
+		{
+			get
+			{
+				return this._UserProfileToApplicant_ID;
+			}
+			set
+			{
+				if ((this._UserProfileToApplicant_ID != value))
+				{
+					this.OnUserProfileToApplicant_IDChanging(value);
+					this.SendPropertyChanging();
+					this._UserProfileToApplicant_ID = value;
+					this.SendPropertyChanged("UserProfileToApplicant_ID");
+					this.OnUserProfileToApplicant_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
+		public int Applicant_ID
+		{
+			get
+			{
+				return this._Applicant_ID;
+			}
+			set
+			{
+				if ((this._Applicant_ID != value))
+				{
+					if (this._Applicant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnApplicant_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Applicant_ID = value;
+					this.SendPropertyChanged("Applicant_ID");
+					this.OnApplicant_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._UserProfile.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_UserProfileToApplicant", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Applicant Applicant
+		{
+			get
+			{
+				return this._Applicant.Entity;
+			}
+			set
+			{
+				Applicant previousValue = this._Applicant.Entity;
+				if (((previousValue != value) 
+							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Applicant.Entity = null;
+						previousValue.UserProfileToApplicants.Remove(this);
+					}
+					this._Applicant.Entity = value;
+					if ((value != null))
+					{
+						value.UserProfileToApplicants.Add(this);
+						this._Applicant_ID = value.Applicant_ID;
+					}
+					else
+					{
+						this._Applicant_ID = default(int);
+					}
+					this.SendPropertyChanged("Applicant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileToApplicant", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.UserProfileToApplicants.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.UserProfileToApplicants.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -5829,1303 +7126,6 @@ namespace Kask.DAL.Models
 		{
 			this.SendPropertyChanging();
 			entity.webpages_Role = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SkillQuestionBank")]
-	public partial class SkillQuestionBank : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _SkillQuestionBank_ID;
-		
-		private int _Skill_ID;
-		
-		private int _QuestionBank_ID;
-		
-		private EntityRef<Skill> _Skill;
-		
-		private EntityRef<QuestionBank> _QuestionBank;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSkillQuestionBank_IDChanging(int value);
-    partial void OnSkillQuestionBank_IDChanged();
-    partial void OnSkill_IDChanging(int value);
-    partial void OnSkill_IDChanged();
-    partial void OnQuestionBank_IDChanging(int value);
-    partial void OnQuestionBank_IDChanged();
-    #endregion
-		
-		public SkillQuestionBank()
-		{
-			this._Skill = default(EntityRef<Skill>);
-			this._QuestionBank = default(EntityRef<QuestionBank>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SkillQuestionBank_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int SkillQuestionBank_ID
-		{
-			get
-			{
-				return this._SkillQuestionBank_ID;
-			}
-			set
-			{
-				if ((this._SkillQuestionBank_ID != value))
-				{
-					this.OnSkillQuestionBank_IDChanging(value);
-					this.SendPropertyChanging();
-					this._SkillQuestionBank_ID = value;
-					this.SendPropertyChanged("SkillQuestionBank_ID");
-					this.OnSkillQuestionBank_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skill_ID", DbType="Int NOT NULL")]
-		public int Skill_ID
-		{
-			get
-			{
-				return this._Skill_ID;
-			}
-			set
-			{
-				if ((this._Skill_ID != value))
-				{
-					if (this._Skill.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSkill_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Skill_ID = value;
-					this.SendPropertyChanged("Skill_ID");
-					this.OnSkill_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionBank_ID", DbType="Int NOT NULL")]
-		public int QuestionBank_ID
-		{
-			get
-			{
-				return this._QuestionBank_ID;
-			}
-			set
-			{
-				if ((this._QuestionBank_ID != value))
-				{
-					if (this._QuestionBank.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnQuestionBank_IDChanging(value);
-					this.SendPropertyChanging();
-					this._QuestionBank_ID = value;
-					this.SendPropertyChanged("QuestionBank_ID");
-					this.OnQuestionBank_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Skill_SkillQuestionBank", Storage="_Skill", ThisKey="Skill_ID", OtherKey="Skill_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Skill Skill
-		{
-			get
-			{
-				return this._Skill.Entity;
-			}
-			set
-			{
-				Skill previousValue = this._Skill.Entity;
-				if (((previousValue != value) 
-							|| (this._Skill.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Skill.Entity = null;
-						previousValue.SkillQuestionBanks.Remove(this);
-					}
-					this._Skill.Entity = value;
-					if ((value != null))
-					{
-						value.SkillQuestionBanks.Add(this);
-						this._Skill_ID = value.Skill_ID;
-					}
-					else
-					{
-						this._Skill_ID = default(int);
-					}
-					this.SendPropertyChanged("Skill");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_SkillQuestionBank", Storage="_QuestionBank", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public QuestionBank QuestionBank
-		{
-			get
-			{
-				return this._QuestionBank.Entity;
-			}
-			set
-			{
-				QuestionBank previousValue = this._QuestionBank.Entity;
-				if (((previousValue != value) 
-							|| (this._QuestionBank.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._QuestionBank.Entity = null;
-						previousValue.SkillQuestionBanks.Remove(this);
-					}
-					this._QuestionBank.Entity = value;
-					if ((value != null))
-					{
-						value.SkillQuestionBanks.Add(this);
-						this._QuestionBank_ID = value.QuestionBank_ID;
-					}
-					else
-					{
-						this._QuestionBank_ID = default(int);
-					}
-					this.SendPropertyChanged("QuestionBank");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuestionBank")]
-	public partial class QuestionBank : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _QuestionBank_ID;
-		
-		private int _MCQuestion_ID;
-		
-		private int _MCOption_ID;
-		
-		private System.Nullable<byte> _MCCorrectOption;
-		
-		private EntitySet<SkillQuestionBank> _SkillQuestionBanks;
-		
-		private EntitySet<Assessment> _Assessments;
-		
-		private EntityRef<MCOption> _MCOption;
-		
-		private EntityRef<MCQuestion> _MCQuestion;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnQuestionBank_IDChanging(int value);
-    partial void OnQuestionBank_IDChanged();
-    partial void OnMCQuestion_IDChanging(int value);
-    partial void OnMCQuestion_IDChanged();
-    partial void OnMCOption_IDChanging(int value);
-    partial void OnMCOption_IDChanged();
-    partial void OnMCCorrectOptionChanging(System.Nullable<byte> value);
-    partial void OnMCCorrectOptionChanged();
-    #endregion
-		
-		public QuestionBank()
-		{
-			this._SkillQuestionBanks = new EntitySet<SkillQuestionBank>(new Action<SkillQuestionBank>(this.attach_SkillQuestionBanks), new Action<SkillQuestionBank>(this.detach_SkillQuestionBanks));
-			this._Assessments = new EntitySet<Assessment>(new Action<Assessment>(this.attach_Assessments), new Action<Assessment>(this.detach_Assessments));
-			this._MCOption = default(EntityRef<MCOption>);
-			this._MCQuestion = default(EntityRef<MCQuestion>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionBank_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int QuestionBank_ID
-		{
-			get
-			{
-				return this._QuestionBank_ID;
-			}
-			set
-			{
-				if ((this._QuestionBank_ID != value))
-				{
-					this.OnQuestionBank_IDChanging(value);
-					this.SendPropertyChanging();
-					this._QuestionBank_ID = value;
-					this.SendPropertyChanged("QuestionBank_ID");
-					this.OnQuestionBank_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCQuestion_ID", DbType="Int NOT NULL")]
-		public int MCQuestion_ID
-		{
-			get
-			{
-				return this._MCQuestion_ID;
-			}
-			set
-			{
-				if ((this._MCQuestion_ID != value))
-				{
-					if (this._MCQuestion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMCQuestion_IDChanging(value);
-					this.SendPropertyChanging();
-					this._MCQuestion_ID = value;
-					this.SendPropertyChanged("MCQuestion_ID");
-					this.OnMCQuestion_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCOption_ID", DbType="Int NOT NULL")]
-		public int MCOption_ID
-		{
-			get
-			{
-				return this._MCOption_ID;
-			}
-			set
-			{
-				if ((this._MCOption_ID != value))
-				{
-					if (this._MCOption.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMCOption_IDChanging(value);
-					this.SendPropertyChanging();
-					this._MCOption_ID = value;
-					this.SendPropertyChanged("MCOption_ID");
-					this.OnMCOption_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCCorrectOption", DbType="TinyInt")]
-		public System.Nullable<byte> MCCorrectOption
-		{
-			get
-			{
-				return this._MCCorrectOption;
-			}
-			set
-			{
-				if ((this._MCCorrectOption != value))
-				{
-					this.OnMCCorrectOptionChanging(value);
-					this.SendPropertyChanging();
-					this._MCCorrectOption = value;
-					this.SendPropertyChanged("MCCorrectOption");
-					this.OnMCCorrectOptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_SkillQuestionBank", Storage="_SkillQuestionBanks", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID")]
-		public EntitySet<SkillQuestionBank> SkillQuestionBanks
-		{
-			get
-			{
-				return this._SkillQuestionBanks;
-			}
-			set
-			{
-				this._SkillQuestionBanks.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_Assessment", Storage="_Assessments", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID")]
-		public EntitySet<Assessment> Assessments
-		{
-			get
-			{
-				return this._Assessments;
-			}
-			set
-			{
-				this._Assessments.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MCOption_QuestionBank", Storage="_MCOption", ThisKey="MCOption_ID", OtherKey="MCOption_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public MCOption MCOption
-		{
-			get
-			{
-				return this._MCOption.Entity;
-			}
-			set
-			{
-				MCOption previousValue = this._MCOption.Entity;
-				if (((previousValue != value) 
-							|| (this._MCOption.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MCOption.Entity = null;
-						previousValue.QuestionBanks.Remove(this);
-					}
-					this._MCOption.Entity = value;
-					if ((value != null))
-					{
-						value.QuestionBanks.Add(this);
-						this._MCOption_ID = value.MCOption_ID;
-					}
-					else
-					{
-						this._MCOption_ID = default(int);
-					}
-					this.SendPropertyChanged("MCOption");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MCQuestion_QuestionBank", Storage="_MCQuestion", ThisKey="MCQuestion_ID", OtherKey="MCQuestion_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public MCQuestion MCQuestion
-		{
-			get
-			{
-				return this._MCQuestion.Entity;
-			}
-			set
-			{
-				MCQuestion previousValue = this._MCQuestion.Entity;
-				if (((previousValue != value) 
-							|| (this._MCQuestion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MCQuestion.Entity = null;
-						previousValue.QuestionBanks.Remove(this);
-					}
-					this._MCQuestion.Entity = value;
-					if ((value != null))
-					{
-						value.QuestionBanks.Add(this);
-						this._MCQuestion_ID = value.MCQuestion_ID;
-					}
-					else
-					{
-						this._MCQuestion_ID = default(int);
-					}
-					this.SendPropertyChanged("MCQuestion");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_SkillQuestionBanks(SkillQuestionBank entity)
-		{
-			this.SendPropertyChanging();
-			entity.QuestionBank = this;
-		}
-		
-		private void detach_SkillQuestionBanks(SkillQuestionBank entity)
-		{
-			this.SendPropertyChanging();
-			entity.QuestionBank = null;
-		}
-		
-		private void attach_Assessments(Assessment entity)
-		{
-			this.SendPropertyChanging();
-			entity.QuestionBank = this;
-		}
-		
-		private void detach_Assessments(Assessment entity)
-		{
-			this.SendPropertyChanging();
-			entity.QuestionBank = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Assessment")]
-	public partial class Assessment : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Assessment_ID;
-		
-		private int _Applicant_ID;
-		
-		private int _QuestionBank_ID;
-		
-		private EntityRef<Applicant> _Applicant;
-		
-		private EntityRef<QuestionBank> _QuestionBank;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnAssessment_IDChanging(int value);
-    partial void OnAssessment_IDChanged();
-    partial void OnApplicant_IDChanging(int value);
-    partial void OnApplicant_IDChanged();
-    partial void OnQuestionBank_IDChanging(int value);
-    partial void OnQuestionBank_IDChanged();
-    #endregion
-		
-		public Assessment()
-		{
-			this._Applicant = default(EntityRef<Applicant>);
-			this._QuestionBank = default(EntityRef<QuestionBank>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assessment_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Assessment_ID
-		{
-			get
-			{
-				return this._Assessment_ID;
-			}
-			set
-			{
-				if ((this._Assessment_ID != value))
-				{
-					this.OnAssessment_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Assessment_ID = value;
-					this.SendPropertyChanged("Assessment_ID");
-					this.OnAssessment_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
-		public int Applicant_ID
-		{
-			get
-			{
-				return this._Applicant_ID;
-			}
-			set
-			{
-				if ((this._Applicant_ID != value))
-				{
-					if (this._Applicant.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnApplicant_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Applicant_ID = value;
-					this.SendPropertyChanged("Applicant_ID");
-					this.OnApplicant_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionBank_ID", DbType="Int NOT NULL")]
-		public int QuestionBank_ID
-		{
-			get
-			{
-				return this._QuestionBank_ID;
-			}
-			set
-			{
-				if ((this._QuestionBank_ID != value))
-				{
-					if (this._QuestionBank.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnQuestionBank_IDChanging(value);
-					this.SendPropertyChanging();
-					this._QuestionBank_ID = value;
-					this.SendPropertyChanged("QuestionBank_ID");
-					this.OnQuestionBank_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Assessment", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Applicant Applicant
-		{
-			get
-			{
-				return this._Applicant.Entity;
-			}
-			set
-			{
-				Applicant previousValue = this._Applicant.Entity;
-				if (((previousValue != value) 
-							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Applicant.Entity = null;
-						previousValue.Assessments.Remove(this);
-					}
-					this._Applicant.Entity = value;
-					if ((value != null))
-					{
-						value.Assessments.Add(this);
-						this._Applicant_ID = value.Applicant_ID;
-					}
-					else
-					{
-						this._Applicant_ID = default(int);
-					}
-					this.SendPropertyChanged("Applicant");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QuestionBank_Assessment", Storage="_QuestionBank", ThisKey="QuestionBank_ID", OtherKey="QuestionBank_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public QuestionBank QuestionBank
-		{
-			get
-			{
-				return this._QuestionBank.Entity;
-			}
-			set
-			{
-				QuestionBank previousValue = this._QuestionBank.Entity;
-				if (((previousValue != value) 
-							|| (this._QuestionBank.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._QuestionBank.Entity = null;
-						previousValue.Assessments.Remove(this);
-					}
-					this._QuestionBank.Entity = value;
-					if ((value != null))
-					{
-						value.Assessments.Add(this);
-						this._QuestionBank_ID = value.QuestionBank_ID;
-					}
-					else
-					{
-						this._QuestionBank_ID = default(int);
-					}
-					this.SendPropertyChanged("QuestionBank");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.JobOpeningInterviewQuestion")]
-	public partial class JobOpeningInterviewQuestion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _JobOpeningInterviewQuestion_ID;
-		
-		private int _JobOpening_ID;
-		
-		private int _SAQuestion_ID;
-		
-		private EntityRef<JobOpening> _JobOpening;
-		
-		private EntityRef<SAQuestion> _SAQuestion;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnJobOpeningInterviewQuestion_IDChanging(int value);
-    partial void OnJobOpeningInterviewQuestion_IDChanged();
-    partial void OnJobOpening_IDChanging(int value);
-    partial void OnJobOpening_IDChanged();
-    partial void OnSAQuestion_IDChanging(int value);
-    partial void OnSAQuestion_IDChanged();
-    #endregion
-		
-		public JobOpeningInterviewQuestion()
-		{
-			this._JobOpening = default(EntityRef<JobOpening>);
-			this._SAQuestion = default(EntityRef<SAQuestion>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobOpeningInterviewQuestion_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int JobOpeningInterviewQuestion_ID
-		{
-			get
-			{
-				return this._JobOpeningInterviewQuestion_ID;
-			}
-			set
-			{
-				if ((this._JobOpeningInterviewQuestion_ID != value))
-				{
-					this.OnJobOpeningInterviewQuestion_IDChanging(value);
-					this.SendPropertyChanging();
-					this._JobOpeningInterviewQuestion_ID = value;
-					this.SendPropertyChanged("JobOpeningInterviewQuestion_ID");
-					this.OnJobOpeningInterviewQuestion_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobOpening_ID", DbType="Int NOT NULL")]
-		public int JobOpening_ID
-		{
-			get
-			{
-				return this._JobOpening_ID;
-			}
-			set
-			{
-				if ((this._JobOpening_ID != value))
-				{
-					if (this._JobOpening.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnJobOpening_IDChanging(value);
-					this.SendPropertyChanging();
-					this._JobOpening_ID = value;
-					this.SendPropertyChanged("JobOpening_ID");
-					this.OnJobOpening_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SAQuestion_ID", DbType="Int NOT NULL")]
-		public int SAQuestion_ID
-		{
-			get
-			{
-				return this._SAQuestion_ID;
-			}
-			set
-			{
-				if ((this._SAQuestion_ID != value))
-				{
-					if (this._SAQuestion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSAQuestion_IDChanging(value);
-					this.SendPropertyChanging();
-					this._SAQuestion_ID = value;
-					this.SendPropertyChanged("SAQuestion_ID");
-					this.OnSAQuestion_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobOpening_JobOpeningInterviewQuestion", Storage="_JobOpening", ThisKey="JobOpening_ID", OtherKey="JobOpening_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public JobOpening JobOpening
-		{
-			get
-			{
-				return this._JobOpening.Entity;
-			}
-			set
-			{
-				JobOpening previousValue = this._JobOpening.Entity;
-				if (((previousValue != value) 
-							|| (this._JobOpening.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._JobOpening.Entity = null;
-						previousValue.JobOpeningInterviewQuestions.Remove(this);
-					}
-					this._JobOpening.Entity = value;
-					if ((value != null))
-					{
-						value.JobOpeningInterviewQuestions.Add(this);
-						this._JobOpening_ID = value.JobOpening_ID;
-					}
-					else
-					{
-						this._JobOpening_ID = default(int);
-					}
-					this.SendPropertyChanged("JobOpening");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SAQuestion_JobOpeningInterviewQuestion", Storage="_SAQuestion", ThisKey="SAQuestion_ID", OtherKey="SAQuestion_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public SAQuestion SAQuestion
-		{
-			get
-			{
-				return this._SAQuestion.Entity;
-			}
-			set
-			{
-				SAQuestion previousValue = this._SAQuestion.Entity;
-				if (((previousValue != value) 
-							|| (this._SAQuestion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SAQuestion.Entity = null;
-						previousValue.JobOpeningInterviewQuestions.Remove(this);
-					}
-					this._SAQuestion.Entity = value;
-					if ((value != null))
-					{
-						value.JobOpeningInterviewQuestions.Add(this);
-						this._SAQuestion_ID = value.SAQuestion_ID;
-					}
-					else
-					{
-						this._SAQuestion_ID = default(int);
-					}
-					this.SendPropertyChanged("SAQuestion");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Interview")]
-	public partial class Interview : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Interview_ID;
-		
-		private int _Applicant_ID;
-		
-		private int _SAQuestion_ID;
-		
-		private int _SAResponse_ID;
-		
-		private EntityRef<Applicant> _Applicant;
-		
-		private EntityRef<SAQuestion> _SAQuestion;
-		
-		private EntityRef<SAResponse> _SAResponse;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnInterview_IDChanging(int value);
-    partial void OnInterview_IDChanged();
-    partial void OnApplicant_IDChanging(int value);
-    partial void OnApplicant_IDChanged();
-    partial void OnSAQuestion_IDChanging(int value);
-    partial void OnSAQuestion_IDChanged();
-    partial void OnSAResponse_IDChanging(int value);
-    partial void OnSAResponse_IDChanged();
-    #endregion
-		
-		public Interview()
-		{
-			this._Applicant = default(EntityRef<Applicant>);
-			this._SAQuestion = default(EntityRef<SAQuestion>);
-			this._SAResponse = default(EntityRef<SAResponse>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Interview_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Interview_ID
-		{
-			get
-			{
-				return this._Interview_ID;
-			}
-			set
-			{
-				if ((this._Interview_ID != value))
-				{
-					this.OnInterview_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Interview_ID = value;
-					this.SendPropertyChanged("Interview_ID");
-					this.OnInterview_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
-		public int Applicant_ID
-		{
-			get
-			{
-				return this._Applicant_ID;
-			}
-			set
-			{
-				if ((this._Applicant_ID != value))
-				{
-					if (this._Applicant.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnApplicant_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Applicant_ID = value;
-					this.SendPropertyChanged("Applicant_ID");
-					this.OnApplicant_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SAQuestion_ID", DbType="Int NOT NULL")]
-		public int SAQuestion_ID
-		{
-			get
-			{
-				return this._SAQuestion_ID;
-			}
-			set
-			{
-				if ((this._SAQuestion_ID != value))
-				{
-					if (this._SAQuestion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSAQuestion_IDChanging(value);
-					this.SendPropertyChanging();
-					this._SAQuestion_ID = value;
-					this.SendPropertyChanged("SAQuestion_ID");
-					this.OnSAQuestion_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SAResponse_ID", DbType="Int NOT NULL")]
-		public int SAResponse_ID
-		{
-			get
-			{
-				return this._SAResponse_ID;
-			}
-			set
-			{
-				if ((this._SAResponse_ID != value))
-				{
-					if (this._SAResponse.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSAResponse_IDChanging(value);
-					this.SendPropertyChanging();
-					this._SAResponse_ID = value;
-					this.SendPropertyChanged("SAResponse_ID");
-					this.OnSAResponse_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_Interview", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Applicant Applicant
-		{
-			get
-			{
-				return this._Applicant.Entity;
-			}
-			set
-			{
-				Applicant previousValue = this._Applicant.Entity;
-				if (((previousValue != value) 
-							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Applicant.Entity = null;
-						previousValue.Interviews.Remove(this);
-					}
-					this._Applicant.Entity = value;
-					if ((value != null))
-					{
-						value.Interviews.Add(this);
-						this._Applicant_ID = value.Applicant_ID;
-					}
-					else
-					{
-						this._Applicant_ID = default(int);
-					}
-					this.SendPropertyChanged("Applicant");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SAQuestion_Interview", Storage="_SAQuestion", ThisKey="SAQuestion_ID", OtherKey="SAQuestion_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public SAQuestion SAQuestion
-		{
-			get
-			{
-				return this._SAQuestion.Entity;
-			}
-			set
-			{
-				SAQuestion previousValue = this._SAQuestion.Entity;
-				if (((previousValue != value) 
-							|| (this._SAQuestion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SAQuestion.Entity = null;
-						previousValue.Interviews.Remove(this);
-					}
-					this._SAQuestion.Entity = value;
-					if ((value != null))
-					{
-						value.Interviews.Add(this);
-						this._SAQuestion_ID = value.SAQuestion_ID;
-					}
-					else
-					{
-						this._SAQuestion_ID = default(int);
-					}
-					this.SendPropertyChanged("SAQuestion");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SAResponse_Interview", Storage="_SAResponse", ThisKey="SAResponse_ID", OtherKey="SAResponse_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public SAResponse SAResponse
-		{
-			get
-			{
-				return this._SAResponse.Entity;
-			}
-			set
-			{
-				SAResponse previousValue = this._SAResponse.Entity;
-				if (((previousValue != value) 
-							|| (this._SAResponse.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SAResponse.Entity = null;
-						previousValue.Interviews.Remove(this);
-					}
-					this._SAResponse.Entity = value;
-					if ((value != null))
-					{
-						value.Interviews.Add(this);
-						this._SAResponse_ID = value.SAResponse_ID;
-					}
-					else
-					{
-						this._SAResponse_ID = default(int);
-					}
-					this.SendPropertyChanged("SAResponse");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserProfileToApplicant")]
-	public partial class UserProfileToApplicant : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UserProfileToApplicant_ID;
-		
-		private int _Applicant_ID;
-		
-		private int _UserId;
-		
-		private EntityRef<Applicant> _Applicant;
-		
-		private EntityRef<UserProfile> _UserProfile;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserProfileToApplicant_IDChanging(int value);
-    partial void OnUserProfileToApplicant_IDChanged();
-    partial void OnApplicant_IDChanging(int value);
-    partial void OnApplicant_IDChanged();
-    partial void OnUserIdChanging(int value);
-    partial void OnUserIdChanged();
-    #endregion
-		
-		public UserProfileToApplicant()
-		{
-			this._Applicant = default(EntityRef<Applicant>);
-			this._UserProfile = default(EntityRef<UserProfile>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserProfileToApplicant_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int UserProfileToApplicant_ID
-		{
-			get
-			{
-				return this._UserProfileToApplicant_ID;
-			}
-			set
-			{
-				if ((this._UserProfileToApplicant_ID != value))
-				{
-					this.OnUserProfileToApplicant_IDChanging(value);
-					this.SendPropertyChanging();
-					this._UserProfileToApplicant_ID = value;
-					this.SendPropertyChanged("UserProfileToApplicant_ID");
-					this.OnUserProfileToApplicant_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Applicant_ID", DbType="Int NOT NULL")]
-		public int Applicant_ID
-		{
-			get
-			{
-				return this._Applicant_ID;
-			}
-			set
-			{
-				if ((this._Applicant_ID != value))
-				{
-					if (this._Applicant.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnApplicant_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Applicant_ID = value;
-					this.SendPropertyChanged("Applicant_ID");
-					this.OnApplicant_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					if (this._UserProfile.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Applicant_UserProfileToApplicant", Storage="_Applicant", ThisKey="Applicant_ID", OtherKey="Applicant_ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Applicant Applicant
-		{
-			get
-			{
-				return this._Applicant.Entity;
-			}
-			set
-			{
-				Applicant previousValue = this._Applicant.Entity;
-				if (((previousValue != value) 
-							|| (this._Applicant.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Applicant.Entity = null;
-						previousValue.UserProfileToApplicants.Remove(this);
-					}
-					this._Applicant.Entity = value;
-					if ((value != null))
-					{
-						value.UserProfileToApplicants.Add(this);
-						this._Applicant_ID = value.Applicant_ID;
-					}
-					else
-					{
-						this._Applicant_ID = default(int);
-					}
-					this.SendPropertyChanged("Applicant");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileToApplicant", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public UserProfile UserProfile
-		{
-			get
-			{
-				return this._UserProfile.Entity;
-			}
-			set
-			{
-				UserProfile previousValue = this._UserProfile.Entity;
-				if (((previousValue != value) 
-							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UserProfile.Entity = null;
-						previousValue.UserProfileToApplicants.Remove(this);
-					}
-					this._UserProfile.Entity = value;
-					if ((value != null))
-					{
-						value.UserProfileToApplicants.Add(this);
-						this._UserId = value.UserId;
-					}
-					else
-					{
-						this._UserId = default(int);
-					}
-					this.SendPropertyChanged("UserProfile");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }
