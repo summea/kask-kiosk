@@ -70,7 +70,7 @@ CREATE UNIQUE INDEX IDX_Person ON Applicant (FirstName, LastName, SSN ASC);
 /* DATAS FOR APPLICANT RELATION*/ 
 INSERT INTO Applicant(FirstName, MiddleName, LastName, SSN, Gender, ApplicantAddress, Phone, NameAlias) VALUES ('Khanh', 'W', 'Nguyen', 1992, 'M', '123 Oak Grove Ct, Sunnyville, AT 10001', '123-456-7890', 'KW');
 INSERT INTO Applicant(FirstName, MiddleName, LastName, SSN, Gender, ApplicantAddress, Phone, NameAlias) VALUES ('Khanh', 'X', 'Nguyen', 1986, 'M', '234 Mountain View Rd, Sunnyville, AT 10001', '123-123-4567', 'KX');
-INSERT INTO Applicant(FirstName, MiddleName, LastName, SSN, Gender, ApplicantAddress, Phone, NameAlias) VALUES ('Andy', 'Y','Summers', 1985, 'M', '345 Willow St, Sunnyville, AT 10001', '123-456-3254', 'AY');
+INSERT INTO Applicant(FirstName, MiddleName, LastName, SSN, Gender, ApplicantAddress, Phone, NameAlias) VALUES ('Anthony', 'Y','Sanders', 1988, 'M', '345 Willow St, Sunnyville, AT 10001', '123-456-3254', 'AY');
 INSERT INTO Applicant(FirstName, MiddleName, LastName, SSN, Gender, ApplicantAddress, Phone, NameAlias) VALUES ('Smahane', 'Z', 'Douyeb', 1987, 'F', '456 Valley View Ct, Sunnyville, AT 10001', '123-123-3145', 'SD');
 
 /********************************************************************************
