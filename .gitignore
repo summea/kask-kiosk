@@ -154,6 +154,8 @@ AES_SQL_Query_Iter1-v2.sql
 AES_SQL_Query_Iter1-v3.sql
 AES_SQL_Query_Iter1.sql
 AES_SQL_Query_Iter2-v1.sql
+original-AES_SQL_Query.sql
+database-linq-issue.md
 Kask.DAL2/connectionStrings.config
 #Kask.Services/bin/*.dll
 #Kask.Services/bin/*.pdb
